@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>錯字偵探社｜第一課互動課堂</title>
+<style>
+:root{
+  --ink:#182536; --muted:#607083; --paper:#f7f3eb; --white:#fffdf9;
+  --teal:#087f83; --teal-soft:#dff1ee; --orange:#ec7d3a; --orange-soft:#fae6d7;
+  --yellow:#f4c84b; --yellow-soft:#fff4c9; --purple:#7565a8; --purple-soft:#ece8f7;
+  --green:#2e8a62; --red:#bd4b4b; --line:#d8d7d1;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.55}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{min-height:100vh}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(24,37,54,.98);color:#fff;padding:14px 28px;display:flex;align-items:center;gap:18px;border-bottom:4px solid var(--orange)}
+.brand{font-size:18px;font-weight:800;letter-spacing:.02em;white-space:nowrap}.case{color:#b8cbd0;font-size:13px;white-space:nowrap}
+.progress-wrap{margin-left:auto;display:flex;align-items:center;gap:10px;min-width:240px}.progress{height:8px;background:#415063;border-radius:9px;overflow:hidden;flex:1}.progress i{display:block;height:100%;background:var(--yellow);width:0;transition:width .3s}.score{font-weight:800;color:var(--yellow);white-space:nowrap}
+.shell{max-width:1180px;margin:0 auto;padding:30px 24px 56px}.view{display:none;animation:rise .25s ease}.view.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2,h3{margin:0;line-height:1.18}h1{font-size:clamp(34px,5vw,62px);letter-spacing:-.02em}h2{font-size:32px}h3{font-size:20px}.eyebrow{font-size:13px;color:var(--teal);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.muted{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}.hero-copy{padding:28px 4px}.hero-copy h1{margin-top:10px}.hero-copy p{font-size:19px;color:var(--muted);max-width:540px;margin:20px 0 26px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px}.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:800;transition:.18s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--teal);color:#fff}.btn.secondary{background:var(--white);color:var(--ink);border:1px solid var(--line)}.btn.orange{background:var(--orange);color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.image-slot{min-height:340px;border-radius:22px;border:1px solid #c7c8c3;background:#dfe8e6;position:relative;overflow:hidden;display:flex;align-items:end;padding:20px}.image-slot::before{content:"";position:absolute;inset:0;background:rgba(8,127,131,.10);opacity:.7}.image-slot::after{content:"圖片佔位區 · 錯字偵探社開場場景";position:absolute;inset:auto 20px 20px;padding:10px 12px;background:rgba(255,253,249,.9);border:1px dashed #aabbb7;border-radius:10px;color:var(--muted);font-size:13px;font-weight:700}.image-slot .grid{position:absolute;inset:32px;display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;opacity:.6}.image-slot .grid span{background:#fffdf9;border:1px solid #b6cac5;border-radius:12px}.image-slot .grid span:nth-child(1){grid-row:span 2;background:#f4c84b}.image-slot .grid span:nth-child(2){background:#087f83}.image-slot .grid span:nth-child(4){background:#ec7d3a}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px}.panel.soft-teal{background:var(--teal-soft);border-color:#b8ded7}.panel.soft-orange{background:var(--orange-soft);border-color:#efc5ac}.panel.soft-yellow{background:var(--yellow-soft);border-color:#eadb9c}.panel.soft-purple{background:var(--purple-soft);border-color:#d2c9eb}.panel + .panel{margin-top:14px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:22px 0 14px}.section-head p{margin:0;color:var(--muted);font-size:14px}.tag{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:var(--teal-soft);color:var(--teal);font-size:12px;font-weight:800}.tag.orange{background:var(--orange-soft);color:#a74f20}.tag.yellow{background:var(--yellow-soft);color:#846716}.tag.purple{background:var(--purple-soft);color:#5e5188}
+.setup{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.field label{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-bottom:5px}.field input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff}.role-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.role{padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff}.role strong{display:block;font-size:15px}.role span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.lock{position:relative;min-height:245px;padding:20px;border-radius:18px;border:1px solid var(--line);background:var(--white);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.lock::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--teal)}.lock:nth-child(2)::before{background:var(--orange)}.lock:nth-child(3)::before{background:var(--purple)}.lock.locked{opacity:.7;background:#eeede8}.lock-head{display:flex;justify-content:space-between;align-items:start}.lock-number{font-size:42px;font-weight:900;color:var(--teal);line-height:1}.lock:nth-child(2) .lock-number{color:var(--orange)}.lock:nth-child(3) .lock-number{color:var(--purple)}.lock-state{font-size:12px;font-weight:800;color:var(--muted)}.lock h3{margin-top:18px}.lock p{color:var(--muted);font-size:14px;margin:8px 0 16px}.lock .btn{align-self:flex-start}.lock.completed{border-color:var(--green);background:#edf8f1}.lock.completed .lock-state{color:var(--green)}.lock.unlocked{border:2px solid var(--yellow);box-shadow:0 0 0 4px var(--yellow-soft);animation:pulse 1.2s infinite}.lock.unlocked .lock-state{color:#846716;font-weight:900}@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--yellow-soft)}50%{box-shadow:0 0 0 9px rgba(244,200,75,.15)}}.lock .btn.orange{background:var(--orange)}
+.question{font-size:25px;font-weight:900;margin:18px 0}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{padding:13px 14px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;font-weight:700;color:var(--ink)}.choice:hover{border-color:var(--teal);background:var(--teal-soft)}.choice.correct{border-color:var(--green);background:#e7f5ed;color:#216a49}.choice.wrong{border-color:var(--red);background:#fae7e7;color:#8d3636}.feedback{min-height:26px;margin-top:13px;font-weight:800}.feedback.good{color:var(--green)}.feedback.bad{color:var(--red)}.quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.menu-item{border:1px solid var(--line);background:#fffdf9;border-radius:12px;padding:15px}.menu-item strong{display:block;font-size:19px}.menu-item span{display:block;color:var(--red);margin:5px 0 10px;font-weight:800}.menu-item select{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:#fff}.checkline{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px}.checkline small{color:var(--muted)}
+.sort-zone{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.cards{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;min-height:120px}.sort-card{border:1px solid #c5c7c4;background:#fff;padding:9px 11px;border-radius:9px;font-weight:800;cursor:pointer}.sort-card.selected{outline:3px solid var(--yellow);background:var(--yellow-soft)}.bucket{min-height:190px;border:2px dashed #b5c4c0;border-radius:13px;padding:13px;background:#fbfcfa}.bucket h3{font-size:16px;margin-bottom:8px}.bucket .sort-card{display:block;margin:7px 0;font-size:13px}.sort-hint{color:var(--muted);font-size:13px;margin-top:10px}.bucket.teal{border-color:#8fc9c1;background:#eff9f6}.bucket.orange{border-color:#e4b193;background:#fff4ec}.bucket.purple{border-color:#c7bce3;background:#f5f2fb}
+.auction{display:grid;grid-template-columns:1fr 1fr;gap:16px}.auction-card{font-size:30px;font-weight:900;text-align:center;padding:30px 15px;border-radius:16px;background:var(--ink);color:#fff}.bid-row{display:flex;gap:9px;align-items:center;margin-top:14px}.bid-row input{width:90px;border:1px solid var(--line);padding:10px;border-radius:8px}.score-board{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.team-score{padding:10px 13px;border-radius:10px;background:var(--ink);color:#fff;font-size:14px}.team-score b{color:var(--yellow);font-size:18px;margin-left:6px}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:10px}.nav-row .right{display:flex;gap:9px}.toast{position:fixed;right:24px;bottom:24px;z-index:20;max-width:340px;background:var(--ink);color:#fff;padding:14px 16px;border-radius:10px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}.celebrate{border:2px solid var(--yellow);background:var(--yellow-soft);padding:24px;border-radius:18px;text-align:center}.celebrate h2{color:#71590f}
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(18,29,45,.86);display:none;align-items:center;justify-content:center;padding:24px}.overlay.show{display:flex;animation:fade .25s ease}@keyframes fade{from{opacity:0}to{opacity:1}}.win-card{width:min(560px,92vw);background:var(--white);border-radius:24px;padding:34px 30px;text-align:center;position:relative;overflow:hidden}.win-card .lg-lock{margin:0 auto 8px;width:96px;height:96px;position:relative}.shackle{position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:58px;height:60px;border:10px solid var(--yellow);border-bottom:0;border-radius:30px 30px 0 0;transition:transform .5s cubic-bezier(.6,-.3,.4,1.4)}.lg-lock.open .shackle{animation:unlock-shakle .9s cubic-bezier(.6,-.3,.4,1.4) forwards}@keyframes unlock-shakle{0%{transform:translateX(-50%)}20%{transform:translateX(-50%) translateY(-8px)}40%{transform:translateX(-50%) translateY(2px)}55%{transform:translateX(-50%) rotate(0deg)}100%{transform:translateX(-50%) rotate(-46deg) translateY(-4px)}}.lock-body{margin-top:54px;width:96px;height:72px;background:var(--yellow);border-radius:14px;position:relative;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s ease}.lg-lock.open .lock-body{animation:glow 1s ease}.lock-body::after{content:"";width:20px;height:20px;border-radius:50%;background:var(--ink);position:absolute;top:22px}.lock-body::before{content:"";position:absolute;top:34px;left:50%;transform:translateX(-50%);width:16px;height:14px;background:var(--ink)}@keyframes glow{0%{box-shadow:0 0 0 0 rgba(244,200,75,0)}40%{box-shadow:0 0 24px 10px rgba(244,200,75,.7)}100%{box-shadow:0 0 0 0 rgba(244,200,75,0)}}.win-title{font-size:34px;font-weight:900;margin:20px 0 6px;color:var(--ink)}.win-sub{color:var(--muted);font-size:16px;margin:0 0 8px}.win-progress{height:12px;background:#e7e5de;border-radius:99px;overflow:hidden;margin:20px 0 4px}.win-progress i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--green));width:0;transition:width .8s ease}.win-progress-label{font-size:13px;color:var(--muted);font-weight:700}.win-buttons{display:flex;gap:10px;justify-content:center;margin-top:22px}.win-buttons .btn{font-size:17px;padding:13px 20px}.confetti{position:absolute;top:-10px;width:10px;height:16px;border-radius:2px;opacity:.9;animation:fall linear forwards}@keyframes fall{to{transform:translateY(560px) rotate(720deg);opacity:0}}.spark{position:absolute;left:50%;top:24px;font-size:40px;animation:pop .5s ease}@keyframes pop{0%{transform:translate(-50%,-50%) scale(0);opacity:0}60%{transform:translate(-50%,-50%) scale(1.3);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:800px){.topbar{padding:12px 16px;flex-wrap:wrap}.progress-wrap{order:3;flex-basis:100%;min-width:0}.shell{padding:20px 14px 42px}.hero,.two-col,.auction{grid-template-columns:1fr}.three-col,.lock-grid,.sort-zone{grid-template-columns:1fr}.role-grid{grid-template-columns:repeat(2,1fr)}.menu-grid,.choice-grid{grid-template-columns:1fr}.image-slot{min-height:250px}h2{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">錯字偵探社</div><div class="case">VCH1101 · 第一課 · 入社任務</div>
+    <div class="progress-wrap"><span id="progressText">進度 0 / 3</span><div class="progress"><i id="progressBar"></i></div><span class="score">得分 <b id="score">0</b></span></div>
+  </header>
+  <main class="shell">
+    <section class="view active" id="home">
+      <div class="hero">
+        <div class="hero-copy"><div class="eyebrow">VTC 職業中文 · 第一堂課</div><h1>今天，加入<br><span style="color:var(--teal)">錯字偵探社</span></h1><p>早餐店的餐牌被人改了。你和小隊要用眼力、推理和合作，把文字案件破掉。</p><div class="hero-actions"><button class="btn primary" data-go="setup">開始入社任務</button><button class="btn secondary" data-video="https://www.youtube.com/watch?v=dayrUAn6pJ4">播放教材影片</button></div></div>
+        <div class="image-slot" aria-label="圖片佔位區"><div class="grid"><span></span><span></span><span></span><span></span><span></span></div></div>
+      </div>
+      <div class="two-col" style="margin-top:18px"><div class="panel soft-orange"><span class="tag orange">今天的驚喜</span><h3 style="margin-top:10px">三把鎖，三個任務</h3><p class="muted">每完成一關，系統會即時解鎖下一個案件。全班達到指定分數，會出現秘密獎勵。</p></div><div class="panel soft-teal"><span class="tag">小組玩法</span><h3 style="margin-top:10px">每個人都有角色</h3><p class="muted">掃描員、修理員、證據員和隊長輪流工作，不能只由一個人完成。</p></div></div>
+    </section>
+
+    <section class="view" id="setup">
+      <div class="section-head"><div><div class="eyebrow">入社登記</div><h2>先成立你的偵探小隊</h2><p>資料只會留在這一頁，方便課堂進行。</p></div><span class="tag yellow">第 0 關</span></div>
+      <div class="panel"><div class="setup"><div class="field"><label for="teamName">小隊名稱</label><input id="teamName" placeholder="例如：麵包偵探隊"></div><div class="field"><label for="teamMotto">小隊口號</label><input id="teamMotto" placeholder="例如：先讀句子，再找線索"></div></div><div class="role-grid"><div class="role"><strong>掃描員</strong><span>找出可疑字詞</span></div><div class="role"><strong>修理員</strong><span>寫出正確文字</span></div><div class="role"><strong>證據員</strong><span>說明錯字原因</span></div><div class="role"><strong>隊長</strong><span>整理及報告</span></div></div><div class="nav-row"><span class="muted" id="teamPreview">尚未登記小隊</span><button class="btn primary" id="saveTeam">登記並查看案件地圖</button></div></div>
+      <div class="panel soft-yellow" style="margin-top:16px"><h3>三條偵探規則</h3><div class="three-col" style="margin-top:12px"><div><b>先想</b><br><span class="muted">每個人先看一次題目。</span></div><div><b>要寫</b><br><span class="muted">答案不能只停留在喊出來。</span></div><div><b>會解釋</b><br><span class="muted">能說理由，才算真正破案。</span></div></div></div>
+    </section>
+
+    <section class="view" id="map">
+      <div class="section-head"><div><div class="eyebrow">案件地圖</div><h2 id="mapTitle">準備好開始破案了嗎？</h2><p>按順序完成三把鎖。每一關完成後會自動記錄分數。</p></div><span class="tag" id="teamBadge">小隊</span></div>
+      <div class="panel soft-orange"><h3>案件簡報</h3><p style="margin-bottom:0">早餐店明天開張，但餐牌出現錯字。客人可能點錯食物，店主需要你們在開門前完成校對。</p></div>
+      <div class="lock-grid"><article class="lock" id="lock1"><div><div class="lock-head"><span class="lock-number">01</span><span class="lock-state">未解鎖</span></div><h3>找出正字</h3><p>對應教材活動一：從常見錯別字中找出正確寫法。</p></div><button class="btn primary" data-lock="1">進入第一把鎖</button></article><article class="lock locked" id="lock2"><div><div class="lock-head"><span class="lock-number">02</span><span class="lock-state">完成上一關後解鎖</span></div><h3>餐牌案件</h3><p>對應教材活動二：在早餐餐牌找出六個錯別字。</p></div><button class="btn primary" data-lock="2" disabled>尚未解鎖</button></article><article class="lock locked" id="lock3"><div><div class="lock-head"><span class="lock-number">03</span><span class="lock-state">完成上一關後解鎖</span></div><h3>三把錯字密碼</h3><p>對應教材活動三：判斷讀音、字形和詞義三種成因。</p></div><button class="btn primary" data-lock="3" disabled>尚未解鎖</button></article></div>
+    </section>
+
+    <section class="view" id="lock1View">
+      <div class="section-head"><div><div class="eyebrow">第一把鎖 · 正字掃描</div><h2>找到不對勁的字</h2><p>每題選出正確寫法。答對得1分，完成全部題目後解鎖餐牌案件。</p></div><span class="tag">教材活動一</span></div>
+      <div class="panel"><div class="quiz-meta"><span id="q1Meta">題目 1 / 8</span><span>本關得分 <b id="q1Score">0</b></span></div><div class="question" id="q1Question"></div><div class="choice-grid" id="q1Choices"></div><div class="feedback" id="q1Feedback"></div><div class="nav-row"><button class="btn secondary" data-go="map">回案件地圖</button><button class="btn orange" id="q1Next" disabled>下一題</button></div></div>
+      <div class="panel soft-teal" style="margin-top:16px"><b>教師玩法：</b><span class="muted">讓不同角色輪流按答案；按下答案後，請證據員說出「哪一個部件或讀音」令大家判斷。</span></div>
+    </section>
+
+    <section class="view" id="lock2View">
+      <div class="section-head"><div><div class="eyebrow">第二把鎖 · 早餐餐牌</div><h2>客人會不會點錯？</h2><p>選擇每個錯字的正確寫法。完成後按「提交校對報告」。</p></div><span class="tag orange">教材活動二</span></div>
+      <div class="panel"><div class="menu-grid" id="menuGrid"></div><div class="checkline"><small id="menuHint">六項都完成後才可以提交。</small><button class="btn orange" id="submitMenu" disabled>提交校對報告</button></div><div class="feedback" id="menuFeedback"></div><div class="nav-row"><button class="btn primary" data-go="lock3View" style="display:none" id="menuNext">▶ 進入第三把鎖：錯字密碼</button></div></div>
+      <div class="panel soft-orange" style="margin-top:16px"><h3>加分問題</h3><p style="margin:6px 0 0">請小隊說出一個例子：餐牌上的錯字可能造成甚麼誤會？教師可手動加1分。</p></div>
+    </section>
+
+    <section class="view" id="lock3View">
+      <div class="section-head"><div><div class="eyebrow">第三把鎖 · 錯字密碼</div><h2>把線索放回正確的鎖</h2><p>先點一張錯字卡，再點它所屬的原因分類。完成六張卡後解鎖。</p></div><span class="tag purple">教材活動三</span></div>
+      <div class="panel"><div class="sort-zone"><div class="panel" style="padding:14px"><h3>待分類線索</h3><div class="cards" id="sortCards"></div><div class="sort-hint" id="sortHint">請先點選一張卡。</div></div><div class="bucket teal" data-cat="sound"><h3>聲音鎖</h3><p class="muted" style="font-size:13px">讀音相同或相似</p><div id="soundBucket"></div></div><div class="bucket orange" data-cat="shape"><h3>外形鎖</h3><p class="muted" style="font-size:13px">字形相似</p><div id="shapeBucket"></div></div></div><div class="bucket purple" data-cat="meaning" style="margin-top:12px"><h3>意思鎖</h3><p class="muted" style="font-size:13px">錯誤理解詞義</p><div id="meaningBucket"></div></div><div class="feedback" id="sortFeedback"></div></div>
+    </section>
+
+    <section class="view" id="bonus">
+      <div class="section-head"><div><div class="eyebrow">🎉 秘密獎勵已解鎖</div><h2>挑戰老師時刻！</h2><p>你們破解了三把鎖，現在獎勵是：輪到你們出題考老師。</p></div><span class="tag yellow">秘密獎勵</span></div>
+      <div class="panel soft-yellow"><h3>怎麼玩？</h3><div class="three-col" style="margin-top:12px"><div><b>1. 出題</b><br><span class="muted">每隊寫一個錯字，附上正字和錯字原因。</span></div><div><b>2. 挑戰</b><br><span class="muted">老師必須當場作答，全班倒數 10 秒。</span></div><div><b>3. 判分</b><br><span class="muted">老師答對，小隊不得分；老師答錯，小隊 +2 分。</span></div></div></div>
+      <div class="panel" style="margin-top:16px"><h3>小隊出題卡</h3><p class="muted" style="margin:6px 0 0">錯字：________　正字：________<br>錯字原因：□ 讀音相似　□ 字形相似　□ 錯誤理解詞義</p></div>
+      <div class="nav-row"><button class="btn secondary" data-go="map">回到案件地圖</button><button class="btn orange" data-go="exit">完成挑戰，前往出口卡 ➜</button></div>
+    </section>
+
+    <section class="view" id="exit">
+      <div class="section-head"><div><div class="eyebrow">收尾 · 出口卡</div><h2>今天你帶走了甚麼？</h2><p>請獨立完成，這是給老師的線索，不是考試。</p></div><span class="tag">Exit Ticket</span></div>
+      <div class="panel" id="exitForm">
+        <div class="field" style="margin-bottom:14px"><label for="exitWord">今天我改正的一個字</label><input id="exitWord" placeholder="例如：遵守"></div>
+        <div class="field" style="margin-bottom:14px"><label for="exitFun">今天最好玩的關卡</label><input id="exitFun" placeholder="例如：餐牌案件"></div>
+        <div class="field" style="margin-bottom:14px"><label for="exitNext">我下一次想挑戰甚麼</label><input id="exitNext" placeholder="例如：招聘廣告校對"></div>
+        <div class="field" style="margin-bottom:6px"><label for="exitNote">給錯字偵探社的一句話</label><input id="exitNote" placeholder="例如：先讀句子，再找線索"></div>
+      </div>
+      <div class="panel soft-teal" style="margin-top:16px"><h3>學習成果自評</h3><div class="two-col" style="margin-top:12px"><div><b>我能找出錯字</b><br><span class="muted">□ 能　□ 部分　□ 還未</span></div><div><b>我知道三種錯字原因</b><br><span class="muted">□ 能　□ 部分　□ 還未</span></div></div></div>
+      <div class="nav-row"><button class="btn secondary" data-go="map">回到案件地圖</button><button class="btn primary" id="finishLesson">查看今日總分</button></div>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <div class="overlay" id="winOverlay">
+    <div class="win-card" id="winCard">
+      <div class="lg-lock" id="winLock"><span class="shackle"></span><span class="lock-body"></span></div>
+      <div class="win-title" id="winTitle">成功解鎖！</div>
+      <div class="win-sub" id="winSub">進入下一個環節</div>
+      <div class="win-progress"><i id="winBar"></i></div>
+      <div class="win-progress-label" id="winProgressLabel">進度 0 / 3</div>
+      <div class="win-buttons"><button class="btn secondary" id="winBack">回到地圖</button><button class="btn orange" id="winNext">進入下一環節</button></div>
+    </div>
+  </div>
+</div>
+<script>
+const state={view:'home',score:0,completed:new Set(),team:'',motto:'',q1Index:0,q1Score:0,menuAnswers:{},sortCards:[],sortSelected:null,sortScore:0};
+const q1=[
+ {q:'「尊守」的正確寫法是？',a:['尊守','遵守','尊收','遵收'],correct:1,why:'「遵守」是依照規定去做。'},
+ {q:'「標志」的正確寫法是？',a:['標誌','標志','標記','標示'],correct:0,why:'「標誌」可指標記或記號。'},
+ {q:'「邊綠」的正確寫法是？',a:['邊錄','邊綠','邊緣','邊源'],correct:2,why:'「邊緣」是邊的部分。'},
+ {q:'「暮門」的正確寫法是？',a:['幕門','暮門','慕門','木門'],correct:0,why:'「幕門」是幕的門。'},
+ {q:'「空僚」的正確寫法是？',a:['空聊','空僚','空隙','空晰'],correct:2,why:'「空隙」是空間或縫隙。'},
+ {q:'「搔擾」的正確寫法是？',a:['搔擾','騷擾','騷優','搔優'],correct:1,why:'「騷擾」是擾亂、打擾。'},
+ {q:'「善自」的正確寫法是？',a:['善自','擅自','擅字','善字'],correct:1,why:'「擅自」是不經允許自行作決定。'},
+ {q:'「振定」的正確寫法是？',a:['振定','鎮定','震定','鎮訂'],correct:1,why:'「鎮定」是不慌張。'}
+];
+const menu=[
+ {bad:'麪飽',opts:['麵包','麪飽','麵飽'],correct:'麵包'},
+ {bad:'蘑姑',opts:['蘑菇','蘑姑','磨菇'],correct:'蘑菇'},
+ {bad:'火退',opts:['火腿','火退','火褪'],correct:'火腿'},
+ {bad:'茨條',opts:['茨條','薯條','薯脩'],correct:'薯條'},
+ {bad:'雞脾',opts:['雞脾','雞髀','雞啤'],correct:'雞髀'},
+ {bad:'蘿白',opts:['蘿白','蘿蔔','蘿卜'],correct:'蘿蔔'}
+];
+const sortData=[
+ {id:1,text:'以經 → 已經',cat:'sound'}, {id:2,text:'事非 → 是非',cat:'sound'},
+ {id:3,text:'書藉 → 書籍',cat:'shape'}, {id:4,text:'重滔覆轍 → 重蹈覆轍',cat:'shape'},
+ {id:5,text:'助慶 → 助興',cat:'meaning'}, {id:6,text:'不知所蹤 → 不知所終',cat:'meaning'}
+];
+const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
+function show(id){$$('.view').forEach(v=>v.classList.remove('active')); $('#'+id).classList.add('active'); state.view=id; window.scrollTo({top:0,behavior:'smooth'}); updateProgress();}
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+function addScore(n){state.score+=n;$('#score').textContent=state.score}
+let audioCtx=null;function playApplause(){try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const dur=1.6;const sr=audioCtx.sampleRate;const buf=audioCtx.createBuffer(1,sr*dur,sr);const data=buf.getChannelData(0);for(let i=0;i<data.length;i++){const t=i/sr;const env=1-(t/dur);data[i]=(Math.random()*2-1)*env*0.22;}const src=audioCtx.createBufferSource();src.buffer=buf;const filt=audioCtx.createBiquadFilter();filt.type='bandpass';filt.frequency.value=2200;filt.Q.value=0.7;const gain=audioCtx.createGain();gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(0.9,audioCtx.currentTime+0.05);gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+dur);src.connect(filt);filt.connect(gain);gain.connect(audioCtx.destination);src.start();}catch(e){}}
+function fireConfetti(card){const colors=['#f4c84b','#ec7d3a','#087f83','#7565a8','#2e8a62'];for(let i=0;i<60;i++){const c=document.createElement('span');c.className='confetti';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDuration=(1.2+Math.random()*1.4)+'s';c.style.animationDelay=(Math.random()*0.4)+'s';card.appendChild(c);setTimeout(()=>c.remove(),3000);}}
+function winProgressTo(n){const pct=n/3*100;setTimeout(()=>{$('#winBar').style.width=pct+'%'},100);$('#winProgressLabel').textContent='進度 '+n+' / 3';}
+function celebrateLevel(n,title,sub,nextView){$('#winTitle').textContent=title;$('#winSub').textContent=sub;$('#winOverlay').classList.add('show');const card=$('#winCard');card.querySelector('.confetti')?.remove();$('#winLock').classList.remove('open');void card.offsetWidth;winProgressTo(n);const isFinal=n>=3;$('#winNext').textContent=isFinal?'🏆 領取秘密獎勵':'▶ 進入下一環節';setTimeout(()=>{$('#winLock').classList.add('open');playApplause();fireConfetti(card);},150);$('#winNext').onclick=()=>{$('#winOverlay').classList.remove('show');if(nextView)show(nextView)};$('#winBack').onclick=()=>{$('#winOverlay').classList.remove('show');show('map')}}
+function updateProgress(){const n=state.completed.size;$('#progressText').textContent=`進度 ${n} / 3`;$('#progressBar').style.width=`${n/3*100}%`;}
+function unlock(n){state.completed.add(n); addScore(2); const card=$('#lock'+n);card.classList.add('completed');card.querySelector('.lock-state').textContent='已完成';card.querySelector('button').textContent='重新查看'; if(n<3){const next=$('#lock'+(n+1));next.classList.remove('locked');next.classList.add('unlocked');next.querySelector('.lock-state').textContent='🔓 已解鎖，可進入';next.querySelector('button').disabled=false;next.querySelector('button').textContent='▶ 進入下一把鎖';next.querySelector('button').classList.add('orange')} updateProgress(); return n}
+function renderQ1(){const item=q1[state.q1Index];$('#q1Meta').textContent=`題目 ${state.q1Index+1} / ${q1.length}`;$('#q1Question').textContent=item.q;$('#q1Score').textContent=state.q1Score;$('#q1Feedback').textContent='';$('#q1Feedback').className='feedback';$('#q1Next').disabled=true;$('#q1Choices').innerHTML=item.a.map((a,i)=>`<button class="choice" data-i="${i}">${a}</button>`).join('');$$('#q1Choices .choice').forEach(btn=>btn.addEventListener('click',()=>answerQ1(Number(btn.dataset.i))));}
+function answerQ1(i){const item=q1[state.q1Index];$$('#q1Choices .choice').forEach((b,k)=>{b.disabled=true;if(k===item.correct)b.classList.add('correct');if(k===i&&k!==item.correct)b.classList.add('wrong')});if(i===item.correct){state.q1Score++;addScore(1);$('#q1Feedback').textContent='答對！ '+item.why;$('#q1Feedback').className='feedback good'}else{$('#q1Feedback').textContent='再看一次。正確答案是「'+item.a[item.correct]+'」。'+item.why;$('#q1Feedback').className='feedback bad'}$('#q1Score').textContent=state.q1Score;$('#q1Next').disabled=false}
+function renderMenu(){ $('#menuGrid').innerHTML=menu.map((m,i)=>`<div class="menu-item"><strong>${m.bad}</strong><span>請選出正字</span><select data-mi="${i}"><option value="">未選</option>${m.opts.map(o=>`<option>${o}</option>`).join('')}</select></div>`).join('');$$('#menuGrid select').forEach(s=>s.addEventListener('change',e=>{state.menuAnswers[e.target.dataset.mi]=e.target.value;$('#submitMenu').disabled=Object.keys(state.menuAnswers).length<menu.length}));}
+function checkMenu(){let correct=0;menu.forEach((m,i)=>{if(state.menuAnswers[i]===m.correct)correct++});if(correct===menu.length){addScore(6);unlock(2);$('#submitMenu').disabled=true;celebrateLevel(2,'餐牌案件 破獲成功！','六個錯字全部修正，客人不會再點錯了。','lock3View')}else{$('#menuFeedback').textContent=`目前 ${correct} / ${menu.length} 題正確。請再檢查紅色錯字。`;$('#menuFeedback').className='feedback bad'}}
+function renderSort(){state.sortCards=sortData.map(x=>x.id);state.sortSelected=null;$('#sortCards').innerHTML=sortData.map(c=>`<button class="sort-card" data-id="${c.id}">${c.text}</button>`).join('');$$('#sortCards .sort-card').forEach(b=>b.addEventListener('click',()=>{state.sortSelected=Number(b.dataset.id);$$('#sortCards .sort-card').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');$('#sortHint').textContent='現在點擊右方其中一把鎖。'}));}
+function sortTo(cat){if(!state.sortSelected){toast('先選一張錯字卡');return}const c=sortData.find(x=>x.id===state.sortSelected);if(c.cat===cat){const el=$(`[data-id="${c.id}"]`);el.remove();const target=cat==='sound'?'#soundBucket':cat==='shape'?'#shapeBucket':'#meaningBucket';$(target).insertAdjacentHTML('beforeend',`<div class="sort-card">✓ ${c.text}</div>`);state.sortCards=state.sortCards.filter(id=>id!==c.id);state.sortSelected=null;addScore(1);$('#sortHint').textContent=state.sortCards.length?'再選一張錯字卡。':'六張線索全部歸位。';$('#sortFeedback').textContent='分類正確。請證據員說出判斷理由。';$('#sortFeedback').className='feedback good';if(!state.sortCards.length){unlock(3);celebrateLevel(3,'恭喜！所有鎖頭已解開！','你成功破解三把錯字密碼，成為正式錯字偵探。','bonus')}}else{$('#sortFeedback').textContent='這一張線索不屬於這把鎖，再讀一次例子。';$('#sortFeedback').className='feedback bad';addScore(-1);state.sortSelected=null;$$('#sortCards .sort-card').forEach(x=>x.classList.remove('selected'))}}
+
+document.addEventListener('click',e=>{const go=e.target.closest('[data-go]');if(go)show(go.dataset.go);const vid=e.target.closest('[data-video]');if(vid)window.open(vid.dataset.video,'_blank');const lock=e.target.closest('[data-lock]');if(lock&&!lock.disabled){const n=Number(lock.dataset.lock);show(n===1?'lock1View':n===2?'lock2View':'lock3View')}});
+$('#saveTeam').addEventListener('click',()=>{state.team=$('#teamName').value.trim()||'未命名小隊';state.motto=$('#teamMotto').value.trim();$('#teamPreview').textContent=`${state.team}${state.motto?' · '+state.motto:''}`;$('#teamBadge').textContent=state.team;$('#mapTitle').textContent=`${state.team}，案件等你們破掉`;show('map')});
+$('#finishLesson').addEventListener('click',()=>{playApplause();fireConfetti(document.body);toast('🎉 今日總分 '+state.score+' 分！')});
+$('#q1Next').addEventListener('click',()=>{if(state.q1Index<q1.length-1){state.q1Index++;renderQ1()}else{unlock(1);celebrateLevel(1,'第一把鎖 解鎖成功！','你已找到全部正字，餐牌案件已經開啟。','lock2View')}});
+$('#submitMenu').addEventListener('click',checkMenu);
+$$('[data-cat]').forEach(b=>b.addEventListener('click',()=>sortTo(b.dataset.cat)));
+renderQ1();renderMenu();renderSort();updateProgress();
+</script>
+</body>
+</html>
