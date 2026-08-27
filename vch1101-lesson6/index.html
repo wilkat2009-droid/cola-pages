@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>詞語連連看｜VCH1101 第6課</title>
+<title>詞語連連看｜VCH1101 第一課・活動六</title>
 <style>:root{--ac:#ec7d3a;--ac-soft:#fae6d7}
 :root{--ink:#182536;--muted:#607083;--paper:#f7f3eb;--white:#fffdf9;--teal:#087f83;--teal-soft:#dff1ee;--orange:#ec7d3a;--orange-soft:#fae6d7;--yellow:#f4c84b;--yellow-soft:#fff4c9;--purple:#7565a8;--purple-soft:#ece8f7;--green:#2e8a62;--red:#bd4b4b;--line:#d8d7d1;--radius:16px}
 *{box-sizing:border-box}
@@ -110,18 +110,18 @@ h2{font-size:28px}h3{font-size:19px}
 <div class="progress-wrap"><div class="progress"><i id="pbar"></i></div><div class="score" id="scoreBox">0 分</div></div></header>
 <main class="shell">
 <section id="v-start" class="view active">
- <div class="hero"><div class="eyebrow">VCH1101 職業中文｜第6課</div>
+ <div class="hero"><div class="eyebrow">VCH1101 職業中文｜第一課・活動六</div>
  <h1 id="sTitle"></h1><p id="sTask"></p>
  <div class="hero-badges"><span class="badge" id="sGame"></span><span class="badge o">計分：答對+10・連擊+5</span><span class="badge p">三關通關有驚喜</span></div></div>
- <div class="bigcard"><h3>開課準備（約 2 分鐘）</h3>
+ <div class="bigcard"><h3>活動準備（約 2 分鐘）</h3>
  <div class="field"><label>小隊隊名（沒有就輸入「無名小隊」）</label><input id="teamIn" placeholder="例如：深夜校對組" onkeydown="if(event.key==='Enter')startLesson()"></div>
  <p class="muted" style="font-size:14px;margin:8px 0 0">小組角色建議輪流：點擊答案前，先讓「報告員」說一句理由。</p>
  <div class="role-grid" id="sRoleWrap"><div class="role"><strong>🔍 找問題</strong><span>先圈出可疑的字或詞</span></div><div class="role"><strong>✍️ 書寫員</strong><span>把修正版寫清楚</span></div><div class="role"><strong>👀 檢查員</strong><span>讀完整句確認意思</span></div><div class="role"><strong>🎤 報告員</strong><span>向全班說明一題</span></div></div>
- <div class="row"><button class="btn primary" onclick="startLesson()">開始上課 ▶</button></div></div>
+ <div class="row"><button class="btn primary" onclick="startLesson()">開始活動 ▶</button></div></div>
  <div class="panel" style="margin-top:12px"><h3>🧊 防冷場急救包（現場玩，不用螢幕）</h3><p class="muted" style="font-size:13.5px;margin:6px 0 10px">哪個環節提前完成、或氣氛冷掉，隨時抽一張用。</p><div class="extras" id="sIce"></div></div>
 </section>
 <section id="v-map" class="view">
- <div class="section-head" style="display:flex;justify-content:space-between;align-items:end"><h2>本課闖關地圖</h2><span class="muted" style="font-size:13px">完成上一關才解鎖下一關；備用加賽多準備一手</span></div>
+ <div class="section-head" style="display:flex;justify-content:space-between;align-items:end"><h2>本活動闖關地圖</h2><span class="muted" style="font-size:13px">完成上一關才解鎖下一關；備用加賽多準備一手</span></div>
  <div class="stage-grid" id="mapGrid"></div>
  <h3 style="margin-top:22px">🎁 通關獎勵與後備</h3>
  <div class="extras" id="mapExtras"></div>
@@ -154,19 +154,19 @@ h2{font-size:28px}h3{font-size:19px}
 <div id="overlay"><div class="ov-card"><div class="ov-emoji" id="ovEmoji">🎉</div><h2 id="ovTitle"></h2><p id="ovLines" class="muted" style="margin:10px 0 16px"></p><div class="row" style="justify-content:center" id="ovBtns"></div></div></div>
 <canvas id="confetti"></canvas><div id="msg" style="display:none;position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#182536;color:#fff;padding:11px 18px;border-radius:12px;font-weight:800;z-index:70"></div>
 <script>
-const D={"num": 6, "title": "詞語連連看", "task": "詞語有親戚，也有冤家。今日用連連看认親：兩輪翻牌—第一轮搵同義嘅一對，第二輪搵反義嘅一對。完成後，你能辨識同義詞、近義詞、絕對反義詞同相對反義詞。", "game": "翻牌配對（同義／反義两轮）", "exit": ["寫一組你今日記住嘅同義詞同一組反義詞。", "邊個詞最易配錯？點分？"], "ice": [["動作反義詞", "一人抽詞用動作表達，隊友喊反義詞；10 秒内冇人猜到就交換。"], ["親戚冤家站隊", "老師讀詞：「開心」—話俾你哋邊個係佢親戚（同義）！學生指住另一張詞卡。"], ["一句兩寫", "用同一個意思講兩句：一句口語一句書面，全班舉手邊句用咗近義詞。"]], "stages": [{"name": "第一輪・搵親戚（同義）", "mode": "pairs", "desc": "12 張卡、6 對親戚。翻開兩張，意思相近就消除。每組限時 3 分鐘—計緊時亦計住精準。", "qs": [{"pairs": [["協助", "幫忙"], ["母親", "媽媽"], ["探索", "尋找"], ["立即", "立刻"], ["開心", "快樂"], ["特別", "特殊"]], "rule": "意思相同或相近＝同義／近義詞"}]}, {"name": "第二輪・搵冤家（反義）", "mode": "pairs", "desc": "翻兩張，意思相反就消除。", "qs": [{"pairs": [["安全", "危險"], ["乾燥", "潮濕"], ["增加", "減少"], ["開始", "結束"], ["認真", "馬虎"], ["簡單", "複雜"]], "rule": "意思相反＝反義詞"}]}, {"name": "第三關・冤家有分兩種", "mode": "sort", "cats": ["絕對反義（非此即彼）", "相對反義（有中間地帶）"], "desc": "「生／死」冇中間；「冷／熱」之間有「暖」。邊對屬邊類？", "qs": [{"t": "生 — 死", "a": 0, "why": "唔生即死，冇中間。", "ctx": ""}, {"t": "長 — 短", "a": 1, "why": "有中間：唔長唔短。", "ctx": ""}, {"t": "有 — 無", "a": 0, "why": "非有即無。", "ctx": ""}, {"t": "高 — 低", "a": 1, "why": "仲可以話「唔高唔低」。", "ctx": ""}, {"t": "存 — 亡", "a": 0, "why": "生存或滅亡。", "ctx": ""}, {"t": "冷 — 熱", "a": 1, "why": "中間有「涼、暖」。", "ctx": ""}, {"mode": "choice", "t": "「協助」書面定口語？", "opts": ["書面", "口語"], "a": 0, "why": "近義詞除了意思，仲有語體分別：幫忙口語、協助書面。"}, {"mode": "choice", "t": "「媽媽／母親」邊個適合寫喺求職表？", "opts": ["母親", "媽媽"], "a": 0, "why": "正式文件用書面語。"}]}], "backup": {"name": "⭐ 備用加賽關", "desc": "加開一輪連連看（難度 higher）。", "mode": "pairs", "qs": [{"pairs": [["破除", "消除"], ["繁榮", "興旺"], ["道歉", "致歉"], ["檢查", "校對"], ["立即", "即刻"], ["認真", "仔細"]], "rule": "進階版：近義詞仲要語體啱"}]}, "teacher": {"qs": [{"t": "「安全」嘅反義詞，寫「唔安全」得唔得？", "opts": ["唔得—反義詞要詞對詞：危險", "得—意思相反就得", "要睇場合"], "a": 0, "why": "反義詞要一個詞對一個詞。", "ctx": ""}, {"t": "邊個同「立即」唔係同義詞？", "opts": ["遲疑", "馬上", "即刻"], "a": 0, "why": "「遲疑」係反義詞。", "ctx": ""}, {"t": "「熟悉」同「熟練」意思一樣？", "opts": ["唔一樣", "一樣"], "a": 0, "why": "熟悉＝認識清楚；熟練＝動作精通。", "ctx": ""}, {"t": "「冷／暖／熱」呢組話俾我哋知？", "opts": ["反義詞可以有中間地帶", "溫度詞最難", "冇人咁用"], "a": 0, "why": "相對反義詞。", "ctx": ""}]}};
+const D={"num": 6, "title": "詞語連連看", "task": "詞語有親戚，也有冤家。今日用連連看认親：兩輪翻牌—第一轮搵同義嘅一對，第二輪搵反義嘅一對。完成後，你能辨識同義詞、近義詞、絕對反義詞同相對反義詞。", "game": "翻牌配對（同義／反義两轮）", "exit": ["寫一組你今日記住嘅同義詞同一組反義詞。", "邊個詞最易配錯？點分？"], "ice": [["動作反義詞", "一人抽詞用動作表達，隊友喊反義詞；10 秒内冇人猜到就交換。"], ["親戚冤家站隊", "老師讀詞：「開心」—話俾你哋邊個係佢親戚（同義）！學生指住另一張詞卡。"], ["一句兩寫", "用同一個意思講兩句：一句口語一句書面，全班舉手邊句用咗近義詞。"]], "stages": [{"name": "第一輪・搵親戚（同義）", "mode": "pairs", "desc": "12 張卡、6 對親戚。翻開兩張，意思相近就消除。每組限時 3 分鐘—計緊時亦計住精準。", "qs": [{"pairs": [["協助", "幫忙"], ["母親", "媽媽"], ["探索", "尋找"], ["立即", "立刻"], ["開心", "快樂"], ["特別", "特殊"]], "rule": "意思相同或相近＝同義／近義詞"}]}, {"name": "第二輪・搵冤家（反義）", "mode": "pairs", "desc": "翻兩張，意思相反就消除。", "qs": [{"pairs": [["安全", "危險"], ["乾燥", "潮濕"], ["增加", "減少"], ["開始", "結束"], ["認真", "馬虎"], ["簡單", "複雜"]], "rule": "意思相反＝反義詞"}]}, {"name": "第三關・冤家有分兩種", "mode": "sort", "cats": ["絕對反義（非此即彼）", "相對反義（有中間地帶）"], "desc": "「生／死」冇中間；「冷／熱」之間有「暖」。邊對屬邊類？", "qs": [{"t": "生 — 死", "a": 0, "why": "唔生即死，冇中間。", "ctx": ""}, {"t": "長 — 短", "a": 1, "why": "有中間：唔長唔短。", "ctx": ""}, {"t": "有 — 無", "a": 0, "why": "非有即無。", "ctx": ""}, {"t": "高 — 低", "a": 1, "why": "仲可以話「唔高唔低」。", "ctx": ""}, {"t": "存 — 亡", "a": 0, "why": "生存或滅亡。", "ctx": ""}, {"t": "冷 — 熱", "a": 1, "why": "中間有「涼、暖」。", "ctx": ""}, {"mode": "choice", "t": "「協助」書面定口語？", "opts": ["書面", "口語"], "a": 0, "why": "近義詞除了意思，仲有語體分別：幫忙口語、協助書面。"}, {"mode": "choice", "t": "「媽媽／母親」邊個適合寫喺求職表？", "opts": ["母親", "媽媽"], "a": 0, "why": "正式文件用書面語。"}]}], "backup": {"name": "⭐ 備用加賽關", "desc": "加開一輪連連看（難度 higher）。", "mode": "pairs", "qs": [{"pairs": [["破除", "消除"], ["繁榮", "興旺"], ["道歉", "致歉"], ["檢查", "校對"], ["立即", "即刻"], ["認真", "仔細"]], "rule": "進階版：近義詞仲要語體啱"}]}, "teacher": {"qs": [{"t": "「安全」嘅反義詞，寫「唔安全」得唔得？", "opts": ["唔得—反義詞要詞對詞：危險", "得—意思相反就得", "要睇場合"], "a": 0, "why": "反義詞要一個詞對一個詞。", "ctx": ""}, {"t": "邊個同「立即」唔係同義詞？", "opts": ["遲疑", "馬上", "即刻"], "a": 0, "why": "「遲疑」係反義詞。", "ctx": ""}, {"t": "「熟悉」同「熟練」意思一樣？", "opts": ["唔一樣", "一樣"], "a": 0, "why": "熟悉＝認識清楚；熟練＝動作精通。", "ctx": ""}, {"t": "「冷／暖／熱」呢組話俾我哋知？", "opts": ["反義詞可以有中間地帶", "溫度詞最難", "冇人咁用"], "a": 0, "why": "相對反義詞。", "ctx": ""}]}, "unit": "第一課", "act": "六"};
 const $=id=>document.getElementById(id);
 function shuf(a){for(let i=a.length-1;i>0;i--){const r=Math.floor(Math.random()*(i+1));[a[i],a[r]]=[a[r],a[i]];}return a;}
 const S={score:0,streak:0,team:'',done:[],teacherRight:0,exit:'',perStage:{}};
 function view(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));$(v).classList.add('active');renderTop();}
 function addScore(n){S.score+=n;$('scoreBox').textContent=S.score+' 分';}
-function renderTop(){$('caseNo').textContent=(S.team?('隊：'+S.team+'　'):'')+'第'+D.num+'課・'+D.game;$('pbar').style.width=(S.done.length/D.stages.length*100)+'%';}
+function renderTop(){$('caseNo').textContent=(S.team?('隊：'+S.team+'　'):'')+'活動'+D.act+'・'+D.game;$('pbar').style.width=(S.done.length/D.stages.length*100)+'%';}
 function confetti(){const c=$('confetti'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=[];const cols=['#087f83','#ec7d3a','#f4c84b','#7565a8','#2e8a62','#fff'];for(let i=0;i<140;i++){ps.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,r:3+Math.random()*5,vy:2+Math.random()*3.4,vx:-1.6+Math.random()*3.2,c:cols[i%cols.length],a:Math.random()*6.28});}let t=0;const iv=setInterval(()=>{ctx.clearRect(0,0,c.width,c.height);t++;ps.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.a+=.1;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);ctx.restore();});if(t>200)clearInterval(iv);},16);}
 function applause(){try{const ctx=new (AudioContext||webkitAudioContext)();const dur=1.7;const buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;const env=Math.min(1,t*4)*Math.max(0,1-t/dur);d[i]=(Math.random()*2-1)*env*(.5+.5*Math.sin(t*7));}const src=ctx.createBufferSource();src.buffer=buf;const g=ctx.createGain();g.gain.value=.5;const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=1500;src.connect(f);f.connect(g);g.connect(ctx.destination);src.start();}catch(e){}}
 function celebrate(title,lines,btns){$('ovEmoji').textContent='🎉';$('ovTitle').textContent=title;$('ovLines').innerHTML=lines||'';const box=$('ovBtns');box.innerHTML='';btns.forEach((b,i)=>{const el=document.createElement('button');el.className='btn '+(i?'ghost':'primary');el.textContent=b[0];el.onclick=()=>{hideOv();b[1]();};box.appendChild(el);});$('overlay').classList.add('show');confetti();applause();}
 function hideOv(){$('overlay').classList.remove('show');}
 /* ---------- start ---------- */
-function initStart(){$('sTitle').textContent=D.title;$('sGame').textContent='本課遊戲：'+D.game;$('sTask').textContent=D.task;$('sRoleWrap').style.display='';const ice=D.ice.map(g=>'<div class="extra"><strong>'+g[0]+'</strong>'+g[1]+'</div>').join('');$('sIce').innerHTML=ice;$('teamIn').focus();}
+function initStart(){$('sTitle').textContent=D.title;$('sGame').textContent='本活動遊戲：'+D.game;$('sTask').textContent=D.task;$('sRoleWrap').style.display='';const ice=D.ice.map(g=>'<div class="extra"><strong>'+g[0]+'</strong>'+g[1]+'</div>').join('');$('sIce').innerHTML=ice;$('teamIn').focus();}
 function startLesson(){const t=$('teamIn').value.trim();S.team=t||'無名小隊';buildMap();view('v-map');}
 /* ---------- map ---------- */
 function stageState(i){if(S.done.includes(i))return 2;if(i===0||S.done.includes(i-1))return 1;return 0;}
