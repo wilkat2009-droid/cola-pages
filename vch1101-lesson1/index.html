@@ -161,10 +161,10 @@ const STK=(typeof window.__STICKERS!=='undefined')?window.__STICKERS:{};
 const STK_LINES={
  wow:['好犀利啊！','你怎麼這麼厲害！','呢題我要諗下⋯你竟然秒答！','唔可能㗎！再答啱一題我睇吓！','我睇大咗你哋喇！','這操作我都要鼓掌！'],
  proud:['你們簡直太棒了！','咁叻，我都要偷師喇！','我要記低你哋個名！','這個水準，直接可以出job！','你哋係我帶過最閃嘅一代！','好表現，老師面都光埋！'],
- cheer:['差啲㗎喇，再嚟一次！','錯咗先至學識嘛！','我当年錯得比你哋多！','唔緊要，深呼吸再嚟！','加油，我喺你後面！','呢題確實陰，唔使驚！'],
+ cheer:['再試一試！','差啲㗎喇，再嚟一次！','錯咗先至學識嘛！','我当年錯得比你哋多！','唔緊要，深呼吸再嚟！','加油，我喺你後面！','呢題確實陰，唔使驚！'],
  award:['冠軍隊，就係你哋！','今日你哋係主角！','呢張證書我幫你哋收住！','你們值得全場掌聲！','咁嘅成績，放響邊度都企得直！','我哋下堂見，記得返嚟領獎！'],
- tease:['老師額頭有汗喇⋯⋯','你而家逼到我認真！','喂喂喂，畀唔畀面㗎？','定咗心要贏我？好，我接招！','唔係㗎叭，你哋準備咗未？','輸得光明磊落，下次過招！'],
- cozy:['聽日想再見你哋。','今日你哋好過我期望。','收工！我欣賞你哋！','走得快，講得啱，仲係你哋最型。','下次課，繼續帶住呢個氣勢！','辛苦晒，早抖！']
+ tease:['老師額頭有汗喇⋯⋯','你而家逼到我認真！','喂喂喂，畀唔畀面㗎？','定咗心要贏我？好，我接招！','唔係喎！你準備咗未？','輸得光明磊落，下次過招！'],
+ cozy:['聽日想再見你哋。','今日你哋好過我期望。','收工！我欣賞你哋！','走得快，講得啱，仲係你哋最型。','下次課，繼續帶住呢個氣勢！','辛苦晒，你哋今日做得好！']
 };
 function popSticker(kind,big){const raw=STK[kind];if(!raw)return;const src=Array.isArray(raw)?raw[Math.floor(Math.random()*raw.length)]:raw;const old=document.getElementById('stkOv');if(old)old.remove();const lines=STK_LINES[kind]||['好嘢！'];const txt=lines[Math.floor(Math.random()*lines.length)];const ov=document.createElement('div');ov.id='stkOv';ov.className='stkOv show';ov.innerHTML='<div class="stkWrap"><img class="stkImg"'+(big?' data-big="1"':'')+' src="'+src+'" alt="老師表情"><div class="stkTxt">'+txt+'</div></div>';document.body.appendChild(ov);setTimeout(()=>ov.classList.add('bye'),1900);setTimeout(()=>ov.remove(),2400);}
 function celebrateLevel(n,title,sub,nextView){$('#winTitle').textContent=title;$('#winSub').textContent=sub;$('#winOverlay').classList.add('show');const card=$('#winCard');card.querySelector('.confetti')?.remove();$('#winLock').classList.remove('open');void card.offsetWidth;winProgressTo(n);setTimeout(()=>popSticker(n>=3?'award':'proud',n>=3),500);const isFinal=n>=3;$('#winNext').textContent=isFinal?'🏆 領取秘密獎勵':'▶ 進入下一環節';setTimeout(()=>{$('#winLock').classList.add('open');playApplause();fireConfetti(card);},150);$('#winNext').onclick=()=>{$('#winOverlay').classList.remove('show');if(nextView)show(nextView)};$('#winBack').onclick=()=>{$('#winOverlay').classList.remove('show');show('map')}}
