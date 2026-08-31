@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>開課前｜自我介紹 · 杜老師</title><style>
+*{margin:0;box-sizing:border-box}
+body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#0f1720;color:#eef3f8;min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.bar h1{font-size:22px;letter-spacing:2px;flex:1}
+.bar a{color:#9db4c4;text-decoration:none;font-size:13px;border:1px solid #2c4152;padding:7px 14px;border-radius:999px}
+.bar a:hover{color:#fff;border-color:#ec7d3a}
+.stage{position:relative;background:#000;border-radius:18px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:2px solid #22354600;box-shadow:0 18px 50px #0009}
+video{max-width:100%;max-height:100%;width:auto;height:100%;display:block}
+.bigplay{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#000c;cursor:pointer;z-index:5;transition:.2s}
+.bigplay:hover{background:#000a}
+.bigplay .p{width:86px;height:86px;border-radius:50%;background:#ec7d3a;color:#1a1004;font-size:36px;display:flex;align-items:center;justify-content:center;padding-left:6px}
+.bigplay span{font-size:15px;color:#cfe2ef}
+.chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.chip{background:#16222e;border:1px solid #24384a;color:#cfe2ef;border-radius:999px;padding:9px 18px;font-size:15px;font-weight:700;cursor:pointer}
+.chip.on{background:#ec7d3a;color:#1a1004;border-color:#ec7d3a}
+.chip.auto{background:#173042;border-color:#2c5068;color:#bfe3ff}
+.chip.auto.on{background:#2e8a62;border-color:#2e8a62;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:22px}
+.card{background:#16222e;border:1px solid #24384a;border-radius:14px;padding:18px 20px}
+.card h3{font-size:17px;color:#ec7d3a;margin-bottom:8px}
+.card p,.card li{font-size:14.5px;line-height:1.75;color:#c9dae7}
+.card ul{padding-left:20px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.rule{background:#1d3040;border-radius:11px;padding:12px 14px;font-size:15px;font-weight:700}
+.rule small{display:block;font-weight:400;color:#9db4c4;margin-top:4px;font-size:12.5px}
+.next{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.next a{flex:1;text-align:center;background:#2e8a62;color:#fff;text-decoration:none;font-weight:800;font-size:17px;padding:16px;border-radius:14px;min-width:220px}
+.next a.o{background:#ec7d3a;color:#1a1004}
+.hint{text-align:center;color:#5c7186;font-size:12px;margin-top:16px}
+</style></head><body><div class="wrap">
+<div class="bar"><h1>🎬 開課前 · 自我介紹（杜老師分身短片）</h1><a href="../">← 返回課堂總台</a><a href="https://wilkat2009-droid.github.io/cola-pages/vch1101/warmup/">🎡 破冰轉盤</a></div>
+<div class="stage">
+<video id="vd" playsinline preload="auto"></video>
+<div class="bigplay" id="bp"><div class="p">▶</div><span>點擊開始 · 全班安靜 30 秒</span></div>
+</div>
+<div class="chips">
+<button class="chip on" data-i="1">短片 ①</button>
+<button class="chip" data-i="2">短片 ②</button>
+<button class="chip" data-i="3">短片 ③</button>
+<button class="chip" data-i="4">短片 ④</button>
+<button class="chip auto" id="autoBtn">🔁 連播模式：關</button>
+</div>
+<div class="cards">
+<div class="card"><h3>認識我 · 三個快問快答</h3><ul><li>我教甚麼：讓你在職場寫對字、發對信</li><li>我最在乎：你肯開口，就贏了一半</li><li>我討厭：嘲笑人講錯話 —— 呢堂唔興</li></ul></div>
+<div class="card"><h3>我也會緊張、會出錯</h3><p>老師都會把「的、得」搞混。所以呢堂課，<b>答錯唔恥</b>，唔答先係可惜。答錯唔扣分，仲有一次「再試一試」。</p></div>
+<div class="card" style="grid-column:1/-1"><h3>這門課會怎麼上 · 四條鐵律</h3><div class="rules">
+<div class="rule">🤝 尊重<small>可以答錯，不可以笑人</small></div>
+<div class="rule">⚖️ 公平<small>人人都會轉到，唔會只係幾個</small></div>
+<div class="rule">🖐️ 秩序<small>先舉手、後講嘢；倒數完先舉</small></div>
+<div class="rule">😄 開心<small>遊戲、計分、贏老師，全部有</small></div>
+</div></div>
+</div>
+<div class="next"><a class="o" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/warmup/" target="_blank">下一步：🎡 破冰轉盤</a><a href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/" target="_blank">之後：🔍 錯字偵探社（正式開課）</a></div>
+<div class="hint">短片由即夢分身生成 · 自動接下一條請開「連播模式」 · 按空白鍵播放/暫停，←→ 切換</div>
+</div>
+<script>
+const vd=document.getElementById('vd'),bp=document.getElementById('bp'),chips=[...document.querySelectorAll('.chip[data-i]')];
+let cur=1,auto=false;
+function play(i){cur=i;chips.forEach(c=>c.classList.toggle('on',+c.dataset.i===i));vd.src='v'+i+'.mp4';vd.play().catch(()=>{});bp.style.display='none';}
+bp.onclick=()=>play(cur);
+chips.forEach(c=>c.onclick=()=>play(+c.dataset.i));
+vd.addEventListener('ended',()=>{if(auto&&cur<4)play(cur+1);});
+document.getElementById('autoBtn').onclick=function(){auto=!auto;this.classList.toggle('on',auto);this.textContent=auto?'🔁 連播模式：開':'🔁 連播模式：關';};
+document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();vd.paused?vd.play():vd.pause();}if(e.code==='ArrowRight'&&cur<4)play(cur+1);if(e.code==='ArrowLeft'&&cur>1)play(cur-1);});
+vd.src='v1.mp4';
+</script>
+</body></html>
