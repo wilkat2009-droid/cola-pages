@@ -17,6 +17,13 @@ button,input,textarea{font:inherit}
 button{cursor:pointer}
 .app{min-height:100vh}
 .topbar{position:sticky;top:0;z-index:10;background:rgba(24,37,54,.98);color:#fff;padding:14px 28px;display:flex;align-items:center;gap:16px;border-bottom:4px solid var(--orange)}
+.home-btn{margin-left:auto;text-decoration:none;font-size:14px;font-weight:800;color:#1a1004;background:var(--orange);padding:9px 18px;border-radius:999px;white-space:nowrap;transition:.15s}
+.home-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(236,125,58,.4)}
+.after-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.after-row a{text-decoration:none;font-size:17px;font-weight:800;padding:16px 34px;border-radius:14px;transition:.15s}
+.after-row a:hover{transform:translateY(-2px)}
+.after-row .h{background:var(--orange);color:#1a1004}
+.after-row .g{background:var(--green);color:#fff}
 .brand{font-size:18px;font-weight:800}.case{color:#b8cbd0;font-size:13px}
 .shell{max-width:1180px;margin:0 auto;padding:26px 22px 56px}
 h1{font-size:clamp(26px,4vw,40px);margin:0 0 6px}h2{font-size:22px;margin:0}
@@ -45,7 +52,7 @@ canvas{display:block;width:100%;height:100%}
 </head>
 <body>
 <div class="app">
-  <header class="topbar"><div class="brand">自我介紹轉盤</div><div class="case">破冰遊戲 · 第一課</div></header>
+  <header class="topbar"><div class="brand">自我介紹轉盤</div><div class="case">破冰遊戲 · 第一課</div><a class="home-btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/">🏠 返回課堂總台</a></header>
   <main class="shell">
     <div class="eyebrow">Icebreaker</div>
     <h1>轉到誰，誰來介紹自己</h1>
@@ -92,6 +99,11 @@ canvas{display:block;width:100%;height:100%}
 
         <div class="hint-bar">提示：每個人有 1 次「跳過」機會。老師先示範一次，氣氛就鬆了。</div>
       </div>
+    </div>
+
+    <div class="after-row">
+      <a class="h" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/">🏠 轉完了，回到主屏幕</a>
+      <a class="g" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/">🔍 直接開課：錯字偵探社</a>
     </div>
   </main>
 </div>
