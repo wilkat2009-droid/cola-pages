@@ -71,7 +71,7 @@ canvas{display:block;width:100%;height:100%}
         </div>
         <div class="field" id="numField">
           <label>學生人數（號碼 1 到 N）</label>
-          <input type="number" id="numCount" value="16" min="2" max="40">
+          <input type="number" id="numCount" value="32" min="2" max="40">
         </div>
         <div class="field" id="nameField" style="display:none">
           <label>貼入名字（用逗號或換行分隔）</label>
@@ -121,7 +121,7 @@ const canvas=document.getElementById('wheel'); const ctx=canvas.getContext('2d')
 const $=s=>document.querySelector(s);
 
 function buildLabels(){
-  if(mode==='num'){ const n=parseInt($('#numCount').value,10)||16; labels=Array.from({length:n},(_,i)=>String(i+1)); }
+  if(mode==='num'){ const n=parseInt($('#numCount').value,10)||32; labels=Array.from({length:n},(_,i)=>String(i+1)); }
   else{ const raw=$('#nameList').value.trim(); labels=raw.split(/[,，\n、]/).map(s=>s.trim()).filter(Boolean); if(!labels.length) labels=['小明','小美','阿強']; }
   active=new Set(labels.map((_,i)=>i));
   updateDoneList();
@@ -140,7 +140,7 @@ function draw(){
     // label
     ctx.save(); ctx.rotate((i*seg+seg/2)*Math.PI/180);
     ctx.fillStyle=active.has(i)?'#ffffff':'#9aa4ad';
-    ctx.font='700 34px Microsoft JhengHei, PingFang TC, sans-serif';
+    ctx.font='700 '+(n>24?23:34)+'px Microsoft JhengHei, PingFang TC, sans-serif';
     ctx.textAlign='right'; ctx.textBaseline='middle';
     const label=labels[i]; const display=label.length>6?label.slice(0,6)+'…':label;
     ctx.fillText(display, r-34, 0);
