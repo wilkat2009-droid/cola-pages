@@ -2,16 +2,31 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VCH1101 課堂總台｜杜老師</title><style>
 *{margin:0;box-sizing:border-box}
-body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#0f1720;color:#eef3f8;padding-bottom:60px}
-header{background:linear-gradient(135deg,#12303a,#0f1720 70%);padding:34px 22px 20px;text-align:center;border-bottom:3px solid #ec7d3a}
+body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#0f1720;color:#eef3f8;padding-bottom:80px}
+header{background:linear-gradient(135deg,#12303a,#0f1720 70%);padding:34px 22px 24px;text-align:center;border-bottom:3px solid #ec7d3a}
 header h1{font-size:clamp(24px,4vw,40px);letter-spacing:4px}
 header p{margin-top:8px;color:#9db4c4;font-size:14px}
 .quick{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.quick a{background:#ec7d3a;color:#1a1004;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;font-size:16px}
+.quick a{background:#ec7d3a;color:#1a1004;font-weight:700;padding:12px 22px;border-radius:999px;text-decoration:none;font-size:16px;transition:.15s}
+.quick a:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(236,125,58,.4)}
 .quick a.b{background:#173042;color:#bfe3ff;border:1px solid #2c5068}
+.quick a.b:hover{background:#234761;box-shadow:0 6px 18px rgba(35,71,97,.4)}
+
+/* 音樂播放組件 */
+.audio-card{max-width:960px;margin:22px auto 0;background:rgba(22,34,46,.95);border:1px solid #2c4152;border-radius:18px;padding:16px 20px;text-align:left;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.audio-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.audio-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;color:#f39c12}
+.audio-title span{color:#cfe2ef;font-size:13.5px;font-weight:500}
+.audio-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.audio-tab{background:#121d28;border:1px solid #283e52;color:#9db4c4;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
+.audio-tab:hover{color:#fff;border-color:#ec7d3a}
+.audio-tab.active{background:#ec7d3a;color:#1a1004;border-color:#ec7d3a}
+.audio-player-wrap{display:flex;align-items:center;gap:14px;background:#0d1620;border-radius:12px;padding:8px 12px}
+.audio-player-wrap audio{width:100%;height:36px;outline:none}
+
 nav{position:sticky;top:0;z-index:9;background:#0f1720ee;border-bottom:1px solid #24333f;display:flex;gap:6px;justify-content:center;padding:10px 8px;flex-wrap:wrap;backdrop-filter:blur(6px)}
-nav a{color:#cfe2ef;text-decoration:none;font-size:14px;padding:6px 14px;border-radius:999px;border:1px solid #2c4152}
-nav a:hover{background:#1c2c3a}
+nav a{color:#cfe2ef;text-decoration:none;font-size:14px;padding:6px 14px;border-radius:999px;border:1px solid #2c4152;transition:.15s}
+nav a:hover{background:#1c2c3a;border-color:#ec7d3a}
 main{max-width:1080px;margin:0 auto;padding:10px 16px}
 section{margin:30px 0;scroll-margin-top:60px}
 .uh{display:flex;align-items:flex-end;justify-content:space-between;border-left:6px solid var(--c);padding-left:14px;margin-bottom:12px}
@@ -24,11 +39,30 @@ section{margin:30px 0;scroll-margin-top:60px}
 .tn{background:var(--c);color:#fff;font-size:12px;font-weight:700;padding:4px 9px;border-radius:8px;white-space:nowrap}
 .tt{flex:1;font-size:16px;font-weight:600}
 .go{color:var(--c);font-size:13px}
+
+/* 下課專區底部 Card */
+.outro-section{margin-top:50px;background:linear-gradient(135deg,#1c2333,#111823);border:2px solid #3b82f6;border-radius:22px;padding:26px 24px;box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.outro-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.outro-head h3{font-size:22px;color:#60a5fa;display:flex;align-items:center;gap:10px}
+.outro-head p{color:#94a3b8;font-size:14px;margin-top:4px}
 footer{text-align:center;color:#5c7186;font-size:12px;margin-top:44px}
 </style></head><body>
 <header><h1>VCH1101 課堂總台</h1><p>事務紀實文書 · 五課 35 個活動 · 開這一個連結就夠</p>
-<div class="quick"><a href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/" target="_blank">🔍 第一課主活動：錯字偵探社</a><a class="b" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/intro/" target="_blank">🎬 自我介紹（開課前）</a><a class="b" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/warmup/" target="_blank">🎡 破冰轉盤（開課前）</a></div></header>
-<nav><a href="#u1">第一課</a><a href="#u2">第二課</a><a href="#u3">第三課</a><a href="#u4">第四課</a><a href="#u5">第五課</a></nav>
+<div class="quick"><a href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/" target="_blank">🔍 第一課主活動：錯字偵探社</a><a class="b" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/intro/" target="_blank">🎬 自我介紹（開課前）</a><a class="b" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/warmup/" target="_blank">🎡 破冰轉盤（開課前）</a></div>
+
+<!-- 上課開機曲 -->
+<div class="audio-card">
+  <div class="audio-head">
+    <div class="audio-title">⚡ 上課開機 Routine 戰歌 <span>《點亮我哋嘅靈感》男女聲熱血對唱</span></div>
+    <span style="color:#22c55e;font-size:13px;font-weight:700">● 課前 2 分鐘播放</span>
+  </div>
+  <div class="audio-player-wrap">
+    <audio controls preload="none" src="audio/intro_song.mp3"></audio>
+  </div>
+</div>
+</header>
+
+<nav><a href="#u1">第一課</a><a href="#u2">第二課</a><a href="#u3">第三課</a><a href="#u4">第四課</a><a href="#u5">第五課</a><a href="#outro-zone" style="color:#60a5fa;border-color:#3b82f6">🎵 下課戰歌區</a></nav>
 <main><section id="u1" style="--c:#087f83">
 <div class="uh"><div><h2>第一課</h2><p>寫正確的字詞 · 錯字偵探社</p></div><a class="up" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/unit1/" target="_blank">集合頁 ↗</a></div>
 <div class="grid"><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/" target="_blank"><span class="tn">活動一</span><span class="tt">錯字偵探社</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson2/" target="_blank"><span class="tn">活動二</span><span class="tt">餐牌錯字狙擊</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson3/" target="_blank"><span class="tn">活動三</span><span class="tt">錯字怪獸分類站</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson4/" target="_blank"><span class="tn">活動四</span><span class="tt">招聘廣告最後校對員</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson5/" target="_blank"><span class="tn">活動五</span><span class="tt">便條語境推理</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson6/" target="_blank"><span class="tn">活動六</span><span class="tt">詞語連連看</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson7/" target="_blank"><span class="tn">活動七</span><span class="tt">打敗錯字魔王</span><span class="go">▶</span></a></div></section><section id="u2" style="--c:#c2611f">
@@ -39,6 +73,39 @@ footer{text-align:center;color:#5c7186;font-size:12px;margin-top:44px}
 <div class="uh"><div><h2>第四課</h2><p>撰寫電郵（一）· 連信部救星</p></div><a class="up" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/unit4/" target="_blank">集合頁 ↗</a></div>
 <div class="grid"><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson22/" target="_blank"><span class="tn">活動一</span><span class="tt">電郵未死</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson23/" target="_blank"><span class="tn">活動二</span><span class="tt">電郵骨架</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson24/" target="_blank"><span class="tn">活動三</span><span class="tt">拆信手術台</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson25/" target="_blank"><span class="tn">活動四</span><span class="tt">七發子彈</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson26/" target="_blank"><span class="tn">活動五</span><span class="tt">措辭修車房</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson27/" target="_blank"><span class="tn">活動六</span><span class="tt">情報站</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson28/" target="_blank"><span class="tn">活動七</span><span class="tt">即日出信</span><span class="go">▶</span></a></div></section><section id="u5" style="--c:#b0512f">
 <div class="uh"><div><h2>第五課</h2><p>撰寫電郵（二）· 畢業考核</p></div><a class="up" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/unit5/" target="_blank">集合頁 ↗</a></div>
-<div class="grid"><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson29/" target="_blank"><span class="tn">活動一</span><span class="tt">格式快打</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson30/" target="_blank"><span class="tn">活動二</span><span class="tt">主旨一擊</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson31/" target="_blank"><span class="tn">活動三</span><span class="tt">頭尾工程</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson32/" target="_blank"><span class="tn">活動四</span><span class="tt">分點排兵</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson33/" target="_blank"><span class="tn">活動五</span><span class="tt">語體升波</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson34/" target="_blank"><span class="tn">活動六</span><span class="tt">資料篩選器</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson35/" target="_blank"><span class="tn">活動七</span><span class="tt">全文實錄</span><span class="go">▶</span></a></div></section></main>
+<div class="grid"><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson29/" target="_blank"><span class="tn">活動一</span><span class="tt">格式快打</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson30/" target="_blank"><span class="tn">活動二</span><span class="tt">主旨一擊</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson31/" target="_blank"><span class="tn">活動三</span><span class="tt">頭尾工程</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson32/" target="_blank"><span class="tn">活動四</span><span class="tt">分點排兵</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson33/" target="_blank"><span class="tn">活動五</span><span class="tt">語體升波</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson34/" target="_blank"><span class="tn">活動六</span><span class="tt">資料篩選器</span><span class="go">▶</span></a><a class="tile" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson35/" target="_blank"><span class="tn">活動七</span><span class="tt">全文實錄</span><span class="go">▶</span></a></div></section>
+
+<!-- 下課收工專區 -->
+<div class="outro-section" id="outro-zone">
+  <div class="outro-head">
+    <div>
+      <h3>🎉 下課收工 Routine 戰歌區</h3>
+      <p>《下堂，帶住光芒見！》三個精選演繹版本 · 每次下課換著放，給足情緒價值！</p>
+    </div>
+    <div class="audio-tabs" id="outroTabs">
+      <button class="audio-tab active" data-src="audio/outro_v1.mp3">🎸 熱血大合唱版 (1分34秒)</button>
+      <button class="audio-tab" data-src="audio/outro_v2.mp3">⚡ 俐落速燃版 (1分05秒)</button>
+      <button class="audio-tab" data-src="audio/outro_v3.mp3">✨ 飽滿抒情搖滾版 (1分42秒)</button>
+    </div>
+  </div>
+  <div class="audio-player-wrap">
+    <audio id="outroAudio" controls preload="none" src="audio/outro_v1.mp3"></audio>
+  </div>
+</div>
+</main>
 <footer>杜老師 · VTC VCH1101 · 所有連結長期有效</footer>
+
+<script>
+const tabs = document.querySelectorAll('#outroTabs .audio-tab');
+const audio = document.getElementById('outroAudio');
+tabs.forEach(t => {
+  t.onclick = () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const wasPlaying = !audio.paused && audio.currentTime > 0;
+    audio.src = t.dataset.src;
+    if (wasPlaying) audio.play();
+  };
+});
+</script>
 </body></html>
