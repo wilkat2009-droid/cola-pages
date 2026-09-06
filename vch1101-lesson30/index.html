@@ -155,7 +155,7 @@ body.cm-on #cmPanel{display:block;position:fixed;left:14px;bottom:14px;z-index:6
  <div class="panel" style="margin-top:12px"><h3>🧊 防冷場急救包（現場玩，不用螢幕）</h3><p class="muted" style="font-size:13.5px;margin:6px 0 10px">哪個環節提前完成、或氣氛冷掉，隨時抽一張用。</p><div class="extras" id="sIce"></div></div>
 </section>
 <section id="v-map" class="view">
- <div class="section-head" style="display:flex;justify-content:space-between;align-items:end"><h2>本活動闖關地圖</h2><span class="muted" style="font-size:13px">完成上一關才解鎖下一關；備用加賽多準備一手</span></div>
+ <div class="section-head" style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap"><h2>本活動闖關地圖</h2><span id="unitProg" class="muted" style="font-size:13.5px;font-weight:700"></span></div>
  <div class="stage-grid" id="mapGrid"></div>
  <h3 style="margin-top:22px">🎁 通關獎勵與後備</h3>
  <div class="extras" id="mapExtras"></div>
@@ -184,7 +184,10 @@ const D={"num": 30, "title": "主旨一擊", "task": "一封信生死喺主旨�
 const $=id=>document.getElementById(id);
 function shuf(a){for(let i=a.length-1;i>0;i--){const r=Math.floor(Math.random()*(i+1));[a[i],a[r]]=[a[r],a[i]];}return a;}
 const S={score:0,streak:0,team:'',done:[],perStage:{}};
-const NEXTURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson31/";const CLOSEURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-close1/";
+const NEXTURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson31/";const CLOSEURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-close5/";
+const MYU=5,MYA=2;
+function markDone(){try{localStorage.setItem('vch1101_u'+MYU+'_a'+MYA,'1')}catch(e){}}
+function unitProg(){let c=0;for(let i=1;i<=7;i++){try{if(localStorage.getItem('vch1101_u'+MYU+'_a'+i))c++;}catch(e){}}return c;}
 function view(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));$(v).classList.add('active');renderTop();}
 function addScore(n){S.score+=n;$('scoreBox').textContent=S.score+' 分';}
 function renderTop(){$('caseNo').textContent=(S.team?('隊：'+S.team+'　'):'')+'活動'+D.act+'・'+D.game;$('pbar').style.width=(S.done.length/D.stages.length*100)+'%';}
@@ -203,6 +206,7 @@ const items=[];if(D.backup)items.push({n:'⭐ 備用加賽關（多準備）',d:
 items.push({n:'🏁 課堂收結・出口卡＋下課歌',d:'時間到就收結—唔使完成晒所有活動。',ok:true,fn:()=>{window.open(CLOSEURL,'_blank');}});
 if(NEXTURL)items.push({n:'▶ 下一個活動（可跳住玩）',d:'順序玩亦得，跳住玩亦得。',ok:true,fn:()=>{window.open(NEXTURL,'_blank');}});
 items.forEach(it=>{const el=document.createElement('div');el.className='extra';el.innerHTML='<strong>'+it.n+'</strong><span class="muted">'+it.d+'</span>';const b=document.createElement('button');b.className='btn primary';b.style.marginTop='8px';if(it.ok){b.textContent='進入 ▶';b.onclick=it.fn;}else{b.textContent='🔒 '+it.lock;b.disabled=true;}el.appendChild(b);ex.appendChild(el);});
+const up=$('unitProg');if(up){const c=unitProg();up.innerHTML=c>=7?'<b style="color:#2e8a62">🎉 本課 7 / 7 全部活動完成！去課堂收結：出口卡＋下課歌 🎵</b>':'📊 本課進度 '+c+' / 7 個活動已完成';}
 renderTop();}
 /* ---------- stage ---------- */
 let G={si:0,qi:0,right:0,answered:false};
@@ -236,12 +240,13 @@ function nextQ(){const s=curStage();G.qi++;if(G.qi<s.qs.length){renderQ();}else{
 function finishStage(){const s=curStage();const total=s.qs.length;const pct=G.right/total;
  if(typeof G.si==='number'&&!S.done.includes(G.si)){S.done.push(G.si);}
  S.perStage[G.si]={r:G.right,t:total};
- if(G.si===D.stages.length-1&&typeof G.si==='number'){setTimeout(()=>popSticker('award',1),350);celebrate('恭喜！全部關卡通過！','本關得分：'+G.right+' / '+total+'<br>可以繼續下一個活動，或者隨時收結課堂。',[['▶ 下一個活動',()=>{if(NEXTURL)window.open(NEXTURL,'_blank');}],['🏁 課堂收結',()=>window.open(CLOSEURL,'_blank')],['返回地圖',buildMap]]);return;}
+ if(G.si===D.stages.length-1&&typeof G.si==='number'){setTimeout(()=>popSticker('award',1),350);const isLast=(D.act==='七');const bts=[];if(!isLast&&NEXTURL)bts.push(['▶ 下一個活動',()=>{if(NEXTURL)window.open(NEXTURL,'_blank');}]);bts.push(['🏁 課堂收結',()=>window.open(CLOSEURL,'_blank')]);bts.push(['返回地圖',buildMap]);
+celebrate('恭喜！全部關卡通過！','本關得分：'+G.right+' / '+total+'<br>'+(isLast?'🎉 本課全部活動完成！去收結頁填出口卡、播下課歌 🎵':'可以繼續下一個活動，或者隨時收結課堂。'),bts);return;}
  if(G.si==='b'){celebrate('加賽完成！','備用題得分：'+G.right+' / '+total,[['返回地圖',buildMap]]);buildMap();return;}
  if(pct>=.6)setTimeout(()=>popSticker(Math.random()<.5?'wow':'proud'),350);
  celebrate('第'+(G.si+1)+'關通過！','答對 '+G.right+' / '+total+(pct>=.8?'（神準！）':'')+(D.stages[G.si+1]?'':''),[['下一關 ▶',()=>openStage(G.si+1)],['返回地圖',buildMap]]);}
 /* ---------- teacher ---------- */function alertMsg(m){const b=$('msg');b.textContent=m;b.style.display='block';setTimeout(()=>b.style.display='none',4200);}
-/* ---------- exit ---------- */window.onload=function(){initStart();renderTop();cmInit();};
+/* ---------- exit ---------- */window.onload=function(){initStart();renderTop();markDone();cmInit();};
 /* ---------- 課堂模式（電腦室全班同步版） ---------- */
 const CM={on:false,teams:[{n:'紅隊',c:'#d94f3d',s:0,p:2},{n:'黃隊',c:'#e0a12f',s:0,p:2},{n:'藍隊',c:'#3f6fb5',s:0,p:2},{n:'綠隊',c:'#3f9d63',s:0,p:2}]};
 function cmInit(){CM.on=localStorage.getItem('vc_cm')==='1';document.body.classList.toggle('cm-on',CM.on);const b=$('cmBtn');if(b)b.textContent=CM.on?'🙋 課堂模式：開':'🙋 課堂模式：關';cmRender();}
