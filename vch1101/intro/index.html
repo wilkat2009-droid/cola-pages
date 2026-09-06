@@ -42,6 +42,8 @@ video{max-width:100%;max-height:100%;width:auto;height:100%;display:block}
 <button class="chip" data-i="2">短片 ②</button>
 <button class="chip" data-i="3">短片 ③</button>
 <button class="chip" data-i="4">短片 ④</button>
+<button class="chip" data-i="5">短片 ⑤ · 畫中漫遊</button>
+<button class="chip" data-i="6">短片 ⑥ · 陽光琴聲</button>
 <button class="chip auto" id="autoBtn">🔁 連播模式：關</button>
 </div>
 <div class="cards">
@@ -55,7 +57,7 @@ video{max-width:100%;max-height:100%;width:auto;height:100%;display:block}
 </div></div>
 </div>
 <div class="next"><a class="o" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/warmup/" target="_blank">下一步：🎡 破冰轉盤</a><a href="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson1/" target="_blank">之後：🔍 錯字偵探社（正式開課）</a></div>
-<div class="hint">短片由即夢分身生成 · 自動接下一條請開「連播模式」 · 按空白鍵播放/暫停，←→ 切換</div>
+<div class="hint">短片①–④由即夢分身生成 · ⑤⑥為杜老師分身畫中漫遊版 · 自動接下一條請開「連播模式」 · 按空白鍵播放/暫停，←→ 切換</div>
 </div>
 <script>
 const vd=document.getElementById('vd'),bp=document.getElementById('bp'),chips=[...document.querySelectorAll('.chip[data-i]')];
@@ -63,9 +65,9 @@ let cur=1,auto=false;
 function play(i){cur=i;chips.forEach(c=>c.classList.toggle('on',+c.dataset.i===i));vd.src='v'+i+'.mp4';vd.play().catch(()=>{});bp.style.display='none';}
 bp.onclick=()=>play(cur);
 chips.forEach(c=>c.onclick=()=>play(+c.dataset.i));
-vd.addEventListener('ended',()=>{if(auto&&cur<4)play(cur+1);});
+vd.addEventListener('ended',()=>{if(auto&&cur<6)play(cur+1);});
 document.getElementById('autoBtn').onclick=function(){auto=!auto;this.classList.toggle('on',auto);this.textContent=auto?'🔁 連播模式：開':'🔁 連播模式：關';};
-document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();vd.paused?vd.play():vd.pause();}if(e.code==='ArrowRight'&&cur<4)play(cur+1);if(e.code==='ArrowLeft'&&cur>1)play(cur-1);});
+document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();vd.paused?vd.play():vd.pause();}if(e.code==='ArrowRight'&&cur<6)play(cur+1);if(e.code==='ArrowLeft'&&cur>1)play(cur-1);});
 vd.src='v1.mp4';
 </script>
 </body></html>
