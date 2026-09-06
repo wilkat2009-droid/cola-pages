@@ -165,25 +165,6 @@ body.cm-on #cmPanel{display:block;position:fixed;left:14px;bottom:14px;z-index:6
  <div class="qbox"><div id="qAsk"></div><div class="opts" id="qOpts"></div><div class="cells" id="qCells"></div><div id="qBuild"></div><div id="qPairs"></div><div class="fb" id="fb"></div>
  <div class="row"><button class="btn primary" id="nextBtn" onclick="nextQ()" style="display:none">下一題 ▶</button><button class="btn ghost" onclick="buildMap();view('v-map')">返回地圖</button></div></div>
 </section>
-<section id="v-teacher" class="view">
- <h2 id="tHead">🎓 挑戰老師</h2><p class="muted" id="tHeadDesc">答對一題 +8 分。全部答對，老師當堂認輸！</p>
- <div class="qbox"><div class="qmeta"><span id="tCount"></span><span id="tProg"></span></div><div class="qtext" id="tQ"></div><div class="opts" id="tOpts"></div><div class="fb" id="tFb"></div>
- <div class="row"><button class="btn primary" id="tNext" onclick="tNext()" style="display:none">下一題 ▶</button><button class="btn ghost" onclick="buildMap();view('v-map')">返回地圖</button></div></div>
-</section>
-<section id="v-exit" class="view">
- <h2>🎫 出口卡</h2><p class="muted">先自己完成，再交給老師或小組長。每個人都要寫。</p>
- <div class="bigcard"><div class="field"><label id="xQ1"></label><input id="x1" placeholder="寫一句就好"></div>
- <div class="field"><label id="xQ2"></label><input id="x2" placeholder="寫一句就好"></div>
- <div class="row"><button class="btn primary" onclick="exitDone()">完成，查看今日總分 ▶</button></div></div>
-</section>
-<section id="v-result" class="view">
- <h2>今日總分</h2>
- <div class="two-col" style="margin-top:14px">
- <div class="bigcard" style="text-align:center"><div class="rank" id="rRank"></div><div id="rRankTxt" class="muted"></div><p style="font-size:30px;font-weight:900;margin:10px 0 0"><span id="rScore"></span> 分</p></div>
- <div class="bigcard"><h3>各關成績</h3><div id="rRows" style="margin-top:8px"></div></div></div>
- <div class="cert" id="rCert"></div>
- <div class="row"><button class="btn primary" onclick="window.print()">🖨️ 打印證書</button><button class="btn ghost" onclick="buildMap();view('v-map')">返回地圖</button></div>
-</section>
 </main></div>
 <div id="overlay"><div class="ov-card"><div class="ov-emoji" id="ovEmoji">🎉</div><h2 id="ovTitle"></h2><p id="ovLines" class="muted" style="margin:10px 0 16px"></p><div class="row" style="justify-content:center" id="ovBtns"></div></div></div>
 <div id="cmPanel"></div>
@@ -202,8 +183,8 @@ function popSticker(kind,big){const raw=STK[kind];if(!raw)return;const src=Array
 const D={"num": 9, "title": "誰做甚麼・句子標籤", "task": "每個句子都係一個小劇场：邊個做？做咩？對邊個做？今日你幫句子貼上演員標籤—主語、謂語、賓語，再加定語、狀語、補語。完成後，你能找出主語、謂語、賓語及常見附加成分。", "game": "句子貼紙（成分標籤）", "exit": ["在「同事檢查工具」中，主語、謂語、賓語分別係咩？", "我今日最易認嘅句子成分係？"], "ice": [["人體句子", "三位同學攞卡：誰／做／甚麼。老師抽走任何一張，全班要講出句子缺咗邊個成分、聽落點樣。"], ["快速貼紙", "老師讀句子，學生指自己（主語）、拍枱（謂語）、指隔離（賓語）—做錯唔淘汰，跟返節奏。"], ["三張卡組句", "詞卡袋抽三張（人／動作／物件），小組最快砌出完整工作句並讀出。"]], "stages": [{"name": "第一關・貼上演員標籤", "mode": "label", "desc": "句子拆咗方塊。題目問邊個成分，就點擊嗰塊。", "qs": [{"mode": "label", "ask": "呢句嘅【主語】（邊個）係嗰塊？", "segs": ["陳大文", "是", "一個電腦工程師。"], "a": 0, "why": "主語＝句子講邊個／邊樣嘢。"}, {"mode": "label", "ask": "「小明正在清點工具」—【謂語】（做咩）係塊？", "segs": ["小明", "正在", "清點", "工具。"], "a": 2, "why": "謂語＝動作或狀態。"}, {"mode": "label", "ask": "同一句—【賓語】（對邊個／對咩做）係嗰塊？", "segs": ["小明", "正在", "清點", "工具。"], "a": 3, "why": "清點嘅對象係「工具」。"}, {"mode": "label", "ask": "【狀語】（點樣做）係嗰塊？", "segs": ["維修工人", "認真地", "檢測", "供電系統。"], "a": 1, "why": "狀語修飾動作—「認真地」講點樣檢測。"}, {"mode": "label", "ask": "呢句嘅【賓語】係嗰塊？", "segs": ["維修工人", "認真地", "檢測", "供電系統。"], "a": 3, "why": "檢測嘅對象。"}, {"mode": "label", "ask": "【定語】（形容邊樣嘢）係嗰塊？", "segs": ["紅色的", "訊號燈", "亮起來。"], "a": 0, "why": "定語修飾名詞—「紅色的」形容訊號燈。"}, {"mode": "label", "ask": "【補語】（做得點／結果）係嗰塊？", "segs": ["同事", "檢查", "工具", "完了。"], "a": 3, "why": "「完了」補充檢查嘅結果。"}, {"mode": "label", "ask": "【主語】係嗰塊？", "segs": ["主管", "已經", "批核", "申請。"], "a": 0, "why": "批核嘅人係主語。"}]}, {"name": "第二關・成分偵測", "mode": "choice", "desc": "六種標籤，快速判斷。", "qs": [{"t": "「正在清點」入面，「正在」係咩成分？", "opts": ["狀語", "定語", "補語"], "a": 0, "why": "修飾動作嘅時間狀態—狀語。", "ctx": ""}, {"t": "「紅色嘅圍裙」入面，「紅色嘅」係？", "opts": ["定語", "狀語", "賓語"], "a": 0, "why": "修飾名詞＝定語。", "ctx": ""}, {"t": "一個句子最不可缺少嘅兩部分係？", "opts": ["主語同謂語", "定語同狀語", "補語同賓語"], "a": 0, "why": "誰＋做咩，係句子嘅骨架。", "ctx": ""}, {"t": "「寫得整齊」入面，「整齊」係？", "opts": ["補語", "狀語", "定語"], "a": 0, "why": "補充說明寫嘅結果／程度—補語。", "ctx": ""}, {"t": "「清點工具」入面，「工具」係？", "opts": ["賓語", "主語", "定語"], "a": 0, "why": "動作涉及嘅對象。", "ctx": ""}, {"t": "邊個方法最容易搵到謂語？", "opts": ["問「做咗啲乜」", "數筆畫", "睇邊個字最靚"], "a": 0, "why": "動詞通常就係謂語核心。", "ctx": ""}]}, {"name": "第三關・砌返個句", "mode": "build", "desc": "知道邊個係邊個，就識得砌返一句完整句子。", "qs": [{"mode": "build", "t": "把詞卡按順序點出來，組成正確句子", "ctx": "公司交代培訓", "toks": ["公司", "為", "新入職員工", "提供", "培訓"], "ans": ["公司", "為", "新入職員工", "提供", "培訓"]}, {"mode": "build", "t": "把詞卡按順序點出來，組成正確句子", "ctx": "維修工人做嘢", "toks": ["維修工人", "檢測", "供電系統"], "ans": ["維修工人", "檢測", "供電系統"]}, {"mode": "build", "t": "把詞卡按順序點出來，組成正確句子", "ctx": "點樣檢查餐牌", "toks": ["我們", "認真地", "檢查", "餐牌"], "ans": ["我們", "認真地", "檢查", "餐牌"]}, {"mode": "build", "t": "把詞卡按順序點出來，組成正確句子", "ctx": "主管批申請", "toks": ["主管", "批核", "申請"], "ans": ["主管", "批核", "申請"]}, {"mode": "build", "t": "把詞卡按順序點出來，組成正確句子", "ctx": "同學們做嘢", "toks": ["同學們", "討論", "並", "解決", "問題"], "ans": ["同學們", "討論", "並", "解決", "問題"]}]}], "backup": {"name": "⭐ 備用加賽關", "desc": "進階：附加成分偵測。", "mode": "label", "qs": [{"mode": "label", "ask": "邊一塊係【定語】？", "segs": ["新", "員工", "需要", "額外", "培訓。"], "a": 3, "why": "「額外」修飾培訓—定語。（「新」都係定語，答中任何一個都算啱—老師手動加分）"}, {"mode": "label", "ask": "邊一塊係【狀語】？", "segs": ["客人", "已經", "離場。"], "a": 1, "why": "「已經」講時間狀態—狀語。"}, {"mode": "label", "ask": "【謂語】係邊塊？", "segs": ["佢", "完成", "工作。"], "a": 1, "why": "完成＝動作。"}, {"mode": "label", "ask": "【補語】係邊塊？", "segs": ["佢", "寫", "三次", "。"], "a": 2, "why": "「三次」補充次數—補語。"}]}, "teacher": {"qs": [{"t": "「主語一定係人？」", "opts": ["唔一定—可以是事物", "一定", "只可以係動物"], "a": 0, "why": "「訊號燈亮起來」—主語就係訊號燈。", "ctx": ""}, {"t": "「檢查完了」—「完了」補咗啲？", "opts": ["結果", "時間地點", "對象"], "a": 0, "why": "補語講結果。", "ctx": ""}, {"t": "「認真地檢查」定「檢查認真地」？", "opts": ["前者", "後者", "都啱"], "a": 0, "why": "狀語放喺動作前面。", "ctx": ""}, {"t": "無賓語得唔得？例如「佢笑咗。」", "opts": ["得—唔少嘅動詞唔使賓語", "唔得", "要問主管"], "a": 0, "why": "「笑」自己就完整。", "ctx": ""}]}, "unit": "第二課", "act": "二"};
 const $=id=>document.getElementById(id);
 function shuf(a){for(let i=a.length-1;i>0;i--){const r=Math.floor(Math.random()*(i+1));[a[i],a[r]]=[a[r],a[i]];}return a;}
-const S={score:0,streak:0,team:'',done:[],teacherRight:0,exit:'',perStage:{}};
-const FINAL=(D.act==='七');const TLBL=FINAL?'🎓 挑戰老師':'⚡ 加時賽・全班搶答';
+const S={score:0,streak:0,team:'',done:[],perStage:{}};
+const NEXTURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-lesson10/";const CLOSEURL="https://wilkat2009-droid.github.io/cola-pages/vch1101-close1/";
 function view(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));$(v).classList.add('active');renderTop();}
 function addScore(n){S.score+=n;$('scoreBox').textContent=S.score+' 分';}
 function renderTop(){$('caseNo').textContent=(S.team?('隊：'+S.team+'　'):'')+'活動'+D.act+'・'+D.game;$('pbar').style.width=(S.done.length/D.stages.length*100)+'%';}
@@ -219,8 +200,8 @@ function stageState(i){if(S.done.includes(i))return 2;if(i===0||S.done.includes(
 function buildMap(){const box=$('mapGrid');box.innerHTML='';D.stages.forEach((s,i)=>{const st=stageState(i);const el=document.createElement('div');el.className='stage'+(st===2?' done':(st===1&&!S.done.includes(i)?' unlocked':''));el.innerHTML='<div class="no">'+(i+1)+'</div><div class="st">'+(st===2?'已通過':(st===1?'可進入':'未解鎖'))+'</div><h3>'+s.name+'</h3><p>'+s.desc+'</p>';const b=document.createElement('button');b.className='btn '+(st===1?'orange':(st===2?'ghost':'primary'));b.textContent=st===2?'重玩一次':(st===1?'進入關卡 ▶':'🔒 先完成上一關');b.disabled=st===0;b.onclick=()=>openStage(i);el.appendChild(b);box.appendChild(el);});
 const ex=$('mapExtras');ex.innerHTML='';const canGo=S.done.length>=D.stages.length;
 const items=[];if(D.backup)items.push({n:'⭐ 備用加賽關（多準備）',d:D.backup.desc,ok:canGo,fn:()=>openStage('b'),lock:'完成三關後開放'});
-items.push(FINAL?{n:'🎓 挑戰老師（秘密獎勵）',d:'答對一題 +8 分，看看你們能不能贏我！',ok:canGo,fn:openTeacher,lock:'完成三關後開放'}:{n:'⚡ 加時賽・全班搶答（秘密獎勵）',d:'老師出題、舉手搶答，答對一題 +8 分——唔使打字！',ok:canGo,fn:openTeacher,lock:'完成三關後開放'});
-items.push({n:'🎫 出口卡',d:'每人寫一句，下课前交回。',ok:canGo,fn:openExit,lock:'完成三關後開放'});
+items.push({n:'🏁 課堂收結・出口卡＋下課歌',d:'時間到就收結—唔使完成晒所有活動。',ok:true,fn:()=>{window.open(CLOSEURL,'_blank');}});
+if(NEXTURL)items.push({n:'▶ 下一個活動（可跳住玩）',d:'順序玩亦得，跳住玩亦得。',ok:true,fn:()=>{window.open(NEXTURL,'_blank');}});
 items.forEach(it=>{const el=document.createElement('div');el.className='extra';el.innerHTML='<strong>'+it.n+'</strong><span class="muted">'+it.d+'</span>';const b=document.createElement('button');b.className='btn primary';b.style.marginTop='8px';if(it.ok){b.textContent='進入 ▶';b.onclick=it.fn;}else{b.textContent='🔒 '+it.lock;b.disabled=true;}el.appendChild(b);ex.appendChild(el);});
 renderTop();}
 /* ---------- stage ---------- */
@@ -255,21 +236,12 @@ function nextQ(){const s=curStage();G.qi++;if(G.qi<s.qs.length){renderQ();}else{
 function finishStage(){const s=curStage();const total=s.qs.length;const pct=G.right/total;
  if(typeof G.si==='number'&&!S.done.includes(G.si)){S.done.push(G.si);}
  S.perStage[G.si]={r:G.right,t:total};
- if(G.si===D.stages.length-1&&typeof G.si==='number'){setTimeout(()=>popSticker('award',1),350);celebrate('恭喜！全部關卡通過！','本關得分：'+G.right+' / '+total+'<br>快去領取秘密獎勵！',[[(FINAL?'🏆 領取秘密獎勵（挑戰老師）':'⚡ 領取秘密獎勵（全班搶答）'),openTeacher],['🎫 做出口卡',openExit],['返回地圖',buildMap]]);return;}
+ if(G.si===D.stages.length-1&&typeof G.si==='number'){setTimeout(()=>popSticker('award',1),350);celebrate('恭喜！全部關卡通過！','本關得分：'+G.right+' / '+total+'<br>可以繼續下一個活動，或者隨時收結課堂。',[['▶ 下一個活動',()=>{if(NEXTURL)window.open(NEXTURL,'_blank');}],['🏁 課堂收結',()=>window.open(CLOSEURL,'_blank')],['返回地圖',buildMap]]);return;}
  if(G.si==='b'){celebrate('加賽完成！','備用題得分：'+G.right+' / '+total,[['返回地圖',buildMap]]);buildMap();return;}
  if(pct>=.6)setTimeout(()=>popSticker(Math.random()<.5?'wow':'proud'),350);
  celebrate('第'+(G.si+1)+'關通過！','答對 '+G.right+' / '+total+(pct>=.8?'（神準！）':'')+(D.stages[G.si+1]?'':''),[['下一關 ▶',()=>openStage(G.si+1)],['返回地圖',buildMap]]);}
-/* ---------- teacher ---------- */
-function openTeacher(){G={si:'t',qi:0,right:0,answered:false};$('stName').textContent=TLBL;$('tHead').textContent=TLBL;$('tHeadDesc').textContent=FINAL?'答對一題 +8 分。全部答對，老師當堂認輸！':'老師讀題、你哋舉手搶答，老師幫你哋撳答案。答對一題 +8 分，唔使打字！';$('tProg').textContent='';nextT();view('v-teacher');}
-function nextT(){const qs=D.teacher.qs;const q=qs[G.qi];$('tCount').textContent='第 '+(G.qi+1)+' / '+qs.length+' 題';$('tFb').className='fb';$('tNext').style.display='none';$('tQ').textContent=q.t;{const ord=shuf([...q.opts.keys()]);G._tmap=ord;$('tOpts').innerHTML=ord.map(j=>'<button>'+q.opts[j]+'</button>').join('');[...$('tOpts').children].forEach((b,d)=>b.onclick=()=>{if(G.answered)return;G.answered=true;const ok=ord[d]===q.a;if(ok){G.right++;S.teacherRight++;addScore(8);}b.classList.add(ok?'right':'wrong');if(!ok)$('tOpts').children[G._tmap.indexOf(q.a)].classList.add('right');[...$('tOpts').children].forEach(x=>x.disabled=true);$('tFb').className='fb '+(ok?'ok':'no');$('tFb').innerHTML=(ok?(FINAL?'✅ 贏了老師一題！+8':'✅ 答對！+8'):(FINAL?'❌ 這題老師贏了':'❌ 唔緊要，下一題搏返！'))+(q.why?'<small>'+q.why+'</small>':'');$('tNext').style.display='';$('tNext').textContent=(G.qi+1<qs.length)?'下一題 ▶':'看看結果';});}}
-function tNext(){const qs=D.teacher.qs;if(G.qi+1<qs.length){G.qi++;G.answered=false;nextT();}else{const r=G.right,t=qs.length;const msg=FINAL?(r>t/2?'🏆 你們贏了老師！':(r===Math.floor(t/2)?'🤝 打和！下次再贏我！':'💪 老師險勝！下次贏我！')):'⚡ 加時賽完成！仲有其他活動等你哋，繼續開落去！';popSticker(r>t/2?'tease':(r===Math.floor(t/2)?'proud':'cheer'));alertMsg((FINAL?'挑戰老師結果':'加時賽結果')+'：答對 '+r+' / '+t+'　'+msg);buildMap();view('v-map');}}
-function alertMsg(m){const b=$('msg');b.textContent=m;b.style.display='block';setTimeout(()=>b.style.display='none',4200);}
-/* ---------- exit ---------- */
-function openExit(){$('xQ1').textContent=D.exit[0];$('xQ2').textContent=D.exit[1];$('x1').value='';$('x2').value='';view('v-exit');}
-function exitDone(){const a=$('x1').value.trim(),b=$('x2').value.trim();S.exit=(a||b)?('出口卡：'+a+'　｜　'+b):'';popSticker('cozy');setTimeout(()=>showResult(),600);}
-/* ---------- result ---------- */
-function showResult(){const totalQ=D.stages.reduce((m,s)=>m+s.qs.length,0)+(D.backup?D.backup.qs.length:0);const max=totalQ*15+D.teacher.qs.length*8;const pct=S.score/max;const rank=pct>=.8?'S':pct>=.6?'A':pct>=.4?'B':'C';const rtxt={S:'傳說級・金牌校對員',A:'優秀・主力隊員',B:'合格・持續進修中',C:'潜力股・下次更強'}[rank];let rows='';D.stages.forEach((s,i)=>{const p=S.perStage[i];rows+='<div class="kv"><span>第'+(i+1)+'關・'+s.name+'</span><b>'+(p?(p.r+' / '+p.t):'未闖')+'</b></div>';});if(S.perStage['b'])rows+='<div class="kv"><span>⭐ 備用加賽</span><b>'+S.perStage['b'].r+' / '+S.perStage['b'].t+'</b></div>';rows+='<div class="kv"><span>'+(FINAL?'🎓 挑戰老師':'⚡ 加時賽搶答')+'</span><b>'+S.teacherRight+' / '+D.teacher.qs.length+'</b></div>';$('rRows').innerHTML=rows;$('rScore').textContent=S.score;$('rRank').textContent=rank;$('rRankTxt').textContent=rtxt;$('rCert').innerHTML=(STK.award?'<img src="'+(Array.isArray(STK.award)?STK.award[0]:STK.award)+'" alt="老師頒獎" style="width:120px;border-radius:18px;margin-bottom:10px;box-shadow:0 10px 26px rgba(0,0,0,.18)">':'')+'<h2>通關證書</h2><p style="font-size:20px;margin:10px 0"><b>'+S.team+'</b> 小隊完成<br>「'+D.title+'」</p><p class="muted" style="font-size:13px">VCH1101 職業中文・第'+D.num+'課・得分 '+S.score+'・評級 '+rank+'</p>';view('v-result');}
-window.onload=function(){initStart();renderTop();cmInit();};
+/* ---------- teacher ---------- */function alertMsg(m){const b=$('msg');b.textContent=m;b.style.display='block';setTimeout(()=>b.style.display='none',4200);}
+/* ---------- exit ---------- */window.onload=function(){initStart();renderTop();cmInit();};
 /* ---------- 課堂模式（電腦室全班同步版） ---------- */
 const CM={on:false,teams:[{n:'紅隊',c:'#d94f3d',s:0,p:2},{n:'黃隊',c:'#e0a12f',s:0,p:2},{n:'藍隊',c:'#3f6fb5',s:0,p:2},{n:'綠隊',c:'#3f9d63',s:0,p:2}]};
 function cmInit(){CM.on=localStorage.getItem('vc_cm')==='1';document.body.classList.toggle('cm-on',CM.on);const b=$('cmBtn');if(b)b.textContent=CM.on?'🙋 課堂模式：開':'🙋 課堂模式：關';cmRender();}
