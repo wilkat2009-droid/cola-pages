@@ -97,21 +97,10 @@ h1,h2,h3{margin:0;line-height:1.18}h1{font-size:clamp(34px,5vw,62px);letter-spac
       <div class="section-head"><div><div class="eyebrow">🎉 秘密獎勵已解鎖</div><h2>偵探出題部門！</h2><p>你們破解了三把鎖，獎勵是升級做「出題偵探」— 你哋出的題目會存入全班題庫，留到今日最後一環，全班一齊挑戰老師！</p></div><span class="tag yellow">秘密獎勵</span></div>
       <div class="panel soft-yellow"><h3>怎麼玩？</h3><div class="three-col" style="margin-top:12px"><div><b>1. 出題</b><br><span class="muted">每隊寫一個錯字，附上正字和錯字原因。</span></div><div><b>2. 收題</b><br><span class="muted">題卡交給老師，存入「全班偵探題庫」— 後面重有其他案件等你哋破。</span></div><div><b>3. 總決賽</b><br><span class="muted">今日最後一環先開賽：全班用題庫一齊挑戰老師，被採用的題目，該小隊 +2 分。</span></div></div></div>
       <div class="panel" style="margin-top:16px"><h3>小隊出題卡</h3><p class="muted" style="margin:6px 0 0">錯字：________　正字：________<br>錯字原因：□ 讀音相似　□ 字形相似　□ 錯誤理解詞義</p></div>
-      <div class="nav-row"><button class="btn secondary" data-go="map">回到案件地圖</button><button class="btn primary" data-next-lesson="2">📂 下一個案件：活動二・餐牌錯字狙擊 ➜</button><button class="btn orange" data-go="exit">填出口卡 ➜</button></div>
+      <div class="nav-row"><button class="btn secondary" data-go="map">回到案件地圖</button><button class="btn primary" data-next-lesson="2">📂 下一個案件：活動二・餐牌錯字狙擊 ➜</button><button class="btn orange" onclick="window.open('https://wilkat2009-droid.github.io/cola-pages/vch1101-close1/','_blank')">🏁 課堂收結・出口卡＋下課歌 ➜</button></div>
     </section>
 
-    <section class="view" id="exit">
-      <div class="section-head"><div><div class="eyebrow">收尾 · 出口卡</div><h2>今天你帶走了甚麼？</h2><p>請獨立完成，這是給老師的線索，不是考試。</p></div><span class="tag">Exit Ticket</span></div>
-      <div class="panel" id="exitForm">
-        <div class="field" style="margin-bottom:14px"><label for="exitWord">今天我改正的一個字</label><input id="exitWord" placeholder="例如：遵守"></div>
-        <div class="field" style="margin-bottom:14px"><label for="exitFun">今天最好玩的關卡</label><input id="exitFun" placeholder="例如：餐牌案件"></div>
-        <div class="field" style="margin-bottom:14px"><label for="exitNext">我下一次想挑戰甚麼</label><input id="exitNext" placeholder="例如：招聘廣告校對"></div>
-        <div class="field" style="margin-bottom:6px"><label for="exitNote">給錯字偵探社的一句話</label><input id="exitNote" placeholder="例如：先讀句子，再找線索"></div>
-      </div>
-      <div class="panel soft-teal" style="margin-top:16px"><h3>學習成果自評</h3><div class="two-col" style="margin-top:12px"><div><b>我能找出錯字</b><br><span class="muted">□ 能　□ 部分　□ 還未</span></div><div><b>我知道三種錯字原因</b><br><span class="muted">□ 能　□ 部分　□ 還未</span></div></div></div>
-      <div class="nav-row"><button class="btn secondary" data-go="map">回到案件地圖</button><button class="btn primary" id="finishLesson">查看今日總分</button></div>
-    </section>
-  </main>
+      </main>
   <div class="toast" id="toast"></div>
   <div class="overlay" id="winOverlay">
     <div class="win-card" id="winCard">
