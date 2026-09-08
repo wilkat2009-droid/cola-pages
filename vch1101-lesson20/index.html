@@ -173,10 +173,10 @@ body.cm-on #cmPanel{display:block;position:fixed;left:14px;bottom:14px;z-index:6
 <script>
 const STK=(typeof window.__STICKERS!=='undefined')?window.__STICKERS:{};
 const STK_LINES={
- wow:['好犀利啊！','你怎麼這麼厲害！','呢題我要諗下⋯你竟然秒答！','唔可能㗎！再答啱一題我睇吓！','我睇小咗你哋喇！','這操作我都要鼓掌！'],
- proud:['你們簡直太棒了！','咁叻，我都要偷師喇！','我要記低你哋個名！','這個水準，直接可以出job！','你哋係我帶過最閃嘅一代！','好表現，老師面都光埋！'],
- cheer:['再試一試！','差啲㗎喇，再嚟一次！','錯咗先至學識嘛！','我当年錯得比你哋多！','唔緊要，深呼吸再嚟！','加油，我喺你後面！','呢題確實陰，唔使驚！'],
- award:['冠軍隊，就係你哋！','今日你哋係主角！','呢張證書我幫你哋收住！','你們值得全場掌聲！','咁嘅成績，放響邊度都企得直！','我哋下堂見，記得返嚟領獎！'],
+ wow:['好犀利啊！','點解你咁犀利嘅？','呢題我要諗下⋯你竟然秒答！','唔可能㗎！再答啱一題我睇吓！','我睇小咗你哋喇！','呢個操作我都要拍爛手掌！'],
+ proud:['你哋太犀利喇！','咁叻，我都要偷師喇！','我要記低你哋個名！','呢個水準，直接可以出job！','你哋係我帶過最閃嘅一代！','好表現，老師面都光埋！'],
+ cheer:['再試一試！','差啲㗎喇，再嚟一次！','錯咗先至學識嘛！','我當年錯得比你哋多！','唔緊要，深呼吸再嚟！','加油，我喺你後面！','呢題確實陰，唔使驚！'],
+ award:['冠軍隊，就係你哋！','今日你哋係主角！','呢張證書我幫你哋收住！','你哋值得全場掌聲！','咁嘅成績，放響邊度都企得直！','我哋下堂見，記得返嚟領獎！'],
  tease:['老師額頭有汗喇⋯⋯','你而家逼到我認真！','喂喂喂，畀唔畀面㗎？','定咗心要贏我？好，我接招！','唔係喎！你準備咗未？','輸得光明磊落，下次過招！'],
  cozy:['聽日想再見你哋。','今日你哋好過我期望。','收工！我欣賞你哋！','走得快，講得啱，仲係你哋最型。','下次課，繼續帶住呢個氣勢！','辛苦晒，你哋今日做得好！']
 };
@@ -221,7 +221,7 @@ function renderQ(){const s=curStage(),q=s.qs[G.qi];G.answered=false;G.sawErr=fal
  const m=mode();
  if(m==='choice'||m==='tf'||m==='sort'){const os=q.opts||curStage().cats;const ord=shuf([...os.keys()]);G._map=ord;opts.innerHTML=ord.map(j=>'<button>'+os[j]+'</button>').join('');[...opts.children].forEach((b,d)=>b.onclick=()=>answer(ord[d]===q.a,os[ord[d]],b));}
  else if(m==='tf2'){const os=curStage().cats||['合理👍','有問題🙅'];const ord=shuf([...os.keys()]);G._map=ord;opts.innerHTML=ord.map(j=>'<button>'+os[j]+'</button>').join('');[...opts.children].forEach((b,d)=>b.onclick=()=>answer(ord[d]===q.a,os[ord[d]],b));}
- else if(m==='spot'){cells.style.display='flex';cells.innerHTML=q.cells.map((c,j)=>'<button class="cell">'+c+'</button>').join('');[...cells.children].forEach((b,j)=>b.onclick=()=>{if(G.answered)return;answer(j===q.a);if(j===q.a){b.classList.add('right');cells.children[q.a].classList.add('right');}else{b.classList.add('wrong');if(G.answered)cells.children[q.a].classList.add('right');}});opts.style.display='none';}
+ else if(m==='spot'){cells.style.display='flex';cells.innerHTML=q.cells.map((c,j)=>'<button class="cell">'+c+'</button>').join('');[...cells.children].forEach((b,j)=>b.onclick=()=>{if(G.answered)return;const ok=j===q.a||(q.alt||[]).indexOf(j)>-1;answer(ok);if(ok){b.classList.add('right');cells.children[q.a].classList.add('right');}else{b.classList.add('wrong');if(G.answered)cells.children[q.a].classList.add('right');}});opts.style.display='none';}
  else if(m==='label'||m==='seg'){opts.style.display='none';cells.style.display='flex';cells.innerHTML=q.segs.map((c,j)=>'<button class="cell" style="width:auto;padding:0 16px;font-size:19px">'+c+'</button>').join('');[...cells.children].forEach((b,j)=>b.onclick=()=>{if(G.answered)return;answer(j===q.a);if(j===q.a){b.classList.add('right');cells.children[q.a].classList.add('right');}else{b.classList.add('wrong');if(G.answered)cells.children[q.a].classList.add('right');}});ask.innerHTML='<div class="qtext">'+q.ask+'</div><div class="qctx">點擊正確的方塊</div>';}
  else if(m==='build'){opts.style.display='none';build.style.display='';const toks=q.toks;const picked=[];function paint(){$('qBuild').innerHTML='<div class="buildline">'+(picked.length?picked.map(p=>'<button class="tok" data-i="'+p+'">'+toks[p]+'</button>').join(''):'<span class="muted" style="font-weight:600">按順序點擊下面的詞卡…</span>')+'</div><div class="tokens">'+shuf(toks.map((t,j)=>j)).map(j=>'<button class="tok'+(picked.includes(j)?' dim':'')+'" data-i="'+j+'">'+toks[j]+'</button>').join('')+'</div><div class="row"><button class="btn primary" id="bchk"'+(picked.length===toks.length?'':' disabled')+'>✅ 檢查句子</button></div>';[...$('qBuild').querySelectorAll('.tokens .tok')].forEach(b=>b.onclick=()=>{if(G.answered||picked.includes(+b.dataset.i))return;picked.push(+b.dataset.i);paint();});[...$('qBuild').querySelectorAll('.buildline .tok')].forEach(b=>b.onclick=()=>{if(G.answered)return;picked.splice(picked.indexOf(+b.dataset.i),1);paint();});const chk=$('bchk');if(chk)chk.onclick=()=>{const got=picked.map(p=>toks[p]);answer(got.join('|')===q.ans.join('|'));};}
  paint();}
