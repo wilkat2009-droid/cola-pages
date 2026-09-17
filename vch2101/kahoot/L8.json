@@ -1,0 +1,288 @@
+[
+ {
+  "question": "課文「粵普對譯」中，「捱夜」的普通話說法是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "熬夜",
+    "correct": true
+   },
+   {
+    "answer": "早睡",
+    "correct": false
+   },
+   {
+    "answer": "值班",
+    "correct": false
+   },
+   {
+    "answer": "加班",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「當值」的普通話說法是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "值班",
+    "correct": true
+   },
+   {
+    "answer": "加班",
+    "correct": false
+   },
+   {
+    "answer": "放假",
+    "correct": false
+   },
+   {
+    "answer": "開會",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "工作會議上負責做紀錄的人，他的職位是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "秘書",
+    "correct": true
+   },
+   {
+    "answer": "經理",
+    "correct": false
+   },
+   {
+    "answer": "工程師",
+    "correct": false
+   },
+   {
+    "answer": "會計",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "經理叫小鵬「趕緊」把缺的、壞的補一下，「趕緊」是甚麼意思？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "快一點",
+    "correct": true
+   },
+   {
+    "answer": "慢一點",
+    "correct": false
+   },
+   {
+    "answer": "不用做",
+    "correct": false
+   },
+   {
+    "answer": "慢慢來",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳主任說，今天會議的主要任務是講解哪個月的工作分配情況？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "十月份",
+    "correct": true
+   },
+   {
+    "answer": "九月份",
+    "correct": false
+   },
+   {
+    "answer": "十一月份",
+    "correct": false
+   },
+   {
+    "answer": "十二月份",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "小鄭負責裕發公司的甚麼項目？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "軟件安裝",
+    "correct": true
+   },
+   {
+    "answer": "電子保安系統",
+    "correct": false
+   },
+   {
+    "answer": "空調維修",
+    "correct": false
+   },
+   {
+    "answer": "產品設計",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "小郭負責維修哪座大廈？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "長城大廈",
+    "correct": true
+   },
+   {
+    "answer": "長興工業大廈",
+    "correct": false
+   },
+   {
+    "answer": "天行大廈",
+    "correct": false
+   },
+   {
+    "answer": "萬里大廈",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "黃經理要求鋼釘必須是哪裡製造的？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "德國",
+    "correct": true
+   },
+   {
+    "answer": "日本",
+    "correct": false
+   },
+   {
+    "answer": "美國",
+    "correct": false
+   },
+   {
+    "answer": "法國",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "原本的送貨日期是8月19日，黃經理要求提早五天，即改為幾月幾日？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "8月14日",
+    "correct": true
+   },
+   {
+    "answer": "8月19日",
+    "correct": false
+   },
+   {
+    "answer": "8月24日",
+    "correct": false
+   },
+   {
+    "answer": "8月9日",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "為趕進度，黃經理要求把貨直接送到哪裡？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "工廠",
+    "correct": true
+   },
+   {
+    "answer": "總公司",
+    "correct": false
+   },
+   {
+    "answer": "陳經理的辦公室",
+    "correct": false
+   },
+   {
+    "answer": "沙田分店",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "從銷售情況看，哪類潤膚產品的銷售量增加較快？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "具有保濕補水功效的",
+    "correct": true
+   },
+   {
+    "answer": "美白潤膚的",
+    "correct": false
+   },
+   {
+    "answer": "防曬的",
+    "correct": false
+   },
+   {
+    "answer": "抗皺的",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "乙說「反正再努力也買不起房，還不如趁早躺平」，他對加班的態度是怎樣的？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "否定加班的意義，態度負面",
+    "correct": true
+   },
+   {
+    "answer": "肯定加班，態度正面",
+    "correct": false
+   },
+   {
+    "answer": "覺得加班很開心",
+    "correct": false
+   },
+   {
+    "answer": "認為加班可以買房",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳主任說小方「還真不像話」，反映他對小方的態度是怎樣的？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "很不滿，帶責備",
+    "correct": true
+   },
+   {
+    "answer": "很欣賞她",
+    "correct": false
+   },
+   {
+    "answer": "很同情她",
+    "correct": false
+   },
+   {
+    "answer": "覺得她做得很好",
+    "correct": false
+   }
+  ]
+ }
+]
