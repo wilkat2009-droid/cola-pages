@@ -1,0 +1,288 @@
+[
+ {
+  "question": "根據請假紀錄，包裝部的操作工王喜七月八日請了什麼假？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "病假",
+    "correct": true
+   },
+   {
+    "answer": "事假",
+    "correct": false
+   },
+   {
+    "answer": "產假",
+    "correct": false
+   },
+   {
+    "answer": "有薪假期",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "王小冬打電話給鍾經理，主要是想請什麼假？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "病假",
+    "correct": true
+   },
+   {
+    "answer": "事假",
+    "correct": false
+   },
+   {
+    "answer": "年假",
+    "correct": false
+   },
+   {
+    "answer": "產假",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "王小冬說他今天早上起床後有什麼不舒服？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "頭暈、發燒，還想吐",
+    "correct": true
+   },
+   {
+    "answer": "肚子痛、咳嗽",
+    "correct": false
+   },
+   {
+    "answer": "手腳麻痺",
+    "correct": false
+   },
+   {
+    "answer": "眼睛很累",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "錄音提到，僱員每個月可享有全薪病假多少天？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "4天",
+    "correct": true
+   },
+   {
+    "answer": "2天",
+    "correct": false
+   },
+   {
+    "answer": "7天",
+    "correct": false
+   },
+   {
+    "answer": "14天",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "申請假期錄音中，小華想下個月勞動節後放多少天假？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "四天",
+    "correct": true
+   },
+   {
+    "answer": "三天",
+    "correct": false
+   },
+   {
+    "answer": "一星期",
+    "correct": false
+   },
+   {
+    "answer": "兩天",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "王小冬請假後，明天上班要記得到幾樓的人事部補辦請假手續？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "八樓",
+    "correct": true
+   },
+   {
+    "answer": "三樓",
+    "correct": false
+   },
+   {
+    "answer": "五樓",
+    "correct": false
+   },
+   {
+    "answer": "十樓",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "辦理入職手續時，何助理負責的入職登記文件不包括以下哪一項？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "銀行戶口文件",
+    "correct": true
+   },
+   {
+    "answer": "個人資料",
+    "correct": false
+   },
+   {
+    "answer": "學歷技能",
+    "correct": false
+   },
+   {
+    "answer": "緊急聯絡人",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "楊主任說，明天會找同事帶小朱去哪裡領取制服和其他配件？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "總務部",
+    "correct": true
+   },
+   {
+    "answer": "資訊科技部",
+    "correct": false
+   },
+   {
+    "answer": "人力資源部",
+    "correct": false
+   },
+   {
+    "answer": "會計部",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "錄音提到，有薪病假最多可以累積到多少天？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "120天",
+    "correct": true
+   },
+   {
+    "answer": "90天",
+    "correct": false
+   },
+   {
+    "answer": "100天",
+    "correct": false
+   },
+   {
+    "answer": "60天",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "僱員在受聘滿12個月之後，可以享有多少天有薪年假？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "最少7天，最多14天",
+    "correct": true
+   },
+   {
+    "answer": "最少14天",
+    "correct": false
+   },
+   {
+    "answer": "最多7天",
+    "correct": false
+   },
+   {
+    "answer": "最少3天",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "補辦醫療卡須知說，如果醫療卡遺失，費用是多少？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "50元",
+    "correct": true
+   },
+   {
+    "answer": "0元",
+    "correct": false
+   },
+   {
+    "answer": "100元",
+    "correct": false
+   },
+   {
+    "answer": "20元",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲說：「小張，我這兩天是飯也吃不下，覺也睡不着。」乙回答：「至於嗎？不就是去旅行嗎？」小張是什麼態度？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "認為沒必要着急",
+    "correct": true
+   },
+   {
+    "answer": "很着急",
+    "correct": false
+   },
+   {
+    "answer": "很開心",
+    "correct": false
+   },
+   {
+    "answer": "想幫助說話人",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲說：「一說起放假，大伙兒工作都亂了套了。」乙（小剛）回答：「可不是。」小剛是什麼意思？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "認同說話人的想法",
+    "correct": true
+   },
+   {
+    "answer": "反對說話人的想法",
+    "correct": false
+   },
+   {
+    "answer": "不知道對方說甚麼",
+    "correct": false
+   },
+   {
+    "answer": "對對方的想法不置可否",
+    "correct": false
+   }
+  ]
+ }
+]
