@@ -1,1 +1,310 @@
-[{"question": "簡化字是聯合國承認及使用的唯一中國文字，它同時是聯合國的什麼？", "time": 20000, "choices": [{"answer": "官方文字", "correct": true}, {"answer": "官方語言", "correct": false}, {"answer": "法定貨幣", "correct": false}, {"answer": "教學語言", "correct": false}]}, {"question": "除中國內地外，以下哪些國家的華人也廣泛使用簡化字？", "time": 20000, "choices": [{"answer": "日本、韓國", "correct": false}, {"answer": "印度、泰國", "correct": false}, {"answer": "澳洲、新西蘭", "correct": false}, {"answer": "新加坡、馬來西亞", "correct": true}]}, {"question": "相同的漢字中，筆畫較少或形體簡化的，叫做什麼？", "time": 20000, "choices": [{"answer": "異體字", "correct": false}, {"answer": "古體字", "correct": false}, {"answer": "簡體字", "correct": true}, {"answer": "繁體字", "correct": false}]}, {"question": "早在殷商的哪種文字裡，已可發現繁簡並存的寫法？", "time": 20000, "choices": [{"answer": "隸書", "correct": false}, {"answer": "甲骨文", "correct": true}, {"answer": "金文", "correct": false}, {"answer": "小篆", "correct": false}]}, {"question": "自古以來，漢字一直朝著哪個趨勢發展？", "time": 20000, "choices": [{"answer": "刪繁就簡、避難趨易", "correct": true}, {"answer": "由簡入繁、避易趨難", "correct": false}, {"answer": "由左至右、由上至下", "correct": false}, {"answer": "由楷入草、由草入篆", "correct": false}]}, {"question": "《簡化字總表》於哪一年由中國文字改革委員會出版？", "time": 20000, "choices": [{"answer": "1949年", "correct": false}, {"answer": "1978年", "correct": false}, {"answer": "1996年", "correct": false}, {"answer": "1964年", "correct": true}]}, {"question": "現行沿用的《簡化字總表》是哪一年的修訂版？", "time": 20000, "choices": [{"answer": "1977年", "correct": false}, {"answer": "2000年", "correct": false}, {"answer": "1986年", "correct": true}, {"answer": "1964年", "correct": false}]}, {"question": "《簡化字總表》共收錄多少個簡化字及14個簡化偏旁？", "time": 20000, "choices": [{"answer": "132個", "correct": false}, {"answer": "2,274個", "correct": true}, {"answer": "1,753個", "correct": false}, {"answer": "350個", "correct": false}]}, {"question": "《簡化字總表》第一表收錄的350個字，屬於哪一類？", "time": 30000, "choices": [{"answer": "不可用作簡化偏旁的簡化字", "correct": true}, {"answer": "可作簡化偏旁用的簡化字", "correct": false}, {"answer": "類推簡化字", "correct": false}, {"answer": "繁體異體字", "correct": false}]}, {"question": "《簡化字總表》第三表收錄了多少個類推簡化字？", "time": 30000, "choices": [{"answer": "350個", "correct": false}, {"answer": "132個", "correct": false}, {"answer": "2,274個", "correct": false}, {"answer": "1,753個", "correct": true}]}, {"question": "以下哪一項是漢字簡化的原則？", "time": 20000, "choices": [{"answer": "從繁從正", "correct": false}, {"answer": "從音從義", "correct": false}, {"answer": "從俗從簡", "correct": true}, {"answer": "從古從雅", "correct": false}]}, {"question": "「餘→余」、「後→后」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "草書楷化法", "correct": false}, {"answer": "代替法", "correct": true}, {"answer": "形聲法", "correct": false}, {"answer": "會意法", "correct": false}]}, {"question": "「樂→乐」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "草書楷化法", "correct": true}, {"answer": "保留特徵法", "correct": false}, {"answer": "保留輪廓法", "correct": false}, {"answer": "符號代替法", "correct": false}]}, {"question": "「習→习」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "保留輪廓法", "correct": false}, {"answer": "會意法", "correct": false}, {"answer": "偏旁類推法", "correct": false}, {"answer": "保留特徵法", "correct": true}]}, {"question": "「齒→齿」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "形聲法", "correct": false}, {"answer": "符號代替法", "correct": false}, {"answer": "保留輪廓法", "correct": true}, {"answer": "保留特徵法", "correct": false}]}, {"question": "「難→难」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "草書楷化法", "correct": false}, {"answer": "符號代替法", "correct": true}, {"answer": "會意法", "correct": false}, {"answer": "形聲法", "correct": false}]}, {"question": "「筆→笔」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "會意法", "correct": true}, {"answer": "形聲法", "correct": false}, {"answer": "代替法", "correct": false}, {"answer": "保留特徵法", "correct": false}]}, {"question": "「訁→讠、詞→词」用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "會意法", "correct": false}, {"answer": "符號代替法", "correct": false}, {"answer": "草書楷化法", "correct": false}, {"answer": "偏旁類推法", "correct": true}]}, {"question": "現時仍然通行繁體字的地區是香港和哪裡？", "time": 20000, "choices": [{"answer": "新加坡", "correct": false}, {"answer": "馬來西亞", "correct": false}, {"answer": "台灣", "correct": true}, {"answer": "澳門", "correct": false}]}, {"question": "以下哪個簡化字寫法正確？", "time": 20000, "choices": [{"answer": "面飽", "correct": false}, {"answer": "面包", "correct": true}, {"answer": "麵饱", "correct": false}, {"answer": "麦包", "correct": false}]}]
+[
+ {
+  "question": "簡化字是聯合國承認及使用的唯一中國文字，它同時是聯合國的什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "官方文字",
+    "correct": true
+   },
+   {
+    "answer": "官方語言",
+    "correct": false
+   },
+   {
+    "answer": "法定貨幣",
+    "correct": false
+   },
+   {
+    "answer": "教學語言",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "相同的漢字中，筆畫較少或形體簡化的，叫做什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "異體字",
+    "correct": false
+   },
+   {
+    "answer": "古體字",
+    "correct": false
+   },
+   {
+    "answer": "簡體字",
+    "correct": true
+   },
+   {
+    "answer": "繁體字",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "自古以來，漢字一直朝著哪個趨勢發展？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "刪繁就簡、避難趨易",
+    "correct": true
+   },
+   {
+    "answer": "由簡入繁、避易趨難",
+    "correct": false
+   },
+   {
+    "answer": "由左至右、由上至下",
+    "correct": false
+   },
+   {
+    "answer": "由楷入草、由草入篆",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "《簡化字總表》於哪一年由中國文字改革委員會出版？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "1949年",
+    "correct": false
+   },
+   {
+    "answer": "1978年",
+    "correct": false
+   },
+   {
+    "answer": "1996年",
+    "correct": false
+   },
+   {
+    "answer": "1964年",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "《簡化字總表》共收錄多少個簡化字及14個簡化偏旁？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "132個",
+    "correct": false
+   },
+   {
+    "answer": "2,274個",
+    "correct": true
+   },
+   {
+    "answer": "1,753個",
+    "correct": false
+   },
+   {
+    "answer": "350個",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "以下哪一項是漢字簡化的原則？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "從繁從正",
+    "correct": false
+   },
+   {
+    "answer": "從音從義",
+    "correct": false
+   },
+   {
+    "answer": "從俗從簡",
+    "correct": true
+   },
+   {
+    "answer": "從古從雅",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「餘→余」、「後→后」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "草書楷化法",
+    "correct": false
+   },
+   {
+    "answer": "代替法",
+    "correct": true
+   },
+   {
+    "answer": "形聲法",
+    "correct": false
+   },
+   {
+    "answer": "會意法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「樂→乐」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "草書楷化法",
+    "correct": true
+   },
+   {
+    "answer": "保留特徵法",
+    "correct": false
+   },
+   {
+    "answer": "保留輪廓法",
+    "correct": false
+   },
+   {
+    "answer": "符號代替法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「習→习」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "保留輪廓法",
+    "correct": false
+   },
+   {
+    "answer": "會意法",
+    "correct": false
+   },
+   {
+    "answer": "偏旁類推法",
+    "correct": false
+   },
+   {
+    "answer": "保留特徵法",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「齒→齿」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "形聲法",
+    "correct": false
+   },
+   {
+    "answer": "符號代替法",
+    "correct": false
+   },
+   {
+    "answer": "保留輪廓法",
+    "correct": true
+   },
+   {
+    "answer": "保留特徵法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「難→难」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "草書楷化法",
+    "correct": false
+   },
+   {
+    "answer": "符號代替法",
+    "correct": true
+   },
+   {
+    "answer": "會意法",
+    "correct": false
+   },
+   {
+    "answer": "形聲法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「筆→笔」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "會意法",
+    "correct": true
+   },
+   {
+    "answer": "形聲法",
+    "correct": false
+   },
+   {
+    "answer": "代替法",
+    "correct": false
+   },
+   {
+    "answer": "保留特徵法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「訁→讠、詞→词」用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "會意法",
+    "correct": false
+   },
+   {
+    "answer": "符號代替法",
+    "correct": false
+   },
+   {
+    "answer": "草書楷化法",
+    "correct": false
+   },
+   {
+    "answer": "偏旁類推法",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "現時仍然通行繁體字的地區是香港和哪裡？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "新加坡",
+    "correct": false
+   },
+   {
+    "answer": "馬來西亞",
+    "correct": false
+   },
+   {
+    "answer": "台灣",
+    "correct": true
+   },
+   {
+    "answer": "澳門",
+    "correct": false
+   }
+  ]
+ }
+]
