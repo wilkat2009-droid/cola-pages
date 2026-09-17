@@ -1,486 +1,310 @@
 [
-{
-"question": "甲：「您好！很高興認識您。」下列哪一句最可能是對方接著說的話？",
-"time": 20000,
-"choices": [
-{
-"answer": "「您好！請問您貴姓？」",
-"correct": true
-},
-{
-"answer": "「吃了嗎？」",
-"correct": false
-},
-{
-"answer": "「改天再找你吃飯。」",
-"correct": false
-},
-{
-"answer": "「別煩我，找別人吧。」",
-"correct": false
-}
-]
-},
-{
-"question": "甲：「早上好！幾天沒見，怎麼了？」乙：「沒什麼，謝謝關心。」這段對話屬哪種情景？",
-"time": 20000,
-"choices": [
-{
-"answer": "初次見面",
-"correct": false
-},
-{
-"answer": "轉達問候",
-"correct": false
-},
-{
-"answer": "請求幫忙",
-"correct": false
-},
-{
-"answer": "熟人問候",
-"correct": true
-}
-]
-},
-{
-"question": "甲：「好久沒見，大伙要我向你問好。」這屬於哪種打招呼情況？",
-"time": 20000,
-"choices": [
-{
-"answer": "熟人問候",
-"correct": false
-},
-{
-"answer": "約吃飯",
-"correct": false
-},
-{
-"answer": "轉達問候",
-"correct": true
-},
-{
-"answer": "初次見面",
-"correct": false
-}
-]
-},
-{
-"question": "甲：「你好！近來工作順利嗎？」乙：「托福！還好！」乙想表達什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "不清楚對方的意思",
-"correct": false
-},
-{
-"answer": "近況不錯，多謝對方關心",
-"correct": true
-},
-{
-"answer": "工作不順，想換工作",
-"correct": false
-},
-{
-"answer": "現在很忙，別再打擾",
-"correct": false
-}
-]
-},
-{
-"question": "同事早上見面問「吃了嗎？」，這句普通話的真正作用是？",
-"time": 20000,
-"choices": [
-{
-"answer": "只是打招呼，不是真的要請你吃飯",
-"correct": true
-},
-{
-"answer": "要請你一起吃早餐",
-"correct": false
-},
-{
-"answer": "問你有沒有吃早餐的收據",
-"correct": false
-},
-{
-"answer": "叫你快去吃飯再回來",
-"correct": false
-}
-]
-},
-{
-"question": "「鐘小姐，久仰久仰，見到您很高興。」這句話最適用於哪個場合？",
-"time": 20000,
-"choices": [
-{
-"answer": "很熟的老朋友開玩笑",
-"correct": false
-},
-{
-"answer": "催對方盡快回覆",
-"correct": false
-},
-{
-"answer": "向對方借錢前的客套",
-"correct": false
-},
-{
-"answer": "初次見面，表示早聽過對方名號",
-"correct": true
-}
-]
-},
-{
-"question": "自我介紹時說「我姓張，弓長張」，為什麼要把「張」拆開講？",
-"time": 20000,
-"choices": [
-{
-"answer": "表示自己的名字很特別",
-"correct": false
-},
-{
-"answer": "這是必須的姓氏規則",
-"correct": false
-},
-{
-"answer": "讓對方聽清楚是哪一個「張」字",
-"correct": true
-},
-{
-"answer": "因為普通話不能讀「張」",
-"correct": false
-}
-]
-},
-{
-"question": "「你好，我姓王，三横王，旭日的旭。」說話人提「旭日的旭」是在做什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "請對方幫他寫一遍",
-"correct": false
-},
-{
-"answer": "用常見詞語說清楚自己的名字用哪個字",
-"correct": true
-},
-{
-"answer": "誇自己的名字有學問",
-"correct": false
-},
-{
-"answer": "表明自己和「旭」字有关系",
-"correct": false
-}
-]
-},
-{
-"question": "課本「常見姓氏」錄音裡，「江」的普通話讀音是？",
-"time": 20000,
-"choices": [
-{
-"answer": "jiɑ̄ng（第一聲）",
-"correct": true
-},
-{
-"answer": "jiàng（第四聲）",
-"correct": false
-},
-{
-"answer": "jiáng（第二聲）",
-"correct": false
-},
-{
-"answer": "jiǎng（第三聲）",
-"correct": false
-}
-]
-},
-{
-"question": "課本把「李（lǐ）」歸入哪一聲的常見姓氏？",
-"time": 20000,
-"choices": [
-{
-"answer": "第一聲",
-"correct": false
-},
-{
-"answer": "第二聲",
-"correct": false
-},
-{
-"answer": "第四聲",
-"correct": false
-},
-{
-"answer": "第三聲",
-"correct": true
-}
-]
-},
-{
-"question": "下列哪個姓氏在課本裡被列為第二聲？",
-"time": 20000,
-"choices": [
-{
-"answer": "杜（dù）",
-"correct": false
-},
-{
-"answer": "孫（sūn）",
-"correct": false
-},
-{
-"answer": "劉（liú）",
-"correct": true
-},
-{
-"answer": "高（gɑ̄o）",
-"correct": false
-}
-]
-},
-{
-"question": "「天水圍遠是遠了點兒，可環境清靜。」說話人的重點是什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "抱怨公司沒有交通津貼",
-"correct": false
-},
-{
-"answer": "地方雖然遠，但環境清靜是好處",
-"correct": true
-},
-{
-"answer": "天水圍太遠，不適合上班",
-"correct": false
-},
-{
-"answer": "希望盡快調離這個地點",
-"correct": false
-}
-]
-},
-{
-"question": "「瞧您這記性，連我都不認識了？」這句話的語氣是什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "半開玩笑地埋怨對方記性差",
-"correct": true
-},
-{
-"answer": "認真批評對方失憶",
-"correct": false
-},
-{
-"answer": "客气地自我介紹",
-"correct": false
-},
-{
-"answer": "嚴詞拒絕往來",
-"correct": false
-}
-]
-},
-{
-"question": "同事說「幾年不見，您可發福了！」「發福」在這裡是什麼意思？",
-"time": 20000,
-"choices": [
-{
-"answer": "祝賀對方升職",
-"correct": false
-},
-{
-"answer": "說對方運氣變好",
-"correct": false
-},
-{
-"answer": "說對方變得更年輕",
-"correct": false
-},
-{
-"answer": "委婉地說對方胖了一點",
-"correct": true
-}
-]
-},
-{
-"question": "新同事自我介紹：「我是新來的採購部同事，負責物料採購。」他的工作是？",
-"time": 20000,
-"choices": [
-{
-"answer": "文件歸檔",
-"correct": false
-},
-{
-"answer": "收銀對數",
-"correct": false
-},
-{
-"answer": "物料採購",
-"correct": true
-},
-{
-"answer": "樓面清潔",
-"correct": false
-}
-]
-},
-{
-"question": "「他是咱們營業部的主管」一句中，營業部的主管是指誰？",
-"time": 20000,
-"choices": [
-{
-"answer": "廖秘書",
-"correct": false
-},
-{
-"answer": "張主任",
-"correct": true
-},
-{
-"answer": "陸經理",
-"correct": false
-},
-{
-"answer": "小郭",
-"correct": false
-}
-]
-},
-{
-"question": "「這位是總裁辦公室的鍾秘書」，小鍾在哪個部門工作？",
-"time": 20000,
-"choices": [
-{
-"answer": "總裁辦公室",
-"correct": true
-},
-{
-"answer": "營業部",
-"correct": false
-},
-{
-"answer": "採購部",
-"correct": false
-},
-{
-"answer": "人事部",
-"correct": false
-}
-]
-},
-{
-"question": "「他是留美回來的海歸，電腦專家」「海歸」指的是什麼人？",
-"time": 20000,
-"choices": [
-{
-"answer": "在海上工作的人",
-"correct": false
-},
-{
-"answer": "專門研究海洋的人",
-"correct": false
-},
-{
-"answer": "長期出差海外的人",
-"correct": false
-},
-{
-"answer": "在國外留學後回國工作的人",
-"correct": true
-}
-]
-},
-{
-"question": "甲：「可以幫個忙嗎？」乙：「別煩我，找別人吧。」回話人的態度是？",
-"time": 20000,
-"choices": [
-{
-"answer": "願意幫忙但要條件",
-"correct": false
-},
-{
-"answer": "沒聽清楚要幫什麼忙",
-"correct": false
-},
-{
-"answer": "不願意幫忙，叫對方自己找別人",
-"correct": true
-},
-{
-"answer": "很樂意立刻幫忙",
-"correct": false
-}
-]
-},
-{
-"question": "「出納部的人都不是省油的燈」中，「不是省油的燈」是什麼意思？",
-"time": 20000,
-"choices": [
-{
-"answer": "指這個人很無聊",
-"correct": false
-},
-{
-"answer": "指某人麻煩、不好應付，惹不得",
-"correct": true
-},
-{
-"answer": "指那裏燈光太暗",
-"correct": false
-},
-{
-"answer": "指對方很省錢",
-"correct": false
-}
-]
-},
-{
-"question": "「這件事不是說著玩兒的」中的「說著玩兒」意思是？",
-"time": 20000,
-"choices": [
-{
-"answer": "開玩笑，不能當真",
-"correct": true
-},
-{
-"answer": "認真考慮",
-"correct": false
-},
-{
-"answer": "隨便寫寫",
-"correct": false
-},
-{
-"answer": "重複地說",
-"correct": false
-}
-]
-},
-{
-"question": "做聆聽簡答題前，課本建議先花半分鐘做什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "先把答案抄在題目旁",
-"correct": false
-},
-{
-"answer": "把錄音的每個字都寫下來",
-"correct": false
-},
-{
-"answer": "先跟同桌對一遍答案",
-"correct": false
-},
-{
-"answer": "先看題目，知道要聽什麼",
-"correct": true
-}
-]
-}
+ {
+  "question": "甲：「您好！很高興認識您。」下列哪一句最可能是對方接著說的話？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "「您好！請問您貴姓？」",
+    "correct": true
+   },
+   {
+    "answer": "「吃了嗎？」",
+    "correct": false
+   },
+   {
+    "answer": "「改天再找你吃飯。」",
+    "correct": false
+   },
+   {
+    "answer": "「別煩我，找別人吧。」",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲：「早上好！幾天沒見，怎麼了？」乙：「沒什麼，謝謝關心。」這段對話屬哪種情景？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "初次見面",
+    "correct": false
+   },
+   {
+    "answer": "轉達問候",
+    "correct": false
+   },
+   {
+    "answer": "請求幫忙",
+    "correct": false
+   },
+   {
+    "answer": "熟人問候",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "甲：「好久沒見，大伙要我向你問好。」這屬於哪種打招呼情況？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "熟人問候",
+    "correct": false
+   },
+   {
+    "answer": "約吃飯",
+    "correct": false
+   },
+   {
+    "answer": "轉達問候",
+    "correct": true
+   },
+   {
+    "answer": "初次見面",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲：「你好！近來工作順利嗎？」乙：「托福！還好！」乙想表達什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "不清楚對方的意思",
+    "correct": false
+   },
+   {
+    "answer": "近況不錯，多謝對方關心",
+    "correct": true
+   },
+   {
+    "answer": "工作不順，想換工作",
+    "correct": false
+   },
+   {
+    "answer": "現在很忙，別再打擾",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "同事早上見面問「吃了嗎？」，這句普通話的真正作用是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "只是打招呼，不是真的要請你吃飯",
+    "correct": true
+   },
+   {
+    "answer": "要請你一起吃早餐",
+    "correct": false
+   },
+   {
+    "answer": "問你有沒有吃早餐的收據",
+    "correct": false
+   },
+   {
+    "answer": "叫你快去吃飯再回來",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「鐘小姐，久仰久仰，見到您很高興。」這句話最適用於哪個場合？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "很熟的老朋友開玩笑",
+    "correct": false
+   },
+   {
+    "answer": "催對方盡快回覆",
+    "correct": false
+   },
+   {
+    "answer": "向對方借錢前的客套",
+    "correct": false
+   },
+   {
+    "answer": "初次見面，表示早聽過對方名號",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "自我介紹時說「我姓張，弓長張」，為什麼要把「張」拆開講？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "表示自己的名字很特別",
+    "correct": false
+   },
+   {
+    "answer": "這是必須的姓氏規則",
+    "correct": false
+   },
+   {
+    "answer": "讓對方聽清楚是哪一個「張」字",
+    "correct": true
+   },
+   {
+    "answer": "因為普通話不能讀「張」",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「你好，我姓王，三横王，旭日的旭。」說話人提「旭日的旭」是在做什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "請對方幫他寫一遍",
+    "correct": false
+   },
+   {
+    "answer": "用常見詞語說清楚自己的名字用哪個字",
+    "correct": true
+   },
+   {
+    "answer": "誇自己的名字有學問",
+    "correct": false
+   },
+   {
+    "answer": "表明自己和「旭」字有关系",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「天水圍遠是遠了點兒，可環境清靜。」說話人的重點是什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "抱怨公司沒有交通津貼",
+    "correct": false
+   },
+   {
+    "answer": "地方雖然遠，但環境清靜是好處",
+    "correct": true
+   },
+   {
+    "answer": "天水圍太遠，不適合上班",
+    "correct": false
+   },
+   {
+    "answer": "希望盡快調離這個地點",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「瞧您這記性，連我都不認識了？」這句話的語氣是什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "半開玩笑地埋怨對方記性差",
+    "correct": true
+   },
+   {
+    "answer": "認真批評對方失憶",
+    "correct": false
+   },
+   {
+    "answer": "客气地自我介紹",
+    "correct": false
+   },
+   {
+    "answer": "嚴詞拒絕往來",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "同事說「幾年不見，您可發福了！」「發福」在這裡是什麼意思？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "祝賀對方升職",
+    "correct": false
+   },
+   {
+    "answer": "說對方運氣變好",
+    "correct": false
+   },
+   {
+    "answer": "說對方變得更年輕",
+    "correct": false
+   },
+   {
+    "answer": "委婉地說對方胖了一點",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「他是留美回來的海歸，電腦專家」「海歸」指的是什麼人？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "在海上工作的人",
+    "correct": false
+   },
+   {
+    "answer": "專門研究海洋的人",
+    "correct": false
+   },
+   {
+    "answer": "長期出差海外的人",
+    "correct": false
+   },
+   {
+    "answer": "在國外留學後回國工作的人",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「出納部的人都不是省油的燈」中，「不是省油的燈」是什麼意思？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "指這個人很無聊",
+    "correct": false
+   },
+   {
+    "answer": "指某人麻煩、不好應付，惹不得",
+    "correct": true
+   },
+   {
+    "answer": "指那裏燈光太暗",
+    "correct": false
+   },
+   {
+    "answer": "指對方很省錢",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "做聆聽簡答題前，課本建議先花半分鐘做什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "先把答案抄在題目旁",
+    "correct": false
+   },
+   {
+    "answer": "把錄音的每個字都寫下來",
+    "correct": false
+   },
+   {
+    "answer": "先跟同桌對一遍答案",
+    "correct": false
+   },
+   {
+    "answer": "先看題目，知道要聽什麼",
+    "correct": true
+   }
+  ]
+ }
 ]
