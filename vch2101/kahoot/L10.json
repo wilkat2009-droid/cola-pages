@@ -1,0 +1,288 @@
+[
+ {
+  "question": "王先生想和誰吃飯？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "朋友",
+    "correct": true
+   },
+   {
+    "answer": "同學",
+    "correct": false
+   },
+   {
+    "answer": "同事",
+    "correct": false
+   },
+   {
+    "answer": "親戚",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "王先生的朋友喜歡吃甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "海鮮",
+    "correct": true
+   },
+   {
+    "answer": "牛肉",
+    "correct": false
+   },
+   {
+    "answer": "羊肉",
+    "correct": false
+   },
+   {
+    "answer": "無所謂",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "錄音中，煎羊排要幾成熟？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "五成熟",
+    "correct": true
+   },
+   {
+    "answer": "三成熟",
+    "correct": false
+   },
+   {
+    "answer": "七成熟",
+    "correct": false
+   },
+   {
+    "answer": "全熟",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "錄音中，咖啡要不要加奶？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "不加奶",
+    "correct": true
+   },
+   {
+    "answer": "要加奶",
+    "correct": false
+   },
+   {
+    "answer": "要加糖",
+    "correct": false
+   },
+   {
+    "answer": "要加冰",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "這家海鮮大酒樓最便宜的特價海鮮多少錢一斤？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "十塊錢一斤",
+    "correct": true
+   },
+   {
+    "answer": "二十塊錢一斤",
+    "correct": false
+   },
+   {
+    "answer": "二十五塊錢一斤",
+    "correct": false
+   },
+   {
+    "answer": "三十塊錢一斤",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "海鮮大酒樓在甚麼地方？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "銀島商廈三樓",
+    "correct": true
+   },
+   {
+    "answer": "銀島商廈二樓",
+    "correct": false
+   },
+   {
+    "answer": "太陽島商廈三樓",
+    "correct": false
+   },
+   {
+    "answer": "太陽島商廈二樓",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "酒樓所在的商廈在哪兒？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "太古地鐵站A出口的對面",
+    "correct": true
+   },
+   {
+    "answer": "太古地鐵站B出口的對面",
+    "correct": false
+   },
+   {
+    "answer": "美孚地鐵站A出口的對面",
+    "correct": false
+   },
+   {
+    "answer": "美孚地鐵站B出口的對面",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "週年聚餐將在哪裡舉辦？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "海景酒店",
+    "correct": true
+   },
+   {
+    "answer": "萬豪酒店",
+    "correct": false
+   },
+   {
+    "answer": "喜迎門飯館",
+    "correct": false
+   },
+   {
+    "answer": "銀島商廈",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳主任最後選了多少錢一桌的中式晚宴？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "7888元",
+    "correct": true
+   },
+   {
+    "answer": "6888元",
+    "correct": false
+   },
+   {
+    "answer": "8888元",
+    "correct": false
+   },
+   {
+    "answer": "9888元",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "7888元一桌的晚宴共有多少道菜？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "12道",
+    "correct": true
+   },
+   {
+    "answer": "8道",
+    "correct": false
+   },
+   {
+    "answer": "10道",
+    "correct": false
+   },
+   {
+    "answer": "15道",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳主任叫小李預定多少桌？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "10桌",
+    "correct": true
+   },
+   {
+    "answer": "8桌",
+    "correct": false
+   },
+   {
+    "answer": "12桌",
+    "correct": false
+   },
+   {
+    "answer": "20桌",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據錄音，小李怕辣嗎？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "小李特別喜歡吃辣，並建議對方試試",
+    "correct": true
+   },
+   {
+    "answer": "小李不喜歡吃辣",
+    "correct": false
+   },
+   {
+    "answer": "小李不習慣吃辣，但願意試",
+    "correct": false
+   },
+   {
+    "answer": "小李喜歡吃辣，但叫對方別試",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據錄音，李經理覺得那道菜怎麼樣？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "好吃但不好看",
+    "correct": true
+   },
+   {
+    "answer": "既不好吃也不好看",
+    "correct": false
+   },
+   {
+    "answer": "好看但不好吃",
+    "correct": false
+   },
+   {
+    "answer": "不但好吃而且好看",
+    "correct": false
+   }
+  ]
+ }
+]
