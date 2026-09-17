@@ -1,0 +1,288 @@
+[
+ {
+  "question": "「制服」又叫甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "工作服",
+    "correct": true
+   },
+   {
+    "answer": "便服",
+    "correct": false
+   },
+   {
+    "answer": "運動服",
+    "correct": false
+   },
+   {
+    "answer": "晚裝",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "粵語的「呔」，普通話叫甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "領帶",
+    "correct": true
+   },
+   {
+    "answer": "領結",
+    "correct": false
+   },
+   {
+    "answer": "圍巾",
+    "correct": false
+   },
+   {
+    "answer": "手套",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "曉明是甚麼工人？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "工地工人",
+    "correct": true
+   },
+   {
+    "answer": "汽車維修員",
+    "correct": false
+   },
+   {
+    "answer": "銷售員",
+    "correct": false
+   },
+   {
+    "answer": "貨車司機",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "大方是甚麼職業？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "汽車維修員",
+    "correct": true
+   },
+   {
+    "answer": "工地工人",
+    "correct": false
+   },
+   {
+    "answer": "廚師",
+    "correct": false
+   },
+   {
+    "answer": "保安員",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "粵語的「波鞋」，普通話叫甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "運動鞋",
+    "correct": true
+   },
+   {
+    "answer": "皮鞋",
+    "correct": false
+   },
+   {
+    "answer": "高跟鞋",
+    "correct": false
+   },
+   {
+    "answer": "拖鞋",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "工地工人曉明工作時要戴甚麼來保護自己？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "頭盔",
+    "correct": true
+   },
+   {
+    "answer": "手套",
+    "correct": false
+   },
+   {
+    "answer": "安全帶",
+    "correct": false
+   },
+   {
+    "answer": "雨衣",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "星期一至五工作時，他們穿甚麼顏色的鞋？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "黑色",
+    "correct": true
+   },
+   {
+    "answer": "白色",
+    "correct": false
+   },
+   {
+    "answer": "藍色",
+    "correct": false
+   },
+   {
+    "answer": "棕色",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "大方的制服是藍色的甚麼，配一條腰帶？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "連襠褲",
+    "correct": true
+   },
+   {
+    "answer": "牛仔褲",
+    "correct": false
+   },
+   {
+    "answer": "短褲",
+    "correct": false
+   },
+   {
+    "answer": "背心",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "新制服需要加幾套小號女式裙裝？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "2套",
+    "correct": true
+   },
+   {
+    "answer": "1套",
+    "correct": false
+   },
+   {
+    "answer": "3套",
+    "correct": false
+   },
+   {
+    "answer": "5套",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "申請配飾時，需要幾條領帶？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "5條",
+    "correct": true
+   },
+   {
+    "answer": "7條",
+    "correct": false
+   },
+   {
+    "answer": "8條",
+    "correct": false
+   },
+   {
+    "answer": "4條",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "製作工作服採用甚麼面料？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "人造纖維和防火面料",
+    "correct": true
+   },
+   {
+    "answer": "純棉和羊毛",
+    "correct": false
+   },
+   {
+    "answer": "絲綢和麻布",
+    "correct": false
+   },
+   {
+    "answer": "皮革和膠料",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據對話，「鑽空子」是甚麼意思？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "腐蝕性液體透過工作服接口位置滴到皮膚上",
+    "correct": true
+   },
+   {
+    "answer": "偷工減料",
+    "correct": false
+   },
+   {
+    "answer": "工作服接口位置沒有縫製好",
+    "correct": false
+   },
+   {
+    "answer": "員工工作時偷懶",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據錄音，李明覺得王雲怎麼樣？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "讚賞王雲辦事周到",
+    "correct": true
+   },
+   {
+    "answer": "覺得王雲做事馬虎",
+    "correct": false
+   },
+   {
+    "answer": "擔心王雲會出錯",
+    "correct": false
+   },
+   {
+    "answer": "認為王雲多此一舉",
+    "correct": false
+   }
+  ]
+ }
+]
