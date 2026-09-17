@@ -1,486 +1,310 @@
 [
-{
-"question": "「讀→读」「讓→让」用的是課本所講的哪一種簡化方法？",
-"time": 20000,
-"choices": [
-{
-"answer": "偏旁類推法：把繁體偏旁換成簡化偏旁",
-"correct": true
-},
-{
-"answer": "形聲法：換一個表音的簡單部件",
-"correct": false
-},
-{
-"answer": "草書楷化法：把草書字形規範化",
-"correct": false
-},
-{
-"answer": "採用古字法：用簡單的古字取代",
-"correct": false
-}
-]
-},
-{
-"question": "「種→种」「華→华」「優→优」在課本裡歸為哪一種方法？",
-"time": 20000,
-"choices": [
-{
-"answer": "會意法，把獨體字合併",
-"correct": false
-},
-{
-"answer": "局部刪改法，減去筆劃多的部分",
-"correct": false
-},
-{
-"answer": "偏旁類推法，整組偏旁替換",
-"correct": false
-},
-{
-"answer": "形聲法，以普通話發音為準",
-"correct": true
-}
-]
-},
-{
-"question": "「國→国」「災→灾」「淚→泪」用的是哪種簡化方法？",
-"time": 20000,
-"choices": [
-{
-"answer": "代替法：用同音字頂替",
-"correct": false
-},
-{
-"answer": "草書楷化法：照草書寫",
-"correct": false
-},
-{
-"answer": "會意法：把獨體字合併成新字的意思",
-"correct": true
-},
-{
-"answer": "形聲法：留下表音的聲旁",
-"correct": false
-}
-]
-},
-{
-"question": "「餘→余」「範→范」「傑→杰」屬於哪一種簡化方法？",
-"time": 20000,
-"choices": [
-{
-"answer": "局部刪改法：保留字的輪廓",
-"correct": false
-},
-{
-"answer": "代替法：用同音或近音字代替",
-"correct": true
-},
-{
-"answer": "會意法：合併幾個獨體字",
-"correct": false
-},
-{
-"answer": "古字法：還原成古字",
-"correct": false
-}
-]
-},
-{
-"question": "「對→对」「歡→欢」「區→区」「難→难」在局部刪改法裡屬於哪一類？",
-"time": 20000,
-"choices": [
-{
-"answer": "用簡單的符號代替",
-"correct": true
-},
-{
-"answer": "保留特徵",
-"correct": false
-},
-{
-"answer": "保留輪廓",
-"correct": false
-},
-{
-"answer": "保留聲旁",
-"correct": false
-}
-]
-},
-{
-"question": "「奮→奋」「齒→齿」「傘→伞」「龜→龟」屬於局部刪改法的哪一類？",
-"time": 20000,
-"choices": [
-{
-"answer": "保留特徵",
-"correct": false
-},
-{
-"answer": "用簡單的符號代替",
-"correct": false
-},
-{
-"answer": "採用古字",
-"correct": false
-},
-{
-"answer": "保留輪廓",
-"correct": true
-}
-]
-},
-{
-"question": "「網→网」「雲→云」「萬→万」「蟲→虫」共同用的是哪種方法？",
-"time": 20000,
-"choices": [
-{
-"answer": "會意法",
-"correct": false
-},
-{
-"answer": "偏旁類推法",
-"correct": false
-},
-{
-"answer": "採用古字法：以簡單的古字取代繁複的字",
-"correct": true
-},
-{
-"answer": "草書楷化法",
-"correct": false
-}
-]
-},
-{
-"question": "「實→实」「頭→头」「長→长」「樂→乐」是怎樣簡化出來的？",
-"time": 20000,
-"choices": [
-{
-"answer": "代替法：借一個同音字",
-"correct": false
-},
-{
-"answer": "草書楷化法：把草書字規範化成簡化字",
-"correct": true
-},
-{
-"answer": "採用古字法：改用古字",
-"correct": false
-},
-{
-"answer": "局部刪改法：刪掉一半",
-"correct": false
-}
-]
-},
-{
-"question": "類推「禪→禅」「彈→弹」時，繁體偏旁「單」被換成哪個部件？",
-"time": 20000,
-"choices": [
-{
-"answer": "单",
-"correct": true
-},
-{
-"answer": "当",
-"correct": false
-},
-{
-"answer": "呙",
-"correct": false
-},
-{
-"answer": "专",
-"correct": false
-}
-]
-},
-{
-"question": "下列哪一組字的簡化，是把「門」換成簡化偏旁「门」？",
-"time": 20000,
-"choices": [
-{
-"answer": "「對」和「歡」",
-"correct": false
-},
-{
-"answer": "「實」和「頭」",
-"correct": false
-},
-{
-"answer": "「網」和「無」",
-"correct": false
-},
-{
-"answer": "「們」和「悶」",
-"correct": true
-}
-]
-},
-{
-"question": "「禍→祸」「媧→娲」是把哪個繁體偏旁換成了「呙」？",
-"time": 20000,
-"choices": [
-{
-"answer": "侖",
-"correct": false
-},
-{
-"answer": "睪",
-"correct": false
-},
-{
-"answer": "咼",
-"correct": true
-},
-{
-"answer": "戠",
-"correct": false
-}
-]
-},
-{
-"question": "「職→职」「織→织」裡的偏旁「戠」被簡化成了什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "凡",
-"correct": false
-},
-{
-"answer": "只",
-"correct": true
-},
-{
-"answer": "日",
-"correct": false
-},
-{
-"answer": "口",
-"correct": false
-}
-]
-},
-{
-"question": "海報「保持出入風口及濕度感應器不受阻擋」中，「阻擋」的簡化字寫法是？",
-"time": 20000,
-"choices": [
-{
-"answer": "阻挡",
-"correct": true
-},
-{
-"answer": "阻档",
-"correct": false
-},
-{
-"answer": "阻当",
-"correct": false
-},
-{
-"answer": "阻拦",
-"correct": false
-}
-]
-},
-{
-"question": "海報句子「切勿長時间開啟」要改成簡化字，課本列出的是哪四個？",
-"time": 20000,
-"choices": [
-{
-"answer": "长、时、開、启",
-"correct": false
-},
-{
-"answer": "長、時、開、啓",
-"correct": false
-},
-{
-"answer": "长、時、开、啟",
-"correct": false
-},
-{
-"answer": "长、时、开、启",
-"correct": true
-}
-]
-},
-{
-"question": "「關係」的「係」簡化後寫作哪個字？",
-"time": 20000,
-"choices": [
-{
-"answer": "細",
-"correct": false
-},
-{
-"answer": "戯",
-"correct": false
-},
-{
-"answer": "系",
-"correct": true
-},
-{
-"answer": "係",
-"correct": false
-}
-]
-},
-{
-"question": "課本把「穀→谷」歸入代替法，理由是什麼？",
-"time": 20000,
-"choices": [
-{
-"answer": "照草書字形楷化而來",
-"correct": false
-},
-{
-"answer": "用普通話同音的簡單字「谷」頂替「穀」",
-"correct": true
-},
-{
-"answer": "「谷」是「穀」的古字",
-"correct": false
-},
-{
-"answer": "把「禾」偏旁類推成「口」",
-"correct": false
-}
-]
-},
-{
-"question": "第一篇介紹世博香港館，香港館會的設計涵蓋幾項元素？",
-"time": 20000,
-"choices": [
-{
-"answer": "六項",
-"correct": true
-},
-{
-"answer": "四項",
-"correct": false
-},
-{
-"answer": "五項",
-"correct": false
-},
-{
-"answer": "八項",
-"correct": false
-}
-]
-},
-{
-"question": "「中西文化薈萃」中的「薈萃」，簡化字寫法是？",
-"time": 20000,
-"choices": [
-{
-"answer": "会萃",
-"correct": false
-},
-{
-"answer": "荟翠",
-"correct": false
-},
-{
-"answer": "檜瘁",
-"correct": false
-},
-{
-"answer": "荟萃",
-"correct": true
-}
-]
-},
-{
-"question": "「濟→济」的右邊換成了哪個部件？課本還用它類推出「挤、跻、剂」",
-"time": 20000,
-"choices": [
-{
-"answer": "斗",
-"correct": false
-},
-{
-"answer": "升",
-"correct": false
-},
-{
-"answer": "齐",
-"correct": true
-},
-{
-"answer": "文",
-"correct": false
-}
-]
-},
-{
-"question": "根據第二篇，下列哪一項屬於香港天文台的工作？",
-"time": 20000,
-"choices": [
-{
-"answer": "管理本港的船期",
-"correct": false
-},
-{
-"answer": "監測和評估輻射水平",
-"correct": true
-},
-{
-"answer": "簽發食物衛生牌照",
-"correct": false
-},
-{
-"answer": "維修市民的電器",
-"correct": false
-}
-]
-},
-{
-"question": "第三篇裡，「預備合約文件」列在哪一份工作簡述中？",
-"time": 20000,
-"choices": [
-{
-"answer": "屋宇設備技術員",
-"correct": true
-},
-{
-"answer": "屋宇設備技工",
-"correct": false
-},
-{
-"answer": "兩份工作簡述都有",
-"correct": false
-},
-{
-"answer": "兩份都沒有列",
-"correct": false
-}
-]
-},
-{
-"question": "活動四的簡化字遊戲，要求把哪一類字圈出來，隱藏的漢字才會顯示？",
-"time": 20000,
-"choices": [
-{
-"answer": "用草書楷化法簡化的字",
-"correct": false
-},
-{
-"answer": "採用古字法簡化的字",
-"correct": false
-},
-{
-"answer": "用同音代替法換過的字",
-"correct": false
-},
-{
-"answer": "用偏旁類推法簡化的字",
-"correct": true
-}
-]
-}
+ {
+  "question": "「讀→读」「讓→让」用的是課本所講的哪一種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "偏旁類推法：把繁體偏旁換成簡化偏旁",
+    "correct": true
+   },
+   {
+    "answer": "形聲法：換一個表音的簡單部件",
+    "correct": false
+   },
+   {
+    "answer": "草書楷化法：把草書字形規範化",
+    "correct": false
+   },
+   {
+    "answer": "採用古字法：用簡單的古字取代",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「種→种」「華→华」「優→优」在課本裡歸為哪一種方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "會意法，把獨體字合併",
+    "correct": false
+   },
+   {
+    "answer": "局部刪改法，減去筆劃多的部分",
+    "correct": false
+   },
+   {
+    "answer": "偏旁類推法，整組偏旁替換",
+    "correct": false
+   },
+   {
+    "answer": "形聲法，以普通話發音為準",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「國→国」「災→灾」「淚→泪」用的是哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "代替法：用同音字頂替",
+    "correct": false
+   },
+   {
+    "answer": "草書楷化法：照草書寫",
+    "correct": false
+   },
+   {
+    "answer": "會意法：把獨體字合併成新字的意思",
+    "correct": true
+   },
+   {
+    "answer": "形聲法：留下表音的聲旁",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「餘→余」「範→范」「傑→杰」屬於哪一種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "局部刪改法：保留字的輪廓",
+    "correct": false
+   },
+   {
+    "answer": "代替法：用同音或近音字代替",
+    "correct": true
+   },
+   {
+    "answer": "會意法：合併幾個獨體字",
+    "correct": false
+   },
+   {
+    "answer": "古字法：還原成古字",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「對→对」「歡→欢」「區→区」「難→难」在局部刪改法裡屬於哪一類？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "用簡單的符號代替",
+    "correct": true
+   },
+   {
+    "answer": "保留特徵",
+    "correct": false
+   },
+   {
+    "answer": "保留輪廓",
+    "correct": false
+   },
+   {
+    "answer": "保留聲旁",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「奮→奋」「齒→齿」「傘→伞」「龜→龟」屬於局部刪改法的哪一類？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "保留特徵",
+    "correct": false
+   },
+   {
+    "answer": "用簡單的符號代替",
+    "correct": false
+   },
+   {
+    "answer": "採用古字",
+    "correct": false
+   },
+   {
+    "answer": "保留輪廓",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「網→网」「雲→云」「萬→万」「蟲→虫」共同用的是哪種方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "會意法",
+    "correct": false
+   },
+   {
+    "answer": "偏旁類推法",
+    "correct": false
+   },
+   {
+    "answer": "採用古字法：以簡單的古字取代繁複的字",
+    "correct": true
+   },
+   {
+    "answer": "草書楷化法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「實→实」「頭→头」「長→长」「樂→乐」是怎樣簡化出來的？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "代替法：借一個同音字",
+    "correct": false
+   },
+   {
+    "answer": "草書楷化法：把草書字規範化成簡化字",
+    "correct": true
+   },
+   {
+    "answer": "採用古字法：改用古字",
+    "correct": false
+   },
+   {
+    "answer": "局部刪改法：刪掉一半",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "類推「禪→禅」「彈→弹」時，繁體偏旁「單」被換成哪個部件？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "单",
+    "correct": true
+   },
+   {
+    "answer": "当",
+    "correct": false
+   },
+   {
+    "answer": "呙",
+    "correct": false
+   },
+   {
+    "answer": "专",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "下列哪一組字的簡化，是把「門」換成簡化偏旁「门」？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "「對」和「歡」",
+    "correct": false
+   },
+   {
+    "answer": "「實」和「頭」",
+    "correct": false
+   },
+   {
+    "answer": "「網」和「無」",
+    "correct": false
+   },
+   {
+    "answer": "「們」和「悶」",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "海報「保持出入風口及濕度感應器不受阻擋」中，「阻擋」的簡化字寫法是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "阻挡",
+    "correct": true
+   },
+   {
+    "answer": "阻档",
+    "correct": false
+   },
+   {
+    "answer": "阻当",
+    "correct": false
+   },
+   {
+    "answer": "阻拦",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「關係」的「係」簡化後寫作哪個字？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "細",
+    "correct": false
+   },
+   {
+    "answer": "戯",
+    "correct": false
+   },
+   {
+    "answer": "系",
+    "correct": true
+   },
+   {
+    "answer": "係",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "第一篇介紹世博香港館，香港館會的設計涵蓋幾項元素？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "六項",
+    "correct": true
+   },
+   {
+    "answer": "四項",
+    "correct": false
+   },
+   {
+    "answer": "五項",
+    "correct": false
+   },
+   {
+    "answer": "八項",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據第二篇，下列哪一項屬於香港天文台的工作？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "管理本港的船期",
+    "correct": false
+   },
+   {
+    "answer": "監測和評估輻射水平",
+    "correct": true
+   },
+   {
+    "answer": "簽發食物衛生牌照",
+    "correct": false
+   },
+   {
+    "answer": "維修市民的電器",
+    "correct": false
+   }
+  ]
+ }
 ]
