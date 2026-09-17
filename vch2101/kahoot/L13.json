@@ -1,0 +1,288 @@
+[
+ {
+  "question": "腱鞘炎的患病部位會有什麼症狀？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "疼痛、腫脹",
+    "correct": true
+   },
+   {
+    "answer": "發燒、咳嗽",
+    "correct": false
+   },
+   {
+    "answer": "耳鳴、聽力衰退",
+    "correct": false
+   },
+   {
+    "answer": "皮膚紅疹",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "職業性失聰是因為長期處於什麼環境下造成的？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "高分貝噪音環境",
+    "correct": true
+   },
+   {
+    "answer": "高溫環境",
+    "correct": false
+   },
+   {
+    "answer": "化學品環境",
+    "correct": false
+   },
+   {
+    "answer": "粉塵環境",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "中暑是因為人體不能適應什麼而產生病變？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "高溫",
+    "correct": true
+   },
+   {
+    "answer": "低溫",
+    "correct": false
+   },
+   {
+    "answer": "強光",
+    "correct": false
+   },
+   {
+    "answer": "噪音",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "周組長說，我們應該小心處理和擺放哪些東西，以免傷到人？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "割刀、剪刀及圖釘等尖銳物件",
+    "correct": true
+   },
+   {
+    "answer": "水杯和文件夾",
+    "correct": false
+   },
+   {
+    "answer": "電腦和打印機",
+    "correct": false
+   },
+   {
+    "answer": "拖鞋和雨傘",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "新來的歐陽是因為什麼東西而滑倒的？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "小水洼",
+    "correct": true
+   },
+   {
+    "answer": "玻璃門",
+    "correct": false
+   },
+   {
+    "answer": "電線",
+    "correct": false
+   },
+   {
+    "answer": "小剪刀",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "周組長說他自己上星期差點被什麼東西絆倒？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "放在地上的工具箱",
+    "correct": true
+   },
+   {
+    "answer": "凌亂的電線",
+    "correct": false
+   },
+   {
+    "answer": "玻璃門",
+    "correct": false
+   },
+   {
+    "answer": "小剪刀",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳主管說有幾位同事工作的地方有什麼，還把送貨來的小李絆倒了？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "凌亂鬆脫的電線",
+    "correct": true
+   },
+   {
+    "answer": "小水洼",
+    "correct": false
+   },
+   {
+    "answer": "工具箱",
+    "correct": false
+   },
+   {
+    "answer": "玻璃門",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "對話中「冒失鬼」的意思是？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "粗心大意的人",
+    "correct": true
+   },
+   {
+    "answer": "小心謹慎的人",
+    "correct": false
+   },
+   {
+    "answer": "喜歡冒險的人",
+    "correct": false
+   },
+   {
+    "answer": "反應靈敏的人",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "梁平昌患了什麼病？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "熱衰竭",
+    "correct": true
+   },
+   {
+    "answer": "中暑",
+    "correct": false
+   },
+   {
+    "answer": "間歇性抽筋",
+    "correct": false
+   },
+   {
+    "answer": "身體缺乏鹽份",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "周醫生說，食物擺在外面展示超過多長時間，病菌就會不斷滋長？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "四小時",
+    "correct": true
+   },
+   {
+    "answer": "十小時",
+    "correct": false
+   },
+   {
+    "answer": "八小時",
+    "correct": false
+   },
+   {
+    "answer": "兩小時",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "根據口罩的介紹，N95型號表示可以過濾多少以上的非油性顆粒？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "95%",
+    "correct": true
+   },
+   {
+    "answer": "99%",
+    "correct": false
+   },
+   {
+    "answer": "100%",
+    "correct": false
+   },
+   {
+    "answer": "70%",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "辦公室職業安全對話中，老許說：「有什麼大驚小怪的呢？我才不相信。」他的態度是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "不相信、認為事情沒那麼嚴重",
+    "correct": true
+   },
+   {
+    "answer": "十分擔心",
+    "correct": false
+   },
+   {
+    "answer": "想跟周組長學習",
+    "correct": false
+   },
+   {
+    "answer": "贊成小郭的看法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲說：「老媽這幾天總躺在床上，真叫我擔心。」乙回答：「我老早就勸她悠著點兒的，前幾天還去打麻將，這叫自作自受。」回話人的語氣是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "責怪",
+    "correct": true
+   },
+   {
+    "answer": "後悔",
+    "correct": false
+   },
+   {
+    "answer": "關心",
+    "correct": false
+   },
+   {
+    "answer": "調侃",
+    "correct": false
+   }
+  ]
+ }
+]
