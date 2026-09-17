@@ -1,0 +1,288 @@
+[
+ {
+  "question": "「塞車」的普通話說法是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "堵車",
+    "correct": true
+   },
+   {
+    "answer": "停車",
+    "correct": false
+   },
+   {
+    "answer": "撞車",
+    "correct": false
+   },
+   {
+    "answer": "開車",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「搭車」的普通話說法是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "乘車",
+    "correct": true
+   },
+   {
+    "answer": "叫車",
+    "correct": false
+   },
+   {
+    "answer": "泊車",
+    "correct": false
+   },
+   {
+    "answer": "追車",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「盪失路」的普通話說法是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "迷路",
+    "correct": true
+   },
+   {
+    "answer": "問路",
+    "correct": false
+   },
+   {
+    "answer": "讓路",
+    "correct": false
+   },
+   {
+    "answer": "拐彎",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "小王這次要送的貨，除了兩箱洗髮水，還有一箱是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "潤膚露",
+    "correct": true
+   },
+   {
+    "answer": "潤膚霜",
+    "correct": false
+   },
+   {
+    "answer": "護髮素",
+    "correct": false
+   },
+   {
+    "answer": "沐浴露",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "老闆要小王把貨送到旺角的哪間公司？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "終身美麗形象設計公司",
+    "correct": true
+   },
+   {
+    "answer": "永盛電子工具公司",
+    "correct": false
+   },
+   {
+    "answer": "天行公司",
+    "correct": false
+   },
+   {
+    "answer": "大發公司",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "老闆要小王一定要趕在幾點前送到？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "上午十二點前",
+    "correct": true
+   },
+   {
+    "answer": "上午十點前",
+    "correct": false
+   },
+   {
+    "answer": "下午兩點前",
+    "correct": false
+   },
+   {
+    "answer": "下午五點前",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "老闆建議小王用甚麼交通工具去旺角？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "坐地鐵到旺角站",
+    "correct": true
+   },
+   {
+    "answer": "坐69路公交車",
+    "correct": false
+   },
+   {
+    "answer": "坐計程車",
+    "correct": false
+   },
+   {
+    "answer": "自己開車",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "老李下午要到哪裡收貨？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "葵涌貨櫃碼頭",
+    "correct": true
+   },
+   {
+    "answer": "葵芳貨櫃碼頭",
+    "correct": false
+   },
+   {
+    "answer": "中環碼頭",
+    "correct": false
+   },
+   {
+    "answer": "觀塘碼頭",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "出差時，他們從北京飛往哪裡參加時裝展覽會？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "巴黎",
+    "correct": true
+   },
+   {
+    "answer": "倫敦",
+    "correct": false
+   },
+   {
+    "answer": "上海",
+    "correct": false
+   },
+   {
+    "answer": "東京",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳經理更改機票後，改為幾號出發？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "10月21號",
+    "correct": true
+   },
+   {
+    "answer": "10月19號",
+    "correct": false
+   },
+   {
+    "answer": "10月25號",
+    "correct": false
+   },
+   {
+    "answer": "10月11號",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "陳經理和王偉坐的機票艙位是甚麼？",
+  "time": 10000,
+  "choices": [
+   {
+    "answer": "經濟艙",
+    "correct": true
+   },
+   {
+    "answer": "商務艙",
+    "correct": false
+   },
+   {
+    "answer": "頭等艙",
+    "correct": false
+   },
+   {
+    "answer": "豪華艙",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲問明早七點可否去中港碼頭接客戶，乙答「一大早就要出遠門兒，我才不去呢」，乙的意思是甚麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "不願意幫忙，嫌時間太早",
+    "correct": true
+   },
+   {
+    "answer": "很樂意去接客戶",
+    "correct": false
+   },
+   {
+    "answer": "不喜歡那位客戶",
+    "correct": false
+   },
+   {
+    "answer": "覺得碼頭太遠",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲問乙有沒有替王總裝好電腦，乙答「我以為王總自己來」。乙沒完成任務的原因是甚麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "他會錯意了",
+    "correct": true
+   },
+   {
+    "answer": "他不想做",
+    "correct": false
+   },
+   {
+    "answer": "電腦壞了",
+    "correct": false
+   },
+   {
+    "answer": "他沒有時間",
+    "correct": false
+   }
+  ]
+ }
+]
