@@ -1,1 +1,310 @@
-[{"question": "漢字字體演變的大致順序是？", "time": 30000, "choices": [{"answer": "甲骨文、金文、篆書、隸書、草書、楷書", "correct": true}, {"answer": "金文、甲骨文、楷書、隸書、草書、篆書", "correct": false}, {"answer": "篆書、隸書、甲骨文、金文、楷書、草書", "correct": false}, {"answer": "楷書、草書、隸書、篆書、金文、甲骨文", "correct": false}]}, {"question": "甲骨文主要出現在哪個朝代？", "time": 20000, "choices": [{"answer": "周朝", "correct": false}, {"answer": "秦朝", "correct": false}, {"answer": "漢朝", "correct": false}, {"answer": "殷商", "correct": true}]}, {"question": "金文又叫做什麼？", "time": 20000, "choices": [{"answer": "簡牘文", "correct": false}, {"answer": "帛書文", "correct": false}, {"answer": "鐘鼎文", "correct": true}, {"answer": "石鼓文", "correct": false}]}, {"question": "小篆是哪個朝代的字體？", "time": 20000, "choices": [{"answer": "漢朝", "correct": false}, {"answer": "秦朝", "correct": true}, {"answer": "商朝", "correct": false}, {"answer": "周朝", "correct": false}]}, {"question": "漢隸的字形特徵是？", "time": 30000, "choices": [{"answer": "字形扁平，向外攤開", "correct": true}, {"answer": "字形狹長，線條纖細", "correct": false}, {"answer": "筆畫連帶，結體簡約", "correct": false}, {"answer": "圓轉勻稱，略帶橢圓", "correct": false}]}, {"question": "行書的特點是？", "time": 30000, "choices": [{"answer": "字形扁平，方折棱角", "correct": false}, {"answer": "線條纖細，棱角鮮明", "correct": false}, {"answer": "筆畫放縱，不易辨認", "correct": false}, {"answer": "接近楷書但不拘謹，書寫效率高", "correct": true}]}, {"question": "「雲」的簡化字「云」，用了哪種簡化方法？", "time": 20000, "choices": [{"answer": "代替法", "correct": false}, {"answer": "形聲法", "correct": false}, {"answer": "採用古字法", "correct": true}, {"answer": "草書楷化法", "correct": false}]}, {"question": "「網」的簡化字「网」是？", "time": 20000, "choices": [{"answer": "符號代替", "correct": false}, {"answer": "採用古字", "correct": true}, {"answer": "草書楷化", "correct": false}, {"answer": "會意新造", "correct": false}]}, {"question": "「無」的簡化字是？", "time": 20000, "choices": [{"answer": "无", "correct": true}, {"answer": "抚", "correct": false}, {"answer": "芜", "correct": false}, {"answer": "旡", "correct": false}]}, {"question": "「塗」的簡化字是？", "time": 20000, "choices": [{"answer": "途", "correct": false}, {"answer": "除", "correct": false}, {"answer": "凃", "correct": false}, {"answer": "涂", "correct": true}]}, {"question": "「萬」的簡化字是？", "time": 20000, "choices": [{"answer": "蝎", "correct": false}, {"answer": "迈", "correct": false}, {"answer": "万", "correct": true}, {"answer": "方", "correct": false}]}, {"question": "「禮」的簡化字是？", "time": 20000, "choices": [{"answer": "祿", "correct": false}, {"answer": "礼", "correct": true}, {"answer": "祀", "correct": false}, {"answer": "札", "correct": false}]}, {"question": "「爾」的簡化字是？", "time": 20000, "choices": [{"answer": "尔", "correct": true}, {"answer": "玺", "correct": false}, {"answer": "珎", "correct": false}, {"answer": "尓", "correct": false}]}, {"question": "「個」的簡化字是？", "time": 20000, "choices": [{"answer": "固", "correct": false}, {"answer": "箇", "correct": false}, {"answer": "介", "correct": false}, {"answer": "个", "correct": true}]}, {"question": "草書楷化法是把草書的字形規範化成什麼？", "time": 20000, "choices": [{"answer": "行書體", "correct": false}, {"answer": "篆書體", "correct": false}, {"answer": "楷書體", "correct": true}, {"answer": "隸書體", "correct": false}]}, {"question": "「馬」的簡化字是？", "time": 20000, "choices": [{"answer": "冯", "correct": false}, {"answer": "马", "correct": true}, {"answer": "駡", "correct": false}, {"answer": "码", "correct": false}]}, {"question": "「車」的簡化字是？", "time": 20000, "choices": [{"answer": "车", "correct": true}, {"answer": "连", "correct": false}, {"answer": "轨", "correct": false}, {"answer": "东", "correct": false}]}, {"question": "「書」的簡化字是？", "time": 20000, "choices": [{"answer": "画", "correct": false}, {"answer": "隶", "correct": false}, {"answer": "事", "correct": false}, {"answer": "书", "correct": true}]}, {"question": "「圖」的簡化字是？", "time": 20000, "choices": [{"answer": "囯", "correct": false}, {"answer": "圆", "correct": false}, {"answer": "图", "correct": true}, {"answer": "囲", "correct": false}]}, {"question": "「產」的簡化字是？", "time": 20000, "choices": [{"answer": "産", "correct": false}, {"answer": "产", "correct": true}, {"answer": "彦", "correct": false}, {"answer": "顏", "correct": false}]}, {"question": "「體」的簡化字「体」，本來是民間流行的什麼字？", "time": 30000, "choices": [{"answer": "俗體字", "correct": true}, {"answer": "古字", "correct": false}, {"answer": "草書字", "correct": false}, {"answer": "異體字", "correct": false}]}, {"question": "「應」的簡化字是？", "time": 20000, "choices": [{"answer": "應", "correct": false}, {"answer": "慶", "correct": false}, {"answer": "厘", "correct": false}, {"answer": "应", "correct": true}]}, {"question": "「臨」的簡化字是？", "time": 20000, "choices": [{"answer": "覧", "correct": false}, {"answer": "覽", "correct": false}, {"answer": "临", "correct": true}, {"answer": "監", "correct": false}]}, {"question": "「為」的簡化字是？", "time": 20000, "choices": [{"answer": "办", "correct": false}, {"answer": "为", "correct": true}, {"answer": "爲", "correct": false}, {"answer": "韦", "correct": false}]}]
+[
+ {
+  "question": "漢字字體演變的大致順序是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "甲骨文、金文、篆書、隸書、草書、楷書",
+    "correct": true
+   },
+   {
+    "answer": "金文、甲骨文、楷書、隸書、草書、篆書",
+    "correct": false
+   },
+   {
+    "answer": "篆書、隸書、甲骨文、金文、楷書、草書",
+    "correct": false
+   },
+   {
+    "answer": "楷書、草書、隸書、篆書、金文、甲骨文",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "甲骨文主要出現在哪個朝代？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "周朝",
+    "correct": false
+   },
+   {
+    "answer": "秦朝",
+    "correct": false
+   },
+   {
+    "answer": "漢朝",
+    "correct": false
+   },
+   {
+    "answer": "殷商",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "小篆是哪個朝代的字體？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "漢朝",
+    "correct": false
+   },
+   {
+    "answer": "秦朝",
+    "correct": true
+   },
+   {
+    "answer": "商朝",
+    "correct": false
+   },
+   {
+    "answer": "周朝",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "漢隸的字形特徵是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "字形扁平，向外攤開",
+    "correct": true
+   },
+   {
+    "answer": "字形狹長，線條纖細",
+    "correct": false
+   },
+   {
+    "answer": "筆畫連帶，結體簡約",
+    "correct": false
+   },
+   {
+    "answer": "圓轉勻稱，略帶橢圓",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "行書的特點是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "字形扁平，方折棱角",
+    "correct": false
+   },
+   {
+    "answer": "線條纖細，棱角鮮明",
+    "correct": false
+   },
+   {
+    "answer": "筆畫放縱，不易辨認",
+    "correct": false
+   },
+   {
+    "answer": "接近楷書但不拘謹，書寫效率高",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「雲」的簡化字「云」，用了哪種簡化方法？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "代替法",
+    "correct": false
+   },
+   {
+    "answer": "形聲法",
+    "correct": false
+   },
+   {
+    "answer": "採用古字法",
+    "correct": true
+   },
+   {
+    "answer": "草書楷化法",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「網」的簡化字「网」是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "符號代替",
+    "correct": false
+   },
+   {
+    "answer": "採用古字",
+    "correct": true
+   },
+   {
+    "answer": "草書楷化",
+    "correct": false
+   },
+   {
+    "answer": "會意新造",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「禮」的簡化字是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "祿",
+    "correct": false
+   },
+   {
+    "answer": "礼",
+    "correct": true
+   },
+   {
+    "answer": "祀",
+    "correct": false
+   },
+   {
+    "answer": "札",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "草書楷化法是把草書的字形規範化成什麼？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "行書體",
+    "correct": false
+   },
+   {
+    "answer": "篆書體",
+    "correct": false
+   },
+   {
+    "answer": "楷書體",
+    "correct": true
+   },
+   {
+    "answer": "隸書體",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「馬」的簡化字是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "冯",
+    "correct": false
+   },
+   {
+    "answer": "马",
+    "correct": true
+   },
+   {
+    "answer": "駡",
+    "correct": false
+   },
+   {
+    "answer": "码",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「車」的簡化字是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "车",
+    "correct": true
+   },
+   {
+    "answer": "连",
+    "correct": false
+   },
+   {
+    "answer": "轨",
+    "correct": false
+   },
+   {
+    "answer": "东",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「書」的簡化字是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "画",
+    "correct": false
+   },
+   {
+    "answer": "隶",
+    "correct": false
+   },
+   {
+    "answer": "事",
+    "correct": false
+   },
+   {
+    "answer": "书",
+    "correct": true
+   }
+  ]
+ },
+ {
+  "question": "「體」的簡化字「体」，本來是民間流行的什麼字？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "俗體字",
+    "correct": true
+   },
+   {
+    "answer": "古字",
+    "correct": false
+   },
+   {
+    "answer": "草書字",
+    "correct": false
+   },
+   {
+    "answer": "異體字",
+    "correct": false
+   }
+  ]
+ },
+ {
+  "question": "「為」的簡化字是？",
+  "time": 20000,
+  "choices": [
+   {
+    "answer": "办",
+    "correct": false
+   },
+   {
+    "answer": "为",
+    "correct": true
+   },
+   {
+    "answer": "爲",
+    "correct": false
+   },
+   {
+    "answer": "韦",
+    "correct": false
+   }
+  ]
+ }
+]
