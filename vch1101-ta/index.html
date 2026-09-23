@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>項目評核（TA）模擬考試・帶你一步步做｜VCH1101</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang TC","Noto Sans CJK TC",system-ui,sans-serif;background:#0f1720;color:#e8f1f6;line-height:1.75;-webkit-text-size-adjust:100%}
+.bar{position:sticky;top:0;z-index:20;background:#0f1720f2;backdrop-filter:blur(6px);border-bottom:1px solid #24333f;display:flex;align-items:center;gap:9px;padding:9px 14px;flex-wrap:wrap}
+.bar b{flex:1;color:#ffd08a;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar a,.bar button{font:inherit;font-size:13px;color:#bfe3ff;background:none;border:1px solid #2c5068;padding:6px 12px;border-radius:999px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.bar a:hover,.bar button:hover{background:#1c2c3a}
+.hero{padding:26px 20px 20px;background:linear-gradient(180deg,#182633,#0f1720);border-bottom:1px solid #1e2c38}
+.hero h1{font-size:26px;letter-spacing:1px;color:#ffd08a;margin-bottom:8px}
+.hero p{color:#a8bcc9;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chip{background:#12212c;border:1px solid #24455a;border-radius:999px;padding:7px 14px;font-size:13.5px;color:#cfe6f2}
+.chip b{color:#7ff0d9}
+.chip.warn{border-color:#7a4a1c;background:#241708;color:#ffcf9a}
+.chip.warn b{color:#ffb066}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 70px}
+.card{background:#14212b;border:1px solid #22323f;border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.card h2{font-size:20px;color:#7ff0d9;margin-bottom:6px;letter-spacing:.5px}
+.card h2 .n{background:#14b8a6;color:#04211d;border-radius:8px;padding:2px 10px;font-size:15px;margin-right:9px;vertical-align:2px}
+.card .sub{color:#93a9ba;font-size:13.5px;margin-bottom:14px}
+.roles{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.role{flex:1;min-width:190px;background:#0e1b24;border:1px solid #24455a;border-radius:12px;padding:13px 15px}
+.role b{display:block;color:#ffd08a;font-size:16px}
+.role span{color:#a8bcc9;font-size:13.5px}
+.role.me{border-color:#7a4a1c;background:#1d1305}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{font:inherit;font-size:14px;font-weight:700;color:#bfe6ff;background:#15384b;border:1px solid #2b6076;border-radius:10px;padding:9px 16px;cursor:pointer}
+.tabs button.on{background:#14b8a6;color:#04211d;border-color:#14b8a6}
+.pane{display:none}.pane.on{display:block}
+.wa{background:#0b1620;border:1px solid #24455a;border-radius:14px;padding:14px}
+.wa .meta{text-align:center;color:#8fa6b4;font-size:12.5px;margin-bottom:10px}
+.msg{max-width:78%;padding:9px 13px;border-radius:14px;margin-bottom:9px;font-size:14.5px;line-height:1.65}
+.msg .who{display:block;font-size:11.5px;color:#8fa6b4;margin-top:3px}
+.msg.r{background:#1f4d3d;margin-left:auto;border-bottom-right-radius:4px}
+.msg.l{background:#243a4a;border-bottom-left-radius:4px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px}
+th,td{border:1px solid #2b4557;padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:#173040;color:#bfe6ff;font-weight:700}
+td.ok{color:#7ff0d9;font-weight:700}
+td.no{color:#ff9a9a}
+.q{border-top:1px dashed #24333f;padding:14px 0 4px}
+.q:first-of-type{border-top:0}
+.qh{display:flex;gap:10px;align-items:baseline}
+.qn{background:#24455a;color:#bfe6ff;font-size:12.5px;font-weight:700;border-radius:7px;padding:2px 8px;flex:0 0 auto}
+.qt{font-size:16.5px;font-weight:700;color:#eaf4fa}
+.rv{margin-top:9px;font:inherit;font-size:13.5px;font-weight:700;color:#ffd08a;background:#241708;border:1px solid #7a4a1c;border-radius:999px;padding:7px 16px;cursor:pointer}
+.rv:hover{background:#331f09}
+.ans{display:none;margin-top:10px;background:#0d1a14;border-left:4px solid #14b8a6;border-radius:0 10px 10px 0;padding:12px 15px;font-size:15px;color:#d7f2ea}
+.ans.show{display:block}
+.ans b{color:#7ff0d9}
+.ans .hl{background:#3a2a08;color:#ffd08a;padding:1px 6px;border-radius:5px;font-weight:700}
+.mail{background:#fff;color:#1a1a1a;border-radius:12px;padding:20px 22px;font-size:15px;line-height:1.9;white-space:pre-wrap;font-family:"PingFang TC",system-ui,sans-serif}
+.mail .f{display:block;color:#0b5c56;font-weight:700}
+.mail .tag{background:#ffe9b8;border-radius:4px;padding:0 3px}
+.lbl{display:inline-block;font-size:12px;color:#04211d;background:#ffd08a;border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.chk{display:block;background:#0e1b24;border:1px solid #24455a;border-radius:10px;padding:11px 14px;margin-bottom:9px;cursor:pointer;font-size:15px}
+.chk input{margin-right:10px;transform:scale(1.25);vertical-align:-2px}
+.chk.done{background:#0d2019;border-color:#1f5c55;color:#9fd8cf;text-decoration:line-through}
+.prog{font-size:14px;color:#7ff0d9;font-weight:700;margin-top:6px}
+details.teacher{background:#1a1206;border:1px solid #6a4213}
+details.teacher summary{cursor:pointer;font-size:18px;font-weight:700;color:#ffb066;letter-spacing:.5px}
+details.teacher .inner{margin-top:14px}
+details.teacher h3{color:#ffd08a;font-size:16.5px;margin:14px 0 6px}
+details.teacher ul{margin-left:20px}details.teacher li{margin-bottom:6px;color:#e6d6c2;font-size:14.5px}
+.exit{background:#101c26;border:1px dashed #2b4557;border-radius:12px;padding:14px 16px;font-size:15px;color:#cfe6f2}
+.exit li{margin:4px 0 4px 20px}
+footer{color:#7c93a1;font-size:13px;text-align:center;padding:10px 16px 40px}
+@media(max-width:620px){.hero h1{font-size:21px}.card{padding:16px 15px}.msg{max-width:92%}.qt{font-size:15.5px}}
+@media print{body{background:#fff;color:#000}.bar,.rv,footer{display:none}.ans{display:block!important}.card{border-color:#bbb;background:#fff;color:#000;break-inside:avoid}.card h2{color:#046} .qt{color:#000}.chip{background:#eee;color:#000;border-color:#bbb}}
+</style></head><body>
+
+<div class="bar">
+  <b>🎯 項目評核（TA）模擬考試・帶你一步步做</b>
+  <button id="allRv">👀 全部揭開</button>
+  <a href="https://wilkat2009-droid.github.io/cola-pages/vch1101/files/AY2627_VCH1101_模擬考試_預備練習.pdf" target="_blank">⬇ 空白練習（PDF）</a>
+  <a href="https://wilkat2009-droid.github.io/cola-pages/vch1101/files/ta_mock.html" target="_blank">📄 線上閱讀</a>
+  <a href="https://wilkat2009-droid.github.io/cola-pages/vch1101/" target="_top">← 回總台</a>
+</div>
+
+<div class="hero">
+  <h1>模擬考試：寫一封簡短電郵</h1>
+  <p>正式評核（TA）佔本科目 <b style="color:#ffd08a">35%</b>，30 分鐘寫一封電郵。這份模擬就是官方派給你的預備練習——我們現在把它拆到見骨。</p>
+  <div class="chips">
+    <span class="chip">⏱ <b>30 分鐘</b></span>
+    <span class="chip">📝 形式：<b>撰寫一封簡短電郵</b></span>
+    <span class="chip">📚 可以查：<b>課堂筆記（文本）＋預備練習</b></span>
+    <span class="chip warn">🚫 唔可以：<b>交談／交換資料／用手機</b></span>
+    <span class="chip warn">🚫 唔可以：<b>用 AI 生成內容</b>（違反學術誠信會被處分）</span>
+    <span class="chip">🎫 缺席要 <b>3 個工作天內</b>交證明文件才有補考</span>
+  </div>
+</div>
+
+<main>
+
+<section class="card">
+  <h2><span class="n">情景</span>先搞清楚：你是誰、寫給誰</h2>
+  <div class="sub">你是建鴻智能家居公司的行政助理汪嘉明。冼國强總經理因臨時有事未能回港，需要調整他的工作安排。</div>
+  <div class="roles">
+    <div class="role me"><b>汪嘉明（你）</b><span>建鴻智能家居公司 · 行政助理<br>＝ 發文者</span></div>
+    <div class="role"><b>曹國興</b><span>主管<br>＝ 收件者</span></div>
+    <div class="role"><b>冼國强</b><span>總經理 · 人在上海<br>＝ 副本（抄送）</span></div>
+    <div class="role"><b>盈建科技公司</b><span>洽談合作的對象<br>＝ 會議另一方</span></div>
+  </div>
+  <div class="sub" style="margin-top:16px;margin-bottom:0">任務：參考資料一至三，寫電郵給曹國興，並抄送冼總經理。內容要有 <b style="color:#ffd08a">① 寫電郵的原因</b>、<b style="color:#ffd08a">② 需要對方完成的工作及詳情（日期、時間、地點等）</b>。</div>
+</section>
+
+<section class="card">
+  <h2><span class="n">資料</span>三張資料，缺一題都答不出</h2>
+  <div class="sub">考場上你可以逐張對。現在先點開看清楚。</div>
+  <div class="tabs">
+    <button class="on" data-p="d1">資料一 · WhatsApp 對話</button>
+    <button data-p="d2">資料二 · 工作日程</button>
+    <button data-p="d3">資料三 · 會議室預訂表</button>
+  </div>
+
+  <div class="pane on" id="d1">
+    <div class="wa">
+      <div class="meta">7 月 9 日 17:10 · 曹國興（在線上）</div>
+      <div class="msg r">小曹，我在上海出差，不慎遺失證件，補領手續需一至兩天，暫無法回港。明天及後天的工作，麻煩你協助跟進一下。<span class="who">冼總經理</span></div>
+      <div class="msg l">沒問題，這邊交給我處理。<span class="who">曹國興</span></div>
+      <div class="msg r">明天上午與盈建科技洽談合作，原定地點為多功能會議室。<span class="who">冼總經理</span></div>
+      <div class="msg l">冼總，剛收到通知，多功能會議室因空調故障暫停使用。<span class="who">曹國興</span></div>
+      <div class="msg r">那就改到其他會議室。我請助理小汪發電郵給你，詳細交代這兩天的安排。我下週一回港後，再向你瞭解工作進展。謝謝！<span class="who">冼總經理</span></div>
+      <div class="msg l">好的，那我等小汪通知。<span class="who">曹國興</span></div>
+    </div>
+  </div>
+
+  <div class="pane" id="d2">
+    <table>
+      <tr><th>日期</th><th>上午</th><th>下午</th></tr>
+      <tr><td>9/7（三）</td><td>出席智能家居展開幕儀式<br>時間：10:00-11:30<br>地點：上海智能家居展覽館<br>聯絡人：陳主任（Tel: 3568 2234）</td><td>—</td></tr>
+      <tr><td>10/7（四）</td><td>主持洽談合作會議<br>時間：10:00-12:00<br>地點：多功能會議室<br>對象：盈建科技公司</td><td>—</td></tr>
+      <tr><td>11/7（五）</td><td>略</td><td>略</td></tr>
+    </table>
+    <div class="sub" style="margin:12px 0 0">注意：日期寫法係 <b style="color:#ffd08a">日／月</b>——「10/7」＝ <b style="color:#ffd08a">7 月 10 日</b>（星期四）。</div>
+  </div>
+
+  <div class="pane" id="d3">
+    <table>
+      <tr><th>10/7（四）</th><th>08:00-10:00</th><th>10:00-12:00</th><th>12:00-13:00<br>清潔時間</th><th>13:00-15:00</th><th>15:00-17:00</th></tr>
+      <tr><td>多功能會議室</td><td>已預訂</td><td>已預訂</td><td>—</td><td class="ok">可預訂</td><td>已預訂</td></tr>
+      <tr><td>商務會議室</td><td>已預訂</td><td class="ok">可預訂</td><td>—</td><td>已預訂</td><td>已預訂</td></tr>
+    </table>
+    <div class="sub" style="margin:12px 0 0">開會時段係 <b style="color:#ffd08a">10:00-12:00</b>。多功能會議室壞冷氣停用；同一時段只有 <b style="color:#ffd08a">商務會議室</b> 可以預訂。</div>
+  </div>
+</section>
+
+<section class="card">
+  <h2><span class="n">步驟一</span>書寫正確的格式</h2>
+  <div class="sub">四題，全部在官方預備練習上。想好了再揭答案。</div>
+
+  <div class="q"><div class="qh"><span class="qn">Q1</span><span class="qt">收件者是誰？</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">主管 <b>曹國興</b>。他是冼總吩咐「由小汪發電郵給你」的那個人，也就是要接工作的人。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q2</span><span class="qt">副本應該抄送給誰？</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans"><b>冼國强總經理</b>。原因：這封電郵是代他交代安排，而且他講過「我下週一回港後，再向你瞭解工作進展」——他要知，所以抄送他。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q3</span><span class="qt">用短語概括電郵的主旨。</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">公式＝<b>邊件事＋邊個安排</b>。例如：<span class="hl">7月10日洽談合作會議地點更改事宜</span>，或 <span class="hl">調整工作安排（7月10日會議改地點）</span>。<br>唔好只寫「通知」或者「工作安排」——太空泛。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q4</span><span class="qt">是否需要附件？如需，附件名稱是什麼？</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">題目沒有提供要傳送的檔案，所以寫 <b>「無」</b>（或直接不寫附件一欄）。<br>❌ 唔好把資料一／二／三當成附件——那些是給你參考的資料，不是要你發出去的文件。</div></div>
+</section>
+
+<section class="card">
+  <h2><span class="n">步驟二</span>構思正文內容</h2>
+  <div class="sub">這部分佔分最重。逐題想清楚才揭。</div>
+
+  <div class="q"><div class="qh"><span class="qn">Q5</span><span class="qt">稱謂部分，如何有禮貌地稱呼收件者？</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">「<b>曹主管：</b>」或「<b>曹主管，您好：</b>」，下一行起頭寫「您好！」。<br>用職銜（主管）比直呼名字得體；公司內部用「曹先生」也可以，但「曹主管」最貼題。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q6</span><span class="qt">引言：自我介紹 ＋ 指出寫作目的</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">自我介紹：<b>我是行政助理汪嘉明。</b><br>寫作目的：<b>冼總經理現時在上海出差，因遺失證件，補領手續需一至兩天，暫未能回港，現由我代他通知你未來兩天的工作安排。</b><br>⭐ 一句講齊「為甚麼寫」——出事原因＋代誰通知＋通知甚麼。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q7-1</span><span class="qt">主體第一：通知對方新的工作安排（最重要的那一項）</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">明天（<b>7 月 10 日，星期四</b>）上午 <b>10:00 至 12:00</b>，你與<b>盈建科技公司</b>的洽談合作會議<b>如期舉行</b>。<br>由於原定舉行的<b>多功能會議室</b>空調故障、暫停使用，會議已改在 <span class="hl">商務會議室</span> 舉行。<br>⭐ 四要素齊全：日期、時間、地點、對象。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q7-2</span><span class="qt">主體第二：後天（7 月 11 日）的安排怎樣寫？</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">資料二寫的是「<b>略</b>」——即未有具體安排。<br>所以正確寫法是：<b>「至於後天（7 月 11 日，星期五）的工作安排，我會再另行通知你。」</b><br>❌ 最忌無中生有（自己編一個 7 月 11 日的會議或地點），那是不符資料。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q7-3</span><span class="qt">需提醒對方的注意事項</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">揀一至兩項寫就夠，例如：<br>• 請<b>準時出席</b>會議（記得地點已改，直接去商務會議室）；<br>• 請<b>在會前預備好相關資料</b>；<br>• <b>會後整理會議紀錄</b>，待冼總經理<b>下週一（7 月 14 日）</b>回港後向他匯報工作進展。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q7-4</span><span class="qt">表達感謝</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">例：<b>「感謝你的協助與配合。」</b>一句就夠，唔需要長篇。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q8</span><span class="qt">結尾：提供聯絡方法（電話號碼）供查詢之用</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">例：<b>「如有任何查詢，請致電 2892 3456 與我聯絡。」</b><br>資料裡沒有小汪的電話號碼 → 自己擬一個合理的公司電話號碼就可以（唔好抄資料一的 3568 2234，那是上海展覽館陳主任的號碼）。</div></div>
+
+  <div class="q"><div class="qh"><span class="qn">Q9-10</span><span class="qt">發文者職銜 ＋ 姓名</span></div>
+    <button class="rv">👀 揭答案</button>
+    <div class="ans">職銜：<b>行政助理</b>　姓名：<b>汪嘉明</b>（分兩行寫在電郵最後）。</div></div>
+</section>
+
+<section class="card">
+  <h2><span class="n">步驟三</span>示範電郵（照這個結構寫自己的版本）</h2>
+  <div class="sub">⭐ 交卷前，試下用自己嘅字重寫一次——照抄示範在評核上算抄襲，要自己寫得出。</div>
+  <div class="mail"><span class="f">收件者：曹國興（主管）
+副本：冼國强總經理
+主旨：7月10日洽談合作會議地點更改事宜
+附件：無</span>
+
+曹主管：
+
+<span class="tag">您好！我是行政助理汪嘉明。冼總經理現時在上海出差，因不慎遺失證件，補領手續需一至兩天，暫未能回港，現由我代他通知你未來兩天的工作安排。</span>
+
+<span class="tag">一、明天（7月10日，星期四）上午10:00至12:00，你與盈建科技公司的洽談合作會議將如期舉行。由於原定舉行的多功能會議室空調故障，暫停使用，會議已改在商務會議室舉行，請你依時出席。</span>
+
+<span class="tag">二、請你在會議前預備好相關資料，並於會後整理會議紀錄，待冼總經理下週一（7月14日）回港後，向他匯報工作進展。至於後天（7月11日，星期五）的工作安排，我會再另行通知你。</span>
+
+<span class="tag">感謝你的協助與配合。</span>
+
+<span class="tag">如有任何查詢，請致電 2892 3456 與我聯絡。</span>
+
+<span class="f">行政助理
+汪嘉明</span></div>
+</section>
+
+<section class="card">
+  <h2><span class="n">步驟四</span>檢查已完成的電郵（交卷前逐項打勾）</h2>
+  <div class="sub">這是官方預備練習最後一頁的清單，做成可以打勾的版本。</div>
+  <label class="chk"><input type="checkbox"><b>格式</b>：收件者、副本、主旨、稱謂、署名齊全</label>
+  <label class="chk"><input type="checkbox">收件者同發文者身份正確（曹主管 ← 汪嘉明，行政助理）</label>
+  <label class="chk"><input type="checkbox">已完成題目要求：① 寫電郵的原因　② 需要對方完成的工作及詳情</label>
+  <label class="chk"><input type="checkbox">有寫到「調整工作安排的原因」（冼總遺失證件、未能回港）</label>
+  <label class="chk"><input type="checkbox">有寫到「相關工作的跟進」（會議改地點／會後匯報／後天再通知）</label>
+  <label class="chk"><input type="checkbox">日期、時間、地點、對象四項都寫清楚（7月10日 10:00-12:00 商務會議室、盈建科技）</label>
+  <label class="chk"><input type="checkbox">有提供聯絡電話供查詢</label>
+  <label class="chk"><input type="checkbox">沒有錯別字（特別留意「會議室」「洽談」「匯報」「遺失證件」）</label>
+  <label class="chk"><input type="checkbox">沒有病句、沒有口語化字句</label>
+  <div class="prog" id="prog">已勾 0 / 9</div>
+</section>
+
+<section class="card">
+  <h2>🏁 出口卡：交卷前答自己三個問題</h2>
+  <div class="exit"><ol>
+    <li>呢封電郵「為甚麼寫」——我寫咗未？（一句講清）</li>
+    <li>對方要做的<b>一件事</b>係咩？日期、時間、地點我寫齊未？</li>
+    <li>我嘅署名同職銜寫咗未？有冇留電話？</li>
+  </ol></div>
+</section>
+
+<details class="card teacher">
+  <summary>🔒 老師區（學生唔需要睇）</summary>
+  <div class="inner">
+    <h3>學生最易錯的三個位</h3>
+    <ul>
+      <li><b>日期寫成「10月10日」</b>——資料用「日／月」（10/7＝7月10日）。這是最常見的致命錯，連帶「下週一（7月14日）」也會錯。</li>
+      <li><b>地點照抄「多功能會議室」</b>——冇睇資料三。正確係<b>商務會議室</b>（10:00-12:00 唯一可預訂）。</li>
+      <li><b>後天（7月11日）無中生有</b>——資料二寫「略」，正確寫法係「稍後再另行通知」。</li>
+    </ul>
+    <h3>建議 20 分鐘流程</h3>
+    <ul>
+      <li>0-3 分：派空白預備練習，先自己讀情景＋三張資料（不看答案）。</li>
+      <li>3-8 分：投影本頁「資料」區，逐張問：「關鍵數字係邊個？」「邊個時段有位？」</li>
+      <li>8-15 分：步驟一至二逐題舉手答，答完才揭示範答案；特別追問 Q7-2。</li>
+      <li>15-18 分：示範電郵——要求學生合上螢幕，用自己的話講一次結構。</li>
+      <li>18-20 分：檢查清單逐項舉手；派回空白練習當功課。</li>
+    </ul>
+    <h3>合規提醒</h3>
+    <ul>
+      <li>《教師指引》要求老師「就學生的課堂和練習表現，給予指導和回饋」——指導<b>預備練習</b>是本分；但「不得就評核（正式試卷）的內容給予任何形式的指導」。</li>
+      <li>評核前<b>兩星期</b>要派學生指引＋預備練習；缺席者 3 個工作天內交證明文件才有補考；因 MF 補考者補考最高 40 分。</li>
+      <li>本頁只涵蓋模擬（預備練習），不包含任何正式評核卷內容。</li>
+    </ul>
+  </div>
+</details>
+
+</main>
+<footer>VCH1101 職業中文：普通話對話與事務文書 · GCCH107A · 項目評核（TA）準備頁</footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    document.getElementById(b.dataset.p).classList.add('on');
+  });
+});
+document.querySelectorAll('.rv').forEach(function(b){
+  b.addEventListener('click',function(){
+    var a=b.parentNode.querySelector('.ans');
+    a.classList.toggle('show');
+    b.textContent=a.classList.contains('show')?'🙈 收起':'👀 揭答案';
+  });
+});
+var allBtn=document.getElementById('allRv'),open=false;
+allBtn.addEventListener('click',function(){
+  open=!open;
+  document.querySelectorAll('.ans').forEach(function(a){a.classList.toggle('show',open)});
+  document.querySelectorAll('.rv').forEach(function(b){b.textContent=open?'🙈 收起':'👀 揭答案'});
+  allBtn.textContent=open?'🙈 全部收起':'👀 全部揭開';
+});
+var boxes=document.querySelectorAll('.chk'),prog=document.getElementById('prog');
+function up(){
+  var n=0;
+  boxes.forEach(function(l){var i=l.querySelector('input');l.classList.toggle('done',i.checked);if(i.checked)n++});
+  prog.textContent='已勾 '+n+' / '+boxes.length+(n===boxes.length?'　✅ 全部做到，可以交卷！':'');
+}
+boxes.forEach(function(l){l.querySelector('input').addEventListener('change',up)});
+up();
+</script>
+</body></html>
