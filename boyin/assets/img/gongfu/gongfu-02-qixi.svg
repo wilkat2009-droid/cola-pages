@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="呼吸與氣息控制：氣息吸入與呼出">
+  <path d="M46 44 C36 42 29 50 29 61 C29 72 35 78 41 78 C45.5 78 47 74.5 47 69 V47 C47 45 46.5 44.4 46 44 Z" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M50 44 C60 42 67 50 67 61 C67 72 61 78 55 78 C50.5 78 49 74.5 49 69 V47 C49 45 49.5 44.4 50 44 Z" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M48 27 V43" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M48 43 C47 45.5 46 46.5 45 47.5" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M48 43 C49 45.5 50 46.5 51 47.5" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M34 50 H38 V63 H42 L36 70 L30 63 H34 Z" fill="#5b7fc7"/>
+  <path d="M58 70 H62 V57 H66 L60 50 L54 57 H58 Z" fill="#e2764f"/>
+</svg>
