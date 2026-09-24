@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="齊起句：幾張嘴在同一水平線上同時張開，一起開口">
+  <ellipse cx="21" cy="46" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="21" cy="46.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M15.5 43 Q21 41 26.5 43" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="21" cy="50" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <ellipse cx="47" cy="46" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="47" cy="46.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M41.5 43 Q47 41 52.5 43" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="47" cy="50" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <ellipse cx="73" cy="46" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="73" cy="46.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M67.5 43 Q73 41 78.5 43" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="73" cy="50" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <path d="M29 38 L34 32" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M55 38 L60 32" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M81 38 L86 32" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
