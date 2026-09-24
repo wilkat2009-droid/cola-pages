@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="領誦與合誦：一人舉手先領，後排同時接上" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="46" cy="34" r="7" fill="#fbf6ee"/>
+  <path d="M39 62 Q39 48 46 48 Q53 48 53 62 Z" fill="#dcecea"/>
+  <circle cx="62" cy="34" r="7" fill="#fbf6ee"/>
+  <path d="M55 62 Q55 48 62 48 Q69 48 69 62 Z" fill="#dcecea"/>
+  <circle cx="78" cy="34" r="7" fill="#fbf6ee"/>
+  <path d="M71 62 Q71 48 78 48 Q85 48 85 62 Z" fill="#dcecea"/>
+  <path d="M54 26 Q62 18 70 26"/>
+  <path d="M46 24 Q62 10 78 24"/>
+  <circle cx="22" cy="46" r="7" fill="#fbf6ee"/>
+  <path d="M12 74 Q12 60 22 60 Q32 60 32 74 Z" fill="#9a6bb8"/>
+  <path d="M30 62 Q35 50 33 42"/>
+  <circle cx="33" cy="40" r="3.2" fill="#fbf6ee"/>
+  <path d="M16 32 Q22 25 28 32"/>
+</svg>
