@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="發聲與嗓音保護：聲音由口部傳出">
+  <circle cx="36" cy="38" r="13" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6"/>
+  <path d="M36 51 V58" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M24 66 C28 60 44 60 48 66" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="46" cy="46" r="2.4" fill="#e2764f"/>
+  <path d="M58.9 38.2 A9 9 0 0 1 58.9 49.8" fill="none" stroke="#2f7f8c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M63.5 34.4 A15 15 0 0 1 63.5 53.6" fill="none" stroke="#2f7f8c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M68.1 30.5 A21 21 0 0 1 68.1 57.5" fill="none" stroke="#2f7f8c" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
