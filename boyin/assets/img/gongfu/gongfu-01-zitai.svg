@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="身體姿態與播音狀態：站姿端正、頭部平正、肩膊放鬆、雙腳併攏">
+  <circle cx="48" cy="21" r="8.5" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6"/>
+  <path d="M48 29.5 V46" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M35 62 C34.5 66.4 40 68 48 68 C56 68 61.5 66.4 61 62 L60 48 C59 43 37 43 36 48 Z" fill="#ffffff" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M37 50 C33 54 31 58 30 63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M59 50 C63 54 65 58 66 63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M45 68 L44 83" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M51 68 L52 83" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M39 84 H48" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M48 84 H57" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
