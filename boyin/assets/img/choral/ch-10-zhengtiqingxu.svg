@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="整體情緒：一群人一起起伏，情緒彼此感染">
+  <path d="M16 54 Q48 34 80 54" fill="none" stroke="#c2562a" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="16" cy="54" r="2.4" fill="#c2562a"/>
+  <circle cx="80" cy="54" r="2.4" fill="#c2562a"/>
+  <circle cx="26" cy="66" r="7" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6"/>
+  <circle cx="48" cy="66" r="7" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6"/>
+  <circle cx="70" cy="66" r="7" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6"/>
+  <path d="M12 82 Q48 72 84 82" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
