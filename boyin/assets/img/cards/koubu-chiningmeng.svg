@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="吃檸檬" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="48" cy="46" rx="30" ry="31" fill="#fdf0dd"/>
+  <circle cx="29" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="67" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="37.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <circle cx="58.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <path d="M32 39 L42 36" stroke-width="1.8"/>
+  <path d="M64 39 L54 36" stroke-width="1.8"/>
+  <ellipse cx="48" cy="64" rx="6.5" ry="5" fill="#f6e3d8"/>
+  <path d="M43 64 Q45.5 61.5 48 64 Q50.5 66.5 53 64" stroke-width="1.8"/>
+  <path d="M43 64 L27 55 A 11 11 0 0 0 27 73 Z" fill="#d9a12b"/>
+  <path d="M43 64 L30 58 A 7.5 7.5 0 0 0 30 70 Z" fill="#fbf6ee"/>
+</svg>
