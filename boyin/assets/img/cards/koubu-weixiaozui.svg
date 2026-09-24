@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="微笑嘴" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="48" cy="46" rx="30" ry="31" fill="#fdf0dd"/>
+  <circle cx="29" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="67" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="37.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <circle cx="58.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <path d="M30 57 Q48 81 66 57 Z" fill="#16202c"/>
+  <path d="M33 57 L33 61 Q48 66 63 61 L63 57 Z" fill="#ffffff" stroke="none"/>
+</svg>
