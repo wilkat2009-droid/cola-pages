@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="普通話語音規範：字音標準、聲調準確">
+  <path d="M30 36 h36 a12 12 0 0 1 12 12 v20 a12 12 0 0 1 -12 12 h-36 a12 12 0 0 1 -12 -12 v-20 a12 12 0 0 1 12 -12 z" fill="#fbf6ee" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M33 42 h30 a9 9 0 0 1 9 9 v14 a9 9 0 0 1 -9 9 h-30 a9 9 0 0 1 -9 -9 v-14 a9 9 0 0 1 9 -9 z" fill="none" stroke="#16202c" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M30 20 Q48 40 66 20" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="30" cy="20" r="2.4" fill="#e2764f"/>
+  <circle cx="66" cy="20" r="2.4" fill="#e2764f"/>
+  <circle cx="52.5" cy="30" r="2.4" fill="#e2764f"/>
+  <path d="M38 58 L46 66 L62 48" fill="none" stroke="#2f7f8c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
