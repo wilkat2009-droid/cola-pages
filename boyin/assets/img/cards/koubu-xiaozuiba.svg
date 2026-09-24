@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="小嘴巴" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="48" cy="46" rx="30" ry="31" fill="#fdf0dd"/>
+  <circle cx="29" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="67" cy="55" r="4" fill="#f6e3d8" stroke="none"/>
+  <circle cx="37.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <circle cx="58.5" cy="40" r="3.3" fill="#16202c" stroke="none"/>
+  <ellipse cx="48" cy="64" rx="8" ry="7" fill="#f6e3d8"/>
+  <ellipse cx="48" cy="64" rx="3.6" ry="3" fill="#16202c" stroke="none"/>
+  <circle cx="66" cy="46" r="2.6" fill="#dcecea" stroke-width="1.8"/>
+  <circle cx="71" cy="39" r="2" fill="#dcecea" stroke-width="1.8"/>
+  <circle cx="75" cy="33" r="1.5" fill="#dcecea" stroke-width="1.8"/>
+</svg>
