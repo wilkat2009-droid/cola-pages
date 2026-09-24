@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="齊節奏：一排等距拍點落在一條基準線上，重點由橘色強調">
+  <path d="M12 56 H84" fill="none" stroke="#16202c" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M16 49 V63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M27 49 V63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M38 49 V63" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M49 49 V63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M60 49 V63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M71 49 V63" fill="none" stroke="#e2764f" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M82 49 V63" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
