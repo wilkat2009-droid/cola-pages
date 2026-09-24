@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="拖尾：其他人的聲音都收乾淨了，只有一個的尾音多拖出一截" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 40 V80 M28 40 V80 M46 40 V80" stroke="#2f7f8c" stroke-width="10"/>
+  <path d="M64 40 V80" stroke="#e2764f" stroke-width="10"/>
+  <path d="M64 74 Q76 76 84 70 Q87 68 90 64" stroke="#e2764f" stroke-width="4"/>
+</svg>
