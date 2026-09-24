@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="拍手對齊：兩手拍在同一點，橘色強調拍點" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(30 32) rotate(-45)">
+    <path d="M-8 -14 Q-8 -18 -4 -18 L4 -18 Q8 -18 8 -14 L8 10 Q8 24 0 24 Q-8 24 -8 10 Z" fill="#fbf6ee"/>
+    <path d="M-3 -18 V8" stroke-width="1.8"/>
+    <path d="M3 -18 V8" stroke-width="1.8"/>
+    <path d="M-8 -6 Q-13 -4 -12 3" stroke-width="1.8"/>
+  </g>
+  <g transform="translate(66 32) rotate(45)">
+    <path d="M-8 -14 Q-8 -18 -4 -18 L4 -18 Q8 -18 8 -14 L8 10 Q8 24 0 24 Q-8 24 -8 10 Z" fill="#fbf6ee"/>
+    <path d="M-3 -18 V8" stroke-width="1.8"/>
+    <path d="M3 -18 V8" stroke-width="1.8"/>
+    <path d="M8 -6 Q13 -4 12 3" stroke-width="1.8"/>
+  </g>
+  <path d="M48 42 L50.5 48.5 L57 51 L50.5 53.5 L48 60 L45.5 53.5 L39 51 L45.5 48.5 Z" fill="#e2764f" stroke="none"/>
+</svg>
