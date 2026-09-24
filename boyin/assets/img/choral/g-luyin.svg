@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="錄音回放：麥克風與循環回放箭頭" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="26" y="18" width="20" height="28" rx="10" fill="#f6e3d8"/>
+  <path d="M31 28 H41" stroke-width="1.8"/>
+  <path d="M31 34 H41" stroke-width="1.8"/>
+  <path d="M31 40 H41" stroke-width="1.8"/>
+  <path d="M22 40 Q22 56 36 56 Q50 56 50 40"/>
+  <path d="M36 56 V68"/>
+  <path d="M27 68 H45"/>
+  <path d="M80 43.6 A 13 13 0 1 1 72.3 39.2"/>
+  <path d="M65 33 L72.3 39.2 L65.7 45.6"/>
+</svg>
