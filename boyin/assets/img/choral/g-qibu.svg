@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="起句挑戰：手勢由上往下 cue，下方幾張嘴同時張開" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M30 12 Q26 12 26 16 L26 30 L30 30 L30 42 Q30 46 34 46 Q38 46 38 42 L38 30 L40 30 L40 44 Q40 48 44 48 Q48 48 48 44 L48 30 L50 30 L50 42 Q50 46 54 46 Q58 46 58 42 L58 30 L60 30 L60 44 Q60 48 64 48 Q68 48 68 44 L68 30 L72 30 L72 16 Q72 12 68 12 Z" fill="#fbf6ee"/>
+  <path d="M26 20 Q20 22 21 28 Q22 33 27 31" fill="#fbf6ee"/>
+  <path d="M42 52 L48 58 L54 52" stroke="#c2562a"/>
+  <path d="M13 67 Q22 62 31 67 Q30 79 22 79 Q14 79 13 67 Z" fill="#16202c" stroke="none"/>
+  <path d="M39 67 Q48 62 57 67 Q56 79 48 79 Q40 79 39 67 Z" fill="#16202c" stroke="none"/>
+  <path d="M65 67 Q74 62 83 67 Q82 79 74 79 Q66 79 65 67 Z" fill="#16202c" stroke="none"/>
+  <path d="M17 73 Q22 70 27 73 Q22 77 17 73 Z" fill="#e2764f" stroke="none"/>
+  <path d="M43 73 Q48 70 53 73 Q48 77 43 73 Z" fill="#e2764f" stroke="none"/>
+  <path d="M69 73 Q74 70 79 73 Q74 77 69 73 Z" fill="#e2764f" stroke="none"/>
+</svg>
