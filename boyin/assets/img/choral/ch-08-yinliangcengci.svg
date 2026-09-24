@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="音量層次：全體、小組、個人三層由弱到強，強弱切換仍要一致">
+  <path d="M14 34 H42" fill="none" stroke="#d9a12b" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M14 48 H60" fill="none" stroke="#2f7f8c" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M14 62 H78" fill="none" stroke="#16202c" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="14" cy="34" r="2.4" fill="#d9a12b"/>
+  <circle cx="14" cy="48" r="2.4" fill="#2f7f8c"/>
+  <circle cx="14" cy="62" r="2.4" fill="#16202c"/>
+</svg>
