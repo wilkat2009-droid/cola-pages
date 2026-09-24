@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="齊咬字：相同的嘴型對齊一致的音塊，字字清楚">
+  <ellipse cx="30" cy="26" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="30" cy="26.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M24.5 23 Q30 21 35.5 23" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="30" cy="30" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <ellipse cx="30" cy="50" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="30" cy="50.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M24.5 47 Q30 45 35.5 47" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="30" cy="54" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <ellipse cx="30" cy="74" rx="11" ry="7.6" fill="#f6e3d8" stroke="#16202c" stroke-width="2.6"/>
+  <ellipse cx="30" cy="74.5" rx="7.6" ry="4.8" fill="#16202c"/>
+  <path d="M24.5 71 Q30 69 35.5 71" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="30" cy="78" rx="4.4" ry="1.9" fill="#e2764f"/>
+  <path d="M62 19 h10 a3 3 0 0 1 3 3 v10 a3 3 0 0 1 -3 3 h-10 a3 3 0 0 1 -3 -3 v-10 a3 3 0 0 1 3 -3 z" fill="#dcecea" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M62 43 h10 a3 3 0 0 1 3 3 v10 a3 3 0 0 1 -3 3 h-10 a3 3 0 0 1 -3 -3 v-10 a3 3 0 0 1 3 -3 z" fill="#dcecea" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M62 67 h10 a3 3 0 0 1 3 3 v10 a3 3 0 0 1 -3 3 h-10 a3 3 0 0 1 -3 -3 v-10 a3 3 0 0 1 3 -3 z" fill="#dcecea" stroke="#16202c" stroke-width="2.6" stroke-linejoin="round"/>
+</svg>
