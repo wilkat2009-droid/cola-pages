@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-label="共鳴腔示意圖：鼻腔、口腔、咽腔與胸腔">
+  <rect width="720" height="430" fill="#ffffff"/>
+
+  <text x="24" y="30" font-family="PingFang HK, PingFang TC, sans-serif" font-size="14" fill="#16202c">共鳴腔：聲音從聲帶出來之後，在哪幾個空間裡放大</text>
+
+  <!-- 頭 -->
+  <circle cx="300" cy="130" r="76" fill="#fbf6ee" stroke="#e6dbc9" stroke-width="2"/>
+  <!-- 頸 -->
+  <rect x="272" y="196" width="56" height="66" rx="14" fill="#fbf6ee" stroke="#e6dbc9" stroke-width="2"/>
+  <!-- 胸 -->
+  <rect x="212" y="258" width="176" height="140" rx="34" fill="#f4ebde" stroke="#d8c4a6" stroke-width="2"/>
+
+  <!-- 鼻腔 -->
+  <ellipse cx="300" cy="98" rx="46" ry="20" fill="#dcecea" stroke="#1e6b67" stroke-width="2"/>
+  <text x="300" y="103" text-anchor="middle" font-family="PingFang HK, sans-serif" font-size="13.5" fill="#14514e">鼻腔</text>
+
+  <!-- 口腔 -->
+  <ellipse cx="300" cy="153" rx="50" ry="24" fill="#fff3e4" stroke="#c2562a" stroke-width="2"/>
+  <text x="300" y="158" text-anchor="middle" font-family="PingFang HK, sans-serif" font-size="13.5" fill="#8c3714">口腔</text>
+
+  <!-- 咽腔（頸部） -->
+  <text x="238" y="240" text-anchor="end" font-family="PingFang HK, sans-serif" font-size="13" fill="#7d8b9a">咽腔</text>
+
+  <!-- 聲帶 -->
+  <line x1="284" y1="212" x2="316" y2="212" stroke="#5b7fc7" stroke-width="5" stroke-linecap="round"/>
+  <text x="332" y="202" font-family="PingFang HK, sans-serif" font-size="13" fill="#5b7fc7">聲帶（發聲起點）</text>
+
+  <!-- 胸腔 -->
+  <text x="300" y="336" text-anchor="middle" font-family="PingFang HK, sans-serif" font-size="15" fill="#16202c">胸腔</text>
+
+  <!-- 聲音路線 -->
+  <g stroke="#c2562a" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M288 216 C 266 190, 268 160, 288 150"/>
+    <path d="M312 216 C 334 190, 332 160, 312 150"/>
+  </g>
+  <g stroke="#1e6b67" stroke-width="2" fill="none" marker-end="url(#arr2)">
+    <path d="M300 142 C 300 128, 300 118, 300 112"/>
+  </g>
+  <g stroke="#5b7fc7" stroke-width="2" fill="none" marker-end="url(#arr3)">
+    <path d="M312 216 C 350 240, 352 280, 330 306"/>
+  </g>
+
+  <!-- 右側說明 -->
+  <g font-family="PingFang HK, sans-serif" font-size="13.5" fill="#46586b">
+    <text x="436" y="104">鼻腔共鳴：聲音往上，音色明亮</text>
+    <text x="436" y="150">口腔共鳴：最常用，字音靠這裡清楚</text>
+    <text x="436" y="240">咽腔：通道要打開，不要擠</text>
+    <text x="436" y="318">胸腔共鳴：聲音下沉，聽起來厚實</text>
+  </g>
+  <g stroke="#e6dbc9" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="352" y1="100" x2="430" y2="100"/>
+    <line x1="352" y1="146" x2="430" y2="146"/>
+    <line x1="248" y1="236" x2="272" y2="236"/>
+    <line x1="336" y1="198" x2="430" y2="198"/>
+    <line x1="356" y1="314" x2="430" y2="314"/>
+  </g>
+
+  <text x="24" y="416" font-family="PingFang HK, sans-serif" font-size="13" fill="#7d8b9a">喉嚨是通道，不是發動機：先把通道打開，再讓聲音在腔體裡放大。</text>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c2562a"/>
+    </marker>
+    <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1e6b67"/>
+    </marker>
+    <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5b7fc7"/>
+    </marker>
+  </defs>
+</svg>
