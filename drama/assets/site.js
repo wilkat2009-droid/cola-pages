@@ -55,8 +55,6 @@ function renderShell() {
           <div>
             <h5>語荷教育 · 兒童戲劇</h5>
             <p class="small" style="margin:0; color:var(--ink-soft)">
-              兒童戲劇課程設計、校隊培訓與教師支援。<br>
-              本網站同時作為小學普通話戲劇校隊的教學資料庫。
             </p>
           </div>
           <div>
@@ -81,7 +79,6 @@ function renderShell() {
         </div>
         <div class="foot-bottom">
           <span>© 2026 語荷教育 · 兒童戲劇課程</span>
-          <span>網站內容包含公開資料整理，已盡量標明出處；如有錯漏歡迎指正。</span>
         </div>
       </div>`;
   }
@@ -336,7 +333,6 @@ function initGameTools() {
         </div>`;
     }).filter(Boolean);
     out.innerHTML = `<h4>今天這一節 · 70 分鐘</h4>
-      <p>隨機配出來的骨架 —— 每次按都會換一組。不合適就再按一次；點遊戲名字可以直接跳到那張卡片看步驟。</p>
       ${rows.join("")}`;
     out.querySelectorAll("button[data-jump]").forEach(b => {
       b.addEventListener("click", () => focusGame(b.dataset.jump));
