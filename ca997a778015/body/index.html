@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#f6f3ee">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="身體台">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23f6f3ee'/%3E%3Cpath d='M36 22c6 0 8 5 8 12s-3 12-3 20 4 12 4 20-3 8-7 8-6-4-6-12 2-12 2-20-4-10-4-17 2-11 6-11z' fill='%232f6f63'/%3E%3Ccircle cx='62' cy='30' r='7' fill='%23c8763c'/%3E%3C/svg%3E">
+<title>身體台</title>
+<style>
+:root{
+  --bg:#f6f3ee; --card:#ffffff; --ink:#2b2a28; --ink2:#565149; --muted:#8d8778;
+  --line:#e6e0d6; --accent:#2f6f63; --accent-soft:#e7f1ee; --warm:#c8763c; --warm-soft:#fbecdf;
+  --good:#4b8f6d; --mid:#d09a3a; --bad:#b8443a; --bad-soft:#fbe9e6;
+  --r:16px; --shadow:0 1px 2px rgba(60,50,35,.05),0 6px 18px rgba(60,50,35,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#14161a; --card:#1d2026; --ink:#eceae5; --ink2:#c3bfb6; --muted:#8b8778;
+    --line:#2b2f36; --accent:#7fc0b1; --accent-soft:#1f2f2c; --warm:#e0965c; --warm-soft:#2f2419;
+    --good:#78bd97; --mid:#dcb35c; --bad:#e0837a; --bad-soft:#2e1e1c;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg)}
+body{
+  font-family:"PingFang TC","PingFang SC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%;
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px}
+
+/* ---------- header ---------- */
+header{padding:calc(18px + env(safe-area-inset-top)) 0 4px}
+.hd-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.hd-date{font-size:20px;font-weight:800;letter-spacing:.5px}
+.hd-day{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.hd-sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+/* ---------- progress ---------- */
+.prog{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:13px 15px;box-shadow:var(--shadow)}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.prog-row b{font-size:15px;color:var(--accent)}
+.prog-row span{color:var(--muted)}
+.bar{height:9px;border-radius:99px;background:var(--line);margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),#5aa493);
+  transition:width .5s ease}
+
+/* ---------- generic card ---------- */
+section{margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:15px 15px 14px;box-shadow:var(--shadow)}
+.card + .card{margin-top:12px}
+h2{font-size:15px;font-weight:800;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+h2 .dot{width:7px;height:7px;border-radius:99px;background:var(--accent);flex:0 0 auto}
+h2 .hint{font-size:11.5px;font-weight:400;color:var(--muted);letter-spacing:0}
+.sub{font-size:12.5px;color:var(--muted);margin-top:3px;margin-bottom:12px}
+
+/* ---------- scale ---------- */
+.scale{margin-top:6px}
+.scale + .scale{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.sc-head{display:flex;align-items:baseline;justify-content:space-between}
+.sc-name{font-size:14px;font-weight:700}
+.sc-val{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.sc-val small{font-size:12px;font-weight:600;color:var(--muted);margin-left:3px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin-top:2px}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:99px;
+  background:linear-gradient(90deg,var(--good),var(--mid),var(--bad))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:99px;
+  background:#fff;border:2.5px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.18);margin-top:-11px}
+.sc-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:-2px}
+.segs{display:flex;gap:6px;margin-top:9px}
+.seg{flex:1;min-height:44px;border-radius:11px;border:1px solid var(--line);background:transparent;
+  color:var(--ink2);font-size:13.5px;font-family:inherit;font-weight:600;cursor:pointer}
+.seg.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ---------- checklist ---------- */
+.todo{display:flex;align-items:center;gap:12px;min-height:52px;padding:4px 0;
+  border-bottom:1px solid var(--line);cursor:pointer}
+.todo:last-child{border-bottom:0}
+.box{width:26px;height:26px;border-radius:9px;border:2px solid var(--line);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;transition:.16s}
+.box.on{background:var(--accent);border-color:var(--accent)}
+.box.on::after{content:"";width:12px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;
+  transform:rotate(-45deg) translate(1px,-2px)}
+.todo .label{flex:1;font-size:14.5px}
+.todo .label small{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
+.todo.done .label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.counter{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+.counter button{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);background:transparent;
+  color:var(--ink);font-size:19px;font-family:inherit;line-height:1;cursor:pointer}
+.counter button:active{background:var(--accent-soft)}
+.counter .n{min-width:46px;text-align:center;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+.counter .n.full{color:var(--accent)}
+
+textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:12px;background:transparent;
+  color:var(--ink);font-family:inherit;font-size:16px;line-height:1.6;padding:11px 12px;resize:none}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translate(-50%,14px);
+  background:var(--ink);color:var(--bg);font-size:12.5px;padding:8px 16px;border-radius:99px;opacity:0;
+  pointer-events:none;transition:.25s;z-index:60;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+#toast.show{opacity:.94;transform:translate(-50%,0)}
+
+/* ---------- routines ---------- */
+.rout{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.rout:last-child{border-bottom:0}
+.rout .ico{width:34px;height:34px;border-radius:11px;background:var(--accent-soft);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;font-size:17px}
+.rout .t{font-size:14.5px;font-weight:700}
+.rout .d{font-size:12.5px;color:var(--muted);margin-top:2px}
+.rout .arrow{margin-left:auto;color:var(--muted);font-size:16px;align-self:center}
+
+.step{padding:14px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .sn{font-size:11.5px;font-weight:800;color:var(--accent);letter-spacing:1px}
+.step .st{font-size:14.5px;font-weight:700;margin-top:2px}
+.step .sd{font-size:13px;color:var(--ink2);margin-top:3px;white-space:pre-wrap}
+.timer{display:flex;gap:10px;align-items:center;margin-top:16px}
+.timer .clock{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.btn{flex:1;min-height:48px;border:0;border-radius:13px;background:var(--accent);color:#fff;
+  font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.warm{background:var(--warm)}
+.btn:active{opacity:.85}
+
+.danger{border-color:var(--bad)!important;background:var(--bad-soft)}
+.danger h2 .dot{background:var(--bad)}
+.flag{display:flex;gap:9px;font-size:13.5px;line-height:1.6;padding:7px 0}
+.flag b{color:var(--bad);flex:0 0 auto}
+
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
+
+/* ---------- calendar ---------- */
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:12px}
+.cal .w{font-size:11px;color:var(--muted);text-align:center;padding-bottom:3px}
+.cal .d{aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;font-size:12.5px;font-weight:700;cursor:pointer;border:1px solid transparent;position:relative}
+.cal .d.pad{visibility:hidden}
+.cal .d.today{border-color:var(--accent)}
+.cal .d .m{width:5px;height:5px;border-radius:99px;margin-top:3px}
+.cal .d.empty{color:var(--muted);opacity:.5}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.cal-nav button{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:transparent;
+  color:var(--ink);font-size:17px;font-family:inherit;cursor:pointer}
+.cal-nav .ttl{font-size:14.5px;font-weight:800}
+
+/* ---------- charts ---------- */
+.chart{margin-top:10px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:9px;vertical-align:middle;margin-right:5px}
+
+/* ---------- records / lists ---------- */
+.item{border:1px solid var(--line);border-radius:13px;padding:11px 13px;margin-top:10px;font-size:13.5px}
+.item .top{display:flex;justify-content:space-between;gap:10px;font-weight:700}
+.item .meta{font-size:12px;color:var(--muted);margin-top:3px;white-space:pre-wrap}
+.item .amt{font-variant-numeric:tabular-nums}
+.mini{min-height:32px!important;font-size:12.5px!important;padding:0 13px!important;flex:0 0 auto!important;
+  border-radius:9px!important;width:auto;display:inline-block}
+.item .mini{margin-top:9px}
+.empty-tip{font-size:13px;color:var(--muted);padding:14px 0;text-align:center}
+.kv{display:flex;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border-bottom:0}
+.kv .k{flex:0 0 auto;color:var(--muted);font-size:12px;min-width:72px;padding-top:2px}
+.kv .v{flex:1}
+
+input[type=text],input[type=date],input[type=number],select{width:100%;min-height:46px;border:1px solid var(--line);
+  border-radius:12px;background:transparent;color:var(--ink);font-family:inherit;font-size:16px;padding:8px 12px}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+label.f{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* ---------- modal ---------- */
+#modal{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:80;display:none;
+  align-items:flex-end;justify-content:center;overflow:auto}
+#modal.open{display:flex}
+#modal .sheet{background:var(--bg);width:100%;max-width:560px;border-radius:20px 20px 0 0;
+  padding:18px 16px calc(24px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
+#modal .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+#modal .mh h3{font-size:16.5px;font-weight:800}
+#modal .x{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:transparent;
+  color:var(--ink);font-size:17px;font-family:inherit;cursor:pointer}
+
+/* ---------- tabs ---------- */
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);background:color-mix(in srgb,var(--card) 92%,transparent);
+  backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-top:1px solid var(--line);z-index:70;padding-bottom:env(safe-area-inset-bottom)}
+nav .in{max-width:560px;margin:0 auto;display:flex}
+nav button{flex:1;background:transparent;border:0;padding:9px 0 8px;font-family:inherit;cursor:pointer;
+  color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:700}
+nav button .g{display:block;width:23px;height:23px}
+nav button .g svg{width:23px;height:23px;display:block}
+nav button.on{color:var(--accent)}
+.page{display:none}
+.page.on{display:block}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="hd-top">
+      <div class="hd-date" id="hDate"></div>
+      <div class="hd-day" id="hWeek"></div>
+    </div>
+    <div class="hd-sub" id="hSub"></div>
+    <div class="prog" id="progBox"></div>
+  </header>
+
+  <!-- ============ 今天 ============ -->
+  <div class="page on" id="p-today">
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>起床了，先看一眼身體<span class="hint">不用準，憑感覺</span></h2>
+        <div class="sub">三個數，十秒鐘。記錄不是為了考勤，是為了看見規律。</div>
+        <div class="scale">
+          <div class="sc-head"><span class="sc-name">左膝痛</span>
+            <span class="sc-val" id="vKneeL">0<small>/10</small></span></div>
+          <input type="range" id="sKneeL" min="0" max="10" step="1" value="0">
+          <div class="sc-ends"><span>不痛</span><span>最痛</span></div>
+        </div>
+        <div class="scale">
+          <div class="sc-head"><span class="sc-name">右膝痛</span>
+            <span class="sc-val" id="vKneeR">0<small>/10</small></span></div>
+          <input type="range" id="sKneeR" min="0" max="10" step="1" value="0">
+          <div class="sc-ends"><span>不痛</span><span>最痛</span></div>
+        </div>
+        <div class="scale">
+          <div class="sc-head"><span class="sc-name">腿腫</span><span class="sc-val" id="vSwell"
+            style="font-size:15px"></span></div>
+          <div class="segs" id="segsSwell"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>今日清單</h2>
+        <div class="sub" id="todoSum"></div>
+        <div id="todoList"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>想記一句</h2>
+        <div class="sub">今天身體有什麼事、醫生說了什麼、吃了什麼藥。想到就寫，不用整理。</div>
+        <textarea id="note" placeholder="例如：今早左膝痛到 7 分，落地要扶牆。上完第三節腳好脹。"></textarea>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 動作 ============ -->
+  <div class="page" id="p-move">
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>現在就可以做</h2>
+        <div class="sub">不用換衣服、不用器材。挑一個，點開跟著做。</div>
+        <div class="card" style="box-shadow:none;background:var(--accent-soft);border-color:transparent;padding:12px 14px;margin-bottom:4px">
+          <div style="font-size:13.5px;line-height:1.65">最重要的一件事：<b>不要定點站太久，也不要坐太久。</b><br>能走動、能換姿勢，就勝過任何單一動作。</div>
+        </div>
+        <div id="routList"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card danger" id="flagCard">
+        <h2><span class="dot"></span>什麼情況要盡快找醫護人員</h2>
+        <div class="flag"><b>①</b><span><b>只有一邊小腿</b>突然又腫又硬、痛、摸上去發熱、發紅 → <b>當日內</b>聯絡家庭醫生或去普通科門診。<b>不要按摩、不要熱敷。</b></span></div>
+        <div class="flag"><b>②</b><span>如果同時<b>呼吸困難、胸痛、咳血</b> → 立即致電 <b>999</b> 或去急症室。</span></div>
+        <div id="flagMore" style="display:none">
+          <div class="flag"><b>③</b><span>膝蓋突然卡住、伸不直、鎖住，或突然完全站不住 → 盡快就醫。</span></div>
+          <div class="flag"><b>④</b><span>靜脈曲張的位置破皮、流血不停；或腿上有傷口、潰瘍超過兩星期還未好；皮膚又痛又熱又腫 → 盡快就醫。</span></div>
+          <div class="flag"><b>⑤</b><span>小腿或腳突然冰冷、發紫、麻痺 → 急症。</span></div>
+          <div class="flag"><b>⑥</b><span>腳或腿又熱、又痛、又紅，或者腳部滲液、潰爛 → 盡快就醫。</span></div>
+          <div class="flag"><b>⑦</b><span>腳氣蔓延到手或其他部位；或按指示用藥幾星期都沒有改善 → 覆診。</span></div>
+          <div class="flag"><b>⑧</b><span>分不清是濕疹還是真菌 → 由醫生分辨，不要自己試藥。</span></div>
+        </div>
+        <button class="btn ghost mini" id="btnFlagMore" style="margin-top:10px">看其餘 6 條</button>
+        <div class="note">這些情況大多數最後都不是大問題，但早一點找人看會穩陣些。身體有哪裡不對勁又拿不準，直接問家庭醫生就好。<br>求助路徑：家庭醫生 → 醫管局普通科門診 → 緊急 999。</div>
+      </div>
+
+      <div class="card">
+        <h2><span class="dot"></span>這些內容的來源與界線</h2>
+        <div class="sub">上面每一條都盡量對回可靠來源。這裡說清楚哪些是通則、哪些要醫生決定。</div>
+        <div class="kv"><span class="k">來源</span><span class="v">英國 NHS（靜脈曲張、壓縮襪、灰甲／腳氣、膕窩囊腫）· 美國骨科醫學會 AAOS OrthoInfo（膝部訓練、半月板、鵝足）· 華盛頓大學骨科（半月板撕裂）· 美國皮膚科學會 AAD（灰甲）· DermNet NZ（足癬、tinea incognito）· 美國 CDC NIOSH（久站）· 加拿大 CCOHS（站姿）· 史丹福醫療（抬腿）· 台灣衛福部食藥署（黴菌用藥）</span></div>
+        <div class="kv"><span class="k">證據強度</span><span class="v">抬腿、壓縮襪、戒斷久站、用藥依從性屬指引級建議；膝部肌力動作屬專家建議，非正式指引分級。</span></div>
+        <div class="kv"><span class="k">要醫生決定</span><span class="v">壓縮襪的壓力等級與款式、能否負重、是否手術、用藥組合與先後次序、覆診時間表——這幾項一律由醫生或物理治療師評估，不要自己上網買或自己試。</span></div>
+        <div class="kv"><span class="k">提醒</span><span class="v">這裡是日常自我照顧的整理，不是診斷，也不是治療方案。</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 記錄 ============ -->
+  <div class="page" id="p-log">
+    <section>
+      <div class="card">
+        <div class="cal-nav">
+          <button id="calPrev">‹</button>
+          <div class="ttl" id="calTtl"></div>
+          <button id="calNext">›</button>
+        </div>
+        <div class="cal" id="calGrid"></div>
+        <div class="legend" style="margin-top:14px">
+          <span><i style="background:var(--good)"></i>膝痛 0–3</span>
+          <span><i style="background:var(--mid)"></i>4–6</span>
+          <span><i style="background:var(--bad)"></i>7–10</span>
+          <span><i style="background:var(--line)"></i>沒記錄</span>
+        </div>
+        <div class="note">點任何一天可以補記或修改。這裡是留下來的歷史，不是待辦清單。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>最近 14 天</h2>
+        <div class="sub" id="chartSub"></div>
+        <div class="chart" id="chartKnee"></div>
+        <div class="legend"><span><i style="background:var(--bad)"></i>左膝</span><span><i style="background:var(--accent)"></i>右膝</span></div>
+        <div class="chart" id="chartSwell" style="margin-top:18px"></div>
+        <div class="legend"><span><i style="background:var(--warm)"></i>腿腫（0–3）</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>這段時間的總結</h2>
+        <div class="sub" id="sumSub">最近 14 天</div>
+        <div id="sumBox"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 資料 ============ -->
+  <div class="page" id="p-data">
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>我的狀況卡</h2>
+        <div class="sub">去看醫生時直接給對方看這一張，省得每次從頭講。</div>
+        <div id="condBox"></div>
+        <button class="btn ghost" style="margin-top:14px" id="btnEditCond">編輯狀況卡</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>用藥</h2>
+        <div class="sub">現在在搽什麼、吃什麼、搽多久。</div>
+        <div id="medBox"></div>
+        <button class="btn ghost" style="margin-top:12px" id="btnAddMed">＋ 加一項藥</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>覆診與療程</h2>
+        <div class="sub">下次什麼時候去、療程到第幾天。</div>
+        <div id="visitBox"></div>
+        <div class="timer" style="margin-top:12px">
+          <button class="btn ghost" id="btnAddVisit">＋ 加覆診</button>
+          <button class="btn" id="btnIcs">加入日曆</button>
+        </div>
+        <label class="f">療程開始日（用來算第幾天）</label>
+        <input type="date" id="startDate">
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>花了多少錢</h2>
+        <div class="sub" id="costSub"></div>
+        <div id="costBox"></div>
+        <button class="btn ghost" style="margin-top:12px" id="btnAddCost">＋ 加一筆</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2><span class="dot"></span>備份</h2>
+        <div class="sub" id="bkSub"></div>
+        <div class="timer" style="margin-top:6px">
+          <button class="btn" id="btnExport">下載備份檔</button>
+          <button class="btn ghost" id="btnImport">還原</button>
+        </div>
+        <button class="btn ghost" style="margin-top:10px" id="btnCopy">複製成文字</button>
+        <div class="note">記錄只存在你這部手機裡，不會上傳到任何地方。所以換手機或清空瀏覽器前，請先下載一份備份。</div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="toast"></div>
+<div id="modal"><div class="sheet" id="sheet"></div></div>
+
+<nav><div class="in">
+  <button data-tab="today" class="on"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 12c0-4 3-7 8-7 0 5-3 8-8 8z"/><path d="M12 15c0-3-2.5-5.5-7-5.5 0 4 3 6.5 7 6.5z"/></svg></span>今天</button>
+  <button data-tab="move"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c2-2 3-4 3-7"/><path d="M7 13c0-3 2-6 5-6"/><circle cx="16.5" cy="5" r="2"/><path d="M11 10l4 2 4-1"/><path d="M15 12l1 8"/></svg></span>動作</button>
+  <button data-tab="log"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3v3H8z" fill="currentColor" stroke="none"/></svg></span>記錄</button>
+  <button data-tab="data"><span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14.5 3v4.5H19"/><path d="M9 13h6M9 17h4"/></svg></span>資料</button>
+</div></nav>
+
+<script>
+"use strict";
+/* ============================================================
+   身體台 — 單頁、離線、資料只留在此裝置
+   ============================================================ */
+const KEY = "colabody_v1";
+const TREAT_DAYS = 180;                 // 半年療程
+const SWELL = ["無","輕","中","重"];
+
+const TODO_DEF = [
+  {id:"med-a",  t:"搽藥：腳甲",             s:"整個療程搽足；中途停最容易復發"},
+  {id:"med-b",  t:"搽藥：腳皮膚",           s:"趾縫也要搽到、搽乾"},
+  {id:"med-c",  t:"搽藥：痕癢紅的位置",     s:"類固醇藥不要搽在懷疑真菌的位置；次序問醫生"},
+  {id:"socks",  t:"穿壓力襪",               s:"早上未落床前穿，睡前除下"},
+  {id:"legs",   t:"抬腿",                   s:"每次 15 分鐘，一日 3–4 次", goal:3},
+  {id:"breaks", t:"課間微休息",             s:"每節之間 2–3 分鐘", goal:3},
+  {id:"move",   t:"膝蓋溫和動作",           s:"見「動作」頁", goal:1}
+];
+
+const ROUTINES = [
+  {id:"break", ico:"⏱", t:"課間 3 分鐘", d:"在教室就能做，不用換衣服",
+   mins:3, steps:[
+    {t:"先走一小段（60 秒）", d:"巡行課室、走去資源櫃再折返。\n能走動、能交替站與坐，比任何一個動作都有用。"},
+    {t:"踝泵 2–3 分鐘", d:"坐着或站着。腳尖盡量向自己勾，再盡量向前向下伸，交替做，慢慢來。\n坐長途車、開會坐久了也做。"},
+    {t:"提踵 10 次", d:"扶着書桌或椅背，提起腳跟，停一下，再慢慢放下。做 10 次。\n小腿肌肉是第二個心臟，這個動作把它叫醒。"},
+    {t:"坐姿伸展 10 次 × 5 秒（每邊）", d:"坐直，背貼椅背。腿慢慢伸直抬起，腳尖回勾，維持 5 秒，用 3 秒慢慢放下。\n不要甩、不要借力。"},
+    {t:"換姿勢，別定住", d:"定點站着不要超過大約一小時；有得坐就坐。\n站着時用矮凳左右腳輪流托高，膝蓋不要鎖死，雙腳不要交叉。"}
+   ]},
+  {id:"legs", ico:"🛏", t:"抬腿 15 分鐘", d:"回家、看電視、看手機時做",
+   mins:15, steps:[
+    {t:"躺下來，小腿墊高", d:"躺平，枕頭或被墊在小腿下面，高度要讓腳<b>明顯高過心臟</b>（大約 20–30 公分）。\n只是把腳翹在茶几上不算。"},
+    {t:"順便做踝泵", d:"腳尖勾起、壓下，慢慢地做。抬腿加踝泵，消腫最快。"},
+    {t:"15 分鐘，一日 3–4 次", d:"次數多比單次時間長重要。睡前再做一次。\n抬完慢慢坐起來，不要一下子彈起身。"},
+    {t:"順手記一筆", d:"做完可以量一下小腿最粗的位置，寫在今天的筆記裡。\n有數字，才知道是好了還是差了。"}
+   ]},
+  {id:"knee", ico:"🦵", t:"膝蓋溫和動作", d:"早上起床後、睡前各一次",
+   mins:6, steps:[
+    {t:"先分清楚：冰還是熱", d:"剛腫、剛痛、剛做完動作 → 冰敷。用毛巾包着冰袋，敷 20 分鐘（不要直接貼皮膚），一日 3–4 次。\n只是僵硬、不痛的時候，才考慮熱敷。拿不準就先問醫生。"},
+    {t:"股四頭肌等長收縮 10 次 × 5 秒", d:"坐着或躺着，腿伸直，大腿前側收緊，把膝蓋後側輕輕壓向床面或椅面。\n維持 5 秒，放鬆 5 秒，做 10 次。膝蓋完全不用彎，是最安全的一組。"},
+    {t:"直腿抬高 10 次（每邊）", d:"躺平，一隻腳屈膝踩地，另一隻腳伸直。\n收緊大腿，把腿抬離地約 20 公分，停 5 秒，用 3 秒慢慢放下。\n不要用擺動借力，腰不要拱起來。"},
+    {t:"臀部訓練 10 次", d:"側躺，上面的腿向上抬到約 45 度，慢慢放下；或趴着收緊臀部把腿抬起。\n<b>膝蓋積液明顯、或做起來痛，就跳過這組，先問醫生。</b>"},
+    {t:"記住一個數：0–5 分", d:"動作期間和之後，痛要維持在 0–5 分。超過就減少次數、減慢、加休息。\n分開做——每次兩三下、每小時做一點，比一次做大量安全。"}
+   ]},
+  {id:"feet", ico:"🦶", t:"足部照護", d:"半年療程裡，每天要做的小事",
+   mins:0, steps:[
+    {t:"藥要搽足整個療程", d:"指甲長得慢，真菌藏在甲床深處。\n就算外觀好轉，也不要自己停——停了最容易復發，之前的功夫就白費。"},
+    {t:"搽藥的方法", d:"腳和甲要清潔乾爽才搽；整個受感染的甲面、甲周的皮膚都要搽到。\n洗澡弄濕腳之後，等大約 10 分鐘再搽。"},
+    {t:"洗腳後抹乾趾縫", d:"用毛巾印乾，不要用力擦。趾縫可以用風筒低溫吹乾。\n真菌最愛溫暖潮濕，乾爽就是最便宜的一步。"},
+    {t:"鞋襪每天換", d:"襪子和床單用 60°C 熱水洗；不要連續兩三天穿同一雙鞋。\n鞋內可以灑抗真菌粉；舊鞋可以考慮換掉。"},
+    {t:"不要自己加類固醇藥", d:"濕疹藥（類固醇）搽在真菌感染的位置，會令真菌愈長愈廣、愈難認。\n<b>用藥的組合和先後次序，要由醫生決定，不要自己試。</b>"},
+    {t:"不要搔抓、不要赤腳走", d:"公共場所（更衣室、泳池、淋浴間）穿拖鞋。\n家人如果有腳氣或灰指甲，要一併處理，否則會互相再感染。"}
+   ]},
+  {id:"avoid", ico:"🚫", t:"現在要避開的動作", d:"不是永遠不能做，是這段時間先不要",
+   mins:0, steps:[
+    {t:"深蹲與負重蹲", d:"膝彎超過約 90 度的蹲、抱東西蹲下去、蹲着扭身——這幾個是最傷半月板的姿勢。\n要拿地上的東西，扶着東西慢慢來，或直接坐低。"},
+    {t:"扭轉膝蓋", d:"轉身時<b>整個人轉</b>，不要只轉上半身、腳掌釘在地上。\n上落車、轉身、拿東西的時候最容易中。"},
+    {t:"長時間跪、跪坐、屈膝坐", d:"屈膝坐久了，膝內側會僵硬、疼痛。定時把腳伸直。\n上落樓梯扶扶手、一級一級慢行，能搭電梯就搭。"},
+    {t:"站定不動、坐定不動、蹺腳", d:"這幾件事同時傷靜脈和膝蓋。\n站着時用矮凳左右腳輪替，膝蓋不要鎖死，不要交叉腳。"},
+    {t:"自己按、自己拗、自己拉", d:"小腿有血栓風險的位置，亂按很危險；膝蓋卡住硬拗會更傷。\n不確定就先問醫生或物理治療師。"}
+   ]}
+];
+
+const DEFAULT_COND = [
+  {k:"足部", v:"", s:""},
+  {k:"下肢", v:"", s:""},
+  {k:"左膝", v:"", s:""},
+  {k:"右膝", v:"", s:""},
+  {k:"症狀規律", v:"", s:""},
+  {k:"現時治療", v:"", s:""},
+  {k:"用藥與過敏", v:"", s:""},
+  {k:"其他要注意", v:"", s:""}
+];
+const COND_HINT = [
+  ["足部","例如：腳部皮膚痕癢、脫皮、趾甲變色，正在治療，療程約半年"],
+  ["下肢","例如：小腿腫脹、靜脈曲張；左或右哪邊較嚴重"],
+  ["左膝","例如：膝痛、腫、有積液；醫生說過什麼診斷"],
+  ["右膝",""],
+  ["症狀規律","例如：早上起身兩個膝蓋都痛；上完第三、四節課腳最脹"],
+  ["現時治療","例如：正在用什麼藥、療程多久、幾時覆診"],
+  ["用藥與過敏","正在搽或吃的藥；對什麼藥或物料敏感"],
+  ["其他要注意","例如：抑鬱及焦慮病史；其他長期病；醫生特別交代過的話"]
+];
+/* ---------- state ---------- */
+let DB = load();
+let tab = "today";
+let calCursor = new Date();
+let calY = calCursor.getFullYear(), calM = calCursor.getMonth();
+
+function load(){
+  let d = null;
+  try{ d = JSON.parse(localStorage.getItem(KEY) || "null"); }catch(e){ d = null; }
+  if(!d || typeof d !== "object") d = {};
+  d.days  = d.days  || {};
+  d.visits= d.visits|| [];
+  d.costs = d.costs || [];
+  d.meds  = d.meds  || [];
+  d.cond  = d.cond  || DEFAULT_COND.map(x=>({...x}));
+  d.start = d.start || todayStr();
+  d.backupAt = d.backupAt || null;
+  return d;
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){ toast("儲存失敗，空間可能滿了"); } }
+function todayStr(d){ d = d || new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function day(k, make){
+  if(!DB.days[k] && make) DB.days[k] = {kneeL:null,kneeR:null,swell:null,todo:{},note:"",ts:Date.now()};
+  return DB.days[k];
+}
+function today(){ return day(todayStr(), true); }
+function toast(m){
+  const el = document.getElementById("toast");
+  el.textContent = m; el.classList.add("show");
+  clearTimeout(el._t); el._t = setTimeout(()=>el.classList.remove("show"), 1400);
+}
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function fmtDate(s){
+  const [y,m,d] = s.split("-").map(Number);
+  const w = "日一二三四五六"[new Date(y,m-1,d).getDay()];
+  return y+"年"+m+"月"+d+"日（"+w+"）";
+}
+function daysBetween(a,b){ return Math.round((new Date(b)-new Date(a))/86400000); }
+function painColor(v){ if(v==null) return "var(--line)"; return v<=3?"var(--good)":v<=6?"var(--mid)":"var(--bad)"; }
+
+/* ============================================================
+   今天
+   ============================================================ */
+function renderToday(){
+  const now = new Date(), t = todayStr();
+  document.getElementById("hDate").textContent =
+    (now.getMonth()+1)+"月"+now.getDate()+"日";
+  document.getElementById("hWeek").textContent = "星期"+"日一二三四五六"[now.getDay()];
+  const rec = today();
+
+  // 療程進度
+  const n = Math.max(1, daysBetween(DB.start, t) + 1);
+  const pct = Math.min(100, Math.round(n / TREAT_DAYS * 100));
+  const left = Math.max(0, TREAT_DAYS - n);
+  document.getElementById("hSub").textContent = DB.start === t ? "今天是第一天。" : "";
+  document.getElementById("progBox").innerHTML =
+    '<div class="prog-row"><span>足部療程</span><b>第 '+n+' 天</b></div>'+
+    '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+    '<div class="prog-row" style="margin-top:7px"><span>共 '+TREAT_DAYS+' 天'+
+      (left>0 ? "，還有 "+left+" 天" : "，已完成")+'</span><span>'+pct+'%</span></div>';
+
+  // 三個數
+  setRange("sKneeL","vKneeL", rec.kneeL);
+  setRange("sKneeR","vKneeR", rec.kneeR);
+  const sw = document.getElementById("segsSwell");
+  sw.innerHTML = SWELL.map((s,i)=>
+    '<button class="seg'+(rec.swell===i?" on":"")+'" data-sw="'+i+'">'+s+'</button>').join("");
+  document.getElementById("vSwell").textContent = rec.swell==null ? "未記" : SWELL[rec.swell];
+
+  // 清單
+  let done = 0, total = 0;
+  const html = TODO_DEF.map(it=>{
+    const isCount = !!it.goal;
+    const v = isCount ? (rec.todo[it.id]||0) : !!rec.todo[it.id];
+    if(isCount){ total += it.goal; done += Math.min(v, it.goal); }
+    else { total++; if(v) done++; }
+    if(isCount){
+      return '<div class="todo'+(v>=it.goal?" done":"")+'" data-todo="'+it.id+'" data-kind="count">'+
+        '<div class="box'+(v>=it.goal?" on":"")+'" style="border-radius:11px"></div>'+
+        '<div class="label">'+it.t+'<small>'+it.s+'</small></div>'+
+        '<div class="counter"><button data-step="-1">−</button>'+
+        '<span class="n'+(v>=it.goal?" full":"")+'">'+v+'/'+it.goal+'</span>'+
+        '<button data-step="1">＋</button></div></div>';
+    }
+    return '<div class="todo'+(v?" done":"")+'" data-todo="'+it.id+'" data-kind="flag">'+
+      '<div class="box'+(v?" on":"")+'"></div>'+
+      '<div class="label">'+it.t+'<small>'+it.s+'</small></div></div>';
+  }).join("");
+  document.getElementById("todoList").innerHTML = html;
+  document.getElementById("todoSum").textContent =
+    done===0 ? "今天還沒開始，一項一項來就好。" :
+    done>=total ? "今天該做的都做了。這就夠了。" :
+    "已做 "+done+" / "+total+" 項。做不完也沒關係，做了的就是賺了。";
+
+  if(document.activeElement !== document.getElementById("note"))
+    document.getElementById("note").value = rec.note || "";
+}
+function setRange(sid, vid, v){
+  const s = document.getElementById(sid), el = document.getElementById(vid);
+  s.value = v==null ? 0 : v;
+  el.innerHTML = (v==null ? "未記" : v) + (v==null?"":"<small>/10</small>");
+  el.style.color = v==null ? "var(--muted)" : painColor(v);
+}
+
+/* ============================================================
+   動作
+   ============================================================ */
+function renderMove(){
+  document.getElementById("routList").innerHTML = ROUTINES.map(r=>
+    '<div class="rout" data-rout="'+r.id+'"><div class="ico">'+r.ico+'</div>'+
+    '<div><div class="t">'+r.t+'</div><div class="d">'+r.d+'</div></div>'+
+    '<div class="arrow">›</div></div>').join("");
+}
+
+/* ============================================================
+   記錄：月曆 + 圖表 + 總結
+   ============================================================ */
+function renderLog(){
+  // 月曆
+  document.getElementById("calTtl").textContent = calY+"年"+(calM+1)+"月";
+  const first = new Date(calY, calM, 1), startW = first.getDay();
+  const nDays = new Date(calY, calM+1, 0).getDate();
+  let cells = "日一二三四五六".split("").map(w=>'<div class="w">'+w+'</div>').join("");
+  for(let i=0;i<startW;i++) cells += '<div class="d pad"></div>';
+  const tk = todayStr();
+  for(let d=1; d<=nDays; d++){
+    const k = calY+"-"+String(calM+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+    const rec = DB.days[k];
+    const has = rec && (rec.kneeL!=null || rec.kneeR!=null || rec.swell!=null ||
+                        Object.keys(rec.todo||{}).some(x=>rec.todo[x]) || (rec.note||"").trim());
+    const pain = rec ? Math.max(rec.kneeL==null?-1:rec.kneeL, rec.kneeR==null?-1:rec.kneeR) : null;
+    const col = rec && pain!=null && pain>=0 ? painColor(pain) : "var(--line)";
+    cells += '<div class="d'+(k===tk?" today":"")+(has?"":" empty")+'" data-day="'+k+'">'+
+             '<span>'+d+'</span>'+(has?'<span class="m" style="background:'+col+'"></span>':'')+'</div>';
+  }
+  document.getElementById("calGrid").innerHTML = cells;
+
+  // 14 天資料
+  const pts = [];
+  for(let i=13;i>=0;i--){
+    const d = new Date(); d.setDate(d.getDate()-i);
+    const k = todayStr(d), rec = DB.days[k];
+    pts.push({k, lbl:(d.getMonth()+1)+"/"+d.getDate(),
+      L: rec?rec.kneeL:null, R: rec?rec.kneeR:null, S: rec?rec.swell:null});
+  }
+  document.getElementById("chartKnee").innerHTML = lineChart(
+    [{name:"左膝", color:"var(--bad)", key:"L"},{name:"右膝", color:"var(--accent)", key:"R"}], pts, 10);
+  document.getElementById("chartSwell").innerHTML = lineChart(
+    [{name:"腿腫", color:"var(--warm)", key:"S"}], pts, 3);
+
+  const nRec = pts.filter(p=>p.L!=null||p.R!=null).length;
+  document.getElementById("chartSub").textContent = nRec ? "有記錄 "+nRec+" / 14 天" : "還沒有記錄。今天開始記第一筆。";
+
+  // 總結
+  const valid = pts.filter(p=>p.L!=null||p.R!=null);
+  const avg = a => a.length ? (a.reduce((x,y)=>x+y,0)/a.length).toFixed(1) : "—";
+  const L = valid.filter(p=>p.L!=null).map(p=>p.L), R = valid.filter(p=>p.R!=null).map(p=>p.R);
+  const swArr = pts.filter(p=>p.S!=null).map(p=>p.S);
+  const rows = [
+    ["平均左膝痛", avg(L)+(L.length?" / 10":"")],
+    ["平均右膝痛", avg(R)+(R.length?" / 10":"")],
+    ["最高左膝痛", L.length?Math.max(...L)+" / 10":"—"],
+    ["平均腿腫", swArr.length?(swArr.reduce((a,b)=>a+b,0)/swArr.length).toFixed(1)+" / 3":"—"],
+    ["記錄天數", valid.length+" / 14 天"]
+  ];
+  // 用藥 / 動作依從性
+  let medDays=0, legDays=0, brkDays=0;
+  pts.forEach(p=>{
+    const r = DB.days[p.k]; if(!r) return;
+    const td = r.todo||{};
+    if(td.nail||td.tinea||td.eczema) medDays++;
+    if((td.legs||0)>=1) legDays++;
+    if((td.breaks||0)>=1) brkDays++;
+  });
+  rows.push(["有搽藥", medDays+" / 14 天"], ["有抬腿", legDays+" / 14 天"], ["有課間休息", brkDays+" / 14 天"]);
+  document.getElementById("sumBox").innerHTML = rows.map(r=>
+    '<div class="kv"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>').join("");
+}
+function lineChart(series, pts, maxV){
+  const W = 320, H = 108, pad = {l:6,r:6,t:8,b:18};
+  const iw = W-pad.l-pad.r, ih = H-pad.t-pad.b;
+  const x = i => pad.l + (pts.length<2?0:iw*i/(pts.length-1));
+  const y = v => pad.t + ih*(1 - v/maxV);
+  let g = "";
+  // 網格
+  [0, maxV/2, maxV].forEach(v=>{
+    g += '<line x1="'+pad.l+'" y1="'+y(v)+'" x2="'+(W-pad.r)+'" y2="'+y(v)+
+         '" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 4"/>';
+  });
+  // 每一條線
+  series.forEach(s=>{
+    // 分段處理缺值
+    let segs = [], cur = [];
+    pts.forEach((p,i)=>{
+      if(p[s.key]==null){ if(cur.length){segs.push(cur);cur=[];} }
+      else cur.push({x:x(i), y:y(p[s.key])});
+    });
+    if(cur.length) segs.push(cur);
+    segs.forEach(seg=>{
+      if(seg.length === 1){
+        g += '<circle cx="'+seg[0].x+'" cy="'+seg[0].y+'" r="3" fill="'+s.color+'"/>';
+      } else {
+        g += '<polyline fill="none" stroke="'+s.color+'" stroke-width="2.5" stroke-linecap="round" '+
+             'stroke-linejoin="round" points="'+seg.map(p=>p.x+","+p.y).join(" ")+'"/>';
+        seg.forEach(p=>{ g += '<circle cx="'+p.x+'" cy="'+p.y+'" r="2.6" fill="'+s.color+'"/>'; });
+      }
+    });
+  });
+  return '<svg viewBox="0 0 '+W+' '+H+'">'+g+'</svg>'+
+    '<div class="sc-ends" style="margin-top:2px"><span>'+pts[0].lbl+'</span>'+
+    '<span>'+pts[Math.floor(pts.length/2)].lbl+'</span><span>今天</span></div>';
+}
+
+/* ============================================================
+   資料
+   ============================================================ */
+function renderData(){
+  const filled = DB.cond.filter(c=>(c.v||"").trim()).length;
+  document.getElementById("condBox").innerHTML = (filled ? "" :
+      '<div class="empty-tip">還沒有填。按下面「編輯狀況卡」，把醫生說過的話抄進去，覆診時直接給對方看。</div>') +
+    DB.cond.filter(c=>(c.v||"").trim() || !filled).map(c=>
+    '<div class="kv"><span class="k">'+esc(c.k)+'</span><span class="v">'+
+    (esc(c.v) || '<span style="color:var(--muted)">未填</span>')+
+    (c.s?'<br><small style="color:var(--muted)">（'+esc(c.s)+'）</small>':'')+'</span></div>').join("");
+
+  document.getElementById("medBox").innerHTML = DB.meds.length ? DB.meds.map((m,i)=>
+    '<div class="item"><div class="top"><span>'+esc(m.name||"（未填）")+'</span>'+
+    '<span style="color:var(--muted);font-weight:400;font-size:12px">'+esc(m.for||"")+'</span></div>'+
+    '<div class="meta">'+esc(m.how||"")+(m.start?"\n由 "+esc(m.start)+(m.end?" 至 "+esc(m.end):"")+"":"")+'</div>'+
+    '<button class="btn ghost mini" data-delmed="'+i+'">刪除</button></div>'
+  ).join("") : '<div class="empty-tip">還沒有記錄。把現在在用的藥加進來，覆診時一併給醫生看。</div>';
+
+  const up = DB.visits.slice().sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+  const tk = todayStr();
+  const nxt = up.find(v=>v.date >= tk);
+  document.getElementById("visitBox").innerHTML = up.length ? up.map((v,i)=>
+    '<div class="item"><div class="top"><span>'+esc(v.date||"（未填日期）")+
+      (v.date===nxt?.date && v.date>=tk ? ' <small style="color:var(--accent)">下次</small>':"")+'</span>'+
+      '<span style="font-weight:400;font-size:12px;color:var(--muted)">'+esc(v.place||"")+'</span></div>'+
+      '<div class="meta">'+esc(v.what||"")+(v.next?"\n下次："+esc(v.next):"")+'</div>'+
+      '<button class="btn ghost mini" data-delvisit="'+DB.visits.indexOf(v)+'">刪除</button></div>'
+  ).join("") : '<div class="empty-tip">還沒有覆診記錄。</div>';
+
+  const total = DB.costs.reduce((s,c)=>s+(Number(c.amount)||0),0);
+  document.getElementById("costSub").textContent = DB.costs.length ?
+    "共 "+DB.costs.length+" 筆，合計 HK$"+total.toLocaleString() : "記下來，才知道花了多少、還要不要花。";
+  document.getElementById("costBox").innerHTML = DB.costs.map((c,i)=>
+    '<div class="item"><div class="top"><span>'+esc(c.item||"（未填）")+'</span>'+
+    '<span class="amt">HK$'+Number(c.amount||0).toLocaleString()+'</span></div>'+
+    '<div class="meta">'+esc(c.date||"")+'</div>'+
+    '<button class="btn ghost mini" data-delcost="'+i+'">刪除</button></div></div>'
+  ).join("");
+
+  document.getElementById("startDate").value = DB.start;
+
+  const bk = DB.backupAt;
+  document.getElementById("bkSub").textContent = bk ?
+    "上次備份："+bk+"（"+(daysBetween(bk, tk))+" 天前）" :
+    "還沒備份過。建議今天先下載一份。";
+}
+
+/* ============================================================
+   互動
+   ============================================================ */
+// tabs
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  tab = b.dataset.tab;
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on", x===b));
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on", p.id==="p-"+tab));
+  window.scrollTo({top:0,behavior:"instant"});
+  render();
+});
+
+// 今天：滑桿
+["sKneeL","sKneeR"].forEach(id=>{
+  document.getElementById(id).addEventListener("input", e=>{
+    const isL = id==="sKneeL", v = Number(e.target.value);
+    setRange(id, isL?"vKneeL":"vKneeR", v);
+    const r = today(); r[isL?"kneeL":"kneeR"] = v; r.ts = Date.now(); save(); softToast();
+  });
+});
+function softToast(){ /* 靜默儲存，不彈提示 */ }
+
+// 今天：腿腫
+document.getElementById("segsSwell").addEventListener("click", e=>{
+  const b = e.target.closest("[data-sw]"); if(!b) return;
+  const v = Number(b.dataset.sw), r = today();
+  r.swell = (r.swell===v) ? r.swell : v; r.ts = Date.now(); save(); renderToday();
+});
+
+// 今天：清單
+document.getElementById("todoList").addEventListener("click", e=>{
+  const row = e.target.closest("[data-todo]"); if(!row) return;
+  const id = row.dataset.todo, kind = row.dataset.kind, r = today();
+  const def = TODO_DEF.find(x=>x.id===id);
+  if(kind==="count"){
+    const stepBtn = e.target.closest("[data-step]");
+    const step = stepBtn ? Number(stepBtn.dataset.step) : 1;
+    let v = (r.todo[id]||0) + step;
+    v = Math.max(0, Math.min(def.goal, v));
+    r.todo[id] = v;
+  } else {
+    r.todo[id] = !r.todo[id];
+  }
+  r.ts = Date.now(); save(); renderToday();
+  if(kind==="count" && r.todo[id]>=def.goal) toast("做到了 · "+def.t);
+});
+
+// 今天：筆記
+const noteEl = document.getElementById("note");
+let noteTimer = null;
+noteEl.addEventListener("input", ()=>{
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(()=>{
+    const r = today(); r.note = noteEl.value; r.ts = Date.now(); save();
+    toast("已記下");
+  }, 700);
+});
+noteEl.addEventListener("blur", ()=>{
+  const r = today(); r.note = noteEl.value; r.ts = Date.now(); save();
+});
+window.addEventListener("pagehide", ()=>{
+  const r = today(); r.note = noteEl.value; save();
+});
+document.addEventListener("visibilitychange", ()=>{
+  if(document.hidden){ const r = today(); r.note = noteEl.value; save(); }
+});
+
+// 動作：開啟流程
+document.getElementById("routList").addEventListener("click", e=>{
+  const row = e.target.closest("[data-rout]"); if(!row) return;
+  openRoutine(ROUTINES.find(r=>r.id===row.dataset.rout));
+});
+let timerH = null;
+function openRoutine(r){
+  if(!r) return;
+  const body = r.steps.map((s,i)=>
+    '<div class="step"><div class="sn">STEP '+(i+1)+'</div><div class="st">'+s.t+'</div>'+
+    '<div class="sd">'+s.d+'</div></div>').join("");
+  const t = r.mins ? '<div class="timer"><div class="clock" id="clock">'+
+      String(r.mins).padStart(2,"0")+':00</div>'+
+      '<button class="btn" id="tBtn">開始</button></div>' : "";
+  openSheet(r.t, '<div class="sub">'+r.d+'</div>'+body+t);
+  if(r.mins){
+    let left = r.mins*60, running = false;
+    const clock = document.getElementById("clock"), btn = document.getElementById("tBtn");
+    btn.onclick = ()=>{
+      running = !running;
+      btn.textContent = running ? "暫停" : "開始";
+      if(running){
+        timerH = setInterval(()=>{
+          left--;
+          if(left<0){ clearInterval(timerH); timerH=null; clock.textContent="時間到";
+            btn.textContent="完成"; btn.classList.add("warm"); return; }
+          clock.textContent = String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");
+        },1000);
+      } else { clearInterval(timerH); timerH = null; }
+    };
+  }
+}
+function openSheet(title, html){
+  document.getElementById("sheet").innerHTML =
+    '<div class="mh"><h3>'+title+'</h3><button class="x" id="mClose">✕</button></div>'+html;
+  document.getElementById("modal").classList.add("open");
+  document.getElementById("mClose").onclick = closeSheet;
+}
+function closeSheet(){
+  if(timerH){ clearInterval(timerH); timerH = null; }
+  document.getElementById("modal").classList.remove("open");
+  document.getElementById("sheet").innerHTML = "";
+}
+document.getElementById("modal").addEventListener("click", e=>{
+  if(e.target.id==="modal") closeSheet();
+});
+
+document.getElementById("btnFlagMore").onclick = e=>{
+  const more = document.getElementById("flagMore");
+  const open = more.style.display !== "none";
+  more.style.display = open ? "none" : "block";
+  e.target.textContent = open ? "看其餘 6 條" : "收起";
+};
+
+// 記錄：月曆
+document.getElementById("calPrev").onclick = ()=>{ calM--; if(calM<0){calM=11;calY--;} renderLog(); };
+document.getElementById("calNext").onclick = ()=>{ calM++; if(calM>11){calM=0;calY++;} renderLog(); };
+document.getElementById("calGrid").addEventListener("click", e=>{
+  const c = e.target.closest("[data-day]"); if(!c) return;
+  openDay(c.dataset.day);
+});
+function openDay(k){
+  const rec = DB.days[k];
+  const V = (v)=>v==null?"未記":v;
+  const todoTxt = rec ? TODO_DEF.filter(it=>{
+      const v = (rec.todo||{})[it.id];
+      return it.goal ? v>0 : !!v;
+    }).map(it=>{
+      const v = rec.todo[it.id];
+      return "· "+it.t + (it.goal ? "（"+v+"/"+it.goal+"）" : "");
+    }).join("<br>") : "";
+  openSheet(fmtDate(k),
+    '<div class="kv"><span class="k">左膝痛</span><span class="v">'+V(rec&&rec.kneeL)+' / 10</span></div>'+
+    '<div class="kv"><span class="k">右膝痛</span><span class="v">'+V(rec&&rec.kneeR)+' / 10</span></div>'+
+    '<div class="kv"><span class="k">腿腫</span><span class="v">'+
+      (rec&&rec.swell!=null?SWELL[rec.swell]:"未記")+'</span></div>'+
+    (todoTxt?'<div class="kv"><span class="k">做了</span><span class="v">'+todoTxt+'</span></div>':"")+
+    (rec&&rec.note?'<div style="margin-top:12px;font-size:13.5px;white-space:pre-wrap">'+esc(rec.note)+'</div>':"")+
+    '<label class="f">補記／修改這三個數</label>'+
+    '<div class="grid2"><input type="number" min="0" max="10" id="eL" placeholder="左膝痛 0–10" value="'+
+      (rec&&rec.kneeL!=null?rec.kneeL:"")+'"><input type="number" min="0" max="10" id="eR" placeholder="右膝痛 0–10" value="'+
+      (rec&&rec.kneeR!=null?rec.kneeR:"")+'"></div>'+
+    '<select id="eS" style="margin-top:10px"><option value="">腿腫：未記</option>'+
+      SWELL.map((s,i)=>'<option value="'+i+'"'+(rec&&rec.swell===i?" selected":"")+'>腿腫：'+s+'</option>').join("")+
+    '</select>'+
+    '<textarea id="eN" style="margin-top:10px" placeholder="這天的筆記">'+esc(rec?rec.note:"")+'</textarea>'+
+    '<div class="timer"><button class="btn" id="eSave">儲存這天</button></div>');
+  document.getElementById("eSave").onclick = ()=>{
+    const r = day(k, true);
+    const l = document.getElementById("eL").value, rr = document.getElementById("eR").value;
+    const s = document.getElementById("eS").value;
+    r.kneeL = l===""?null:Math.max(0,Math.min(10,Number(l)));
+    r.kneeR = rr===""?null:Math.max(0,Math.min(10,Number(rr)));
+    r.swell = s===""?null:Number(s);
+    r.note = document.getElementById("eN").value;
+    r.ts = Date.now(); save(); closeSheet(); renderLog(); toast("已儲存");
+  };
+}
+
+// 資料：狀況卡
+document.getElementById("btnEditCond").onclick = ()=>{
+  openSheet("編輯狀況卡",
+    '<div class="sub">每一項後面可以寫「已確診」「醫生說」「未經核實」，覆診時最有用。</div>'+
+    '<label class="f">快速貼上（一次填好全部）</label>'+
+    '<textarea id="cBulk" style="min-height:80px" placeholder="一行一項，欄目名要跟下面一樣，例如：\n足部：…\n下肢：…\n用藥與過敏：…"></textarea>'+
+    '<div class="timer" style="margin-top:10px"><button class="btn ghost" id="cFill">填入下面各欄</button></div>'+
+    DB.cond.map((c,i)=>
+      '<label class="f">'+esc(c.k)+'</label>'+
+      '<textarea data-condv="'+i+'" style="min-height:64px" placeholder="'+
+        esc((COND_HINT.find(h=>h[0]===c.k)||["",""])[1])+'">'+esc(c.v)+'</textarea>'+
+      '<input type="text" data-conds="'+i+'" value="'+esc(c.s||"")+'" placeholder="來源／狀態，例如：本人自述／醫生已確認" style="margin-top:6px">'
+    ).join("")+
+    '<div class="timer"><button class="btn" id="cSave">儲存</button></div>');
+  document.getElementById("cFill").onclick = ()=>{
+    const lines = document.getElementById("cBulk").value.split("\n");
+    let hit = 0;
+    lines.forEach(function(ln){
+      const m = ln.match(/^\s*([^：:]+)[：:]\s*(.+?)\s*$/);
+      if(!m) return;
+      const k = m[1].trim(), v = m[2].trim();
+      const i = DB.cond.findIndex(function(c){ return c.k === k; });
+      if(i < 0) return;
+      document.querySelector('[data-condv="'+i+'"]').value = v;
+      hit++;
+    });
+    toast(hit ? "填入了 "+hit+" 項，記得按儲存" : "認不到欄目名，請確認每行用「欄目：內容」格式");
+  };
+  document.getElementById("cSave").onclick = ()=>{
+    DB.cond.forEach((c,i)=>{
+      c.v = document.querySelector('[data-condv="'+i+'"]').value;
+      c.s = document.querySelector('[data-conds="'+i+'"]').value;
+    });
+    save(); closeSheet(); renderData(); toast("已儲存");
+  };
+};
+
+// 資料：用藥
+document.getElementById("btnAddMed").onclick = ()=>{
+  openSheet("加一項藥",
+    '<label class="f">藥名</label><input type="text" id="mName" placeholder="例如：抗真菌藥膏">'+
+    '<label class="f">用在</label><input type="text" id="mFor" placeholder="例如：腳部皮膚／趾甲／其他">'+
+    '<label class="f">怎麼用</label><textarea id="mHow" style="min-height:64px" placeholder="例如：早晚各一次，搽薄薄一層"></textarea>'+
+    '<div class="grid2"><div><label class="f">開始</label><input type="date" id="mStart"></div>'+
+    '<div><label class="f">預計結束</label><input type="date" id="mEnd"></div></div>'+
+    '<div class="timer"><button class="btn" id="mSave">儲存</button></div>');
+  document.getElementById("mSave").onclick = ()=>{
+    const name = document.getElementById("mName").value.trim();
+    if(!name){ toast("請填藥名"); return; }
+    DB.meds.push({name, for:document.getElementById("mFor").value.trim(),
+      how:document.getElementById("mHow").value.trim(),
+      start:document.getElementById("mStart").value, end:document.getElementById("mEnd").value});
+    save(); closeSheet(); renderData(); toast("已加入");
+  };
+};
+document.getElementById("medBox").addEventListener("click", e=>{
+  const b = e.target.closest("[data-delmed]"); if(!b) return;
+  DB.meds.splice(Number(b.dataset.delmed),1); save(); renderData(); toast("已刪除");
+});
+
+// 資料：覆診
+document.getElementById("btnAddVisit").onclick = ()=>{
+  openSheet("加覆診",
+    '<label class="f">日期</label><input type="date" id="vDate">'+
+    '<label class="f">地點／醫生</label><input type="text" id="vPlace" placeholder="例如：XX 診所">'+
+    '<label class="f">這次做什麼／醫生說了什麼</label><textarea id="vWhat" style="min-height:70px"></textarea>'+
+    '<label class="f">下次幾時</label><input type="date" id="vNext">'+
+    '<div class="timer"><button class="btn" id="vSave">儲存</button></div>');
+  const d = new Date(); d.setDate(d.getDate()+30);
+  document.getElementById("vDate").value = todayStr();
+  document.getElementById("vNext").value = todayStr(d);
+  document.getElementById("vSave").onclick = ()=>{
+    DB.visits.push({date:document.getElementById("vDate").value,
+      place:document.getElementById("vPlace").value.trim(),
+      what:document.getElementById("vWhat").value.trim(),
+      next:document.getElementById("vNext").value});
+    save(); closeSheet(); renderData(); toast("已加入");
+  };
+};
+document.getElementById("visitBox").addEventListener("click", e=>{
+  const b = e.target.closest("[data-delvisit]"); if(!b) return;
+  DB.visits.splice(Number(b.dataset.delvisit),1); save(); renderData(); toast("已刪除");
+});
+document.getElementById("startDate").onchange = e=>{
+  DB.start = e.target.value || todayStr(); save(); renderToday(); toast("已更新療程開始日");
+};
+
+// 資料：費用
+document.getElementById("btnAddCost").onclick = ()=>{
+  openSheet("加一筆花費",
+    '<label class="f">日期</label><input type="date" id="cDate" value="'+todayStr()+'">'+
+    '<label class="f">項目</label><input type="text" id="cItem" placeholder="例如：診金＋藥費">'+
+    '<label class="f">金額（HK$）</label><input type="number" id="cAmt" inputmode="decimal">'+
+    '<div class="timer"><button class="btn" id="cSave2">儲存</button></div>');
+  document.getElementById("cSave2").onclick = ()=>{
+    const item = document.getElementById("cItem").value.trim();
+    const amt = Number(document.getElementById("cAmt").value);
+    if(!item || !amt){ toast("請填項目和金額"); return; }
+    DB.costs.push({date:document.getElementById("cDate").value, item, amount:amt});
+    save(); closeSheet(); renderData(); toast("已加入");
+  };
+};
+document.getElementById("costBox").addEventListener("click", e=>{
+  const b = e.target.closest("[data-delcost]"); if(!b) return;
+  DB.costs.splice(Number(b.dataset.delcost),1); save(); renderData(); toast("已刪除");
+});
+
+// 資料：備份
+function download(name, text){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type:"application/json"}));
+  a.download = name; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+}
+document.getElementById("btnExport").onclick = ()=>{
+  DB.backupAt = todayStr(); save();
+  download("身體台備份-"+todayStr()+".json", JSON.stringify(DB, null, 1));
+  renderData(); toast("已下載備份");
+};
+document.getElementById("btnCopy").onclick = async ()=>{
+  const txt = plainText();
+  try{
+    await navigator.clipboard.writeText(txt);
+    toast("已複製，可以貼去備忘錄");
+  }catch(e){
+    openSheet("全部記錄（可手動複製）", '<textarea style="min-height:50vh">'+esc(txt)+'</textarea>');
+  }
+};
+function plainText(){
+  const L = [];
+  L.push("身體台 記錄　匯出於 "+fmtDate(todayStr()));
+  L.push("足部療程：第 "+Math.max(1,daysBetween(DB.start,todayStr())+1)+" 天 / "+TREAT_DAYS+" 天");
+  L.push("");
+  L.push("── 我的狀況卡 ──");
+  DB.cond.forEach(c=>L.push("· "+c.k+"："+c.v+(c.s?"（"+c.s+"）":"")));
+  L.push("");
+  const keys = Object.keys(DB.days).sort();
+  L.push("── 每日記錄（"+keys.length+" 天）──");
+  keys.forEach(k=>{
+    const r = DB.days[k];
+    const parts = [];
+    if(r.kneeL!=null) parts.push("左膝 "+r.kneeL);
+    if(r.kneeR!=null) parts.push("右膝 "+r.kneeR);
+    if(r.swell!=null) parts.push("腿腫 "+SWELL[r.swell]);
+    const done = TODO_DEF.filter(it=>{ const v=(r.todo||{})[it.id]; return it.goal? v>0 : !!v; })
+      .map(it=>it.t.replace(/^[^：]*：/,"")).join("、");
+    if(done) parts.push("做了："+done);
+    L.push(k+"　"+(parts.join("　")||"（無數字）"));
+    if(r.note) L.push("　　"+r.note.replace(/\n/g,"\n　　"));
+  });
+  if(DB.meds.length){ L.push(""); L.push("── 用藥 ──");
+    DB.meds.forEach(m=>L.push("· "+m.name+"（"+m.for+"） "+m.how)); }
+  if(DB.visits.length){ L.push(""); L.push("── 覆診 ──");
+    DB.visits.forEach(v=>L.push("· "+v.date+" "+v.place+"　"+v.what+(v.next?"　下次 "+v.next:""))); }
+  if(DB.costs.length){ L.push(""); L.push("── 花費 ──");
+    DB.costs.forEach(c=>L.push("· "+c.date+" "+c.item+" HK$"+c.amount));
+    L.push("合計 HK$"+DB.costs.reduce((s,c)=>s+(Number(c.amount)||0),0)); }
+  L.push("");
+  L.push("（這份記錄不構成醫療建議，只作記錄用途。）");
+  return L.join("\n");
+}
+document.getElementById("btnImport").onclick = ()=>{
+  const inp = document.createElement("input");
+  inp.type = "file"; inp.accept = ".json,application/json";
+  inp.onchange = ()=>{
+    const f = inp.files[0]; if(!f) return;
+    const rd = new FileReader();
+    rd.onload = ()=>{
+      try{
+        const d = JSON.parse(rd.result);
+        if(!d || typeof d!=="object" || !d.days) throw new Error("格式不對");
+        DB = Object.assign(load(), d);
+        save(); render(); toast("已還原備份");
+      }catch(e){ toast("這個檔案讀不到，請確認是身體台的備份檔"); }
+    };
+    rd.readAsText(f);
+  };
+  inp.click();
+};
+
+// 資料：加入日曆（ICS）
+document.getElementById("btnIcs").onclick = ()=>{
+  const tk = todayStr();
+  const up = DB.visits.filter(v=>v.date).sort((a,b)=>a.date.localeCompare(b.date));
+  const events = up.length ? up : [{date:tk, what:"（還沒有覆診記錄，請先在身體台加入）", place:""}];
+  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//身體台//ZH-HK","CALSCALE:GREGORIAN"]
+    .concat(events.flatMap((v,i)=>{
+      const d = v.date.replace(/-/g,"");
+      const nm = "覆診"+(v.place?"：" + v.place:"");
+      return ["BEGIN:VEVENT","UID:body-"+d+"-"+i+"@colabody",
+        "DTSTAMP:"+d+"T000000Z","DTSTART;VALUE=DATE:"+d,
+        "SUMMARY:"+nm.replace(/[,;\\]/g," "),
+        "DESCRIPTION:"+String(v.what||"").replace(/\n/g,"\\n").replace(/[,;\\]/g," "),
+        "BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY","DESCRIPTION:"+nm,"END:VALARM",
+        "END:VEVENT"];
+    })).concat(["END:VCALENDAR"]).join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([ics], {type:"text/calendar"}));
+  a.download = "身體台-覆診.ics"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+  toast("已產生，開啟即可加入日曆");
+};
+
+/* ---------- render ---------- */
+function render(){
+  if(tab==="today") renderToday();
+  if(tab==="move")  renderMove();
+  if(tab==="log")   renderLog();
+  if(tab==="data")  renderData();
+}
+render();
+window.addEventListener("pageshow", ()=>{ DB = load(); render(); });
+document.addEventListener("visibilitychange", ()=>{ if(!document.hidden){ DB = load(); render(); } });
+
+/* ---------- 離線（快取失敗不影響使用） ---------- */
+if("serviceWorker" in navigator && location.protocol==="https:"){
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+</script>
+</body>
+</html>
