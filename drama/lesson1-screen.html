@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316202c'/%3E%3Cg stroke='%23b8863b' stroke-width='6.2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.4 19h59.2v31.3a29.6 29.6 0 0 1-59.2 0z'/%3E%3Cpath d='M40.4 53.4a13.3 13.3 0 0 0 19.2 0'/%3E%3C/g%3E%3Ccircle cx='39.2' cy='36' r='3.6' fill='%23b8863b'/%3E%3Ccircle cx='60.8' cy='36' r='3.6' fill='%23b8863b'/%3E%3C/svg%3E">
+<title>第一節課 · 表演基本功</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  html, body.scr { height: 100%; }
+  body.scr {
+    margin: 0; height: 100vh; overflow: hidden;
+    background: #10161d; color: #f6f1e7;
+    font-family: var(--sans);
+  }
+  .scr-root { display: flex; height: 100vh; }
+
+  /* ---- 九個活動 + 三條規則 側邊列 ---- */
+  .scr-rail {
+    flex: 0 0 clamp(196px, 18vw, 262px);
+    background: #17202b; border-right: 1px solid rgba(255,255,255,.09);
+    padding: clamp(8px, 1.2vh, 16px); display: flex; flex-direction: column;
+    gap: clamp(5px, .9vh, 10px); overflow-y: auto;
+  }
+  .scr-chip {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    text-align: left; cursor: pointer; font-family: var(--sans);
+    background: rgba(255,255,255,.05); color: #eae3d6;
+    border: 1px solid rgba(255,255,255,.10); border-radius: 12px;
+    padding: clamp(7px, 1.1vh, 12px) clamp(10px, 1vw, 14px);
+    font-size: clamp(13px, 1.05vw, 17px); line-height: 1.25;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .scr-chip span { font-size: .78em; color: rgba(246,241,231,.55); flex: none; }
+  .scr-chip:hover { background: rgba(255,255,255,.11); }
+  .scr-chip.on { background: var(--gold); color: #1d1405; border-color: var(--gold); }
+  .scr-chip.on span { color: rgba(29,20,5,.7); }
+  .scr-chip.rule {
+    margin-top: auto; color: #f3d9cf;
+    background: rgba(181,80,47,.18); border-color: rgba(181,80,47,.5);
+  }
+  .scr-chip.rule.on { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
+
+  /* ---- 中央舞台 ---- */
+  .scr-stage {
+    flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(8px, 2.2vh, 34px);
+    padding: clamp(12px, 2.6vh, 46px) clamp(16px, 3vw, 60px);
+    text-align: center;
+  }
+  .scr-name {
+    margin: 0; font-family: var(--serif); font-weight: 600;
+    font-size: clamp(34px, 6vw, 104px); line-height: 1.08; letter-spacing: .02em;
+  }
+  .scr-card {
+    font-family: var(--serif); font-size: clamp(22px, 3.2vw, 58px); line-height: 1.3;
+    color: #f0e2c6; max-width: 22em;
+    padding: clamp(8px, 1.8vh, 22px) clamp(16px, 2.8vw, 44px);
+    border-radius: 18px; background: rgba(184,134,59,.14);
+    border: 1px solid rgba(184,134,59,.42);
+  }
+  .scr-card:empty { display: none; }
+  .scr-clock {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(64px, 14vw, 250px); line-height: 1;
+    letter-spacing: .02em; font-variant-numeric: tabular-nums;
+  }
+  .scr-btns { display: flex; gap: clamp(8px, 1.4vw, 20px); flex-wrap: wrap; justify-content: center; }
+  .scr-btns button {
+    cursor: pointer; font-family: var(--sans); font-weight: 600;
+    font-size: clamp(15px, 1.5vw, 27px);
+    padding: clamp(8px, 1.3vh, 17px) clamp(18px, 2.6vw, 46px);
+    border-radius: 999px; border: 1px solid rgba(255,255,255,.28);
+    background: rgba(255,255,255,.08); color: #f6f1e7;
+    transition: background .15s, transform .12s;
+  }
+  .scr-btns button:hover { background: rgba(255,255,255,.16); }
+  .scr-btns button:active { transform: translateY(1px); }
+  #startBtn { background: var(--gold); color: #1d1405; border-color: var(--gold); }
+  #startBtn:hover { background: #caa058; }
+
+  /* ---- 三條規則獨立卡 ---- */
+  .scr-rules[hidden] { display: none; }
+  .scr-rules {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(9,13,18,.97);
+    display: flex; align-items: center; justify-content: center;
+    padding: 4vh 5vw;
+  }
+  .scr-rules-inner { text-align: center; max-width: 44em; width: 100%; }
+  .scr-rules-inner ul {
+    list-style: none; margin: clamp(18px, 4vh, 56px) 0; padding: 0;
+    display: grid; gap: clamp(12px, 3vh, 36px);
+  }
+  .scr-rules-inner li strong {
+    display: block; font-family: var(--serif); font-weight: 600;
+    font-size: clamp(28px, 4.6vw, 78px); color: var(--gold-soft);
+  }
+  .scr-rules-inner li span {
+    display: block; font-size: clamp(16px, 2.2vw, 38px); color: rgba(246,241,231,.82);
+  }
+  #rulesClose {
+    cursor: pointer; font-family: var(--sans); font-weight: 600;
+    font-size: clamp(15px, 1.5vw, 24px);
+    padding: clamp(8px, 1.3vh, 16px) clamp(22px, 3vw, 50px);
+    border-radius: 999px; border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.08); color: #f6f1e7;
+  }
+  #rulesClose:hover { background: rgba(255,255,255,.16); }
+</style>
+</head>
+<body class="scr">
+<div class="scr-root">
+  <nav class="scr-rail" id="rail">
+    <button class="scr-chip" data-i="0">圓圈點名<span>6 分</span></button>
+    <button class="scr-chip" data-i="1">醒身體<span>7 分</span></button>
+    <button class="scr-chip" data-i="2">空間與停格<span>7 分</span></button>
+    <button class="scr-chip" data-i="3">呼吸與聲音<span>8 分</span></button>
+    <button class="scr-chip" data-i="4">反應遊戲<span>8 分</span></button>
+    <button class="scr-chip" data-i="5">雙人鏡子<span>9 分</span></button>
+    <button class="scr-chip" data-i="6">三人定格畫<span>9 分</span></button>
+    <button class="scr-chip" data-i="7">合體：一個聲音<span>8 分</span></button>
+    <button class="scr-chip" data-i="8">收整<span>8 分</span></button>
+    <button class="scr-chip rule" id="ruleBtn">三條規則</button>
+  </nav>
+
+  <main class="scr-stage">
+    <h1 class="scr-name" id="actName">圓圈點名</h1>
+    <div class="scr-card" id="actCard"></div>
+    <div class="scr-clock" id="clock">06:00</div>
+    <div class="scr-btns">
+      <button id="startBtn">開始</button>
+      <button id="pauseBtn">暫停</button>
+      <button id="resetBtn">重設</button>
+    </div>
+  </main>
+</div>
+
+<div class="scr-rules" id="rulesCard" hidden>
+  <div class="scr-rules-inner">
+    <h1 class="scr-name">三條規則</h1>
+    <ul>
+      <li><strong>準時到</strong><span>因為大家都在等</span></li>
+      <li><strong>專心聽</strong><span>因為台上一個人說話時，要有人接</span></li>
+      <li><strong>不嘲笑</strong><span>因為這裡每個人都要敢做傻事</span></li>
+    </ul>
+    <button id="rulesClose">關閉</button>
+  </div>
+</div>
+
+<script>
+  const ACTS = [
+    { name: "圓圈點名",     secs: 360, card: "" },
+    { name: "醒身體",       secs: 420, card: "" },
+    { name: "空間與停格",   secs: 420, card: "停格＝不動，眼睛看老師" },
+    { name: "呼吸與聲音",   secs: 480, card: "吸 4 秒　吐 6 秒" },
+    { name: "反應遊戲",     secs: 480, card: "" },
+    { name: "雙人鏡子",     secs: 540, card: "不用講話，用眼睛" },
+    { name: "三人定格畫",   secs: 540, card: "數到三，定住" },
+    { name: "合體：一個聲音", secs: 480, card: "我們要像一個人" },
+    { name: "收整",         secs: 480, card: "今天我發現自己……" },
+  ];
+
+  const nameEl = document.getElementById("actName");
+  const cardEl = document.getElementById("actCard");
+  const clockEl = document.getElementById("clock");
+  const rail = document.getElementById("rail");
+  const chips = [...rail.querySelectorAll(".scr-chip[data-i]")];
+  const ruleBtn = document.getElementById("ruleBtn");
+  const rulesCard = document.getElementById("rulesCard");
+
+  let cur = 0;
+  let remaining = ACTS[0].secs;
+  let tick = null;
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+  }
+
+  function paint() {
+    const a = ACTS[cur];
+    nameEl.textContent = a.name;
+    cardEl.textContent = a.card;
+    clockEl.textContent = fmt(remaining);
+    chips.forEach(c => c.classList.toggle("on", Number(c.dataset.i) === cur));
+  }
+
+  function stop() {
+    if (tick) { clearInterval(tick); tick = null; }
+  }
+
+  function pick(i) {
+    stop();
+    cur = i;
+    remaining = ACTS[i].secs;
+    paint();
+  }
+
+  function run() {
+    if (tick) return;
+    tick = setInterval(() => {
+      if (remaining > 0) remaining -= 1;
+      clockEl.textContent = fmt(remaining);
+      if (remaining <= 0) stop();
+    }, 1000);
+  }
+
+  chips.forEach(c => c.addEventListener("click", () => pick(Number(c.dataset.i))));
+  document.getElementById("startBtn").addEventListener("click", run);
+  document.getElementById("pauseBtn").addEventListener("click", stop);
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    stop();
+    remaining = ACTS[cur].secs;
+    paint();
+  });
+
+  ruleBtn.addEventListener("click", () => {
+    const show = rulesCard.hidden;
+    rulesCard.hidden = !show;
+    ruleBtn.classList.toggle("on", show);
+  });
+  document.getElementById("rulesClose").addEventListener("click", () => {
+    rulesCard.hidden = true;
+    ruleBtn.classList.remove("on");
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { rulesCard.hidden = true; ruleBtn.classList.remove("on"); }
+  });
+
+  paint();
+</script>
+</body>
+</html>
