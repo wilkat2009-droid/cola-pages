@@ -213,6 +213,7 @@ nav button.on{color:var(--accent)}
     </div>
     <div class="hd-sub" id="hSub"></div>
     <div class="prog" id="progBox"></div>
+    <div id="keepBox"></div>
   </header>
 
   <!-- ============ 今天 ============ -->
@@ -391,7 +392,10 @@ nav button.on{color:var(--accent)}
           <button class="btn ghost" id="btnImport">還原</button>
         </div>
         <button class="btn ghost" style="margin-top:10px" id="btnCopy">複製成文字</button>
-        <div class="note">記錄只存在你這部手機裡，不會上傳到任何地方。所以換手機或清空瀏覽器前，請先下載一份備份。</div>
+        <div id="whereBox" style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)"></div>
+        <div class="note"><b>會留著的：</b>關掉、放背景、重開機，記錄都在。你是用同一個入口開的，就永遠看到同一份。<br>
+        <b>會不見的：</b>① 清掉 Safari 的網站資料 ② 刪掉主畫面的圖示 ③ 換手機 ④ 用無痕模式開。<br>
+        <b>最重要的一點：</b>Safari 分頁和主畫面圖示，存的是<b>兩份完全分開的資料</b>（Apple 的設計）。上面那行會告訴你現在是哪一份——請固定用同一個入口。</div>
       </div>
     </section>
   </div>
@@ -549,7 +553,8 @@ function renderToday(){
     '<div class="prog-row"><span>足部療程</span><b>第 '+n+' 天</b></div>'+
     '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
     '<div class="prog-row" style="margin-top:7px"><span>共 '+TREAT_DAYS+' 天'+
-      (left>0 ? "，還有 "+left+" 天" : "，已完成")+'</span><span>'+pct+'%</span></div>';
+      (left>0 ? "，還有 "+left+" 天" : "，已完成")+'</span><span>'+pct+'%</span></div>'+
+    recStatsLine();
 
   // 三個數
   setRange("sKneeL","vKneeL", rec.kneeL);
@@ -586,6 +591,39 @@ function renderToday(){
 
   if(document.activeElement !== document.getElementById("note"))
     document.getElementById("note").value = rec.note || "";
+  renderKeep();
+}
+function recStatsLine(){
+  const ks = Object.keys(DB.days).filter(function(k){
+    const r = DB.days[k];
+    return r && (r.kneeL!=null || r.kneeR!=null || r.swell!=null ||
+      Object.keys(r.todo||{}).some(function(x){ return r.todo[x]; }) || (r.note||"").trim());
+  }).sort();
+  if(!ks.length) return '<div class="prog-row" style="margin-top:9px"><span>還沒有任何記錄</span></div>';
+  return '<div class="prog-row" style="margin-top:9px;padding-top:8px;border-top:1px dashed var(--line)">'+
+    '<span>已記錄 <b>'+ks.length+' 天</b></span><span>最早 '+ks[0].slice(5).replace("-","/")+'</span></div>';
+}
+function isStandalone(){
+  try{
+    return window.navigator.standalone === true ||
+           (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  }catch(e){ return false; }
+}
+function renderKeep(){
+  const el = document.getElementById("keepBox");
+  if(!el) return;
+  const overdue = !DB.backupAt || daysBetween(DB.backupAt, todayStr()) >= 14;
+  el.innerHTML = overdue ? '<div class="card" style="margin-top:12px;border-color:var(--warm);background:var(--warm-soft)">'+
+    '<div style="font-size:13px;line-height:1.6">'+
+    (DB.backupAt ? '上次備份是 '+DB.backupAt+'，'+(daysBetween(DB.backupAt, todayStr()))+' 天前了。' : '還沒有備份過。')+
+    '<br>記錄只在你這部手機裡，換手機或清瀏覽器資料就會不見。'+
+    '</div><div class="timer" style="margin-top:10px">'+
+    '<button class="btn warm" id="btnQuickBk">下載備份檔</button>'+
+    '<button class="btn ghost" id="btnGoData">去「資料」頁</button></div></div>' : '';
+  const qb = document.getElementById("btnQuickBk");
+  if(qb) qb.onclick = function(){ doExport(); };
+  const gd = document.getElementById("btnGoData");
+  if(gd) gd.onclick = function(){ document.querySelector('nav button[data-tab="data"]').click(); };
 }
 function setRange(sid, vid, v){
   const s = document.getElementById(sid), el = document.getElementById(vid);
@@ -749,6 +787,15 @@ function renderData(){
   document.getElementById("bkSub").textContent = bk ?
     "上次備份："+bk+"（"+(daysBetween(bk, tk))+" 天前）" :
     "還沒備份過。建議今天先下載一份。";
+  const sa = isStandalone();
+  const wb = document.getElementById("whereBox");
+  if(wb) wb.innerHTML =
+    '<div style="font-size:13px">你現在是用 <b style="color:var(--accent)">'+
+      (sa ? "主畫面圖示" : "Safari 分頁")+'</b> 開的。<br>'+
+      '<span style="color:var(--muted);font-size:12px">這一份記錄就存在這裡。'+
+      (sa ? "用主畫面的好處：系統不會因為你幾天沒開就自動清掉它。" :
+            "提醒：Safari 分頁這一份，如果你一段時間沒開，系統有可能自動清掉。想長久留著，建議都改用主畫面圖示開。")+
+      '</span></div>';
 }
 
 /* ============================================================
@@ -1031,11 +1078,12 @@ function download(name, text){
   a.download = name; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
 }
-document.getElementById("btnExport").onclick = ()=>{
+function doExport(){
   DB.backupAt = todayStr(); save();
   download("身體台備份-"+todayStr()+".json", JSON.stringify(DB, null, 1));
-  renderData(); toast("已下載備份");
-};
+  renderData(); renderKeep(); toast("已下載備份");
+}
+document.getElementById("btnExport").onclick = doExport;
 document.getElementById("btnCopy").onclick = async ()=>{
   const txt = plainText();
   try{
