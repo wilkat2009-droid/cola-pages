@@ -7,53 +7,73 @@
 <title>OneDrive 說明書</title><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#0f1720;color:#eef3f8;
-line-height:1.75;-webkit-text-size-adjust:100%}
-header{background:linear-gradient(135deg,#0d3a5c,#0f1720 74%);padding:42px 20px 30px;text-align:center;
+line-height:1.75;-webkit-text-size-adjust:100%;overflow-wrap:anywhere;word-break:break-word}
+header{background:linear-gradient(135deg,#0d3a5c,#0f1720 74%);padding:42px 22px 30px;text-align:center;
 border-bottom:3px solid #4a9eea}
-header h1{font-size:clamp(24px,6.6vw,36px);letter-spacing:4px}
+header h1{font-size:clamp(23px,6.4vw,36px);letter-spacing:3px}
 header p{margin-top:10px;color:#9db4c4;font-size:13.5px}
-main{max-width:820px;margin:0 auto;padding:0 16px 90px}
+main{max-width:820px;margin:0 auto;padding:0 18px 90px}
 section{margin:40px 0}
 .uh{border-left:5px solid var(--c,#4a9eea);padding-left:13px;margin-bottom:16px}
-.uh h2{font-size:20.5px;letter-spacing:1.5px}
-.uh p{color:#a3b8c8;font-size:12.5px;margin-top:4px}
+.uh h2{font-size:20px;letter-spacing:1.2px;line-height:1.5}
+.uh p{color:#a3b8c8;font-size:12.5px;margin-top:5px}
 .card{background:#16222e;border:1px solid #24384a;border-left:4px solid #4a9eea;
-border-radius:14px;padding:17px 17px 15px;margin-bottom:13px}
-.card h3{font-size:17px;font-weight:800;margin-bottom:10px;line-height:1.5}
-.card p{font-size:14.5px;color:#dbe6ef;margin:8px 0}
-.card b{color:#fff}
+border-radius:14px;padding:17px;margin-bottom:13px}
+.card h3{font-size:17px;font-weight:800;margin-bottom:10px;line-height:1.55}
+.card p{font-size:14.5px;color:#dbe6ef;margin:9px 0}
+.card b,.card strong{color:#fff}
 .hi{color:#ffd58a;font-weight:700}
 .warn{background:#2a1c14;border-color:#7a4a22;border-left-color:#ec7d3a}
 .warn h3{color:#ffb26b}
-.tree{background:#0b141d;border:1px solid #1e3242;border-radius:12px;padding:16px 14px;
-font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:2;color:#b9d2e2;
-white-space:pre;overflow-x:auto;margin:14px 0}
-.tree .a{color:#7fd4a0}.tree .b{color:#ffc46b}.tree .c{color:#7fbfe8}.tree .d{color:#8b9dab}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
-th,td{text-align:left;padding:9px 8px;border-bottom:1px solid #24384a;vertical-align:top}
-th{color:#8fc4dd;font-size:12px;font-weight:600;letter-spacing:.5px}
-td.n{text-align:right;color:#9db4c4;font-family:ui-monospace,monospace;white-space:nowrap}
+code{background:#0b141d;padding:1.5px 6px;border-radius:5px;font-size:.88em;color:#8fd7d2;
+font-family:ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+
+/* ── 層級圖（取代 ASCII 樹）── */
+.levels{background:#0b141d;border:1px solid #1e3242;border-radius:12px;padding:8px 12px;margin:14px 0}
+.lv{padding:9px 0 9px 13px;border-left:3px solid #24455a;font-size:14px;line-height:1.65}
+.lv+.lv{border-top:1px dashed #1c2f3d}
+.lv.n0{border-left-color:#4a9eea}
+.lv.n1{border-left-color:#ffc46b;margin-left:0}
+.lv.n2{margin-left:16px;border-left-color:#3f6b8a}
+.lv.n3{margin-left:32px;border-left-color:#2c4a5e;font-size:13.5px}
+.lv .nm{font-weight:800;color:#fff}
+.lv .nm.a{color:#7fd4a0}.lv .nm.b{color:#ffc46b}.lv .nm.c{color:#7fbfe8}
+.lv .cnt{color:#8b9dab;font-size:12.5px;font-family:ui-monospace,monospace}
+.lv .sub{display:block;color:#8b9dab;font-size:12.5px;margin-top:2px}
+.tag{display:inline-block;background:#3a2a12;color:#ffc46b;font-size:11px;
+padding:1px 8px;border-radius:20px;margin-left:6px;vertical-align:1px;font-weight:700}
+
+/* ── 清單（取代表格）── */
+.list{margin:12px 0}
+.item{display:flex;gap:11px;align-items:flex-start;background:#16222e;border:1px solid #24384a;
+border-radius:12px;padding:13px 14px;margin-bottom:9px}
+.item .lft{flex:1;min-width:0}
+.item .ttl{font-size:13.5px;color:#8fd7d2;font-family:ui-monospace,Menlo,monospace;
+overflow-wrap:anywhere}
+.item .dsc{font-size:14px;color:#dbe6ef;margin-top:5px}
+.item .num{flex:0 0 auto;background:#0d1a22;color:#9db4c4;font-size:12px;
+font-family:ui-monospace,monospace;padding:3px 9px;border-radius:7px;white-space:nowrap;margin-top:2px}
+
 .step{display:flex;gap:12px;margin:14px 0;align-items:flex-start}
-.num{flex:0 0 26px;height:26px;border-radius:50%;background:#1d4a6b;color:#9fdcff;
-font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:3px}
-.step .txt{flex:1;font-size:14.5px}
-.why{background:#12212c;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:13.5px;color:#a8c2d3}
+.snum{flex:0 0 26px;height:26px;border-radius:50%;background:#1d4a6b;color:#9fdcff;
+font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.step .txt{flex:1;min-width:0;font-size:14.5px}
+.why{background:#12212c;border-radius:10px;padding:13px 15px;margin:13px 0;font-size:13.5px;
+color:#a8c2d3;line-height:1.75}
 .why b{color:#8fd7d2}
-.icons{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
-.ic{flex:1 1 150px;background:#0b141d;border:1px solid #1e3242;border-radius:10px;padding:11px 12px}
+.icons{display:flex;flex-wrap:wrap;gap:10px;margin:13px 0}
+.ic{flex:1 1 155px;background:#0b141d;border:1px solid #1e3242;border-radius:10px;padding:12px}
 .ic .g{font-size:19px}
-.ic .t{font-size:13px;color:#dbe6ef;margin-top:5px;font-weight:700}
-.ic .s{font-size:11.5px;color:#8b9dab;margin-top:3px}
-.hot{background:#241a16;border:1px solid #6b3a1c;border-radius:12px;padding:15px;margin:14px 0}
-.hot .big{font-size:15px;color:#ffb26b;font-weight:800;margin-bottom:6px}
-.bar{height:11px;background:#0b141d;border-radius:6px;overflow:hidden;margin:10px 0 6px;border:1px solid #24384a}
+.ic .t{font-size:13.5px;color:#dbe6ef;margin-top:5px;font-weight:700}
+.ic .s{font-size:11.5px;color:#8b9dab;margin-top:4px;line-height:1.6}
+.hot{background:#241a16;border:1px solid #6b3a1c;border-radius:12px;padding:16px;margin:14px 0}
+.hot .big{font-size:15px;color:#ffb26b;font-weight:800;line-height:1.7}
+.bar{height:11px;background:#0b141d;border-radius:6px;overflow:hidden;margin:11px 0 6px;border:1px solid #24384a}
 .bar i{display:block;height:100%;width:94%;background:linear-gradient(90deg,#ec7d3a,#c94f2a)}
 .quote{border-left:4px solid #7fd4a0;background:#12241c;border-radius:0 10px 10px 0;
-padding:14px 16px;margin:16px 0;font-size:15.5px;line-height:1.8;color:#c9f0d8}
+padding:15px 16px;margin:16px 0;font-size:15.5px;line-height:1.85;color:#c9f0d8}
 .quote b{color:#fff}
 footer{text-align:center;color:#5c7186;font-size:11.5px;letter-spacing:1px;margin-top:34px}
-code{background:#0b141d;padding:1px 6px;border-radius:5px;font-size:.9em;color:#8fd7d2;
-font-family:ui-monospace,Menlo,monospace;word-break:break-all}
 </style></head><body>
 <header>
   <h1>OneDrive 說明書</h1>
@@ -63,39 +83,44 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
 
 <section>
   <div class="uh"><h2>先建立一個心智模型</h2><p>你的 OneDrive 不是「一個資料夾」，是三層</p></div>
-  <div class="tree">OneDrive（你的雲端硬碟）<span class="d">──共 1,284 檔</span>
-│
-├─ 🏠 <span class="a">你私人的</span>            <span class="d">79 檔</span>
-│     桌面 · 文件 · 圖片
-│
-├─ 📎 <span class="b">Shortcuts（捷徑）</span>     <span class="d">982 檔</span>  ⬅️ 東西在這
-│     └─ LC_YC(YCM) - AY2627   <span class="d">團隊網站</span>
-│           ├─ VE  <span class="d">560 檔</span>
-│           ├─ VC  <span class="d">343 檔</span>
-│           └─ General <span class="d">77 檔</span>
-│
-└─ 📚 <span class="c">LC_YC(KB) Team Site - VCH2101</span>  <span class="d">217 檔</span>
-      └─ 這也是團隊網站，但它<span class="hi">直接躺在首頁</span>，不是走捷徑</div>
+
+  <div class="levels">
+    <div class="lv n0"><span class="nm">OneDrive</span>　<span class="cnt">你的雲端硬碟 · 共 1,284 檔</span></div>
+    <div class="lv n1"><span class="nm a">🏠 你私人的</span>　<span class="cnt">79 檔</span>
+      <span class="sub">桌面 · 文件 · 圖片</span></div>
+    <div class="lv n1"><span class="nm b">📎 Shortcuts（捷徑）</span>　<span class="cnt">982 檔</span>
+      <span class="tag">你的東西在這</span>
+      <div class="sub" style="margin-top:6px">└ LC_YC(YCM) - AY2627　<span class="cnt">團隊網站</span></div>
+    </div>
+    <div class="lv n2">VE　<span class="cnt">560 檔</span></div>
+    <div class="lv n3">VC　<span class="cnt">343 檔</span>　·　General　<span class="cnt">77 檔</span></div>
+    <div class="lv n1"><span class="nm c">📚 LC_YC(KB) Team Site - VCH2101</span>　<span class="cnt">217 檔</span>
+      <span class="sub">這也是團隊網站——但它<b class="hi">直接躺在首頁</b>，不是走捷徑</span></div>
+  </div>
 
   <div class="card warn">
     <h3>你就是卡在這裡</h3>
     <p><b>你有兩個團隊網站，接上電腦的方式卻不一樣：</b></p>
-    <p>一個叫「捷徑」的，要點進 <code>Shortcuts</code> 才看得到；另一個<b>直接擺在首頁</b>。</p>
+    <p>一個收在「捷徑」裡，要點進 <code>Shortcuts</code> 才看得到；另一個<b>直接擺在首頁</b>。</p>
     <p>所以你在首頁只看到其中一個，另一個像消失了一樣。<b>它們都在，只是掛法不同。</b></p>
   </div>
 </section>
 
 <section style="--c:#7fd4a0">
   <div class="uh"><h2>真正會用到的，只有這幾個</h2><p>其餘的都不用理</p></div>
-  <table>
-    <tr><th>資料夾</th><th>裡面是什麼</th><th style="text-align:right">檔數</th></tr>
-    <tr><td><code>Shortcuts/…/VE</code></td><td>職業英語：VEN1102、VEN1103、VEN2303…</td><td class="n">560</td></tr>
-    <tr><td><code>Shortcuts/…/VC</code></td><td>職業中文：VCH1101、VCH2101、VCH3101</td><td class="n">343</td></tr>
-    <tr><td><code>Shortcuts/…/General</code></td><td>開會、SEN、考試組、訂文具</td><td class="n">77</td></tr>
-    <tr><td><code>LC_YC(KB)…VCH2101</code></td><td>九龍灣 VCH2101：教材、計分、覆卷</td><td class="n">217</td></tr>
-    <tr><td><code>桌面 / 文件</code></td><td>你自己放進去的東西</td><td class="n">77</td></tr>
-  </table>
-  <div class="why"><b>空的資料夾，不用理：</b>Attachments（1）、Meetings（0）、Recordings（0）、Microsoft Copilot Chat Files（0）。</div>
+  <div class="list">
+    <div class="item"><div class="lft"><div class="ttl">Shortcuts/…/VE</div>
+      <div class="dsc">職業英語：VEN1102、VEN1103、VEN2303…</div></div><div class="num">560 檔</div></div>
+    <div class="item"><div class="lft"><div class="ttl">Shortcuts/…/VC</div>
+      <div class="dsc">職業中文：VCH1101、VCH2101、VCH3101</div></div><div class="num">343 檔</div></div>
+    <div class="item"><div class="lft"><div class="ttl">Shortcuts/…/General</div>
+      <div class="dsc">開會、SEN、考試組、訂文具</div></div><div class="num">77 檔</div></div>
+    <div class="item"><div class="lft"><div class="ttl">LC_YC(KB)…VCH2101</div>
+      <div class="dsc">九龍灣 VCH2101：教材、計分、覆卷</div></div><div class="num">217 檔</div></div>
+    <div class="item"><div class="lft"><div class="ttl">桌面 / 文件</div>
+      <div class="dsc">你自己放進去的東西</div></div><div class="num">77 檔</div></div>
+  </div>
+  <div class="why"><b>空的，不用理：</b>Attachments（1 個）、Meetings（0）、Recordings（0）、Microsoft Copilot Chat Files（0）。</div>
 </section>
 
 <section style="--c:#ec7d3a">
@@ -103,17 +128,17 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
 
   <div class="card">
     <h3>① 找不到檔案 → 開網頁版，點「最近」</h3>
-    <div class="step"><div class="num">1</div><div class="txt">手機或電腦開 <code>office.com</code></div></div>
-    <div class="step"><div class="num">2</div><div class="txt">用 <code>kathrynto@vtc.edu.hk</code> 登入</div></div>
-    <div class="step"><div class="num">3</div><div class="txt">左上角<b>九個方格</b> → 點 <b>OneDrive</b></div></div>
-    <div class="step"><div class="num">4</div><div class="txt">左欄點「<b>最近</b>」</div></div>
-    <p class="why" style="margin-top:14px"><b>為什麼這個最有用：</b>電腦上的資料夾只裝了「你設過同步」的那一部分；<b>網頁版看得到全部</b>。「最近」會列出你碰過的每一份檔——包括根本沒下載到電腦的。</p>
+    <div class="step"><div class="snum">1</div><div class="txt">手機或電腦開 <code>office.com</code></div></div>
+    <div class="step"><div class="snum">2</div><div class="txt">用 <code>kathrynto@vtc.edu.hk</code> 登入</div></div>
+    <div class="step"><div class="snum">3</div><div class="txt">左上角<b>九個方格</b> → 點 <b>OneDrive</b></div></div>
+    <div class="step"><div class="snum">4</div><div class="txt">左欄點「<b>最近</b>」</div></div>
+    <p class="why"><b>為什麼這個最有用：</b>電腦上的資料夾只裝了「你設過同步」的那一部分；<b>網頁版看得到全部</b>。「最近」會列出你碰過的每一份檔——包括根本沒下載到電腦的。</p>
   </div>
 
   <div class="card">
     <h3>② 看懂三種圖示</h3>
     <div class="icons">
-      <div class="ic"><div class="g">☁️</div><div class="t">雲朵</div><div class="s">還在雲端，沒下載到電腦<br>（你有 266 個）</div></div>
+      <div class="ic"><div class="g">☁️</div><div class="t">雲朵</div><div class="s">還在雲端，沒下載<br>（你有 266 個）</div></div>
       <div class="ic"><div class="g">✅</div><div class="t">綠勾</div><div class="s">已經在這台電腦上<br>（你有 1,018 個）</div></div>
       <div class="ic"><div class="g">⟳</div><div class="t">轉圈</div><div class="s">正在同步，等一下</div></div>
     </div>
@@ -121,7 +146,7 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
   </div>
 
   <div class="card">
-    <h3>③ 要離線用 → 「永遠保留在這台裝置」</h3>
+    <h3>③ 要離線用 →「永遠保留在這台裝置」</h3>
     <p>在某個資料夾或檔案上<b>按右鍵</b>：</p>
     <p>👉 想帶著去學校、沒網路也要開 → <b>「永遠保留在這台裝置」</b></p>
     <p>👉 用完想省空間 → <b>「釋放空間」</b></p>
@@ -135,7 +160,7 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
     <div class="big">926 GB 總容量，已用 843 GB，只剩 55 GB</div>
     <div class="bar"><i></i></div>
     <div style="font-size:13px;color:#c9a98f">已使用 94%</div>
-    <p style="margin-top:12px;font-size:14px;color:#e8d5c8">OneDrive 裡已經有 <b>3.2 GB</b>。真的不夠用時，把不常用的資料夾右鍵 →「<b>釋放空間</b>」，檔案會留在雲端、不佔電腦。</p>
+    <p style="margin-top:13px;font-size:14px;color:#e8d5c8">OneDrive 裡已經有 <b>3.2 GB</b>。真的不夠用時，把不常用的資料夾右鍵 →「<b>釋放空間</b>」，檔案會留在雲端、不佔電腦。</p>
   </div>
 </section>
 
@@ -152,7 +177,7 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
     <p>要備份的東西，另外放一份在別的地方。</p>
   </div>
   <div class="card warn">
-    <h3>③ 不要只看首頁就判斷「檔案不見了」</h3>
+    <h3>③ 不要只看首頁就說「檔案不見了」</h3>
     <p>首頁那一層只有 <b>5 個檔</b>。你的 1,284 個檔，<b>九成在 <code>Shortcuts</code> 裡面</b>。</p>
     <p>先點進去看，再去網頁版「最近」找。</p>
   </div>
@@ -164,9 +189,7 @@ font-family:ui-monospace,Menlo,monospace;word-break:break-all}
     <b>個人區是「你的」，捷徑和團隊網站是「大家的」。</b><br>
     你在學校做的東西，九成在「大家的」那一邊。
   </div>
-  <div class="why" style="text-align:center">
-    還有問題，就把大概的檔名告訴 Cola，全機幫你搜。
-  </div>
+  <div class="why" style="text-align:center">還有問題，就把大概的檔名告訴 Cola，全機幫你搜。</div>
 </section>
 
 <footer>私人頁面 · 請勿分享連結</footer>
