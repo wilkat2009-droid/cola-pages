@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f1720'/%3E%3Cpath d='M30 62a13 13 0 0 1 1-26 17 17 0 0 1 32 5 11 11 0 0 1-2 21z' fill='%234a9eea'/%3E%3C/svg%3E">
+<title>OneDrive 說明書</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang TC","Microsoft JhengHei",sans-serif;background:#0f1720;color:#eef3f8;
+line-height:1.75;-webkit-text-size-adjust:100%}
+header{background:linear-gradient(135deg,#0d3a5c,#0f1720 74%);padding:42px 20px 30px;text-align:center;
+border-bottom:3px solid #4a9eea}
+header h1{font-size:clamp(24px,6.6vw,36px);letter-spacing:4px}
+header p{margin-top:10px;color:#9db4c4;font-size:13.5px}
+main{max-width:820px;margin:0 auto;padding:0 16px 90px}
+section{margin:40px 0}
+.uh{border-left:5px solid var(--c,#4a9eea);padding-left:13px;margin-bottom:16px}
+.uh h2{font-size:20.5px;letter-spacing:1.5px}
+.uh p{color:#a3b8c8;font-size:12.5px;margin-top:4px}
+.card{background:#16222e;border:1px solid #24384a;border-left:4px solid #4a9eea;
+border-radius:14px;padding:17px 17px 15px;margin-bottom:13px}
+.card h3{font-size:17px;font-weight:800;margin-bottom:10px;line-height:1.5}
+.card p{font-size:14.5px;color:#dbe6ef;margin:8px 0}
+.card b{color:#fff}
+.hi{color:#ffd58a;font-weight:700}
+.warn{background:#2a1c14;border-color:#7a4a22;border-left-color:#ec7d3a}
+.warn h3{color:#ffb26b}
+.tree{background:#0b141d;border:1px solid #1e3242;border-radius:12px;padding:16px 14px;
+font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:2;color:#b9d2e2;
+white-space:pre;overflow-x:auto;margin:14px 0}
+.tree .a{color:#7fd4a0}.tree .b{color:#ffc46b}.tree .c{color:#7fbfe8}.tree .d{color:#8b9dab}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid #24384a;vertical-align:top}
+th{color:#8fc4dd;font-size:12px;font-weight:600;letter-spacing:.5px}
+td.n{text-align:right;color:#9db4c4;font-family:ui-monospace,monospace;white-space:nowrap}
+.step{display:flex;gap:12px;margin:14px 0;align-items:flex-start}
+.num{flex:0 0 26px;height:26px;border-radius:50%;background:#1d4a6b;color:#9fdcff;
+font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:3px}
+.step .txt{flex:1;font-size:14.5px}
+.why{background:#12212c;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:13.5px;color:#a8c2d3}
+.why b{color:#8fd7d2}
+.icons{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.ic{flex:1 1 150px;background:#0b141d;border:1px solid #1e3242;border-radius:10px;padding:11px 12px}
+.ic .g{font-size:19px}
+.ic .t{font-size:13px;color:#dbe6ef;margin-top:5px;font-weight:700}
+.ic .s{font-size:11.5px;color:#8b9dab;margin-top:3px}
+.hot{background:#241a16;border:1px solid #6b3a1c;border-radius:12px;padding:15px;margin:14px 0}
+.hot .big{font-size:15px;color:#ffb26b;font-weight:800;margin-bottom:6px}
+.bar{height:11px;background:#0b141d;border-radius:6px;overflow:hidden;margin:10px 0 6px;border:1px solid #24384a}
+.bar i{display:block;height:100%;width:94%;background:linear-gradient(90deg,#ec7d3a,#c94f2a)}
+.quote{border-left:4px solid #7fd4a0;background:#12241c;border-radius:0 10px 10px 0;
+padding:14px 16px;margin:16px 0;font-size:15.5px;line-height:1.8;color:#c9f0d8}
+.quote b{color:#fff}
+footer{text-align:center;color:#5c7186;font-size:11.5px;letter-spacing:1px;margin-top:34px}
+code{background:#0b141d;padding:1px 6px;border-radius:5px;font-size:.9em;color:#8fd7d2;
+font-family:ui-monospace,Menlo,monospace;word-break:break-all}
+</style></head><body>
+<header>
+  <h1>OneDrive 說明書</h1>
+  <p>杜薇 · VTC 專用 · 2026-10-05</p>
+</header>
+<main>
+
+<section>
+  <div class="uh"><h2>先建立一個心智模型</h2><p>你的 OneDrive 不是「一個資料夾」，是三層</p></div>
+  <div class="tree">OneDrive（你的雲端硬碟）<span class="d">──共 1,284 檔</span>
+│
+├─ 🏠 <span class="a">你私人的</span>            <span class="d">79 檔</span>
+│     桌面 · 文件 · 圖片
+│
+├─ 📎 <span class="b">Shortcuts（捷徑）</span>     <span class="d">982 檔</span>  ⬅️ 東西在這
+│     └─ LC_YC(YCM) - AY2627   <span class="d">團隊網站</span>
+│           ├─ VE  <span class="d">560 檔</span>
+│           ├─ VC  <span class="d">343 檔</span>
+│           └─ General <span class="d">77 檔</span>
+│
+└─ 📚 <span class="c">LC_YC(KB) Team Site - VCH2101</span>  <span class="d">217 檔</span>
+      └─ 這也是團隊網站，但它<span class="hi">直接躺在首頁</span>，不是走捷徑</div>
+
+  <div class="card warn">
+    <h3>你就是卡在這裡</h3>
+    <p><b>你有兩個團隊網站，接上電腦的方式卻不一樣：</b></p>
+    <p>一個叫「捷徑」的，要點進 <code>Shortcuts</code> 才看得到；另一個<b>直接擺在首頁</b>。</p>
+    <p>所以你在首頁只看到其中一個，另一個像消失了一樣。<b>它們都在，只是掛法不同。</b></p>
+  </div>
+</section>
+
+<section style="--c:#7fd4a0">
+  <div class="uh"><h2>真正會用到的，只有這幾個</h2><p>其餘的都不用理</p></div>
+  <table>
+    <tr><th>資料夾</th><th>裡面是什麼</th><th style="text-align:right">檔數</th></tr>
+    <tr><td><code>Shortcuts/…/VE</code></td><td>職業英語：VEN1102、VEN1103、VEN2303…</td><td class="n">560</td></tr>
+    <tr><td><code>Shortcuts/…/VC</code></td><td>職業中文：VCH1101、VCH2101、VCH3101</td><td class="n">343</td></tr>
+    <tr><td><code>Shortcuts/…/General</code></td><td>開會、SEN、考試組、訂文具</td><td class="n">77</td></tr>
+    <tr><td><code>LC_YC(KB)…VCH2101</code></td><td>九龍灣 VCH2101：教材、計分、覆卷</td><td class="n">217</td></tr>
+    <tr><td><code>桌面 / 文件</code></td><td>你自己放進去的東西</td><td class="n">77</td></tr>
+  </table>
+  <div class="why"><b>空的資料夾，不用理：</b>Attachments（1）、Meetings（0）、Recordings（0）、Microsoft Copilot Chat Files（0）。</div>
+</section>
+
+<section style="--c:#ec7d3a">
+  <div class="uh"><h2>最重要的三個動作</h2><p>學會這三個，就夠用了</p></div>
+
+  <div class="card">
+    <h3>① 找不到檔案 → 開網頁版，點「最近」</h3>
+    <div class="step"><div class="num">1</div><div class="txt">手機或電腦開 <code>office.com</code></div></div>
+    <div class="step"><div class="num">2</div><div class="txt">用 <code>kathrynto@vtc.edu.hk</code> 登入</div></div>
+    <div class="step"><div class="num">3</div><div class="txt">左上角<b>九個方格</b> → 點 <b>OneDrive</b></div></div>
+    <div class="step"><div class="num">4</div><div class="txt">左欄點「<b>最近</b>」</div></div>
+    <p class="why" style="margin-top:14px"><b>為什麼這個最有用：</b>電腦上的資料夾只裝了「你設過同步」的那一部分；<b>網頁版看得到全部</b>。「最近」會列出你碰過的每一份檔——包括根本沒下載到電腦的。</p>
+  </div>
+
+  <div class="card">
+    <h3>② 看懂三種圖示</h3>
+    <div class="icons">
+      <div class="ic"><div class="g">☁️</div><div class="t">雲朵</div><div class="s">還在雲端，沒下載到電腦<br>（你有 266 個）</div></div>
+      <div class="ic"><div class="g">✅</div><div class="t">綠勾</div><div class="s">已經在這台電腦上<br>（你有 1,018 個）</div></div>
+      <div class="ic"><div class="g">⟳</div><div class="t">轉圈</div><div class="s">正在同步，等一下</div></div>
+    </div>
+    <p>雲朵的檔案<b>點兩下才會下載</b>。所以：<b>在 Finder 搜尋裡找不到一個雲朵檔，不代表它不見了</b>——它只是還沒被拉下來。</p>
+  </div>
+
+  <div class="card">
+    <h3>③ 要離線用 → 「永遠保留在這台裝置」</h3>
+    <p>在某個資料夾或檔案上<b>按右鍵</b>：</p>
+    <p>👉 想帶著去學校、沒網路也要開 → <b>「永遠保留在這台裝置」</b></p>
+    <p>👉 用完想省空間 → <b>「釋放空間」</b></p>
+    <p class="why">這是<b>逐個資料夾</b>設的。建議把 <code>Shortcuts/…/VC</code> 和 <code>VE</code> 設成永遠保留，其他讓它留在雲端。</p>
+  </div>
+</section>
+
+<section style="--c:#e05a5a">
+  <div class="uh"><h2>你的電腦快滿了</h2><p>這件事遲早要處理</p></div>
+  <div class="hot">
+    <div class="big">926 GB 總容量，已用 843 GB，只剩 55 GB</div>
+    <div class="bar"><i></i></div>
+    <div style="font-size:13px;color:#c9a98f">已使用 94%</div>
+    <p style="margin-top:12px;font-size:14px;color:#e8d5c8">OneDrive 裡已經有 <b>3.2 GB</b>。真的不夠用時，把不常用的資料夾右鍵 →「<b>釋放空間</b>」，檔案會留在雲端、不佔電腦。</p>
+  </div>
+</section>
+
+<section style="--c:#b06be0">
+  <div class="uh"><h2>三個「不要」</h2><p>這三個會出事</p></div>
+  <div class="card warn">
+    <h3>① 學生名單不要外傳</h3>
+    <p><code>Students_YCM.xlsx</code> 那一類的檔案裡，<b>除了姓名、還有 Password 和 ID document number</b>。</p>
+    <p><b>不要用 WhatsApp／微信傳，也不要丟進任何 AI。</b>學生的身份證號洩出去，是事故，不是麻煩。</p>
+  </div>
+  <div class="card warn">
+    <h3>② 不要把「同步資料夾」當備份</h3>
+    <p>你在電腦上刪掉，<b>雲端也會跟著刪掉</b>。同步 ≠ 備份。</p>
+    <p>要備份的東西，另外放一份在別的地方。</p>
+  </div>
+  <div class="card warn">
+    <h3>③ 不要只看首頁就判斷「檔案不見了」</h3>
+    <p>首頁那一層只有 <b>5 個檔</b>。你的 1,284 個檔，<b>九成在 <code>Shortcuts</code> 裡面</b>。</p>
+    <p>先點進去看，再去網頁版「最近」找。</p>
+  </div>
+</section>
+
+<section style="--c:#7fd4a0">
+  <div class="uh"><h2>記住一句話</h2><p>其餘的都可以忘</p></div>
+  <div class="quote">
+    <b>個人區是「你的」，捷徑和團隊網站是「大家的」。</b><br>
+    你在學校做的東西，九成在「大家的」那一邊。
+  </div>
+  <div class="why" style="text-align:center">
+    還有問題，就把大概的檔名告訴 Cola，全機幫你搜。
+  </div>
+</section>
+
+<footer>私人頁面 · 請勿分享連結</footer>
+</main></body></html>
