@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>VCH2101 項目評核（TA）｜簡化字 35%</title>
+<style>
+:root{--ink:#243247;--line:#e6dcc8;--muted:#68758b;--cream:#fffaf0;--blue:#3471ac;--gold:#a6641a;--green:#26743f;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(160deg,#fffaf0,#f2f9ff 60%,#f4fff6);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",Arial,sans-serif;color:#243247;line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:16px 14px 60px}
+.bar{display:flex;gap:8px;align-items:center;justify-content:space-between;background:#1e2a3d;color:#fff;border-radius:14px;padding:10px 14px;font-size:13px;font-weight:800;flex-wrap:wrap}
+.bar a{color:#bfe3ff;text-decoration:none;font-weight:800;margin-left:10px}
+header{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 16px;margin-top:14px;box-shadow:0 10px 26px #523a1310}
+header .ey{font-size:12px;font-weight:900;color:var(--gold);letter-spacing:.4px}
+header h1{font-size:22px;margin:6px 0 8px;line-height:1.35}
+header p{margin:0;color:var(--muted);font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.fact{background:#1e2a3d;color:#fff;border-radius:14px;padding:12px 13px}
+.fact b{display:block;font-size:19px;line-height:1.3}
+.fact span{font-size:12px;color:#cfdcf0}
+.alert{background:#fff3d6;border:1px solid #f0cf8a;border-left:6px solid #a6641a;border-radius:14px;padding:13px 15px;margin-top:14px;font-size:14.5px;color:#614715}
+.alert b{color:#7a4a10}
+section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px 15px 17px;margin-top:14px;box-shadow:0 8px 20px #523a130d}
+h2{font-size:17px;margin:0 0 4px}
+.sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border-bottom:1px dashed var(--line);padding:9px 7px;text-align:left;vertical-align:top}
+th{background:#fffdf6;font-size:12px;color:var(--muted);font-weight:900}
+td.mk{white-space:nowrap;font-weight:900;color:var(--gold);width:56px}
+td.pt{white-space:nowrap;font-weight:800}
+.ex{display:block;color:#3c4a63;font-size:12.5px;margin-top:3px}
+.drill{color:var(--green);font-size:12.5px;font-weight:800}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 12px}
+button.t{background:#eef7ff;color:var(--blue);border:1px solid #cfe4f7;border-radius:11px;padding:9px 13px;font-weight:900;font-size:13.5px}
+button.t.on{background:#1e2a3d;color:#fff;border-color:#1e2a3d}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.item{background:#fffdf7;border:1px solid var(--line);border-radius:12px;padding:9px 11px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:17px;font-weight:800}
+.item .a{font-size:17px;font-weight:900;color:#fff;background:#26743f;border-radius:8px;padding:1px 9px}
+.item .q{background:#eef7ff;color:var(--blue);border:1px solid #cfe4f7;border-radius:9px;padding:5px 9px;font-size:12px;font-weight:900}
+.item.done .q{background:#e7f9ea;color:var(--green);border-color:#9fe0b3}
+.score{font-size:13px;font-weight:900;color:var(--green);margin-top:10px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{display:inline-block;background:#1e2a3d;color:#fff;border:0;border-radius:12px;padding:11px 15px;font-weight:900;font-size:14px;text-decoration:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:8px 12px;font-size:13px}
+ol,ul{margin:8px 0 0;padding-left:22px;font-size:14px}
+li{margin:5px 0}
+.tl{border-left:3px solid #e6dcc8;margin:10px 0 0;padding-left:14px}
+.tl .step{margin:0 0 14px;position:relative}
+.tl .step:before{content:"";position:absolute;left:-21px;top:7px;width:11px;height:11px;border-radius:50%;background:#1e2a3d}
+.tl b{display:block;font-size:14.5px;color:var(--ink)}
+.tl span{font-size:13.5px;color:#536078}
+.warn{background:#fff8f3;border:1px solid #f0d5c4;border-radius:12px;padding:11px 13px;margin-top:11px;font-size:13.5px;color:#7d3f20}
+.warn b{color:#a8402a}
+.files{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:9px;margin-top:6px}
+.f{display:block;background:#fffdf7;border:1px solid var(--line);border-radius:13px;padding:11px 13px;text-decoration:none;color:var(--ink)}
+.f b{display:block;font-size:14px}
+.f span{font-size:12px;color:var(--muted)}
+.f:hover{background:#fff6e6}
+footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px;line-height:1.8}
+@media(max-width:560px){.facts{grid-template-columns:1fr}header h1{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="bar">
+  <div>VCH2101／2101B · GCCH209A 能認讀最常用的簡化字</div>
+  <div><a href="https://wilkat2009-droid.github.io/cola-pages/vch2101/">← 課堂大入口</a><a href="https://wilkat2009-droid.github.io/cola-pages/vch2101/app/index.html">互動課堂</a></div>
+</div>
+
+<header>
+  <div class="ey">項目評核（TA）· 簡化字部分</div>
+  <h1>🎯 項目評核一頁掌握</h1>
+  <p>隨堂筆試、30 分鐘、六個部分合共 100 分，佔單元總成績 <b>35%</b>。這一頁就是你要的東西：考什麼、我們怎樣練、監考當日怎樣做。</p>
+  <div class="facts">
+    <div class="fact"><b>35%</b><span>佔單元總成績</span></div>
+    <div class="fact"><b>30 分鐘</b><span>筆試・課室進行</span></div>
+    <div class="fact"><b>100 分</b><span>六個部分</span></div>
+    <div class="fact"><b>10/13–10/26</b><span>評核日期（科組安排，隨堂）</span></div>
+  </div>
+</header>
+
+<div class="alert">
+  <b>今天該做的事：</b>指引寫明「主考開始前兩星期，科任老師須派發並講解學生指引，鼓勵學生溫習筆記內容」。評核 10 月 13 日開始 —— 這一兩節課就要把下面的六部分講一次，並把溫習筆記派下去。
+</div>
+
+<section>
+  <h2>① 六個部分 × 分數 × 題目長什麼樣 × 我們怎樣練</h2>
+  <p class="sub">「例」是官方《評核簡介（學生用）》的示例寫法；「練」是我這邊 13 課裡可以直接拿來用的材料。</p>
+  <table>
+    <tr><th>部分</th><th>分</th><th>考什麼（含官方示例）</th></tr>
+    <tr>
+      <td class="pt">1. 選出正確的繁體字／簡化字</td><td class="mk">20</td>
+      <td class="ex">例：「窮」的簡化字是　A) 审　B) 实　C) 穷　D) 窃　→ 答案 C<span class="drill">練：第 1 課 Kahoot 14 題（繁簡對應、找錯字）＋第 6 課閱讀</span></td>
+    </tr>
+    <tr>
+      <td class="pt">2. 分辨漢字的簡化規律</td><td class="mk">10</td>
+      <td class="ex">例：藝(艺) 屬哪一種規律？在「形聲／會意／偏旁類推／採用古字」適當空格內打✓<span class="drill">練：第 2–5 課（偏旁類推、形聲會意、代替與局部刪改、採用古字與草書楷化）＋溫習筆記第一部分六個字</span></td>
+    </tr>
+    <tr>
+      <td class="pt">3. 找出成語中未簡化的漢字</td><td class="mk">20</td>
+      <td class="ex">例：下列哪個詞語包含未簡化的漢字？　A) 耳濡目染　B) 膽小如鼠　C) 大难不死　D) 奉公守法　→ 答案 B<span class="drill">練：第 2 課「成語維修站」10 句——完全就是這個動作</span></td>
+    </tr>
+    <tr>
+      <td class="pt">4. 寫出漢字的簡化字</td><td class="mk">20</td>
+      <td class="ex">例：勵　→ 励<span class="drill">練：溫習筆記第二部分 40 題（下面有即時對答版）</span></td>
+    </tr>
+    <tr>
+      <td class="pt">5. 寫出漢字的繁體字</td><td class="mk">10</td>
+      <td class="ex">例：怜　→ 憐<span class="drill">練：溫習筆記第三部分 10 題（下面有即時對答版）</span></td>
+    </tr>
+    <tr>
+      <td class="pt">6. 找出句子中未簡化的漢字</td><td class="mk">20</td>
+      <td class="ex">例：作为教师，我们應该盡力发掘每一位学生的潛力。→ 应　尽　潜<span class="drill">練：第 6 課「安全海報找字」＋「閱讀理解逃生室」</span></td>
+    </tr>
+  </table>
+  <div class="warn">
+    <b>留意：</b>「簡化規律」那欄在不同文件寫法不完全一樣 —— 官方示例是「形聲／會意／偏旁類推／採用古字」四欄，《溫習筆記》那張表是「形聲／會意／代替／局部刪改／採用古字」五欄。兩種都要練到認得出，不要只背一種。
+  </div>
+</section>
+
+<section>
+  <h2>② 練一練（照官方溫習筆記）</h2>
+  <p class="sub">學生用：先自己想，再按字卡揭答案。老師用：課室大螢幕按「全部顯示」對答案。</p>
+  <div class="tabs">
+    <button class="t" id="t1" onclick="tab(1)">第一部分 · 簡化規律 6 字</button>
+    <button class="t on" id="t2" onclick="tab(2)">第二部分 · 寫簡化字 40 題</button>
+    <button class="t" id="t3" onclick="tab(3)">第三部分 · 寫繁體字 10 題</button>
+  </div>
+  <div id="stage"></div>
+</section>
+
+<section>
+  <h2>③ 學生須知（指引原文重點）</h2>
+  <ol>
+    <li>進入考場後，必須關掉手機等所有電子設備及響鬧裝置，並遵守考場紀律。</li>
+    <li>必須按老師編排的座位就坐；學生之間要留一定距離，避免交談或交換資料。</li>
+    <li>不得抄襲。一經發現不誠實行為，會視為「作弊」，受到紀律處分。</li>
+    <li>完成評核後，必須把評核卷交給監考老師。</li>
+    <li>如缺席評核，必須按《持續評核指引》主動向科任老師提交有效證明文件（醫生證明書、住院紀錄、學生事務處證明信等），方可獲安排補考。</li>
+    <li><b>遲到：</b>不可提前開考；遲到學生開考後仍可進場，老師會在卷面記下進場時間，<b>不獲補時</b>。</li>
+    <li><b>提早離場：</b>一律不得提前離開考場。</li>
+  </ol>
+  <div class="warn">
+    <b>補考規定：</b>合資格補考＝① 有合理原因並交齊有效證明文件，或 ② 主考取得 30–39 分且出席率符合要求。補考在主考期完結後<b>兩星期內</b>安排，<b>用與主考不同的卷</b>；因 30–39 分而補考者，補考最高 40 分；補考分比主考低時，以較高分為準。缺席補考即不再有機會。
+  </div>
+</section>
+
+<section>
+  <h2>④ 老師日程（指引原文整理）</h2>
+  <div class="tl">
+    <div class="step"><b>評核前兩星期</b><span>派發並講解《學生指引》；鼓勵學生溫習筆記內容；講清楚補考資格與評分規定；準備座位表並向學生說明；參考 SEN 資料為有需要學生作特別安排。</span></div>
+    <div class="step"><b>評核前一星期</b><span>提醒學生日期、時間、地點，必須準時到達考場；提醒電子通訊產品相關罰則；在考場門外張貼座位表；檢查計時設備。</span></div>
+    <div class="step"><b>評核當天 · 開考前</b><span>開考前 30 分鐘到指定地點取卷，核對班別與份數；安排學生按學號順序就座；按《監考工作流程與注意事項》宣讀事項。</span></div>
+    <div class="step"><b>評核期間</b><span>密切留意學生應考情況；按名單逐一核對身份並記錄出席；在黑／白板寫上評核時間（延遲開考則寫實際時間，結束時間順延）；學生如需去洗手間，聯絡教員室／秘書處安排人手協助。</span></div>
+    <div class="step"><b>評核結束</b><span>宣佈：「評核現在結束，請保持安靜，等待老師宣佈後才可離開。」然後收回所有考卷並點算清楚；有問題立即通知支援老師，期間學生一律不得離開。</span></div>
+  </div>
+  <div class="warn">
+    <b>開考前的宣讀重點（給學生）：</b>桌上只可放文具（不包括筆盒、筆袋）與學生證，其餘放椅子下面；任何電子／通訊設備必須全程關機（連鬧鐘）並放在座位下方書包內拉好拉鏈 —— 袋中或身上被發現攜帶，會被取消本次評核資格；設備處於開機狀態或發出聲響，可能被扣分；檢查試卷頁數與印有「試卷完」那一頁，缺頁漏頁舉手示意；填好個人資料後，按老師宣佈的時間開始作答。
+  </div>
+  <div class="warn">
+    <b>紅線：</b>科任老師<b>不得就評核內容給予任何形式的指導</b>；但可以就課堂和練習（包括預備練習）表現給指導和回饋 —— 所以下面這些練習、示範、批改都可以做。懷疑考生作弊：保留證據，立即向單元統籌（MC）匯報。
+  </div>
+</section>
+
+<section>
+  <h2>⑤ 下載與原檔</h2>
+  <p class="sub">溫習筆記與指引都可以直接開；<b>正式評核卷不會放在這裡</b>。</p>
+  <div class="files">
+    <a class="f" href="warmup-student.pdf" target="_blank" rel="noopener"><b>📄 溫習筆記 · 學生版</b><span>3 頁・三個部分・做題用</span></a>
+    <a class="f" href="warmup-teacher.pdf" target="_blank" rel="noopener"><b>🔒 溫習筆記 · 教師版（有答案）</b><span>3 頁・對答案用</span></a>
+    <a class="f" href="guideline-p1p2.jpg" target="_blank" rel="noopener"><b>🖼 項目指引原檔 第 1–2 頁</b><span>評核內容、六部分分數、試前安排</span></a>
+    <a class="f" href="guideline-p3p4.jpg" target="_blank" rel="noopener"><b>🖼 項目指引原檔 第 3–4 頁</b><span>評核文件、準備工作、監考流程</span></a>
+  </div>
+</section>
+
+<footer>
+  VCH2101／2101B 職業中文：普通話聆聽與簡化字 · GCCH209A 項目評核（簡化字 35%）<br>
+  內容整理自《項目評核學生指引》《評核簡介（學生用）》《項目評核教師工作指引》及《溫習筆記》（2026 年 9 月 1 日版）
+</footer>
+
+</div>
+<script>
+var P2=[["歎","叹"],["驕","骄"],["暫","暂"],["齒","齿"],["牽","牵"],["劍","剑"],["劃","划"],["憐","怜"],["纏","缠"],["撫","抚"],["醜","丑"],["勁","劲"],["籌","筹"],["穀","谷"],["獸","兽"],["簽","签"],["攜","携"],["儘","尽"],["彌","弥"],["鑑","鉴"],["徹","彻"],["窩","窝"],["遞","递"],["鑽","钻"],["聳","耸"],["穫","获"],["澆","浇"],["麗","丽"],["實","实"],["嚐","尝"],["處","处"],["歷","历"],["纖","纤"],["輕","轻"],["嚴","严"],["響","响"],["擺","摆"],["傳","传"],["協","协"],["節","节"]];
+var P3=[["挤","擠"],["辞","辭"],["岭","嶺"],["猎","獵"],["锈","鏽"],["药","藥"],["潜","潛"],["践","踐"],["阶","階"],["萝","蘿"]];
+var P1=[["懸","悬"],["準","准"],["觸","触"],["傑","杰"],["滅","灭"],["燦","灿"]];
+var RULE=["形聲","會意","代替","局部刪改","採用古字"];
+var cur=2,shown=false,hit=0;
+function tab(n){cur=n;shown=false;hit=0;for(var i=1;i<=3;i++){var b=document.getElementById('t'+i);if(b)b.className='t'+(i===n?' on':'')}draw()}
+function draw(){
+  var st=document.getElementById('stage');
+  if(cur===1){
+    var rows=P1.map(function(p,i){return '<tr><td class="pt">'+p[0]+'（'+p[1]+'）</td>'+RULE.map(function(){return '<td style="text-align:center;font-size:17px;color:#b9c3d2">□</td>'}).join('')+'</tr>'}).join('');
+    st.innerHTML='<table><tr><th>繁（簡）</th>'+RULE.map(function(r){return '<th style="text-align:center">'+r+'</th>'}).join('')+'</tr>'+rows+'</table>'+
+      '<p class="sub" style="margin-top:10px">官方這六個字要判斷屬於哪一種簡化規律，在對應欄打✓。答案在《溫習筆記・教師版》第 2 頁 —— 按上面「🔒 教師版」打開對照，或在課堂上跟學生一起逐個講。</p>';
+    return;
+  }
+  var d=cur===2?P2:P3,head=cur===2?'繁體字 → 寫出簡化字':'簡化字 → 寫出繁體字';
+  var items=d.map(function(p,i){
+    return '<div class="item" id="it'+i+'"><span>'+p[0]+'</span>'+
+      (shown?'<span class="a">'+p[1]+'</span>':'<button class="q" onclick="rev('+i+')">看答案</button>')+'</div>';
+  }).join('');
+  st.innerHTML='<p class="sub" style="margin:0 0 9px">'+head+'（共 '+d.length+' 題）</p><div class="grid">'+items+'</div>'+
+    '<div class="btns"><button class="btn small" onclick="all(1)">全部顯示</button><button class="btn small alt" onclick="all(0)">隱藏全部</button></div>'+
+    '<div class="score" id="sc">已揭：'+hit+' / '+d.length+'</div>';
+}
+function rev(i){var d=cur===2?P2:P3,el=document.getElementById('it'+i);if(!el||el.className.indexOf('done')>=0)return;
+  el.className='item done';el.innerHTML='<span>'+d[i][0]+'</span><span class="a">'+d[i][1]+'</span>';hit++;var s=document.getElementById('sc');if(s)s.textContent='已揭：'+hit+' / '+d.length}
+function all(v){shown=!!v;hit=v?(cur===2?P2.length:P3.length):0;draw()}
+draw();
+</script>
+</body>
+</html>
