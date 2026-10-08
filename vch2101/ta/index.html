@@ -181,7 +181,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px;line-
   <p class="sub">這是你自己定的打法，跟官方要求一併放這裡，當日照這個順序走就不會漏。</p>
   <ol class="flow6">
     <li><b>評核前：兩次模擬測驗</b><span>兩次都照正式格式出（六部分、100 分、30 分鐘）。派溫習筆記，做完即場對答案；同時宣布注意事項：關手機、按座位表就座。</span></li>
-    <li><b>SEN 同學：簽「延時／不延時」確認紙</b><span>按 SEN 資料逐位確認，延時與否都要簽名留底；當日延時的同學用第二個計時器。</span></li>
+    <li><b>SEN 同學：簽「延時／不延時」確認紙</b><span>按 SEN 資料逐位確認，延時與否都要簽名留底；當日延時的同學用第二個計時器（預設 38 分鐘）。</span></li>
     <li><b>講學生須知 → 全班簽名確認</b><span>逐條講清楚電子產品罰則、抄襲後果、遲到不補時、缺席要交證明；每人簽名（班別、學號、姓名、日期），簽名表留底。</span></li>
     <li><b>評核當日：宣布事項、開兩個倒計時、顯示座位表</b><span>按宣讀稿逐條宣布；全班一個計時器、個別延時同學一個；座位表貼考場門外並顯示。懷疑作弊要立即保留證據再上報單元統籌（MC）—— 這條最嚴重，不要自己處理。有同學去洗手間，要通知教員室／秘書處派員陪同。</span></li>
     <li><b>評核後第二個星期：改卷</b><span>按《評分指引》評級；主考 30–39 分的同學，同步準備補考安排。</span></li>
@@ -192,12 +192,12 @@ footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px;line-
 
 <section>
   <h2>⑥ ⏱ 評核當日倒數（兩個獨立計時器）</h2>
-  <p class="sub">左邊給全班（30 分鐘），右邊給個別延時同學（預設 45 分鐘，按實際延時加減）。手機或課室電腦打開都可以。</p>
+  <p class="sub">左邊給全班（30 分鐘），右邊給個別延時同學（預設 38 分鐘＝30＋8，按實際情況加減）。手機或課室電腦打開都可以。</p>
   <div class="timers">
     <div class="tm"><b>全班 30 分鐘</b><div class="big" id="c1">30:00</div>
-      <div class="btns" style="justify-content:center"><button class="btn small" onclick="tstart('1')">開始</button><button class="btn small alt" onclick="tstop('1')">暫停</button><button class="btn small alt" onclick="treset('1')">重設</button><button class="btn small alt" onclick="tadd('1',-5)">−5 分</button><button class="btn small alt" onclick="tadd('1',5)">＋5 分</button></div></div>
-    <div class="tm"><b>個別延時</b><div class="big" id="c2">45:00</div>
-      <div class="btns" style="justify-content:center"><button class="btn small" onclick="tstart('2')">開始</button><button class="btn small alt" onclick="tstop('2')">暫停</button><button class="btn small alt" onclick="treset('2')">重設</button><button class="btn small alt" onclick="tadd('2',-5)">−5 分</button><button class="btn small alt" onclick="tadd('2',5)">＋5 分</button></div></div>
+      <div class="btns" style="justify-content:center"><button class="btn small" onclick="tstart('1')">開始</button><button class="btn small alt" onclick="tstop('1')">暫停</button><button class="btn small alt" onclick="treset('1')">重設</button><button class="btn small alt" onclick="tadd('1',-1)">−1 分</button><button class="btn small alt" onclick="tadd('1',1)">＋1 分</button></div></div>
+    <div class="tm"><b>個別延時 38 分鐘</b><div class="big" id="c2">38:00</div>
+      <div class="btns" style="justify-content:center"><button class="btn small" onclick="tstart('2')">開始</button><button class="btn small alt" onclick="tstop('2')">暫停</button><button class="btn small alt" onclick="treset('2')">重設</button><button class="btn small alt" onclick="tadd('2',-1)">−1 分</button><button class="btn small alt" onclick="tadd('2',1)">＋1 分</button></div></div>
   </div>
   <p class="sub" style="margin-top:10px">計時器只是在畫面上倒數，不會響；最後 5 分鐘會變橙色提醒學生檢查「試卷完」那一頁。</p>
 </section>
@@ -247,7 +247,7 @@ function draw(){
 function rev(i){var d=cur===2?P2:P3,el=document.getElementById('it'+i);if(!el||el.className.indexOf('done')>=0)return;
   el.className='item done';el.innerHTML='<span>'+d[i][0]+'</span><span class="a">'+d[i][1]+'</span>';hit++;var s=document.getElementById('sc');if(s)s.textContent='已揭：'+hit+' / '+d.length}
 function all(v){shown=!!v;hit=v?(cur===2?P2.length:P3.length):0;draw()}
-var T={1:{left:1800,base:1800,id:null},2:{left:2700,base:2700,id:null}};
+var T={1:{left:1800,base:1800,id:null},2:{left:2280,base:2280,id:null}};
 function tfm(s){var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x}
 function tdraw(k){var el=document.getElementById('c'+k);if(!el)return;var t=T[k];
   if(t.left<=0){el.textContent='時間到';el.className='big zero';return}
