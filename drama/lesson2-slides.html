@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316202c'/%3E%3Cg stroke='%2343a89f' stroke-width='6.2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.4 19h59.2v31.3a29.6 29.6 0 0 1-59.2 0z'/%3E%3Cpath d='M40.4 53.4a13.3 13.3 0 0 0 19.2 0'/%3E%3C/g%3E%3Ccircle cx='39.2' cy='36' r='3.6' fill='%2343a89f'/%3E%3Ccircle cx='60.8' cy='36' r='3.6' fill='%2343a89f'/%3E%3C/svg%3E">
+<title>第二節課 · 舞台上有什麼？</title>
+<style>
+/* =========================================================
+   第二節 · 舞台上有什麼？  教學投影簡報（完全自足，無外部資源）
+   主色調：teal
+   ========================================================= */
+:root{
+  --bg:#0d131c; --bg-2:#16202c; --bg-3:#1e2c3a;
+  --cream:#f6f1e7; --cream-dim:rgba(246,241,231,.66);
+  --gold:#e0b25c; --gold-deep:#b8863b; --terra:#d8674a;
+  --teal:#43a89f; --plum:#b07cc4;
+  --k-red:#e21b3c; --k-blue:#1368ce; --k-yellow:#d89e00; --k-green:#26890c;
+  --acc:var(--teal);
+  --serif:"Songti TC","Noto Serif TC","Source Han Serif TC","PingFang TC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden}
+body{
+  background:var(--bg); color:var(--cream); font-family:var(--sans);
+  line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- 舞台 ---------- */
+.deck{
+  position:relative; width:100vw; height:100vh; overflow:hidden;
+  background:
+    radial-gradient(1200px 700px at 18% -12%, #1c2c3c 0%, rgba(28,44,60,0) 62%),
+    radial-gradient(1000px 640px at 92% 112%, #14202c 0%, rgba(20,32,44,0) 58%),
+    var(--bg);
+}
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column;
+  padding:clamp(24px,4.4vmin,62px) clamp(28px,5vw,96px) clamp(30px,5vh,60px);
+  overflow:hidden;
+}
+.slide.active{display:flex}
+/* 只有作用中的版面才改寫 display，否則會蓋掉上面 .slide{display:none} */
+.slide.active.s-split{display:grid; grid-template-columns:minmax(0,46%) minmax(0,1fr); gap:clamp(22px,3.6vw,72px); align-items:center}
+.slide.run .anim{animation:rise .58s cubic-bezier(.2,.75,.25,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ---------- 通用文字 ---------- */
+h1,h2,h3{font-family:var(--serif); font-weight:600; margin:0; letter-spacing:.015em; line-height:1.16}
+p{margin:0}
+.kicker{
+  font-size:clamp(20px,2.1vmin,30px); letter-spacing:.22em; color:var(--acc);
+  text-transform:none; font-weight:600;
+}
+.lead{font-size:clamp(20px,2.2vmin,34px); color:var(--cream-dim)}
+
+/* ---------- 封面 ---------- */
+.s-cover{align-items:center; justify-content:center; text-align:center; gap:clamp(10px,2vmin,26px)}
+.s-cover h1{font-size:clamp(48px,9.2vmin,132px); line-height:1.04}
+.s-cover .sub{font-size:clamp(20px,2.6vmin,40px); color:var(--cream-dim); font-family:var(--serif)}
+.s-cover .cover-art{width:min(60vmin,620px); max-width:86vw}
+.s-cover .cover-art svg{display:block; width:100%; height:auto}
+
+/* ---------- 一句話滿版 ---------- */
+.s-big{align-items:center; justify-content:center; text-align:center; gap:clamp(14px,2.6vmin,34px)}
+.s-big .big-line{font-size:clamp(44px,8vmin,120px); line-height:1.14; max-width:22em}
+.s-big .big-art{width:min(46vmin,460px)}
+.s-big .big-art svg{display:block;width:100%;height:auto}
+
+/* ---------- 活動頁 ---------- */
+.s-activity{gap:clamp(10px,2.2vmin,30px)}
+.act-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex:none}
+.act-head h2{font-size:clamp(34px,5.4vmin,84px)}
+.act-min{
+  font-family:var(--serif); color:var(--acc); font-size:clamp(24px,3.4vmin,52px);
+  flex:none; border:2px solid var(--acc); border-radius:999px;
+  padding:clamp(4px,1vh,10px) clamp(16px,2vw,30px);
+}
+.act-body{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr minmax(0,42%); gap:clamp(18px,3vw,54px); align-items:center}
+.act-cmd{
+  font-family:var(--serif); font-size:clamp(34px,5.6vmin,86px); line-height:1.28; color:var(--gold);
+}
+.act-art{display:flex; align-items:center; justify-content:center; min-height:0}
+.act-art svg{display:block; width:100%; height:auto; max-height:60vh}
+
+/* ---------- 左圖右文 ---------- */
+.split-art{display:flex; align-items:center; justify-content:center; min-height:0}
+.split-art svg{display:block; width:100%; height:auto; max-height:70vh; color:#f2ecdf}
+.split-text{display:flex; flex-direction:column; gap:clamp(10px,1.7vmin,24px); min-width:0}
+.pos-name{font-size:clamp(40px,6.6vmin,102px); color:var(--cream); line-height:1}
+.split-text .line{display:flex; flex-direction:column; gap:4px}
+.split-text .lbl{font-size:clamp(18px,1.8vmin,26px); letter-spacing:.16em; color:var(--acc); font-weight:600}
+.split-text .line p{font-size:clamp(20px,2.3vmin,34px); color:var(--cream); line-height:1.42}
+.split-text .quote{
+  margin-top:clamp(4px,1vmin,12px); border-left:6px solid var(--acc);
+  padding:clamp(8px,1.4vh,16px) clamp(12px,1.6vw,22px); background:rgba(67,168,159,.10);
+  border-radius:0 14px 14px 0;
+}
+.split-text .quote p{font-family:var(--serif); color:var(--gold); font-size:clamp(22px,2.5vmin,38px)}
+
+/* ---------- 卡片格 ---------- */
+.s-cards{gap:clamp(12px,2.4vmin,30px)}
+.cards-head{flex:none; display:flex; align-items:baseline; gap:clamp(12px,2vw,28px); flex-wrap:wrap}
+.cards-head h2{font-size:clamp(34px,5vmin,80px)}
+.cards-grid{flex:1 1 auto; min-height:0; display:grid; gap:clamp(10px,1.8vmin,22px); align-content:center}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.11); border-radius:18px;
+  padding:clamp(12px,2.2vmin,26px); display:flex; flex-direction:column;
+  align-items:center; text-align:center; gap:clamp(6px,1.2vmin,14px); min-width:0;
+}
+.card svg{display:block; width:clamp(40px,6vmin,74px); height:auto; color:var(--acc)}
+.card h3{font-size:clamp(24px,2.9vmin,44px)}
+.card p{font-size:clamp(18px,1.9vmin,27px); color:var(--cream-dim); line-height:1.35}
+
+/* 少了哪一樣：遊戲卡 */
+.game-card{
+  font-family:inherit; color:var(--cream); cursor:pointer; text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.11); border-radius:18px;
+  padding:clamp(12px,2.2vmin,26px); display:flex; flex-direction:column;
+  align-items:center; gap:clamp(6px,1.2vmin,14px); min-width:0;
+  transition:border-color .2s, background .2s;
+}
+.game-card:hover{border-color:var(--acc); background:rgba(67,168,159,.10)}
+.game-card svg{display:block; width:100%; height:auto; max-height:38vh}
+.gc-q{font-size:clamp(22px,2.6vmin,40px); font-family:var(--serif); color:var(--gold)}
+.gc-a{
+  font-size:clamp(26px,3.2vmin,48px); font-family:var(--serif); color:var(--acc); font-weight:600;
+  letter-spacing:.08em;
+}
+.gc-a[hidden]{display:none}
+
+/* ---------- Kahoot 問答 ---------- */
+.s-quiz{gap:clamp(10px,2vmin,26px)}
+.quiz-head{flex:none; display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2vw,30px); align-items:center}
+.quiz-head .qicon{color:var(--acc); display:flex; align-items:center}
+.quiz-head .qicon svg{display:block; width:clamp(46px,7vmin,88px); height:auto}
+.quiz-q{font-size:clamp(30px,4.4vmin,66px); line-height:1.25}
+.quiz-bar{flex:none; height:clamp(8px,1.1vmin,13px); border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden}
+.quiz-bar i{display:block; height:100%; width:100%; background:var(--gold)}
+.quiz-opts{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:clamp(10px,1.5vmin,20px)}
+.quiz-opt{
+  display:flex; align-items:center; gap:clamp(10px,1.5vmin,22px); text-align:left;
+  font-family:var(--sans); color:var(--cream); font-size:clamp(20px,2.3vmin,34px); line-height:1.3;
+  padding:clamp(10px,1.7vmin,22px) clamp(14px,1.8vw,26px); border-radius:16px;
+  border:2.5px solid var(--qc); background:rgba(255,255,255,.05); cursor:pointer;
+  transition:background .18s, opacity .18s, box-shadow .18s;
+}
+.quiz-opt:hover{background:rgba(255,255,255,.13)}
+.quiz-opt .qmark{
+  flex:none; display:grid; place-items:center; color:#fff; background:var(--qc);
+  width:clamp(36px,4vmin,58px); height:clamp(36px,4vmin,58px); border-radius:13px;
+  font-size:clamp(19px,2.1vmin,32px);
+}
+.k-red{--qc:var(--k-red)} .k-blue{--qc:var(--k-blue)}
+.k-yellow{--qc:var(--k-yellow)} .k-green{--qc:var(--k-green)}
+.quiz-opt.correct{background:var(--qc); box-shadow:0 0 0 4px rgba(255,255,255,.6) inset}
+.quiz-opt.correct .qmark{background:#fff; color:var(--qc)}
+.quiz-opt.wrong{background:rgba(226,27,60,.24)}
+.quiz-opt.dim{opacity:.3}
+.quiz-fb{
+  flex:none; font-size:clamp(20px,2.3vmin,34px); color:var(--cream);
+  border-left:6px solid var(--acc); padding-left:clamp(12px,1.4vw,20px); min-height:1.4em;
+}
+.quiz-fb[hidden]{display:none}
+.quiz-fb.ok{border-color:var(--teal); color:#93ddd4}
+.quiz-fb.no{border-color:var(--terra); color:#f0b5a4}
+
+/* ---------- 收尾 ---------- */
+.s-end{align-items:center; justify-content:center; text-align:center; gap:clamp(12px,2.4vmin,30px)}
+.s-end .end-kicker{font-size:clamp(22px,2.4vmin,36px); color:var(--cream-dim); letter-spacing:.14em}
+.s-end h1{font-size:clamp(46px,8.6vmin,124px)}
+.s-end .end-art{width:min(50vmin,500px)}
+.s-end .end-art svg{display:block;width:100%;height:auto}
+
+/* ---------- 頁碼 / 進度條 ---------- */
+.pager{
+  position:fixed; right:clamp(14px,1.6vw,30px); bottom:clamp(10px,1.4vh,18px);
+  font-size:clamp(13px,1.35vmin,18px); color:rgba(246,241,231,.42);
+  font-variant-numeric:tabular-nums; letter-spacing:.1em; z-index:20; pointer-events:none;
+}
+.bar{position:fixed; left:0; bottom:0; height:3px; width:100%; background:rgba(255,255,255,.08); z-index:20}
+.bar i{display:block; height:100%; width:0; background:var(--acc); transition:width .28s ease}
+
+/* ---------- 浮層 ---------- */
+.ov{position:fixed; inset:0; z-index:60; display:flex; flex-direction:column}
+.ov[hidden]{display:none}
+.ov-timer{background:rgba(6,9,13,.97); align-items:center; justify-content:center; gap:clamp(18px,4vh,52px)}
+.t-clock{
+  font-family:var(--serif); font-weight:600; line-height:1; letter-spacing:.02em;
+  font-variant-numeric:tabular-nums; font-size:clamp(120px,26vmin,340px); color:var(--cream);
+}
+.t-clock.zero{color:var(--terra)}
+.t-btns{display:flex; gap:clamp(10px,1.6vw,24px); flex-wrap:wrap; justify-content:center}
+.t-btns button, .ov button, .quiz-next{
+  font-family:var(--sans); font-weight:600; color:var(--cream); cursor:pointer;
+  font-size:clamp(16px,1.7vmin,28px); padding:clamp(9px,1.5vh,18px) clamp(20px,2.4vw,44px);
+  border-radius:999px; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.08);
+  transition:background .15s;
+}
+.t-btns button:hover{background:rgba(255,255,255,.17)}
+.t-btns button.primary{background:var(--acc); color:#08211f; border-color:var(--acc)}
+.ov-notes{background:rgba(5,8,12,.94); padding:clamp(24px,5vh,64px) clamp(28px,6vw,110px); gap:clamp(12px,2.4vh,28px)}
+.notes-tag{
+  flex:none; align-self:flex-start; font-size:clamp(18px,1.9vmin,28px); letter-spacing:.28em;
+  color:var(--acc); border:2px solid var(--acc); border-radius:999px; padding:.28em 1.1em;
+}
+.notes-body{
+  flex:1 1 auto; min-height:0; overflow:auto;
+  font-size:clamp(20px,2.6vmin,38px); line-height:1.6; color:var(--cream);
+}
+.notes-body h4{font-family:var(--serif); color:var(--gold); margin:clamp(8px,1.6vh,20px) 0 .3em; font-size:1.05em}
+.notes-body ul{margin:.2em 0 .2em 1.2em; padding:0}
+.notes-body li{margin:.24em 0}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ===================== 1 · 封面 ===================== -->
+<section class="slide s-cover" data-timer="120">
+  <h1 class="anim">舞台上有什麼？</h1>
+  <p class="sub anim">第 2 節</p>
+  <div class="cover-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="舞台：紅幕拉開，聚光燈下一個張開手的小演員，台下一排表情不同的觀眾" color="#f2ecdf">
+      <defs>
+        <linearGradient id="cv-curt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8674a"/><stop offset="1" stop-color="#7d2f22"/></linearGradient>
+        <linearGradient id="cv-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".72"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient>
+        <radialGradient id="cv-pool"><stop offset="0" stop-color="#f6dca6" stop-opacity=".6"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="18" y="8" width="364" height="30" rx="4" fill="url(#cv-curt)" stroke="none"/>
+        <path d="M18 38c30 12 62-6 92 5s58-11 90-3 60-11 90-1 58-5 92 0" fill="url(#cv-curt)" stroke="none"/>
+        <g stroke="#8f4132" stroke-width="2.6" opacity=".55"><path d="M48 12v26M120 12v28M200 12v28M280 12v28M352 12v26"/></g>
+        <path d="M18 40c22 28 6 54 20 82s-8 54 8 80 4 34 2 38H18z" fill="url(#cv-curt)" stroke="none"/>
+        <path d="M382 40c-22 28-6 54-20 82s8 54-8 80-4 34-2 38h30z" fill="url(#cv-curt)" stroke="none"/>
+        <path d="M42 56c10 28 2 52 12 80M336 56c-10 28-2 52-12 80" stroke="#8f4132" stroke-width="2.8" opacity=".6"/>
+        <path d="M14 240h372" stroke="#c99a5e" stroke-width="3.4"/>
+        <path d="M64 240l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M122 240l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M258 240l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M320 240l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/>
+        <path d="M108 236h40M252 236h36" stroke="#e0b25c" stroke-width="6" opacity=".85"/>
+        <path d="M172 44h56l50 196H122z" fill="url(#cv-cone)" stroke="none"/>
+        <ellipse cx="200" cy="240" rx="96" ry="15" fill="url(#cv-pool)" stroke="none"/>
+        <path d="M182 14h36l-8 16h-20z" fill="#e0b25c" stroke="none"/>
+        <path d="M182 14h36l-8 16h-20z" stroke="#b8863b"/>
+        <g transform="translate(200,130.0) scale(1.0,1.0)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="3.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="3.6" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <circle cx="150" cy="96" r="3" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="256" cy="78" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="232" cy="152" r="2.2" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="166" cy="202" r="2.2" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M34 298h332"/>
+        <g>
+          <ellipse cx="60" cy="270" rx="13" ry="12" fill="#e8b98d" stroke="none"/>
+          <circle cx="55" cy="268" r="2.1" fill="#2a1e14" stroke="none"/><circle cx="65" cy="268" r="2.1" fill="#2a1e14" stroke="none"/><path d="M54 275q6 5 12 0" fill="none" stroke="#2a1e14" stroke-width="2" stroke-linecap="round"/>
+          <path d="M42 296a18 15 0 0 1 36 0z" fill="#43a89f" stroke="none"/>
+          <circle cx="51" cy="290" r="6.5" fill="#e8b98d" stroke="none"/><circle cx="69" cy="290" r="6.5" fill="#e8b98d" stroke="none"/>
+          <path d="M42 286l-7-5" stroke="#e0b25c" stroke-width="2.2"/>
+          <path d="M78 286l7-5" stroke="#e0b25c" stroke-width="2.2"/>
+        </g>
+        <g>
+          <ellipse cx="132" cy="274" rx="13" ry="12" fill="#d79b6d" stroke="none"/>
+          <circle cx="127" cy="272" r="2.1" fill="#2a1e14" stroke="none"/><circle cx="137" cy="272" r="2.1" fill="#2a1e14" stroke="none"/><path d="M126 281h12" fill="none" stroke="#2a1e14" stroke-width="2" stroke-linecap="round"/>
+          <path d="M114 298a18 15 0 0 1 36 0z" fill="#e0b25c" stroke="none"/>
+        </g>
+        <g>
+          <ellipse cx="204" cy="270" rx="13" ry="12" fill="#f2c9a0" stroke="none"/>
+          <circle cx="199" cy="268" r="2.1" fill="#2a1e14" stroke="none"/><circle cx="209" cy="268" r="2.1" fill="#2a1e14" stroke="none"/><path d="M199 276q5 5 10 0" fill="none" stroke="#2a1e14" stroke-width="2" stroke-linecap="round"/>
+          <path d="M186 296a18 15 0 0 1 36 0z" fill="#b07cc4" stroke="none"/>
+          <path d="M220 286l7-22" stroke="#f2c9a0" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="228" cy="262" r="6.5" fill="#f2c9a0" stroke="none"/>
+        </g>
+        <g>
+          <ellipse cx="266" cy="280" rx="9.5" ry="9" fill="#f6d3ae" stroke="none"/>
+          <circle cx="262" cy="278" r="1.8" fill="#2a1e14" stroke="none"/><circle cx="270" cy="278" r="1.8" fill="#2a1e14" stroke="none"/><path d="M262 285q4 3.5 8 0" fill="none" stroke="#2a1e14" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M253 296a13 11 0 0 1 26 0z" fill="#d8674a" stroke="none"/>
+        </g>
+        <g>
+          <ellipse cx="338" cy="272" rx="13" ry="12" fill="#e8b98d" stroke="none"/>
+          <circle cx="333" cy="270" r="2.1" fill="#2a1e14" stroke="none"/><circle cx="343" cy="270" r="2.1" fill="#2a1e14" stroke="none"/><path d="M333 278q5 5 10 0" fill="none" stroke="#2a1e14" stroke-width="2" stroke-linecap="round"/>
+          <path d="M320 298a18 15 0 0 1 36 0z" fill="#43a89f" stroke="none"/>
+          <ellipse cx="338" cy="262" rx="19" ry="4.5" fill="#b07cc4" stroke="none"/>
+          <path d="M328 262v-8a10 10 0 0 1 20 0v8z" fill="#b07cc4" stroke="none"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>先讓全班看三秒，然後問：「這張圖你在哪裡見過？」（大屏幕／禮堂／電視裡的舞台。）</li>
+      <li>接着問：「台上除了那個人，還有什麼？」讓孩子一個一個說，你把他們說的寫在黑板上——那就是今天要講的八個位置。</li>
+      <li>不要一開始就給八個名詞。先收集他們的答案，後面每一頁再對號入座。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為「舞台」就是一個台，忽略了幕布、燈、佈景全都是舞台的一部分。</li>
+      <li>以為只有演員才算「做戲的人」。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 2 · 活動：熱身 ===================== -->
+<section class="slide s-activity" data-timer="480">
+  <div class="act-head">
+    <h2 class="anim">熱身：空間與停格 ＋ 圓圈點名</h2>
+    <span class="act-min anim">8 分</span>
+  </div>
+  <div class="act-body">
+    <p class="act-cmd anim">「行——停。停的時候，眼睛看著我。」</p>
+    <div class="act-art anim" aria-hidden="true">
+      <svg viewBox="0 0 400 300" role="img" aria-label="一圈顏色不同的小朋友向着圓心，中間一人舉手；右上角一人正在走、一人停住" color="#f2ecdf">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="168" cy="158" rx="112" ry="76" stroke-dasharray="10 13" opacity=".45"/>
+        <g transform="translate(168,27.5) scale(0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#d8674a" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-14 16 -18 30" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-18" cy="30" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q14 16 18 30" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="18" cy="30" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <g transform="translate(56,107.5) scale(0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-25" r="9" fill="#4a3527" stroke="none"/><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#e8b98d" stroke="none"/><circle cx="-8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-14 14 -20 22" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-20" cy="22" r="8.5" fill="#e8b98d" stroke="none"/><path d="M0 30q14 14 20 22" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="20" cy="22" r="8.5" fill="#e8b98d" stroke="none"/></g>
+        <g transform="translate(280,107.5) scale(0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M-26 2a26 24 0 0 1 52 0v24c-4-2-7-8-7-14-6 4-32 4-38 0 0 6-3 12-7 14z" fill="#6b4a2f" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#d79b6d" stroke="none"/><circle cx="-8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#e0b25c" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q24 -8 38 -4" stroke="#d79b6d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="38" cy="-4" r="8.5" fill="#d79b6d" stroke="none"/><path d="M0 30q-18 14 -24 24" stroke="#d79b6d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-24" cy="24" r="8.5" fill="#d79b6d" stroke="none"/></g>
+        <g transform="translate(102,167.5) scale(0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 -4a23 21 0 0 1 46 0c-5-5-13-7-23-7s-18 2-23 7z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <g transform="translate(238,167.5) scale(-0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><path d="M-25 -3a25 23 0 0 1 50 0c-3-4-7-6-12-6-2 4-8 5-13 4-5 1-11 0-13-4-5 0-9 2-12 6z" fill="#2b1f17" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f6d3ae" stroke="none"/><circle cx="-8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.4" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#5a4632" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#5a4632" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q16 -24 22 -36" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="22" cy="-36" r="8.5" fill="#f6d3ae" stroke="none"/><path d="M0 30q-16 10 -24 20" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-24" cy="20" r="8.5" fill="#f6d3ae" stroke="none"/></g>
+        <g transform="translate(168,128.6) scale(0.82,0.82)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#d8674a" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q20 -28 30 -42" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="30" cy="-42" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q-14 12 -20 24" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-20" cy="24" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <path d="M116 276q54 16 108 0" stroke="#e0b25c" stroke-width="3.4"/>
+        <path d="M224 276l-14-6 3 14z" fill="#e0b25c" stroke="#e0b25c" stroke-width="2.4"/>
+        <g transform="translate(344,14.0) scale(0.44,0.44)" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 -4a23 21 0 0 1 46 0c-5-5-13-7-23-7s-18 2-23 7z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#e0b25c" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-16 36" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-26" cy="101" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l14 32" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="23" cy="97" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q24 -16 34 -22" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="34" cy="-22" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q-16 12 -22 22" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-22" cy="22" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <path d="M296 30h22M292 42h26M298 54h18" stroke="#43a89f" stroke-width="3"/>
+        <g transform="translate(384,18.4) scale(0.4,0.4)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><path d="M-7 11h14" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <path d="M366 22v34" stroke="#e0b25c" stroke-width="5"/>
+      </g>
+    </svg>
+    </div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>先圍圈點名（每人說名字＋做一個動作，全班一起學他），再做「行——停」。圓圈點名用來聚人，行停用來醒身體。</li>
+      <li>指令只有一個：行就唔停，停就定住。不要中途加規則。</li>
+      <li>「眼睛看著我」是停格的關鍵——孩子的身體會跟著看不見的對象安靜下來。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>把「停」當成慢慢停，腳還在動。要示範一次「最後一步很實、整個人定住」。</li>
+      <li>以為做動作要做得靚、做得對；要講明「做傻的都可以，我們一齊學你」。</li>
+      <li>笑同伴的動作。第一節的「不嘲笑」要在這裡再重申一次。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 3 · 八個位置（全貌） ===================== -->
+<section class="slide s-cards cols-4" data-timer="300">
+  <div class="cards-head">
+    <span class="kicker anim">一齣戲</span>
+    <h2 class="anim">八個位置，八種人</h2>
+  </div>
+  <div class="cards-grid cols-4">
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="25" height="38" rx="5" fill="#f6f1e7" fill-opacity=".14" stroke="#e0b25c" stroke-width="2.8"/><path d="M15 5v38" stroke="#e0b25c" stroke-width="2.8"/><g stroke="#f6f1e7" stroke-opacity=".85" stroke-width="2.6"><path d="M21 14h6M21 21h6M21 28h3"/></g><path d="M34 12l7 7-11 12-8 1 1-8z" fill="#d8674a" stroke="#d8674a" stroke-width="2.6"/></svg>
+      <h3>編劇</h3><p>寫故事的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21l17-9v20l-17-9z" fill="#d8674a" fill-opacity=".6" stroke="#d8674a" stroke-width="2.8"/><rect x="5" y="17" width="8" height="11" rx="3" fill="#d8674a" stroke="#d8674a" stroke-width="2.8"/><path d="M17 29v6a3 3 0 0 0 6 0v-3" stroke="#e0b25c" stroke-width="2.8"/><path d="M33 17a9 9 0 0 1 0 14" stroke="#e0b25c" stroke-width="2.8"/><path d="M40 12a16 16 0 0 1 0 24" stroke="#e0b25c" stroke-width="2.8" opacity=".7"/></svg>
+      <h3>導演</h3><p>定位置的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 30l-8 12M32 30l8 12" stroke="#3b4a5a" stroke-width="5"/><path d="M24 20v11" stroke="#43a89f" stroke-width="8"/><path d="M24 22l-10-6M24 22l10-6" stroke="#f2c9a0" stroke-width="3.6"/><ellipse cx="24" cy="12" rx="7.6" ry="6.8" fill="#f2c9a0" stroke="none"/><path d="M17.4 12.4a6.8 6 0 0 1 13.2 0c-2-2-3.2-2.6-6.6-2.6s-4.6.6-6.6 2.6z" fill="#3a2a20" stroke="none"/><circle cx="21.2" cy="12.6" r="1.3" fill="#2a1e14" stroke="none"/><circle cx="26.8" cy="12.6" r="1.3" fill="#2a1e14" stroke="none"/><path d="M21.4 15.6q2.6 2 5.2 0" stroke="#2a1e14" stroke-width="1.5" fill="none"/></svg>
+      <h3>演員</h3><p>上台演的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="26" height="28" rx="3" fill="#43a89f" fill-opacity=".28" stroke="#43a89f" stroke-width="2.8"/><path d="M4 25l8-8 6 6 6-5 6 6" stroke="#e0b25c" stroke-width="2.8"/><circle cx="12" cy="16" r="3.6" fill="#e0b25c" stroke="none"/><rect x="32" y="18" width="12" height="24" rx="2.5" fill="#d8674a" fill-opacity=".45" stroke="#d8674a" stroke-width="2.8"/><circle cx="41" cy="31" r="1.8" fill="#e0b25c" stroke="none"/></svg>
+      <h3>舞台設計</h3><p>造地方的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6a3.4 3.4 0 0 1 3.4 3.4" stroke="#e0b25c" stroke-width="2.8"/><path d="M17 13h14l7 7-5 4v14H15V24l-5-4z" fill="#b07cc4" fill-opacity=".5" stroke="#b07cc4" stroke-width="2.8"/><path d="M17 13l7 6 7-6" stroke="#f6f1e7" stroke-opacity=".8" stroke-width="2.8"/></svg>
+      <h3>服裝</h3><p>穿身份的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 28v-9a11 11 0 0 1 22 0v9z" fill="#f6f1e7" fill-opacity=".16" stroke="#d8674a" stroke-width="2.8"/><circle cx="7" cy="19" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="12" cy="11" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="22" cy="7.5" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="32" cy="11" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="37" cy="19" r="2.4" fill="#e0b25c" stroke="none"/><path d="M15 28v11M29 28v11M11 39h22" stroke="#d8674a" stroke-width="2.8"/></svg>
+      <h3>化妝</h3><p>畫表情的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h40" stroke="#43a89f" stroke-width="2.8"/><path d="M11 7l3 6h-8z" fill="#e0b25c" stroke="#e0b25c" stroke-width="2.6"/><path d="M12 13l-9 30h22z" fill="#e0b25c" fill-opacity=".4" stroke="none"/><path d="M37 7l3 6h-8z" fill="#43a89f" stroke="#43a89f" stroke-width="2.6"/><path d="M36 13l9 30H23z" fill="#43a89f" fill-opacity=".4" stroke="none"/></svg>
+      <h3>燈光</h3><p>給焦點的人</p>
+    </div>
+    <div class="card anim">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12v15a4.6 4.6 0 1 1-4-4.5V15l12-3v12a4.6 4.6 0 1 1-4-4.5" fill="#e0b25c" stroke="#e0b25c" stroke-width="2.6"/><path d="M35 17v7" stroke="#b07cc4" stroke-width="2.8"/><circle cx="35" cy="31" r="4.6" fill="#b07cc4" stroke="#b07cc4" stroke-width="2.6"/><path d="M41 21a11 11 0 0 1 0 18" stroke="#43a89f" stroke-width="2.8" opacity=".8"/></svg>
+      <h3>音效</h3><p>添聲音的人</p>
+    </div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>這一頁只是「先給全貌」：讓孩子知道一齣戲背後有八種人。用三秒掃過，不要逐個解釋，接着八頁才逐個講。</li>
+      <li>可以問一句：「你覺得自己最想做哪一個？」先記住答案，第八頁之後再問一次。</li>
+      <li>強調：八個都重要，沒有一個是「配角」。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為「導演」最大、其他人只是幫手。要講成「八個人一起做同一件事」。</li>
+      <li>以為燈光、音效是「大人的機器」，與自己無關。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 4 · 編劇 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+            <svg viewBox="0 0 400 300" role="img" aria-label="一個小朋友側身坐在書桌前寫劇本，手握着筆在攤開的稿紙上寫字，桌上有散落的紙張，牆上釘着人物關係圖" color="#f2ecdf">
+      <defs>
+        <radialGradient id="wr-halo" gradientUnits="userSpaceOnUse" cx="112" cy="122" r="146">
+          <stop offset="0" stop-color="#f6dca6" stop-opacity=".5"/>
+          <stop offset=".55" stop-color="#e0b25c" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#e0b25c" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="wr-desk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#5a4530"/>
+          <stop offset="1" stop-color="#2b2119"/>
+        </linearGradient>
+        <linearGradient id="wr-pg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fbf6ec"/>
+          <stop offset="1" stop-color="#e4d8bf"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="400" height="300" fill="url(#wr-halo)"/>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="292" y="26" width="96" height="86" rx="7" fill="#1c2836" stroke="#5c6c7d" stroke-width="2.4"/>
+        <circle cx="340" cy="26" r="4.4" fill="#d8674a" stroke="none"/>
+        <g stroke="#e0b25c" stroke-width="2.4" opacity=".85"><path d="M318 62l20-16M338 46l22 20M318 62l22 20"/></g>
+        <circle cx="338" cy="46" r="8.2" fill="#43a89f" stroke="none"/>
+        <circle cx="318" cy="62" r="8.2" fill="#d8674a" stroke="none"/>
+        <circle cx="360" cy="66" r="8.2" fill="#b07cc4" stroke="none"/>
+        <g stroke="#f6f1e7" stroke-width="2.6" opacity=".5"><path d="M308 92h34M308 102h20"/></g>
+        <path d="M78 180h62l-4 12H82z" fill="#4a3527" stroke="#6b4f38" stroke-width="2.6"/>
+        <path d="M84 192l-2 60M134 192l2 60" stroke="#4a3527" stroke-width="7"/>
+        <path d="M74 250h66" stroke="#3a2b20" stroke-width="6"/>
+        <path d="M104 174q28 2 42 5" stroke="#2a3644" stroke-width="16"/>
+        <path d="M146 179q4 30 5 54" stroke="#2a3644" stroke-width="14"/>
+        <ellipse cx="156" cy="240" rx="14" ry="6.5" fill="#171c22" stroke="none"/>
+        <path d="M84 102c10-8 38-8 48 0l6 72c-20 8-42 8-60 0z" fill="#d8674a" stroke="none"/>
+        <path d="M84 102c10-8 38-8 48 0" stroke="#e8805f" stroke-width="3" opacity=".7"/>
+        <path d="M100 82h16v20h-16z" fill="#e3b184" stroke="none"/>
+        <path d="M112 178q26 2 40 5" stroke="#33414f" stroke-width="17"/>
+        <path d="M152 183q4 30 5 56" stroke="#33414f" stroke-width="15"/>
+        <ellipse cx="160" cy="247" rx="16" ry="7.5" fill="#1e242c" stroke="none"/>
+        <ellipse cx="108" cy="58" rx="27" ry="26" fill="#f2c9a0" stroke="none"/>
+        <ellipse cx="83" cy="62" rx="5" ry="7.5" fill="#e8b98d" stroke="none"/>
+        <path d="M81 62c-3-20 11-34 29-34s32 14 29 34c-4-6-7-9-12-11-5 6-13 8-20 7s-13-3-17-8c-6 3-9 7-10 12z" fill="#3a2a20" stroke="none"/>
+        <circle cx="103" cy="59" r="4" fill="#2a1e14" stroke="none"/>
+        <circle cx="121" cy="59" r="4" fill="#2a1e14" stroke="none"/>
+        <path d="M104 71q9 5 18 0" fill="none" stroke="#2a1e14" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M86 108q-8 28-4 48" stroke="#c25a3f" stroke-width="18"/>
+        <path d="M82 156q10 16 28 22" stroke="#f2c9a0" stroke-width="9.5"/>
+        <ellipse cx="112" cy="180" rx="10" ry="8.5" fill="#f2c9a0" stroke="none"/>
+        <path d="M128 108q22 16 26 36" stroke="#c25a3f" stroke-width="18"/>
+        <path d="M154 144q32 20 56 40" stroke="#f2c9a0" stroke-width="9.5"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="268" cy="254" rx="168" ry="8" fill="#000" fill-opacity=".18" stroke="none"/>
+        <rect x="176" y="200" width="14" height="52" rx="4" fill="#2b2119" stroke="none"/>
+        <rect x="374" y="200" width="14" height="52" rx="4" fill="#2b2119" stroke="none"/>
+        <path d="M190 178h186l12 22H168z" fill="url(#wr-desk)" stroke="none"/>
+        <path d="M190 178h186l12 22H168z" stroke="#c99a5e" stroke-width="2.6"/>
+        <path d="M168 200h220" stroke="#1c1610" stroke-width="3"/>
+        <g stroke="#7a5533" stroke-width="2.2" opacity=".45"><path d="M214 186h52M282 186h48M206 194h60M280 194h54"/></g>
+      </g>
+      <g>
+        <path d="M210 186l130 0-9 19-120 0z" fill="#f6f1e7" fill-opacity=".4" stroke="none"/>
+        <path d="M216 182l120 0-8 17-112 0z" fill="url(#wr-pg)" stroke="#b8863b" stroke-width="2.4"/>
+        <g stroke="#4a4038" stroke-width="2.2" opacity=".8"><path d="M226 187h30M262 187h42M226 193h24M258 193h42"/></g>
+        <g stroke="#43a89f" stroke-width="2.8" opacity=".9"><path d="M226 187h30"/></g>
+        <path d="M346 184l42-5 7 17-42 5z" fill="url(#wr-pg)" stroke="#b8863b" stroke-width="2.2"/>
+        <g stroke="#4a4038" stroke-width="2" opacity=".7"><path d="M356 190h24M358 196h30"/></g>
+      </g>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="214" cy="192" rx="11" ry="9.5" fill="#f2c9a0" stroke="none"/>
+        <path d="M206 187q10 2 15 11" stroke="#e0b183" stroke-width="2.4" fill="none"/>
+        <path d="M224 184l-16 15" stroke="#e0b25c" stroke-width="6"/>
+        <path d="M207 200l-2 3" stroke="#2a1e14" stroke-width="3.4"/>
+        <path d="M200 198q4 3 8 0" stroke="#2a1e14" stroke-width="2.2" fill="none" opacity=".8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">編劇</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他把故事寫下來——誰先出場，誰說什麼。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>大家上了台，卻不知道要演什麼。</p></div>
+    <div class="quote anim"><p>「想得出來，就寫得下來。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>把劇本舉高給孩子看：一頁紙上面有什麼？答案要有「誰在說話」和「他做了什麼」。</li>
+      <li>問一句：「你昨天做過最有趣的一件事，如果寫成劇本，第一句是什麼？」讓兩三個孩子講，不用寫。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為「故事」和「劇本」是一樣的。劇本是故事再加「誰說、幾時做」。</li>
+      <li>以為編劇要作文很好。其實是「把畫面說清楚」。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 5 · 導演 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="一張摺疊導演椅，旁邊一個小朋友舉着擴音筒喊話" color="#f2ecdf">
+      <defs><linearGradient id="dr-fab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8674a"/><stop offset="1" stop-color="#8c3a2a"/></linearGradient>
+      <linearGradient id="dr-meg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#57bdb3"/><stop offset="1" stop-color="#257d78"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 258h364" stroke="#c99a5e" stroke-width="3.4"/>
+        <path d="M96 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M288 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M348 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/>
+        <path d="M244 162l64 96M344 162l-64 96M262 212h64" stroke-width="7"/>
+        <path d="M244 74v88M344 74v88M234 74h122" stroke-width="7"/>
+        <path d="M240 88h104v54a6 6 0 0 1-6 6H246a6 6 0 0 1-6-6z" fill="url(#dr-fab)" stroke="none"/>
+        <path d="M240 88h104v54a6 6 0 0 1-6 6H246a6 6 0 0 1-6-6z"/>
+        <path d="M268 96v46M306 96v46M334 96v46" stroke="#8c3a2a" stroke-width="2.6" opacity=".7"/>
+        <ellipse cx="308" cy="260" rx="12" ry="7" fill="#2a2f38" stroke="none"/><ellipse cx="280" cy="260" rx="12" ry="7" fill="#2a2f38" stroke="none"/>
+        <g transform="translate(122,142.5) scale(1.06,1.06)" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-25" r="9" fill="#4a3527" stroke="none"/><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#d79b6d" stroke="none"/><circle cx="-8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><ellipse cx="0" cy="11" rx="6" ry="7.5" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q16 -6 30 -4" stroke="#d79b6d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="30" cy="-4" r="8.5" fill="#d79b6d" stroke="none"/><path d="M0 30q14 10 30 14" stroke="#d79b6d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="30" cy="14" r="8.5" fill="#d79b6d" stroke="none"/></g>
+        <path d="M154 146l-10-8-6 20z" fill="#43a89f" stroke="#43a89f" stroke-width="2.4"/>
+        <path d="M158 145l80-24v56z" fill="url(#dr-meg)" stroke="none"/>
+        <path d="M158 145l80-24v56z" stroke="#43a89f"/>
+        <rect x="142" y="138" width="16" height="28" rx="6" fill="#43a89f" stroke="none"/>
+        <path d="M252 116a40 40 0 0 1 0 60" stroke="#e0b25c" stroke-width="3.6"/>
+        <path d="M270 100a64 64 0 0 1 0 92" stroke="#e0b25c" stroke-width="3.6" opacity=".75"/>
+        <circle cx="214" cy="74" r="3" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="330" cy="40" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">導演</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他決定誰站在哪裡、什麼時候亮燈、什麼時候停。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>各做各的，一齣戲會變成很多齣。</p></div>
+    <div class="quote anim"><p>「先看清楚，每一個人在哪裡。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>用一句生活化的比喻：導演像班裡的「排隊隊長」——不是最大聲的那個，是最清楚大家位置的那個。</li>
+      <li>即場示範：叫三個孩子隨意站，再說一次你要的畫面，讓他們照做。孩子會立刻明白「有人決定」的分別。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為導演就是「喊得最大聲的人」。導演的重點是看清楚、講清楚。</li>
+      <li>以為導演自己也要上台。多數時候他坐在台下看。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 6 · 演員 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="聚光燈下一個張開雙臂、笑得很開心的小演員" color="#f2ecdf">
+      <defs><linearGradient id="ac-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".72"/><stop offset="1" stop-color="#e0b25c" stop-opacity=".04"/></linearGradient>
+      <radialGradient id="ac-pool"><stop offset="0" stop-color="#f6dca6" stop-opacity=".62"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></radialGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M168 8h64l-12 22h-40z" fill="#e0b25c" stroke="#b8863b"/>
+        <path d="M176 30l-42 226h132L218 30z" fill="url(#ac-cone)" stroke="none"/>
+        <path d="M24 258h352" stroke="#c99a5e" stroke-width="3.4"/>
+        <path d="M92 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M200 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M308 258l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/>
+        <ellipse cx="200" cy="258" rx="104" ry="16" fill="url(#ac-pool)" stroke="none"/>
+        <g transform="translate(200,117.8) scale(1.25,1.25)" stroke-linecap="round" stroke-linejoin="round"><path d="M-25 -3a25 23 0 0 1 50 0c-3-4-7-6-12-6-2 4-8 5-13 4-5 1-11 0-13-4-5 0-9 2-12 6z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="3.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="3.6" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <circle cx="120" cy="80" r="3.4" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="286" cy="62" r="3" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="250" cy="178" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="134" cy="198" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="206" cy="40" r="2.4" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">演員</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他站在台上，用身體和聲音把故事演給你看。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>台上一個人都沒有，只剩佈景。</p></div>
+    <div class="quote anim"><p>「台上每一個人，都是一個角色。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>讓孩子想一想：同一個「很生氣」，用背向觀眾演，和面向觀眾演，看得見的分別有多大。</li>
+      <li>提醒：演員不是「表演自己」，是替一個人說話。台上沒有多餘的人。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為聲音大就好。其實要「對準對象」講，不是喊。</li>
+      <li>以為站在台上就是演員，忘了要「做一件事」。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 7 · 舞台設計 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="一幅看得出是佈景的景片，畫着山和太陽，旁邊有一道門和幾級樓梯，一個小朋友指着景片" color="#f2ecdf">
+      <defs><linearGradient id="sd-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43a89f" stop-opacity=".42"/><stop offset="1" stop-color="#43a89f" stop-opacity=".08"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="20" y="34" width="204" height="176" rx="6" fill="url(#sd-sky)" stroke="none"/>
+        <rect x="20" y="34" width="204" height="176" rx="6"/>
+        <path d="M20 152c34-34 62 10 100-18s66 12 104-14" stroke="#f6f1e7" stroke-opacity=".8"/>
+        <circle cx="76" cy="80" r="17" fill="#e0b25c" stroke="none"/><circle cx="76" cy="80" r="17" stroke="#e0b25c"/>
+        <path d="M116 122l22-26 18 22" stroke="#f6f1e7" stroke-opacity=".6" stroke-width="3"/>
+        <rect x="252" y="96" width="82" height="114" rx="4" fill="#d8674a" fill-opacity=".28" stroke="#d8674a"/>
+        <rect x="266" y="110" width="52" height="58" rx="3" fill="#f6f1e7" stroke-opacity=".22"/>
+        <circle cx="326" cy="156" r="5" fill="#e0b25c" stroke="#e0b25c"/>
+        <path d="M116 274h62v-28h64v-28h62v-28" stroke-width="3.4"/>
+        <path d="M116 274h188" opacity=".6"/>
+        <path d="M16 274h368" stroke="#c99a5e" stroke-width="3.4"/>
+        <path d="M56 274l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M296 274l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M350 274l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/>
+        <g transform="translate(84,204.4) scale(0.62,0.62)" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 -4a23 21 0 0 1 46 0c-5-5-13-7-23-7s-18 2-23 7z" fill="#6b4a2f" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f6d3ae" stroke="none"/><circle cx="-8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#5a4632" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#5a4632" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q20 -16 32 -30" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="32" cy="-30" r="8.5" fill="#f6d3ae" stroke="none"/><path d="M0 30q-18 12 -24 22" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-24" cy="22" r="8.5" fill="#f6d3ae" stroke="none"/></g>
+        <path d="M104 192l26-30" stroke="#e0b25c" stroke-width="4.4"/>
+        <path d="M130 162l12-10 6 14z" fill="#e0b25c" stroke="#e0b25c" stroke-width="2.2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">舞台設計</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他把台上變成一個地方——有山、有門、有樓梯。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>只剩一塊空地，看不出這是哪裡。</p></div>
+    <div class="quote anim"><p>「先畫清楚：這裡是哪裡。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>問全班：如果台上要演「放學後的課室」，需要什麼在台上？孩子會說桌子、黑板、門。那就是舞台設計在做的事。</li>
+      <li>提醒：佈景不一定要真，幾塊紙板、一條布都可以造出一個地方。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為佈景要很誇張才算好。其實夠用、看得出「是哪裡」就好。</li>
+      <li>以為佈景是畫上去的背景畫，不懂它可以立體、可以走進走出。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 8 · 服裝 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="衣架上掛着三件顏色不同、有領有袖有裙襬的戲服，旁邊一個小朋友抬頭在挑" color="#f2ecdf">
+      <defs><linearGradient id="cs-rack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0b25c" stop-opacity=".95"/><stop offset="1" stop-color="#8a6428"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M74 56h268" stroke="url(#cs-rack)" stroke-width="7"/>
+        <path d="M92 56v206M324 56v206" stroke-width="6"/>
+        <circle cx="92" cy="270" r="9" stroke-width="4"/><circle cx="324" cy="270" r="9" stroke-width="4"/>
+        <g stroke="#e0b25c" stroke-width="3">
+          <path d="M132 56a9 9 0 0 1 18 0"/><path d="M124 78l17-22 17 22"/>
+          <path d="M220 56a9 9 0 0 1 18 0"/><path d="M212 78l17-22 17 22"/>
+          <path d="M298 56a9 9 0 0 1 18 0"/><path d="M290 78l17-22 17 22"/>
+        </g>
+        <!-- 連身裙：領、短袖、大裙襬 -->
+        <path d="M118 78h48l-16 24 14 16-8 10 6 20 22 24 26 76H70l26-76 22-24 6-20-8-10 14-16z" fill="#b07cc4" fill-opacity=".5" stroke="#b07cc4"/>
+        <path d="M118 78l24 20 24-20" stroke="#f6f1e7" stroke-opacity=".85"/>
+        <path d="M142 98v52M124 190h36M104 220h74" stroke="#7d4f92" stroke-width="2.6" opacity=".85"/>
+        <!-- 上衣：領、長袖、鈕扣 -->
+        <path d="M208 78h48l30 36-18 16-10-12v128h-64V118l-10 12-18-16z" fill="#e0b25c" fill-opacity=".55" stroke="#e0b25c"/>
+        <path d="M208 78l24 20 24-20" stroke="#f6f1e7" stroke-opacity=".9"/>
+        <path d="M232 98v148" stroke="#8a6428" stroke-width="2.8" opacity=".85"/>
+        <circle cx="232" cy="124" r="4.2" fill="#f6f1e7" stroke="none"/><circle cx="232" cy="152" r="4.2" fill="#f6f1e7" stroke="none"/><circle cx="232" cy="180" r="4.2" fill="#f6f1e7" stroke="none"/>
+        <!-- 斗篷：帽子、領結、擺 -->
+        <path d="M288 78h48l34 182h-116z" fill="#d8674a" fill-opacity=".5" stroke="#d8674a"/>
+        <path d="M288 78a24 26 0 0 1 48 0" stroke="#d8674a" stroke-width="3.4"/>
+        <path d="M288 98h48" stroke="#f6f1e7" stroke-opacity=".7" stroke-width="3"/>
+        <path d="M312 106l-10 154M312 106l10 154" stroke="#8c3a2a" stroke-width="2.6" opacity=".85"/>
+        <g transform="translate(52,193.5) scale(0.72,0.72)" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-25" r="9" fill="#4a3527" stroke="none"/><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f6d3ae" stroke="none"/><circle cx="-8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q20 -16 32 -30" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="32" cy="-30" r="8.5" fill="#f6d3ae" stroke="none"/><path d="M0 30q-18 12 -24 22" stroke="#f6d3ae" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-24" cy="22" r="8.5" fill="#f6d3ae" stroke="none"/></g>
+        <path d="M74 166l24-14" stroke="#e0b25c" stroke-width="4.2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">服裝</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他給每個人穿上一件「屬於他的」衣服。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>所有人都穿同一套，觀眾分不清誰是誰。</p></div>
+    <div class="quote anim"><p>「穿上它，你就是那個人。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>拿一件外套即場示範：同一個孩子，穿與不穿，觀眾對他的第一印象已經不同。</li>
+      <li>提示孩子：服裝不一定貴，顏色和一頂帽子已經可以講很多話。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為服裝是「漂亮就好」。服裝是告訴觀眾「我是誰」。</li>
+      <li>以為要現代名牌才像樣。阿婆的舊毛衣可能更像一個角色。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 9 · 化妝 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="一圈燈泡的化妝鏡，鏡裡一張笑臉，一隻手拿着化妝刷在撲粉" color="#f2ecdf">
+      <defs><linearGradient id="mk-glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f1e7" stop-opacity=".22"/><stop offset="1" stop-color="#43a89f" stop-opacity=".14"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M118 214v-72a66 66 0 0 1 132 0v72z" fill="url(#mk-glass)" stroke="none"/>
+        <path d="M118 214v-72a66 66 0 0 1 132 0v72z" stroke="#d8674a" stroke-width="5"/>
+        <g fill="#e0b25c" stroke="#b8863b" stroke-width="2">
+          <circle cx="100" cy="140" r="7"/><circle cx="106" cy="102" r="7"/><circle cx="126" cy="70" r="7"/>
+          <circle cx="160" cy="52" r="7"/><circle cx="208" cy="52" r="7"/><circle cx="242" cy="70" r="7"/>
+          <circle cx="262" cy="102" r="7"/><circle cx="268" cy="140" r="7"/>
+        </g>
+        <path d="M152 132a32 30 0 0 1 64 0c-5-8-14-12-32-12s-27 4-32 12z" fill="#3a2a20" stroke="none"/>
+        <ellipse cx="184" cy="144" rx="33" ry="30" fill="#f6d3ae" stroke="none"/>
+        <path d="M152 134a32 30 0 0 1 64 0c-5-8-14-12-32-12s-27 4-32 12z" fill="#3a2a20" stroke="none"/>
+        <circle cx="170" cy="142" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="198" cy="142" r="4.6" fill="#2a1e14" stroke="none"/>
+        <path d="M170 158q14 13 28 0z" fill="#2a1e14" stroke="none"/>
+        <circle cx="156" cy="160" r="7.5" fill="#d8674a" fill-opacity=".45" stroke="none"/>
+        <circle cx="212" cy="160" r="7.5" fill="#d8674a" fill-opacity=".45" stroke="none"/>
+        <path d="M138 214l-22 54M230 214l22 54M116 268h134" stroke="#f6f1e7" stroke-opacity=".8" stroke-width="4"/>
+        <path d="M286 226l-40-44" stroke="#b07cc4" stroke-width="9"/>
+        <path d="M246 182l-12-8-12 16 14 8z" fill="#e0b25c" stroke="#e0b25c" stroke-width="2.4"/>
+        <path d="M224 188l-16-2-8 22 18 6z" fill="#43a89f" fill-opacity=".6" stroke="#43a89f" stroke-width="2.4"/>
+        <circle cx="292" cy="234" r="15" fill="#e8b98d" stroke="none"/>
+        <path d="M300 222l10-10M298 246l12 6" stroke="#e8b98d" stroke-width="8" stroke-linecap="round"/>
+        <rect x="300" y="240" width="66" height="40" rx="9" fill="#b07cc4" fill-opacity=".35" stroke="#b07cc4" stroke-width="3"/>
+        <path d="M314 252h38M314 262h24" stroke="#f6f1e7" stroke-opacity=".6" stroke-width="2.6"/>
+        <circle cx="78" cy="210" r="3" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="300" cy="62" r="2.8" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">化妝</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他替演員畫好臉，讓最後一排都看得見表情。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>遠一點的觀眾看不出你在生氣還是開心。</p></div>
+    <div class="quote anim"><p>「你的臉，是給大家看的。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>讓孩子把手放在臉旁比一比：如果他坐在最後一行，看得見對方的眉毛嗎？看不見，就是化妝要處理的事。</li>
+      <li>講清楚舞台化妝和日常化妝不同——不是為了靚，是為了「遠都看得見」。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為化妝是女孩子的專利，或者為了好看。</li>
+      <li>以為愈濃愈好。重點是清楚，不是厚。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 10 · 燈光 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+        <svg viewBox="0 0 400 300" role="img" aria-label="燈架掛着三盞燈，各射出一束不同顏色的光，一個小朋友站在中間的光裡，手按在前面控制台最左邊的推桿上" color="#f2ecdf">
+      <defs>
+        <linearGradient id="lg-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".7"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient>
+        <linearGradient id="lg-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a6e6e0" stop-opacity=".62"/><stop offset="1" stop-color="#43a89f" stop-opacity="0"/></linearGradient>
+        <linearGradient id="lg-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3c4f1" stop-opacity=".62"/><stop offset="1" stop-color="#b07cc4" stop-opacity="0"/></linearGradient>
+      </defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 40h352" stroke-width="7"/>
+        <path d="M200 40V18" stroke-width="5"/>
+        <path d="M66 40l14-12h32l14 12z" fill="#e0b25c" stroke="#e0b25c" stroke-width="3"/>
+        <path d="M130 40l14-12h32l14 12z" fill="#43a89f" stroke="#43a89f" stroke-width="3"/>
+        <path d="M280 40l14-12h32l14 12z" fill="#b07cc4" stroke="#b07cc4" stroke-width="3"/>
+        <path d="M96 42l-40 178h80z" fill="url(#lg-a)" stroke="none"/>
+        <path d="M310 42l40 178h-80z" fill="url(#lg-c)" stroke="none"/>
+        <path d="M160 42l-44 190h88z" fill="url(#lg-b)" stroke="none"/>
+        <ellipse cx="58" cy="228" rx="40" ry="9" fill="#e0b25c" fill-opacity=".3" stroke="none"/>
+        <ellipse cx="160" cy="240" rx="44" ry="9" fill="#43a89f" fill-opacity=".3" stroke="none"/>
+        <ellipse cx="352" cy="228" rx="40" ry="9" fill="#b07cc4" fill-opacity=".3" stroke="none"/>
+        <ellipse cx="160" cy="261" rx="54" ry="8" fill="#000" fill-opacity=".2" stroke="none"/>
+        <g transform="translate(160,122) scale(1.26,1.26)" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 -4a23 21 0 0 1 46 0c-5-5-13-7-23-7s-18 2-23 7z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#e8b98d" stroke="none"/><circle cx="-8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#e0b25c" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q16 -24 22 -36" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="22" cy="-36" r="8.5" fill="#e8b98d" stroke="none"/></g>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="204" y="192" width="152" height="58" rx="11" fill="#16202c" stroke="#43a89f" stroke-width="3.4"/>
+        <path d="M204 201h152" stroke="#43a89f" stroke-width="2.4" opacity=".5"/>
+        <g stroke="#43a89f" stroke-width="4"><path d="M226 202v40M258 202v40M290 202v40M322 202v40M348 202v40"/></g>
+        <g fill="#e0b25c" stroke="none">
+          <rect x="218" y="202" width="16" height="10" rx="3.5"/><rect x="250" y="226" width="16" height="10" rx="3.5"/>
+          <rect x="282" y="208" width="16" height="10" rx="3.5"/><rect x="314" y="230" width="16" height="10" rx="3.5"/>
+          <rect x="340" y="206" width="16" height="10" rx="3.5"/>
+        </g>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M160 156q44 8 60 44" stroke="#e8b98d" stroke-width="11"/>
+        <ellipse cx="222" cy="204" rx="10.5" ry="9.5" fill="#e8b98d" stroke="none"/>
+        <path d="M214 201q9 3 16-1M214 207q9 3 16-1" stroke="#d9a878" stroke-width="2.4" fill="none"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">燈光</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他用光告訴你：現在要看誰、現在是白天還是晚上。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>全場一樣亮，看不出焦點在哪裡。</p></div>
+    <div class="quote anim"><p>「有光的地方，就是請你看的地方。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>用手機電筒即場示範：全亮的時候看不清誰在說話；一束光射向一個人，全班自然就看他。</li>
+      <li>提醒：燈光不是裝飾，是「指引觀眾眼睛」的工具。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為燈光就是「開燈、關燈」。其實還包括顏色、方向、亮暗。</li>
+      <li>以為燈光愈亮愈好。太亮反而沒有焦點。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 11 · 音效 ===================== -->
+<section class="slide s-split" data-timer="180">
+  <div class="split-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 300" role="img" aria-label="喇叭發出聲波，一個戴着耳機的小朋友在聽，旁邊飄着音符" color="#f2ecdf">
+      <defs><linearGradient id="sn-spk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43a89f" stop-opacity=".45"/><stop offset="1" stop-color="#43a89f" stop-opacity=".12"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="28" y="106" width="122" height="152" rx="15" fill="url(#sn-spk)" stroke="none"/>
+        <rect x="28" y="106" width="122" height="152" rx="15"/>
+        <circle cx="89" cy="146" r="17" fill="#43a89f" fill-opacity=".55" stroke="#43a89f"/>
+        <circle cx="89" cy="212" r="33" fill="#43a89f" fill-opacity=".38" stroke="#43a89f"/><circle cx="89" cy="212" r="13" stroke="#43a89f"/>
+        <g stroke="#e0b25c" stroke-width="3.6">
+          <path d="M164 150a44 44 0 0 1 0 64"/>
+          <path d="M186 128a72 72 0 0 1 0 108" opacity=".75"/>
+        </g>
+        <g transform="translate(280,149.7) scale(0.92,0.92)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="3.8" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#e0b25c" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <path d="M258 122v-10a22 22 0 0 1 44 0v10" stroke="#b07cc4" stroke-width="7"/>
+        <rect x="239" y="118" width="21" height="42" rx="9" fill="#b07cc4" stroke="none"/>
+        <rect x="301" y="118" width="21" height="42" rx="9" fill="#b07cc4" stroke="none"/>
+        <rect x="239" y="118" width="21" height="42" rx="9" stroke="#b07cc4" stroke-width="2.6"/>
+        <rect x="301" y="118" width="21" height="42" rx="9" stroke="#b07cc4" stroke-width="2.6"/>
+        <path d="M232 78V40l46-13v38" stroke="#e0b25c" stroke-width="3.4"/>
+        <ellipse cx="222" cy="80" rx="14" ry="10" fill="#e0b25c" fill-opacity=".8" stroke="none"/>
+        <ellipse cx="268" cy="67" rx="14" ry="10" fill="#e0b25c" fill-opacity=".8" stroke="none"/>
+        <circle cx="340" cy="60" r="3.2" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="356" cy="118" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="40" cy="60" r="2.8" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <div class="split-text">
+    <h2 class="pos-name anim">音效</h2>
+    <div class="line anim"><span class="lbl">他做什麼</span><p>他用聲音告訴你：下雨了、門開了、危險來了。</p></div>
+    <div class="line anim"><span class="lbl">沒有他會怎樣</span><p>觀眾不知道什麼時候該緊張。</p></div>
+    <div class="quote anim"><p>「聲音，會替你說一半的話。」</p></div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>即場做一次：你敲兩下桌面，問孩子「剛才那兩下是什麼？」（敲門／腳步／打雷）。他們會發現聲音會講故事。</li>
+      <li>提醒音效要「配合故事、不要搶戲」——太大聲會蓋住演員。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為音效就是「播音樂」。其實一把人聲、一張紙都可以是音效。</li>
+      <li>以為音樂愈多愈好。太滿反而聽不到台詞。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 12 · 遊戲：少了哪一樣 ===================== -->
+<section class="slide s-cards cols-3" data-timer="240">
+  <div class="cards-head">
+    <span class="kicker anim">遊戲</span>
+    <h2 class="anim">少了哪一樣？</h2>
+  </div>
+  <div class="cards-grid cols-3">
+    <div class="card anim">
+      <svg viewBox="0 0 260 170" role="img" aria-label="小舞台的一格畫面" color="#f2ecdf"><defs><linearGradient id="sc1-curt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8674a"/><stop offset="1" stop-color="#7d2f22"/></linearGradient><linearGradient id="sc1-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".62"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient></defs><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18h216" stroke="#8f4132" stroke-width="6"/><path d="M14 18c16 14 4 30 16 44s-2 30 10 44v20H14z" fill="url(#sc1-curt)" stroke="none"/><path d="M246 18c-16 14-4 30-16 44s2 30-10 44v20h26z" fill="url(#sc1-curt)" stroke="none"/><path d="M118 18l-36 112h72z" fill="url(#sc1-cone)" stroke="none"/><ellipse cx="118" cy="130" rx="42" ry="7" fill="#e0b25c" fill-opacity=".3" stroke="none"/><path d="M12 132h236" stroke="#c99a5e" stroke-width="3"/><path d="M58 132l-16 14M148 132l-16 14" stroke="#7a5533" stroke-width="2.2" opacity=".55"/><path d="M62 138h34M158 138h30" stroke="#e0b25c" stroke-width="5" opacity=".8"/><g transform="translate(118,70.0) scale(0.55,0.55)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="5.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="5.6" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g><rect x="196" y="96" width="38" height="36" rx="8" fill="#43a89f" fill-opacity=".38" stroke="#43a89f"/><circle cx="215" cy="114" r="11" stroke="#43a89f"/><circle cx="215" cy="114" r="3.6" fill="#43a89f" stroke="none"/></g></svg>
+      <span class="gc-q">記住這個畫面。</span>
+    </div>
+    <button class="game-card anim" data-ans="1" type="button">
+      <svg viewBox="0 0 260 170" role="img" aria-label="小舞台的一格畫面" color="#f2ecdf"><defs><linearGradient id="sc2-curt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8674a"/><stop offset="1" stop-color="#7d2f22"/></linearGradient><linearGradient id="sc2-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".62"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient></defs><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18h216" stroke="#8f4132" stroke-width="6"/><path d="M14 18c16 14 4 30 16 44s-2 30 10 44v20H14z" fill="url(#sc2-curt)" stroke="none"/><path d="M246 18c-16 14-4 30-16 44s2 30-10 44v20h26z" fill="url(#sc2-curt)" stroke="none"/><path d="M118 18l-36 112h72z" fill="url(#sc2-cone)" stroke="none"/><ellipse cx="118" cy="130" rx="42" ry="7" fill="#e0b25c" fill-opacity=".3" stroke="none"/><path d="M12 132h236" stroke="#c99a5e" stroke-width="3"/><path d="M58 132l-16 14M148 132l-16 14" stroke="#7a5533" stroke-width="2.2" opacity=".55"/><path d="M62 138h34M158 138h30" stroke="#e0b25c" stroke-width="5" opacity=".8"/><rect x="196" y="96" width="38" height="36" rx="8" fill="#43a89f" fill-opacity=".38" stroke="#43a89f"/><circle cx="215" cy="114" r="11" stroke="#43a89f"/><circle cx="215" cy="114" r="3.6" fill="#43a89f" stroke="none"/></g></svg>
+      <span class="gc-q">少了哪一樣？</span>
+      <span class="gc-a" hidden>演員</span>
+    </button>
+    <button class="game-card anim" data-ans="2" type="button">
+      <svg viewBox="0 0 260 170" role="img" aria-label="小舞台的一格畫面" color="#f2ecdf"><defs><linearGradient id="sc3-curt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8674a"/><stop offset="1" stop-color="#7d2f22"/></linearGradient><linearGradient id="sc3-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".62"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient></defs><g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18h216" stroke="#8f4132" stroke-width="6"/><path d="M14 18c16 14 4 30 16 44s-2 30 10 44v20H14z" fill="url(#sc3-curt)" stroke="none"/><path d="M246 18c-16 14-4 30-16 44s2 30-10 44v20h26z" fill="url(#sc3-curt)" stroke="none"/><path d="M12 132h236" stroke="#c99a5e" stroke-width="3"/><path d="M58 132l-16 14M148 132l-16 14" stroke="#7a5533" stroke-width="2.2" opacity=".55"/><path d="M62 138h34M158 138h30" stroke="#e0b25c" stroke-width="5" opacity=".8"/><g transform="translate(118,70.0) scale(0.55,0.55)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="5.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="5.6" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#f2c9a0" stroke="none"/></g><rect x="196" y="96" width="38" height="36" rx="8" fill="#43a89f" fill-opacity=".38" stroke="#43a89f"/><circle cx="215" cy="114" r="11" stroke="#43a89f"/><circle cx="215" cy="114" r="3.6" fill="#43a89f" stroke="none"/></g></svg>
+      <span class="gc-q">少了哪一樣？</span>
+      <span class="gc-a" hidden>燈光</span>
+    </button>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>先讓全班看第一張三秒，說「記住它」。再打開第二、三張，問「少了哪一樣？」讓孩子舉手答。</li>
+      <li>第三張的幕布是完整的（沒有抽掉），只有燈光不見了——如果孩子答「幕布」，請他們再看看第一張。</li>
+      <li>答完之後補一句：少了任何一樣，戲還是「演得完」，但看的人會覺得少了什麼。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>看不出「少了演員」的分別——因為佈景還在。要引導他們找「有沒有人在動」。</li>
+      <li>把「沒有燈光」當成「白天不用燈」。舞台上沒有燈，就沒有焦點。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 13 · Quiz 1 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22l18-9v22l-18-9z" fill="#d8674a" fill-opacity=".6" stroke="#d8674a" stroke-width="3"/><rect x="5" y="18" width="8" height="12" rx="3" fill="#d8674a" stroke="#d8674a" stroke-width="3"/><path d="M17 30v6a3.4 3.4 0 0 0 7 0v-3" stroke="#e0b25c" stroke-width="3"/><path d="M34 17a10 10 0 0 1 0 16" stroke="#e0b25c" stroke-width="3"/><path d="M41 12a17 17 0 0 1 0 26" stroke="#e0b25c" stroke-width="3" opacity=".7"/></svg></span>
+    <h2 class="quiz-q anim">一齣戲裡，決定「誰站在哪裡、什麼時候亮燈」的人是誰？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button" data-correct="1"><span class="qmark">▲</span><span>導演</span></button>
+    <button class="quiz-opt k-blue anim" type="button"><span class="qmark">◆</span><span>演員</span></button>
+    <button class="quiz-opt k-yellow anim" type="button"><span class="qmark">●</span><span>舞台設計</span></button>
+    <button class="quiz-opt k-green anim" type="button"><span class="qmark">■</span><span>燈光</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：▲ 導演。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>先讓全班舉手選，再點選項揭答案。可以按 S 開 20 秒倒數。</li>
+      <li>答完之後回指：「誰站在哪裡」是導演的決定，「什麼時候亮燈」也是導演跟著燈光一起決定——但拍板的還是導演。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>很多孩子會選「燈光」，因為「亮燈」直覺是燈光的工作。</li>
+      <li>也有人選「舞台設計」，以為「誰站在哪裡」是佈景決定的。</li>
+      <li>要講清楚：八個位置會一起商量，但最後「決定」的是導演。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 14 · Quiz 2 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="26" height="28" rx="3" fill="#43a89f" fill-opacity=".32" stroke="#43a89f" stroke-width="3"/><path d="M4 25l8-8 6 6 6-5 6 6" stroke="#e0b25c" stroke-width="3"/><circle cx="12" cy="16" r="3.6" fill="#e0b25c" stroke="none"/><rect x="32" y="18" width="12" height="24" rx="2.5" fill="#d8674a" fill-opacity=".45" stroke="#d8674a" stroke-width="3"/><circle cx="41" cy="31" r="1.8" fill="#e0b25c" stroke="none"/></svg></span>
+    <h2 class="quiz-q anim">台上那塊會前後移動、畫著山和天空的大布，叫什麼？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button"><span class="qmark">▲</span><span>幕布</span></button>
+    <button class="quiz-opt k-blue anim" type="button" data-correct="1"><span class="qmark">◆</span><span>佈景</span></button>
+    <button class="quiz-opt k-yellow anim" type="button"><span class="qmark">●</span><span>背景畫</span></button>
+    <button class="quiz-opt k-green anim" type="button"><span class="qmark">■</span><span>海報</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：◆ 佈景。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>如果孩子指向紅色那個（幕布），提醒他：兩邊那塊紅布是幕布，後面那塊畫着山和天、可以推來推去的大布才是佈景。</li>
+      <li>答對的孩子可以請他站起來，用手做一次「把佈景推出來」的動作。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>把「幕布」和「佈景」當成同一樣東西。</li>
+      <li>以為佈景一定是畫上去的，不知道它可以推來推去、前後移動。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 15 · Quiz 3 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="12" width="20" height="26" rx="5" fill="#43a89f" fill-opacity=".38" stroke="#43a89f" stroke-width="3"/><circle cx="17" cy="20" r="4" stroke="#43a89f" stroke-width="3"/><circle cx="17" cy="30" r="6.5" stroke="#43a89f" stroke-width="3"/><path d="M32 18a11 11 0 0 1 0 16" stroke="#e0b25c" stroke-width="3"/><path d="M38 13a17 17 0 0 1 0 26" stroke="#e0b25c" stroke-width="3" opacity=".7"/></svg></span>
+    <h2 class="quiz-q anim">如果整齣戲都沒有音樂和音效，會怎樣？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button"><span class="qmark">▲</span><span>演員會忘記台詞</span></button>
+    <button class="quiz-opt k-blue anim" type="button"><span class="qmark">◆</span><span>台上的人都聽不到對方說話</span></button>
+    <button class="quiz-opt k-yellow anim" type="button" data-correct="1"><span class="qmark">●</span><span>觀眾會覺得很乾、不知道什麼時候該緊張</span></button>
+    <button class="quiz-opt k-green anim" type="button"><span class="qmark">■</span><span>戲就演不下去了</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：● 觀眾會覺得很乾、不知道什麼時候該緊張。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>即場示範：用同一句台詞講兩次，第二次加一聲「砰」。問孩子哪一次更緊張。</li>
+      <li>提醒：沒有音效不會令戲演不成，只是看的人少了「感覺」。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為沒有音效就等於「冇聲」，戲會演不下去。</li>
+      <li>以為音效只為「好玩」。其實它是引導情緒的工具。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 16 · Quiz 4 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="5" width="23" height="38" rx="4.5" fill="#f6f1e7" fill-opacity=".16" stroke="#e0b25c" stroke-width="3"/><path d="M16 5v38" stroke="#e0b25c" stroke-width="3"/><path d="M22 15h6M22 22h6M22 29h3" stroke="#f6f1e7" stroke-opacity=".9" stroke-width="3"/><path d="M34 13l7 7-11 12-8 1 1-8z" fill="#d8674a" stroke="#d8674a" stroke-width="3"/></svg></span>
+    <h2 class="quiz-q anim">「劇本」和「故事」有什麼不一樣？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button"><span class="qmark">▲</span><span>劇本比較長，故事比較短</span></button>
+    <button class="quiz-opt k-blue anim" type="button"><span class="qmark">◆</span><span>劇本是給大人看的，故事是給小朋友看的</span></button>
+    <button class="quiz-opt k-yellow anim" type="button"><span class="qmark">●</span><span>故事要有人讀出來，劇本不用</span></button>
+    <button class="quiz-opt k-green anim" type="button" data-correct="1"><span class="qmark">■</span><span>劇本寫了誰說什麼、什麼時候做什麼</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：■ 劇本寫了誰說什麼、什麼時候做什麼。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>拿一本故事書和一份劇本比較：劇本每一句前面都有一個名字（誰說的），中間有括號（他做什麼）。</li>
+      <li>講一句總結：故事是「發生了什麼」，劇本是「幾時、邊個、做咩」。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為兩者只差長短。</li>
+      <li>以為劇本一定有完整結局。其實劇本只寫舞台上要發生的事。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 17 · Quiz 5 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27v-9a11 11 0 0 1 22 0v9z" fill="#f6f1e7" fill-opacity=".18" stroke="#d8674a" stroke-width="3"/><circle cx="6" cy="18" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="11" cy="11" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="20" cy="7.6" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="29" cy="11" r="2.4" fill="#e0b25c" stroke="none"/><circle cx="34" cy="18" r="2.4" fill="#e0b25c" stroke="none"/><path d="M15 13.6a5 5 0 0 1 10 0c-1.4-1.6-2.6-2-5-2s-3.6.4-5 2z" fill="#3a2a20" stroke="none"/><ellipse cx="20" cy="16" rx="5.4" ry="5" fill="#f6d3ae" stroke="none"/><circle cx="18" cy="15.6" r="1.1" fill="#2a1e14" stroke="none"/><circle cx="22" cy="15.6" r="1.1" fill="#2a1e14" stroke="none"/><path d="M18 18.2q2 1.6 4 0" stroke="#2a1e14" stroke-width="1.2" fill="none"/><path d="M14 27v11M26 27v11M10 38h20" stroke="#d8674a" stroke-width="3"/></svg></span>
+    <h2 class="quiz-q anim">演員臉上的妝，主要是為了什麼？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button" data-correct="1"><span class="qmark">▲</span><span>讓最後一排的人都看得見他的表情</span></button>
+    <button class="quiz-opt k-blue anim" type="button"><span class="qmark">◆</span><span>讓演員看起來更漂亮</span></button>
+    <button class="quiz-opt k-yellow anim" type="button"><span class="qmark">●</span><span>遮掩演員的真實年齡</span></button>
+    <button class="quiz-opt k-green anim" type="button"><span class="qmark">■</span><span>因為台上很熱，妝可以保護皮膚</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：▲ 讓最後一排的人都看得見他的表情。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>讓一個孩子站到課室最後面，看看能不能看見另一個同學的眉毛。看不見，就是答案。</li>
+      <li>強調「舞台化妝」和「日常化妝」的分別：一個是為了遠距離看得清，一個是為了好看。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為化妝就是為了好靚，或者只有女孩子才化妝。</li>
+      <li>以為妝愈濃愈好。重點是清楚、好看得遠，不是厚。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 18 · Quiz 6 ===================== -->
+<section class="slide s-quiz" data-timer="90">
+  <div class="quiz-head">
+    <span class="qicon anim" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="15" cy="18" rx="7" ry="6.2" fill="#f2c9a0" stroke="none"/><path d="M8.4 18.4a6.6 6 0 0 1 13.2 0c-2-1.8-3.2-2.4-6.6-2.4s-4.6.6-6.6 2.4z" fill="#3a2a20" stroke="none"/><circle cx="12.6" cy="18.4" r="1.3" fill="#2a1e14" stroke="none"/><circle cx="17.4" cy="18.4" r="1.3" fill="#2a1e14" stroke="none"/><path d="M12.8 21.2q2.2 1.8 4.4 0" stroke="#2a1e14" stroke-width="1.4" fill="none"/><path d="M15 24.5v7" stroke="#d8674a" stroke-width="8"/><path d="M15 26l-10-6M15 26l10-6" stroke="#f2c9a0" stroke-width="3.6"/><ellipse cx="35" cy="30" rx="7" ry="6.2" fill="#e8b98d" stroke="none"/><circle cx="32.6" cy="30.4" r="1.2" fill="#2a1e14" stroke="none"/><circle cx="37.4" cy="30.4" r="1.2" fill="#2a1e14" stroke="none"/><path d="M32.8 33.2q2.2 1.6 4.4 0" stroke="#2a1e14" stroke-width="1.3" fill="none"/><path d="M35 36.5v7" stroke="#43a89f" stroke-width="8"/></svg></span>
+    <h2 class="quiz-q anim">一齣戲，最少最少需要什麼？</h2>
+  </div>
+  <div class="quiz-bar anim" aria-hidden="true"><i></i></div>
+  <div class="quiz-opts">
+    <button class="quiz-opt k-red anim" type="button"><span class="qmark">▲</span><span>一個好劇本</span></button>
+    <button class="quiz-opt k-blue anim" type="button" data-correct="1"><span class="qmark">◆</span><span>一個在演的人 ＋ 一個在看的人</span></button>
+    <button class="quiz-opt k-yellow anim" type="button"><span class="qmark">●</span><span>一個漂亮的舞台</span></button>
+    <button class="quiz-opt k-green anim" type="button"><span class="qmark">■</span><span>一套音響和燈光</span></button>
+  </div>
+  <p class="quiz-fb anim" data-ans="答案：◆ 一個在演的人 ＋ 一個在看的人。" hidden></p>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>這一題是這一節的重點。可以請兩個孩子即場示範：一個做動作，一個看——這就是最小的一齣戲。（答案在藍色 ◆。）</li>
+      <li>串回第一節：有人在看，就不是練習了。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為一定要有劇本、舞台、音響才算「一齣戲」。那些是幫助，不是必須。</li>
+      <li>以為人愈多愈好。兩個人都已經可以是一齣戲。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 19 · 活動：道具變變變 ===================== -->
+<section class="slide s-activity" data-timer="600">
+  <div class="act-head">
+    <h2 class="anim">道具變變變</h2>
+    <span class="act-min anim">10 分</span>
+  </div>
+  <div class="act-body">
+    <p class="act-cmd anim">「一支筆，可以是什麼？」</p>
+    <div class="act-art anim" aria-hidden="true">
+      <svg viewBox="0 0 400 300" role="img" aria-label="同一支筆的四種用法：當麥克風、當筷子、當注射器、當鑰匙" color="#f2ecdf">
+      <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M200 10v280M10 150h380" stroke-dasharray="9 11" opacity=".26"/>
+        <g transform="translate(14,10)">
+          <ellipse cx="52" cy="34" rx="21" ry="19" fill="#e8b98d" stroke="none"/>
+          <path d="M35 28a17 15 0 0 1 34 0c-3-5-8-7-17-7s-14 2-17 7z" fill="#3a2a20" stroke="none"/>
+          <circle cx="-7" cy="-1" r="3.4" fill="#2a1e14" stroke="none"/><circle cx="7" cy="-1" r="3.4" fill="#2a1e14" stroke="none"/><ellipse cx="0" cy="11" rx="6" ry="7.5" fill="#2a1e14" stroke="none"/>
+          <path d="M52 53v26" stroke="#43a89f" stroke-width="19" stroke-linecap="round"/>
+          <path d="M52 60q14 6 18 22" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <rect x="62" y="36" width="18" height="58" rx="9" fill="#e0b25c" stroke="#e0b25c" stroke-width="3"/>
+          <rect x="62" y="36" width="18" height="20" rx="9" fill="#b8863b" stroke="#b8863b" stroke-width="3"/>
+          <circle cx="71" cy="86" r="16" fill="#e8b98d" stroke="none"/>
+          <g stroke="#43a89f" stroke-width="3.2"><path d="M98 44a22 22 0 0 1 0 34"/><path d="M114 32a42 42 0 0 1 0 58" opacity=".7"/></g>
+        </g>
+        <g transform="translate(226,10)">
+          <ellipse cx="52" cy="104" rx="50" ry="15" fill="#b07cc4" fill-opacity=".38" stroke="#b07cc4" stroke-width="3"/>
+          <path d="M10 104h84" stroke="#b07cc4" stroke-width="3" opacity=".55"/>
+          <path d="M26 16l8 74" stroke="#e0b25c" stroke-width="12" stroke-linecap="round"/>
+          <path d="M26 16l8 74" stroke="#b8863b" stroke-width="2.6" opacity=".6"/>
+          <path d="M50 16l-2 74" stroke="#8a6428" stroke-width="12" stroke-linecap="round"/>
+          <circle cx="34" cy="16" r="14" fill="#e8b98d" stroke="none"/>
+          <path d="M24 8q10-6 20 0" stroke="#e8b98d" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(14,164)">
+          <rect x="20" y="26" width="112" height="30" rx="9" fill="#43a89f" fill-opacity=".32" stroke="#43a89f" stroke-width="3"/>
+          <path d="M132 30h22v22h-22z" fill="#43a89f" fill-opacity=".6" stroke="#43a89f" stroke-width="3"/>
+          <rect x="4" y="20" width="16" height="42" rx="6" fill="#e0b25c" stroke="#e0b25c" stroke-width="3"/>
+          <path d="M154 41h30" stroke="#d8674a" stroke-width="5"/>
+          <path d="M184 41h10" stroke="#d8674a" stroke-width="3.4"/>
+          <path d="M178 54q6 8 6 14" stroke="#d8674a" stroke-width="3.4"/>
+          <path d="M46 52h52M46 62h30" stroke="#f6f1e7" stroke-opacity=".62" stroke-width="3"/>
+          <ellipse cx="202" cy="76" rx="6" ry="9" fill="#43a89f" stroke="none" opacity=".8"/>
+        </g>
+        <g transform="translate(226,164)">
+          <circle cx="34" cy="34" r="22" fill="#e0b25c" fill-opacity=".45" stroke="#e0b25c" stroke-width="3.4"/>
+          <circle cx="34" cy="34" r="8" stroke="#e0b25c" stroke-width="3.4"/>
+          <path d="M40 48l28 42h-24l-9-15-7 13-13-7 15-28z" fill="#e0b25c" fill-opacity=".45" stroke="#e0b25c" stroke-width="3.4"/>
+          <rect x="86" y="50" width="46" height="46" rx="7" fill="#16202c" stroke="#f6f1e7" stroke-opacity=".6" stroke-width="3"/>
+          <path d="M106 68v18" stroke="#f6f1e7" stroke-opacity=".75" stroke-width="6"/>
+        </g>
+      </g>
+    </svg>
+    </div>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>每人一支筆（或一把間尺）。老師先示範一個用法，例如把筆當麥克風，動作要「像真的一樣」——手要拿着它，眼神要對着它。</li>
+      <li>然後輪流：一人做，其他人猜他當筆是什麼。猜不到不要緊，要他做清楚一點再試一次。</li>
+      <li>進階：不講話，只用動作。做完問一句「你為什麼會這樣做？」讓孩子講一次。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>只做動作、手裡卻沒有「拿着東西」的感覺——筆會浮在半空。</li>
+      <li>愈做愈快、愈做愈怪，變成搞笑。提醒：目標是做「清楚」，不是做「好笑」。</li>
+      <li>以為要換道具。同一支筆，不要換。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 20 · 一句話 ===================== -->
+<section class="slide s-big" data-timer="60">
+  <p class="big-line anim">舞台上，沒有一樣東西是隨便放的。</p>
+  <div class="big-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 150" role="img" aria-label="舞台上每一件東西都放在貼了定位膠帶的位置上：椅子、畫架、箱子、燈，還有一個小朋友" color="#f2ecdf">
+      <defs><linearGradient id="bg-lamp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".62"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 130h376" stroke="#c99a5e" stroke-width="3.4"/>
+        <path d="M58 130l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M182 130l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/><path d="M300 130l-20 17" stroke="#7a5533" stroke-width="2.4" opacity=".6"/>
+        <path d="M62 132h56M172 132h44M296 132h44" stroke="#e0b25c" stroke-width="5" opacity=".85" stroke-dasharray="7 6"/>
+        <path d="M70 130V98h44v32M70 110h44M84 110v20" stroke="#e0b25c" stroke-width="4"/>
+        <path d="M70 130V98h44v32M70 110h44" fill="#e0b25c" fill-opacity=".25" stroke="none"/>
+        <path d="M170 130V78l26 26-26 26" fill="#43a89f" fill-opacity=".35" stroke="#43a89f" stroke-width="3.4"/>
+        <path d="M244 130v-44h34v44z" fill="#d8674a" fill-opacity=".32" stroke="#d8674a" stroke-width="3.4"/>
+        <path d="M244 96h34" stroke="#d8674a" stroke-width="3.4"/>
+        <path d="M330 130V66" stroke="#f6f1e7" stroke-width="4"/>
+        <path d="M330 66a14 14 0 0 1 28 0" stroke="#f6f1e7" stroke-width="4"/>
+        <circle cx="344" cy="68" r="4" fill="#e0b25c" stroke="none"/>
+        <path d="M324 68l42 62h-84z" fill="url(#bg-lamp)" stroke="none"/>
+        <g transform="translate(206,75.5) scale(0.5,0.5)" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-25" r="9" fill="#4a3527" stroke="none"/><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#e8b98d" stroke="none"/><circle cx="-8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#b07cc4" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#2f3a48" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-6 -14 8 -24" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="8" cy="-24" r="8.5" fill="#e8b98d" stroke="none"/><path d="M0 30q-16 14 -22 26" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-22" cy="26" r="8.5" fill="#e8b98d" stroke="none"/></g>
+      </g>
+    </svg>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>慢慢讀一次，停三秒，再讀一次。第二節的重點就是這一句。</li>
+      <li>舉例：台上那把椅子為什麼放在那裡？因為有人要坐；那盞燈為什麼只照左邊？因為那裡有事發生。</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為「擺得多」就是好。多而沒有原因，反而亂。</li>
+      <li>以為這句只講道具。它講的是所有位置：燈、聲、人、物。</li>
+    </ul>
+  </template>
+</section>
+
+<!-- ===================== 21 · 收尾 ===================== -->
+<section class="slide s-end" data-timer="60">
+  <span class="end-kicker anim">下一節</span>
+  <h1 class="anim">我們要做的這齣戲</h1>
+  <div class="end-art anim" aria-hidden="true">
+    <svg viewBox="0 0 400 170" role="img" aria-label="攤開的劇本，兩個顏色不同的小朋友站在小小的舞台上" color="#f2ecdf">
+      <defs><linearGradient id="en-spot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dca6" stop-opacity=".58"/><stop offset="1" stop-color="#e0b25c" stop-opacity="0"/></linearGradient></defs>
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 30h132a6 6 0 0 1 6 6v104a6 6 0 0 1-6 6H24z" fill="#f6f1e7" fill-opacity=".12" stroke="none"/>
+        <path d="M24 30h132a6 6 0 0 1 6 6v104a6 6 0 0 1-6 6H24z"/>
+        <path d="M52 30v116" stroke="#e0b25c" stroke-width="3.4"/>
+        <g stroke="#f6f1e7" stroke-opacity=".6" stroke-width="3"><path d="M66 58h76M66 82h54M66 106h76"/></g>
+        <path d="M66 82h30" stroke="#43a89f" stroke-width="4"/>
+        <path d="M188 148h196" stroke="#c99a5e"/>
+        <path d="M212 148l-18 16M298 148l-18 16" stroke="#7a5533" stroke-width="2.2" opacity=".6"/>
+        <path d="M262 24l-32 124h96l-32-124z" fill="url(#en-spot)" stroke="none"/>
+        <path d="M262 24h34l-6 14h-22z" fill="#e0b25c" stroke="#b8863b"/>
+        <g transform="translate(300,82.6) scale(0.6,0.6)" stroke-linecap="round" stroke-linejoin="round"><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#3a2a20" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#f2c9a0" stroke="none"/><circle cx="-8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.2" fill="#2a1e14" stroke="none"/><path d="M-8 8q8 9 16 0" fill="none" stroke="#2a1e14" stroke-width="3.6" stroke-linecap="round"/><path d="M0 18v44" stroke="#43a89f" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#3b4a5a" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q16 -6 30 -4" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="30" cy="-4" r="8.5" fill="#f2c9a0" stroke="none"/><path d="M0 30q14 10 30 14" stroke="#f2c9a0" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="30" cy="14" r="8.5" fill="#f2c9a0" stroke="none"/></g>
+        <g transform="translate(238,88.0) scale(-0.55,0.55)" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-25" r="9" fill="#4a3527" stroke="none"/><path d="M-24 -2a24 22 0 0 1 48 0c-4-6-10-9-24-9s-20 3-24 9z" fill="#4a3527" stroke="none"/><ellipse cx="0" cy="0" rx="24" ry="21" fill="#e8b98d" stroke="none"/><circle cx="-8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><circle cx="8" cy="-3" r="4.6" fill="#2a1e14" stroke="none"/><path d="M-10 5q10 14 20 0z" fill="#2a1e14" stroke="none"/><path d="M0 18v44" stroke="#d8674a" stroke-width="20" stroke-linecap="round"/><path d="M0 62l-8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="-18" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 62l8 38" stroke="#4b3a52" stroke-width="13" stroke-linecap="round"/><ellipse cx="17" cy="103" rx="11" ry="6" fill="#2a2f38" stroke="none"/><path d="M0 30q-30 -22 -36 -10" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="-36" cy="-10" r="8.5" fill="#e8b98d" stroke="none"/><path d="M0 30q30 -22 36 -10" stroke="#e8b98d" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="36" cy="-10" r="8.5" fill="#e8b98d" stroke="none"/></g>
+        <circle cx="214" cy="36" r="3" fill="#e0b25c" stroke="none" opacity=".55"/><circle cx="356" cy="52" r="2.6" fill="#e0b25c" stroke="none" opacity=".55"/>
+      </g>
+    </svg>
+  </div>
+  <template class="notes">
+    <h4>怎麼講</h4>
+    <ul>
+      <li>收整時不總結知識點，只留一句期待：「下一節，我們會真的開始做我們自己的一齣戲。」</li>
+      <li>如果時間夠，回頭問第三頁記下的答案：「你還是想做同一個位置嗎？」</li>
+    </ul>
+    <h4>孩子常誤解什麼</h4>
+    <ul>
+      <li>以為「做一齣戲」就是要很厲害才可以參加。要講明：八個位置，人人有位。</li>
+    </ul>
+  </template>
+</section>
+
+</div>
+
+<!-- ---------- 固定介面 ---------- -->
+<div class="pager" id="pager">1 / 21</div>
+<div class="bar"><i id="bar"></i></div>
+
+<!-- ---------- 計時器浮層 ---------- -->
+<div class="ov ov-timer" id="timerOv" hidden>
+  <div class="t-clock" id="tClock">00:00</div>
+  <div class="t-btns">
+    <button class="primary" id="tStart" type="button">暫停</button>
+    <button id="tReset" type="button">重設</button>
+    <button id="tPlus" type="button">+1 分</button>
+    <button id="tClose" type="button">關閉</button>
+  </div>
+</div>
+
+<!-- ---------- 老師提示浮層（預設關閉） ---------- -->
+<div class="ov ov-notes" id="notesOv" hidden>
+  <span class="notes-tag">老師提示</span>
+  <div class="notes-body" id="notesBody"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var slides   = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var pager    = document.getElementById("pager");
+  var bar      = document.getElementById("bar");
+  var timerOv  = document.getElementById("timerOv");
+  var notesOv  = document.getElementById("notesOv");
+  var notesBody= document.getElementById("notesBody");
+  var tClock   = document.getElementById("tClock");
+  var tStart   = document.getElementById("tStart");
+  var tReset   = document.getElementById("tReset");
+  var tPlus    = document.getElementById("tPlus");
+  var tClose   = document.getElementById("tClose");
+
+  var cur = 0;
+  var buf = "";
+  var remain = 0, tick = null;
+  var qTick = null;
+
+  function fmt(n){
+    n = Math.max(0, n|0);
+    var m = Math.floor(n/60), s = n%60;
+    return (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+  }
+  function slideSeconds(){
+    var v = parseInt(slides[cur].getAttribute("data-timer")||"0",10);
+    return isNaN(v)?0:v;
+  }
+
+  /* ---------- 頁面切換 ---------- */
+  function show(i, push){
+    i = Math.max(0, Math.min(slides.length-1, i));
+    cur = i;
+    slides.forEach(function(s,k){ s.classList.toggle("active", k===i); });
+    var s = slides[i];
+    s.classList.remove("run");
+    var anims = s.querySelectorAll(".anim");
+    for (var k=0;k<anims.length;k++){ anims[k].style.animationDelay = (k*0.1).toFixed(2)+"s"; }
+    void s.offsetWidth;
+    s.classList.add("run");
+    pager.textContent = (i+1)+" / "+slides.length;
+    bar.style.width = ((i+1)/slides.length*100)+"%";
+    if (push !== false){ try{ history.replaceState(null,"","#"+(i+1)); }catch(e){ /* file:// 或舊瀏覽器 */ } }
+    remain = slideSeconds(); stopTick(); renderClock();
+    tStart.textContent = "開始";
+    cancelQuiz();
+    closeOverlays();
+  }
+
+  /* ---------- 浮層 ---------- */
+  function closeOverlays(){
+    timerOv.hidden = true;
+    notesOv.hidden = true;
+    stopTick();
+  }
+  function toggleTimer(){
+    if (timerOv.hidden){
+      timerOv.hidden = false;
+      remain = slideSeconds(); renderClock();
+      startTick(); tStart.textContent = "暫停";
+    } else {
+      timerOv.hidden = true; stopTick();
+    }
+  }
+  function toggleNotes(){
+    if (notesOv.hidden){
+      var t = slides[cur].querySelector("template.notes");
+      notesBody.innerHTML = t ? t.innerHTML : "<p>這一頁沒有提示。</p>";
+      notesOv.hidden = false;
+    } else {
+      notesOv.hidden = true;
+    }
+  }
+  function renderClock(){
+    tClock.textContent = fmt(remain);
+    tClock.classList.toggle("zero", remain<=0);
+  }
+  function startTick(){
+    if (tick) return;
+    tick = setInterval(function(){
+      if (remain>0){ remain -= 1; renderClock(); }
+      if (remain<=0){ stopTick(); tStart.textContent = "開始"; }
+    },1000);
+  }
+  function stopTick(){ if (tick){ clearInterval(tick); tick = null; } }
+
+  tStart.addEventListener("click", function(){
+    if (tick){ stopTick(); tStart.textContent = "開始"; }
+    else { startTick(); tStart.textContent = "暫停"; }
+  });
+  tReset.addEventListener("click", function(){
+    stopTick(); remain = slideSeconds(); renderClock(); tStart.textContent = "開始";
+  });
+  tPlus.addEventListener("click", function(){ remain += 60; renderClock(); });
+  tClose.addEventListener("click", function(){ timerOv.hidden = true; stopTick(); });
+
+  /* ---------- 全螢幕 ---------- */
+  function toggleFull(){
+    var el = document.documentElement;
+    if (!document.fullscreenElement){
+      if (el.requestFullscreen){ var p = el.requestFullscreen(); if (p && p.catch) p.catch(function(){}); }
+    } else if (document.exitFullscreen){
+      var q = document.exitFullscreen(); if (q && q.catch) q.catch(function(){});
+    }
+  }
+
+  /* ---------- Kahoot 問答 ---------- */
+  slides.forEach(function(sec){
+    var quiz = sec.classList.contains("s-quiz") ? sec : null;
+    if (!quiz) return;
+    var opts = Array.prototype.slice.call(quiz.querySelectorAll(".quiz-opt"));
+    var fb = quiz.querySelector(".quiz-fb");
+    opts.forEach(function(o){
+      o.addEventListener("click", function(){
+        if (quiz.getAttribute("data-done")) return;
+        quiz.setAttribute("data-done","1");
+        var right = null;
+        opts.forEach(function(x){ if (x.getAttribute("data-correct")==="1") right = x; });
+        opts.forEach(function(x){
+          if (x === right) x.classList.add("correct");
+          else x.classList.add("dim");
+        });
+        if (o !== right) o.classList.add("wrong");
+        if (fb){
+          fb.hidden = false;
+          fb.textContent = (o === right ? "答對了。" : "再想一想。") + (fb.getAttribute("data-ans")||"");
+          fb.classList.add(o === right ? "ok" : "no");
+        }
+      });
+    });
+  });
+
+  /* ---------- 20 秒倒數橫條（按 S） ---------- */
+  function cancelQuiz(){
+    if (qTick){ clearInterval(qTick); qTick = null; }
+    var bars = document.querySelectorAll(".quiz-bar i");
+    for (var i=0;i<bars.length;i++){
+      bars[i].style.transition = "none";
+      bars[i].style.width = "100%";
+    }
+  }
+  function startQuizCountdown(){
+    var quiz = slides[cur].classList.contains("s-quiz") ? slides[cur] : null;
+    if (!quiz) return;
+    var b = quiz.querySelector(".quiz-bar i");
+    if (!b) return;
+    cancelQuiz();
+    void b.offsetWidth;
+    b.style.transition = "width 20s linear";
+    b.style.width = "0%";
+    var left = 20;
+    qTick = setInterval(function(){
+      left -= 1;
+      if (left<=0){ clearInterval(qTick); qTick = null; }
+    },1000);
+  }
+
+  /* ---------- 「少了哪一樣」揭答案 ---------- */
+  document.querySelectorAll(".game-card[data-ans]").forEach(function(card){
+    card.addEventListener("click", function(){
+      var a = card.querySelector(".gc-a");
+      if (a) a.hidden = false;
+      card.classList.add("revealed");
+    });
+  });
+
+  /* ---------- 鍵盤 ---------- */
+  document.addEventListener("keydown", function(e){
+    var k = e.key;
+    if (k === "Escape"){ closeOverlays(); return; }
+    if (k === "f" || k === "F"){ toggleFull(); return; }
+    if (k === "t" || k === "T"){ toggleTimer(); return; }
+    if (k === "n" || k === "N"){ toggleNotes(); return; }
+    if (k === "s" || k === "S"){ startQuizCountdown(); return; }
+    if (k === "ArrowRight" || k === "ArrowDown" || k === "PageDown" || k === " " || k === "Spacebar"){
+      e.preventDefault(); show(cur+1); return;
+    }
+    if (k === "ArrowLeft" || k === "ArrowUp" || k === "PageUp"){
+      e.preventDefault(); show(cur-1); return;
+    }
+    if (k === "Home"){ e.preventDefault(); show(0); return; }
+    if (k === "End"){ e.preventDefault(); show(slides.length-1); return; }
+    if (k === "Enter"){
+      if (buf){
+        var n = parseInt(buf,10); buf = "";
+        if (n>=1 && n<=slides.length) show(n-1);
+      }
+      return;
+    }
+    if (/^[0-9]$/.test(k)){
+      buf = (buf.length>=2 ? k : buf + k);
+      return;
+    }
+    buf = "";
+  });
+
+  /* ---------- 點左／右半邊 ---------- */
+  document.addEventListener("click", function(e){
+    if (e.target.closest("button, a, input, textarea, select, .game-card, .ov")) return;
+    if (e.clientX < window.innerWidth * 0.5) show(cur-1);
+    else show(cur+1);
+  });
+
+  /* ---------- 網址 #n ---------- */
+  /* show() 用 history.replaceState 改 hash，不會觸發 hashchange，
+     且這裡加了 n-1!==cur 的守衛，因此不會形成回饋迴圈。 */
+  window.addEventListener("hashchange", function(){
+    var n = parseInt(String(location.hash).replace("#", ""), 10);
+    if (!isNaN(n) && n >= 1 && n <= slides.length && n - 1 !== cur) show(n - 1);
+  });
+
+  /* ---------- 起始頁 ---------- */
+  var start = 0;
+  var h = (location.hash||"").replace("#","");
+  if (/^[0-9]+$/.test(h)){ start = parseInt(h,10) - 1; }
+  show(start, false);
+})();
+</script>
+</body>
+</html>
