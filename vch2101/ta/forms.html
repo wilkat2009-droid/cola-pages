@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>VCH2101 項目評核｜當日文件（可列印）</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f1ea;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",Arial,sans-serif;color:#1f2733;line-height:1.6}
+.noprint{background:#1e2a3d;color:#fff;padding:11px 15px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13.5px;font-weight:800}
+.noprint a{color:#bfe3ff;text-decoration:none;margin-left:10px}
+button.pr{background:#ffd166;color:#243247;border:0;border-radius:10px;padding:9px 14px;font-weight:900;font-size:13.5px}
+.sheet{background:#fff;max-width:860px;margin:16px auto;padding:26px 28px 34px;box-shadow:0 6px 20px #0000001a;border-radius:6px}
+h1{font-size:19px;margin:0 0 4px}
+.meta{font-size:12.5px;color:#68758b;margin:0 0 16px}
+h2{font-size:16px;margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid #1e2a3d}
+h3{font-size:14px;margin:16px 0 6px}
+p,li,td,th{font-size:13px}
+table{width:100%;border-collapse:collapse;margin:8px 0 4px}
+th,td{border:1px solid #b9b3a6;padding:6px 7px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-weight:900;font-size:12.5px}
+td.fill{height:26px}
+.c{text-align:center}
+ol,ul{padding-left:22px;margin:6px 0}
+li{margin:4px 0}
+.blank{display:inline-block;border-bottom:1px solid #6b6659;min-width:70px}
+.box{border:1px solid #b9b3a6;border-radius:6px;padding:9px 11px;margin:8px 0;font-size:13px;background:#faf9f5}
+.seat{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px}
+.seat div{border:1px solid #b9b3a6;border-radius:5px;height:52px;padding:4px 5px;font-size:11px;color:#8b8677}
+.podium{background:#1e2a3d;color:#fff;text-align:center;font-weight:900;border-radius:6px;padding:7px;margin-bottom:8px;font-size:13px}
+.tip{font-size:12px;color:#68758b;margin:6px 0 0}
+@media print{
+  body{background:#fff}
+  .noprint{display:none}
+  .sheet{box-shadow:none;margin:0;padding:0 0 10mm;border-radius:0;max-width:none}
+  .sheet+.sheet{page-break-before:always}
+  h2{page-break-after:avoid}
+  table{page-break-inside:auto}
+  tr{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="noprint">
+  <div>VCH2101／2101B 簡化字項目評核 · 當日文件<input type="text" id="cls" placeholder="班別" style="margin-left:10px;padding:5px 8px;border-radius:8px;border:0;font-weight:800;width:90px">
+  <input type="text" id="dt" placeholder="日期" style="margin-left:6px;padding:5px 8px;border-radius:8px;border:0;font-weight:800;width:120px"></div>
+  <div><button class="pr" onclick="fill();window.print()">🖨 列印全部</button><a href="index.html">← 回 TA 頁</a></div>
+</div>
+
+<!-- 1. 考場宣讀稿 -->
+<div class="sheet">
+  <h1>項目評核 · 考場宣讀稿</h1>
+  <p class="meta">VCH2101／2101B 職業中文：普通話聆聽與簡化字（GCCH209A 簡化字 35%）　班別 <span class="cls">＿＿＿＿</span>　日期 <span class="dt">＿＿＿＿＿＿</span></p>
+
+  <h2>一、開考前</h2>
+  <ol>
+    <li>請把學生證放在桌面的右上角。桌上只可以放文具（不包括筆盒、筆袋）和學生證，其餘物件請放到椅子下面。</li>
+    <li>評核期間不得攜帶任何電子／通訊設備；如有攜帶，必須全程保持關機（包括鬧鐘、靜音），放在座位下方書包裡並拉上拉鏈。<b>如被發現在袋中或身上攜帶，本次評核資格會被取消；設備處於開機狀態或發出聲響，成績可能被扣分。</b></li>
+    <li>在評核結束前，不可以離開考場。</li>
+    <li>現在派發試卷，請<b>不要翻閱試題</b>。</li>
+    <li>請檢查試卷：試卷總共有 <span class="blank">＿＿</span> 頁，請查看印有「試卷完」的第 <span class="blank">＿＿</span> 頁。如有缺頁漏頁，請舉手示意。</li>
+    <li>請把個人資料填寫在試卷及答題簿的封面上。</li>
+    <li>評核時間為 <b>30 分鐘</b>。根據課室的鐘，現在時間是 <span class="blank">＿＿＿＿＿＿</span>，你可以開始作答。（黑板寫上開始時間）</li>
+  </ol>
+
+  <h2>二、評核期間</h2>
+  <ul>
+    <li>開考後遲到的同學可以進場；卷面記下進場時間，<b>不獲補時</b>。</li>
+    <li>如開考時間延遲，黑板改寫實際開考時間，結束時間順延。</li>
+    <li>按名單逐一核對學生身份，並在名單上記錄出席情況。</li>
+    <li>學生不得提早離開考場；如需往洗手間，請通知教員室／秘書處派員陪同前往。</li>
+  </ul>
+
+  <h2>三、結束</h2>
+  <p>宣布：「評核現在結束，請保持安靜，等待老師宣佈後才可離開。」</p>
+  <p>收回所有試卷並點算清楚；有問題立即通知支援老師。期間學生一律不得離開。</p>
+
+  <div class="box"><b>特別情況：</b>如懷疑考生作弊，<b>必須保留證據，然後立即向單元統籌（MC）匯報</b>，不要自行處理。</div>
+
+  <table>
+    <tr><th style="width:34%">實際開考時間</th><th style="width:33%">實際結束時間</th><th>監考老師簽名</th></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<!-- 2. 學生須知簽名確認表 -->
+<div class="sheet">
+  <h1>學生須知 · 簽名確認表</h1>
+  <p class="meta">班別 <span class="cls">＿＿＿＿</span>　日期 <span class="dt">＿＿＿＿＿＿</span>　科任老師 <span class="blank">＿＿＿＿＿＿</span></p>
+  <p>本人已閱讀並明白以下各項：① 進入考場須關掉手機及所有電子設備、響鬧裝置，遵守考場紀律；② 必須按老師編排的座位就坐，學生之間保持距離，不得交談或交換資料；③ 不得抄襲，一經發現會被視為「作弊」，受紀律處分；④ 完成評核後必須把評核卷交給監考老師；⑤ 缺席評核須按《持續評核指引》主動向科任老師提交有效證明文件（醫生證明書、住院紀錄、學生事務處或相關部門簽發之證明信等），方可獲安排補考；⑥ 遲到不可提前開考、不獲補時；不得提早離場。</p>
+  <table>
+    <thead><tr><th class="c" style="width:44px">序</th><th style="width:90px">學號</th><th style="width:110px">姓名</th><th style="width:150px">簽名</th><th>日期</th></tr></thead>
+    <tbody id="nameRows"></tbody>
+  </table>
+  <p class="tip">如學生缺席此節，請在簽名欄寫「缺席」。</p>
+</div>
+
+<!-- 3. SEN 評核安排確認 -->
+<div class="sheet">
+  <h1>SEN 評核安排確認（延時／不延時）</h1>
+  <p class="meta">班別 <span class="cls">＿＿＿＿</span>　評核日期 <span class="dt">＿＿＿＿＿＿</span>　科任老師 <span class="blank">＿＿＿＿＿＿</span></p>
+  <p>按 SEN 資料逐位確認評核安排。選擇以「✓」表示；延時的同學，同時在下方寫上延時分鐘（例如 30 分鐘卷 ＋ 15 分鐘＝延時 50%）。</p>
+  <table>
+    <thead><tr>
+      <th class="c" style="width:40px">序</th><th style="width:100px">姓名</th><th style="width:80px">學號</th>
+      <th style="width:120px">安排</th><th style="width:90px">延時分鐘</th><th>學生／家長簽名</th><th style="width:110px">老師簽名</th><th style="width:80px">日期</th>
+    </tr></thead>
+    <tbody id="senRows"></tbody>
+  </table>
+  <p class="tip">延時同學評核當日使用「個別延時」計時器（TA 頁第二個倒數）；考場座位盡量安排近門口或較安靜位置。</p>
+</div>
+
+<!-- 4. 座位表 -->
+<div class="sheet">
+  <h1>考場座位表（按學號順序）</h1>
+  <p class="meta">班別 <span class="cls">＿＿＿＿</span>　考場 <span class="blank">＿＿＿＿＿＿</span>　日期 <span class="dt">＿＿＿＿＿＿</span></p>
+  <div class="podium">講　台　／　黑　板</div>
+  <div class="seat" id="seatGrid"></div>
+  <p class="tip">學生按學號順序就坐，座位之間保持一定距離；座位表會貼在考場門外。列印前把姓名學號填入格子，或用螢幕顯示並即場調整。</p>
+</div>
+
+<script>
+function fillClass(){
+  var c=document.getElementById('cls').value||'＿＿＿＿';
+  var d=document.getElementById('dt').value||'＿＿＿＿＿＿';
+  [].forEach.call(document.querySelectorAll('.cls'),function(e){e.textContent=c});
+  [].forEach.call(document.querySelectorAll('.dt'),function(e){e.textContent=d});
+}
+function build(){
+  var n=30,s='';
+  for(var i=1;i<=n;i++){s+='<tr><td class="c">'+i+'</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>'}
+  document.getElementById('nameRows').innerHTML=s;
+  var sen='';
+  for(var j=1;j<=8;j++){sen+='<tr><td class="c">'+j+'</td><td class="fill"></td><td class="fill"></td><td style="font-size:12px">□ 延時　□ 不延時</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>'}
+  document.getElementById('senRows').innerHTML=sen;
+  var g='';
+  for(var k=1;k<=24;k++){g+='<div>'+k+'　學號／姓名</div>'}
+  document.getElementById('seatGrid').innerHTML=g;
+}
+function fill(){fillClass()}
+document.getElementById('cls').addEventListener('input',fillClass);
+document.getElementById('dt').addEventListener('input',fillClass);
+build();
+</script>
+</body>
+</html>
