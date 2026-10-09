@@ -70,14 +70,14 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
 
 /* ---------- s-cover ---------- */
 .s-cover .cover-grid{
-  display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(18px,4vw,72px);align-items:center;
+  display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(18px,4vw,72px);align-items:center;
 }
 .cover-title{
   font-family:var(--serif);font-weight:600;margin:0;
   font-size:clamp(44px,8.4vmin,140px);line-height:1.1;letter-spacing:.02em;
 }
 .cover-sub{margin:clamp(6px,1.4vh,18px) 0 0;font-size:clamp(22px,3.2vmin,52px);color:var(--gold)}
-.cover-art{height:min(66vh,52vw)}
+.cover-art{height:min(76vh,56vw)}
 
 /* ---------- s-big ---------- */
 .s-big{align-items:center;justify-content:center;text-align:center}
@@ -98,6 +98,9 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
   box-shadow:0 26px 60px -40px #000;
 }
 .card .ic{height:clamp(64px,12vh,132px);color:var(--accent)}
+/* 卡片插畫：正方形原圖撐滿卡片寬度，不再被壓成印章 */
+.card .ic.ic-art{height:auto;aspect-ratio:1/1}
+.card .ic.ic-art img.art{width:100%;height:100%;border-radius:clamp(10px,1.6vmin,24px)}
 .card h3{font-family:var(--serif);font-weight:600;margin:0;font-size:clamp(26px,3.8vmin,58px);line-height:1.2}
 .card p{margin:0;color:var(--cream-dim);font-size:var(--t-body);line-height:1.5}
 .card.c-terra{--accent:var(--terra)}
@@ -110,15 +113,15 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
 .act-name{font-family:var(--serif);font-weight:600;margin:0;font-size:clamp(32px,5.2vmin,88px);line-height:1.16}
 .act-min{font-family:var(--serif);font-weight:600;color:var(--accent);font-size:clamp(24px,3.6vmin,56px);flex:none}
 .act-body{
-  display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(14px,3vw,56px);
+  display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(14px,3vw,56px);
   align-items:center;flex:1;min-height:0;margin-top:clamp(6px,1.6vh,24px);
 }
 .act-line{font-family:var(--serif);font-weight:600;margin:0;line-height:1.36;font-size:clamp(30px,4.6vmin,80px)}
-.act-art{height:min(58vh,46vw)}
+.act-art{height:min(72vh,54vw)}
 
 /* ---------- s-split ---------- */
 .slide.s-split{
-  grid-template-columns:1fr 1.02fr;gap:clamp(16px,3.4vw,64px);
+  grid-template-columns:.82fr 1.18fr;gap:clamp(16px,3.4vw,64px);
   align-content:center;align-items:center;
 }
 .slide.s-split.active{display:grid}
@@ -129,7 +132,7 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
   font-family:var(--serif);font-weight:600;color:var(--gold);
   font-size:clamp(30px,4.6vmin,74px);line-height:1.3;margin-top:.2em;
 }
-.split-art{height:min(64vh,48vw)}
+.split-art{height:min(74vh,54vw)}
 
 /* ---------- s-compare ---------- */
 .cmp{
@@ -370,21 +373,21 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
     <h2 class="s-head anim">今天不做三件事，做三件事：</h2>
     <div class="cards">
       <div class="card anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p02a.webp" alt="開心跳起來的人">
         </div>
         <h3>玩</h3>
         <p>身體先醒</p>
       </div>
       <div class="card c-teal anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p02b.webp" alt="打開的眼睛">
         </div>
         <h3>看</h3>
         <p>眼睛要打開</p>
       </div>
       <div class="card c-terra anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p02c.webp" alt="聚光燈下站著的人">
         </div>
         <h3>做</h3>
@@ -404,21 +407,21 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
     <p class="s-sub anim">由你們自己說出來</p>
     <div class="cards">
       <div class="card anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p04a.webp" alt="時鐘">
         </div>
         <h3>準時到</h3>
         <p>因為大家都在等</p>
       </div>
       <div class="card c-teal anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p04b.webp" alt="戴上耳機聽">
         </div>
         <h3>專心聽</h3>
         <p>台上一個人說話時，要有人接</p>
       </div>
       <div class="card c-terra anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p04c.webp" alt="心">
         </div>
         <h3>不嘲笑</h3>
@@ -593,37 +596,22 @@ img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
     <p class="s-sub anim">拿掉任何一樣，就不是戲</p>
     <div class="cards">
       <div class="card anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p14a.webp" alt="一個笑着的人">
         </div>
         <h3>誰在做</h3>
         <p>人物</p>
       </div>
       <div class="card c-plum anim">
-        <div class="ic">
+        <div class="ic ic-art">
           <img class="art" src="assets/art/L1-p14b.webp" alt="一本劇本">
         </div>
         <h3>做什麼</h3>
         <p>故事</p>
       </div>
       <div class="card c-teal anim">
-        <div class="ic">
-          <svg class="art" viewBox="0 0 200 120" role="img" aria-label="台下三位觀眾，一個戴帽、一個較小、一個舉手">
-            <path d="M10 96 H190" fill="none" stroke="#b8863b" stroke-width="3" stroke-linecap="round"/>
-            <g transform="translate(46,58) scale(.62)">
-              <use href="#chBust" style="--shirt:#43a89f;--hair:#2a1e14;--skin:#e8bb8f"/>
-              <rect x="-28" y="-26" width="56" height="7" rx="3.5" fill="#2f3d4d"/>
-              <path d="M-18 -26 a18 13 0 0 1 36 0 z" fill="#2f3d4d"/>
-            </g>
-            <g transform="translate(102,66) scale(.46)">
-              <use href="#chBust" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#d9a878"/>
-            </g>
-            <g transform="translate(154,58) scale(.62)">
-              <use href="#chBust" style="--shirt:#d8674a;--hair:#4a3524;--skin:#f2c9a0"/>
-              <path d="M-24 18 L-46 -8" fill="none" stroke="#d8674a" stroke-width="10" stroke-linecap="round"/>
-              <circle cx="-48" cy="-12" r="7" fill="#f2c9a0"/>
-            </g>
-          </svg>
+        <div class="ic ic-art">
+          <img class="art" src="assets/art/L1-p14c.webp" alt="台下觀眾看着前方發光的舞台">
         </div>
         <h3>誰在看</h3>
         <p>觀眾</p>
