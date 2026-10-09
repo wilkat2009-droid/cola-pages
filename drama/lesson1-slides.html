@@ -59,6 +59,7 @@ body{
 
 /* ---------- 共用元件 ---------- */
 .art{display:block;width:100%;height:100%}
+img.art{object-fit:contain;border-radius:clamp(8px,1.4vmin,20px)}
 .s-head{
   font-family:var(--serif);font-weight:600;margin:0 0 clamp(10px,2.4vh,32px);
   font-size:clamp(30px,4.6vmin,76px);line-height:1.24;letter-spacing:.01em;
@@ -357,56 +358,7 @@ body{
         <p class="cover-sub anim">第 1 節</p>
       </div>
       <div class="cover-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="舞台上聚光燈照著一個演員，台前是一排觀眾席">
-          <rect x="30" y="30" width="340" height="192" rx="4" fill="url(#gWall)" stroke="rgba(246,241,231,.14)" stroke-width="2"/>
-          <path d="M200 34 L146 222 H254 Z" fill="url(#gBeam)"/>
-          <ellipse cx="200" cy="222" rx="66" ry="13" fill="url(#gGlow)"/>
-          <circle cx="200" cy="30" r="8" fill="#e0b25c"/>
-          <path d="M30 30 H72 Q56 84 66 130 Q76 186 58 222 H30 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M370 30 H328 Q344 84 334 130 Q324 186 342 222 H370 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <g fill="none" stroke="#f0a184" stroke-width="2.4" stroke-linecap="round" opacity=".45">
-            <path d="M48 44 Q38 122 46 208"/>
-            <path d="M62 44 Q54 122 58 208"/>
-            <path d="M352 44 Q362 122 354 208"/>
-            <path d="M338 44 Q346 122 342 208"/>
-          </g>
-          <path d="M30 30 H370 V62 Q352 78 334 62 Q316 78 298 62 Q280 78 262 62 Q244 78 226 62 Q208 78 190 62 Q172 78 154 62 Q136 78 118 62 Q100 78 82 62 Q64 78 46 62 Q36 52 30 44 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <g fill="none" stroke="#f0a184" stroke-width="2.2" stroke-linecap="round" opacity=".4">
-            <path d="M110 34 Q128 58 146 34"/>
-            <path d="M196 34 Q214 58 232 34"/>
-            <path d="M282 34 Q300 58 318 34"/>
-          </g>
-          <g transform="translate(200,188) scale(.78)">
-            <use href="#chWave" style="--shirt:#d8674a;--pants:#2f3d4d;--skin:#f2c9a0;--hair:#3a2a1a"/>
-          </g>
-          <path d="M60 222 H340" fill="none" stroke="#e6c187" stroke-width="3.5" stroke-linecap="round"/>
-          <g fill="none" stroke="#a07a45" stroke-width="2.4" stroke-linecap="round" opacity=".7">
-            <path d="M92 226 L82 240"/>
-            <path d="M188 226 L178 240"/>
-            <path d="M284 226 L274 240"/>
-          </g>
-          <g fill="none" stroke="#e0b25c" stroke-width="4" stroke-linecap="round" opacity=".85">
-            <path d="M132 228 l14 -5 M132 228 v-11"/>
-            <path d="M268 228 l-14 -5 M268 228 v-11"/>
-          </g>
-          <g fill="#f6f1e7" opacity=".45">
-            <circle cx="176" cy="92" r="2.2"/>
-            <circle cx="226" cy="126" r="1.8"/>
-            <circle cx="164" cy="168" r="1.6"/>
-            <circle cx="238" cy="182" r="2"/>
-            <circle cx="206" cy="66" r="1.5"/>
-          </g>
-          <g fill="#1e2c3a" stroke="#b8863b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="62" y="238" width="62" height="32" rx="9"/>
-            <path d="M74 270 v10 M112 270 v10" fill="none"/>
-            <rect x="142" y="238" width="62" height="32" rx="9"/>
-            <path d="M154 270 v10 M192 270 v10" fill="none"/>
-            <rect x="222" y="238" width="62" height="32" rx="9"/>
-            <path d="M234 270 v10 M272 270 v10" fill="none"/>
-            <rect x="302" y="238" width="62" height="32" rx="9"/>
-            <path d="M314 270 v10 M352 270 v10" fill="none"/>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p01.webp" alt="舞台上聚光燈照著一個演員，台前是一排觀眾席">
       </div>
     </div>
   </section>
@@ -417,62 +369,21 @@ body{
     <div class="cards">
       <div class="card anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="開心跳起來的人">
-            <ellipse cx="50" cy="32" rx="21" ry="19" fill="#e8bb8f"/>
-            <path d="M29 30 a21 19 0 0 1 42 0 q-21 6 -42 0 z" fill="#2a1e14"/>
-            <circle cx="43" cy="36" r="2.6" fill="#241a12"/>
-            <circle cx="57" cy="36" r="2.6" fill="#241a12"/>
-            <path d="M44 45 q6 6 12 0" fill="none" stroke="#241a12" stroke-width="2.8" stroke-linecap="round"/>
-            <path d="M50 51 V68" fill="none" stroke="#e0b25c" stroke-width="13" stroke-linecap="round"/>
-            <path d="M42 55 L24 36" fill="none" stroke="#e0b25c" stroke-width="9" stroke-linecap="round"/>
-            <path d="M58 55 L76 36" fill="none" stroke="#e0b25c" stroke-width="9" stroke-linecap="round"/>
-            <circle cx="22" cy="33" r="5.5" fill="#e8bb8f"/>
-            <circle cx="78" cy="33" r="5.5" fill="#e8bb8f"/>
-            <path d="M43 68 L34 86" fill="none" stroke="#3b4a5a" stroke-width="10" stroke-linecap="round"/>
-            <path d="M57 68 L66 86" fill="none" stroke="#3b4a5a" stroke-width="10" stroke-linecap="round"/>
-            <ellipse cx="31" cy="89" rx="8" ry="4.5" fill="#26313d"/>
-            <ellipse cx="69" cy="89" rx="8" ry="4.5" fill="#26313d"/>
-            <g fill="none" stroke="#e0b25c" stroke-width="2.6" stroke-linecap="round" opacity=".8">
-              <path d="M12 42 h-7"/>
-              <path d="M15 54 h-9"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p02a.webp" alt="開心跳起來的人">
         </div>
         <h3>玩</h3>
         <p>身體先醒</p>
       </div>
       <div class="card c-teal anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="打開的眼睛">
-            <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 50 q36 -32 72 0 q-36 32 -72 0 Z"/>
-              <circle cx="50" cy="50" r="11"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p02b.webp" alt="打開的眼睛">
         </div>
         <h3>看</h3>
         <p>眼睛要打開</p>
       </div>
       <div class="card c-terra anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="聚光燈下站著的人">
-            <path d="M50 14 L27 92 H73 Z" fill="#e0b25c" opacity=".2"/>
-            <ellipse cx="50" cy="16" rx="7" ry="4" fill="#e0b25c"/>
-            <ellipse cx="50" cy="40" rx="19" ry="17" fill="#e8bb8f"/>
-            <path d="M31 38 a19 17 0 0 1 38 0 q-19 6 -38 0 z" fill="#2a1e14"/>
-            <circle cx="44" cy="44" r="2.5" fill="#241a12"/>
-            <circle cx="56" cy="44" r="2.5" fill="#241a12"/>
-            <path d="M45 52 q5 5 10 0" fill="none" stroke="#241a12" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="M50 57 V73" fill="none" stroke="#d8674a" stroke-width="12" stroke-linecap="round"/>
-            <path d="M42 61 L26 70" fill="none" stroke="#d8674a" stroke-width="8" stroke-linecap="round"/>
-            <path d="M58 61 L74 70" fill="none" stroke="#d8674a" stroke-width="8" stroke-linecap="round"/>
-            <circle cx="24" cy="72" r="5" fill="#e8bb8f"/>
-            <circle cx="76" cy="72" r="5" fill="#e8bb8f"/>
-            <path d="M44 73 L39 88" fill="none" stroke="#3b4a5a" stroke-width="9" stroke-linecap="round"/>
-            <path d="M56 73 L61 88" fill="none" stroke="#3b4a5a" stroke-width="9" stroke-linecap="round"/>
-            <ellipse cx="37" cy="90" rx="7.5" ry="4" fill="#26313d"/>
-            <ellipse cx="63" cy="90" rx="7.5" ry="4" fill="#26313d"/>
-          </svg>
+          <img class="art" src="assets/art/L1-p02c.webp" alt="聚光燈下站著的人">
         </div>
         <h3>做</h3>
         <p>每個人都要上台一次</p>
@@ -492,36 +403,21 @@ body{
     <div class="cards">
       <div class="card anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="時鐘">
-            <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="50" cy="50" r="33"/>
-              <path d="M50 30 V50 L64 58"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p04a.webp" alt="時鐘">
         </div>
         <h3>準時到</h3>
         <p>因為大家都在等</p>
       </div>
       <div class="card c-teal anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="戴上耳機聽">
-            <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 58 V48 a30 30 0 0 1 60 0 V58"/>
-              <rect x="12" y="54" width="15" height="26" rx="7"/>
-              <rect x="73" y="54" width="15" height="26" rx="7"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p04b.webp" alt="戴上耳機聽">
         </div>
         <h3>專心聽</h3>
         <p>台上一個人說話時，要有人接</p>
       </div>
       <div class="card c-terra anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="心">
-            <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M50 84 C16 60 16 32 33 26 C44 22 50 31 50 37 C50 31 56 22 67 26 C84 32 84 60 50 84 Z"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p04c.webp" alt="心">
         </div>
         <h3>不嘲笑</h3>
         <p>這裡每個人都要敢做傻事</p>
@@ -538,68 +434,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「說出你的名字，做一個動作。我們一起學他。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="一圈小朋友，一人舉手做動作，其他人一起學他">
-          <defs>
-            <marker id="aG5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-              <path d="M0 1 L9 5 L0 9 z" fill="#e0b25c"/>
-            </marker>
-          </defs>
-          <ellipse cx="200" cy="152" rx="132" ry="86" fill="none" stroke="rgba(224,178,92,.3)" stroke-width="2.5" stroke-dasharray="9 12" stroke-linecap="round"/>
-          <g transform="translate(293,91) scale(.9)" style="--shirt:#43a89f;--hair:#241a12;--skin:#e8bb8f">
-            <use href="#chBust"/>
-            <path class="c-hair" d="M-24 -3 q0 -26 24 -26 q24 0 24 26 q-6 -15 -24 -15 q-18 0 -24 15 z"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 18 L-33 38 L-16 42"/><circle class="c-hand" cx="-14" cy="43" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M26 18 L36 40"/><circle class="c-hand" cx="38" cy="43" r="7"/>
-          </g>
-          <g transform="translate(332,152) scale(.84)" style="--shirt:#b07cc4;--hair:#2a1e14;--skin:#d9a878">
-            <use href="#chBust"/>
-            <path fill="#2f3d4d" d="M-24 -3 a24 22 0 0 1 48 0 z"/>
-            <rect x="-38" y="-5" width="62" height="7" rx="3.5" fill="#2f3d4d"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 10 L-54 6"/><circle class="c-hand" cx="-58" cy="5" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M26 18 L33 38 L16 42"/><circle class="c-hand" cx="14" cy="43" r="7"/>
-          </g>
-          <g transform="translate(293,213) scale(1.06)" style="--shirt:#d8674a;--hair:#3a2a1a;--skin:#f2c9a0">
-            <path class="c-shirtfill" d="M-42 50 q0 -36 42 -36 q42 0 42 36 z"/>
-            <use href="#chBust"/>
-            <circle class="c-hair" cx="-22" cy="-15" r="8"/><circle class="c-hair" cx="22" cy="-15" r="8"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-27 20 L13 34"/><circle class="c-hand" cx="17" cy="35" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M27 20 L-13 34"/><circle class="c-hand" cx="-17" cy="35" r="7"/>
-          </g>
-          <g transform="translate(200,238) scale(1)" style="--shirt:#43a89f;--hair:#3a2a1a;--skin:#d9a878">
-            <use href="#chBust"/>
-            <rect x="-24" y="-9" width="48" height="7" rx="3.5" fill="#d8674a"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M22 2 L40 -28"/><circle class="c-hand" cx="43" cy="-33" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 18 L-38 40"/><circle class="c-hand" cx="-40" cy="43" r="7"/>
-          </g>
-          <g transform="translate(107,213) scale(.92)" style="--shirt:#e0b25c;--hair:#4a3524;--skin:#f2c9a0">
-            <use href="#chBust"/>
-            <ellipse class="c-hair" cx="-25" cy="6" rx="7.5" ry="13"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M26 18 L33 38 L16 42"/><circle class="c-hand" cx="14" cy="43" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 18 L-38 40"/><circle class="c-hand" cx="-40" cy="43" r="7"/>
-          </g>
-          <g transform="translate(68,152) scale(.98)" style="--shirt:#d8674a;--hair:#241a12;--skin:#d9a878">
-            <use href="#chBust"/>
-            <path class="c-hair" d="M-25 -8 q-11 26 -3 44 h12 q-7 -22 -4 -44 z"/>
-            <path class="c-hair" d="M25 -8 q11 26 3 44 h-12 q7 -22 4 -44 z"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 4 L-46 -30"/><circle class="c-hand" cx="-49" cy="-35" r="8"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M26 16 L40 38"/><circle class="c-hand" cx="42" cy="42" r="7"/>
-          </g>
-          <g transform="translate(107,91) scale(.88)" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#e8bb8f">
-            <use href="#chBust"/>
-            <path class="c-hair" d="M-23 -3 a23 21 0 0 1 46 0 q-4 11 -23 11 q-19 0 -23 -11 z"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-27 20 L13 34"/><circle class="c-hand" cx="17" cy="35" r="7"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M27 20 L-13 34"/><circle class="c-hand" cx="-17" cy="35" r="7"/>
-          </g>
-          <g transform="translate(200,66) scale(1.02)" style="--shirt:#e0b25c;--hair:#4a3524;--skin:#f2c9a0">
-            <use href="#chBust"/>
-            <circle class="c-hair" cx="0" cy="-27" r="9"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M24 4 L48 -30"/><circle class="c-hand" cx="51" cy="-35" r="8"/>
-            <path class="c-arm" style="stroke:var(--skin)" d="M-26 18 L-33 38 L-16 42"/><circle class="c-hand" cx="-14" cy="43" r="7"/>
-          </g>
-          <path d="M256 100 L226 78" fill="none" stroke="#e0b25c" stroke-width="3" stroke-linecap="round" marker-end="url(#aG5)"/>
-          <path d="M144 100 L174 78" fill="none" stroke="#e0b25c" stroke-width="3" stroke-linecap="round" marker-end="url(#aG5)"/>
-          <path d="M254 8 v-10" fill="none" stroke="#e0b25c" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-        </svg>
+        <img class="art" src="assets/art/L1-p05.webp" alt="一圈小朋友，一人舉手做動作，其他人一起學他">
       </div>
     </div>
     <template class="notes">
@@ -619,39 +454,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「跟著我，慢一點，不要快。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="人形圖：由頸到腳踝六個關節逐個活動">
-          <ellipse cx="200" cy="150" rx="120" ry="126" fill="url(#gGlow)" opacity=".45"/>
-          <ellipse cx="200" cy="64" rx="29" ry="26" fill="#f2c9a0"/>
-          <path d="M171 62 a29 26 0 0 1 58 0 q-29 8 -58 0 z" fill="#3a2a1a"/>
-          <circle cx="191" cy="69" r="3.6" fill="#241a12"/>
-          <circle cx="209" cy="69" r="3.6" fill="#241a12"/>
-          <path d="M192 80 q8 7 16 0" fill="none" stroke="#241a12" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="M200 90 V150" fill="none" stroke="#43a89f" stroke-width="22" stroke-linecap="round"/>
-          <path d="M190 120 L138 128" fill="none" stroke="#43a89f" stroke-width="14" stroke-linecap="round"/>
-          <path d="M210 120 L262 128" fill="none" stroke="#43a89f" stroke-width="14" stroke-linecap="round"/>
-          <circle cx="132" cy="129" r="8.5" fill="#f2c9a0"/>
-          <circle cx="268" cy="129" r="8.5" fill="#f2c9a0"/>
-          <path d="M193 150 L174 208" fill="none" stroke="#3b4a5a" stroke-width="15" stroke-linecap="round"/>
-          <path d="M207 150 L226 208" fill="none" stroke="#3b4a5a" stroke-width="15" stroke-linecap="round"/>
-          <ellipse cx="172" cy="214" rx="11" ry="6" fill="#26313d"/>
-          <ellipse cx="228" cy="214" rx="11" ry="6" fill="#26313d"/>
-          <g fill="#e0b25c" stroke="#0d131c" stroke-width="2">
-            <circle cx="200" cy="96" r="11"/>
-            <circle cx="200" cy="122" r="11"/>
-            <circle cx="134" cy="129" r="11"/>
-            <circle cx="200" cy="148" r="11"/>
-            <circle cx="184" cy="180" r="11"/>
-            <circle cx="175" cy="206" r="11"/>
-          </g>
-          <g fill="#0d131c" font-family="sans-serif" font-size="13" font-weight="700" text-anchor="middle">
-            <text x="200" y="101">1</text>
-            <text x="200" y="127">2</text>
-            <text x="134" y="134">3</text>
-            <text x="200" y="153">4</text>
-            <text x="184" y="185">5</text>
-            <text x="175" y="211">6</text>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p06.webp" alt="人形圖：由頸到腳踝六個關節逐個活動">
       </div>
     </div>
     <template class="notes">
@@ -671,45 +474,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「行——停。停的時候，眼睛看著我。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="三個小朋友：一個在走、一個正踏出、一個定住，右上有一對拍手">
-          <path d="M24 236 H376" fill="none" stroke="#8a6438" stroke-width="3" stroke-linecap="round"/>
-          <g fill="none" stroke="#a07a45" stroke-width="2.4" stroke-linecap="round" opacity=".6">
-            <path d="M70 240 L62 252"/>
-            <path d="M210 240 L202 252"/>
-            <path d="M330 240 L322 252"/>
-          </g>
-          <g fill="none" stroke="#e0b25c" stroke-width="3" stroke-linecap="round" opacity=".8">
-            <path d="M30 176 h-16"/>
-            <path d="M26 194 h-22"/>
-            <path d="M34 212 h-14"/>
-          </g>
-          <g transform="translate(72,190)">
-            <use href="#chWalk" style="--shirt:#e0b25c;--pants:#3b4a5a;--skin:#f2c9a0;--hair:#3a2a1a"/>
-          </g>
-          <g transform="translate(196,190) scale(.96)">
-            <use href="#chStep" style="--shirt:#43a89f;--pants:#2f3d4d;--skin:#e8bb8f;--hair:#2a1e14"/>
-          </g>
-          <g transform="translate(330,190) scale(1.04)">
-            <use href="#chFreeze" style="--shirt:#d8674a;--pants:#46315e;--skin:#d9a878;--hair:#4a3524"/>
-          </g>
-          <ellipse cx="330" cy="147" rx="58" ry="94" fill="rgba(224,178,92,.07)"/>
-          <ellipse cx="330" cy="147" rx="58" ry="94" fill="none" stroke="#e0b25c" stroke-width="2.5" stroke-dasharray="5 11" stroke-linecap="round"/>
-          <g stroke="#b8863b" stroke-width="3" fill="#f2c9a0" stroke-linejoin="round" stroke-linecap="round">
-            <g transform="rotate(17 181 48)">
-              <rect x="166" y="30" width="30" height="34" rx="9"/>
-              <path d="M172 32 v-11 M179 29 v-14 M186 29 v-14 M192 32 v-11" fill="none" stroke="#f2c9a0" stroke-width="7"/>
-            </g>
-            <g transform="rotate(-17 219 48)">
-              <rect x="204" y="30" width="30" height="34" rx="9"/>
-              <path d="M208 32 v-11 M215 29 v-14 M222 29 v-14 M228 32 v-11" fill="none" stroke="#f2c9a0" stroke-width="7"/>
-            </g>
-          </g>
-          <g fill="none" stroke="#e0b25c" stroke-width="2.6" stroke-linecap="round">
-            <path d="M200 22 v-13"/>
-            <path d="M186 26 l-8 -10"/>
-            <path d="M214 26 l8 -10"/>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p07.webp" alt="三個小朋友：一個在走、一個正踏出、一個定住，右上有一對拍手">
       </div>
     </div>
     <template class="notes">
@@ -729,41 +494,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「不要用喉嚨喊，用肚子。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="側面人形：手放肚子上，吸四秒吐六秒">
-          <ellipse cx="122" cy="150" rx="98" ry="124" fill="url(#gGlow)" opacity=".4"/>
-          <ellipse cx="104" cy="52" rx="28" ry="27" fill="#3a2a1a"/>
-          <ellipse cx="113" cy="62" rx="26" ry="27" fill="#f2c9a0"/>
-          <path d="M139 62 l12 7 l-12 6 z" fill="#e8bb8f"/>
-          <circle cx="124" cy="58" r="4" fill="#241a12"/>
-          <path d="M124 78 q7 6 14 1" fill="none" stroke="#241a12" stroke-width="3.4" stroke-linecap="round"/>
-          <rect x="94" y="90" width="38" height="100" rx="19" fill="#43a89f"/>
-          <circle cx="128" cy="152" r="22" fill="#43a89f"/>
-          <path d="M150 136 q10 18 0 34" fill="none" stroke="#7fd6cb" stroke-width="3" stroke-linecap="round" opacity=".8"/>
-          <path d="M104 110 L124 134 L133 152" fill="none" stroke="#f2c9a0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="136" cy="155" r="8" fill="#f2c9a0"/>
-          <path d="M100 188 L94 246" fill="none" stroke="#3b4a5a" stroke-width="17" stroke-linecap="round"/>
-          <path d="M118 188 L126 246" fill="none" stroke="#3b4a5a" stroke-width="17" stroke-linecap="round"/>
-          <ellipse cx="92" cy="252" rx="13" ry="7" fill="#26313d"/>
-          <ellipse cx="128" cy="252" rx="13" ry="7" fill="#26313d"/>
-          <g fill="none" stroke="#e0b25c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M166 130 q22 -4 22 -24"/>
-            <path d="M188 104 v15 l-14 -3"/>
-          </g>
-          <g fill="none" stroke="#43a89f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M172 180 q22 4 22 24"/>
-            <path d="M194 206 v-15 l-14 3"/>
-          </g>
-          <g transform="translate(288,150)">
-            <g transform="rotate(-90)">
-              <circle r="52" fill="none" stroke="#e0b25c" stroke-width="30" stroke-dasharray="130.7 196"/>
-              <circle r="52" fill="none" stroke="#43a89f" stroke-width="30" stroke-dasharray="196 130.7" stroke-dashoffset="-130.7"/>
-            </g>
-            <text x="36" y="-18" fill="#0d131c" font-family="sans-serif" font-size="26" font-weight="700" text-anchor="middle" dominant-baseline="middle">4</text>
-            <text x="-36" y="18" fill="#0d131c" font-family="sans-serif" font-size="26" font-weight="700" text-anchor="middle" dominant-baseline="middle">6</text>
-            <text x="78" y="-46" fill="#e0b25c" font-family="Songti TC, serif" font-size="24" text-anchor="middle">吸</text>
-            <text x="-78" y="46" fill="#43a89f" font-family="Songti TC, serif" font-size="24" text-anchor="middle">吐</text>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p08.webp" alt="側面人形：手放肚子上，吸四秒吐六秒">
       </div>
     </div>
     <template class="notes">
@@ -787,44 +518,7 @@ body{
         <p class="cover-sub anim">先不要答。等一等。</p>
       </div>
       <div class="cover-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="空空的舞台，聚光燈照著沒有人的地板，台前坐著觀眾">
-          <rect x="30" y="30" width="340" height="192" rx="4" fill="url(#gWall)" stroke="rgba(246,241,231,.14)" stroke-width="2"/>
-          <path d="M200 34 L140 222 H260 Z" fill="url(#gBeam)"/>
-          <circle cx="200" cy="30" r="8" fill="#e0b25c"/>
-          <ellipse cx="200" cy="222" rx="70" ry="14" fill="url(#gGlow)"/>
-          <path d="M30 30 H72 Q56 84 66 130 Q76 186 58 222 H30 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M370 30 H328 Q344 84 334 130 Q324 186 342 222 H370 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M30 30 H370 V62 Q352 78 334 62 Q316 78 298 62 Q280 78 262 62 Q244 78 226 62 Q208 78 190 62 Q172 78 154 62 Q136 78 118 62 Q100 78 82 62 Q64 78 46 62 Q36 52 30 44 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <g fill="none" stroke="#f0a184" stroke-width="2.2" stroke-linecap="round" opacity=".4">
-            <path d="M110 34 Q128 58 146 34"/>
-            <path d="M196 34 Q214 58 232 34"/>
-            <path d="M282 34 Q300 58 318 34"/>
-          </g>
-          <path d="M60 222 H340" fill="none" stroke="#e6c187" stroke-width="3.5" stroke-linecap="round"/>
-          <g fill="none" stroke="#a07a45" stroke-width="2.4" stroke-linecap="round" opacity=".65">
-            <path d="M100 226 L92 238"/>
-            <path d="M200 226 L192 238"/>
-            <path d="M300 226 L292 238"/>
-          </g>
-          <g fill="none" stroke="#e0b25c" stroke-width="4" stroke-linecap="round" opacity=".8">
-            <path d="M152 227 l13 -5 M152 227 v-10"/>
-            <path d="M248 227 l-13 -5 M248 227 v-10"/>
-          </g>
-          <path d="M26 252 H374" fill="none" stroke="#b8863b" stroke-width="3" stroke-linecap="round"/>
-          <g transform="translate(118,252) scale(.78)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#2a1e14;--skin:#e8bb8f"/>
-            <path d="M-24 18 L-48 -18" fill="none" stroke="#43a89f" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="-50" cy="-22" r="7" fill="#e8bb8f"/>
-          </g>
-          <g transform="translate(200,258) scale(.6)">
-            <use href="#chBust" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#d9a878"/>
-          </g>
-          <g transform="translate(284,252) scale(.78)">
-            <use href="#chBust" style="--shirt:#d8674a;--hair:#4a3524;--skin:#f2c9a0"/>
-            <rect x="-28" y="-26" width="56" height="7" rx="3.5" fill="#2f3d4d"/>
-            <path d="M-18 -26 a18 13 0 0 1 36 0 z" fill="#2f3d4d"/>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p10.webp" alt="空空的舞台，聚光燈照著沒有人的地板，台前坐著觀眾">
       </div>
     </div>
   </section>
@@ -839,80 +533,7 @@ body{
       <p class="layer-line final anim" data-step="13">這就已經是戲劇了。</p>
     </div>
     <div class="split-art">
-      <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="空的舞台，逐層加上一個人、一句話、台下的觀眾">
-        <g class="lay" data-step="0">
-          <rect x="26" y="24" width="348" height="196" rx="4" fill="url(#gWall)" stroke="rgba(246,241,231,.14)" stroke-width="2"/>
-          <path d="M200 28 L148 220 H252 Z" fill="url(#gBeam)"/>
-          <ellipse cx="200" cy="220" rx="68" ry="13" fill="url(#gGlow)"/>
-          <circle cx="200" cy="24" r="7" fill="#e0b25c"/>
-          <path d="M26 24 H66 Q50 80 60 128 Q70 180 52 220 H26 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M374 24 H334 Q350 80 340 128 Q330 180 348 220 H374 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <g fill="none" stroke="#f0a184" stroke-width="2.2" stroke-linecap="round" opacity=".4">
-            <path d="M44 38 Q34 120 42 204"/>
-            <path d="M356 38 Q366 120 358 204"/>
-          </g>
-          <path d="M26 24 H374 V54 Q356 70 338 54 Q320 70 302 54 Q284 70 266 54 Q248 70 230 54 Q212 70 194 54 Q176 70 158 54 Q140 70 122 54 Q104 70 86 54 Q68 70 50 54 Q38 44 26 38 Z" fill="url(#gCurtain)" stroke="#7d2a18" stroke-width="2.5" stroke-linejoin="round"/>
-          <g fill="none" stroke="#f0a184" stroke-width="2" stroke-linecap="round" opacity=".38">
-            <path d="M108 28 Q126 50 144 28"/>
-            <path d="M192 28 Q210 50 228 28"/>
-            <path d="M276 28 Q294 50 312 28"/>
-          </g>
-          <path d="M56 220 H344" fill="none" stroke="#e6c187" stroke-width="3.5" stroke-linecap="round"/>
-          <g fill="none" stroke="#a07a45" stroke-width="2.4" stroke-linecap="round" opacity=".65">
-            <path d="M92 224 L84 236"/>
-            <path d="M190 224 L182 236"/>
-            <path d="M288 224 L280 236"/>
-          </g>
-          <g fill="none" stroke="#e0b25c" stroke-width="4" stroke-linecap="round" opacity=".8">
-            <path d="M128 226 l13 -5 M128 226 v-10"/>
-            <path d="M272 226 l-13 -5 M272 226 v-10"/>
-          </g>
-          <g fill="#f6f1e7" opacity=".42">
-            <circle cx="176" cy="86" r="2"/>
-            <circle cx="226" cy="124" r="1.7"/>
-            <circle cx="166" cy="166" r="1.5"/>
-            <circle cx="236" cy="180" r="1.9"/>
-          </g>
-        </g>
-        <g class="lay" data-step="3">
-          <g transform="translate(200,182) scale(.76)">
-            <use href="#chStand" style="--shirt:#e0b25c;--pants:#2f3d4d;--skin:#f2c9a0;--hair:#3a2a1a"/>
-          </g>
-        </g>
-        <g class="lay" data-step="6">
-          <path d="M248 150 L234 178 L272 150 Z" fill="#16202c"/>
-          <path d="M248 150 L234 178 L272 150" fill="none" stroke="#e0b25c" stroke-width="3" stroke-linejoin="round"/>
-          <rect x="228" y="88" width="128" height="64" rx="16" fill="#16202c" stroke="#e0b25c" stroke-width="3"/>
-          <text x="292" y="135" fill="#e0b25c" font-family="Songti TC, serif" font-size="46" text-anchor="middle">「」</text>
-        </g>
-        <g class="lay" data-step="9">
-          <path d="M24 276 H376" fill="none" stroke="#b8863b" stroke-width="3" stroke-linecap="round"/>
-          <g transform="translate(62,246) scale(.66)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#2a1e14;--skin:#e8bb8f"/>
-            <path d="M-24 18 L-46 -8" fill="none" stroke="#43a89f" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="-48" cy="-12" r="7" fill="#e8bb8f"/>
-            <path d="M24 18 L46 -8" fill="none" stroke="#43a89f" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="48" cy="-12" r="7" fill="#e8bb8f"/>
-            <path d="M-62 -20 l-9 -7 M62 -20 l9 -7 M0 -30 v-10" fill="none" stroke="#e0b25c" stroke-width="2.4" stroke-linecap="round"/>
-          </g>
-          <g transform="translate(130,244) scale(.66)">
-            <use href="#chBust" transform="rotate(12)" style="--shirt:#b07cc4;--hair:#4a3524;--skin:#d9a878"/>
-          </g>
-          <g transform="translate(200,250) scale(.5)">
-            <use href="#chBust" style="--shirt:#d8674a;--hair:#2a1e14;--skin:#e8bb8f"/>
-          </g>
-          <g transform="translate(270,246) scale(.66)">
-            <use href="#chBust" style="--shirt:#e0b25c;--hair:#241a12;--skin:#f2c9a0"/>
-            <path d="M-24 18 L-48 -14" fill="none" stroke="#e0b25c" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="-50" cy="-18" r="7" fill="#f2c9a0"/>
-          </g>
-          <g transform="translate(338,246) scale(.66)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#4a3524;--skin:#d9a878"/>
-            <rect x="-28" y="-26" width="56" height="7" rx="3.5" fill="#2f3d4d"/>
-            <path d="M-18 -26 a18 13 0 0 1 36 0 z" fill="#2f3d4d"/>
-          </g>
-        </g>
-      </svg>
+      <img class="art" src="assets/art/L1-p11-1.webp" alt="空的舞台，逐層加上一個人、一句話、台下的觀眾">
     </div>
   </section>
 
@@ -971,58 +592,21 @@ body{
     <div class="cards">
       <div class="card anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="一個笑着的人">
-            <ellipse cx="50" cy="34" rx="21" ry="19" fill="#f2c9a0"/>
-            <path d="M29 32 a21 19 0 0 1 42 0 q-21 6 -42 0 z" fill="#3a2a1a"/>
-            <circle cx="43" cy="38" r="2.6" fill="#241a12"/>
-            <circle cx="57" cy="38" r="2.6" fill="#241a12"/>
-            <path d="M44 47 q6 6 12 0" fill="none" stroke="#241a12" stroke-width="2.8" stroke-linecap="round"/>
-            <path d="M50 53 V74" stroke="#d8674a" stroke-width="14" stroke-linecap="round" fill="none"/>
-            <path d="M42 58 L24 68" stroke="#d8674a" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <path d="M58 58 L76 68" stroke="#d8674a" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <circle cx="22" cy="70" r="5.5" fill="#f2c9a0"/>
-            <circle cx="78" cy="70" r="5.5" fill="#f2c9a0"/>
-            <path d="M44 74 L40 90" stroke="#3b4a5a" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <path d="M56 74 L60 90" stroke="#3b4a5a" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <ellipse cx="38" cy="92" rx="7" ry="4" fill="#26313d"/>
-            <ellipse cx="62" cy="92" rx="7" ry="4" fill="#26313d"/>
-          </svg>
+          <img class="art" src="assets/art/L1-p14a.webp" alt="一個笑着的人">
         </div>
         <h3>誰在做</h3>
         <p>人物</p>
       </div>
       <div class="card c-plum anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 100 100" role="img" aria-label="一本劇本">
-            <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="26" y="14" width="52" height="72" rx="7"/>
-              <path d="M38 34 H64"/>
-              <path d="M38 48 H64"/>
-              <path d="M38 62 H54"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p14b.webp" alt="一本劇本">
         </div>
         <h3>做什麼</h3>
         <p>故事</p>
       </div>
       <div class="card c-teal anim">
         <div class="ic">
-          <svg class="art" viewBox="0 0 200 120" role="img" aria-label="台下三位觀眾，一個戴帽、一個較小、一個舉手">
-            <path d="M10 96 H190" fill="none" stroke="#b8863b" stroke-width="3" stroke-linecap="round"/>
-            <g transform="translate(46,58) scale(.62)">
-              <use href="#chBust" style="--shirt:#43a89f;--hair:#2a1e14;--skin:#e8bb8f"/>
-              <rect x="-28" y="-26" width="56" height="7" rx="3.5" fill="#2f3d4d"/>
-              <path d="M-18 -26 a18 13 0 0 1 36 0 z" fill="#2f3d4d"/>
-            </g>
-            <g transform="translate(102,66) scale(.46)">
-              <use href="#chBust" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#d9a878"/>
-            </g>
-            <g transform="translate(154,58) scale(.62)">
-              <use href="#chBust" style="--shirt:#d8674a;--hair:#4a3524;--skin:#f2c9a0"/>
-              <path d="M-24 18 L-46 -8" fill="none" stroke="#d8674a" stroke-width="10" stroke-linecap="round"/>
-              <circle cx="-48" cy="-12" r="7" fill="#f2c9a0"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/art/L1-p14c.webp" alt="台下三位觀眾，一個戴帽、一個較小、一個舉手">
         </div>
         <h3>誰在看</h3>
         <p>觀眾</p>
@@ -1039,37 +623,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「錯了不要緊，我們一齊重來。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="一圈小朋友輪流報數，報到一半斷掉">
-          <ellipse cx="200" cy="152" rx="132" ry="86" fill="none" stroke="rgba(224,178,92,.28)" stroke-width="2.5" stroke-dasharray="9 12" stroke-linecap="round"/>
-          <g transform="translate(200,66) scale(1.04)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#3a2a1a;--skin:#f2c9a0"/>
-            <circle cx="0" cy="40" r="15" fill="#e0b25c"/>
-            <text x="0" y="48" fill="#0d131c" font-family="Songti TC, serif" font-size="21" font-weight="700" text-anchor="middle">1</text>
-          </g>
-          <g transform="translate(293,91) scale(.94)">
-            <use href="#chBust" style="--shirt:#e0b25c;--hair:#2a1e14;--skin:#e8bb8f"/>
-            <circle cx="0" cy="40" r="15" fill="#e0b25c"/>
-            <text x="0" y="48" fill="#0d131c" font-family="Songti TC, serif" font-size="21" font-weight="700" text-anchor="middle">2</text>
-          </g>
-          <g transform="translate(332,152) scale(.9)">
-            <use href="#chBust" style="--shirt:#d8674a;--hair:#4a3524;--skin:#d9a878"/>
-            <circle cx="0" cy="40" r="15" fill="#e0b25c"/>
-            <text x="0" y="48" fill="#0d131c" font-family="Songti TC, serif" font-size="21" font-weight="700" text-anchor="middle">3</text>
-          </g>
-          <g transform="translate(293,213) scale(1)">
-            <use href="#chBust" style="--shirt:#b07cc4;--hair:#241a12;--skin:#f2c9a0"/>
-            <circle cx="0" cy="40" r="15" fill="#e0b25c"/>
-            <text x="0" y="48" fill="#0d131c" font-family="Songti TC, serif" font-size="21" font-weight="700" text-anchor="middle">4</text>
-          </g>
-          <g transform="translate(200,238) scale(1.06)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#3a2a1a;--skin:#d9a878"/>
-            <circle cx="0" cy="40" r="15" fill="#d8674a"/>
-            <text x="0" y="48" fill="#0d131c" font-family="Songti TC, serif" font-size="21" font-weight="700" text-anchor="middle">?</text>
-          </g>
-          <g transform="translate(107,213) scale(.92)"><use href="#chBust" style="--shirt:#d8674a;--hair:#4a3524;--skin:#e8bb8f"/></g>
-          <g transform="translate(68,152) scale(.96)"><use href="#chBust" style="--shirt:#e0b25c;--hair:#2a1e14;--skin:#f2c9a0"/></g>
-          <g transform="translate(107,91) scale(1)"><use href="#chBust" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#d9a878"/></g>
-        </svg>
+        <img class="art" src="assets/art/L1-p15.webp" alt="一圈小朋友輪流報數，報到一半斷掉">
       </div>
     </div>
     <template class="notes">
@@ -1089,24 +643,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「不用講話，用眼睛。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="兩個小朋友面對面做鏡子，動作左右對稱，中間一條鏡軸">
-          <ellipse cx="200" cy="150" rx="152" ry="122" fill="url(#gGlow)" opacity=".3"/>
-          <path d="M30 252 H370" fill="none" stroke="#8a6438" stroke-width="3" stroke-linecap="round"/>
-          <g fill="none" stroke="#a07a45" stroke-width="2.4" stroke-linecap="round" opacity=".6">
-            <path d="M100 256 L92 266"/>
-            <path d="M300 256 L292 266"/>
-          </g>
-          <path d="M200 34 V268" fill="none" stroke="rgba(246,241,231,.32)" stroke-width="2.5" stroke-dasharray="9 11" stroke-linecap="round"/>
-          <g transform="translate(146,192) scale(.94)">
-            <use href="#chClap" style="--shirt:#43a89f;--pants:#2f3d4d;--skin:#e8bb8f;--hair:#2a1e14"/>
-          </g>
-          <g transform="translate(400,0) scale(-1,1)">
-            <g transform="translate(146,192) scale(.94)">
-              <use href="#chClap" style="--shirt:#e0b25c;--pants:#3b4a5a;--skin:#d9a878;--hair:#4a3524"/>
-            </g>
-          </g>
-          <path d="M176 104 H224" fill="none" stroke="#e0b25c" stroke-width="2.5" stroke-dasharray="3 8" stroke-linecap="round"/>
-        </svg>
+        <img class="art" src="assets/art/L1-p16.webp" alt="兩個小朋友面對面做鏡子，動作左右對稱，中間一條鏡軸">
       </div>
     </div>
     <template class="notes">
@@ -1126,48 +663,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「數到三，定住，不許動。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="三個定格畫面：等車、吃飯、吵架">
-          <g fill="#16202c" stroke="rgba(246,241,231,.16)" stroke-width="2">
-            <rect x="14" y="34" width="112" height="232" rx="12"/>
-            <rect x="144" y="34" width="112" height="232" rx="12"/>
-            <rect x="274" y="34" width="112" height="232" rx="12"/>
-          </g>
-          <g fill="none" stroke="rgba(246,241,231,.24)" stroke-width="2.4" stroke-linecap="round">
-            <path d="M22 214 H118"/>
-            <path d="M152 214 H248"/>
-            <path d="M282 214 H378"/>
-          </g>
-
-          <g transform="translate(34,192.5) scale(.5)"><use href="#chStand" style="--shirt:#43a89f;--pants:#2f3d4d;--skin:#e8bb8f;--hair:#2a1e14"/></g>
-          <g transform="translate(70,192.5) scale(.5)"><use href="#chWave" style="--shirt:#e0b25c;--pants:#3b4a5a;--skin:#f2c9a0;--hair:#3a2a1a"/></g>
-          <g transform="translate(106,192.5) scale(.5)"><use href="#chLean" style="--shirt:#d8674a;--pants:#46315e;--skin:#d9a878;--hair:#4a3524"/></g>
-          <rect x="44" y="56" width="52" height="20" rx="6" fill="none" stroke="#e0b25c" stroke-width="3"/>
-          <path d="M70 76 V122" fill="none" stroke="#e0b25c" stroke-width="3.4" stroke-linecap="round"/>
-
-          <g transform="translate(164,192.5) scale(.5)"><use href="#chStand" style="--shirt:#b07cc4;--pants:#2f3d4d;--skin:#d9a878;--hair:#4a3524"/></g>
-          <g transform="translate(200,192.5) scale(.5)"><use href="#chPoint" style="--shirt:#e0b25c;--pants:#3b4a5a;--skin:#f2c9a0;--hair:#2a1e14"/></g>
-          <g transform="translate(236,192.5) scale(.5)"><use href="#chStand" style="--shirt:#43a89f;--pants:#46315e;--skin:#e8bb8f;--hair:#3a2a1a"/></g>
-          <rect x="180" y="58" width="44" height="30" rx="6" fill="none" stroke="#e0b25c" stroke-width="3"/>
-          <path d="M188 68 H216 M188 78 H210" fill="none" stroke="#e0b25c" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M156 200 H248" fill="none" stroke="#e0b25c" stroke-width="4" stroke-linecap="round"/>
-          <path d="M164 212 v10 M240 212 v10" fill="none" stroke="#e0b25c" stroke-width="4" stroke-linecap="round"/>
-
-          <g transform="translate(290,192.5) scale(.5)"><use href="#chPoint" style="--shirt:#d8674a;--pants:#2f3d4d;--skin:#f2c9a0;--hair:#3a2a1a"/></g>
-          <g transform="translate(338,192.5) scale(-.5,.5)"><use href="#chPoint" style="--shirt:#e0b25c;--pants:#46315e;--skin:#d9a878;--hair:#241a12"/></g>
-          <g transform="translate(370,192.5) scale(.46)"><use href="#chStand" style="--shirt:#b07cc4;--pants:#3b4a5a;--skin:#e8bb8f;--hair:#4a3524"/></g>
-          <g fill="none" stroke="#d8674a" stroke-width="3.4" stroke-linecap="round">
-            <path d="M280 92 l-10 -12"/>
-            <path d="M286 76 v-13"/>
-            <path d="M380 92 l10 -12"/>
-            <path d="M374 76 v-13"/>
-          </g>
-
-          <g font-family="Songti TC, serif" font-size="17" text-anchor="middle" fill="rgba(246,241,231,.68)">
-            <text x="70" y="246">等車</text>
-            <text x="200" y="246">吃飯</text>
-            <text x="330" y="246">吵架</text>
-          </g>
-        </svg>
+        <img class="art" src="assets/art/L1-p17a.webp" alt="三個定格畫面：等車、吃飯、吵架">
       </div>
     </div>
     <template class="notes">
@@ -1187,52 +683,7 @@ body{
     <div class="act-body">
       <p class="act-line anim">「我們要像一個人。」</p>
       <div class="act-art anim">
-        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="一圈小朋友同一個動作，一起喊一聲嘿">
-          <ellipse cx="200" cy="152" rx="132" ry="86" fill="none" stroke="rgba(224,178,92,.28)" stroke-width="2.5" stroke-dasharray="9 12" stroke-linecap="round"/>
-          <g transform="translate(200,66) scale(1)">
-            <use href="#chBust" style="--shirt:#e0b25c;--hair:#3a2a1a;--skin:#f2c9a0"/>
-            <path d="M24 6 L46 -28" fill="none" stroke="#e0b25c" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="49" cy="-33" r="7.5" fill="#f2c9a0"/>
-          </g>
-          <g transform="translate(293,91) scale(.94)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#2a1e14;--skin:#e8bb8f"/>
-            <path d="M22 6 L44 -26" fill="none" stroke="#43a89f" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="47" cy="-31" r="7.5" fill="#e8bb8f"/>
-          </g>
-          <g transform="translate(332,152) scale(.9)">
-            <use href="#chBust" style="--shirt:#b07cc4;--hair:#4a3524;--skin:#d9a878"/>
-            <path d="M22 6 L46 -22" fill="none" stroke="#b07cc4" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="49" cy="-27" r="7.5" fill="#d9a878"/>
-          </g>
-          <g transform="translate(293,213) scale(1)">
-            <use href="#chBust" style="--shirt:#d8674a;--hair:#241a12;--skin:#f2c9a0"/>
-            <path d="M24 6 L46 -28" fill="none" stroke="#d8674a" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="49" cy="-33" r="7.5" fill="#f2c9a0"/>
-          </g>
-          <g transform="translate(200,238) scale(1.06)">
-            <use href="#chBust" style="--shirt:#43a89f;--hair:#3a2a1a;--skin:#d9a878"/>
-            <path d="M24 6 L46 -28" fill="none" stroke="#43a89f" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="49" cy="-33" r="7.5" fill="#d9a878"/>
-          </g>
-          <g transform="translate(107,213) scale(.92)">
-            <use href="#chBust" style="--shirt:#e0b25c;--hair:#4a3524;--skin:#f2c9a0"/>
-            <path d="M22 6 L44 -26" fill="none" stroke="#e0b25c" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="47" cy="-31" r="7.5" fill="#f2c9a0"/>
-          </g>
-          <g transform="translate(68,152) scale(.96)">
-            <use href="#chBust" style="--shirt:#d8674a;--hair:#2a1e14;--skin:#e8bb8f"/>
-            <path d="M22 6 L46 -22" fill="none" stroke="#d8674a" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="49" cy="-27" r="7.5" fill="#e8bb8f"/>
-          </g>
-          <g transform="translate(107,91) scale(1)">
-            <use href="#chBust" style="--shirt:#b07cc4;--hair:#3a2a1a;--skin:#d9a878"/>
-            <path d="M22 6 L44 -26" fill="none" stroke="#b07cc4" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="47" cy="-31" r="7.5" fill="#d9a878"/>
-          </g>
-          <ellipse cx="200" cy="160" rx="52" ry="26" fill="rgba(224,178,92,.12)" stroke="#e0b25c" stroke-width="2.5"/>
-          <ellipse cx="200" cy="160" rx="62" ry="34" fill="none" stroke="#e0b25c" stroke-width="2" stroke-dasharray="5 9" opacity=".45"/>
-          <text x="200" y="174" fill="#e0b25c" font-family="Songti TC, serif" font-size="38" font-weight="700" text-anchor="middle">嘿</text>
-        </svg>
+        <img class="art" src="assets/art/L1-p18.webp" alt="一圈小朋友同一個動作，一起喊一聲嘿">
       </div>
     </div>
     <template class="notes">
