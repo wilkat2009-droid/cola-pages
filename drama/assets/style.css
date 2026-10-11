@@ -556,6 +556,24 @@ section.scene { padding: 34px 0 44px; }
   .stage { padding-left: 16px; }
 }
 
+/* 動畫連結表：窄螢幕改成卡片，兩個版本變大按鈕 */
+.m-lbl { display: none; }
+@media (max-width: 620px) {
+  .eps { min-width: 0; }
+  .eps thead { display: none; }
+  .eps, .eps tbody, .eps tr, .eps td { display: block; width: auto; }
+  .eps tr { border-bottom: 1px solid var(--line); padding: 13px 2px 15px; }
+  .eps tr:last-child { border-bottom: 0; }
+  .eps td { border: 0; padding: 1px 0; }
+  .eps td:nth-child(1) { font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .14em; color: var(--gold); }
+  .eps td:nth-child(2) { font-size: 17px; font-weight: 600; margin: 2px 0 10px; line-height: 1.4; }
+  .eps td:nth-child(3), .eps td:nth-child(4) { display: inline-block; margin: 0 8px 6px 0; }
+  .eps td a { display: inline-block; padding: 11px 20px; border-radius: 99px; background: var(--teal); color: #fff !important;
+              font-family: var(--sans); font-size: 14.5px; font-weight: 600; text-decoration: none; }
+  .eps td:nth-child(4) a { background: var(--terracotta); }
+  .eps .m-lbl { display: inline; }
+}
+
 /* 列印：劇本逐場分頁、黑白可讀、A4 */
 @media print {
   @page { size: A4; margin: 15mm; }
