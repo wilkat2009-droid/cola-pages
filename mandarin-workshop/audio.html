@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你好，買單 · 音檔</title>
+<style>
+  :root { --ink:#1F2A37; --paper:#FFFDF7; --line:#E9E1D4; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Helvetica Neue",Arial,"PingFang TC","Microsoft JhengHei",sans-serif;
+    padding:20px 16px 90px; -webkit-text-size-adjust:100%; }
+  header { max-width:760px; margin:0 auto 22px; }
+  h1 { font-size:30px; margin:0 0 4px; letter-spacing:1px; }
+  .sub { font-size:15px; color:#6B7280; }
+  section { max-width:760px; margin:0 auto 26px; background:#fff; border-radius:18px;
+    padding:14px 14px 6px; box-shadow:0 2px 10px rgba(31,42,55,.06); }
+  h2 { font-size:22px; margin:2px 0 12px; display:flex; align-items:center; gap:9px; }
+  h2 .dot { width:13px; height:13px; border-radius:50%; background:var(--accent); }
+  h2 small { font-size:13px; font-weight:400; color:#8A93A0; margin-left:auto; }
+  .row { display:flex; align-items:center; gap:12px; padding:9px 4px;
+    border-top:1px solid var(--line); }
+  .row:first-of-type { border-top:none; }
+  .play { flex:0 0 46px; width:46px; height:46px; border-radius:50%; border:none;
+    background:var(--accent,#333); color:#fff; font-size:17px; cursor:pointer;
+    line-height:1; box-shadow:0 2px 6px rgba(0,0,0,.16); }
+  .play:active { transform:scale(.94); }
+  .play.on { background:#111; color:#FFE58A; }
+  .txt { min-width:0; }
+  .cn { font-size:25px; font-weight:700; letter-spacing:1px; line-height:1.25; }
+  .cn.big { font-size:34px; }
+  .cn b { font-size:30px; }
+  .cn .py { font-size:17px; font-weight:400; color:#6B7280; }
+  .py { font-size:16px; color:#4B5563; margin-top:1px; }
+  .en { font-size:14px; color:#8A93A0; }
+  .nums { max-width:760px; margin:0 auto; display:flex; flex-wrap:wrap; gap:8px; }
+  .num { display:flex; align-items:center; gap:6px; background:#fff; border-radius:12px;
+    padding:6px 12px 6px 6px; font-size:20px; font-weight:700;
+    box-shadow:0 1px 5px rgba(31,42,55,.07); }
+  .num .play { flex:0 0 34px; width:34px; height:34px; font-size:13px; background:#2D9CDB; }
+  .stopbar { position:fixed; left:0; right:0; bottom:0; background:#111; padding:12px 16px;
+    display:flex; justify-content:center; }
+  .stopbar button { background:#FFE58A; color:#111; border:none; border-radius:999px;
+    padding:13px 30px; font-size:17px; font-weight:700; cursor:pointer; }
+  footer { max-width:760px; margin:26px auto 0; font-size:13px; color:#9AA3AF; text-align:center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>你好，買單 · 音檔</h1>
+  <div class="sub">Tap ▶ to hear one sentence. One sound plays at a time.</div>
+</header>
+
+<section id="sos" style="--accent:#E8543F">
+<h2><span class="dot"></span>自救八句<small>SOS 8 — survive anything</small></h2>
+<div class="row" id="S1">
+  <button class="play" data-src="audio/S1.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">你好</div>
+  <div class="py">Nǐ hɑ̌o</div>
+  <div class="en">Hello</div></div>
+</div><div class="row" id="S2">
+  <button class="play" data-src="audio/S2.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">謝謝</div>
+  <div class="py">Xièxie</div>
+  <div class="en">Thank you</div></div>
+</div><div class="row" id="S3">
+  <button class="play" data-src="audio/S3.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">不好意思</div>
+  <div class="py">Bù hɑ̌oyìsi</div>
+  <div class="en">Excuse me / Sorry</div></div>
+</div><div class="row" id="S4">
+  <button class="play" data-src="audio/S4.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我不會說中文</div>
+  <div class="py">Wǒ bú huì shuō Zhōnɡwén</div>
+  <div class="en">I don&#x27;t speak Chinese</div></div>
+</div><div class="row" id="S5">
+  <button class="play" data-src="audio/S5.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">請你說慢一點</div>
+  <div class="py">Qǐnɡ nǐ shuō mɑ̀n yìdiɑ̌n</div>
+  <div class="en">Please speak more slowly</div></div>
+</div><div class="row" id="S6">
+  <button class="play" data-src="audio/S6.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">這個怎麼說？</div>
+  <div class="py">Zhèɡe zěnme shuō?</div>
+  <div class="en">How do you say this?</div></div>
+</div><div class="row" id="S7">
+  <button class="play" data-src="audio/S7.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">請寫下來</div>
+  <div class="py">Qǐnɡ xiě xiɑ̀lɑ́i</div>
+  <div class="en">Please write it down</div></div>
+</div><div class="row" id="S8">
+  <button class="play" data-src="audio/S8.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">沒關係</div>
+  <div class="py">Méi ɡuɑ̄nxi</div>
+  <div class="en">No problem / It&#x27;s OK</div></div>
+</div>
+</section>
+<section id="food" style="--accent:#F2994A">
+<h2><span class="dot"></span>場景一 · 食<small>Scene 1 — Eating</small></h2>
+<div class="row" id="F1">
+  <button class="play" data-src="audio/F1.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我要一個這個</div>
+  <div class="py">Wǒ yɑ̀o yí ɡe zhèɡe</div>
+  <div class="en">I&#x27;d like one of these</div></div>
+</div><div class="row" id="F2">
+  <button class="play" data-src="audio/F2.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">不要辣</div>
+  <div class="py">Bú yɑ̀o lɑ̀</div>
+  <div class="en">Not spicy</div></div>
+</div><div class="row" id="F3">
+  <button class="play" data-src="audio/F3.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">少糖</div>
+  <div class="py">Shɑ̌o tɑ́nɡ</div>
+  <div class="en">Less sugar</div></div>
+</div><div class="row" id="F4">
+  <button class="play" data-src="audio/F4.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">買單，謝謝</div>
+  <div class="py">Mɑ̌i dɑ̄n, xièxie</div>
+  <div class="en">The bill, please</div></div>
+</div><div class="row" id="F5">
+  <button class="play" data-src="audio/F5.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">打包</div>
+  <div class="py">Dɑ̌ bɑ̄o</div>
+  <div class="en">Takeaway, please</div></div>
+</div><div class="row" id="F6">
+  <button class="play" data-src="audio/F6.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">很好吃</div>
+  <div class="py">Hěn hɑ̌ochī</div>
+  <div class="en">It&#x27;s delicious</div></div>
+</div><div class="row" id="F7">
+  <button class="play" data-src="audio/F7.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">多少錢？</div>
+  <div class="py">Duōshɑo qiɑ́n?</div>
+  <div class="en">How much?</div></div>
+</div>
+</section>
+<section id="travel" style="--accent:#2D9CDB">
+<h2><span class="dot"></span>場景二 · 行<small>Scene 2 — Getting around</small></h2>
+<div class="row" id="T1">
+  <button class="play" data-src="audio/T1.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我要去這裡</div>
+  <div class="py">Wǒ yɑ̀o qù zhèli</div>
+  <div class="en">I want to go here</div></div>
+</div><div class="row" id="T2">
+  <button class="play" data-src="audio/T2.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">到這裡下車</div>
+  <div class="py">Dɑ̀o zhèli xiɑ̀ chē</div>
+  <div class="en">Stop here, please</div></div>
+</div><div class="row" id="T3">
+  <button class="play" data-src="audio/T3.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">太遠了</div>
+  <div class="py">Tɑ̀i yuɑ̌n le</div>
+  <div class="en">That&#x27;s too far</div></div>
+</div><div class="row" id="T4">
+  <button class="play" data-src="audio/T4.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">地鐵站怎麼走？</div>
+  <div class="py">Dìtiě zhɑ̀n zěnme zǒu?</div>
+  <div class="en">How do I get to the MTR?</div></div>
+</div><div class="row" id="T5">
+  <button class="play" data-src="audio/T5.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我要過關</div>
+  <div class="py">Wǒ yɑ̀o ɡuò ɡuɑ̄n</div>
+  <div class="en">I&#x27;m crossing the border</div></div>
+</div><div class="row" id="T6">
+  <button class="play" data-src="audio/T6.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我要去深圳</div>
+  <div class="py">Wǒ yɑ̀o qù Shēnzhèn</div>
+  <div class="en">I&#x27;m going to Shenzhen</div></div>
+</div>
+</section>
+<section id="social" style="--accent:#27AE60">
+<h2><span class="dot"></span>場景三 · 交朋友<small>Scene 3 — Making friends</small></h2>
+<div class="row" id="P1">
+  <button class="play" data-src="audio/P1.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我叫 David</div>
+  <div class="py">Wǒ jiɑ̀o David</div>
+  <div class="en">My name is David</div></div>
+</div><div class="row" id="P2">
+  <button class="play" data-src="audio/P2.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我是英國人</div>
+  <div class="py">Wǒ shì Yīnɡɡuó rén</div>
+  <div class="en">I&#x27;m British</div></div>
+</div><div class="row" id="P3">
+  <button class="play" data-src="audio/P3.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我住在香港</div>
+  <div class="py">Wǒ zhù zɑ̀i Xiɑ̄nɡɡɑ̌nɡ</div>
+  <div class="en">I live in Hong Kong</div></div>
+</div><div class="row" id="P4">
+  <button class="play" data-src="audio/P4.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">我在香港工作</div>
+  <div class="py">Wǒ zɑ̀i Xiɑ̄nɡɡɑ̌nɡ ɡōnɡzuò</div>
+  <div class="en">I work in Hong Kong</div></div>
+</div><div class="row" id="P5">
+  <button class="play" data-src="audio/P5.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">你是哪裡人？</div>
+  <div class="py">Nǐ shì nɑ̌li rén?</div>
+  <div class="en">Where are you from?</div></div>
+</div><div class="row" id="P6">
+  <button class="play" data-src="audio/P6.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">加我微信</div>
+  <div class="py">Jiɑ̄ wǒ wēixìn</div>
+  <div class="en">Add me on WeChat</div></div>
+</div><div class="row" id="P7">
+  <button class="play" data-src="audio/P7.mp3" aria-label="play">▶</button>
+  <div class="txt"><div class="cn">下次一起吃飯</div>
+  <div class="py">Xiɑ̀ cì yìqǐ chīfɑ̀n</div>
+  <div class="en">Let&#x27;s eat together next time</div></div>
+</div>
+</section>
+
+<section style="--accent:#8E44AD"><h2><span class="dot"></span>四聲 Cí diào · The four tones</h2><div class="row"><button class="play" data-src="audio/tone1.mp3">▶</button>
+<div class="txt"><div class="cn">ˉ mɑ̄ <b>媽</b></div>
+<div class="en">High &amp; flat — hand sweeps level, high</div></div></div><div class="row"><button class="play" data-src="audio/tone2.mp3">▶</button>
+<div class="txt"><div class="cn">ˊ mɑ́ <b>麻</b></div>
+<div class="en">Rising — hand climbs up</div></div></div><div class="row"><button class="play" data-src="audio/tone3.mp3">▶</button>
+<div class="txt"><div class="cn">ˇ mɑ̌ <b>馬</b></div>
+<div class="en">Dip then rise — hand dives down and comes back up</div></div></div><div class="row"><button class="play" data-src="audio/tone4.mp3">▶</button>
+<div class="txt"><div class="cn">ˋ mɑ̀ <b>罵</b></div>
+<div class="en">Falling — hand chops down fast</div></div></div></section>
+
+<section style="--accent:#16A085"><h2><span class="dot"></span>漢字 Hàn zì · Characters</h2><div class="row"><button class="play" data-src="audio/hz_人.mp3">▶</button>
+<div class="txt"><div class="cn big">人 <span class="py">rén</span></div>
+<div class="en">person</div></div></div><div class="row"><button class="play" data-src="audio/hz_大.mp3">▶</button>
+<div class="txt"><div class="cn big">大 <span class="py">dà</span></div>
+<div class="en">big</div></div></div><div class="row"><button class="play" data-src="audio/hz_山.mp3">▶</button>
+<div class="txt"><div class="cn big">山 <span class="py">shān</span></div>
+<div class="en">mountain</div></div></div><div class="row"><button class="play" data-src="audio/hz_水.mp3">▶</button>
+<div class="txt"><div class="cn big">水 <span class="py">shuǐ</span></div>
+<div class="en">water</div></div></div><div class="row"><button class="play" data-src="audio/hz_火.mp3">▶</button>
+<div class="txt"><div class="cn big">火 <span class="py">huǒ</span></div>
+<div class="en">fire</div></div></div><div class="row"><button class="play" data-src="audio/hz_木.mp3">▶</button>
+<div class="txt"><div class="cn big">木 <span class="py">mù</span></div>
+<div class="en">tree</div></div></div><div class="row"><button class="play" data-src="audio/hz_日.mp3">▶</button>
+<div class="txt"><div class="cn big">日 <span class="py">rì</span></div>
+<div class="en">sun</div></div></div><div class="row"><button class="play" data-src="audio/hz_月.mp3">▶</button>
+<div class="txt"><div class="cn big">月 <span class="py">yuè</span></div>
+<div class="en">moon</div></div></div><div class="row"><button class="play" data-src="audio/hz_門.mp3">▶</button>
+<div class="txt"><div class="cn big">門 <span class="py">mén</span></div>
+<div class="en">door</div></div></div><div class="row"><button class="play" data-src="audio/hz_魚.mp3">▶</button>
+<div class="txt"><div class="cn big">魚 <span class="py">yú</span></div>
+<div class="en">fish</div></div></div></section>
+
+<section style="--accent:#E67E22"><h2><span class="dot"></span>數字 Shù zì · Numbers</h2>
+<div class="nums"><div class="num"><button class="play" data-src="audio/num1.mp3">▶</button>一</div><div class="num"><button class="play" data-src="audio/num2.mp3">▶</button>二</div><div class="num"><button class="play" data-src="audio/num3.mp3">▶</button>三</div><div class="num"><button class="play" data-src="audio/num4.mp3">▶</button>四</div><div class="num"><button class="play" data-src="audio/num5.mp3">▶</button>五</div><div class="num"><button class="play" data-src="audio/num6.mp3">▶</button>六</div><div class="num"><button class="play" data-src="audio/num7.mp3">▶</button>七</div><div class="num"><button class="play" data-src="audio/num8.mp3">▶</button>八</div><div class="num"><button class="play" data-src="audio/num9.mp3">▶</button>九</div><div class="num"><button class="play" data-src="audio/num10.mp3">▶</button>十</div></div>
+<div style="height:10px"></div>
+<div class="nums"><div class="num"><button class="play" data-src="audio/price1.mp3">▶</button>18</div><div class="num"><button class="play" data-src="audio/price2.mp3">▶</button>25</div><div class="num"><button class="play" data-src="audio/price3.mp3">▶</button>32</div><div class="num"><button class="play" data-src="audio/price4.mp3">▶</button>47</div><div class="num"><button class="play" data-src="audio/price5.mp3">▶</button>58</div><div class="num"><button class="play" data-src="audio/price6.mp3">▶</button>69</div><div class="num"><button class="play" data-src="audio/price7.mp3">▶</button>76</div><div class="num"><button class="play" data-src="audio/price8.mp3">▶</button>83</div><div class="num"><button class="play" data-src="audio/price9.mp3">▶</button>95</div><div class="num"><button class="play" data-src="audio/price10.mp3">▶</button>120</div><div class="num"><button class="play" data-src="audio/price11.mp3">▶</button>168</div><div class="num"><button class="play" data-src="audio/price12.mp3">▶</button>238</div></div>
+</section>
+
+<div class="stopbar"><button id="stopall">■ 停止全部 Stop all</button></div>
+<footer>語荷教育 · 你好，買單 · Mandarin in Action</footer>
+
+<script>
+(function () {
+  var cur = null;
+  var buttons = document.querySelectorAll('.play');
+  function stopAll() {
+    if (cur) { cur.pause(); cur.currentTime = 0; }
+    cur = null;
+    document.querySelectorAll('.play.on').forEach(function (b) { b.classList.remove('on'); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var src = b.getAttribute('data-src');
+      var wasOn = b.classList.contains('on');
+      stopAll();
+      if (wasOn) return;
+      var a = new Audio(src);
+      cur = a;
+      b.classList.add('on');
+      a.addEventListener('ended', function () { b.classList.remove('on'); if (cur === a) cur = null; });
+      a.play();
+    });
+  });
+  document.getElementById('stopall').addEventListener('click', stopAll);
+})();
+</script>
+</body>
+</html>

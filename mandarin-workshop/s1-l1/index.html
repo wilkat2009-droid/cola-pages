@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 1 課 · 開口第一句 — 課堂展示</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Arial,"PingFang TC",Arial,"PingFang HK","Hiragino Sans",sans-serif;background:#0f2b2a;color:#12312f;
+ overflow:hidden;-webkit-font-smoothing:antialiased}
+.py{font-family:Arial,"Helvetica Neue",sans-serif}
+.kai{font-family:"Kaiti SC","STKaiti","BiauKai",Arial,"PingFang TC",serif}
+.slide{position:fixed;inset:0;display:none;flex-direction:column;padding:4.5vh 5vw;
+ background:radial-gradient(120% 120% at 15% 0%,#ffffff 0%,#f2efe7 55%,#e7e1d5 100%)}
+.slide.on{display:flex}
+.title{font-size:min(9vw,9vh);font-weight:900;letter-spacing:.02em;line-height:1}
+.bar{display:flex;align-items:center;gap:14px;margin-bottom:2.2vh}
+.bar .dot{width:clamp(14px,1.7vw,26px);height:clamp(14px,1.7vw,26px);border-radius:50%}
+.bar h2{font-size:clamp(22px,3.3vw,54px);font-weight:900}
+.bar .en{font-size:clamp(12px,1.5vw,24px);color:#5b6b69;font-weight:700}
+.flex{flex:1;display:grid;gap:clamp(10px,1.6vh,22px);min-height:0}
+.g2{grid-template-columns:1fr 1fr}
+.g2r{grid-template-columns:1fr 1fr;grid-auto-rows:1fr}
+.card{display:flex;align-items:center;gap:clamp(10px,1.6vw,26px);background:#fff;border-radius:clamp(12px,1.6vw,24px);
+ padding:clamp(10px,1.8vh,26px) clamp(14px,2vw,34px);box-shadow:0 10px 30px rgba(20,50,48,.12);
+ border-left:clamp(8px,1vw,16px) solid #0e7c7b;min-height:0}
+.card .hz{font-family:"Kaiti SC","STKaiti","BiauKai",Arial,"PingFang TC",serif;
+ font-size:clamp(34px,5.4vw,108px);line-height:1;white-space:nowrap}
+.card .col{display:flex;flex-direction:column;gap:.4vh;min-width:0}
+.card .py{font-size:clamp(15px,2.05vw,40px);font-weight:800;color:#0d5f8a}
+.card .en{font-size:clamp(12px,1.5vw,26px);color:#5b6b69}
+.card .spk{margin-left:auto;flex:0 0 auto;display:flex;align-items:center;gap:.5vw}
+.spk button{border:0;border-radius:999px;background:#0e7c7b;display:flex;align-items:center;justify-content:center;
+ width:clamp(46px,5.4vw,96px);height:clamp(46px,5.4vw,96px);cursor:pointer;box-shadow:0 6px 16px rgba(14,124,123,.4)}
+.ic{width:52%;height:52%;display:block}
+.c-greet{border-left-color:#e0563c} .c-greet .spk button{background:#e0563c;box-shadow:0 6px 16px rgba(224,86,60,.4)}
+.c-intro{border-left-color:#2f6fd0} .c-intro .spk button{background:#2f6fd0;box-shadow:0 6px 16px rgba(47,111,208,.4)}
+.c-sos{border-left-color:#0e7c7b}
+.c-close{border-left-color:#7c5cbf} .c-close .spk button{background:#7c5cbf;box-shadow:0 6px 16px rgba(124,92,191,.4)}
+/* 封面 */
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6vh}
+.hero .big{font-family:"Kaiti SC","STKaiti",serif;font-size:min(30vw,42vh);line-height:.9;font-weight:400}
+.hero .py{font-size:min(6vw,7vh);font-weight:800;color:#0d5f8a}
+.hero .en{font-size:min(3.4vw,4vh);color:#5b6b69}
+/* 四聲 */
+.tone4{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,24px)}
+.tcard{background:#fff;border-radius:clamp(12px,1.6vw,24px);box-shadow:0 10px 30px rgba(20,50,48,.12);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vh;padding:2vh 1vw}
+.tcard .mk{font-size:clamp(40px,6vw,120px);color:#0e7c7b;line-height:.8}
+.tcard .syl{font-size:clamp(34px,5vw,100px);font-weight:800;color:#0d5f8a;line-height:1}
+.tcard .w{display:flex;align-items:baseline;gap:1.4vw}
+.tcard .w .k{font-family:"Kaiti SC","STKaiti",serif;font-size:clamp(28px,4vw,80px)}
+.tcard .w .e{font-size:clamp(11px,1.3vw,22px);color:#5b6b69}
+.tcard button{border:0;border-radius:999px;background:#0e7c7b;display:flex;align-items:center;justify-content:center;
+ width:clamp(34px,4vw,68px);height:clamp(34px,4vw,68px);cursor:pointer}
+/* 轉盤 */
+.wheelwrap{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3vw;min-height:0;align-items:center}
+.wheelbox{display:flex;align-items:center;justify-content:center}
+.wheel{position:relative;width:min(40vw,62vh);height:min(40vw,62vh);border-radius:50%;
+ border:clamp(8px,1vw,18px) solid #ffffff;box-shadow:0 18px 46px rgba(20,50,48,.28);
+ transition:transform 1.5s cubic-bezier(.16,.82,.24,1)}
+.needle{position:absolute;top:-2.2vh;left:50%;transform:translateX(-50%);width:0;height:0;
+ border-left:clamp(10px,1.3vw,22px) solid transparent;border-right:clamp(10px,1.3vw,22px) solid transparent;
+ border-top:clamp(26px,3.4vw,54px) solid #e0563c;z-index:5;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25))}
+.wheelbox{position:relative}
+.spincol{display:flex;flex-direction:column;gap:2.4vh;min-height:0}
+.spincol button.spin{border:0;border-radius:999px;background:#e0563c;color:#ffffff;font-size:clamp(18px,2.2vw,40px);
+ font-weight:800;padding:1.8vh 2vw;cursor:pointer;box-shadow:0 10px 24px rgba(224,86,60,.4)}
+.resultcard{flex:1;background:#fff;border-radius:clamp(12px,1.6vw,24px);box-shadow:0 10px 30px rgba(20,50,48,.12);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2vh;padding:2vh 1.4vw;min-height:0;text-align:center}
+.resultcard .hz{font-family:"Kaiti SC","STKaiti",serif;font-size:clamp(40px,6.4vw,130px);line-height:1}
+.resultcard .py{font-size:clamp(18px,2.6vw,52px);font-weight:800;color:#0d5f8a}
+.resultcard .en{font-size:clamp(13px,1.7vw,30px);color:#5b6b69}
+.resultcard button{border:0;border-radius:999px;background:#0e7c7b;display:flex;align-items:center;justify-content:center;
+ width:clamp(44px,5vw,88px);height:clamp(44px,5vw,88px);cursor:pointer;margin-top:1vh}
+/* 小測驗 */
+.quiz{flex:1;display:flex;flex-direction:column;gap:2.2vh;min-height:0}
+.qprompt{font-size:clamp(20px,3vw,60px);font-weight:900;line-height:1.15}
+.qprompt .py{display:block;font-size:clamp(13px,1.5vw,26px);color:#5b6b69;font-weight:700;margin-top:.6vh}
+.qopts{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,24px);min-height:0}
+.opt{background:#fff;border-radius:clamp(12px,1.6vw,24px);box-shadow:0 10px 30px rgba(20,50,48,.12);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vh;cursor:pointer;
+ border:0;border-top:clamp(6px,.8vw,14px) solid #cbd8d6;padding:2vh 1vw;min-height:0}
+.opt .hz{font-family:"Kaiti SC","STKaiti",serif;font-size:clamp(26px,3.8vw,76px);line-height:1}
+.opt .py{font-size:clamp(13px,1.7vw,30px);font-weight:800;color:#0d5f8a}
+.opt .en{font-size:clamp(11px,1.3vw,22px);color:#5b6b69;text-align:center}
+.opt.right{border-top-color:#0e7c7b;background:#eafaf5}
+.opt.wrong{border-top-color:#e0563c;background:#fdece7;opacity:.75}
+.opt .en.hide{visibility:hidden}
+.qfoot{display:flex;align-items:center;gap:2vw}
+.qfoot .dots{display:flex;gap:1vw}
+.qfoot .dots i{width:clamp(10px,1.1vw,20px);height:clamp(10px,1.1vw,20px);border-radius:50%;background:#cbd8d6}
+.qfoot .dots i.cur{background:#e0563c}
+.qfoot button{border:0;border-radius:999px;background:#0e7c7b;color:#ffffff;font-size:clamp(14px,1.7vw,30px);
+ padding:1vh 2vw;cursor:pointer}
+/* 控制 */
+.nav{position:fixed;bottom:1.6vh;right:2vw;display:flex;gap:1vw;z-index:20}
+.nav button{border:0;border-radius:999px;background:#12312f;display:flex;align-items:center;justify-content:center;
+ width:clamp(40px,4.6vw,74px);height:clamp(40px,4.6vw,74px);cursor:pointer;opacity:.9}
+.nav .ic{width:46%;height:46%}
+.stopall{position:fixed;bottom:1.6vh;left:2vw;z-index:20;border:0;border-radius:999px;background:#e0563c;
+ color:#ffffff;font-size:clamp(14px,1.6vw,28px);padding:clamp(8px,1vh,16px) clamp(14px,1.6vw,30px);cursor:pointer;
+ font-weight:800;opacity:.9}
+.progress{position:fixed;top:0;left:0;height:.5vh;background:#e0563c;z-index:30;transition:width .3s}
+</style>
+<style>/* 拼音字形保護：Arial 起頭，避免回退到 PingFang TC 令 ɑ 的調號分家 */
+.py,.sm-py,.pinyin,[class$='-py']{font-family:Arial,"Helvetica Neue","Kaiti TC",sans-serif !important;}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<section class="slide" id="s-hero"><div class="hero"><div class="big">你好</div><div class="py">Nǐ hɑ̌o</div><div class="en">Hello</div></div></section><section class="slide" id="s-greet"><div class="bar"><span class="dot" style="background:#e0563c"></span><h2>打招呼</h2><span class="en">Greetings</span></div><div class="flex g2r"><div class="card c-greet"><span class="hz">你好</span><span class="col"><span class="py">Nǐ hɑ̌o</span><span class="en">Hello</span></span><span class="spk"><button data-audio="S1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-greet"><span class="hz">謝謝</span><span class="col"><span class="py">Xièxie</span><span class="en">Thank you</span></span><span class="spk"><button data-audio="S2"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-greet"><span class="hz">不好意思</span><span class="col"><span class="py">Bù hɑ̌oyìsi</span><span class="en">Excuse me / Sorry</span></span><span class="spk"><button data-audio="S3"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-greet"><span class="hz">沒關係</span><span class="col"><span class="py">Méi ɡuɑ̄nxi</span><span class="en">No problem / It's OK</span></span><span class="spk"><button data-audio="S8"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div></div></section><section class="slide" id="s-intro"><div class="bar"><span class="dot" style="background:#2f6fd0"></span><h2>自我介紹</h2><span class="en">About me</span></div><div class="flex g2r"><div class="card c-intro"><span class="hz">我叫 David</span><span class="col"><span class="py">Wǒ jiɑ̀o David</span><span class="en">My name is David</span></span><span class="spk"><button data-audio="P1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-intro"><span class="hz">我是英國人</span><span class="col"><span class="py">Wǒ shì Yīnɡɡuó rén</span><span class="en">I'm British</span></span><span class="spk"><button data-audio="P2"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-intro"><span class="hz">我住在香港</span><span class="col"><span class="py">Wǒ zhù zɑ̀i Xiɑ̄nɡɡɑ̌nɡ</span><span class="en">I live in Hong Kong</span></span><span class="spk"><button data-audio="P3"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-intro"><span class="hz">你是哪裡人？</span><span class="col"><span class="py">Nǐ shì nɑ̌li rén?</span><span class="en">Where are you from?</span></span><span class="spk"><button data-audio="P5"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div></div></section><section class="slide" id="s-sos"><div class="bar"><span class="dot" style="background:#0e7c7b"></span><h2>聽不懂 · 自救</h2><span class="en">Rescue lines</span></div><div class="flex g2r"><div class="card c-sos"><span class="hz">我不會說中文</span><span class="col"><span class="py">Wǒ bú huì shuō Zhōnɡwén</span><span class="en">I don't speak Chinese</span></span><span class="spk"><button data-audio="S4"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-sos"><span class="hz">請你說慢一點</span><span class="col"><span class="py">Qǐnɡ nǐ shuō mɑ̀n yìdiɑ̌n</span><span class="en">Please speak more slowly</span></span><span class="spk"><button data-audio="S5"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-sos"><span class="hz">這個怎麼說？</span><span class="col"><span class="py">Zhèɡe zěnme shuō?</span><span class="en">How do you say this?</span></span><span class="spk"><button data-audio="S6"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-sos"><span class="hz">請寫下來</span><span class="col"><span class="py">Qǐnɡ xiě xiɑ̀lɑ́i</span><span class="en">Please write it down</span></span><span class="spk"><button data-audio="S7"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div></div></section><section class="slide" id="s-close"><div class="bar"><span class="dot" style="background:#7c5cbf"></span><h2>收尾 · 交朋友</h2><span class="en">Wrapping up</span></div><div class="flex g2r"><div class="card c-close"><span class="hz">加我微信</span><span class="col"><span class="py">Jiɑ̄ wǒ wēixìn</span><span class="en">Add me on WeChat</span></span><span class="spk"><button data-audio="P6"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div><div class="card c-close"><span class="hz">下次一起吃飯</span><span class="col"><span class="py">Xiɑ̀ cì yìqǐ chīfɑ̀n</span><span class="en">Let's eat together next time</span></span><span class="spk"><button data-audio="P7"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div></div></section><section class="slide" id="s-tones"><div class="bar"><span class="dot" style="background:#0e7c7b"></span><h2>四聲體操</h2><span class="en">Tone Gym</span></div><div class="tone4"><div class="tcard"><div class="mk">ˉ</div><div class="syl py">mɑ̄</div><div class="w"><span class="k">媽</span><span class="e">High & flat — hand sweeps level, high</span></div><button data-audio="tone1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></div><div class="tcard"><div class="mk">ˊ</div><div class="syl py">mɑ́</div><div class="w"><span class="k">麻</span><span class="e">Rising — hand climbs up</span></div><button data-audio="tone2"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></div><div class="tcard"><div class="mk">ˇ</div><div class="syl py">mɑ̌</div><div class="w"><span class="k">馬</span><span class="e">Dip then rise — hand dives down and comes back up</span></div><button data-audio="tone3"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></div><div class="tcard"><div class="mk">ˋ</div><div class="syl py">mɑ̀</div><div class="w"><span class="k">罵</span><span class="e">Falling — hand chops down fast</span></div><button data-audio="tone4"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M4 9h3l5-4v14l-5-4H4z"/><path d="M15.4 8.6a5 5 0 0 1 0 6.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M17.8 6.2a8 8 0 0 1 0 11.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg></button></div></div></section><section class="slide" id="s-wheel"><div class="bar"><span class="dot" style="background:#e0563c"></span><h2>轉盤</h2></div><div class="wheelwrap"><div class="wheelbox"><div class="needle"></div><div class="wheel" id="wheel"></div></div><div class="spincol"><div class="resultcard" id="result"><div class="en" style="font-size:clamp(16px,2vw,34px)">🎡</div></div><button class="spin" id="spinBtn">轉一轉</button></div></div></section><section class="slide" id="s-quiz"><div class="bar"><span class="dot" style="background:#2f6fd0"></span><h2>小測驗</h2></div><div class="quiz"><div class="qprompt" id="qPrompt"></div><div class="qopts" id="qOpts"></div><div class="qfoot"><div class="dots" id="qDots"></div><button id="qReset">再玩一次</button></div></div></section>
+<button class="stopall" id="stopAll">停</button>
+<div class="nav"><button id="prev"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button id="next"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>
+<audio id="player" preload="none"></audio>
+<script>
+const DECK = [{"tc": "你好", "py": "Nǐ hɑ̌o", "en": "Hello", "id": "S1"}, {"tc": "謝謝", "py": "Xièxie", "en": "Thank you", "id": "S2"}, {"tc": "不好意思", "py": "Bù hɑ̌oyìsi", "en": "Excuse me / Sorry", "id": "S3"}, {"tc": "沒關係", "py": "Méi ɡuɑ̄nxi", "en": "No problem / It's OK", "id": "S8"}, {"tc": "我叫 David", "py": "Wǒ jiɑ̀o David", "en": "My name is David", "id": "P1"}, {"tc": "我是英國人", "py": "Wǒ shì Yīnɡɡuó rén", "en": "I'm British", "id": "P2"}, {"tc": "我住在香港", "py": "Wǒ zhù zɑ̀i Xiɑ̄nɡɡɑ̌nɡ", "en": "I live in Hong Kong", "id": "P3"}, {"tc": "你是哪裡人？", "py": "Nǐ shì nɑ̌li rén?", "en": "Where are you from?", "id": "P5"}, {"tc": "我不會說中文", "py": "Wǒ bú huì shuō Zhōnɡwén", "en": "I don't speak Chinese", "id": "S4"}, {"tc": "請你說慢一點", "py": "Qǐnɡ nǐ shuō mɑ̀n yìdiɑ̌n", "en": "Please speak more slowly", "id": "S5"}, {"tc": "這個怎麼說？", "py": "Zhèɡe zěnme shuō?", "en": "How do you say this?", "id": "S6"}, {"tc": "請寫下來", "py": "Qǐnɡ xiě xiɑ̀lɑ́i", "en": "Please write it down", "id": "S7"}, {"tc": "加我微信", "py": "Jiɑ̄ wǒ wēixìn", "en": "Add me on WeChat", "id": "P6"}, {"tc": "下次一起吃飯", "py": "Xiɑ̀ cì yìqǐ chīfɑ̀n", "en": "Let's eat together next time", "id": "P7"}];
+const SPK = "<svg class=\"ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#ffffff\" d=\"M4 9h3l5-4v14l-5-4H4z\"/><path d=\"M15.4 8.6a5 5 0 0 1 0 6.8\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M17.8 6.2a8 8 0 0 1 0 11.6\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>";
+const BASE = "../../../工作坊/audio/";
+const player = document.getElementById('player');
+let cur = null;
+function play(id, btn){
+  player.pause();
+  player.currentTime = 0;
+  player.src = BASE + id + '.mp3';
+  player.play();
+  document.querySelectorAll('[data-audio]').forEach(b=>b.style.outline='none');
+  if(btn) btn.style.outline = '4px solid #ffd166';
+}
+document.querySelectorAll('[data-audio]').forEach(b=>b.onclick=()=>play(b.dataset.audio,b));
+document.getElementById('stopAll').onclick=()=>{player.pause();player.currentTime=0;};
+
+/* 轉盤：格數＝詞數（14 格） */
+const COLORS=['#0e7c7b','#e0563c','#2f6fd0','#c9821a','#7c5cbf','#189a86','#d4562f','#3f7fc9',
+ '#8a6a1e','#9a6fc9','#0f5f5c','#b23a26','#1c56ab','#5e46a0'];
+function wheelGradient(n){
+  const step=360/n, stops=[];
+  for(let i=0;i<n;i++){
+    const a=i*step, b=(i+1)*step, cut=Math.max(a,b-Math.min(1.2,step*0.05));
+    stops.push(`${COLORS[i%COLORS.length]} ${a}deg ${cut}deg`);
+    stops.push(`#f4efe6 ${cut}deg ${b}deg`);
+  }
+  return `conic-gradient(from ${-step/2}deg, ${stops.join(',')})`;
+}
+const wheel=document.getElementById('wheel');
+wheel.style.background=wheelGradient(DECK.length);
+let rot=0, seen=[];
+document.getElementById('spinBtn').onclick=()=>{
+  let fresh=DECK.filter(c=>seen.indexOf(c.id)<0);
+  if(!fresh.length){ seen=[]; fresh=DECK.slice(); }
+  const card=fresh[Math.floor(Math.random()*fresh.length)];
+  seen.push(card.id);
+  const idx=DECK.findIndex(c=>c.id===card.id);
+  const step=360/DECK.length;
+  rot = rot-(rot%360)+1440+((360-(idx*step))%360);
+  wheel.style.transform=`rotate(${rot}deg)`;
+  const rc=document.getElementById('result');
+  rc.innerHTML=`<div class="en" style="font-size:clamp(16px,2vw,34px)">🎡</div>`;
+  setTimeout(()=>{
+    rc.innerHTML=`<div class="hz">${card.tc}</div><div class="py">${card.py}</div>`
+      +`<div class="en">${card.en}</div>`
+      +`<button data-audio="${card.id}">${SPK}</button>`;
+    rc.querySelector('button').onclick=()=>play(card.id, rc.querySelector('button'));
+  },1500);
+};
+
+/* Quiz: reveal on tap; nothing is marked correct before the student chooses */
+const QUIZ=[
+ {q:'Say hello to someone.',opts:[
+    {tc:'你好',py:'Nǐ hɑ̌o',en:'Hello',ok:1},
+    {tc:'謝謝',py:'Xièxie',en:'Thank you',ok:0},
+    {tc:'不好意思',py:'Bù hɑ̌oyìsi',en:'Excuse me',ok:0}]},
+ {q:"You didn't catch it. Ask them to speak slowly.",opts:[
+    {tc:'請你說慢一點',py:'Qǐnɡ nǐ shuō mɑ̀n yìdiɑ̌n',en:'Please speak more slowly',ok:1},
+    {tc:'請寫下來',py:'Qǐnɡ xiě xiɑ̀lɑ́i',en:'Please write it down',ok:0},
+    {tc:'我不會說中文',py:'Wǒ bú huì shuō Zhōnɡwén',en:"I don't speak Chinese",ok:0}]},
+ {q:'Tell them your name is David.',opts:[
+    {tc:'我叫 David',py:'Wǒ jiɑ̀o David',en:'My name is David',ok:1},
+    {tc:'我住在香港',py:'Wǒ zhù zɑ̀i Xiɑ̄nɡɡɑ̌nɡ',en:'I live in Hong Kong',ok:0},
+    {tc:'我是英國人',py:'Wǒ shì Yīnɡɡuó rén',en:"I'm British",ok:0}]},
+ {q:'Ask where the other person is from.',opts:[
+    {tc:'你是哪裡人？',py:'Nǐ shì nɑ̌li rén?',en:'Where are you from?',ok:1},
+    {tc:'這個怎麼說？',py:'Zhèɡe zěnme shuō?',en:'How do you say this?',ok:0},
+    {tc:'加我微信',py:'Jiɑ̄ wǒ wēixìn',en:'Add me on WeChat',ok:0}]},
+ {q:'Ask them to write it down.',opts:[
+    {tc:'請寫下來',py:'Qǐnɡ xiě xiɑ̀lɑ́i',en:'Please write it down',ok:1},
+    {tc:'沒關係',py:'Méi ɡuɑ̄nxi',en:"It's OK",ok:0},
+    {tc:'下次一起吃飯',py:'Xiɑ̀ cì yìqǐ chīfɑ̀n',en:"Let's eat together next time",ok:0}]}
+];
+let qi=0;
+function renderQuiz(){
+  const item=QUIZ[qi];
+  document.getElementById('qPrompt').innerHTML=`${item.q}`;
+  const opts=document.getElementById('qOpts');
+  opts.innerHTML=item.opts.map(o=>
+    `<button class="opt"><span class="hz">${o.tc}</span><span class="py">${o.py}</span>`
+    +`<span class="en hide">${o.en}</span></button>`).join('');
+  opts.querySelectorAll('.opt').forEach((b,i)=>{
+    b.onclick=()=>{
+      const o=item.opts[i];
+      opts.querySelectorAll('.opt').forEach(x=>x.classList.remove('right','wrong'));
+      b.classList.add(o.ok?'right':'wrong');
+      b.querySelector('.en').classList.remove('hide');
+      if(o.ok){ setTimeout(()=>{ qi=(qi+1)%QUIZ.length; renderQuiz(); },1400); }
+    };
+  });
+  const dots=document.getElementById('qDots');
+  dots.innerHTML=QUIZ.map((_,i)=>`<i class="${i===qi?'cur':''}"></i>`).join('');
+}
+document.getElementById('qReset').onclick=()=>{ qi=0; renderQuiz(); };
+renderQuiz();
+
+/* 換頁 */
+const ids=['hero','greet','intro','sos','close','tones','wheel','quiz'];
+let page=0;
+function show(p){
+  page=Math.max(0,Math.min(ids.length-1,p));
+  document.querySelectorAll('.slide').forEach(s=>s.classList.remove('on'));
+  document.getElementById('s-'+ids[page]).classList.add('on');
+  document.getElementById('prog').style.width=((page+1)/ids.length*100)+'%';
+  player.pause();
+}
+document.getElementById('next').onclick=()=>show(page+1);
+document.getElementById('prev').onclick=()=>show(page-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') show(page+1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp') show(page-1);
+});
+show(0);
+</script>
+</body></html>
