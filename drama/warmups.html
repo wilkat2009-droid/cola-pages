@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316202c'/%3E%3Cg stroke='%23b8863b' stroke-width='6.2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.4 19h59.2v31.3a29.6 29.6 0 0 1-59.2 0z'/%3E%3Cpath d='M40.4 53.4a13.3 13.3 0 0 0 19.2 0'/%3E%3C/g%3E%3Ccircle cx='39.2' cy='36' r='3.6' fill='%23b8863b'/%3E%3Ccircle cx='60.8' cy='36' r='3.6' fill='%23b8863b'/%3E%3C/svg%3E">
+<title>每節都做 · 戲劇基本功遊戲 | 語荷教育 · 兒童戲劇</title>
+<meta name="description" content="話劇校隊 25 節課的基本功遊戲體系：肢體誇張、表情誇張、開放自己、跟誰都能合作。每節一個主遊戲＋一個回鍋遊戲，手機備課用。">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ===== warmups.html 專用：手機優先、卡片式、按鈕大 ===== */
+.wrap-wg { max-width: 760px; }
+
+/* 今天要看的那一張 */
+.wg-today {
+  background: linear-gradient(150deg, var(--ink) 0%, #26384a 58%, #3b4a44 100%);
+  color: #fff; border-radius: var(--radius); padding: 20px 20px 18px;
+  box-shadow: var(--shadow-lg); margin-top: 8px;
+}
+.wg-today .wg-t-top {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,.18); padding-bottom: 12px; margin-bottom: 14px;
+}
+.wg-today .wg-badge {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  background: var(--gold); color: #1d1405; border-radius: 999px; padding: 3px 12px;
+}
+.wg-today h2 { font-family: var(--serif); font-size: 21px; margin: 0; line-height: 1.35; color: #fff; }
+.wg-today .wg-sub { font-size: 13px; color: rgba(255,255,255,.7); margin: 6px 0 0; width: 100%; }
+.wg-slot-label {
+  font-size: 11.5px; letter-spacing: .16em; color: rgba(255,255,255,.62);
+  text-transform: uppercase; margin: 0 0 6px;
+}
+.wg-slot {
+  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 10px;
+}
+.wg-slot .wg-gname { font-family: var(--serif); font-size: 17.5px; font-weight: 600; }
+.wg-slot .wg-gmeta { font-size: 12.5px; color: rgba(255,255,255,.72); margin-top: 4px; }
+.wg-slot .wg-gscene { font-size: 12.5px; color: #f0d9a8; margin-top: 6px; }
+.wg-today .btn { width: 100%; justify-content: center; margin-top: 6px; }
+.wg-today .btn-primary { background: var(--gold); color: #1d1405; }
+.wg-today .btn-primary:hover { background: #caa058; }
+
+/* 節數選擇 */
+.wg-picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.wg-picker button {
+  flex: 0 0 auto; min-width: 92px; padding: 11px 10px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--card); color: var(--ink-soft);
+  font-family: var(--sans); font-size: 14px; cursor: pointer; text-align: center; line-height: 1.35;
+  transition: all .14s;
+}
+.wg-picker button small { display: block; font-size: 11px; color: var(--muted); }
+.wg-picker button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.wg-picker button.on small { color: rgba(255,255,255,.7); }
+.wg-picker button.hot { border-color: var(--terracotta); }
+.wg-picker button.star { box-shadow: inset 0 0 0 2px var(--gold-soft); }
+
+/* 逐分鐘 run sheet（第 2、3 節）*/
+.wg-run { display: grid; gap: 10px; }
+.wg-block {
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--teal);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 14px;
+}
+.wg-block .wg-t { font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--teal); }
+.wg-block .wg-do { font-weight: 600; margin: 3px 0 6px; font-size: 15px; }
+.wg-block .wg-pos { font-size: 12.5px; color: var(--muted); margin: 0 0 6px; }
+.wg-block .wg-say { font-size: 14px; color: var(--ink-soft); }
+.wg-block .wg-say b { background: var(--gold-soft); border-radius: 4px; padding: 0 3px; }
+
+/* 遊戲卡 */
+.wg-layers { display: grid; gap: 14px; }
+.wg-layer-head {
+  font-family: var(--serif); font-size: 17px; font-weight: 600;
+  padding: 6px 0 8px; border-bottom: 2px solid var(--line-soft); margin-top: 8px;
+}
+.wg-layer-head span { font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .12em; color: var(--gold); margin-right: 8px; }
+.wg-card { border-left: 4px solid var(--gold); }
+.wg-card[data-layer="1"] { border-left-color: var(--terracotta); }
+.wg-card[data-layer="2"] { border-left-color: var(--plum); }
+.wg-card[data-layer="3"] { border-left-color: var(--teal); }
+.wg-card[data-layer="4"] { border-left-color: var(--gold); }
+.wg-card .wg-cmd { color: #6b4d17; background: var(--gold-soft); border-radius: var(--radius-sm); padding: 10px 13px; font-size: 14px; margin-top: 12px; }
+.wg-card .wg-cmd strong { display: block; font-size: 12px; letter-spacing: .1em; color: #59400f; margin-bottom: 4px; }
+.wg-card .wg-prob { margin-top: 12px; font-size: 13.8px; color: var(--ink-soft); }
+.wg-card .wg-prob strong { color: var(--terracotta); }
+
+/* 25 節對應表（卡片式，不用橫向大表） */
+.wg-lesson {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 12px 14px; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start;
+}
+.wg-lesson .wg-no {
+  font-family: var(--serif); font-weight: 700; font-size: 14px; color: #fff;
+  background: var(--gold); border-radius: 8px; padding: 3px 0; text-align: center;
+}
+.wg-lesson.star .wg-no { background: var(--terracotta); }
+.wg-lesson .wg-lt { font-size: 12px; color: var(--muted); }
+.wg-lesson .wg-ltitle { font-family: var(--serif); font-weight: 600; font-size: 15.5px; margin: 1px 0 8px; }
+.wg-lesson .wg-lgames { font-size: 13.5px; line-height: 1.6; }
+.wg-lesson .wg-lgames .m { color: var(--terracotta); font-weight: 600; }
+.wg-lesson .wg-lgames .w { color: var(--teal); }
+.wg-lesson .wg-lscene { font-size: 12.5px; color: var(--muted); margin-top: 5px; }
+
+@media (max-width: 560px){
+  .wg-picker button { min-width: calc(50% - 4px); }
+}
+</style>
+</head>
+<body data-page="warmups.html">
+<header id="site-header"></header>
+
+<main>
+
+  <div class="wrap wrap-wg hero">
+    <span class="eyebrow">每節都做 · 導師備課</span>
+    <h1>戲劇基本功遊戲</h1>
+    <p class="lede">話劇校隊 25 節課的基本功體系。每節一個<b>主遊戲</b>（新教／升級，8–12 分鐘）＋一個<b>回鍋遊戲</b>（複習，4–5 分鐘）。全部可在 4E 課室做得到，不跳、不落地、不衝撞。</p>
+  </div>
+
+  <!-- ========== 今天 ========== -->
+  <section class="tight">
+    <div class="wrap wrap-wg">
+      <div class="wg-today" id="today">
+        <div class="wg-t-top">
+          <span class="wg-badge" id="todayBadge">今天</span>
+          <h2 id="todayTitle">載入中…</h2>
+          <p class="wg-sub" id="todaySub"></p>
+        </div>
+        <p class="wg-slot-label">主遊戲（新教／升級）</p>
+        <div class="wg-slot" id="todayMain"></div>
+        <p class="wg-slot-label">回鍋遊戲（複習）</p>
+        <div class="wg-slot" id="todayWarm"></div>
+        <button class="btn btn-primary" id="todayJump" type="button">看今天的玩法</button>
+      </div>
+
+      <p class="small muted mt-2" style="margin-bottom:8px">預設顯示<b>下一個上課日</b>；也可以自己點一節看：</p>
+      <div class="wg-picker" id="picker"></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ========== 特急：第 2、3 節 ========== -->
+  <section>
+    <div class="wrap wrap-wg">
+      <div class="sec-head">
+        <span class="kicker">特急 · 逐分鐘</span>
+        <h2>第 2 節、第 3 節（明天就能用）</h2>
+        <p>每一分鐘做什麼、老師站在哪裡、要講哪一句，都寫好在下面。</p>
+      </div>
+
+      <details class="acc" open>
+        <summary>第 2 節 · 10/16（五）· 舞台上有什麼</summary>
+        <div class="acc-body">
+          <p class="small muted">回鍋 <b>G01 說名字做動作 Lv2</b>（0–5 分）＋ 主 <b>G14 道具變變變 Lv1</b>（55–64 分）。課室前方留一小塊空地，準備一支筆或一本簿作道具。</p>
+          <div class="wg-run" id="run2"></div>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>第 3 節 · 10/30（五）· 我們要做的這齣戲</summary>
+        <div class="acc-body">
+          <p class="small muted">回鍋 <b>G02 鏡子 Lv2</b>（0–6 分）＋ 主 <b>G06 情緒雕像 Lv1</b>（42–52 分）。鏡子要兩人一組，按座位前後左右配對最快。</p>
+          <div class="wg-run" id="run3"></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ========== 遊戲庫 ========== -->
+  <section>
+    <div class="wrap wrap-wg">
+      <div class="sec-head">
+        <span class="kicker">遊戲庫 · G01–G21</span>
+        <h2>五層主軸，21 個遊戲</h2>
+        <p>點開看玩法、口令、升級版、常見狀況和對應場次。</p>
+      </div>
+      <div class="wg-layers" id="gameLib"></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ========== 25 節對應表 ========== -->
+  <section>
+    <div class="wrap wrap-wg">
+      <div class="sec-head">
+        <span class="kicker">25 節對應表</span>
+        <h2>每一節玩哪兩個遊戲</h2>
+        <p>★ 是里程碑：第 8 節（12/18）全劇順排、第 12 節（1/29）要能直接上台、第 20 節（4/30）決賽前最後一節。</p>
+      </div>
+      <div class="grid" id="lessonTable" style="gap:9px"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script>
+/* =========================================================
+   資料
+   ========================================================= */
+const GAMES = [
+ {id:"G01",name:"說名字做動作",layer:"0",trains:"熱身與破冰 · 開放自己",min:"5 分鐘",who:"全班",
+  steps:["全班坐在自己的位置，面向課室前方。","導師先示範：大聲說出自己的名字，同時做一個動作。","全班一起重複他的名字與動作一次，動作要做得跟他一樣。","按座位順序輪下去，每個人做完，全班重複一次。","第二輪加快，導師隨機抽人，被抽到的人要先重複前一位的名字與動作，再介紹自己。"],
+  cmds:["大聲說出自己的名字，再做一個動作！","全班一起做，動作要跟他一樣！","這一次不准說話，只看動作猜是誰！"],
+  up:["Lv2：加快＋抽人先重複上一位。","Lv3：只做動作不出聲，全班叫出名字。"],
+  probs:["有孩子不肯做 → 導師先陪他一起做，做完立刻帶全班拍手。","有人笑別人 → 立刻停，重申「做完一定有人拍手，沒有人會笑」。"],
+  scene:"序幕——二十人開場亮相、逐個報名。"},
+
+ {id:"G02",name:"鏡子",layer:"0",trains:"跟誰都能合作 · 雙人默契",min:"5–8 分鐘",who:"兩人一組",
+  steps:["兩人面對面約一步距離，決定誰先做「本人」、誰做「鏡子」。","本人慢慢移動（手、頭、身體），鏡子要完全同步，像一個人的影像。","一分鐘後交換角色。","進階：取消「誰是本人」，兩人一起動、一起換動作。"],
+  cmds:["你是他的影子！","慢一點，慢到他跟得到！","不可以比對方快！"],
+  up:["Lv2：加入情緒（傷心的鏡子、很累的鏡子）。","Lv3：不分誰帶頭一起動，並同步說同一句台詞。"],
+  probs:["動太快 → 導師計時「數三下才動一步」。","不肯跟某位同學配對 → 用抽籤配對，每次不同人。"],
+  scene:"第七、八場——安仔與明仔對峙，節奏像照鏡。"},
+
+ {id:"G03",name:"大風吹（課室安全版）",layer:"0",trains:"熱身與破冰 · 開放自己",min:"5–8 分鐘",who:"全班",
+  steps:["全班坐在自己的位置，導師站在課室前方。","導師喊「大風吹！」全班答「吹什麼？」","導師喊出一個條件（吹戴眼鏡的人／吹今天穿白色的人）。","符合條件的人立刻站起，做導師指定的表情或動作，做完坐下。","全部坐下後再吹下一個條件。"],
+  cmds:["大風吹！——吹什麼？","吹——今天穿藍色衣服的人！站起來，做一個『好驚訝』的表情！"],
+  up:["Lv2：被吹到要做動作＋表情。","Lv3：按場次吹（「吹第六場有上台的人」），順便記角色。"],
+  probs:["想跑位 → 本版不換位（有桌椅會撞），只站起做動作。","全部一起站 → 就是好玩的地方，接受，但要求動作清楚。"],
+  scene:"第三、六場——熊仔小隊的集體動作。"},
+
+ {id:"G04",name:"情緒打招呼",layer:"0",trains:"表情誇張 · 開放自己",min:"5–6 分鐘",who:"全班（站座位前）",
+  steps:["每人站在自己座位前。","導師喊出一種情緒（開心／生氣／害怕／很累／偷偷摸摸／超興奮／剛睡醒）。","學生用那個情緒向鄰座說「你好，今天好嗎？」。","每種情緒做 30–40 秒，導師喊「換！」，立刻切換。","最後一次用「有禮貌的正常狀態」打招呼收。"],
+  cmds:["用開心的樣子跟鄰座打招呼！","換！這次好生氣！","最後一次，用回正常的樣子。"],
+  up:["Lv2：加動作（很生氣要握拳）。","Lv3：不出聲只用表情，鄰座猜哪一種情緒。"],
+  probs:["收不回來 → 最後一次一定用「正常狀態」收。","笑場 → 導師帶頭做得更誇張，先自己示範。"],
+  scene:"第二、四場——明仔與群組的情緒轉換。"},
+
+ {id:"G05",name:"生活動作放大機",layer:"1",trains:"肢體誇張",min:"8 分鐘",who:"全班（原地）",
+  steps:["每人想一個日常動作（開門、喝水、綁鞋帶、刷牙）。","先用「正常大小」做一次。","導師喊「放大三倍！」，做成三倍大。","導師喊「放大十倍！」，做到最大（手要伸到最高，但雙腳不離地）。","導師喊「縮到一分！」，做到最小。"],
+  cmds:["正常做一次。","三倍！","十倍！要比天花板更高！","縮！縮到像蜘蛛那麼小！"],
+  up:["Lv2：加表情與聲音。","Lv3：兩人一起做同一個動作，一起放大縮小。"],
+  probs:["不敢做大 → 導師先做最誇張的版本。","動作太小 → 「我要看到隔壁同學被你的動作嚇一跳。」"],
+  scene:"第七場（明仔誇張貶低）、第五場（評審乙摸肚喊香）。"},
+
+ {id:"G06",name:"情緒雕像",layer:"1",trains:"肢體誇張 · 表情誇張",min:"8 分鐘",who:"全班",
+  steps:["全班站開一點，每人有一格空間。","導師喊出一種情緒詞（開心／害怕／生氣／失望／期待／驕傲）。","所有人立刻定格成一個雕像。","保持 10 秒完全靜止，包括眼神。","導師走一圈，看誰的雕像最「整體」。"],
+  cmds:["三、二、一，雕像！","十秒，不准動，連眼睛都不准動！","你只有臉在演，第五排的觀眾看不到——用肩膀、用背、用膝蓋！"],
+  up:["Lv2：用情境代替情緒詞（「你現在在等一個人」）。","Lv3：加一句台詞，或導師拍肩時說出心裡話。"],
+  probs:["只用臉演 → 口頭提示用肩背膝，示範兩個版本對比。","一直笑 → 接受笑，倒數「三、二、一」收起。"],
+  scene:"第六場（安仔抱頭）、第四場（安媽看到留言）。"},
+
+ {id:"G07",name:"定格畫面",layer:"1",trains:"肢體誇張 · 跟誰都能合作",min:"10 分鐘",who:"分組，4–5 人",
+  steps:["分組，在課室前後分區排練。","導師給出一個情境（例如「一家人圍著一鍋菜」）。","小組用兩分鐘排出一個「畫面」，所有人不准動、不准說話。","導師喊「三、二、一，畫面！」全組定格五秒。","觀眾先說看到什麼，再由創作者說明自己的意思。"],
+  cmds:["用身體講故事，不准出聲！","三、二、一，畫面！","定格五秒，連眼睛都不准動！"],
+  up:["Lv2：加「拍一下肩就動起來」，變成場景的起點。","Lv3：每人定格後說一句台詞。"],
+  probs:["全部人擠在一邊 → 「畫面要有前有後，不要排成一條直線。」","有人偷動 → 重來一次，不責備。"],
+  scene:"第八場結尾（一家人加明仔道歉的定格）、序幕開場隊形。"},
+
+ {id:"G08",name:"身體寫大字",layer:"1",trains:"肢體誇張",min:"6–8 分鐘",who:"全班（原地）",
+  steps:["導師先用整個身體「寫」一個大字，用頭、手、肩、腰帶動。","全班一起跟寫一次。","逐個用身體寫自己名字裡的一個字。","分組，幾個人合起來寫一個詞。"],
+  cmds:["用手、用肩膀、用整個身體寫！","寫到最後一排都看得明白！"],
+  up:["Lv2：不出聲只靠身體寫，其他人猜是哪個字。","Lv3：三個人合寫一個詞，要接得順。"],
+  probs:["只用手寫 → 導師示範用全身。","沒有空間 → 這個遊戲不需移動，原地做。"],
+  scene:"第一場（安仔按住口袋的動作放大）、收尾合照隊形。"},
+
+ {id:"G09",name:"表情健身房",layer:"2",trains:"表情誇張",min:"5–6 分鐘",who:"全班",
+  steps:["導師逐個部位帶：張大口「啊」、閉緊嘴、瞪大眼、單邊挑眉、皺鼻、伸舌頭。","每個動作停三秒。","之後導師喊一種情緒，只用面部（不出聲）做出來。"],
+  cmds:["張大口，大到可以放一隻蛋！","眼睛，瞪到大過五塊錢硬幣！","現在只有臉，不准出聲！"],
+  up:["Lv2：跟鄰座面對面做，你笑他跟著笑。","Lv3：一秒切換（導師快速喊不同情緒）。"],
+  probs:["不好意思做鬼臉 → 導師先帶頭做。","面部僵硬 → 由「打呵欠」開始放鬆整塊臉。"],
+  scene:"全劇——評審乙的誇張反應、明仔的得意。"},
+
+ {id:"G10",name:"情緒光譜",layer:"2",trains:"表情誇張",min:"8 分鐘",who:"全班",
+  steps:["導師給一件事（例如「撞到腳趾」）。","全班先用 1 分（小事）做表情。","再 5 分。","再 10 分（最痛）。","三次比較，看差別在哪裡。"],
+  cmds:["一分——只是扯一扯嘴角。","五分——皺眉。","十分——整塊臉扭起來！"],
+  up:["Lv2：不講分數，導師指到誰誰就即時做出相應程度。","Lv3：由 1 到 10 連續爬升一次過。"],
+  probs:["一跳就到 10 分 → 導師堅持「一級一級上」，中間層次才是重點。"],
+  scene:"第七場（明仔由大聲到細聲）、第八場（安仔的平靜）。"},
+
+ {id:"G11",name:"用臉講話",layer:"2",trains:"表情誇張 · 開放自己",min:"8 分鐘",who:"兩人一組",
+  steps:["兩人一組面對面。","A 只用表情（不出聲）「講」一句話，例如「你聽我說！」。","B 要猜出內容，或做出反應。","交換。"],
+  cmds:["只用臉講話！","猜到的舉手！","不准出聲，出聲就輸！"],
+  up:["Lv2：加動作但仍不出聲。","Lv3：一組輪流用表情講劇本台詞，全班猜是哪一句。"],
+  probs:["忍不住出聲 → 變成遊戲：出聲的那個做一個鬼臉。","猜不到 → 導師給兩三個選項讓大家選。"],
+  scene:"第八場（明仔道歉的尷尬）、第七場（評審丙不大聲但很有力量）。"},
+
+ {id:"G12",name:"縮小的箱子",layer:"3",trains:"開放自己 · 肢體控制",min:"6–8 分鐘",who:"全班（原地）",
+  steps:["導師說明：「你身邊有一個箱子，它會愈縮愈小。」","全班原地慢慢縮，由站到屈膝，最後縮到最細。","保持最細三秒。","再慢慢變回最大。"],
+  cmds:["有個箱子在你身邊，現在縮！縮！縮！","縮到最細，但不要『啪』一聲跌到地上。","慢慢變回大！"],
+  up:["Lv2：縮的時候加表情（很害怕）。","Lv3：三個人一起縮進同一個箱子。"],
+  probs:["想搶位置 → 先分好位置，各佔一格。","蹲不下去 → 可以坐著做上半身（不跳、不落地）。"],
+  scene:"第六場（沒有菜沒有肉的驚慌）、第四場。"},
+
+ {id:"G13",name:"動物變變變",layer:"3",trains:"開放自己",min:"8 分鐘",who:"全班（不離原位）",
+  steps:["導師喊出一種動物。","全班在原位扮（用姿勢、表情、叫聲）。","導師輪流喊：貓、狗、大象、蛇、魚、雞。","分組，幾個人扮同一種動物，要一致。"],
+  cmds:["變！你是一隻大象，但不可以離開你的位置！","用整個身體扮，不只用雙手！"],
+  up:["Lv2：加情緒（一頭很生氣的雞）。","Lv3：扮「不存在的動物」，其他人猜。"],
+  probs:["亂跑 → 規定「雙腳不可以離開你那一格地板」。","硬地板 → 不蹲跳、不趴地，只做上半身與站立姿勢。"],
+  scene:"第三、六場——熊仔小隊的卡通感、誇張動作。"},
+
+ {id:"G14",name:"道具變變變",layer:"3",trains:"開放自己 · 肢體誇張",min:"10 分鐘",who:"全班／分組",
+  steps:["拿一件東西（例如一支筆、一本書、一張輕的小椅）。","導師示範：同一件東西演出五種用法（筆＝筷子、咪高峰、牙刷、指揮棒、溫度計）。","學生分組，每組用同一件東西想出三種用法，輪流演出來。","觀眾猜那是什麼。"],
+  cmds:["同一件東西，演出五種用法！","不可以說話，只用動作告訴我這是什麼！"],
+  up:["Lv2：加一句台詞。","Lv3：用一件道具撐起一整場短戲。"],
+  probs:["想不到 → 導師先示範三種再放手。","用真椅時 → 只拿輕的小椅，不舉起、不揮動。"],
+  scene:"第一場（秘方紙、鍋、圍裙）、第八場（小玻璃罐）。"},
+
+ {id:"G15",name:"好的，而且",layer:"3",trains:"開放自己 · 跟誰都能合作",min:"8 分鐘",who:"圍圈／兩人",
+  steps:["第一個人說一句（「我們去公園」）。","下一個人一定要說「好的，而且……」（「好的，而且帶上一個球」）。","不准否定前面的人（不可以說「不好啦」）。","一路接下去。"],
+  cmds:["不准說『不好』！一定要『好的，而且』！","接受他，再加一樣！"],
+  up:["Lv2：加動作與表情。","Lv3：用劇本情境接（明仔「我贏了」→ 安仔「好的，而且……」）。"],
+  probs:["否定前面的人 → 導師示範一次「接受」，讓孩子看見差別。","接不下去 → 導師落一個關鍵詞幫忙。"],
+  scene:"第八場（安仔接受明仔道歉、分他一半）。"},
+
+ {id:"G16",name:"一分鐘表演",layer:"3",trains:"開放自己（不怕醜、不怕錯）",min:"8–10 分鐘",who:"個人+全班看",
+  steps:["自願者走到課室前方。","導師給一個題目（扮一隻很餓的獅子／唱一句歌／講一個笑話）。","一分鐘內完成，不准停。","全班拍手。","每次多加一兩個自願者。"],
+  cmds:["一分鐘，不准停！","做完一定有人拍手——沒有人會笑！"],
+  up:["Lv2：抽籤（但要先建立足夠安全感）。","Lv3：兩個人一起表演。"],
+  probs:["不肯出來 → 不強迫，先做觀眾，下一次再說。","有人笑 → 立刻停，重申規矩。"],
+  scene:"全劇——上台的勇氣。"},
+
+ {id:"G17",name:"傳遞拍手",layer:"4",trains:"跟誰都能合作 · 專注",min:"5–6 分鐘",who:"全班圍圈（或方形）",
+  steps:["一個「拍手」傳給隔壁：A 看著 B 拍手，B 接住再傳給下一個。","先傳一個方向。","加第二個拍手，兩個方向同時傳。","再加口令「Zip、Zap、Zop」。"],
+  cmds:["看著他才傳！","接住！不准甩掉！"],
+  up:["Lv2：左右手分開傳。","Lv3：加快＋加 Zip Zap Zop 口令。"],
+  probs:["甩掉了 → 笑著重來，不責備。","愈傳愈慢 → 導師數節拍，逼出節奏感。"],
+  scene:"第三、六場——熊仔小隊齊聲說同一句。"},
+
+ {id:"G18",name:"集體機器",layer:"4",trains:"跟誰都能合作",min:"10 分鐘",who:"全班／分組",
+  steps:["一個人走到課室前方，做一個重複的動作＋聲音。","第二個人加入，做另一個動作＋聲音，要配合其他人的節奏。","一個一個加入。","全班合體成一部「機器」。","加一個開關：導師手一舉全部運轉，手一收全部停。"],
+  cmds:["加入他，不要打亂他的拍子！","你是這部機器的一部分，不是主角。"],
+  up:["Lv2：分組各自做一部機器。","Lv3：做「煮菜機器」（對應劇本）。"],
+  probs:["有人搶著做主導 → 提醒「要配合，不是搶」。","找不到動作 → 導師給一個簡單的（拍手、擦桌子）。"],
+  scene:"序幕（開場隊形）、第三場（熊仔小隊整齊上場）。"},
+
+ {id:"G19",name:"人肉雕塑",layer:"4",trains:"跟誰都能合作 · 肢體誇張",min:"10 分鐘",who:"分組，4–5 人",
+  steps:["一人做「泥」，其他人做「雕塑家」。","雕塑家只用口頭指示擺出「泥」的姿勢，不大力碰他。","完成一個作品，定格。","交換角色。"],
+  cmds:["你是一塊泥，不准自己動！","雕塑家，你想表達什麼？"],
+  up:["Lv2：做一個主題雕像（「一家人」）。","Lv3：加思考軌（拍肩說出心裡話）。"],
+  probs:["動手太用力 → 導師示範「輕輕扶正」，只用口頭也可以。","不願被擺姿勢 → 先做雕塑家，自願才做「泥」。"],
+  scene:"第八場（一家人的雕像）、收尾合照。"},
+
+ {id:"G20",name:"換人演",layer:"4",trains:"跟誰都能合作（演任何角色）",min:"8–10 分鐘",who:"分組",
+  steps:["拿一段劇本台詞。","一組先演。","導師喊「換人！」，另一組接手演同一段，角色換成完全不同的人。","比較兩個版本。"],
+  cmds:["換！你們現在就是那個人！","誰都可以演，不准挑角色！"],
+  up:["Lv2：隨便派角色。","Lv3：一人分演兩個角色。"],
+  probs:["抗拒演某個角色 → 導師說明「演戲不是評論你」，先示範一次。","不肯換 → 由導師點名，兩人互換最快。"],
+  scene:"全劇——定角色後「誰不在就誰頂上」。"},
+
+ {id:"G21",name:"兩人定格對話",layer:"4",trains:"跟誰都能合作 · 表情誇張",min:"8 分鐘",who:"兩人一組",
+  steps:["兩人面對面。","導師給一個情境（借東西、道歉、遲到）。","先用「定格照片」方式擺出「開始」與「結束」兩個畫面。","再把兩個畫面串成即時對話。","只准講三句話。"],
+  cmds:["先擺出開始和結束兩張照片！","不可以多過三句！"],
+  up:["Lv2：加指定情緒。","Lv3：用劇本對白。"],
+  probs:["台詞講太多 → 導師限三句，多的刪。","沒有戲 → 導師落一個更清楚的情境。"],
+  scene:"第八場（安仔與明仔的三句對話）、第七場（評審丙的三句話）。"}
+];
+
+const LAYERS = [
+ {k:"0",name:"熱身與破冰",note:"把人聚起來、把聲打開"},
+ {k:"1",name:"肢體誇張",note:"身體放得開，動作做到比生活大"},
+ {k:"2",name:"表情誇張",note:"臉上有戲，用表情講話"},
+ {k:"3",name:"開放自己",note:"不怕醜、不怕錯、敢在人前做傻事"},
+ {k:"4",name:"跟誰都能合作",note:"跟誰一組都可以；演什麼角色都可以"}
+];
+
+/* main / warm 用遊戲編號；null 表示第一節 */
+const LESSONS = [
+ {n:1, date:"2026-10-09", dl:"10/09（五）", star:true, done:true, title:"戲劇是什麼（已完成）", main:"G01", warm:null, scene:"序幕亮相"},
+ {n:2, date:"2026-10-16", dl:"10/16（五）", star:false, title:"舞台上有什麼 — 八個位置", main:"G14", warm:"G01", scene:"第一場：秘方紙、鍋、圍裙"},
+ {n:3, date:"2026-10-30", dl:"10/30（五）", star:false, title:"我們要做的這齣戲", main:"G06", warm:"G02", scene:"第一場：外婆交秘方、安仔得意"},
+ {n:4, date:"2026-11-13", dl:"11/13（五）", star:false, title:"讀劇會 — 每個人唸一次", main:"G04", warm:"G02", scene:"全劇：帶情緒讀一遍"},
+ {n:5, date:"2026-11-27", dl:"11/27（五）", star:false, title:"台詞與聲音", main:"G10", warm:"G04", scene:"第五場：評審乙聞香、明仔得意"},
+ {n:6, date:"2026-12-04", dl:"12/04（五）", star:false, title:"台左台右 · 走位入門", main:"G07", warm:"G06", scene:"第六場：一家人上下台位置"},
+ {n:7, date:"2026-12-11", dl:"12/11（五）", star:false, title:"第二場、第三場", main:"G11", warm:"G10", scene:"第四場（安媽見留言）、第七場（明仔心虛）"},
+ {n:8, date:"2026-12-18", dl:"12/18（五）", star:true, title:"全劇順排 · 劇本定稿", main:"G18", warm:"G07", scene:"全劇：全班齊心齊上"},
+ {n:9, date:"2027-01-08", dl:"01/08（五）", star:false, title:"第四場、第五場", main:"G21", warm:"G11", scene:"第四、五場：台詞快接"},
+ {n:10,date:"2027-01-15", dl:"01/15（五）", star:false, title:"第六場、第七場", main:"G05", warm:"G21", scene:"第七場：明仔誇張、評審乙"},
+ {n:11,date:"2027-01-22", dl:"01/22（五）", star:false, title:"第八場到第十場 · 結尾", main:"G13", warm:"G05", scene:"第三、六場：熊仔小隊"},
+ {n:12,date:"2027-01-29", dl:"01/29（五）", star:true, title:"總彩排（演出前最後一節）", main:"G16", warm:"G18", scene:"全劇：上台的勇氣"},
+ {n:13,date:"2027-02-19", dl:"02/19（五）", star:false, title:"錄影回看 · 精修", main:"G09", warm:"G10", scene:"按評判評語精修"},
+ {n:14,date:"2027-03-05", dl:"03/05（五）", star:false, title:"第二版 · 把戲磨亮", main:"G15", warm:"G09", scene:"第八場：安仔接受明仔"},
+ {n:15,date:"2027-03-12", dl:"03/12（五）", star:false, title:"定裝連排 · 換人也能演", main:"G20", warm:"G15", scene:"全劇：替補上場"},
+ {n:16,date:"2027-04-02", dl:"04/02（五）", star:false, title:"決賽版開工 · 燈光與音效", main:"G19", warm:"G13", scene:"第八場：一家人雕像"},
+ {n:17,date:"2027-04-09", dl:"04/09（五）", star:false, title:"咬字、節奏、聽得見", main:"G17", warm:"G21", scene:"第三、六場：熊仔齊聲節奏"},
+ {n:18,date:"2027-04-16", dl:"04/16（五）", star:false, title:"情緒層次 · 臨場應變", main:"G20", warm:"G16", scene:"故意出錯：臨場應變"},
+ {n:19,date:"2027-04-23", dl:"04/23（五）", star:false, title:"劇場規格適應", main:"G08", warm:"G07", scene:"收尾：合照隊形"},
+ {n:20,date:"2027-04-30", dl:"04/30（五）", star:true, title:"決賽前總彩排（最後一節正課）", main:"G03", warm:"G18", scene:"全劇：決賽前總彩排"},
+ {n:21,date:"2027-05-07", dl:"05/07（五）", star:false, title:"國安決賽日（或賽後第一課）", main:"G12", warm:"G02", scene:"決賽日熱身"},
+ {n:22,date:"2027-05-14", dl:"05/14（五）", star:false, title:"賽後檢討 · 看戲劇節結果", main:"G17", warm:"G11", scene:"把評語演一次"},
+ {n:23,date:"2027-05-21", dl:"05/21（五）", star:false, title:"提升版（或新起點）", main:"G12", warm:"G15", scene:"視入圍結果"},
+ {n:24,date:"2027-05-28", dl:"05/28（五）", star:false, title:"延續", main:"G19", warm:"G21", scene:"視入圍結果"},
+ {n:25,date:"2027-06-11", dl:"06/11（五）", star:true, title:"結業分享會（全學年最後一節）", main:"G16", warm:"G01", scene:"首尾呼應：重演開場亮相"}
+];
+
+/* 回鍋遊戲的「這一節玩到第幾級」 */
+const WARM_LV = {2:"Lv2",3:"Lv2",4:"Lv3",5:"Lv2",6:"Lv2",7:"Lv2",8:"Lv2",9:"Lv2",10:"Lv2",11:"Lv2",12:"Lv2",13:"Lv3",14:"Lv2",15:"Lv2",16:"Lv2",17:"Lv3",18:"Lv2",19:"Lv3",20:"Lv3",21:"Lv3",22:"Lv3",23:"Lv3",24:"Lv2",25:"Lv1"};
+/* 主遊戲在該節的級數（新教＝Lv1；升級＝Lv2） */
+const MAIN_LV = {18:"Lv2",20:"Lv1",23:"Lv2",24:"Lv2",25:"Lv2"};
+
+/* 第 2、3 節逐分鐘 run sheet */
+const RUN2 = [
+ {t:"0:00–0:45",d:"收心、講規矩",pos:"課室前方中央（黑板側），面向全班",say:"上課。今日開始，每一堂我們都會先玩一個遊戲。玩遊戲有一個規矩：<b>做完的人一定有人拍手，沒有人會笑。</b>明不明白？"},
+ {t:"0:45–2:00",d:"G01 說名字做動作 Lv2 · 示範",pos:"前方中央",say:"先熱身，遊戲叫『說名字做動作』。我示範一次：<b>『我是杜老師！』</b>（同時做一個動作）。全班跟我做一次！"},
+ {t:"2:00–4:30",d:"按座位順序逐個做",pos:"站在前半排側面，邊行邊聽",say:"由第一行第一位開始，大聲說名字，再做一個動作，全班重複他的動作。<b>大聲一點，最後一排要聽到！</b>（不肯做的孩子：走過去陪他做，他負責說名字。）"},
+ {t:"4:30–5:00",d:"第二輪抽人、加難",pos:"前方中央",say:"第二輪加快。我叫到誰，誰要先重複上一位的名字和動作，再介紹自己。"},
+ {t:"5:00–28:00",d:"八個位置逐個講（編劇／導演／演員／舞台設計／服裝／化妝／燈光／音效）",pos:"前方白板側、投影旁",say:"每個位置問兩句：『他做什麼？』『沒有他會怎樣？』（照第 2 節簡報 4–11 頁。）"},
+ {t:"28:00–38:00",d:"遊戲「少了哪一樣？」（簡報 12 頁）",pos:"前方中央",say:"我把一樣東西拿走，你看看還缺什麼。"},
+ {t:"38:00–55:00",d:"五題問答（Kahoot／簡報 13–18 頁）",pos:"前方操作投影",say:"看題目，選答案。答錯不要緊，我們一起看為什麼。"},
+ {t:"55:00–64:00",d:"主遊戲 G14 道具變變變 Lv1",pos:"前方中央，之後行到各組",say:"最後一個遊戲，最好玩。我手上這支筆——<b>同一支筆，我要它變成五樣東西。</b>這是筷子、這是咪高峰、這是牙刷、這是指揮棒、這是溫度計。現在分組，每組四至五人，用<b>同一件東西</b>想出三種用法，輪流演，不准說話，其他組猜。"},
+ {t:"64:00–65:00",d:"收句＋交代",pos:"前方中央",say:"收。今日最後一句：<b>舞台上，沒有一樣東西是隨便放的。</b>下星期講我們要演的那齣戲。"}
+];
+
+const RUN3 = [
+ {t:"0:00–0:40",d:"收心",pos:"前方中央",say:"上課。今日我們第一次講<b>我們要演的那一齣戲</b>。開始之前先熱身。今日玩『鏡子』，上一節玩過，今日升級。"},
+ {t:"0:40–1:40",d:"G02 鏡子 Lv2 · 示範",pos:"前方中央，找一位小助手",say:"看我和這位同學。（示範同步動作，慢而清）他是我的鏡子，我動他就動，像同一個人。<b>慢一點，慢到對方跟得到。</b>"},
+ {t:"1:40–4:30",d:"兩人一組，交換角色",pos:"行到各組之間",say:"前後兩位一組，面對面，隔一步。一齊數——<b>三、二、一，開始！</b>（30 秒後）交換。（1 分鐘後）升級：現在<b>不分誰帶頭</b>，兩個人一起動。"},
+ {t:"4:30–6:00",d:"加情緒的鏡子",pos:"前方中央",say:"最後一次：做一個<b>很累的鏡子</b>。動作慢、肩膀沉。"},
+ {t:"6:00–17:00",d:"國家安全是什麼",pos:"前方白板側",say:"國家安全不是抓壞人，是保護我們每天過的日子。（照第 3 節簡報 3–5 頁。）"},
+ {t:"17:00–29:00",d:"看《安仔與熊仔》片段",pos:"投影旁",say:"看的時候想一個問題：<b>他們為什麼要用卡通講這個故事？</b>"},
+ {t:"29:00–42:00",d:"講《我們家的味道》故事大綱",pos:"前方中央",say:"我們要演的戲，叫《我們家的味道》。（只講不做。）"},
+ {t:"42:00–52:00",d:"主遊戲 G06 情緒雕像 Lv1",pos:"前方中央，之後行一圈",say:"現在用一個動作，把戲裡的人『定格』出來。<b>三、二、一，雕像！</b>外婆交秘方，很平靜的雕像。安仔拿到秘方，很得意的雕像。安媽看到手機，很擔心的雕像。十秒，不准動，連眼睛都不准動。你只有臉在演，第五排的觀眾看不到。"},
+ {t:"52:00–57:00",d:"一問：為什麼不能讓人知道",pos:"前方中央",say:"我問大家一個問題：<b>你覺得為什麼外婆的秘方不能隨便讓別人知道？</b>（不給答案，讓孩子講。）"},
+ {t:"57:00–65:00",d:"收：講清楚兩個比賽",pos:"前方中央",say:"記住兩個日子：<b>二〇二七年二月到三月</b>，香港學校戲劇節；<b>二〇二七年五月</b>，《國安 · 家好》話劇比賽。我們用同一齣戲打兩個比賽。"}
+];
+
+/* =========================================================
+   渲染
+   ========================================================= */
+const gameById = id => GAMES.find(g => g.id === id);
+const esc = s => String(s).replace(/[<>&]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+
+function renderToday(n){
+  const L = LESSONS.find(x => x.n === n) || LESSONS[1];
+  document.getElementById("todayBadge").textContent = L.done ? "已完成 · 第 " + L.n + " 節" : "第 " + L.n + " 節";
+  document.getElementById("todayTitle").textContent = L.dl + " · " + L.title;
+  document.getElementById("todaySub").textContent = L.done ? "種子遊戲：G01 說名字做動作、G02 鏡子。" : (L.star ? "里程碑課 — 遊戲照做，之後是重頭排練。" : "");
+
+  const m = gameById(L.main), w = gameById(L.warm);
+  const mlv = MAIN_LV[L.n] ? " · " + MAIN_LV[L.n] : (L.n === 1 ? "" : " · Lv1");
+  document.getElementById("todayMain").innerHTML =
+    `<div class="wg-gname">${m.name}</div>` +
+    `<div class="wg-gmeta">${m.id} · ${m.min} · ${m.who} · 練：${m.trains}${mlv}</div>` +
+    `<div class="wg-gscene">用在：${esc(L.scene)}</div>`;
+  document.getElementById("todayWarm").innerHTML = w
+    ? `<div class="wg-gname">${w.name}</div><div class="wg-gmeta">${w.id} · ${w.min} · ${WARM_LV[L.n] || ""}</div>`
+    : `<div class="wg-gname">—（第一節）—</div><div class="wg-gmeta">這節是整套體系的起點</div>`;
+
+  document.getElementById("todayJump").onclick = () => openGame(L.main);
+
+  document.querySelectorAll("#picker button").forEach(b => b.classList.toggle("on", +b.dataset.n === L.n));
+}
+
+function picker(){
+  const box = document.getElementById("picker");
+  box.innerHTML = LESSONS.map(L =>
+    `<button data-n="${L.n}" class="${L.star?"star":""}${(L.n===2||L.n===3)?" hot":""}">第 ${L.n} 節<small>${L.dl.replace("（五）","")}</small></button>`
+  ).join("");
+  box.addEventListener("click", e => {
+    const b = e.target.closest("button"); if(!b) return;
+    renderToday(+b.dataset.n);
+    document.getElementById("today").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+}
+
+function runSheet(id, rows){
+  document.getElementById(id).innerHTML = rows.map(r =>
+    `<div class="wg-block"><div class="wg-t">${r.t}</div><div class="wg-do">${r.d}</div>` +
+    `<div class="wg-pos">老師站在哪：${r.pos}</div><div class="wg-say">${r.say}</div></div>`
+  ).join("");
+}
+
+function gameLib(){
+  const box = document.getElementById("gameLib");
+  box.innerHTML = LAYERS.map(layer => {
+    const gs = GAMES.filter(g => g.layer === layer.k);
+    return `<div class="wg-layer-head"><span>${layer.k}</span>${layer.name} <span style="color:var(--muted);letter-spacing:0;font-weight:400">· ${layer.note}</span></div>` +
+      gs.map(g => `
+        <details class="item wg-card" data-layer="${g.layer}" data-gid="${g.id}">
+          <summary>
+            <span class="item-title"><strong>${g.id} · ${g.name}</strong><em>練：${g.trains}</em></span>
+            <span class="item-meta"><span class="chip">${g.who}</span><span class="chip terra">${g.min}</span></span>
+          </summary>
+          <div class="item-body">
+            <ol class="steps">${g.steps.map(s => `<li>${s}</li>`).join("")}</ol>
+            <div class="wg-cmd"><strong>老師口令</strong>${g.cmds.map(c => "「"+c+"」").join("　")}</div>
+            <div class="wg-prob"><strong>升級版：</strong>${g.up.join("　")}</div>
+            <div class="wg-prob"><strong>常見狀況：</strong>${g.probs.join("　")}</div>
+            <div class="wg-prob" style="color:var(--teal)"><strong style="color:var(--teal)">用在哪一場：</strong>${esc(g.scene)}</div>
+          </div>
+        </details>`).join("");
+  }).join("");
+}
+
+function lessonTable(){
+  const box = document.getElementById("lessonTable");
+  box.innerHTML = LESSONS.map(L => {
+    const m = gameById(L.main), w = gameById(L.warm);
+    return `<div class="wg-lesson ${L.star?"star":""}">
+      <div class="wg-no">第<br>${L.n}</div>
+      <div>
+        <div class="wg-lt">${L.dl}${L.star?" · ★":""}${L.done?" · 已完成":""}</div>
+        <div class="wg-ltitle">${L.title}</div>
+        <div class="wg-lgames">
+          <span class="m">主：</span>${m.id} ${m.name} <span class="muted">(${m.min}${MAIN_LV[L.n]? ", "+MAIN_LV[L.n]:""})</span><br>
+          <span class="w">回鍋：</span>${w ? w.id+" "+w.name+" "+(WARM_LV[L.n]?"("+WARM_LV[L.n]+")":"") : "—（第一節起點）"}
+        </div>
+        <div class="wg-lscene">用在：${esc(L.scene)}</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function openGame(id){
+  const el = document.querySelector(`details[data-gid="${id}"]`);
+  if(!el) return;
+  el.open = true;
+  el.scrollIntoView({behavior:"smooth", block:"center"});
+  el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+}
+
+function defaultLesson(){
+  const now = new Date(); now.setHours(0,0,0,0);
+  const up = LESSONS.find(L => new Date(L.date + "T00:00:00") >= now);
+  return up ? up.n : LESSONS[LESSONS.length-1].n;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  picker();
+  gameLib();
+  lessonTable();
+  runSheet("run2", RUN2);
+  runSheet("run3", RUN3);
+  renderToday(defaultLesson());
+});
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
