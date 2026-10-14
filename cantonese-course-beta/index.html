@@ -1507,6 +1507,7 @@ $("#modeTone").onclick = () => { quizMode = "tone"; $("#modeTone").classList.add
 
 /* ---------- 100 課與本機進度 ---------- */
 const PROGRESS_KEY = "canto-class-progress-v1";
+const UNIT_OPEN_KEY = "canto-class-open-unit-v1";
 const REVIEW_INTERVALS = [1, 3, 7, 14, 30];
 let progress = loadProgress();
 
@@ -1696,6 +1697,56 @@ function firstScore(){
   return unit ? unit.song.score : null;
 }
 
+/* ---------- 單元手風琴：只開住「學緊嗰個單元」 ---------- */
+/* 杜老師 2026-10-11 00:25：
+   「第一单元永远是展开的。而从第二单元开始，就一直都是折叠的。
+     我希望是学到哪个单元，就哪个单元一直是展开的，而其他单元是折叠起来的。」
+   規則：
+     1. 任何時候最多只有一個單元展開
+     2. 展開邊個單元就記住（localStorage），下次打開網站照樣開返同一個
+     3. 未做過選擇時，用「最近練習過嘅一課」所屬單元；完全冇進度就開單元 1
+     4. 在課卡上按任何按鈕（遊戲／跟讀／復習／已掌握）、或喺跟讀面板揀課，
+        都當作「我而家教緊呢個單元」 */
+function lessonUnitId(lessonId){
+  const lesson = DATA.lessons.find(item => item.id === lessonId);
+  return lesson ? lesson.unit : null;
+}
+function currentOpenUnitId(){
+  try{
+    const saved = Number(localStorage.getItem(UNIT_OPEN_KEY));
+    if(saved >= 1) return saved;
+  }catch(err){}
+  let latest = null;
+  DATA.lessons.forEach(lesson => {
+    const state = getProgress(lesson.id);
+    if(state.lastPractice && (!latest || state.lastPractice > latest.when)) latest = {when:state.lastPractice, unit:lesson.unit};
+  });
+  if(latest) return latest.unit;
+  return DATA.lessonUnits.length ? DATA.lessonUnits[0].id : 1;
+}
+function setOpenUnit(unitId, opts){
+  const id = Number(unitId);
+  if(!id) return;
+  if(!opts || !opts.remember){
+    try{ localStorage.setItem(UNIT_OPEN_KEY, String(id)); }catch(err){}
+  }
+  document.querySelectorAll(".unit-details").forEach(details => {
+    const want = Number(details.dataset.unit) === id;
+    if(details.open !== want) details.open = want;
+  });
+}
+/* 使用者自己揭開某個單元 → 收埋其他，並記住佢。
+   監聽 click（唔監聽 toggle）係因為程式自己開／收都會觸發 toggle，
+   但只有真正嘅 click 才算「我揀咗呢個單元」。 */
+document.addEventListener("click", event => {
+  const summary = event.target && event.target.closest ? event.target.closest("summary") : null;
+  if(!summary) return;
+  const details = summary.parentElement;
+  if(!details || !details.classList || !details.classList.contains("unit-details")) return;
+  if(details.open) return; /* 佢係想收埋 → 唔改「記住嘅單元」 */
+  setTimeout(() => setOpenUnit(details.dataset.unit), 0);
+});
+
 function renderLessons(){
   const directory = $("#lessonDirectory");
   directory.innerHTML = DATA.lessonUnits.map((unit, unitIndex) => {
@@ -1738,7 +1789,7 @@ function renderLessons(){
         <button type="button" class="unit-song-btn" data-song-unit="${unit.id}">🎬 觀看兒歌影片</button>
       </div>${scoreCard(unit.song.score)}` : "";
 
-    return `<details class="unit-details" ${unitIndex === 0 ? "open" : ""}>
+    return `<details class="unit-details" data-unit="${unit.id}" ${unit.id === currentOpenUnitId() ? "open" : ""}>
       <summary>${unit.img ? `<img class="unit-thumb" src="${unit.img}" alt="">` : ""}<span>單元 ${unit.id} · ${escapeHtml(unit.name)}</span><small>${escapeHtml(unit.en)} · 10 課</small></summary>
       ${songCard}
       <div class="lesson-grid">${cards}</div>
@@ -1749,6 +1800,8 @@ function renderLessons(){
   $("#lessonCount").textContent = `已掌握 ${mastered} / ${DATA.lessons.length} · 練習中 ${active}`;
   directory.querySelectorAll("[data-action]").forEach(button => button.addEventListener("click", () => {
     const id = button.dataset.lesson;
+    /* 動過某一課（遊戲／跟讀／復習／已掌握）＝我而家教緊呢個單元 */
+    setOpenUnit(lessonUnitId(id));
     if(button.dataset.action === "master") markMastered(id);
     if(button.dataset.action === "game") openLessonGame(id);
     if(button.dataset.action === "review") reviewLesson(id);
@@ -2474,8 +2527,12 @@ function renderReviewSummary(){
 let lessonsExpanded = false;
 $("#expandLessons").onclick = () => {
   lessonsExpanded = !lessonsExpanded;
-  document.querySelectorAll(".unit-details").forEach(details => { details.open = lessonsExpanded || details === document.querySelector(".unit-details"); });
-  $("#expandLessons").textContent = lessonsExpanded ? "收起後 9 個單元" : "展開全部課程";
+  const keep = currentOpenUnitId();
+  document.querySelectorAll(".unit-details").forEach(details => {
+    details.open = lessonsExpanded || Number(details.dataset.unit) === keep;
+  });
+  const others = Math.max(0, DATA.lessonUnits.length - 1);
+  $("#expandLessons").textContent = lessonsExpanded ? `收起其他 ${others} 個單元` : "展開全部課程";
 };
 
 /* ---------- 跟讀、錄音與 Web Speech API ---------- */
@@ -2661,7 +2718,11 @@ function retrySpeech(){
   if(mediaRecorder && mediaRecorder.state !== "inactive") stopRecording();
   resetSpeechFeedback(); setRecordStatus("可以再按開始錄音，重新跟讀。", "good");
 }
-$("#sLesson").onchange = event => { selectedLessonId = event.target.value; renderTargetOptions(); updateTargetDisplay(); };
+$("#sLesson").onchange = event => {
+  selectedLessonId = event.target.value;
+  setOpenUnit(lessonUnitId(selectedLessonId));
+  renderTargetOptions(); updateTargetDisplay();
+};
 $("#sTargetType").onchange = () => { renderTargetOptions(); updateTargetDisplay(); };
 $("#sTarget").onchange = updateTargetDisplay;
 $("#demoPlay").onclick = function(){ play(currentSpeakingTarget().audio, this); };
