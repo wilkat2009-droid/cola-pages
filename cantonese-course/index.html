@@ -1416,7 +1416,7 @@ function themeCardHTML(item, now){
   if(item.month) tags.push(`<span class="month-tag${isThisMonth ? " on" : ""}">${isThisMonth ? "今個月" : item.month + " 月"}</span>`);
   if(item.festival) tags.push(`<span class="month-tag fest">${escapeHtml(festivalLabel(item, now))}</span>`);
   if(!item.month && !item.festival && item.cost > 0) tags.push(`<span class="month-tag">${item.cost >= 400 ? "大獎" : "常設"}</span>`);
-  const blocked = !!item.festival && !festivalOpen(item, now);
+  const blocked = !!item.festival && !festivalOpen(item, now) && !owned;
   const label = blocked ? festivalLabel(item, now) : active ? "使用中" : owned ? "換這個背景" : `解鎖（${item.cost} 分）`;
   return `<article class="skin-card theme-card${active ? " active" : ""}${owned ? "" : " locked"}">
     ${previewHTML(item)}
