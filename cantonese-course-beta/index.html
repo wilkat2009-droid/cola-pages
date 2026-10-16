@@ -294,7 +294,8 @@
 
   /* ---------- 100 課課程目錄與單元兒歌 ---------- */
   .lesson-toolbar{display:flex;align-items:center;gap:14px;margin:0 0 18px;flex-wrap:wrap;}
-  .lesson-count{font-size:14px;color:var(--ink-soft);}
+  .lesson-count{font-size:14px;color:var(--ink-soft);margin-left:auto;}
+  .lesson-hint{font-size:12.5px;color:var(--ink-soft);background:rgba(0,113,227,.07);border-radius:999px;padding:5px 12px;}
   .unit-details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:0 0 14px;box-shadow:var(--shadow);overflow:hidden;}
   .unit-details summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:center;gap:12px;font-weight:700;color:var(--ink);min-height:56px;}
   .unit-details summary::-webkit-details-marker{display:none;}
@@ -421,6 +422,84 @@
   .lesson-refs{display:flex;flex-wrap:wrap;gap:5px;}
   .lesson-ref{font-size:12px;background:rgba(0,113,227,.08);color:var(--teal);border-radius:999px;padding:3px 8px;font-weight:600;}
   .lesson-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px;}
+
+  /* ---------- 課堂目錄：一課一行（杜老師 2026-10-16 11:56） ----------
+     原話：「你里面就排列好了10課…然後我要點擊那一課才能出現具體的內容，
+     而且這個具體的內容應該是佔據整個界面的。你現在呢是每一課的內容
+     都是擠在他那個題目之下，看起來很費勁的。」
+     做法：目錄只列課號＋課題＋目標＋詞＋狀態；點一行開全屏課堂頁。 */
+  .lesson-list{display:flex;flex-direction:column;gap:8px;padding:0 16px 16px;}
+  .lesson-row{width:100%;display:grid;grid-template-columns:54px minmax(0,1fr) auto auto;align-items:center;gap:14px;text-align:left;font:inherit;color:inherit;border:1px solid var(--line);border-radius:14px;background:var(--card-alt);padding:12px 16px;cursor:pointer;min-width:0;transition:transform .15s,box-shadow .15s,border-color .15s;}
+  .lesson-row:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.06);border-color:rgba(0,113,227,.45);}
+  .lesson-row.done{border-color:rgba(46,158,91,.4);background:#f4fbf6;}
+  .lesson-row.in-progress{border-color:rgba(178,94,0,.4);}
+  .lesson-row .lr-no{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(0,113,227,.10);color:var(--teal);font-size:18px;font-weight:800;}
+  .lesson-row.done .lr-no{background:#e7f6ec;color:#1d7a44;}
+  .lesson-row .lr-main{min-width:0;}
+  .lesson-row .lr-main b{display:block;font-size:16.5px;line-height:1.35;}
+  .lesson-row .lr-goal{display:block;font-size:12.5px;color:var(--ink-soft);}
+  .lesson-row .lr-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+  .lesson-row .lr-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;font-size:11px;color:var(--ink-soft);white-space:nowrap;text-align:right;}
+  .lesson-row .lr-go{font-size:13.5px;font-weight:700;color:var(--teal);white-space:nowrap;}
+  .lesson-row:hover .lr-go{text-decoration:underline;}
+  @media(max-width:720px){
+    .lesson-row{grid-template-columns:42px minmax(0,1fr);gap:10px;padding:11px 12px;}
+    .lesson-row .lr-no{width:38px;height:38px;font-size:15px;border-radius:10px;}
+    .lesson-row .lr-meta,.lesson-row .lr-go{display:none;}
+    .lesson-list{padding:0 10px 12px;}
+  }
+
+  /* ---------- 全屏課堂頁：點某一課才出現，佔滿整個界面 ---------- */
+  body.lv-lock{overflow:hidden;}
+  .lesson-view{position:fixed;inset:0;z-index:1050;display:flex;flex-direction:column;background:var(--paper);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;}
+  .lesson-view.open{opacity:1;visibility:visible;pointer-events:auto;transform:none;}
+  .lesson-view-bar{flex:none;display:flex;align-items:center;gap:14px;padding:10px 20px;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  .lv-back{flex:none;border:1px solid var(--line);background:var(--card-alt);color:var(--teal);border-radius:999px;padding:9px 16px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:40px;}
+  .lv-back:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .lv-crumb{min-width:0;}
+  .lv-crumb b{display:block;font-size:16px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .lv-crumb span{display:block;font-size:11.5px;color:var(--ink-soft);}
+  .lesson-view-bar .lesson-status{margin-left:auto;flex:none;}
+  .lesson-view-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:22px 22px 70px;}
+  .lesson-view-body .lv-inner{max-width:1180px;margin:0 auto;}
+  .ld-hero{margin-bottom:16px;}
+  .ld-hero .ld-no{font-size:12.5px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .ld-hero h3{font-size:27px;line-height:1.28;margin:3px 0 7px;}
+  .ld-hero .lesson-goal{font-size:14.5px;color:var(--ink-soft);}
+  .lv-cols{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:16px;align-items:start;}
+  .ld-side{position:sticky;top:0;}
+  .ld-card{border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:16px;}
+  .ld-card h4{font-size:12.5px;font-weight:700;color:var(--ink-soft);letter-spacing:.03em;margin-bottom:8px;}
+  .ld-card .lesson-actions{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);}
+  .ld-wordlist{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+  .ld-word{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card-alt);border-radius:999px;padding:6px 12px;font:inherit;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;min-height:36px;}
+  .ld-word:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .ld-word small{font-weight:400;font-size:11.5px;color:var(--ink-soft);}
+  .ld-word:hover small{color:rgba(255,255,255,.85);}
+  .ld-main{display:flex;flex-direction:column;gap:12px;min-width:0;}
+  /* 全屏版把字放大返（原本為咗塞入細卡縮到 11.5px） */
+  .lesson-view .lesson-song .lsong-lyr,.lesson-view .lesson-talk .tk-row{font-size:14.5px;}
+  .lesson-view .lesson-talk .tk-row b{font-size:17px;}
+  .lesson-view .lesson-talk .tk-head,.lesson-view .lesson-spiral .ls-head{font-size:13px;}
+  .lesson-view .lesson-talk .tk-div{font-size:13px;}
+  .lesson-view .lesson-talk .tk-hint,.lesson-view .lesson-song .lsong-more>summary,.lesson-view .lesson-spiral .ls-more>summary{font-size:12.5px;}
+  .lesson-view .lesson-nations .ln-head{font-size:12px;}
+  .lesson-view .lesson-nations .ln-head .ln-q{font-size:14px;}
+  .lesson-view .lesson-nations .ln-eg,.lesson-view .lesson-spiral .ls-row{font-size:14.5px;}
+  .lesson-view .lesson-nations .ln-chip{font-size:13.5px;min-height:36px;}
+  .lesson-view .lesson-spiral .ls-row b{font-size:16px;}
+  .lesson-view .lesson-nations .ln-eg .game-pic img{width:80px;height:80px;}
+  .lesson-view .lesson-nations .ln-chip .game-pic img{width:38px;height:38px;}
+  @media(max-width:980px){
+    .lv-cols{grid-template-columns:minmax(0,1fr);}
+    .ld-side{position:static;}
+  }
+  @media(max-width:720px){
+    .lesson-view-bar{padding:9px 12px;gap:10px;}
+    .lesson-view-body{padding:16px 12px 60px;}
+    .ld-hero h3{font-size:22px;}
+  }
+
   /* 第三單元「識多啲」國籍詞（杜老師 2026-09-22）：每課兩個身邊人例句 + 六張可發音詞條 */
   .lesson-nations{margin-top:8px;padding:7px 8px;border:1px dashed rgba(14,124,123,.35);border-radius:10px;background:rgba(14,124,123,.05);}
   .lesson-nations .ln-head{font-size:10.5px;color:var(--muted);margin-bottom:5px;}
@@ -875,6 +954,7 @@
     </div>
     <div class="lesson-toolbar">
       <button class="btn" id="expandLessons">展開全部課程</button>
+      <span class="lesson-hint">點任何一課 → 開全屏課堂頁</span>
       <span class="lesson-count" id="lessonCount"></span>
     </div>
     <div id="lessonDirectory"></div>
@@ -1155,6 +1235,16 @@
 </div>
 
 <!-- 單對單開口遊戲 Modal：每一課都有自己的詞語卡、轉盤和害羞友善開口階梯 -->
+<!-- 全屏課堂頁：課堂目錄點一課才開（杜老師 2026-10-16 11:56） -->
+<div class="lesson-view" id="lessonView" role="dialog" aria-modal="true" aria-labelledby="lvTitle">
+  <div class="lesson-view-bar">
+    <button type="button" class="lv-back" id="lvBack">← 返回課程表</button>
+    <div class="lv-crumb"><b id="lvTitle">課堂</b><span id="lvUnit"></span></div>
+    <span class="lesson-status" id="lvStatus"></span>
+  </div>
+  <div class="lesson-view-body" id="lessonViewBody"></div>
+</div>
+
 <div class="game-modal-overlay" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
   <div class="game-modal-box" id="gameModalBox">
     <div class="game-modal-head">
@@ -2496,35 +2586,110 @@ document.addEventListener("click", event => {
   setTimeout(() => setOpenUnit(details.dataset.unit), 0);
 });
 
-function renderLessons(){
-  const directory = $("#lessonDirectory");
-  directory.innerHTML = DATA.lessonUnits.map((unit, unitIndex) => {
-    const lessons = DATA.lessons.filter(lesson => lesson.unit === unit.id);
-    const cards = lessons.map(lesson => {
-      const state = getProgress(lesson.id);
-      const statusClass = state.status === "mastered" ? "done" : state.status === "in-progress" ? "in-progress" : "";
-      const refs = lesson.vocab.slice(0, 4).map(item => `<span class="lesson-ref">${escapeHtml(item.char)}</span>`).join("") +
-        lesson.phrases.slice(0, 2).map(item => `<span class="lesson-ref">${escapeHtml(item.char)}</span>`).join("");
-      return `<article class="lesson-card ${statusClass}" data-lesson-id="${escapeHtml(lesson.id)}">
-        <div class="lesson-top"><span class="lesson-no">第 ${lesson.number} 課 · ${escapeHtml(lesson.id)}</span><span class="lesson-status ${state.status === "mastered" ? "done" : ""}">${lessonStatusText(state.status)}</span></div>
-        <h3>${escapeHtml(lesson.title)}</h3>
-        <p class="lesson-goal">目標：${escapeHtml(lesson.goal)}</p>
-        <div class="lesson-refs">${refs}</div>
+/* ---------- 課堂目錄 ＋ 全屏課堂頁 ---------- */
+/* 杜老師 2026-10-16 11:56：
+   「你里面就排列好了10課…然後我要點擊那一課才能出現具體的內容，
+     而且這個具體的內容應該是佔據整個界面的。
+     你現在呢是每一課的內容都是擠在他那個題目之下，看起來很費勁的。」
+   做法：目錄一課一行；點一行 → 開全屏課堂頁（左上「返回課程表」）。 */
+let OPEN_LESSON_ID = null;
+function lessonRefsHTML(lesson){
+  return lesson.vocab.slice(0, 4).map(item => `<span class="lesson-ref">${escapeHtml(item.char)}</span>`).join("") +
+    lesson.phrases.slice(0, 2).map(item => `<span class="lesson-ref">${escapeHtml(item.char)}</span>`).join("");
+}
+function wordChipsHTML(list){
+  return list.map(item => `<button type="button" class="ld-word" data-audio="${escapeHtml(item.audio)}" onclick="play('${escapeHtml(item.audio)}', this)">${escapeHtml(item.char)}${item.jp ? ` <small>${escapeHtml(item.jp)}</small>` : ""} 🔊</button>`).join("");
+}
+function lessonDetailHTML(lesson){
+  const state = getProgress(lesson.id);
+  const unit = DATA.lessonUnits.find(u => u.id === lesson.unit);
+  return `<div class="lv-inner">
+    <div class="ld-hero">
+      <span class="ld-no">第 ${lesson.number} 課 · ${escapeHtml(lesson.id)}${unit ? ` · 單元 ${unit.id} ${escapeHtml(unit.name)}` : ""}</span>
+      <h3>${escapeHtml(lesson.title)}</h3>
+      <p class="lesson-goal">目標：${escapeHtml(lesson.goal)}</p>
+    </div>
+    <div class="lv-cols">
+      <aside class="ld-side"><div class="ld-card">
+        <h4>本課詞彙（點一下聽發音）</h4>
+        <div class="ld-wordlist">${wordChipsHTML(lesson.vocab)}</div>
+        ${lesson.phrases.length ? `<h4>本課句子</h4><div class="ld-wordlist">${wordChipsHTML(lesson.phrases)}</div>` : ""}
+        <h4>進度</h4>
+        <p class="lesson-practice" id="lvMeta">複習 ${state.reviews || 0} 次 · ${formatDate(state.lastPractice)}</p>
         <p class="lesson-practice">練習：${escapeHtml(lesson.practice)}</p>
-        <small class="lesson-practice">複習 ${state.reviews || 0} 次 · ${formatDate(state.lastPractice)}</small>
         <div class="lesson-actions">
           <button class="mini-btn game-btn" data-action="game" data-lesson="${escapeHtml(lesson.id)}">${escapeHtml(lesson.game.icon)} ${escapeHtml(lesson.game.title)}</button>
-          <button class="mini-btn" data-action="shadow" data-lesson="${escapeHtml(lesson.id)}">跟讀</button>
-          <button class="mini-btn" data-action="review" data-lesson="${escapeHtml(lesson.id)}">復習</button>
-          <button class="mini-btn mastered" data-action="master" data-lesson="${escapeHtml(lesson.id)}" ${state.status === "mastered" ? "disabled" : ""}>${state.status === "mastered" ? "已掌握" : "標記已掌握"}</button>
+          <button class="mini-btn" data-action="shadow" data-lesson="${escapeHtml(lesson.id)}">🎤 跟讀</button>
+          <button class="mini-btn" data-action="review" data-lesson="${escapeHtml(lesson.id)}">🔁 復習</button>
+          <button class="mini-btn mastered" data-action="master" data-lesson="${escapeHtml(lesson.id)}" ${state.status === "mastered" ? "disabled" : ""}>${state.status === "mastered" ? "✅ 已掌握" : "標記已掌握"}</button>
         </div>
+      </div></aside>
+      <div class="ld-main">
         ${songBlock(lesson)}
         ${talkBlock(lesson)}
         ${nationBlock(lesson)}
         ${spiralBlock(lesson)}
-      </article>`;
-    }).join("");
-
+      </div>
+    </div>
+  </div>`;
+}
+function lessonRowHTML(lesson){
+  const state = getProgress(lesson.id);
+  const statusClass = state.status === "mastered" ? "done" : state.status === "in-progress" ? "in-progress" : "";
+  return `<button type="button" class="lesson-row ${statusClass}" data-open-lesson="${escapeHtml(lesson.id)}">
+    <span class="lr-no">${lesson.number}</span>
+    <span class="lr-main">
+      <b>${escapeHtml(lesson.title)}</b>
+      <span class="lr-goal">目標：${escapeHtml(lesson.goal)}</span>
+      <span class="lr-chips">${lessonRefsHTML(lesson)}</span>
+    </span>
+    <span class="lr-meta">
+      <span class="lesson-status ${state.status === "mastered" ? "done" : ""}">${lessonStatusText(state.status)}</span>
+      <small>複習 ${state.reviews || 0} 次 · ${formatDate(state.lastPractice)}</small>
+    </span>
+    <span class="lr-go">開始上課 ▸</span>
+  </button>`;
+}
+function bindLessonActions(container){
+  container.querySelectorAll("[data-open-lesson]").forEach(button => {
+    button.addEventListener("click", () => openLessonView(button.dataset.openLesson));
+  });
+  container.querySelectorAll("[data-action]").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.lesson;
+      /* 動過某一課（遊戲／跟讀／復習／已掌握）＝我而家教緊呢個單元 */
+      setOpenUnit(lessonUnitId(id));
+      if(button.dataset.action === "master") markMastered(id);
+      if(button.dataset.action === "game") openLessonGame(id);
+      /* 跟讀同復習要睇頁面下面嗰個「跟讀」區，所以先收埋全屏課堂頁 */
+      if(button.dataset.action === "review"){ closeLessonView(); reviewLesson(id); }
+      if(button.dataset.action === "shadow"){ closeLessonView(); openShadowing(id); }
+    });
+  });
+  container.querySelectorAll("[data-song-unit]").forEach(button => {
+    button.addEventListener("click", () => openSongModal(Number(button.dataset.songUnit)));
+  });
+  container.querySelectorAll("[data-seq]").forEach(button => {
+    button.addEventListener("click", () => {
+      const keys = (button.dataset.seq || "").split(",").filter(Boolean);
+      if(keys.length) playSeq(keys);
+    });
+  });
+  container.querySelectorAll("[data-score-row]").forEach(button => {
+    button.addEventListener("click", () => {
+      const score = firstScore();
+      const row = score && score.rows[Number(button.dataset.scoreRow)];
+      if(row) playScoreNotes(row.notes);
+    });
+  });
+  const uscAll = container.querySelector("#uscPlayAll");
+  if(uscAll) uscAll.onclick = () => { const score = firstScore(); if(score) playScoreAll(score); };
+}
+function renderLessons(){
+  const directory = $("#lessonDirectory");
+  directory.innerHTML = DATA.lessonUnits.map(unit => {
+    const lessons = DATA.lessons.filter(lesson => lesson.unit === unit.id);
+    const mastered = lessons.filter(lesson => getProgress(lesson.id).status === "mastered").length;
     const songCard = unit.song ? `
       <div class="unit-song-card">
         <div class="unit-song-left">
@@ -2537,41 +2702,73 @@ function renderLessons(){
         </div>
         <button type="button" class="unit-song-btn" data-song-unit="${unit.id}">🎬 觀看兒歌影片</button>
       </div>${scoreCard(unit.song.score)}` : "";
-
     return `<details class="unit-details" data-unit="${unit.id}" ${unit.id === currentOpenUnitId() ? "open" : ""}>
-      <summary>${unit.img ? `<img class="unit-thumb" src="${unit.img}" alt="">` : ""}<span>單元 ${unit.id} · ${escapeHtml(unit.name)}</span><small>${escapeHtml(unit.en)} · 10 課</small></summary>
+      <summary>${unit.img ? `<img class="unit-thumb" src="${unit.img}" alt="">` : ""}<span>單元 ${unit.id} · ${escapeHtml(unit.name)}</span><small>${escapeHtml(unit.en)} · ${lessons.length} 課 · 已掌握 ${mastered}／${lessons.length}</small></summary>
       ${songCard}
-      <div class="lesson-grid">${cards}</div>
+      <div class="lesson-list">${lessons.map(lessonRowHTML).join("")}</div>
     </details>`;
   }).join("");
   const mastered = DATA.lessons.filter(lesson => getProgress(lesson.id).status === "mastered").length;
   const active = DATA.lessons.filter(lesson => getProgress(lesson.id).status === "in-progress").length;
   $("#lessonCount").textContent = `已掌握 ${mastered} / ${DATA.lessons.length} · 練習中 ${active}`;
-  directory.querySelectorAll("[data-action]").forEach(button => button.addEventListener("click", () => {
-    const id = button.dataset.lesson;
-    /* 動過某一課（遊戲／跟讀／復習／已掌握）＝我而家教緊呢個單元 */
-    setOpenUnit(lessonUnitId(id));
-    if(button.dataset.action === "master") markMastered(id);
-    if(button.dataset.action === "game") openLessonGame(id);
-    if(button.dataset.action === "review") reviewLesson(id);
-    if(button.dataset.action === "shadow") openShadowing(id);
-  }));
-  directory.querySelectorAll("[data-song-unit]").forEach(button => button.addEventListener("click", () => {
-    const unitId = Number(button.dataset.songUnit);
-    openSongModal(unitId);
-  }));
-  directory.querySelectorAll("[data-seq]").forEach(button => button.addEventListener("click", () => {
-    const keys = (button.dataset.seq || "").split(",").filter(Boolean);
-    if(keys.length) playSeq(keys);
-  }));
-  directory.querySelectorAll("[data-score-row]").forEach(button => button.addEventListener("click", () => {
-    const score = firstScore();
-    const row = score && score.rows[Number(button.dataset.scoreRow)];
-    if(row) playScoreNotes(row.notes);
-  }));
-  const uscAll = $("#uscPlayAll");
-  if(uscAll) uscAll.onclick = () => { const score = firstScore(); if(score) playScoreAll(score); };
+  bindLessonActions(directory);
+  refreshLessonViewStatus();
 }
+/* 開一課：把該課內容填進全屏課堂頁 */
+function openLessonView(id){
+  const lesson = DATA.lessons.find(item => item.id === id);
+  if(!lesson) return;
+  const unit = DATA.lessonUnits.find(u => u.id === lesson.unit);
+  OPEN_LESSON_ID = lesson.id;
+  setOpenUnit(lesson.unit);
+  closeLessonGame();
+  $("#lvTitle").textContent = `第 ${lesson.number} 課 · ${lesson.title}`;
+  $("#lvUnit").textContent = (unit ? `單元 ${unit.id} · ${unit.name} · ` : "") + lesson.id;
+  $("#lessonViewBody").innerHTML = lessonDetailHTML(lesson);
+  refreshLessonViewStatus();
+  $("#lessonView").classList.add("open");
+  document.body.classList.add("lv-lock");
+  $("#lessonViewBody").scrollTop = 0;
+  bindLessonActions($("#lessonViewBody"));
+}
+function closeLessonView(){
+  const view = $("#lessonView");
+  if(!view.classList.contains("open")) return;
+  view.classList.remove("open");
+  document.body.classList.remove("lv-lock");
+  stopSeq();
+  const id = OPEN_LESSON_ID;
+  OPEN_LESSON_ID = null;
+  const row = id ? document.querySelector(`[data-open-lesson="${id}"]`) : null;
+  if(row){ try{ row.scrollIntoView({block:"center"}); }catch(err){} }
+}
+/* 進度變咗（例如按咗「已掌握」）就更新全屏頁上嘅狀態，唔重新渲染成頁 */
+function refreshLessonViewStatus(){
+  const id = OPEN_LESSON_ID;
+  if(!id) return;
+  const lesson = DATA.lessons.find(item => item.id === id);
+  if(!lesson) return;
+  const state = getProgress(id);
+  const chip = $("#lvStatus");
+  chip.textContent = lessonStatusText(state.status);
+  chip.classList.toggle("done", state.status === "mastered");
+  const body = $("#lessonViewBody");
+  const meta = body.querySelector("#lvMeta");
+  if(meta) meta.textContent = `複習 ${state.reviews || 0} 次 · ${formatDate(state.lastPractice)}`;
+  const btn = body.querySelector("[data-action='master']");
+  if(btn){
+    btn.disabled = state.status === "mastered";
+    btn.textContent = state.status === "mastered" ? "✅ 已掌握" : "標記已掌握";
+  }
+}
+$("#lvBack").onclick = closeLessonView;
+window.addEventListener("keydown", e => {
+  if(e.key !== "Escape") return;
+  /* 遊戲／兒歌影片疊在上面時，Esc 交返畀佢哋，唔好連全屏課堂頁一齊收 */
+  if($("#gameModal").classList.contains("open")) return;
+  if($("#songModal").classList.contains("open")) return;
+  if($("#lessonView").classList.contains("open")) closeLessonView();
+});
 
 /* ---------- 每課單對單開口遊戲（12 種玩法，各自真的可以玩） ---------- */
 let G = null;
