@@ -651,6 +651,19 @@
   .skin-price{font-size:12px;color:var(--gold);font-weight:700;}
   .skin-card .mini-btn{align-self:flex-start;}
   .skin-card .mini-btn:disabled{cursor:default;opacity:.7;}
+  /* ---------- 老師專用面板（連點分數牌 5 下開啟） ---------- */
+  .teacher-panel{position:fixed;top:66px;right:16px;z-index:9999;width:min(340px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 44px rgba(6,48,48,.26);padding:14px;color:var(--ink);}
+  .teacher-panel h4{margin:0 0 4px;font-size:15px;}
+  .teacher-panel .tp-hint{margin:0 0 10px;font-size:12px;line-height:1.55;color:var(--ink-soft);}
+  .tp-stat{display:flex;justify-content:space-between;align-items:center;background:var(--card-alt);border-radius:10px;padding:8px 10px;font-size:13px;font-weight:700;margin-bottom:8px;}
+  .tp-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .tp-btn{flex:1 1 auto;min-width:62px;border:1px solid var(--line);background:var(--card-alt);color:var(--ink);border-radius:10px;padding:9px 8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .tp-btn.strong{background:var(--brand, #0e7c7b);border-color:var(--brand, #0e7c7b);color:#fff;}
+  .tp-btn.warn{background:#fff3f1;border-color:#f0c7c0;color:#a8372a;}
+  .tp-set,.tp-code{display:flex;gap:6px;}
+  .tp-set input,.tp-code input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card-alt);color:var(--ink);border-radius:10px;padding:9px 10px;font-size:14px;font-family:inherit;}
+  .tp-close{position:absolute;top:10px;right:12px;border:0;background:transparent;color:var(--ink-soft);font-size:15px;cursor:pointer;padding:2px 4px;}
+
   /* ---------- 獎勵中心：分類、動畫預覽、稱號、小夥伴 ---------- */
   .shop-section{margin-top:22px;}
   .shop-section > h3{font-size:15px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
@@ -878,6 +891,39 @@
     <div class="review-summary" id="reviewSummary"></div>
   </div>
 </section>
+
+<div class="teacher-panel" id="teacherPanel" hidden>
+  <button class="tp-close" id="tpClose" type="button" title="關閉">✕</button>
+  <h4>👩‍🏫 老師專用</h4>
+  <div id="tpGate">
+    <p class="tp-hint">輸入老師密碼（預設 1688）。加咗呢個只係防止小朋友自己亂按。</p>
+    <div class="tp-code">
+      <input id="tpCode" type="password" inputmode="numeric" autocomplete="off" placeholder="老師密碼">
+      <button class="tp-btn strong" id="tpUnlock" type="button">確認</button>
+    </div>
+  </div>
+  <div id="tpBody" hidden>
+    <p class="tp-hint">呢度嘅加減分唔會影響「累積獲得」，方便你補分或者修正。</p>
+    <div class="tp-stat"><span>目前分數</span><span id="tpPoints">0 分</span></div>
+    <div class="tp-stat"><span>累積獲得</span><span id="tpEarned">0 分</span></div>
+    <div class="tp-row">
+      <button class="tp-btn" type="button" data-tp-add="50">＋50</button>
+      <button class="tp-btn" type="button" data-tp-add="100">＋100</button>
+      <button class="tp-btn" type="button" data-tp-add="200">＋200</button>
+      <button class="tp-btn warn" type="button" data-tp-add="-100">－100</button>
+    </div>
+    <div class="tp-row">
+      <button class="tp-btn strong" id="tpRestore" type="button">回復到累積總數</button>
+    </div>
+    <div class="tp-set">
+      <input id="tpValue" type="number" inputmode="numeric" placeholder="直接設定分數">
+      <button class="tp-btn" id="tpApply" type="button">設定</button>
+    </div>
+    <div class="tp-row" style="margin:8px 0 0;">
+      <button class="tp-btn warn" id="tpResetItems" type="button">清空裝扮（分數保留）</button>
+    </div>
+  </div>
+</div>
 
 <section id="rewards">
   <div class="wrap">
@@ -1353,6 +1399,102 @@ function addPoints(amount, reason){
   playRewardSound(value >= 20 ? "bonus" : "coin");
   showSticker(reason);
   if(value >= 10 && rewardState.ownedSkins.includes("companion")) companionSay();
+}
+
+/* ---------- 老師專用面板（連點最上面嘅分數牌 5 下開啟） ---------- */
+const TEACHER_CODE = "1688";
+let teacherTapCount = 0, teacherTapTimer = null, teacherUnlocked = false;
+function teacherRefresh(){
+  const p = $("#tpPoints"), e = $("#tpEarned");
+  if(p) p.textContent = rewardState.points + " 分";
+  if(e) e.textContent = rewardState.earnedTotal + " 分";
+}
+function openTeacherPanel(){
+  const panel = $("#teacherPanel");
+  if(!panel) return;
+  panel.hidden = false;
+  const code = $("#tpCode");
+  if(code) code.value = "";
+  $("#tpGate").hidden = teacherUnlocked;
+  $("#tpBody").hidden = !teacherUnlocked;
+  const value = $("#tpValue");
+  if(value && teacherUnlocked) value.value = String(rewardState.points);
+  teacherRefresh();
+}
+function closeTeacherPanel(){ const panel = $("#teacherPanel"); if(panel) panel.hidden = true; }
+function teacherSetPoints(value, note){
+  rewardState.points = Math.max(0, Math.round(Number(value) || 0));
+  saveRewards(); renderRewards(); teacherRefresh();
+  showRewardToast(note || ("老師：分數已設為 " + rewardState.points + " 分"));
+}
+function bindTeacherPanel(){
+  const badge = $("#pointsBadge");
+  if(badge) badge.addEventListener("click", () => {
+    teacherTapCount += 1;
+    clearTimeout(teacherTapTimer);
+    teacherTapTimer = setTimeout(() => { teacherTapCount = 0; }, 1600);
+    if(teacherTapCount >= 5){ teacherTapCount = 0; teacherUnlocked ? closeTeacherPanel() : openTeacherPanel(); }
+  });
+  const close = $("#tpClose");
+  if(close) close.addEventListener("click", closeTeacherPanel);
+  const codeInput = $("#tpCode");
+  const unlock = $("#tpUnlock");
+  const tryUnlock = () => {
+    if((codeInput.value || "").trim() === TEACHER_CODE){
+      teacherUnlocked = true;
+      $("#tpGate").hidden = true;
+      $("#tpBody").hidden = false;
+      const value = $("#tpValue");
+      if(value) value.value = String(rewardState.points);
+      teacherRefresh();
+      showRewardToast("老師模式已開啟");
+    } else {
+      codeInput.value = "";
+      showRewardToast("密碼唔啱");
+    }
+  };
+  if(unlock) unlock.addEventListener("click", tryUnlock);
+  if(codeInput) codeInput.addEventListener("keydown", event => { if(event.key === "Enter") tryUnlock(); });
+  document.querySelectorAll("[data-tp-add]").forEach(button => button.addEventListener("click", () => {
+    const delta = Number(button.getAttribute("data-tp-add")) || 0;
+    const next = Math.max(0, rewardState.points + delta);
+    teacherSetPoints(next, (delta >= 0 ? "老師補分 +" + delta : "老師扣分 " + delta) + " · 而家 " + next + " 分");
+  }));
+  const restore = $("#tpRestore");
+  if(restore) restore.addEventListener("click", () => teacherSetPoints(rewardState.earnedTotal, "已回復到累積總數 " + rewardState.earnedTotal + " 分"));
+  const apply = $("#tpApply");
+  if(apply) apply.addEventListener("click", () => {
+    const raw = $("#tpValue").value;
+    if(raw === ""){ showRewardToast("請先輸入分數"); return; }
+    teacherSetPoints(raw);
+  });
+  const reset = $("#tpResetItems");
+  if(reset) reset.addEventListener("click", () => {
+    if(!window.confirm("清空所有背景、稱號、相框、掛飾同相片？分數會保留。")) return;
+    rewardState.ownedSkins = ["classic"];
+    rewardState.activeSkin = "classic";
+    rewardState.title = null;
+    rewardState.avatar = {photo:null, frame:"af-none", head:null, hand:null};
+    saveRewards(); applySkin("classic", false); renderRewards(); renderCompanion(); renderNavAvatar(); teacherRefresh();
+    showRewardToast("已清空裝扮（分數保留）");
+  });
+  document.addEventListener("click", event => {
+    const panel = $("#teacherPanel");
+    if(!panel || panel.hidden) return;
+    if(panel.contains(event.target) || (badge && badge.contains(event.target))) return;
+    closeTeacherPanel();
+  });
+  /* 網址尾巴加 #setpoints=2014 可以直接設定分數（方便老師遙控） */
+  const command = /(?:^|[#&])setpoints=(\d+)/.exec(location.hash || "");
+  if(command) teacherSetPoints(command[1]);
+  /* 同一個瀏覽器開咗幾個分頁時，保持分數一致 */
+  window.addEventListener("storage", event => {
+    if(event.key !== REWARD_KEY) return;
+    rewardState = loadRewards();
+    applySkin(rewardState.activeSkin, false);
+    renderRewards(); renderCompanion(); renderNavAvatar(); teacherRefresh();
+    showRewardToast("分數已經同步更新");
+  });
 }
 
 /* ---------- 表現正確表情包彈出 ---------- */
@@ -3347,6 +3489,7 @@ applySkin(rewardState.activeSkin, false);
 renderRewards();
 renderCompanion();
 renderNavAvatar();
+bindTeacherPanel();
 renderLessons();
 renderReviewSummary();
 renderSpeakingLessons();
