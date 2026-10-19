@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:,">
+<title>課次二 數字和時間｜普通話對話與事務文書｜VCH1101</title>
+<style>
+:root{
+  --bg:#0f1720;--pan:#141f2c;--pan2:#101a25;--line:#24384a;
+  --ink:#eaf2f8;--muted:#9db1c2;--or:#ec7d3a;--teal:#14b8a6;
+  --gold:#ffd08a;--ok:#4ade80;--no:#fb7185;--blue:#59b6e8;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang TC","PingFang HK",sans-serif;
+  font-size:18px;line-height:1.62;overflow-x:hidden;
+}
+img,video,audio{max-width:100%}
+h1{font-size:clamp(27px,7vw,44px);line-height:1.2;margin:0;letter-spacing:.5px}
+h2{font-size:clamp(21px,5vw,30px);line-height:1.25;margin:0}
+h3{font-size:clamp(18px,4.4vw,22px);margin:0;overflow-wrap:anywhere}
+p{margin:8px 0;overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:.92em}
+.big{font-size:1.18em;font-weight:800}
+button{font-family:inherit}
+
+/* ---------- 頂欄 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:rgba(15,23,32,.97);
+  border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;
+  padding:9px 12px;flex-wrap:wrap;
+}
+.brandbtn{background:none;border:0;color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:8px;flex:1;min-width:150px}
+.pbar{height:11px;background:#26374a;border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.ptxt{color:var(--gold);font-weight:900;font-size:14px;white-space:nowrap}
+.finbtn{background:var(--or);color:#1a1004;border:0;font-weight:900;border-radius:99px;padding:9px 15px;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ---------- 畫面 ---------- */
+main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;width:100%}
+.screen{display:none;animation:rise .28s ease}
+.screen.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin:12px 0;min-width:0}
+.card.soft-teal{background:#10261f;border-color:#1d5a4a}
+.card.soft-blue{background:#102230;border-color:#24526f}
+.card.soft-gold{background:#241f10;border-color:#5c4a1c}
+.eyebrow{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.14em;margin-bottom:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;border-radius:12px;
+  padding:13px 20px;font-size:17px;background:var(--or);color:#1a1004;transition:.13s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.btn.teal{background:var(--teal);color:#04201c}
+.btn.done{background:var(--ok);color:#052a15}
+.mini{border:1px solid #38566e;background:#16283a;color:#cfe6f5;border-radius:9px;
+  padding:6px 11px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini:hover{background:#1f3448}
+.mini.rv{border-color:#7a5a1e;color:var(--gold)}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:center;padding:16px 4px}
+.cover .em{font-size:clamp(46px,15vw,84px);line-height:1}
+.outcomes{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px;text-align:left}
+.outcome{background:var(--pan);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:clamp(16px,4.4vw,20px);font-weight:700}
+.outcome:nth-child(2){border-left-color:var(--or)}
+.outcome:nth-child(3){border-left-color:var(--gold)}
+.outcome:nth-child(4){border-left-color:var(--blue)}
+
+/* ---------- 地圖 ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{position:relative;text-align:left;background:var(--pan);border:1px solid var(--line);
+  border-radius:15px;padding:13px 13px 13px;cursor:pointer;color:var(--ink);transition:.13s;min-width:0}
+.tile:hover{border-color:var(--or)}
+.tile .tn{display:inline-block;background:var(--teal);color:#04201c;font-weight:900;font-size:12px;border-radius:8px;padding:3px 9px;margin-bottom:7px}
+.tile .tem{font-size:24px}
+.tile .tt{font-weight:800;font-size:clamp(15px,3.8vw,18px);line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+.tile .ts{color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5;overflow-wrap:anywhere}
+.tile .tick{position:absolute;top:11px;right:12px;font-size:20px;font-weight:900;color:var(--ok)}
+.tile.done{border-color:var(--ok);background:#12251b}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 通用題目 ---------- */
+.qcard{background:var(--pan);border:1px solid var(--line);border-radius:15px;padding:14px;margin:11px 0;min-width:0}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+.qnum{flex:0 0 auto;width:32px;height:32px;border-radius:9px;background:var(--or);color:#1a1004;font-weight:900;display:grid;place-items:center;font-size:16px}
+.qtext{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.55;flex:1;min-width:0;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.opts.three{grid-template-columns:1fr 1fr 1fr}
+.opt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:12px;
+  font-size:clamp(16px,4.4vw,20px);font-weight:800;cursor:pointer;overflow-wrap:anywhere}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.opt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4;opacity:.85}
+.fb{margin-top:7px;font-weight:800;font-size:15px;overflow-wrap:anywhere}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--no)} .fb.warn{color:var(--gold)}
+
+/* ---------- 揭曉盒 ---------- */
+.ansbox{display:none;align-items:center;gap:7px;flex-wrap:wrap;background:#152a1e;border:1px solid #2f7a52;
+  border-radius:10px;padding:7px 11px;margin-top:7px;color:#bff5d3;font-weight:800;font-size:clamp(16px,4.3vw,20px);overflow-wrap:anywhere}
+.ansbox.on{display:inline-flex}
+.ansbox .py{color:var(--gold);font-weight:700;font-size:.9em}
+.speakbt{background:#0e2130;border:1px solid #2c5068;color:#bfe3ff;border-radius:8px;padding:4px 9px;font-size:14px;cursor:pointer;font-weight:800}
+
+/* ---------- 填空 ---------- */
+.bk{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin:2px 3px;vertical-align:middle;max-width:100%}
+.bk input{width:6em;max-width:60vw;background:transparent;border:0;border-bottom:2px solid var(--gold);color:#fff;
+  border-radius:0;padding:2px 3px;font-size:16px;font-family:inherit;text-align:center}
+.bk input:focus{outline:none;border-bottom-color:var(--blue)}
+.bk.ok input{border-bottom-color:var(--ok);color:#bff5d3}
+.bk .fb{display:inline-block;margin:0 0 0 3px;font-size:.82em;white-space:nowrap}
+.lab{color:var(--gold);font-weight:900}
+
+/* ---------- 對話 ---------- */
+.dlg{display:flex;flex-direction:column;gap:9px}
+.bub{background:var(--pan2);border:1px solid var(--line);border-radius:13px;padding:11px 13px;min-width:0;overflow-wrap:anywhere}
+.bub .sp{display:block;font-weight:900;color:var(--blue);font-size:14px;margin-bottom:3px}
+.bub.b .sp{color:var(--or)}
+.line{line-height:2.15}
+
+/* ---------- 粵普對照 ---------- */
+.pair{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.pair .kk{flex:1;min-width:8em;color:#bfe3ff;font-weight:800;overflow-wrap:anywhere}
+
+/* ---------- 量／單位 row ---------- */
+.eq{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:5px 0;border-bottom:1px dashed #22384a;font-size:clamp(15px,4vw,18px);min-width:0;overflow-wrap:anywhere}
+.eq .rhs{color:var(--muted)}
+.subh{color:var(--gold);font-weight:800;margin:9px 0 3px;font-size:15px}
+.cat{color:var(--blue);font-weight:900;margin:12px 0 2px;font-size:clamp(16px,4.4vw,19px)}
+
+/* ---------- ruby 拼音 ---------- */
+.ruby{display:inline-block;text-align:center;margin:0 1px;vertical-align:top}
+.ruby .py{display:block;font-size:.6em;color:var(--gold);line-height:1.15}
+.ruby .ch{display:block;font-size:1.08em;line-height:1.3}
+.rvwrap{display:none}
+.rvwrap.on{display:block;margin-top:8px;background:#0f2318;border:1px solid #2f7a52;border-radius:10px;padding:9px 11px;overflow-wrap:anywhere}
+.tw{line-height:1.85;font-size:clamp(17px,4.6vw,21px);overflow-wrap:anywhere}
+
+/* ---------- 詳情 ---------- */
+.details{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:10px 0}
+.details summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.details p{margin:9px 0 0}
+
+/* ---------- 清單 ---------- */
+.listrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line)}
+.listrow .nm{flex:1;min-width:4.5em;font-weight:800;overflow-wrap:anywhere}
+.listrow .qt{color:var(--gold);font-weight:900;white-space:nowrap}
+.qa{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:9px 0;overflow-wrap:anywhere}
+
+/* ---------- 資料卡 ---------- */
+.dc{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;overflow-wrap:anywhere}
+.dc .l{display:flex;gap:8px;padding:3px 0;flex-wrap:wrap}
+.dc .k{color:var(--gold);font-weight:800;min-width:5.5em}
+.dc .v{flex:1;min-width:0;overflow-wrap:anywhere}
+
+/* ---------- 自我評估 / 互評 ---------- */
+.assess{display:flex;flex-direction:column;gap:10px}
+.arow{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.arow .aq{font-weight:800;font-size:clamp(16px,4.4vw,20px);margin-bottom:7px}
+.aopts{display:flex;gap:8px;flex-wrap:wrap}
+.aopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:99px;padding:9px 18px;font-weight:800;font-size:16px;cursor:pointer}
+.aopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+.rateopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+
+/* ---------- 出口卡 ---------- */
+.exit-in{width:100%;background:#0c1a24;border:1px solid #35536b;color:#fff;border-radius:10px;
+  padding:12px;font-size:17px;font-family:inherit;margin-top:6px;min-width:0}
+textarea.exit-in{min-height:3.4em;resize:vertical}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);z-index:60;
+  background:var(--pan);border:1px solid var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;
+  font-weight:800;opacity:0;transition:.25s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  body{font-size:17px}
+  .bk input{width:5.4em;font-size:15px}
+  .eq .rhs{font-size:.95em}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brandbtn" onclick="show('cover')">🏠 數字和時間</button>
+  <button class="brandbtn" onclick="show('map')">🗺 活動地圖</button>
+  <div class="prog"><div class="pbar"><i id="pbar"></i></div><span class="ptxt" id="ptxt">進度 0/8</span></div>
+  <button class="finbtn" onclick="show('exit')">🏁 課堂收結</button>
+</header>
+
+<main id="main">
+
+<!-- ============ 封面 ============ -->
+<section class="screen on" id="cover">
+  <div class="cover">
+    <div class="em">🔢</div>
+    <div class="eyebrow" style="margin-top:10px">VCH1101 職業中文・普通話對話（GCCH103A(P)）</div>
+    <h1>課次二　數字和時間</h1>
+    <p class="big" style="color:var(--gold)">兩小時・服務／設計與科技</p>
+    <p class="muted">完成本課後，你能用普通話——</p>
+  </div>
+  <div class="outcomes">
+    <div class="outcome">1️⃣ 說出常見的計量單位</div>
+    <div class="outcome">2️⃣ 正確使用量詞</div>
+    <div class="outcome">3️⃣ 表達物品的數量</div>
+    <div class="outcome">4️⃣ 簡單介紹活動的時間安排</div>
+  </div>
+  <div class="navrow">
+    <button class="btn" onclick="show('map')">🗺 開始・去活動地圖 ▶</button>
+    <button class="btn ghost" onclick="show('exit')">🏁 直接去課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動地圖 ============ -->
+<section class="screen" id="map">
+  <div class="eyebrow">🗺 活動地圖</div>
+  <h2>今日有 7 個活動 ＋ 1 個延伸學習 ＋ 自我評估</h2>
+  <p class="muted">可以跳住玩。玩完就撳「✅ 完成本節」，右上角進度會自動記錄（重新整理都唔會消失）。</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('self')">📋 自我評估</button>
+    <button class="btn" onclick="show('exit')">🏁 課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動一 ============ -->
+<section class="screen" id="s1">
+  <div class="eyebrow">👅 活動一</div>
+  <h2>繞口令</h2>
+  <p class="muted">先讀數字，再練繞口令。留意「四 sì」同「十 shí」嘅分別——答錯有第二次機會，唔識可以撳「👁 揭曉」。</p>
+
+  <div class="card">
+    <h3>1. 數字：一 到 萬</h3>
+    <div style="margin-top:9px" class="tw" id="numrow"></div>
+    <div><button class="mini rv" data-act="rvw" data-target="num-py">👁 揭曉拼音</button></div>
+    <div class="rvwrap" id="num-py"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>2. 數字繞口令：四是四，十是十</h3>
+    <div class="tw" style="margin-top:8px;text-align:center">
+      <span class="ruby"><span class="py">sì</span><span class="ch">四</span></span>
+      <span class="ruby"><span class="py">shí</span><span class="ch">十</span></span>
+    </div>
+    <p class="muted" style="margin-top:8px">讀一讀（先自己讀，再撳揭曉核對拼音）：</p>
+    <div class="tw" id="tongue-line1"></div>
+    <div class="tw" id="tongue-line2"></div>
+    <div><button class="mini rv" data-act="rvw" data-target="tongue-py">👁 揭曉拼音</button></div>
+    <div class="rvwrap" id="tongue-py"></div>
+    <div class="rowbtns" style="margin-top:9px">
+      <button class="mini" data-speak="四是四，十是十。四十四隻石獅子，吃四十四隻澀柿子。">🔊 讀繞口令（普通話）</button>
+    </div>
+    <div class="tw" style="margin-top:14px;text-align:center" id="hulu-line"></div>
+    <div class="rowbtns" style="margin-top:8px">
+      <button class="mini rv" data-act="rvw" data-target="hulu-py">👁 揭曉拼音</button>
+      <button class="mini" data-speak="一葫蘆酒，九兩六。一葫蘆油，六兩九。六兩九的油，要換九兩六的酒；九兩六的酒，不換六兩九的油。">🔊 讀一讀</button>
+    </div>
+    <div class="rvwrap" id="hulu-py"></div>
+  </div>
+
+  <div class="card">
+    <h3>3. 小試一試：「四」「十」嘅聲調</h3>
+    <div class="rd" data-q="a1" style="margin-top:8px">
+      <div class="qhead"><span class="qnum">1</span><span class="qtext">「四」讀第幾聲？</span></div>
+      <div class="opts"><button class="opt" data-act="opt" data-q="a1" data-v="第三聲">第三聲</button><button class="opt" data-act="opt" data-q="a1" data-v="第四聲">第四聲</button></div>
+      <div class="fb"></div>
+      <button class="mini rv" data-act="rvmc" data-q="a1">👁 揭曉</button>
+      <div class="ansbox"><span>第四聲 sì</span></div>
+    </div>
+    <div class="rd" data-q="a2" style="margin-top:12px">
+      <div class="qhead"><span class="qnum">2</span><span class="qtext">「十」讀第幾聲？</span></div>
+      <div class="opts"><button class="opt" data-act="opt" data-q="a2" data-v="第二聲">第二聲</button><button class="opt" data-act="opt" data-q="a2" data-v="第三聲">第三聲</button></div>
+      <div class="fb"></div>
+      <button class="mini rv" data-act="rvmc" data-q="a2">👁 揭曉</button>
+      <div class="ansbox"><span>第二聲 shí</span></div>
+    </div>
+  </div>
+
+  <details class="details">
+    <summary>💡 多學一點點</summary>
+    <p>講電話、車牌、房間號碼時，遇到兩個或三個「1」，為咗聽得清楚、又唔會同「7」混淆，可以把「1」讀成「幺」（yāo）。例：電話 1101 → 「幺幺零幺」。</p>
+  </details>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="1">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二 ============ -->
+<section class="screen" id="s2">
+  <div class="eyebrow">📏 活動二</div>
+  <h2>常見計量單位</h2>
+  <p class="muted">同組員討論，將啱嘅單位填落空格。答錯有第二次機會；唔肯定就撳「👁 揭曉」。</p>
+  <div id="measure"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="2">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動三 ============ -->
+<section class="screen" id="s3">
+  <div class="eyebrow">🔢 活動三</div>
+  <h2>正確使用量詞</h2>
+
+  <div class="card">
+    <h3>練習一・粵普對譯</h3>
+    <p class="muted">下面嘅粵語講法，用普通話應該點講？填落空格，再撳「✓ 核對」。</p>
+    <div id="qunits" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習二・填上合適的量詞</h3>
+    <p class="muted">原本係「掃一掃玩遊戲」，喺呢頁直接做：喺空格填上量詞。有啲題目可以填多過一個答案。</p>
+    <div id="classifiers" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="3">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動四 ============ -->
+<section class="screen" id="s4">
+  <div class="eyebrow">🗣️ 活動四</div>
+  <h2>粵普對譯</h2>
+  <p class="muted">把以下粵語改寫成符合普通話規範嘅講法。先自己講一次，再撳「👁 揭曉」核對。</p>
+
+  <div class="card">
+    <h3>練習一・數字、時間用語（12 組）</h3>
+    <div id="timepairs" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習二・句子對譯（5 句）</h3>
+    <div id="sentences" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="4">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五 ============ -->
+<section class="screen" id="s5">
+  <div class="eyebrow">📦 活動五</div>
+  <h2>清點用品</h2>
+  <p class="muted">你係爾雅時裝設計公司嘅設計部助理<b>小陳</b>。上司王先生請你清點倉庫內嘅展覽用品。先睇清單，再做練習一、二。</p>
+
+  <div class="card">
+    <h3>展覽用品清單</h3>
+    <div id="checklist" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習一・對話替換練習</h3>
+    <p class="muted">王先生問「有多少……？」，你答「倉庫裡有……」。撳一撳每一行，睇示範答案同聽讀音。</p>
+    <div id="qa" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>練習二・段落匯報</h3>
+    <p class="muted">以段落為單位，向王先生匯報清點結果。先填好每個空格，再撳「📝 睇範文」核對。</p>
+    <div class="line" id="reportfill" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="reportfill">👁 揭曉全部</button>
+      <button class="mini" data-speak="王先生，倉庫裡的展覽用品我已經清點完了。倉庫裡有五十把剪刀、十九盒圖釘、十二塊背景板、七面鏡子、四十四卷膠帶、三十八頂帽子和十五個展示架。">🔊 讀範文（普通話）</button>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="5">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動六 ============ -->
+<section class="screen" id="s6">
+  <div class="eyebrow">📅 活動六</div>
+  <h2>活動計劃</h2>
+  <p class="muted">端午節將至，公司計劃組織員工參加志願者公益活動。活動負責人劉東向江主管匯報活動計劃。先讀對話，再做下面嘅理解題。</p>
+
+  <div class="card">
+    <h3>活動計劃對話</h3>
+    <div class="dlg" style="margin-top:8px" id="plan-dlg"></div>
+  </div>
+
+  <div class="card">
+    <h3>難讀詞語</h3>
+    <div class="gridc" id="plan-kw" style="margin-top:9px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>聽一聽・理解活動安排</h3>
+    <p class="muted">喺空格填上時間（例：九點整、十二點半）。答錯有第二次機會。</p>
+    <div class="line" id="plan-q" style="margin-top:9px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="6">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動七 ============ -->
+<section class="screen" id="s7">
+  <div class="eyebrow">🎤 活動七</div>
+  <h2>說話練習</h2>
+  <p class="muted">你係安信公司員工發展部嘅職員，負責為新員工安排活動。根據資料卡，向主管匯報各項活動嘅具體安排。</p>
+
+  <div class="card">
+    <h3>資料卡（一）員工迎新會</h3>
+    <div class="dc" id="card1" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>資料卡（二）廣州科技園考察團</h3>
+    <div class="dc" id="card2" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>匯報示範（填空）</h3>
+    <p class="muted">把活動資料填落空格，變成一段匯報。填完撳「👁 揭曉」核對，再大聲讀出嚟。</p>
+    <div class="line" id="report2" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="report2">👁 揭曉全部</button>
+      <button class="mini" data-speak="員工迎新會在四月二十二日舉行，時間由上午九點十五分到十二點半，地點是公司一樓禮堂。茶點預備四十份。廣州科技園考察團在五月十九日出發，集合時間是上午九點，在九龍塘地鐵站集合。">🔊 讀範文（普通話）</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 說話練習互評表</h3>
+    <p class="muted">組員姓名：<input class="exit-in" style="display:inline-block;width:auto;min-width:9em;margin-top:4px" id="peer" placeholder="＿＿＿"></p>
+    <p class="muted">完成對話練習後，請根據組員嘅表現，為佢／她揀一個評級。</p>
+    <div id="rate" style="margin-top:9px"></div>
+    <div style="margin-top:10px">
+      <p class="muted" style="margin:0 0 4px">為幫助組員下次進步，畀佢／她一啲建議：</p>
+      <textarea class="exit-in" id="advice" placeholder="＿＿＿"></textarea>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="7">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸學習 ============ -->
+<section class="screen" id="s8">
+  <div class="eyebrow">🔤 延伸學習</div>
+  <h2>「一」「不」變調</h2>
+  <p class="muted">「一」同「不」嘅聲調會跟住後面嘅字改變。揀出正確讀音，答錯有第二次機會；唔確定就撳「👁 揭曉」。</p>
+
+  <div class="card">
+    <h3>練習一・選擇題</h3>
+    <div class="card soft-blue" style="margin:10px 0">
+      <p class="big" style="margin:0">「一」：A. yī　B. yí　C. yì</p>
+      <p class="big" style="margin:4px 0 0">「不」：A. bù　B. bú</p>
+    </div>
+    <h3 style="color:var(--gold)">「一」的讀音</h3>
+    <div id="yi-q" style="margin-top:8px"></div>
+    <h3 style="color:var(--gold);margin-top:14px">「不」的讀音</h3>
+    <div id="bu-q" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>練習二・填空題</h3>
+    <p class="muted">喺括號填上正確嘅漢語拼音，然後用普通話讀一讀。</p>
+    <div class="line" id="tone-fill" style="margin-top:9px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="8">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 自我評估 ============ -->
+<section class="screen" id="self">
+  <div class="eyebrow">📋 自我評估</div>
+  <h2>完成本課之後，你能做到嗎？</h2>
+  <p class="muted">每一行揀一個。冇標準答案，老實就得。</p>
+  <div class="assess" id="assess" style="margin-top:11px"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn" onclick="show('exit')">🏁 去課堂收結 ▶</button>
+  </div>
+</section>
+
+<!-- ============ 出口卡 ============ -->
+<section class="screen" id="exit">
+  <div class="eyebrow">🏁 課堂收結</div>
+  <h2>出口卡</h2>
+  <p class="muted">打字唔得就口頭講、或寫喺紙條交畀老師。答完先播下課歌。</p>
+  <div class="card">
+    <h3>今日學到嘅 3 樣</h3>
+    <input class="exit-in" id="e1" placeholder="1.">
+    <input class="exit-in" id="e2" placeholder="2.">
+    <input class="exit-in" id="e3" placeholder="3.">
+  </div>
+  <div class="card">
+    <h3>最想再練嘅一樣</h3>
+    <input class="exit-in" id="e4" placeholder="我想再練……">
+  </div>
+  <div class="navrow">
+    <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone" target="_blank" rel="noopener">🎵 去下課歌區 ▶</a>
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+  </div>
+  <p class="muted" style="margin-top:14px">下課歌區（總台）：
+    <span class="muted" style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone</span>
+  </p>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<pre id="selftest" style="display:none"></pre>
+
+<script>
+"use strict";
+window.__errs=[];
+window.addEventListener('error',function(e){try{window.__errs.push(String(e.message||e))}catch(x){}});
+window.addEventListener('unhandledrejection',function(e){try{window.__errs.push('rej:'+String(e.reason))}catch(x){}});
+/* ================= 基礎工具 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let toastTimer=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1900)}
+function speak(txt){try{if(!('speechSynthesis'in window)){toast('此裝置暫無語音，請跟老師讀');return}const u=new SpeechSynthesisUtterance(String(txt).replace(/[＿_]/g,'…'));u.lang='zh-CN';u.rate=.82;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}catch(e){toast('此裝置暫無語音，請跟老師讀')}}
+/* 正規化：去空白／標點，方便比對填空 */
+function norm(s){return String(s).replace(/[\s\u3000，。、！？!?,.／/「」『』（）()：:；;－—–~～]/g,'').toLowerCase()}
+function normEq(a,b){return norm(a)===norm(b)&&norm(a)!==''}
+
+/* ================= 進度（localStorage） ================= */
+const TOTAL=8;
+const KEY=i=>'vch1101spk2_a'+i;
+const MEM={}; /* 記憶體後備：就算 localStorage 被封（隱私模式／file://）都唔會即場失效 */
+function lsGet(k){try{const v=localStorage.getItem(k);return v===null?(k in MEM?MEM[k]:null):v}catch(e){return k in MEM?MEM[k]:null}}
+function lsSet(k,v){MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){delete MEM[k];try{localStorage.removeItem(k)}catch(e){}}
+function isDone(i){return lsGet(KEY(i))==='1'}
+function setDone(i){lsSet(KEY(i),'1'); renderProgress(); renderTiles(); }
+function clearDone(){for(let i=1;i<=TOTAL;i++)lsDel(KEY(i)); renderProgress(); renderTiles();}
+function doneCount(){let n=0;for(let i=1;i<=TOTAL;i++)if(isDone(i))n++;return n}
+function renderProgress(){const n=doneCount();$('#ptxt').textContent='進度 '+n+'/'+TOTAL;$('#pbar').style.width=(n/TOTAL*100)+'%'}
+
+/* ================= 畫面切換 ================= */
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));try{window.scrollTo(0,0)}catch(e){} if(id==='map')renderTiles();}
+
+/* ================= 活動地圖 ================= */
+const MAP=[
+ {id:'s1',n:1,em:'👅',t:'活動一・繞口令',s:'數字 一～萬＋「四是四，十是十」'},
+ {id:'s2',n:2,em:'📏',t:'活動二・常見計量單位',s:'質量／長度／面積／體積 填空'},
+ {id:'s3',n:3,em:'🔢',t:'活動三・正確使用量詞',s:'粵普對譯 8 題＋量詞 20 題'},
+ {id:'s4',n:4,em:'🗣️',t:'活動四・粵普對譯',s:'12 組時間用語＋5 句句子'},
+ {id:'s5',n:5,em:'📦',t:'活動五・清點用品',s:'對話替換＋段落匯報'},
+ {id:'s6',n:6,em:'📅',t:'活動六・活動計劃',s:'聆聽朗讀＋時間理解'},
+ {id:'s7',n:7,em:'🎤',t:'活動七・說話練習',s:'兩張資料卡＋說話練習互評表'},
+ {id:'s8',n:8,em:'🔤',t:'延伸學習・「一」「不」變調',s:'選擇題＋填空題'},
+ {id:'self',n:'📋',em:'✅',t:'自我評估',s:'4 個學習成果自評',self:true}
+];
+function selfAllDone(){return [0,1,2,3].every(i=>aState[i])}
+function renderTiles(){
+  const el=$('#tiles'); if(!el) return;
+  el.innerHTML=MAP.map(m=>{
+    const d=m.self?selfAllDone():isDone(m.n);
+    return `<button class="tile${d?' done':''}" data-goto="${m.id}">
+      <span class="tn">${esc(m.n)}</span>
+      <div class="tem">${m.em}</div>
+      <div class="tt">${esc(m.t)}</div>
+      <div class="ts">${esc(m.s)}</div>
+      <span class="tick">${d?'✓':''}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ================= 共用小部件 ================= */
+function blankHTML(ans,extra){return `<span class="bk rvscope" data-ans="${esc(ans)}"><input class="bi" ${extra||''} autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(typeof ans==='string'?ans.split('|')[0]:ans)}</span></span><span class="fb"></span></span>`}
+function rubyHTML(pairs){return pairs.map(p=>`<span class="ruby"><span class="py">${esc(p[1])}</span><span class="ch">${esc(p[0])}</span></span>`).join('')}
+function plainHTML(pairs){return pairs.map(p=>`<span>${esc(p[0])}</span>`).join('')}
+
+/* ================= 活動一：繞口令 ================= */
+const NUM=[['一','yī'],['二','èr'],['三','sān'],['四','sì'],['五','wǔ'],['六','liù'],['七','qī'],['八','bā'],['九','jiǔ'],['十','shí'],['百','bǎi'],['千','qiān'],['萬','wàn']];
+const TONGUE1=[['四','sì'],['十','shí'],['四','sì'],['隻','zhī'],['石','shí'],['獅','shī'],['子','zi'],['吃','chī'],['四','sì'],['十','shí'],['四','sì'],['隻','zhī'],['澀','sè'],['柿','shì'],['子','zi']];
+const TONGUE2=[['西','xī'],['施','shī'],['死','sǐ'],['時','shí'],['四','sì'],['十','shí'],['四','sì'],['，',''],['四','sì'],['十','shí'],['四','sì'],['時','shí'],['死','sǐ'],['西','xī'],['施','shī'],['。','']];
+const HULU=[
+ [['一','yì'],['葫','hú'],['蘆','lu'],['酒','jiǔ'],['，',''],['九','jiǔ'],['兩','liǎng'],['六','liù'],['，','']],
+ [['一','yì'],['葫','hú'],['蘆','lu'],['油','yóu'],['，',''],['六','liù'],['兩','liǎng'],['九','jiǔ'],['。','']],
+ [['六','liù'],['兩','liǎng'],['九','jiǔ'],['的','de'],['油','yóu'],['，',''],['要','yào'],['換','huàn'],['九','jiǔ'],['兩','liǎng'],['六','liù'],['的','de'],['酒','jiǔ'],['，','']],
+ [['九','jiǔ'],['兩','liǎng'],['六','liù'],['的','de'],['酒','jiǔ'],['，',''],['不','bú'],['換','huàn'],['六','liù'],['兩','liǎng'],['九','jiǔ'],['的','de'],['油','yóu'],['。','']]
+];
+function renderTongue(){
+  $('#numrow').innerHTML=plainHTML(NUM);
+  $('#num-py').innerHTML=rubyHTML(NUM);
+  $('#tongue-line1').innerHTML=plainHTML(TONGUE1);
+  $('#tongue-line2').innerHTML=plainHTML(TONGUE2);
+  $('#tongue-py').innerHTML=rubyHTML(TONGUE1)+'<br>'+rubyHTML(TONGUE2);
+  $('#hulu-line').innerHTML=HULU.map(l=>plainHTML(l)).join('<br>');
+  $('#hulu-py').innerHTML=HULU.map(l=>rubyHTML(l)).join('<br>');
+  QZ.a1={a:'第四聲',txt:'sì'}; QZ.a2={a:'第二聲',txt:'shí'};
+}
+
+/* ================= 活動二：計量單位 ================= */
+const MEASURE=[
+ {t:'質量或重量',subs:[
+   {s:'a. 十進制單位',rows:[{pre:'1',ans:'公噸',post:'= 1000 公斤'},{pre:'1 公斤',post:'= 2.21 磅（大約）'}]},
+   {s:'b. 英制單位',rows:[{pre:'1 噸',post:'= 2240 磅'},{pre:'1',ans:'磅',post:'= 0.45 公斤（大約）'},{pre:'1 安士',post:'= 1/16 磅'}]},
+   {s:'c. 中國制單位',rows:[{pre:'1',ans:'斤',post:'= 0.61 公斤（大約）'},{pre:'1 兩',post:'= 1/16 斤'}]}
+ ]},
+ {t:'長度',subs:[
+   {s:'a. 十進制單位',rows:[{pre:'1',ans:'公里',post:'= 1000 米'},{pre:'1 米',post:'= 3.28 呎（大約）'}]},
+   {s:'b. 英制單位',rows:[{pre:'1 碼',post:'= 0.91 米（大約）'},{pre:'1 呎',post:'= 1/3 碼'},{pre:'1 吋',post:'= 1/36 碼'}]},
+   {s:'c. 中國制單位',rows:[{pre:'1 尺',post:'= 0.37 米（大約）'},{pre:'1',ans:'寸',post:'= 0.1 尺'}]}
+ ]},
+ {t:'面積',subs:[
+   {s:'a. 十進制單位',rows:[{pre:'1 公頃',post:'= 100 公畝'},{pre:'1 平方米',post:'= 10.76 平方呎（大約）'}]},
+   {s:'b. 英制單位',rows:[{pre:'1 平方呎',post:'= 1/9 平方碼'},{pre:'1 平方吋',post:'= 1/144 平方呎'}]}
+ ]},
+ {t:'體積',subs:[
+   {s:'a. 十進制單位',rows:[{pre:'1 升',post:'= 0.04 立方呎（大約）'}]},
+   {s:'b. 英制單位',rows:[{pre:'1 立方吋',post:'= 1/1728 立方呎'}]}
+ ]}
+];
+function renderMeasure(){
+  $('#measure').innerHTML=MEASURE.map(c=>`<div class="card">
+    <div class="cat">${esc(c.t)}</div>
+    ${c.subs.map(sb=>`<div class="subh">${esc(sb.s)}</div>${sb.rows.map(r=>`<div class="eq"><span>${esc(r.pre)}</span>${r.ans?blankHTML(r.ans):''}<span class="rhs">${esc(r.post)}</span></div>`).join('')}`).join('')}
+  </div>`).join('');
+}
+
+/* ================= 活動三：量詞 ================= */
+const QUNITS=[
+ ['一對波鞋','一雙球鞋'],['一隻牛','一頭牛'],['一煲飯','一鍋飯'],['一隻馬','一匹馬'],
+ ['一餐飯','一頓飯'],['一件蛋糕','一塊蛋糕'],['一粒鑽石','一顆鑽石'],['一隻梳','一把梳子']
+];
+function renderQUnits(){
+  $('#qunits').innerHTML=QUNITS.map((p,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(p[0])}</b>
+    ${blankHTML(p[1],'style="width:8em"')}
+    <button class="mini" data-speak="${esc(p[1])}">🔊</button>
+  </div>`).join('');
+}
+const CLASSIFIERS=[
+ ['一（','）嘴巴','張','張'],['一（','）眼淚','滴','滴'],['兩（','）西點','塊','塊'],['兩（','）汽水','瓶|罐','瓶'],
+ ['三（','）水果','盤','盤'],['三（','）葡萄','串|顆','串'],['四（','）酒席','桌','桌'],['四（','）熱菜','道','道'],
+ ['五（','）電池','節|塊|粒','節'],['五（','）手錶','塊','塊'],['六（','）象棋','盤','盤'],['六（','）電影','場','場'],
+ ['七（','）學校','所','所'],['七（','）房子','套','套'],['八（','）椅子','把','把'],['八（','）窗戶','扇','扇'],
+ ['九（','）汽車','輛','輛'],['九（','）車禍','起','起'],['十（','）公司','家','家'],['十（','）生意','筆','筆']
+];
+function renderClassifiers(){
+  $('#classifiers').innerHTML=CLASSIFIERS.map((c,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(c[0])}</b>${blankHTML(c[2],'style="width:4.2em"')}<b class="kk">${esc(c[1])}</b>
+  </div>`).join('');
+}
+
+/* ================= 活動四：粵普對譯 ================= */
+const TIMEPAIRS=[
+ ['四分三','四分之三'],['5%','百分之五'],['六點正','六點整'],['半粒鐘','半個小時／三十分鐘'],
+ ['九點三','九點十五分／九點一刻'],['成日','整天'],['前日','前天'],['朝早','早晨／早上'],
+ ['年頭','年初'],['年尾','年底'],['舊年','去年'],['出年','明年']
+];
+function renderTimePairs(){
+  $('#timepairs').innerHTML=TIMEPAIRS.map((p,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. ${esc(p[0])}</b>
+    <button class="mini rv" data-act="rv">👁 揭曉</button>
+    <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span>
+  </div>`).join('');
+}
+const SENTENCES=[
+ ['我哋邊日去工廠實習？','我們哪天去工廠實習？'],
+ ['宜家幾多點呀？','現在幾點了？'],
+ ['佢去咗成日，唔知幾時返嚟。','他／她去了一整天，不知道甚麼時候回來。'],
+ ['你一個禮拜返幾日工？','你一個星期／禮拜上幾天班？'],
+ ['我哋仲有四個字就收工啦。','我們還有二十分鐘就下班了。']
+];
+function renderSentences(){
+  $('#sentences').innerHTML=SENTENCES.map((p,i)=>`<div class="qa rvscope">
+    <div style="color:#bfe3ff;font-weight:800">${i+1}. ${esc(p[0])}</div>
+    <div style="margin-top:6px"><button class="mini rv" data-act="rv">👁 揭曉普通話</button>
+    <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span></div>
+  </div>`).join('');
+}
+
+/* ================= 活動五：清點用品 ================= */
+const LIST=[['剪刀',50,'把'],['圖釘',19,'盒'],['背景板',12,'塊'],['鏡子',7,'面'],['膠帶',44,'卷'],['帽子',38,'頂'],['展示架',15,'個']];
+function renderChecklist(){
+  $('#checklist').innerHTML=LIST.map((it,i)=>`<div class="listrow">
+    <span class="nm">${i+1}. ${esc(it[0])}</span><span class="qt">${it[1]} ${esc(it[2])}</span>
+  </div>`).join('');
+  $('#qa').innerHTML=LIST.map((it,i)=>`<div class="qa rvscope">
+    <div><b style="color:var(--blue)">王先生</b>：小陳，倉庫裡有多少${esc(it[0])}？</div>
+    <div style="margin-top:6px"><button class="mini rv" data-act="rv">👁 揭曉答句</button>
+      <span class="ansbox"><span>王先生，倉庫裡有 ${it[1]} ${esc(it[2])}${esc(it[0])}。</span><button class="speakbt" data-speak="王先生，倉庫裡有 ${it[1]} ${esc(it[2])}${esc(it[0])}。">🔊</button></span></div>
+  </div>`).join('');
+  $('#reportfill').innerHTML='王先生，倉庫裡的展覽用品我已經清點完了。倉庫裡有 '+LIST.map(it=>blankHTML(it[1]+it[2]+'|'+it[1]+it[2]+it[0],'style="width:6.5em"')+' '+esc(it[0])).join('、')+'。';
+}
+
+/* ================= 活動六：活動計劃 ================= */
+const PLAN_DLG=[
+ ['劉東','江主管，下星期六我們將組織員工參加志願者公益活動，活動安排初步計劃好了，您要不要聽聽？'],
+ ['江主管','好的小劉，你說吧。'],
+ ['劉東','這次的活動主題是「慶端午公益行動」。當天上午，我們的隊員會代表公司參加沙田「慈善龍舟比賽」。早上九點整，全體隊員在沙田第一城地鐵站集合，然後一起到沙田城門河參賽；比賽九點半開始，十二點結束。'],
+ ['江主管','很好，叫隊員們最近加緊集訓，爭取在比賽中取得好成績。'],
+ ['劉東','好的，我會叫大夥加油的。比賽結束後，隊員們十二點半去吃午飯，稍作休息。下午兩點到同區的安家養老院陪老人過節，和他們一起包粽子、吃粽子。五點半離開養老院，結束當天的活動。'],
+ ['江主管','這次的活動安排得不錯，既充實又有意義。']
+];
+const PLAN_KW=[['志願者','zhì yuàn zhě'],['公益','gōng yì'],['龍舟','lóng zhōu'],['慈善','cí shàn'],['集訓','jí xùn'],['養老院','yǎng lǎo yuàn'],['粽子','zòng zi'],['充實','chōng shí'],['意義','yì yì']];
+function renderPlan(){
+  $('#plan-dlg').innerHTML=PLAN_DLG.map((l,i)=>`<div class="bub ${i%2?'b':''}"><span class="sp">${esc(l[0])}</span>${esc(l[1])}
+    <div style="margin-top:6px"><button class="mini" data-speak="${esc(l[1])}">🔊 讀一次</button></div></div>`).join('');
+  $('#plan-kw').innerHTML=PLAN_KW.map(k=>`<div class="kw rvscope"><span class="w">${esc(k[0])}</span>
+    <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(k[1])}</span><button class="speakbt" data-speak="${esc(k[0])}">🔊</button></span></div></div>`).join('');
+  const Q=[
+   ['活動當日早上',['九點整|九點|9:00|9點'],'在沙田第一城地鐵站集合。'],
+   ['龍舟比賽',['九點半|9:30|9點半'],'開始，',['十二點|12:00|12點|十二時'],'結束。'],
+   ['比賽結束後，隊員',['十二點半|12:30|12點半'],'去吃午飯。'],
+   ['下午',['兩點|2:00|2點|兩點鐘|下午兩點'],'到安家養老院陪老人過節。'],
+   ['下午',['五點半|5:30|5點半|五點三十分'],'離開養老院，結束當天的活動。']
+  ];
+  $('#plan-q').innerHTML=Q.map(seg=>seg.map(x=>typeof x==='string'?esc(x):blankHTML(x.join('|'),'style="width:6.5em"')).join('')).join('<br>');
+}
+
+/* ================= 活動七：說話練習 ================= */
+const CARD1=[['日期','4月22日'],['時間','9:15 – 12:30'],['地點','公司一樓禮堂'],
+ ['流程','9:15–9:30 簽到入座；9:30–9:50 總經理黃立新先生致辭；9:50–11:00 行政部主管李斌先生介紹公司與行業發展；11:00–11:15 休息；11:15–12:20 分組活動；12:20–12:30 問答環節'],
+ ['茶點安排','預備 40 份茶點']];
+const CARD2=[['日期','5月19日'],['集合時間','9:00'],['集合／解散地點','九龍塘地鐵站'],
+ ['行程','9:00–10:00 乘車前往廣州1906科技園；10:00–12:00 主管介紹科技AI實驗室；12:00–14:00 午餐；14:00–15:30 參觀百年工業遺址變身文創區；15:30–16:15 參觀海珠港澳青創基地；16:15–17:00 返回香港；17:00 解散']];
+function cardHTML(c){return c.map(r=>`<div class="l"><span class="k">${esc(r[0])}</span><span class="v">${esc(r[1])}</span></div>`).join('')}
+function renderCards(){
+  $('#card1').innerHTML=cardHTML(CARD1);
+  $('#card2').innerHTML=cardHTML(CARD2);
+  $('#report2').innerHTML='員工迎新會在 '+blankHTML('4月22日|四月二十二日','style="width:6.5em"')+' 舉行，時間由上午 '+blankHTML('9:15|九點十五分|9點15分','style="width:6.5em"')+' 到 '+blankHTML('12:30|十二點半|12點30分','style="width:6.5em"')+'，地點是 '+blankHTML('公司一樓禮堂','style="width:8em"')+'。茶點預備 '+blankHTML('40|四十','style="width:4em"')+' 份。<br>廣州科技園考察團在 '+blankHTML('5月19日|五月十九日','style="width:6.5em"')+' 出發，集合時間是上午 '+blankHTML('9:00|九點|9點','style="width:5.5em"')+'，在 '+blankHTML('九龍塘地鐵站','style="width:8em"')+' 集合。';
+}
+const RATE=['整體表現：切合題目要求，完成任務','內容豐富，組織有條理','運用正確的詞彙，以完整句子對話','語音面貌'];
+const RATE_OPTS=[['A','A（優秀）'],['B','B（良好）'],['C','C（及格）'],['F','F（不及格）']];
+let rateState={};
+function renderRate(){
+  $('#rate').innerHTML=RATE.map((q,i)=>`<div class="arow">
+    <div class="aq">${esc(q)}</div>
+    <div class="aopts">${RATE_OPTS.map(o=>`<button class="rateopt aopt${rateState[i]===o[0]?' sel':''}" data-rt="${i}" data-rv="${o[0]}">${esc(o[1])}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 延伸學習：「一」「不」變調 ================= */
+const QZ={}; /* MC 答案註冊表：qid -> {a:'字母', txt:'讀音'} */
+const YI=[['一本正經','C'],['一觸即發','B'],['一往情深','C'],['一表人才','C'],['屈指一算','B'],['一定','B'],['第一名','A'],['一樣','B'],['唯一','A'],['一個','B'],['一本書','C'],['一起','C'],['萬一','A'],['一萬','B'],['統一','A'],['一概','B'],['一年','C'],['初一','A'],['一半','B'],['一次','B'],['一時','C'],['一帆風順','C'],['一字千金','B'],['一本萬利','C']];
+const BU=[['不過','B'],['不安','A'],['不要','B'],['不好','A'],['不錯','B'],['不願意','B'],['不是','B'],['不會','B'],['不懂事','A'],['不能','A'],['不變','B'],['不怕','B']];
+const YI_TXT={A:'yī',B:'yí',C:'yì'}, BU_TXT={A:'bù',B:'bú'};
+function renderToneMC(){
+  const build=(arr,prefix,letters,txt)=>{
+    arr.forEach((w,i)=>{
+      const qid=prefix+(i+1);
+      QZ[qid]={a:w[1],txt:txt[w[1]]};
+    });
+    return arr.map((w,i)=>{
+      const qid=prefix+(i+1);
+      return `<div class="rd" data-q="${qid}" style="margin:10px 0">
+        <div class="qhead"><span class="qnum">${i+1}</span><span class="qtext">${esc(w[0])}</span></div>
+        <div class="opts${letters.length>2?' three':''}">${letters.map(L=>`<button class="opt" data-act="opt" data-q="${qid}" data-v="${L}">${L}. ${esc(txt[L])}</button>`).join('')}</div>
+        <div class="fb"></div>
+        <button class="mini rv" data-act="rvmc" data-q="${qid}">👁 揭曉</button>
+        <div class="ansbox"><span>${QZ[qid].a}. ${esc(QZ[qid].txt)}</span></div>
+      </div>`;
+    }).join('');
+  };
+  $('#yi-q').innerHTML=build(YI,'yi',['A','B','C'],YI_TXT);
+  $('#bu-q').innerHTML=build(BU,'bu',['A','B'],BU_TXT);
+}
+const TONE_FILL=[
+ ['不',['bù|bu'],'管三七二十一',['yī|yi'],''],
+ ['一',['yì|yi'],'草一',['yí|yi'],'木'],
+ ['不',['bù|bu'],'三不',['bú|bu'],'四'],
+ ['不',['bù|bu'],'聞不',['bú|bu'],'問']
+];
+function renderToneFill(){
+  $('#tone-fill').innerHTML=TONE_FILL.map(seg=>
+    `<div>${esc(seg[0])}（${blankHTML(seg[1].join('|'),'style="width:4em"')}）${esc(seg[2])}（${blankHTML(seg[3].join('|'),'style="width:4em"')}）${esc(seg[4])}</div>`
+  ).join('');
+}
+
+/* ================= 自我評估 ================= */
+const ASSESS=['說出常見的計量單位','正確使用量詞','表達物品的數量','簡單介紹活動的時間安排'];
+const AOPTS=['能','部分','否'];
+let aState={};
+function renderAssess(){
+  $('#assess').innerHTML=ASSESS.map((q,i)=>`<div class="arow">
+    <div class="aq">${i+1}. ${esc(q)}</div>
+    <div class="aopts">${AOPTS.map(o=>`<button class="aopt${aState[i]===o?' sel':''}" data-aq="${i}" data-av="${o}">${o}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 事件（委派） ================= */
+document.addEventListener('click',function(e){
+  const gt=e.target.closest('[data-goto]');
+  if(gt){ show(gt.dataset.goto); return; }
+  const fin=e.target.closest('[data-fin]');
+  if(fin){ setDone(Number(fin.dataset.fin)); toast('✅ 已記錄完成，進度更新咗！'); show('map'); return; }
+  const sp=e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const t=e.target.closest('[data-act]');
+  if(t){
+    const act=t.dataset.act;
+    if(act==='rv'){ const s=t.closest('.rvscope'); if(s){const b=s.querySelector('.ansbox'); if(b)b.classList.add('on');} return; }
+    if(act==='rvw'){
+      const id=t.dataset.target; const w=id?document.getElementById(id):null;
+      if(w){
+        if(w.querySelector('.bk')){ // 揭曉全部：逐個空格顯示答案
+          w.querySelectorAll('.ansbox').forEach(b=>b.classList.add('on'));
+          t.textContent='🙈 已揭曉';
+        } else {                  // 拼音盒：開／合
+          w.classList.toggle('on');
+          t.textContent=w.classList.contains('on')?'🙈 收起拼音':'👁 揭曉拼音';
+        }
+      }
+      return;
+    }
+    if(act==='rvmc'){
+      const rd=t.closest('.rd'); const o=QZ[rd.dataset.q];
+      rd.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok'); });
+      rd.querySelector('.ansbox').classList.add('on');
+      const fb=rd.querySelector('.fb'); fb.textContent='答案：'+o.a+'（'+o.txt+'）'; fb.className='fb ok';
+      return;
+    }
+    if(act==='opt'){
+      const rd=t.closest('.rd'); const q=rd.dataset.q; const v=t.dataset.v; const o=QZ[q]; const fb=rd.querySelector('.fb');
+      if(v===o.a){
+        rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')});
+        rd.querySelector('.ansbox').classList.add('on'); fb.textContent='✓ 答對了！'; fb.className='fb ok';
+      } else {
+        if(!rd.dataset.tried){ rd.dataset.tried='1'; t.classList.add('no'); t.disabled=true; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+        else { t.classList.add('no'); t.disabled=true; rd.querySelector('.ansbox').classList.add('on'); rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')}); fb.textContent='答案：'+o.a+'（'+o.txt+'）'; fb.className='fb warn'; }
+      }
+      return;
+    }
+    if(act==='ck'){
+      const bk=t.closest('.bk'); const inp=bk.querySelector('input'); const alts=(bk.dataset.ans||'').split('|'); const fb=bk.querySelector('.fb');
+      if(alts.some(a=>normEq(inp.value,a))){ fb.textContent='✓ 答對了'; fb.className='fb ok'; bk.classList.add('ok'); inp.disabled=true; t.disabled=true; }
+      else if(!bk.dataset.tried){ bk.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+      else { fb.textContent='答案：'+alts[0]; fb.className='fb warn'; bk.querySelector('.ansbox').classList.add('on'); }
+      return;
+    }
+  }
+  const aq=e.target.closest('[data-aq]'); if(aq){ aState[aq.dataset.aq]=aq.dataset.av; lsSet('vch1101spk2_self',JSON.stringify(aState)); renderAssess(); renderTiles(); return; }
+  const rt=e.target.closest('[data-rt]'); if(rt){ rateState[rt.dataset.rt]=rt.dataset.rv; lsSet('vch1101spk2_rate',JSON.stringify(rateState)); renderRate(); return; }
+});
+
+/* ================= 鍵盤：Enter 即核對 ================= */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('bi')){
+    const bk=e.target.closest('.bk'); const mini=bk.querySelector('[data-act="ck"]'); if(mini)mini.click();
+  }
+});
+document.addEventListener('input',function(e){
+  if(e.target && e.target.id==='peer'){ lsSet('vch1101spk2_peer',e.target.value); }
+  if(e.target && e.target.id==='advice'){ lsSet('vch1101spk2_advice',e.target.value); }
+});
+
+/* ================= 初始化 ================= */
+function init(){
+  renderTongue(); renderMeasure(); renderQUnits(); renderClassifiers();
+  renderTimePairs(); renderSentences(); renderChecklist(); renderPlan();
+  renderCards(); renderRate(); renderToneMC(); renderToneFill();
+  renderTiles(); renderProgress();
+  const s0=lsGet('vch1101spk2_self'); if(s0){try{aState=JSON.parse(s0)||{}}catch(x){}}
+  const r0=lsGet('vch1101spk2_rate'); if(r0){try{rateState=JSON.parse(r0)||{}}catch(x){}}
+  renderAssess(); renderRate(); renderTiles();
+  const pe=lsGet('vch1101spk2_peer'); if(pe!=null&&pe!=='')$('#peer').value=pe;
+  const ad=lsGet('vch1101spk2_advice'); if(ad!=null&&ad!=='')$('#advice').value=ad;
+}
+init();
+
+/* ================= 自動自測（?selftest） ================= */
+function runSelfTest(){
+  const out=[]; const errs=[];
+  try{
+    clearDone();
+    // 1) 地圖項目（8 進度 + 自我評估 = 9）
+    out.push('map_tiles='+$$('#tiles .tile').length);
+    // 2) 每個活動可進入
+    let entered=0; MAP.forEach(m=>{ show(m.id); if($('#'+m.id).classList.contains('on'))entered++; });
+    out.push('entered='+entered+'/'+MAP.length);
+    // 3) 答案可揭（撳所有 rv 掣）
+    const rv=$$('[data-act="rv"]'); let rvn=0;
+    rv.forEach(b=>{ try{b.click(); rvn++;}catch(x){errs.push('rv '+x)} });
+    // 4) 拼音揭曉（rvw）
+    const rw=$$('[data-act="rvw"]'); rw.forEach(b=>{try{b.click()}catch(x){errs.push('rvw '+x)}});
+    out.push('rvw='+rw.length+'|rvwrap_on='+$$('.rvwrap.on').length);
+    // 5) MC 揭曉（rvmc）
+    const rm=$$('[data-act="rvmc"]'); rm.forEach(b=>{try{b.click()}catch(x){errs.push('rvmc '+x)}});
+    out.push('mc_reveal='+rm.length+'|ansbox_on='+$$('.ansbox.on').length+'|rv='+rvn);
+    // 6) 填空：隨機抽幾個 ck 掣驗證有反應
+    const ck=$$('[data-act="ck"]'); let ckn=0; ck.forEach(b=>{try{ b.click(); ckn++; }catch(x){errs.push('ck '+x)} });
+    out.push('ck_btns='+ckn);
+    // 7) 進度計數
+    for(let i=1;i<=TOTAL;i++) setDone(i);
+    out.push('progress_done='+doneCount()+'|ptxt='+$('#ptxt').textContent);
+    // 8) 自我評估全選 → 地圖 self tile 打鈎
+    [0,1,2,3].forEach(i=>{aState[i]='能'}); renderAssess(); renderTiles();
+    out.push('self_done='+selfAllDone());
+    // 9) 橫向溢出
+    const de=document.documentElement;
+    out.push('overflow='+(de.scrollWidth-de.clientWidth)+'|sw='+de.scrollWidth+'|cw='+de.clientWidth);
+    out.push('errors='+(window.__errs?window.__errs.length:0)+(window.__errs&&window.__errs.length?('::'+window.__errs.join(';')):''));
+    clearDone(); aState={}; renderAssess(); renderTiles();
+  }catch(e){ errs.push('FATAL '+e.message+'\n'+e.stack); }
+  const line='SELFTEST|'+out.join('|')+(errs.length?('|EXC='+errs.join(';')):'');
+  const pre=$('#selftest'); if(pre)pre.textContent=line;
+  try{document.title='OK '+line}catch(e){}
+  return line;
+}
+if(location.search.indexOf('selftest')>=0){ setTimeout(runSelfTest,80); }
+window.__selftest=runSelfTest;
+</script>
+</body>
+</html>
