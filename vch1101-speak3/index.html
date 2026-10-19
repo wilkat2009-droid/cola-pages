@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:,">
+<title>課次三 工作日程｜普通話對話與事務文書｜VCH1101</title>
+<style>
+:root{
+  --bg:#0f1720;--pan:#141f2c;--pan2:#101a25;--line:#24384a;
+  --ink:#eaf2f8;--muted:#9db1c2;--or:#ec7d3a;--teal:#14b8a6;
+  --gold:#ffd08a;--ok:#4ade80;--no:#fb7185;--blue:#59b6e8;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang TC","PingFang HK",sans-serif;
+  font-size:18px;line-height:1.62;overflow-x:hidden;
+}
+img,video,audio{max-width:100%}
+h1{font-size:clamp(27px,7vw,44px);line-height:1.2;margin:0;letter-spacing:.5px}
+h2{font-size:clamp(21px,5vw,30px);line-height:1.25;margin:0}
+h3{font-size:clamp(18px,4.4vw,22px);margin:0;overflow-wrap:anywhere}
+p{margin:8px 0;overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:.92em}
+.big{font-size:1.18em;font-weight:800}
+button{font-family:inherit}
+
+/* ---------- 頂欄 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:rgba(15,23,32,.97);
+  border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;
+  padding:9px 12px;flex-wrap:wrap;
+}
+.brandbtn{background:none;border:0;color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:8px;flex:1;min-width:150px}
+.pbar{height:11px;background:#26374a;border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.ptxt{color:var(--gold);font-weight:900;font-size:14px;white-space:nowrap}
+.finbtn{background:var(--or);color:#1a1004;border:0;font-weight:900;border-radius:99px;padding:9px 15px;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ---------- 畫面 ---------- */
+main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;width:100%}
+.screen{display:none;animation:rise .28s ease}
+.screen.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin:12px 0;min-width:0}
+.card.soft-teal{background:#10261f;border-color:#1d5a4a}
+.card.soft-blue{background:#102230;border-color:#24526f}
+.card.soft-gold{background:#241f10;border-color:#5c4a1c}
+.eyebrow{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.14em;margin-bottom:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;border-radius:12px;
+  padding:13px 20px;font-size:17px;background:var(--or);color:#1a1004;transition:.13s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.btn.teal{background:var(--teal);color:#04201c}
+.btn.done{background:var(--ok);color:#052a15}
+.mini{border:1px solid #38566e;background:#16283a;color:#cfe6f5;border-radius:9px;
+  padding:6px 11px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini:hover{background:#1f3448}
+.mini.rv{border-color:#7a5a1e;color:var(--gold)}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:center;padding:16px 4px}
+.cover .em{font-size:clamp(46px,15vw,84px);line-height:1}
+.outcomes{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px;text-align:left}
+.outcome{background:var(--pan);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:clamp(16px,4.4vw,20px);font-weight:700}
+.outcome:nth-child(2){border-left-color:var(--or)}
+.outcome:nth-child(3){border-left-color:var(--gold)}
+.outcome:nth-child(4){border-left-color:var(--blue)}
+
+/* ---------- 地圖 ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{position:relative;text-align:left;background:var(--pan);border:1px solid var(--line);
+  border-radius:15px;padding:13px 13px 13px;cursor:pointer;color:var(--ink);transition:.13s;min-width:0}
+.tile:hover{border-color:var(--or)}
+.tile .tn{display:inline-block;background:var(--teal);color:#04201c;font-weight:900;font-size:12px;border-radius:8px;padding:3px 9px;margin-bottom:7px}
+.tile .tem{font-size:24px}
+.tile .tt{font-weight:800;font-size:clamp(15px,3.8vw,18px);line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+.tile .ts{color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5;overflow-wrap:anywhere}
+.tile .tick{position:absolute;top:11px;right:12px;font-size:20px;font-weight:900;color:var(--ok)}
+.tile.done{border-color:var(--ok);background:#12251b}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 通用題目 ---------- */
+.qcard{background:var(--pan);border:1px solid var(--line);border-radius:15px;padding:14px;margin:11px 0;min-width:0}
+.rd{min-width:0}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+.qnum{flex:0 0 auto;width:32px;height:32px;border-radius:9px;background:var(--or);color:#1a1004;font-weight:900;display:grid;place-items:center;font-size:16px}
+.qtext{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.55;flex:1;min-width:0;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.opts.three{grid-template-columns:1fr 1fr 1fr}
+.opt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:12px;
+  font-size:clamp(16px,4.4vw,20px);font-weight:800;cursor:pointer;overflow-wrap:anywhere}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.opt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4;opacity:.85}
+.fb{margin-top:7px;font-weight:800;font-size:15px;overflow-wrap:anywhere}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--no)} .fb.warn{color:var(--gold)}
+
+/* ---------- 揭曉盒 ---------- */
+.ansbox{display:none;align-items:center;gap:7px;flex-wrap:wrap;background:#152a1e;border:1px solid #2f7a52;
+  border-radius:10px;padding:7px 11px;margin-top:7px;color:#bff5d3;font-weight:800;font-size:clamp(16px,4.3vw,20px);overflow-wrap:anywhere}
+.ansbox.on{display:inline-flex}
+.ansbox .py{color:var(--gold);font-weight:700;font-size:.9em}
+.speakbt{background:#0e2130;border:1px solid #2c5068;color:#bfe3ff;border-radius:8px;padding:4px 9px;font-size:14px;cursor:pointer;font-weight:800}
+
+/* ---------- 填空 ---------- */
+.bk{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin:2px 3px;vertical-align:middle;max-width:100%}
+.bk input{width:6em;max-width:60vw;background:transparent;border:0;border-bottom:2px solid var(--gold);color:#fff;
+  border-radius:0;padding:2px 3px;font-size:16px;font-family:inherit;text-align:center}
+.bk input:focus{outline:none;border-bottom-color:var(--blue)}
+.bk.ok input{border-bottom-color:var(--ok);color:#bff5d3}
+.bk .fb{display:inline-block;margin:0 0 0 3px;font-size:.82em;white-space:nowrap}
+.lab{color:var(--gold);font-weight:900}
+
+/* ---------- 對話 ---------- */
+.dlg{display:flex;flex-direction:column;gap:9px}
+.bub{background:var(--pan2);border:1px solid var(--line);border-radius:13px;padding:11px 13px;min-width:0;overflow-wrap:anywhere}
+.bub .sp{display:block;font-weight:900;color:var(--blue);font-size:14px;margin-bottom:3px}
+.bub.b .sp{color:var(--or)}
+.line{line-height:2.15}
+
+/* ---------- 粵普對照 ---------- */
+.pair{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.pair .kk{flex:1;min-width:8em;color:#bfe3ff;font-weight:800;overflow-wrap:anywhere}
+
+/* ---------- 量／單位 row ---------- */
+.eq{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:5px 0;border-bottom:1px dashed #22384a;font-size:clamp(15px,4vw,18px);min-width:0;overflow-wrap:anywhere}
+.eq .rhs{color:var(--muted)}
+.subh{color:var(--gold);font-weight:800;margin:9px 0 3px;font-size:15px}
+.cat{color:var(--blue);font-weight:900;margin:12px 0 2px;font-size:clamp(16px,4.4vw,19px)}
+
+/* ---------- 難讀詞語 grid ---------- */
+.gridc{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.kw{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.kw .w{font-size:clamp(18px,5vw,23px);font-weight:800}
+@media(min-width:640px){.gridc{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- ruby 拼音 ---------- */
+.ruby{display:inline-block;text-align:center;margin:0 1px;vertical-align:top}
+.ruby .py{display:block;font-size:.6em;color:var(--gold);line-height:1.15}
+.ruby .ch{display:block;font-size:1.08em;line-height:1.3}
+.rvwrap{display:none}
+.rvwrap.on{display:block;margin-top:8px;background:#0f2318;border:1px solid #2f7a52;border-radius:10px;padding:9px 11px;overflow-wrap:anywhere}
+.tw{line-height:1.85;font-size:clamp(17px,4.6vw,21px);overflow-wrap:anywhere}
+
+/* ---------- 詳情 ---------- */
+.details{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:10px 0}
+.details summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.details p{margin:9px 0 0}
+
+/* ---------- 清單 ---------- */
+.listrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line);min-width:0}
+.listrow .nm{flex:1;min-width:4.5em;font-weight:800;overflow-wrap:anywhere}
+.listrow .qt{color:var(--gold);font-weight:900;white-space:nowrap}
+.qa{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:9px 0;overflow-wrap:anywhere}
+
+/* ---------- 資料卡 ---------- */
+.dc{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;overflow-wrap:anywhere}
+.dc .l{display:flex;gap:8px;padding:3px 0;flex-wrap:wrap}
+.dc .k{color:var(--gold);font-weight:800;min-width:5.5em}
+.dc .v{flex:1;min-width:0;overflow-wrap:anywhere}
+
+/* ---------- 自我評估 / 互評 ---------- */
+.assess{display:flex;flex-direction:column;gap:10px}
+.arow{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.arow .aq{font-weight:800;font-size:clamp(16px,4.4vw,20px);margin-bottom:7px}
+.aopts{display:flex;gap:8px;flex-wrap:wrap}
+.aopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:99px;padding:9px 18px;font-weight:800;font-size:16px;cursor:pointer}
+.aopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+.rateopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+
+/* ---------- 出口卡 ---------- */
+.exit-in{width:100%;background:#0c1a24;border:1px solid #35536b;color:#fff;border-radius:10px;
+  padding:12px;font-size:17px;font-family:inherit;margin-top:6px;min-width:0}
+textarea.exit-in{min-height:3.4em;resize:vertical}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);z-index:60;
+  background:var(--pan);border:1px solid var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;
+  font-weight:800;opacity:0;transition:.25s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  body{font-size:17px}
+  .bk input{width:5.4em;font-size:15px}
+  .eq .rhs{font-size:.95em}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brandbtn" onclick="show('cover')">🏠 工作日程</button>
+  <button class="brandbtn" onclick="show('map')">🗺 活動地圖</button>
+  <div class="prog"><div class="pbar"><i id="pbar"></i></div><span class="ptxt" id="ptxt">進度 0/8</span></div>
+  <button class="finbtn" onclick="show('exit')">🏁 課堂收結</button>
+</header>
+
+<main id="main">
+
+<!-- ============ 封面 ============ -->
+<section class="screen on" id="cover">
+  <div class="cover">
+    <div class="em">🗓️</div>
+    <div class="eyebrow" style="margin-top:10px">VCH1101 職業中文・普通話對話（GCCH103A(P)）</div>
+    <h1>課次三　工作日程</h1>
+    <p class="big" style="color:var(--gold)">兩小時・服務／設計與科技</p>
+    <p class="muted">完成本課後，你能用普通話——</p>
+  </div>
+  <div class="outcomes">
+    <div class="outcome">1️⃣ 描述工作日程</div>
+    <div class="outcome">2️⃣ 預約或安排新日程</div>
+  </div>
+  <div class="navrow">
+    <button class="btn" onclick="show('map')">🗺 開始・去活動地圖 ▶</button>
+    <button class="btn ghost" onclick="show('exit')">🏁 直接去課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動地圖 ============ -->
+<section class="screen" id="map">
+  <div class="eyebrow">🗺 活動地圖</div>
+  <h2>今日有 7 個活動 ＋ 1 個延伸學習 ＋ 自我評估</h2>
+  <p class="muted">可以跳住玩。玩完就撳「✅ 完成本節」，右上角進度會自動記錄（重新整理都唔會消失）。</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('self')">📋 自我評估</button>
+    <button class="btn" onclick="show('exit')">🏁 課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動一 ============ -->
+<section class="screen" id="s1">
+  <div class="eyebrow">🗣️ 活動一</div>
+  <h2>說一說・開會常用語</h2>
+  <p class="muted">上課會睇《三言兩語》短片，把開會常用語用普通話講出嚟。喺呢頁先練一次：把粵語改寫成普通話，填落空格，再撳「✓ 核對」。答錯有第二次機會，唔肯定就撳「👁 揭曉」。</p>
+
+  <div class="card">
+    <h3>一・粵普對譯（10 組）</h3>
+    <div id="meeting" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>二・小試一試（2 題）</h3>
+    <div id="meeting-mc" style="margin-top:8px"></div>
+  </div>
+
+  <details class="details">
+    <summary>💡 多學一點點</summary>
+    <p>「打攪晒」＝打擾了；「招呼唔到」＝招待不周——兩句都係好有禮貌嘅客套話。見客、開完會、請人幫完手，都可以用。</p>
+  </details>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="1">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二 ============ -->
+<section class="screen" id="s2">
+  <div class="eyebrow">🔄 活動二</div>
+  <h2>粵普對譯</h2>
+  <p class="muted">把以下粵語改寫成普通話。先自己講一次，再填／揭曉核對。</p>
+
+  <div class="card">
+    <h3>練習一・電話常用語（10 組）</h3>
+    <div id="phone10" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習二・句子對譯（8 句）</h3>
+    <p class="muted">整句講一次，再撳「👁 揭曉普通話」核對。</p>
+    <div id="sents" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="2">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動三 ============ -->
+<section class="screen" id="s3">
+  <div class="eyebrow">🗓️ 活動三</div>
+  <h2>日程安排</h2>
+  <p class="muted">上課會聽錄音，完成填空。喺呢頁：先睇題、填答案，再撳「👁 揭曉錄音稿」對一對。（錄音稿＝上課播嘅內容。）</p>
+
+  <div class="card">
+    <h3>對話一</h3>
+    <div class="line" id="dg1" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rv" data-target="dg1-script">👁 揭曉錄音稿</button>
+    </div>
+    <div class="rvwrap" id="dg1-script"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>對話二</h3>
+    <div class="line" id="dg2" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rv" data-target="dg2-script">👁 揭曉錄音稿</button>
+    </div>
+    <div class="rvwrap" id="dg2-script"></div>
+  </div>
+
+  <div class="card">
+    <h3>對話三</h3>
+    <div class="line" id="dg3" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rv" data-target="dg3-script">👁 揭曉錄音稿</button>
+    </div>
+    <div class="rvwrap" id="dg3-script"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="3">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動四 ============ -->
+<section class="screen" id="s4">
+  <div class="eyebrow">📋 活動四</div>
+  <h2>每週訓練計劃</h2>
+  <p class="muted">兩人一組，先朗讀對話例句，再根據資料卡做替換練習。句型係：<b>「星期一上午你有甚麼安排？」「星期一上午我要上課。」</b></p>
+
+  <div class="card">
+    <h3>本週日程安排</h3>
+    <div id="schedule" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>對話替換練習（5 題）</h3>
+    <p class="muted">睇住上面日程，把正確安排填落空格。</p>
+    <div class="line" id="weekq" style="margin-top:9px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="4">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五 ============ -->
+<section class="screen" id="s5">
+  <div class="eyebrow">🔁 活動五</div>
+  <h2>更改行程</h2>
+  <p class="muted">吳秘書幫上司高主任接咗兩個電話，都係改行程。上課會聽錄音，喺行程表上更改資料。喺呢頁：先睇原本行程，再填更改練習。</p>
+
+  <div class="card">
+    <h3>原本・高主任一週行程表</h3>
+    <div id="trip0" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>更改練習（3 題）</h3>
+    <div class="line" id="tripq" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rv" data-target="trip-note">👁 揭曉重點</button>
+    </div>
+    <div class="rvwrap" id="trip-note"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>錄音稿（改行程兩通電話）</h3>
+    <div class="dlg" style="margin-top:8px" id="trip-dlg"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="5">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動六 ============ -->
+<section class="screen" id="s6">
+  <div class="eyebrow">📞 活動六</div>
+  <h2>預約工作</h2>
+  <p class="muted">淩雲是仁豐速遞的職員，溫文是藝豐禮品的員工。兩人一組練習朗讀對話。先圈出難讀詞語，再讀準佢。</p>
+
+  <div class="card">
+    <h3>預約取件對話</h3>
+    <div class="dlg" style="margin-top:8px" id="book-dlg"></div>
+  </div>
+
+  <div class="card">
+    <h3>難讀詞語</h3>
+    <div class="gridc" id="book-kw" style="margin-top:9px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>想一想・更改約會要講清楚乜？</h3>
+    <p class="muted">唔好靠估，睇完對話再答。答錯有第二次機會。</p>
+    <div id="book-mc" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="6">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動七 ============ -->
+<section class="screen" id="s7">
+  <div class="eyebrow">🎭 活動七</div>
+  <h2>對話練習</h2>
+  <p class="muted">參考活動六，兩人一組扮演角色甲、乙，完成對話。準備 5 分鐘，對話 2 分鐘。</p>
+
+  <div class="card soft-gold">
+    <h3>角色甲（你先說話）</h3>
+    <p class="muted" style="margin-top:6px">你是<b>安信物流公司倉務部的助理黃馨</b>。公司倉庫嘅叉車壞咗，需要預約維修。</p>
+    <p style="margin-top:6px"><b>任務：</b>根據以下資料，致電先鋒物流設備有限公司，預約維修時間。</p>
+    <div class="dc" id="card-a" style="margin-top:8px"></div>
+    <div id="steps-a" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>角色乙（對方先說話）</h3>
+    <p class="muted" style="margin-top:6px">你是<b>先鋒物流設備有限公司的職員顧豐</b>。安信物流公司職員來電，想預約維修叉車。</p>
+    <p style="margin-top:6px"><b>任務：</b>接聽電話，根據以下資料，幫對方安排維修時間。</p>
+    <div class="dc" id="card-b" style="margin-top:8px"></div>
+    <div id="steps-b" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>📝 對話練習互評表</h3>
+    <p class="muted">組員姓名：<input class="exit-in" style="display:inline-block;width:auto;min-width:9em;margin-top:4px" id="peer" placeholder="＿＿＿"></p>
+    <p class="muted">完成對話練習後，請根據組員嘅表現，為佢／她揀一個評級。</p>
+    <div id="rate" style="margin-top:9px"></div>
+    <div style="margin-top:10px">
+      <p class="muted" style="margin:0 0 4px">為幫助組員下次進步，畀佢／她一啲建議：</p>
+      <textarea class="exit-in" id="advice" placeholder="＿＿＿"></textarea>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="7">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸學習 ============ -->
+<section class="screen" id="s8">
+  <div class="eyebrow">📚 延伸學習</div>
+  <h2>詞匯表・工作日程</h2>
+  <p class="muted">本課常用詞匯。先自己讀一次，再撳「👁 揭曉拼音」核對，最後做小測。</p>
+
+  <div class="card">
+    <h3>一・詞匯（14 個）</h3>
+    <div class="gridc" id="vocab" style="margin-top:9px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>二・小測（4 題）</h3>
+    <div id="vocab-mc" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="8">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 自我評估 ============ -->
+<section class="screen" id="self">
+  <div class="eyebrow">📋 自我評估</div>
+  <h2>完成本課之後，你能做到嗎？</h2>
+  <p class="muted">每一行揀一個。冇標準答案，老實就得。</p>
+  <div class="assess" id="assess" style="margin-top:11px"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn" onclick="show('exit')">🏁 去課堂收結 ▶</button>
+  </div>
+</section>
+
+<!-- ============ 出口卡 ============ -->
+<section class="screen" id="exit">
+  <div class="eyebrow">🏁 課堂收結</div>
+  <h2>出口卡</h2>
+  <p class="muted">打字唔得就口頭講、或寫喺紙條交畀老師。答完先播下課歌。</p>
+  <div class="card">
+    <h3>今日學到嘅 3 樣</h3>
+    <input class="exit-in" id="e1" placeholder="1.">
+    <input class="exit-in" id="e2" placeholder="2.">
+    <input class="exit-in" id="e3" placeholder="3.">
+  </div>
+  <div class="card">
+    <h3>最想再練嘅一樣</h3>
+    <input class="exit-in" id="e4" placeholder="我想再練……">
+  </div>
+  <div class="navrow">
+    <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone" target="_blank" rel="noopener">🎵 去下課歌區 ▶</a>
+    <a class="btn ghost" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-closesp3/" target="_blank" rel="noopener">🗂 課堂收結總覽 ▶</a>
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+  </div>
+  <p class="muted" style="margin-top:14px">下課歌區（總台）：<span style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone</span></p>
+  <p class="muted">課堂收結總覽：<span style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101-closesp3/</span></p>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<pre id="selftest" style="display:none"></pre>
+
+<script>
+"use strict";
+window.__errs=[];
+window.addEventListener('error',function(e){try{window.__errs.push(String(e.message||e))}catch(x){}});
+window.addEventListener('unhandledrejection',function(e){try{window.__errs.push('rej:'+String(e.reason))}catch(x){}});
+/* ================= 基礎工具 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let toastTimer=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1900)}
+function speak(txt){try{if(!('speechSynthesis'in window)){toast('此裝置暫無語音，請跟老師讀');return}const u=new SpeechSynthesisUtterance(String(txt).replace(/[＿_]/g,'…'));u.lang='zh-CN';u.rate=.82;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}catch(e){toast('此裝置暫無語音，請跟老師讀')}}
+/* 正規化：去空白／標點，方便比對填空 */
+function norm(s){return String(s).replace(/[\s\u3000，。、！？!?,.／/「」『』（）()：:；;－—–~～-]/g,'').toLowerCase()}
+function normEq(a,b){return norm(a)===norm(b)&&norm(a)!==''}
+
+/* ================= 進度（localStorage） ================= */
+const TOTAL=8;
+const KEY=i=>'vch1101spk3_a'+i;
+const MEM={}; /* 記憶體後備：就算 localStorage 被封（隱私模式／file://）都唔會即場失效 */
+function lsGet(k){try{const v=localStorage.getItem(k);return v===null?(k in MEM?MEM[k]:null):v}catch(e){return k in MEM?MEM[k]:null}}
+function lsSet(k,v){MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){delete MEM[k];try{localStorage.removeItem(k)}catch(e){}}
+function isDone(i){return lsGet(KEY(i))==='1'}
+function setDone(i){lsSet(KEY(i),'1'); renderProgress(); renderTiles(); }
+function clearDone(){for(let i=1;i<=TOTAL;i++)lsDel(KEY(i)); renderProgress(); renderTiles();}
+function doneCount(){let n=0;for(let i=1;i<=TOTAL;i++)if(isDone(i))n++;return n}
+function renderProgress(){const n=doneCount();$('#ptxt').textContent='進度 '+n+'/'+TOTAL;$('#pbar').style.width=(n/TOTAL*100)+'%'}
+
+/* ================= 畫面切換 ================= */
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));try{window.scrollTo(0,0)}catch(e){} if(id==='map')renderTiles();}
+
+/* ================= 活動地圖 ================= */
+const MAP=[
+ {id:'s1',n:1,em:'🗣️',t:'活動一・說一說',s:'開會常用語 粵普對譯 10 組＋2 題'},
+ {id:'s2',n:2,em:'🔄',t:'活動二・粵普對譯',s:'電話用語 10 組＋句子 8 句'},
+ {id:'s3',n:3,em:'🗓️',t:'活動三・日程安排',s:'三個對話 填空＋錄音稿'},
+ {id:'s4',n:4,em:'📋',t:'活動四・每週訓練計劃',s:'本週日程＋對話替換 5 題'},
+ {id:'s5',n:5,em:'🔁',t:'活動五・更改行程',s:'高主任行程表＋更改練習 3 題'},
+ {id:'s6',n:6,em:'📞',t:'活動六・預約工作',s:'淩雲／溫文對話＋難讀詞語＋3 題'},
+ {id:'s7',n:7,em:'🎭',t:'活動七・對話練習',s:'角色甲／乙＋資料卡＋互評表'},
+ {id:'s8',n:8,em:'📚',t:'延伸學習・詞匯表',s:'工作日程詞匯 14 個＋4 題'},
+ {id:'self',n:'📋',em:'✅',t:'自我評估',s:'2 項學習成果自評',self:true}
+];
+function selfAllDone(){return [0,1].every(i=>aState[i])}
+function renderTiles(){
+  const el=$('#tiles'); if(!el) return;
+  el.innerHTML=MAP.map(m=>{
+    const d=m.self?selfAllDone():isDone(m.n);
+    return `<button class="tile${d?' done':''}" data-goto="${m.id}">
+      <span class="tn">${esc(m.n)}</span>
+      <div class="tem">${m.em}</div>
+      <div class="tt">${esc(m.t)}</div>
+      <div class="ts">${esc(m.s)}</div>
+      <span class="tick">${d?'✓':''}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ================= 共用小部件 ================= */
+function blankHTML(ans,extra){return `<span class="bk rvscope" data-ans="${esc(ans)}"><input class="bi" ${extra||''} autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(typeof ans==='string'?ans.split('|')[0]:ans)}</span></span><span class="fb"></span></span>`}
+/* MC 通用：qid -> {a:正確選項文字, txt:解釋} */
+const QZ={};
+function mcBlock(qid,qnum,qtext,opts,ansVal,explain){
+  QZ[qid]={a:ansVal,txt:explain||''};
+  return `<div class="rd" data-q="${qid}" style="margin:10px 0">
+    <div class="qhead"><span class="qnum">${esc(qnum)}</span><span class="qtext">${esc(qtext)}</span></div>
+    <div class="opts${opts.length>2?' three':''}">${opts.map(o=>`<button class="opt" data-act="opt" data-q="${qid}" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+    <div class="fb"></div>
+    <button class="mini rv" data-act="rvmc" data-q="${qid}">👁 揭曉</button>
+    <div class="ansbox"><span>答案：${esc(ansVal)}${explain?'（'+esc(explain)+'）':''}</span></div>
+  </div>`;
+}
+
+/* ================= 活動一：說一說 ================= */
+const MEETING=[['飲茶','喝茶'],['聲氣','信息'],['麻麻地','很一般'],['阻住','妨礙'],['梗係','一定是'],
+ ['咁啱','正好'],['好易','容易'],['些少','少許'],['打攪晒','打擾了'],['招呼唔到','招待不周']];
+function renderMeeting(){
+  $('#meeting').innerHTML=MEETING.map((p,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(p[0])}</b>
+    ${blankHTML(p[1],'style="width:7em"')}
+    <button class="mini" data-speak="${esc(p[1])}">🔊</button>
+  </div>`).join('');
+  const mcs=[
+   ['m1','1','「打攪晒」用普通話點講？',['招待不周','打擾了','麻煩晒'],'打擾了','客套話，等於「麻煩到你／打擾咗你」。'],
+   ['m2','2','「招呼唔到」用普通話點講？',['招呼一下','不打擾了','招待不周'],'招待不周','請客時嘅謙虛話，意指招呼得唔夠周到。']
+  ];
+  $('#meeting-mc').innerHTML=mcs.map(m=>mcBlock(m[0],m[1],m[2],m[3],m[4],m[5])).join('');
+}
+
+/* ================= 活動二：粵普對譯 ================= */
+const PHONE10=[['搵邊位','找哪位'],['佢唔喺度','他不在|她不在|他或她不在'],['轉頭打來','待會再打來|回頭再打來'],
+ ['講緊電話','正在打電話'],['條線有人用緊','電話佔線'],['傾偈','聊天'],['Cut 線','掛電話'],
+ ['請你記低','請你寫下來|請你記一下'],['佢開緊會','他正在開會|她正在開會|他或她正在開會'],['唔好收線住','先別掛電話']];
+const SENTS=[
+ ['你得唔得閒？我想同你傾吓聽日開會嘅嘢。','你有空嗎？我想跟你談一下明天開會的事情。'],
+ ['請問佢幾時返嚟？','請問他／她甚麼時候回來？'],
+ ['佢啱啱出咗去，要好晏先返。','他／她剛剛出去了，要很晚才回來。'],
+ ['我有緊要事搵佢，請佢返嚟之後俾個電話我。','我有要緊事找他／她，請他／她回來以後給我回個電話。'],
+ ['唔好意思，呢件事我揸唔到主意。','很抱歉／不好意思，這件事我做不了主。'],
+ ['陳生話佢趕唔切返公司。','陳先生說他來不及回公司。'],
+ ['唔該你話聲俾佢知。','勞駕您跟他說一聲。'],
+ ['佢約左我響總部門口等，我等左三個字都仲未到。','他約了我在總部門口等，我等了15分鐘他還沒到。']
+];
+function renderPhone10(){
+  $('#phone10').innerHTML=PHONE10.map((p,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(p[0])}</b>
+    ${blankHTML(p[1],'style="width:8em"')}
+    <button class="mini" data-speak="${esc(p[1].split('|')[0])}">🔊</button>
+  </div>`).join('');
+}
+function renderSents(){
+  $('#sents').innerHTML=SENTS.map((p,i)=>`<div class="qa rvscope">
+    <div style="color:#bfe3ff;font-weight:800">${i+1}. ${esc(p[0])}</div>
+    <div style="margin-top:6px"><button class="mini rv" data-act="rv">👁 揭曉普通話</button>
+    <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span></div>
+  </div>`).join('');
+}
+
+/* ================= 活動三：日程安排 ================= */
+const DG1_SCRIPT=[
+ ['汪小姐','先生，早上好。請問市場推廣部的李經理在嗎？'],
+ ['黎秘書','您早，如果我沒猜錯，您一定是第一地產公司的汪小姐了。'],
+ ['汪小姐','對，我就是汪小姐。請問，怎麼稱呼您呢？'],
+ ['黎秘書','我姓黎，是李經理的秘書。他早就吩咐過，說您一到就馬上通知他。因為跟您會面後，他還要趕著去參加一個緊急會議。'],
+ ['汪小姐','啊，還好，我來得準時。'],
+ ['黎秘書','那就請您跟我來吧，李經理正等著您呢，請進。']
+];
+const DG2_SCRIPT=[
+ ['趙助理','郭先生您好！請問有甚麼事？'],
+ ['郭先生','趙小姐好！對不起，我有事要見梁主任。今天早上我打過幾次電話找梁主任，想通知他我臨時要參加一個緊急會議，與他見面的時間需要推遲，可是一直沒法聯絡上他。我知道他明天就要出差，所以會一開完，就馬上趕過來看看能不能跟他見個面。'],
+ ['趙助理','我明白了，我先去通知梁主任您來了，看看他有沒有其他的工作安排。郭先生，您請坐，我回頭再跟您確定。'],
+ ['郭先生','好，那就麻煩你了。'],
+ ['趙助理','不客氣，請稍等。']
+];
+const DG3_SCRIPT=[
+ ['蘇秘書','您好，先生，請問您找誰？'],
+ ['麥先生','你好，是長城建築公司的高先生介紹我找余經理的。我想了解一下貴公司的產品種類及價格方面的情況。'],
+ ['蘇秘書','請問您之前聯絡過余經理嗎？'],
+ ['麥先生','不好意思，我沒有。'],
+ ['蘇秘書','請問您貴姓？'],
+ ['麥先生','我姓麥。'],
+ ['蘇秘書','麥先生，余經理正在開會，不過應該快開完了。您不介意的話，請等一會兒，我待會兒進去告訴他您來了。'],
+ ['麥先生','好，麻煩你啦！'],
+ ['蘇秘書','不客氣。麥先生，您要喝點兒甚麼嗎？我們有茶和咖啡。'],
+ ['麥先生','請給我一杯茶吧！謝謝！'],
+ ['蘇秘書','不用謝，我馬上為您準備。']
+];
+function dlgHTML(lines){return lines.map((l,i)=>`<div class="bub ${i%2?'b':''}"><span class="sp">${esc(l[0])}</span>${esc(l[1])}
+  <div style="margin-top:6px"><button class="mini" data-speak="${esc(l[1])}">🔊 讀一次</button></div></div>`).join('')}
+function renderDg3(){
+  $('#dg1').innerHTML=
+    '1 '+blankHTML('市場推廣部|市場推廣','style="width:7em"')+'部的經理姓李。<br>'+
+    '2 汪小姐是'+blankHTML('第一地產','style="width:6.5em"')+'公司的員工。<br>'+
+    '3 李經理的秘書姓'+blankHTML('黎','style="width:3.5em"')+'。<br>'+
+    '4 李經理趕著開一個'+blankHTML('緊急','style="width:4.5em"')+'會議。<br>'+
+    '5 汪小姐事先（有／沒有）預約李經理。'+mcBlock('d1q5','5','（有／沒有）',['有','沒有'],'有','李經理「早就吩咐過」，一見汪小姐就到，即係事前已經約好。');
+  $('#dg2').innerHTML=
+    '1 對話人分別姓'+blankHTML('郭','style="width:3.5em"')+'和姓'+blankHTML('趙','style="width:3.5em"')+'。<br>'+
+    '2 梁主任明天要'+blankHTML('出差','style="width:4.5em"')+'。<br>'+
+    '3 訪客希望可以'+blankHTML('更改|推遲','style="width:4.5em"')+'約會時間。';
+  $('#dg3').innerHTML=
+    '1 訪客姓'+blankHTML('麥','style="width:3.5em"')+'，事先（有／沒有）預約余經理。'+mcBlock('d3q1','1','（有／沒有）',['有','沒有'],'沒有','麥先生自己講：「不好意思，我沒有。」即係事前冇預約。')+'<br>'+
+    '2 余經理正在'+blankHTML('開會','style="width:4.5em"')+'。<br>'+
+    '3 客人要喝'+blankHTML('茶','style="width:3.5em"')+'。';
+  $('#dg1-script').innerHTML=dlgHTML(DG1_SCRIPT);
+  $('#dg2-script').innerHTML=dlgHTML(DG2_SCRIPT);
+  $('#dg3-script').innerHTML=dlgHTML(DG3_SCRIPT);
+}
+
+/* ================= 活動四：每週訓練計劃 ================= */
+const SCHED=[
+ ['星期一','上午：上課｜下午：參加科技產品發展分享會'],
+ ['星期二','上午：參加科技博覽會｜下午：上課'],
+ ['星期三','上午：參觀香港科技公司研發部門｜下午：學生會開會'],
+ ['星期四','上午：上課'],
+ ['星期五','上午：公司實習']
+];
+function renderSchedule(){
+  $('#schedule').innerHTML=SCHED.map(r=>`<div class="listrow"><span class="nm">${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join('');
+  const Q=[
+   ['星期一上午你有甚麼安排？','我要上課。|我上午要上課。','上課'],
+   ['星期二上午你有甚麼安排？','我要參加科技博覽會。|我上午要參加科技博覽會。','參加科技博覽會'],
+   ['星期四上午你有甚麼安排？','我要上課。|我上午要上課。','上課'],
+   ['星期一下午你有甚麼安排？','我要參加科技產品發展分享會。|我下午要參加科技產品發展分享會。','參加科技產品發展分享會'],
+   ['星期五上午你有甚麼安排？','我要去公司實習。|我上午要去公司實習。|我去公司實習。','公司實習']
+  ];
+  $('#weekq').innerHTML=Q.map((q,i)=>`<div style="margin:8px 0"><b style="color:var(--blue)">${i+1}. 問：</b>${esc(q[0])}<br><b style="color:var(--gold)">答：</b>${blankHTML(q[1],'style="width:11em"')}</div>`).join('');
+}
+
+/* ================= 活動五：更改行程 ================= */
+const TRIP0=[
+ ['星期一','上午 10:00–12:00 出席「傑出學徒頒獎典禮」｜下午 12:30–14:00 與工程策劃部黃主管午餐'],
+ ['星期二','上午 9:30–11:30 年終工作總結會議'],
+ ['星期三','上午 9:00–12:30 年假｜下午 15:00–17:00 與科技園錢經理開環保節能項目會議'],
+ ['星期四','上午 9:00–17:00 參觀廣州工廠'],
+ ['星期五','上午（未定）']
+];
+const TRIP_DLG=[
+ ['吳秘書','您好，高主任辦公室，請問有甚麼可以幫忙？'],
+ ['黃主管','小吳，你好，我是工程策劃部的老黃。我本來約了高主任今天中午一起吃午餐，可是我臨時有事要請假，要改天再吃了。'],
+ ['吳秘書','好的，黃主管，我看看高主任的行程安排，嗯……明天中午高主任有空，您可以嗎？'],
+ ['黃主管','行，就星期二中午吧，時間和地點不變。麻煩你轉告高主任。再見。'],
+ ['吳秘書','您好，高主任辦公室，請問有甚麼可以幫忙？'],
+ ['錢經理','您好，我是科技園的錢經理，我原本約了高主任後天下午三點開會，商討合作的環保節能項目。可是公司臨時要我提前到上海出差，今天下午就要走，我要到星期四從上海回來以後，才能跟他見面。不如我們把會議推遲到星期五上午吧。至於具體時間和地點，等我確定了以後，馬上告訴他。'],
+ ['吳秘書','我知道了，錢經理。您和高主任明天三點的會議要推遲到星期五上午，具體時間和地點待定。'],
+ ['錢經理','對，麻煩你了。再見。']
+];
+function renderTrip(){
+  $('#trip0').innerHTML=TRIP0.map(r=>`<div class="listrow"><span class="nm">${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join('');
+  $('#tripq').innerHTML=
+    '1 黃主管的午餐由星期一改到星期'+blankHTML('二','style="width:3.5em"')+'中午。<br>'+
+    '2 錢經理的會議由星期三下午改到星期'+blankHTML('五','style="width:3.5em"')+'上午。<br>'+
+    '3 錢經理會議的具體時間和地點'+blankHTML('待定|待定。|還未確定|未定','style="width:5.5em"')+'。';
+  $('#trip-note').innerHTML='<b style="color:var(--gold)">更改約會／會議，一定要講清楚三樣：</b><br>① 約會的原定時間與地點；<br>② 更改後的時間；<br>③ 確認更改後的地點。<br><span class="muted">（改完之後，最好同對方複述一次，確認冇誤會。）</span>';
+  $('#trip-dlg').innerHTML=dlgHTML(TRIP_DLG);
+}
+
+/* ================= 活動六：預約工作 ================= */
+const BOOK_DLG=[
+ ['淩雲','您好，這裡是仁豐速遞有限公司，我姓凌，請問有甚麼可以為您服務？'],
+ ['溫文','您好，凌先生，我是藝豐禮品公司的，我姓溫，我們想把一批貨品快遞到青年學院，想和你們約個時間上門取件。因為貨品為易碎品，請你們要小心處理。'],
+ ['淩雲','沒問題，溫小姐，我們會小心處理的。請問您想預約甚麼時候？'],
+ ['溫文','一月十三日上午十點左右可以嗎？'],
+ ['淩雲','一月十三日上午十點，您稍等，我查一下……不好意思，十三日上午預約已滿，不如您考慮其他時間。'],
+ ['溫文','可以，那您看可以安排甚麼時間呢？'],
+ ['淩雲','一月十三日下午兩點半可以嗎？'],
+ ['溫文','一月十三日下午兩點半，沒問題。'],
+ ['淩雲','那好，我們就到時見了。'],
+ ['溫文','好的，謝謝凌先生，再見。'],
+ ['淩雲','不客氣，溫小姐，有問題請隨時打電話給我們。再見。']
+];
+const BOOK_KW=[['淩雲','líng yún'],['溫文','wēn wén'],['速遞','sù dì'],['易碎','yì suì'],['上門','shàng mén'],
+ ['預約','yù yuē'],['已滿','yǐ mǎn'],['稍等','shāo děng'],['考慮','kǎo lǜ'],['隨時','suí shí']];
+function renderBook(){
+  $('#book-dlg').innerHTML=dlgHTML(BOOK_DLG);
+  $('#book-kw').innerHTML=BOOK_KW.map(k=>`<div class="kw rvscope"><span class="w">${esc(k[0])}</span>
+    <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(k[1])}</span><button class="speakbt" data-speak="${esc(k[0])}">🔊</button></span></div></div>`).join('');
+  const mcs=[
+   ['b1','1','更改約會嘅時候，要講清楚原本約咗嘅時間同地點。',['對','錯'],'對','唔講原定嘅時間地點，對方唔知你想改邊個約會。'],
+   ['b2','2','更改約會，只要講個新時間就夠，唔使講地點。',['對','錯'],'錯','新嘅時間之外，仲要講清楚（同確認）更改後嘅地點。'],
+   ['b3','3','改完約會之後，最好同對方複述一次，確認新嘅時間同地點。',['對','錯'],'對','複述一次可以避免誤會，例如對話中「您和高主任明天三點的會議要推遲到星期五上午」就係複述。']
+  ];
+  $('#book-mc').innerHTML=mcs.map(m=>mcBlock(m[0],m[1],m[2],m[3],m[4],m[5])).join('');
+}
+
+/* ================= 活動七：對話練習 ================= */
+const CARD_A=[
+ ['日期','21/4｜22/4'],
+ ['21/4 上午','部門會議　時間：10:00–12:00　地點：108 會議室'],
+ ['21/4 下午','計劃：維修公司倉庫的叉車　時間：14:30–17:00　維修商：先鋒物流設備有限公司'],
+ ['22/4 上午','待定'],
+ ['22/4 下午','員工職業培訓　時間：14:30–17:00　地點：16 樓多功能廳']
+];
+const CARD_B=[
+ ['日期','21/4｜22/4'],
+ ['21/4 上午','叉車保養　時間：10:00–12:00　地點：港安工業中心地下'],
+ ['21/4 下午','安裝貨架　時間：14:00–17:00　地點：鴻星大廈'],
+ ['22/4 上午','建議：維修公司倉庫的叉車　時間：9:30–12:00　地點：安信物流公司'],
+ ['22/4 下午','員工內部會議　時間：16:30–18:00　地點：103 會議室']
+];
+const STEPS_A=['打招呼，自我介紹，簡單說明致電目的；','提議維修的日期、時間；','請對方提議合適的維修日期與時間；','複述對方的建議，並作出回應；','致謝並道別。'];
+const STEPS_B=['打招呼，自我介紹，詢問對方致電目的；','詢問對方維修的日期與時間；','複述對方的建議，並作出回應；','提議合適的維修日期與時間；','回應對方並道別。'];
+function cardHTML(c){return c.map(r=>`<div class="l"><span class="k">${esc(r[0])}</span><span class="v">${esc(r[1])}</span></div>`).join('')}
+function stepsHTML(st){return '<div class="subh">對話提示</div>'+st.map((s,i)=>`<div class="eq"><b class="lab">${i+1}.</b><span>${esc(s)}</span></div>`).join('')}
+function renderCards(){
+  $('#card-a').innerHTML=cardHTML(CARD_A);
+  $('#card-b').innerHTML=cardHTML(CARD_B);
+  $('#steps-a').innerHTML=stepsHTML(STEPS_A);
+  $('#steps-b').innerHTML=stepsHTML(STEPS_B);
+}
+const RATE=['整體表現：切合題目要求，完成任務','內容豐富，組織有條理','運用正確的詞彙，以完整句子對話','語音面貌'];
+const RATE_OPTS=[['A','A（優秀）'],['B','B（良好）'],['C','C（及格）'],['F','F（不及格）']];
+let rateState={};
+function renderRate(){
+  $('#rate').innerHTML=RATE.map((q,i)=>`<div class="arow">
+    <div class="aq">${esc(q)}</div>
+    <div class="aopts">${RATE_OPTS.map(o=>`<button class="rateopt aopt${rateState[i]===o[0]?' sel':''}" data-rt="${i}" data-rv="${o[0]}">${esc(o[1])}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 延伸學習：詞匯表 ================= */
+const VOCAB=[
+ ['日程','rì chéng'],['預約','yù yuē'],['安排','ān pái'],['更改','gēng gǎi'],['推遲','tuī chí'],
+ ['確認','què rèn'],['約會','yuē huì'],['出差','chū chāi'],['秘書','mì shū'],['助理','zhù lǐ'],
+ ['會議','huì yì'],['佔線','zhàn xiàn'],['掛電話','guà diàn huà'],['聊天','liáo tiān']
+];
+function renderVocab(){
+  $('#vocab').innerHTML=VOCAB.map(k=>`<div class="kw rvscope"><span class="w">${esc(k[0])}</span>
+    <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(k[1])}</span><button class="speakbt" data-speak="${esc(k[0])}">🔊</button></span></div></div>`).join('');
+  const mcs=[
+   ['v1','1','「預約」係咩意思？',['取消約定','事先約定','推遲約定'],'事先約定','預約＝事先同對方約好時間／見面。'],
+   ['v2','2','「推遲」嘅近義詞係？',['提前','延期','取消'],'延期','推遲＝延期，把時間改遲。'],
+   ['v3','3','打電話「佔線」係指？',['冇人接聽','條線有人用緊','打錯號碼'],'條線有人用緊','佔線＝電話線路正被使用，打唔入。'],
+   ['v4','4','「出差」係指？',['出錯','出外辦事','出世'],'出外辦事','出差＝因公到外地辦事。']
+  ];
+  $('#vocab-mc').innerHTML=mcs.map(m=>mcBlock(m[0],m[1],m[2],m[3],m[4],m[5])).join('');
+}
+
+/* ================= 自我評估 ================= */
+const ASSESS=['用普通話描述工作日程','用普通話預約或安排新日程'];
+const AOPTS=['能','部分','否'];
+let aState={};
+function renderAssess(){
+  $('#assess').innerHTML=ASSESS.map((q,i)=>`<div class="arow">
+    <div class="aq">${i+1}. ${esc(q)}</div>
+    <div class="aopts">${AOPTS.map(o=>`<button class="aopt${aState[i]===o?' sel':''}" data-aq="${i}" data-av="${o}">${o}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 事件（委派） ================= */
+document.addEventListener('click',function(e){
+  const gt=e.target.closest('[data-goto]');
+  if(gt){ show(gt.dataset.goto); return; }
+  const fin=e.target.closest('[data-fin]');
+  if(fin){ setDone(Number(fin.dataset.fin)); toast('✅ 已記錄完成，進度更新咗！'); show('map'); return; }
+  const sp=e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const t=e.target.closest('[data-act]');
+  if(t){
+    const act=t.dataset.act;
+    if(act==='rv'){ const s=t.closest('.rvscope'); if(s){const b=s.querySelector('.ansbox'); if(b)b.classList.add('on');} 
+      else { const id=t.dataset.target; const w=id?document.getElementById(id):null; if(w)w.classList.add('on'); }
+      return; }
+    if(act==='rvw'){
+      const id=t.dataset.target; const w=id?document.getElementById(id):null;
+      if(w){
+        if(w.querySelector('.bk')){
+          w.querySelectorAll('.ansbox').forEach(b=>b.classList.add('on'));
+          t.textContent='🙈 已揭曉';
+        } else {
+          w.classList.toggle('on');
+          t.textContent=w.classList.contains('on')?'🙈 收起拼音':'👁 揭曉拼音';
+        }
+      }
+      return;
+    }
+    if(act==='rvmc'){
+      const rd=t.closest('.rd'); const o=QZ[rd.dataset.q];
+      rd.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok'); });
+      rd.querySelector('.ansbox').classList.add('on');
+      const fb=rd.querySelector('.fb'); fb.textContent='答案：'+o.a+(o.txt?'（'+o.txt+'）':''); fb.className='fb ok';
+      return;
+    }
+    if(act==='opt'){
+      const rd=t.closest('.rd'); const q=rd.dataset.q; const v=t.dataset.v; const o=QZ[q]; const fb=rd.querySelector('.fb');
+      if(v===o.a){
+        rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')});
+        rd.querySelector('.ansbox').classList.add('on'); fb.textContent='✓ 答對了！'; fb.className='fb ok';
+      } else {
+        if(!rd.dataset.tried){ rd.dataset.tried='1'; t.classList.add('no'); t.disabled=true; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+        else { t.classList.add('no'); t.disabled=true; rd.querySelector('.ansbox').classList.add('on'); rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')}); fb.textContent='答案：'+o.a+(o.txt?'（'+o.txt+'）':''); fb.className='fb warn'; }
+      }
+      return;
+    }
+    if(act==='ck'){
+      const bk=t.closest('.bk'); const inp=bk.querySelector('input'); const alts=(bk.dataset.ans||'').split('|'); const fb=bk.querySelector('.fb');
+      if(alts.some(a=>normEq(inp.value,a))){ fb.textContent='✓ 答對了'; fb.className='fb ok'; bk.classList.add('ok'); inp.disabled=true; t.disabled=true; }
+      else if(!bk.dataset.tried){ bk.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+      else { fb.textContent='答案：'+alts[0]; fb.className='fb warn'; bk.querySelector('.ansbox').classList.add('on'); }
+      return;
+    }
+  }
+  const aq=e.target.closest('[data-aq]'); if(aq){ aState[aq.dataset.aq]=aq.dataset.av; lsSet('vch1101spk3_self',JSON.stringify(aState)); renderAssess(); renderTiles(); return; }
+  const rt=e.target.closest('[data-rt]'); if(rt){ rateState[rt.dataset.rt]=rt.dataset.rv; lsSet('vch1101spk3_rate',JSON.stringify(rateState)); renderRate(); return; }
+});
+
+/* ================= 鍵盤：Enter 即核對 ================= */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('bi')){
+    const bk=e.target.closest('.bk'); const mini=bk.querySelector('[data-act="ck"]'); if(mini)mini.click();
+  }
+});
+document.addEventListener('input',function(e){
+  if(e.target && e.target.id==='peer'){ lsSet('vch1101spk3_peer',e.target.value); }
+  if(e.target && e.target.id==='advice'){ lsSet('vch1101spk3_advice',e.target.value); }
+});
+
+/* ================= 初始化 ================= */
+function init(){
+  renderMeeting(); renderPhone10(); renderSents(); renderDg3();
+  renderSchedule(); renderTrip(); renderBook(); renderCards(); renderRate();
+  renderVocab();
+  renderTiles(); renderProgress();
+  const s0=lsGet('vch1101spk3_self'); if(s0){try{aState=JSON.parse(s0)||{}}catch(x){}}
+  const r0=lsGet('vch1101spk3_rate'); if(r0){try{rateState=JSON.parse(r0)||{}}catch(x){}}
+  renderAssess(); renderRate(); renderTiles();
+  const pe=lsGet('vch1101spk3_peer'); if(pe!=null&&pe!=='')$('#peer').value=pe;
+  const ad=lsGet('vch1101spk3_advice'); if(ad!=null&&ad!=='')$('#advice').value=ad;
+}
+init();
+
+/* ================= 自動自測（?selftest） ================= */
+function runSelfTest(){
+  const out=[]; const errs=[];
+  try{
+    clearDone();
+    // 1) 地圖項目（8 進度 + 自我評估 = 9）
+    out.push('map_tiles='+$$('#tiles .tile').length);
+    // 2) 每個活動可進入
+    let entered=0; MAP.forEach(m=>{ show(m.id); if($('#'+m.id).classList.contains('on'))entered++; });
+    out.push('entered='+entered+'/'+MAP.length);
+    // 3) 答案可揭（撳所有 rv 掣）
+    const rv=$$('[data-act="rv"]'); let rvn=0;
+    rv.forEach(b=>{ try{b.click(); rvn++;}catch(x){errs.push('rv '+x)} });
+    out.push('reveal_btns='+rvn);
+    // 4) MC 揭曉（rvmc）
+    const rm=$$('[data-act="rvmc"]'); rm.forEach(b=>{try{b.click()}catch(x){errs.push('rvmc '+x)}});
+    out.push('mc_reveal='+rm.length+'|ansbox_on='+$$('.ansbox.on').length);
+    // 5) rvw 揭曉（拼音盒）
+    const rw=$$('[data-act="rvw"]'); rw.forEach(b=>{try{b.click()}catch(x){errs.push('rvw '+x)}});
+    out.push('rvw='+rw.length+'|rvwrap_on='+$$('.rvwrap.on').length);
+    // 6) 填空：撳所有 ck 掣驗證有反應
+    const ck=$$('[data-act="ck"]'); let ckn=0; ck.forEach(b=>{try{ b.click(); ckn++; }catch(x){errs.push('ck '+x)} });
+    out.push('ck_btns='+ckn);
+    // 7) 進度計數
+    for(let i=1;i<=TOTAL;i++) setDone(i);
+    out.push('progress_done='+doneCount()+'|ptxt='+$('#ptxt').textContent);
+    // 8) 自我評估全選 → 地圖 self tile 打鈎
+    [0,1].forEach(i=>{aState[i]='能'}); renderAssess(); renderTiles();
+    out.push('self_done='+selfAllDone());
+    // 9) 橫向溢出
+    const de=document.documentElement;
+    out.push('overflow='+(de.scrollWidth-de.clientWidth)+'|sw='+de.scrollWidth+'|cw='+de.clientWidth);
+    out.push('errors='+(window.__errs?window.__errs.length:0)+(window.__errs&&window.__errs.length?('::'+window.__errs.join(';')):''));
+    clearDone(); aState={}; renderAssess(); renderTiles();
+  }catch(e){ errs.push('FATAL '+e.message+'\n'+e.stack); }
+  const line='SELFTEST|'+out.join('|')+(errs.length?('|EXC='+errs.join(';')):'');
+  const pre=$('#selftest'); if(pre)pre.textContent=line;
+  try{document.documentElement.setAttribute('data-selftest',line)}catch(e){}
+  try{document.title='OK '+line}catch(e){}
+  return line;
+}
+if(location.search.indexOf('selftest')>=0){ setTimeout(runSelfTest,80); }
+window.__selftest=runSelfTest;
+</script>
+</body>
+</html>
