@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:,">
+<title>課次五 安排出差及旅遊行程｜普通話對話與事務文書｜VCH1101</title>
+<style>
+:root{
+  --bg:#0f1720;--pan:#141f2c;--pan2:#101a25;--line:#24384a;
+  --ink:#eaf2f8;--muted:#9db1c2;--or:#ec7d3a;--teal:#14b8a6;
+  --gold:#ffd08a;--ok:#4ade80;--no:#fb7185;--blue:#59b6e8;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang TC","PingFang HK",sans-serif;
+  font-size:18px;line-height:1.62;overflow-x:hidden;
+}
+img,video,audio{max-width:100%}
+h1{font-size:clamp(27px,7vw,44px);line-height:1.2;margin:0;letter-spacing:.5px}
+h2{font-size:clamp(21px,5vw,30px);line-height:1.25;margin:0}
+h3{font-size:clamp(18px,4.4vw,22px);margin:0;overflow-wrap:anywhere}
+p{margin:8px 0;overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:.92em}
+.big{font-size:1.18em;font-weight:800}
+button{font-family:inherit}
+
+/* ---------- 頂欄 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:rgba(15,23,32,.97);
+  border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;
+  padding:9px 12px;flex-wrap:wrap;
+}
+.brandbtn{background:none;border:0;color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:8px;flex:1;min-width:150px}
+.pbar{height:11px;background:#26374a;border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.ptxt{color:var(--gold);font-weight:900;font-size:14px;white-space:nowrap}
+.finbtn{background:var(--or);color:#1a1004;border:0;font-weight:900;border-radius:99px;padding:9px 15px;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ---------- 畫面 ---------- */
+main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;width:100%}
+.screen{display:none;animation:rise .28s ease}
+.screen.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin:12px 0;min-width:0}
+.card.soft-teal{background:#10261f;border-color:#1d5a4a}
+.card.soft-blue{background:#102230;border-color:#24526f}
+.card.soft-gold{background:#241f10;border-color:#5c4a1c}
+.eyebrow{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.14em;margin-bottom:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;border-radius:12px;
+  padding:13px 20px;font-size:17px;background:var(--or);color:#1a1004;transition:.13s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.btn.teal{background:var(--teal);color:#04201c}
+.btn.done{background:var(--ok);color:#052a15}
+.mini{border:1px solid #38566e;background:#16283a;color:#cfe6f5;border-radius:9px;
+  padding:6px 11px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini:hover{background:#1f3448}
+.mini.rv{border-color:#7a5a1e;color:var(--gold)}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:center;padding:16px 4px}
+.cover .em{font-size:clamp(46px,15vw,84px);line-height:1}
+.outcomes{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px;text-align:left}
+.outcome{background:var(--pan);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:clamp(16px,4.4vw,20px);font-weight:700}
+.outcome:nth-child(2){border-left-color:var(--or)}
+.outcome:nth-child(3){border-left-color:var(--gold)}
+.outcome:nth-child(4){border-left-color:var(--blue)}
+
+/* ---------- 地圖 ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{position:relative;text-align:left;background:var(--pan);border:1px solid var(--line);
+  border-radius:15px;padding:13px 13px 13px;cursor:pointer;color:var(--ink);transition:.13s;min-width:0}
+.tile:hover{border-color:var(--or)}
+.tile .tn{display:inline-block;background:var(--teal);color:#04201c;font-weight:900;font-size:12px;border-radius:8px;padding:3px 9px;margin-bottom:7px}
+.tile .tem{font-size:24px}
+.tile .tt{font-weight:800;font-size:clamp(15px,3.8vw,18px);line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+.tile .ts{color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5;overflow-wrap:anywhere}
+.tile .tick{position:absolute;top:11px;right:12px;font-size:20px;font-weight:900;color:var(--ok)}
+.tile.done{border-color:var(--ok);background:#12251b}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 通用題目 ---------- */
+.qcard{background:var(--pan);border:1px solid var(--line);border-radius:15px;padding:14px;margin:11px 0;min-width:0}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+.qnum{flex:0 0 auto;width:32px;height:32px;border-radius:9px;background:var(--or);color:#1a1004;font-weight:900;display:grid;place-items:center;font-size:16px}
+.qtext{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.55;flex:1;min-width:0;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.opts.three{grid-template-columns:1fr 1fr 1fr}
+.opts.four{grid-template-columns:1fr 1fr}
+.opt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:12px;
+  font-size:clamp(16px,4.4vw,20px);font-weight:800;cursor:pointer;overflow-wrap:anywhere}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.opt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4;opacity:.85}
+.fb{margin-top:7px;font-weight:800;font-size:15px;overflow-wrap:anywhere}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--no)} .fb.warn{color:var(--gold)}
+
+/* ---------- 揭曉盒 ---------- */
+.ansbox{display:none;align-items:center;gap:7px;flex-wrap:wrap;background:#152a1e;border:1px solid #2f7a52;
+  border-radius:10px;padding:7px 11px;margin-top:7px;color:#bff5d3;font-weight:800;font-size:clamp(16px,4.3vw,20px);overflow-wrap:anywhere}
+.ansbox.on{display:inline-flex}
+.ansbox .py{color:var(--gold);font-weight:700;font-size:.9em}
+.speakbt{background:#0e2130;border:1px solid #2c5068;color:#bfe3ff;border-radius:8px;padding:4px 9px;font-size:14px;cursor:pointer;font-weight:800}
+
+/* ---------- 填空 ---------- */
+.bk{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin:2px 3px;vertical-align:middle;max-width:100%}
+.bk input{width:6em;max-width:60vw;background:transparent;border:0;border-bottom:2px solid var(--gold);color:#fff;
+  border-radius:0;padding:2px 3px;font-size:16px;font-family:inherit;text-align:center}
+.bk input:focus{outline:none;border-bottom-color:var(--blue)}
+.bk.ok input{border-bottom-color:var(--ok);color:#bff5d3}
+.bk .fb{display:inline-block;margin:0 0 0 3px;font-size:.82em;white-space:nowrap}
+.lab{color:var(--gold);font-weight:900}
+
+/* ---------- 對話 ---------- */
+.dlg{display:flex;flex-direction:column;gap:9px}
+.bub{background:var(--pan2);border:1px solid var(--line);border-radius:13px;padding:11px 13px;min-width:0;overflow-wrap:anywhere}
+.bub .sp{display:block;font-weight:900;color:var(--blue);font-size:14px;margin-bottom:3px}
+.bub.b .sp{color:var(--or)}
+.line{line-height:2.15}
+
+/* ---------- 粵普對照 ---------- */
+.pair{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.pair .kk{flex:1;min-width:8em;color:#bfe3ff;font-weight:800;overflow-wrap:anywhere}
+
+/* ---------- 量／單位 row ---------- */
+.eq{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:5px 0;border-bottom:1px dashed #22384a;font-size:clamp(15px,4vw,18px);min-width:0;overflow-wrap:anywhere}
+.eq .rhs{color:var(--muted)}
+.subh{color:var(--gold);font-weight:800;margin:9px 0 3px;font-size:15px}
+.cat{color:var(--blue);font-weight:900;margin:12px 0 2px;font-size:clamp(16px,4.4vw,19px)}
+
+/* ---------- ruby 拼音 ---------- */
+.ruby{display:inline-block;text-align:center;margin:0 1px;vertical-align:top}
+.ruby .py{display:block;font-size:.6em;color:var(--gold);line-height:1.15}
+.ruby .ch{display:block;font-size:1.08em;line-height:1.3}
+.rvwrap{display:none}
+.rvwrap.on{display:block;margin-top:8px;background:#0f2318;border:1px solid #2f7a52;border-radius:10px;padding:9px 11px;overflow-wrap:anywhere}
+.tw{line-height:1.85;font-size:clamp(17px,4.6vw,21px);overflow-wrap:anywhere}
+
+/* ---------- 詳情 ---------- */
+.details{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:10px 0}
+.details summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.details p{margin:9px 0 0}
+
+/* ---------- 清單 ---------- */
+.listrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line)}
+.listrow .nm{flex:1;min-width:4.5em;font-weight:800;overflow-wrap:anywhere}
+.listrow .qt{color:var(--gold);font-weight:900;white-space:nowrap}
+.qa{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:9px 0;overflow-wrap:anywhere}
+
+/* ---------- 資料卡 ---------- */
+.dc{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;overflow-wrap:anywhere}
+.dc .l{display:flex;gap:8px;padding:3px 0;flex-wrap:wrap}
+.dc .k{color:var(--gold);font-weight:800;min-width:5.5em}
+.dc .v{flex:1;min-width:0;overflow-wrap:anywhere}
+
+/* ---------- 多選 ---------- */
+.multi{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.mopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:10px 14px;font-weight:800;font-size:16px;cursor:pointer}
+.mopt:hover{border-color:var(--blue)}
+.mopt.sel{background:#123a24;border-color:var(--teal);color:#bff5d3}
+.mopt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.mopt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4}
+
+/* ---------- 詞匯表 ---------- */
+.glo{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+.glorow{background:var(--pan2);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.glorow .w{font-weight:900;font-size:1.05em}
+.glorow .mean{color:var(--muted);font-size:.94em}
+
+/* ---------- 自我評估 / 互評 ---------- */
+.assess{display:flex;flex-direction:column;gap:10px}
+.arow{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.arow .aq{font-weight:800;font-size:clamp(16px,4.4vw,20px);margin-bottom:7px}
+.aopts{display:flex;gap:8px;flex-wrap:wrap}
+.aopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:99px;padding:9px 18px;font-weight:800;font-size:16px;cursor:pointer}
+.aopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+.rateopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+
+/* ---------- 出口卡 ---------- */
+.exit-in{width:100%;background:#0c1a24;border:1px solid #35536b;color:#fff;border-radius:10px;
+  padding:12px;font-size:17px;font-family:inherit;margin-top:6px;min-width:0}
+textarea.exit-in{min-height:3.4em;resize:vertical}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);z-index:60;
+  background:var(--pan);border:1px solid var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;
+  font-weight:800;opacity:0;transition:.25s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  body{font-size:17px}
+  .bk input{width:5.4em;font-size:15px}
+  .eq .rhs{font-size:.95em}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brandbtn" onclick="show('cover')">🏠 安排出差及旅遊行程</button>
+  <button class="brandbtn" onclick="show('map')">🗺 活動地圖</button>
+  <div class="prog"><div class="pbar"><i id="pbar"></i></div><span class="ptxt" id="ptxt">進度 0/10</span></div>
+  <button class="finbtn" onclick="show('exit')">🏁 課堂收結</button>
+</header>
+
+<main id="main">
+
+<!-- ============ 封面 ============ -->
+<section class="screen on" id="cover">
+  <div class="cover">
+    <div class="em">✈️</div>
+    <div class="eyebrow" style="margin-top:10px">VCH1101 職業中文・普通話對話（GCCH103A(P)）</div>
+    <h1>課次五　安排出差及旅遊行程</h1>
+    <p class="big" style="color:var(--gold)">兩小時・服務／設計與科技</p>
+    <p class="muted">完成本課後，你能用普通話——</p>
+  </div>
+  <div class="outcomes">
+    <div class="outcome">1️⃣ 說出出差及旅行前的準備工作</div>
+    <div class="outcome">2️⃣ 預訂機票和酒店</div>
+    <div class="outcome">3️⃣ 安排出差行程</div>
+    <div class="outcome">4️⃣ 安排旅遊行程</div>
+  </div>
+  <div class="navrow">
+    <button class="btn" onclick="show('map')">🗺 開始・去活動地圖 ▶</button>
+    <button class="btn ghost" onclick="show('exit')">🏁 直接去課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動地圖 ============ -->
+<section class="screen" id="map">
+  <div class="eyebrow">🗺 活動地圖</div>
+  <h2>今日有 9 個活動 ＋ 1 個延伸學習 ＋ 自我評估</h2>
+  <p class="muted">可以跳住玩。玩完就撳「✅ 完成本節」，右上角進度會自動記錄（重新整理都唔會消失）。課本嘅錄音同影片唔會嵌入，可以撳「🔊」用內置語音朗讀代替。</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('self')">📋 自我評估</button>
+    <button class="btn" onclick="show('exit')">🏁 課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動一 ============ -->
+<section class="screen" id="s1">
+  <div class="eyebrow">👀 活動一</div>
+  <h2>你說我猜——常見的國家名稱</h2>
+  <p class="muted">兩個一組：一個面向屏幕，用普通話描述國家，但唔可以講出國名或者同音字；另一個背對屏幕，猜出係邊個國家。下面有 12 個國家名稱，先自己講，再撳「👁 揭曉」核對同聽讀音。</p>
+
+  <div class="card">
+    <h3>12 個常見國家</h3>
+    <div id="countrylist" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="countrylist">👁 揭曉全部國家名</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>小試一試：睇線索，猜國家</h3>
+    <div id="c-mc" style="margin-top:6px"></div>
+  </div>
+
+  <details class="details">
+    <summary>💡 多學一點點</summary>
+    <p>有些國家的普通話說法跟粵語不同：例如粵語叫「澳洲」，普通話說「澳大利亞」；粵語「紐西蘭」，普通話「新西蘭」。玩遊戲時，描述可以講特產、語言、名人、天氣，但唔可以講出國名裡出現嘅字。</p>
+  </details>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="1">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二 ============ -->
+<section class="screen" id="s2">
+  <div class="eyebrow">🌏 活動二</div>
+  <h2>地名大不同</h2>
+  <p class="muted">同一個地方，粵語同普通話嘅叫法可能唔同。先講出下面國家／城市嘅普通話名稱，再撳「✓ 核對」或「👁 揭曉」。答錯有第二次機會。</p>
+
+  <div class="card">
+    <h3>練習：粵語 ➜ 普通話</h3>
+    <div id="places" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>小組討論</h3>
+    <p class="muted" style="margin:0 0 4px">你還知道哪些地名，粵語同普通話嘅翻譯唔同？寫低一個都得：</p>
+    <input class="exit-in" id="extra-place" placeholder="例如：雪梨／悉尼……">
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="2">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動三 ============ -->
+<section class="screen" id="s3">
+  <div class="eyebrow">🏛 活動三</div>
+  <h2>認識世界名勝</h2>
+  <p class="muted">用普通話講出每個名勝位於邊個國家／城市。先講，再撳「👁 揭曉」核對，然後大聲讀一次。</p>
+
+  <div class="card">
+    <h3>12 個世界名勝</h3>
+    <div id="landmarks" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="landmarks">👁 揭曉全部</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>小試一試</h3>
+    <div id="l-mc" style="margin-top:6px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="3">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動四 ============ -->
+<section class="screen" id="s4">
+  <div class="eyebrow">🧳 活動四</div>
+  <h2>出差前的準備</h2>
+  <p class="muted">你係嘉運科技工程公司嘅員工，下週要去新加坡出差。根據提示，用普通話講一講出差前要準備啲乜。答案揭曉前唔會顯示，先自己講。</p>
+
+  <div class="card">
+    <h3>需要準備的行李</h3>
+    <div id="luggage" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="luggage">👁 揭曉全部</button>
+      <button class="mini" data-speak="護照等有效身份證件、現金或信用卡、換洗衣物、洗漱用品、筆記本電腦、工作資料或文件。">🔊 讀行李清單</button>
+    </div>
+  </div>
+
+  <div class="card soft-teal">
+    <h3>需要準備的工作</h3>
+    <div id="worklist" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="worklist">👁 揭曉全部</button>
+      <button class="mini" data-speak="預訂機票、預訂酒店、規劃行程、與對方公司溝通。">🔊 讀工作清單</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>小試一試</h3>
+    <div id="p-mc" style="margin-top:6px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="4">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五 ============ -->
+<section class="screen" id="s5">
+  <div class="eyebrow">🎫 活動五</div>
+  <h2>預訂機票和酒店</h2>
+  <p class="muted">嘉運科技工程公司嘅秘書程子英，正為經理王俊傑預訂出差嘅機票同酒店。聽完錄音（或老師朗讀）之後，完成下面嘅填空，再兩人一組練習對話。每個空格都有「✓ 核對」同「👁 揭曉」。</p>
+
+  <div class="card">
+    <h3>對話一：預訂機票</h3>
+    <div class="dlg line" id="dlg1" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini" data-speak="您好，我是嘉運科技工程公司的秘書，我姓程，我想預訂一張香港到新加坡的往返機票。十一月八日出發，十一月十二日回來。經濟艙就行了。一共是港幣三千五百元。用信用卡付款。">🔊 讀對話一（普通話）</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>對話二：預訂酒店</h3>
+    <div class="dlg line" id="dlg2" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini" data-speak="您好，美勝旅行社。十一月八日入住，一共住四晚，在十一月十二日退房。我要訂一間商務套房，最好在商業區附近。商務套房一晚的房費是港幣一千六百元。">🔊 讀對話二（普通話）</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>小試一試</h3>
+    <div id="f-mc" style="margin-top:6px"></div>
+  </div>
+
+  <details class="details">
+    <summary>📄 錄音稿（預訂機票／酒店）</summary>
+    <p><b>對話一</b>：職員——早上好，君泰航空公司，請問有什麼需要幫忙？／程子英——您好，我是嘉運科技工程公司的秘書，我姓程，我想預訂一張香港到新加坡的往返機票。／職員——請問出發和回程的日期是哪天？／程子英——11 月 8 日出發，11 月 12 日回來，中午出發比較理想。／職員——需要哪種客艙？／程子英——經濟艙就行了。……一共是港幣三千五百元。乘客是王俊傑，護照號碼是 K03542947。／程子英——用信用卡付款。</p>
+    <p><b>對話二</b>：職員——您好，美勝旅行社，我姓趙。／程子英——我想預訂新加坡的酒店，11 月 8 日入住，一共住四晚，在 11 月 12 日退房。／職員——請問要哪種房間？／程子英——我要訂一間商務套房，最好在商業區附近。／職員——新加坡城市酒店，商務套房一晚的房費是港幣一千六百元。</p>
+  </details>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="5">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動六 ============ -->
+<section class="screen" id="s6">
+  <div class="eyebrow">🎒 活動六</div>
+  <h2>旅行前的準備</h2>
+  <p class="muted">睇完影片之後（或聽老師朗讀），完成三個練習。答錯有第二次機會，唔肯定就撳「👁 揭曉」。</p>
+
+  <div class="card">
+    <h3>練習一・粵普對譯</h3>
+    <div id="trans" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>練習二・讀一讀（兒化音）</h3>
+    <p class="muted" style="margin:0 0 4px">留意「兒」尾嘅讀法，先自己讀，再撳「👁 揭曉拼音」核對。</p>
+    <div id="erhua" style="margin-top:6px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="erhua">👁 揭曉拼音</button>
+      <button class="mini" data-speak="去哪兒，小孩兒，老頭兒，冰棍兒，花兒，鳥兒，針尖兒，胖墩兒。">🔊 讀一讀</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習三・北京名勝</h3>
+    <p class="muted" style="margin:0 0 4px">以下哪些係北京嘅景點？撳一撳揀出嚟（可以揀多過一個），再撳「✓ 核對」。</p>
+    <div id="bj" style="margin-top:6px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="6">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動七 ============ -->
+<section class="screen" id="s7">
+  <div class="eyebrow">☎️ 活動七</div>
+  <h2>查詢旅行團資料</h2>
+  <p class="muted">嘉運科技工程公司打算組織員工去江浙地區旅行，行政部職員何家沛打電話去永悅旅行社查詢。聽完錄音之後回答問題。</p>
+
+  <div class="card">
+    <h3>問題一・「華東四日遊」行程</h3>
+    <p class="muted" style="margin:0 0 4px">寫出城市即可：</p>
+    <div class="line" id="route">香港出發 → BLANK → BLANK → BLANK → 香港</div>
+  </div>
+
+  <div class="card">
+    <h3>問題二・根據錄音填空</h3>
+    <div class="line" id="tourfill" style="margin-top:6px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="tourfill">👁 揭曉全部</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>問題三・團費</h3>
+    <div class="line" id="fee">如果現在報名，團費每人 <span class="bk rvscope"><input class="bi" autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>2400</span></span><span class="fb"></span></span> 元。</div>
+    <p class="muted" style="margin-top:8px">（錄音提到原價每人 2500 元，現在報名便宜 100 元。）</p>
+  </div>
+
+  <div class="card soft-teal">
+    <h3>小結：查詢旅行團，重點要了解哪些資料？</h3>
+    <p class="muted" style="margin:0 0 4px">揀出你認為要問清楚嘅項目（可以揀多過一個），再撳「✓ 核對」。</p>
+    <div id="ask" style="margin-top:6px"></div>
+  </div>
+
+  <details class="details">
+    <summary>📄 錄音稿（查詢旅行團資料）</summary>
+    <p>章志平——您好，永悅旅行社，請問有什麼需要幫忙？／何家沛——您好，我們公司打算組織員工到上海、杭州等地旅遊，請問你們有甚麼推薦的旅行團嗎？／章志平——正所謂「上有天堂，下有蘇杭」嘛。我們有一個「華東四日遊」的旅行團就非常合適，行程是先去杭州、蘇州，最後從上海回香港。／……（西湖、蘇州園林、上海文化設施）……／章志平——每人兩千五百元。如果現在報名，還可以便宜一百元。</p>
+    <div class="rowbtns" style="margin-top:8px">
+      <button class="mini" data-speak="上有天堂，下有蘇杭。杭州、蘇州、上海。每人兩千五百元，如果現在報名，還可以便宜一百元。">🔊 讀關鍵句</button>
+    </div>
+  </details>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="7">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動八 ============ -->
+<section class="screen" id="s8">
+  <div class="eyebrow">🧭 活動八</div>
+  <h2>安排旅遊行程</h2>
+  <p class="muted">職員何家沛打電話到天天旅行社查詢旅遊資料。兩人一組，參考提示卡，將字母（A–E）填入對應位置，完成對話。</p>
+
+  <div class="card soft-gold">
+    <h3>提示卡</h3>
+    <div id="hints" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>完成對話</h3>
+    <div class="dlg" id="dlg3" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="8">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動九 ============ -->
+<section class="screen" id="s9">
+  <div class="eyebrow">🗣️ 活動九</div>
+  <h2>對話練習</h2>
+  <p class="muted">參考活動八嘅內容，兩人一組分別扮演角色甲、乙。準備時間 5 分鐘，對話時間 2 至 3 分鐘。</p>
+
+  <div class="card">
+    <h3>角色甲（對方先說話）</h3>
+    <div class="dc" id="roleA"></div>
+    <h3 style="margin-top:10px;color:var(--gold)">對話提示（角色甲）</h3>
+    <ol class="muted" style="margin:6px 0 0;padding-left:22px" id="stepA"></ol>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>角色乙（你先說話）</h3>
+    <div class="dc" id="roleB"></div>
+    <h3 style="margin-top:10px;color:var(--gold)">對話提示（角色乙）</h3>
+    <ol class="muted" style="margin:6px 0 0;padding-left:22px" id="stepB"></ol>
+  </div>
+
+  <div class="card">
+    <h3>安華旅行社・春季旅行團優惠計劃</h3>
+    <div id="tours" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-teal">
+    <h3>想一想</h3>
+    <div id="t-mc" style="margin-top:6px"></div>
+  </div>
+
+  <div class="card">
+    <h3>📝 對話練習互評表</h3>
+    <p class="muted">組員姓名：<input class="exit-in" style="display:inline-block;width:auto;min-width:9em;margin-top:4px" id="peer" placeholder="＿＿＿"></p>
+    <p class="muted">完成對話練習後，請根據組員嘅表現，為佢／她揀一個評級。</p>
+    <div id="rate" style="margin-top:9px"></div>
+    <div style="margin-top:10px">
+      <p class="muted" style="margin:0 0 4px">為幫助組員下次進步，畀佢／她一啲建議：</p>
+      <textarea class="exit-in" id="advice" placeholder="＿＿＿"></textarea>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="9">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸學習 ============ -->
+<section class="screen" id="s10">
+  <div class="eyebrow">📚 延伸學習</div>
+  <h2>課外學習</h2>
+  <p class="muted">呢一節唔使用錄音，屬於課外自學。詞匯表可以攞嚟溫習，網上資源由老師提供。</p>
+
+  <div class="card">
+    <h3>詞匯表</h3>
+    <p class="muted" style="margin:0 0 4px">先讀一讀，再撳「👁 揭曉拼音」核對。</p>
+    <div class="glo" id="glossary"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="glossary">👁 揭曉全部拼音</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>網上自學資源</h3>
+    <p style="margin:6px 0 0">📺 <b>認識旅遊景點</b>——課本提供嘅自學影片，由老師安排播放或派發連結。</p>
+    <p class="muted" style="margin:6px 0 0">課堂外可以自己搵一個想去嘅城市，用普通話講出佢嘅名勝、天氣同特色小食，練 1 分鐘。</p>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="10">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 自我評估 ============ -->
+<section class="screen" id="self">
+  <div class="eyebrow">📋 自我評估</div>
+  <h2>完成本課之後，你能做到嗎？</h2>
+  <p class="muted">每一行揀一個。冇標準答案，老實就得。</p>
+  <div class="assess" id="assess" style="margin-top:11px"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn" onclick="show('exit')">🏁 去課堂收結 ▶</button>
+  </div>
+</section>
+
+<!-- ============ 出口卡 ============ -->
+<section class="screen" id="exit">
+  <div class="eyebrow">🏁 課堂收結</div>
+  <h2>出口卡</h2>
+  <p class="muted">打字唔得就口頭講、或寫喺紙條交畀老師。答完先播下課歌。</p>
+  <div class="card">
+    <h3>今日學到嘅 3 樣</h3>
+    <input class="exit-in" id="e1" placeholder="1.">
+    <input class="exit-in" id="e2" placeholder="2.">
+    <input class="exit-in" id="e3" placeholder="3.">
+  </div>
+  <div class="card">
+    <h3>最想再練嘅一樣</h3>
+    <input class="exit-in" id="e4" placeholder="我想再練……">
+  </div>
+  <div class="navrow">
+    <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone" target="_blank" rel="noopener">🎵 去下課歌區 ▶</a>
+    <a class="btn ghost" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-closesp5/" target="_blank" rel="noopener">📋 課次五・課堂收結 ▶</a>
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+  </div>
+  <p class="muted" style="margin-top:14px">下課歌區（總台）：
+    <span class="muted" style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone</span>
+  </p>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<pre id="selftest" style="display:none"></pre>
+
+<script>
+"use strict";
+window.__errs=[];
+window.addEventListener('error',function(e){try{window.__errs.push(String(e.message||e))}catch(x){}});
+window.addEventListener('unhandledrejection',function(e){try{window.__errs.push('rej:'+String(e.reason))}catch(x){}});
+/* ================= 基礎工具 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let toastTimer=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1900)}
+function speak(txt){try{if(!('speechSynthesis'in window)){toast('此裝置暫無語音，請跟老師讀');return}const u=new SpeechSynthesisUtterance(String(txt).replace(/[＿_]/g,'…'));u.lang='zh-CN';u.rate=.82;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}catch(e){toast('此裝置暫無語音，請跟老師讀')}}
+/* 正規化：去空白／標點，方便比對填空 */
+function norm(s){return String(s).replace(/[\s\u3000，。、！？!?,.／/「」『』（）()：:；;－—–~～|]/g,'').toLowerCase()}
+function normEq(a,b){return norm(a)===norm(b)&&norm(a)!==''}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
+
+/* ================= 進度（localStorage） ================= */
+const TOTAL=10;
+const KEY=i=>'vch1101spk5_a'+i;
+const MEM={}; /* 記憶體後備：就算 localStorage 被封（隱私模式／file://）都唔會即場失效 */
+function lsGet(k){try{const v=localStorage.getItem(k);return v===null?(k in MEM?MEM[k]:null):v}catch(e){return k in MEM?MEM[k]:null}}
+function lsSet(k,v){MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){delete MEM[k];try{localStorage.removeItem(k)}catch(e){}}
+function isDone(i){return lsGet(KEY(i))==='1'}
+function setDone(i){lsSet(KEY(i),'1'); renderProgress(); renderTiles(); }
+function clearDone(){for(let i=1;i<=TOTAL;i++)lsDel(KEY(i)); renderProgress(); renderTiles();}
+function doneCount(){let n=0;for(let i=1;i<=TOTAL;i++)if(isDone(i))n++;return n}
+function renderProgress(){const n=doneCount();$('#ptxt').textContent='進度 '+n+'/'+TOTAL;$('#pbar').style.width=(n/TOTAL*100)+'%'}
+
+/* ================= 畫面切換 ================= */
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));try{window.scrollTo(0,0)}catch(e){} if(id==='map')renderTiles();}
+
+/* ================= 活動地圖 ================= */
+const MAP=[
+ {id:'s1',n:1,em:'👀',t:'活動一・你說我猜',s:'12 個常見國家名稱'},
+ {id:'s2',n:2,em:'🌏',t:'活動二・地名大不同',s:'粵普地名對照 4 題'},
+ {id:'s3',n:3,em:'🏛',t:'活動三・認識世界名勝',s:'12 個名勝＋所在地'},
+ {id:'s4',n:4,em:'🧳',t:'活動四・出差前的準備',s:'行李 6 項＋工作 4 項'},
+ {id:'s5',n:5,em:'🎫',t:'活動五・預訂機票和酒店',s:'兩段對話填空'},
+ {id:'s6',n:6,em:'🎒',t:'活動六・旅行前的準備',s:'粵普對譯＋兒化音＋北京名勝'},
+ {id:'s7',n:7,em:'☎️',t:'活動七・查詢旅行團資料',s:'行程＋填空＋團費＋小結'},
+ {id:'s8',n:8,em:'🧭',t:'活動八・安排旅遊行程',s:'提示卡 A–E 對話排序'},
+ {id:'s9',n:9,em:'🗣️',t:'活動九・對話練習',s:'角色扮演＋互評表'},
+ {id:'s10',n:10,em:'📚',t:'延伸學習・課外學習',s:'詞匯表＋網上自學資源'},
+ {id:'self',n:'📋',em:'✅',t:'自我評估',s:'3 個學習成果自評',self:true}
+];
+function selfAllDone(){return [0,1,2].every(i=>aState[i])}
+function renderTiles(){
+  const el=$('#tiles'); if(!el) return;
+  el.innerHTML=MAP.map(m=>{
+    const d=m.self?selfAllDone():isDone(m.n);
+    return `<button class="tile${d?' done':''}" data-goto="${m.id}">
+      <span class="tn">${esc(m.n)}</span>
+      <div class="tem">${m.em}</div>
+      <div class="tt">${esc(m.t)}</div>
+      <div class="ts">${esc(m.s)}</div>
+      <span class="tick">${d?'✓':''}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ================= 共用小部件 ================= */
+function blankHTML(ans,extra){return `<span class="bk rvscope" data-ans="${esc(ans)}"><input class="bi" ${extra||''} autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(typeof ans==='string'?ans.split('|')[0]:ans)}</span></span><span class="fb"></span></span>`}
+function rubyHTML(pairs){return pairs.map(p=>`<span class="ruby"><span class="py">${esc(p[1])}</span><span class="ch">${esc(p[0])}</span></span>`).join('')}
+function plainHTML(pairs){return pairs.map(p=>`<span>${esc(p[0])}</span>`).join('')}
+
+const QZ={}; /* MC 答案註冊表：qid -> {a:'正確選項', txt:'補充'} */
+function qHTML(qid,num,text,correct,wrongs,note){
+  QZ[qid]={a:correct,txt:note||''};
+  const opts=shuffle([correct].concat(wrongs));
+  const cls=opts.length===3?' three':'';
+  return `<div class="rd" data-q="${qid}" style="margin:12px 0">
+    <div class="qhead"><span class="qnum">${num}</span><span class="qtext">${esc(text)}</span></div>
+    <div class="opts${cls}">${opts.map(v=>`<button class="opt" data-act="opt" data-q="${qid}" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div>
+    <div class="fb"></div>
+    <button class="mini rv" data-act="rvmc" data-q="${qid}">👁 揭曉</button>
+    <div class="ansbox"><span>${esc(correct)}${note?`　<span class="py">${esc(note)}</span>`:''}</span></div>
+  </div>`;
+}
+/* 多選：items = [{v:'文字', ok:true/false}] */
+const MULTI={};
+function multiHTML(gid,items){
+  MULTI[gid]=items.filter(x=>x.ok).map(x=>x.v);
+  return `<div class="multi" data-g="${gid}">`+
+    items.map(it=>`<button class="mopt" data-act="mt" data-g="${gid}" data-v="${esc(it.v)}">${esc(it.v)}</button>`).join('')+
+    `<button class="mini" data-act="mck" data-g="${gid}">✓ 核對</button>`+
+    `<button class="mini rv" data-act="mrv" data-g="${gid}">👁 揭曉</button>`+
+    `<span class="fb"></span></div>`;
+}
+
+/* ================= 活動一：你說我猜 ================= */
+const COUNTRIES=[['中國','zhōng guó','萬里長城、熊貓'],['韓國','hán guó','泡菜、首爾'],['法國','fǎ guó','巴黎鐵塔、紅酒'],
+ ['巴西','bā xī','森巴舞、足球王國'],['加拿大','jiā ná dà','楓葉、洛磯山'],['澳大利亞','ào dà lì yà','袋鼠、悉尼歌劇院'],
+ ['瑞士','ruì shì','雪山、手錶'],['菲律賓','fēi lǜ bīn','陽光海灘、宿霧'],['日本','rì běn','櫻花、富士山'],
+ ['美國','měi guó','自由女神像、紐約'],['希臘','xī là','神廟、奧林匹克'],['西班牙','xī bān yá','鬥牛、佛朗明哥']];
+function renderCountries(){
+  $('#countrylist').innerHTML=COUNTRIES.map((c,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. ${esc(c[2])}</b>
+    <button class="mini rv" data-act="rv">👁 揭曉</button>
+    <span class="ansbox"><span>${esc(c[0])}<span class="py"> ${esc(c[1])}</span></span><button class="speakbt" data-speak="${esc(c[0])}">🔊</button></span>
+  </div>`).join('');
+  $('#c-mc').innerHTML=
+    qHTML('c1',1,'有萬里長城，又有熊貓，這個國家是？','中國',['韓國','日本','加拿大'],'zhōng guó')+
+    qHTML('c2',2,'有櫻花，又有富士山，這個國家是？','日本',['美國','法國','瑞士'],'rì běn')+
+    qHTML('c3',3,'有袋鼠，又有悉尼歌劇院，這個國家是？','澳大利亞',['巴西','西班牙','希臘'],'ào dà lì yà')+
+    qHTML('c4',4,'有巴黎鐵塔，又是紅酒之鄉，這個國家是？','法國',['瑞士','菲律賓','韓國'],'fǎ guó');
+}
+
+/* ================= 活動二：地名大不同 ================= */
+const PLACES=[['紐西蘭','新西蘭','xīn xī lán'],['紐卡素','紐卡斯爾','niǔ kǎ sī ěr'],['肯雅','肯尼亞','kěn ní yà'],['杜拜','迪拜','dí bài']];
+function renderPlaces(){
+  $('#places').innerHTML=PLACES.map((p,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. 粵語：${esc(p[0])} ➜ 普通話：</b>
+    ${blankHTML(p[1],'style="width:7em"')}
+    <button class="mini" data-speak="${esc(p[1])}">🔊</button>
+    <span class="ansbox"><span>${esc(p[1])}<span class="py"> ${esc(p[2])}</span></span></span>
+  </div>`).join('');
+}
+
+/* ================= 活動三：認識世界名勝 ================= */
+const LANDMARKS=[['天壇','中國 北京'],['富士山','日本（東京西南方）'],['自由女神像','美國 紐約'],['鬥獸場','意大利 羅馬'],
+ ['塔橋','英國 倫敦'],['獅身人面像／金字塔','埃及 開羅'],['悉尼歌劇院','澳大利亞 悉尼'],['凱旋門','法國 巴黎'],
+ ['克里姆林宮','俄羅斯 莫斯科'],['科隆大教堂','德國 北萊茵'],['泰姬陵','印度 阿格拉'],['魚尾獅','新加坡']];
+function renderLandmarks(){
+  $('#landmarks').innerHTML=LANDMARKS.map((l,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. ${esc(l[0])} 位於……</b>
+    <button class="mini rv" data-act="rv">👁 揭曉</button>
+    <span class="ansbox"><span>${esc(l[1])}</span><button class="speakbt" data-speak="${esc(l[0])}位於${esc(l[1].replace('（','，').replace('）',''))}。">🔊</button></span>
+  </div>`).join('');
+  $('#l-mc').innerHTML=
+    qHTML('l1',1,'泰姬陵位於哪個國家？','印度',['埃及','意大利','希臘'],'印度 阿格拉')+
+    qHTML('l2',2,'獅身人面像、金字塔位於哪個城市？','開羅',['羅馬','巴黎','倫敦'],'埃及 開羅')+
+    qHTML('l3',3,'科隆大教堂位於哪個國家？','德國',['瑞士','英國','法國'],'德國 北萊茵')+
+    qHTML('l4',4,'魚尾獅是哪個國家的標誌？','新加坡',['菲律賓','日本','美國'],'新加坡');
+}
+
+/* ================= 活動四：出差前的準備 ================= */
+const LUGGAGE=['護照等有效身份證件','現金／信用卡','換洗衣物','洗漱用品','筆記本電腦','工作資料／文件'];
+const WORKITEMS=['預訂機票','預訂酒店','規劃行程','與對方公司溝通'];
+function revealRow(txt,label){
+  return `<div class="pair rvscope"><b class="kk">${esc(label)}</b>
+    <button class="mini rv" data-act="rv">👁 揭曉</button>
+    <span class="ansbox"><span>${esc(txt)}</span></span></div>`;
+}
+function renderPrep(){
+  $('#luggage').innerHTML=LUGGAGE.map((t,i)=>revealRow(t,(i+1)+'.　＿＿＿＿')).join('');
+  $('#worklist').innerHTML=WORKITEMS.map((t,i)=>revealRow(t,(i+1)+'.　＿＿＿＿')).join('');
+  $('#p-mc').innerHTML=
+    qHTML('p1',1,'以下哪一項是出差「需要準備的行李」？','換洗衣物',['預訂機票','規劃行程','與對方公司溝通'],'')+
+    qHTML('p2',2,'以下哪一項是出差「需要準備的工作」？','預訂酒店',['洗漱用品','換洗衣物','筆記本電腦'],'')+
+    qHTML('p3',3,'去新加坡出差、搭飛機時，一定要帶的有效證件是？','護照',['工作資料','洗漱用品','信用卡'],'')+
+    qHTML('p4',4,'出差前要「規劃行程」，「規劃行程」的意思是？','事先安排好每天的活動和路線',['先訂好機票和酒店','收拾好行李','跟同事聊天'],'');
+}
+
+/* ================= 活動五：預訂機票和酒店 ================= */
+function segLine(parts){return parts.map(p=>typeof p==='string'?esc(p):blankHTML(p.ans,p.style)).join('')}
+const DLG1=[
+ ['職員','早上好，君泰航空公司，請問有什麼需要幫忙？',''],
+ ['程子英','您好，我是嘉運科技工程公司的秘書，我姓程，我想預訂一張香港到新加坡的',{ans:'往返|來回|來回程'},'機票。'],
+ ['職員','請問出發和回程的日期是哪天？希望在哪個時間段出發？',''],
+ ['程子英','11 月 8 日出發，',{ans:'11月12日|十一月十二日'},'回來，中午出發比較理想。'],
+ ['職員','需要哪種客艙？',''],
+ ['程子英','',{ans:'經濟|經濟艙|經濟客艙'},'艙就行了。'],
+ ['職員','好的，請稍等一會兒，我幫您查查。請問 11 月 8 日中午 12 點 50 分出發、11 月 12 日中午 12 點半返回的航班可以嗎？',''],
+ ['程子英','可以。票價是多少錢？',''],
+ ['職員','機票再加兩地的機場稅和燃油附加費，一共是港幣',{ans:'三千五百|3500|三千五百元','style':'style="width:6.5em"'},'元。'],
+ ['程子英','那就幫我訂一張吧。',''],
+ ['職員','好，請提供乘客的姓名和',{ans:'護照'},'號碼。'],
+ ['程子英','乘客是王俊傑，三橫王，俊朗的俊，傑出的傑。護照號碼是',{ans:'K03542947','style':'style="width:8em"'},'。'],
+ ['職員','我重複一次，您預定的是往返新加坡的機票一張，票價是港幣三千五百元，11 月 8 日去，11 月 12 日回，乘客的姓名是王俊傑，護照號碼是 K03542947，對嗎？',''],
+ ['程子英','沒錯。',''],
+ ['職員','請問您會以哪種方式付款？',''],
+ ['程子英','用',{ans:'信用卡'},'付款。'],
+ ['職員','好的，稍後我會將您的電話轉到自動付款系統，請按錄音指示付款。','']
+];
+const DLG2=[
+ ['職員','您好，美勝',{ans:'旅行社'},'，我姓趙，請問有什麼需要幫忙？'],
+ ['程子英','您好，我姓程，我想預訂新加坡的酒店。',''],
+ ['職員','請問哪天入住？住幾天？',''],
+ ['程子英','11 月 8 日入住，一共住',{ans:'四晚|4晚|四天'},'，在 11 月 12 日',{ans:'退房'},'。'],
+ ['職員','好的，請問要哪種房間？還有什麼特別的要求嗎？',''],
+ ['程子英','我要訂一間',{ans:'商務'},'套房，最好在商業區附近。'],
+ ['職員','請稍等。您可以考慮新加坡城市酒店，商務套房一晚的房費是港幣',{ans:'一千六百|1600|一千六百元','style':'style="width:6.5em"'},'元。'],
+ ['程子英','嗯，麻煩你幫我預訂這家酒店吧。',''],
+ ['職員','請您留下姓名和聯絡電話，等酒店',{ans:'確認'},'房間後，我馬上通知您。'],
+ ['程子英','我叫程子英，電話號碼是',{ans:'2998 3774|29983774|2998-3774','style':'style="width:8em"'},'。'],
+ ['職員','好的，稍後請您留意我們的電話。','']
+];
+function dlgHTML(rows,box){
+  return rows.map(r=>`<div class="bub ${box==='b'?'b':''}"><span class="sp">${esc(r[0])}</span>${segLine(r.slice(1))}</div>`).join('');
+}
+function renderFlight(){
+  $('#dlg1').innerHTML=dlgHTML(DLG1,'');
+  $('#dlg2').innerHTML=dlgHTML(DLG2,'b');
+  $('#f-mc').innerHTML=
+    qHTML('f1',1,'程子英訂的機票是哪一種？','往返（來回）',['單程','兩張單程','三個人的'],'')+
+    qHTML('f2',2,'程子英用哪種方式付款？','信用卡',['現金','銀行轉帳','支票'],'')+
+    qHTML('f3',3,'王俊傑住的是哪一種房間？','商務套房',['標準房','家庭房','總統套房'],'');
+}
+
+/* ================= 活動六：旅行前的準備 ================= */
+const TRANS=[['打波','打球'],['輸賭','打賭'],['雪糕','冰淇淋'],['風褸','風衣'],['爬頭','超車'],
+ ['借借','借光|讓一讓'],['遊車河','坐車遊覽'],['單車','自行車'],['手信','禮物'],['點樣','如何|怎麼樣']];
+const ERHUA=[['去哪兒','qù nǎr'],['小孩兒','xiǎo háir'],['老頭兒','lǎo tóur'],['冰棍兒','bīng gùnr'],
+ ['花兒','huār'],['鳥兒','niǎor'],['針尖兒','zhēn jiānr'],['胖墩兒','pàng dūnr']];
+function renderTravel(){
+  $('#trans').innerHTML=TRANS.map((p,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. 粵語：${esc(p[0])} ➜ 普通話：</b>
+    ${blankHTML(p[1],'style="width:6.5em"')}
+    <button class="mini" data-speak="${esc(p[1].split('|')[0])}">🔊</button>
+    <span class="ansbox"><span>${esc(p[1].split('|')[0])}</span></span>
+  </div>`).join('');
+  $('#erhua').innerHTML=`<div class="tw">${ERHUA.map(e=>esc(e[0])).join('　')}</div>
+    <div class="rvwrap" id="erhua-py">${rubyHTML(ERHUA)}</div>`;
+  $('#bj').innerHTML=multiHTML('bj',[
+    {v:'中山陵',ok:false},{v:'外灘',ok:false},{v:'王府井步行街',ok:true},{v:'兵馬俑',ok:false},
+    {v:'長城',ok:true},{v:'都江堰',ok:false},{v:'天安門廣場',ok:true},{v:'滕王閣',ok:false},
+    {v:'頤和園',ok:true},{v:'故宮',ok:true},{v:'五台山',ok:false},{v:'天池',ok:false}
+  ]);
+}
+
+/* ================= 活動七：查詢旅行團資料 ================= */
+function renderTour(){
+  $('#route').innerHTML='香港出發 → '+blankHTML('杭州','style="width:5em"')+' → '+blankHTML('蘇州','style="width:5em"')+' → '+blankHTML('上海','style="width:5em"')+' → 香港';
+  $('#tourfill').innerHTML=
+    '<div>俗語有云：「上有天堂，下有'+blankHTML('蘇杭','style="width:5em"')+'」。</div>'+
+    '<div>西湖以秀麗的'+blankHTML('湖光山色','style="width:7em"')+'和眾多的名勝古蹟而聞名中外。</div>'+
+    '<div>在中國'+blankHTML('四|四大','style="width:4em"')+'大名園中，拙政園、留園佔有兩席，早已被列入世界文化'+blankHTML('遺產','style="width:5em"')+'名錄。</div>'+
+    '<div>近年有許多一流的'+blankHTML('文化設施','style="width:7em"')+'相繼落成，包括：東方藝術中心、上海博物館、上海中心等等。</div>';
+  $('#ask').innerHTML=multiHTML('ask',[
+    {v:'出發和回程日期',ok:true},{v:'行程',ok:true},{v:'團費',ok:true},{v:'導遊的性別',ok:false},
+    {v:'住宿的安排',ok:true},{v:'是否要帶游泳衣',ok:false},{v:'目的地是否需要簽證',ok:true},{v:'目的地有什麼小吃',ok:false}
+  ]);
+}
+
+/* ================= 活動八：安排旅遊行程 ================= */
+const HINTS=[
+ ['A','我們想在三月十五日，星期五出發，打算玩四天，大約有三十人參加。'],
+ ['B','那團費是多少錢？都會去哪些景點呢？'],
+ ['C','你好，我姓何，是嘉運科技工程公司的職員。我們公司計劃組織員工去華東旅遊，想了解一下有關情況。'],
+ ['D','團費是每人兩千五百元，另加二百四十元的導遊服務費。主要景點包括：東方明珠、周莊水鄉、蘇州園林和西湖。那我要考慮一下，稍後再做決定。'],
+ ['E','謝謝，再見。']
+];
+const ANSWERS8={1:'C',2:'A',3:'B',4:'D',5:'E'};
+function renderTrip(){
+  $('#hints').innerHTML=HINTS.map(h=>`<div class="qa"><b style="color:var(--gold)">${esc(h[0])}.</b> ${esc(h[1])}
+    <button class="mini" data-speak="${esc(h[1])}">🔊</button></div>`).join('');
+  const rows=[
+   ['職員','早上好，天天旅行社，請問有什麼需要幫忙？',''],
+   ['何家沛','（1）','blank1'],
+   ['職員','何先生，請問你們打算甚麼時候出發？玩幾天？一共有多少人參加？',''],
+   ['何家沛','（2）','blank2'],
+   ['職員','我們有一個「華東四日遊」的旅行團就很適合你們。',''],
+   ['何家沛','（3）','blank3'],
+   ['職員','（4）','blank4'],
+   ['何家沛','（5）','blank5'],
+   ['職員','好的，歡迎您隨時查詢。再見。','']
+  ];
+  $('#dlg3').innerHTML=rows.map((r,i)=>{
+    if(r[2]===''){
+      return `<div class="bub ${i%2?'b':''}"><span class="sp">${esc(r[0])}</span>${esc(r[1])}</div>`;
+    }
+    const idx=r[2].replace('blank','');
+    return `<div class="bub b"><span class="sp">何家沛</span>（${idx}）${blankHTML(ANSWERS8[idx],'style="width:3em"')}</div>`;
+  }).join('');
+}
+
+/* ================= 活動九：對話練習 ================= */
+const ROLE_A=[['情景','你是興盛工程公司的秘書鍾嘉怡。公司計劃組織員工旅遊，經理請你協助有關工作。'],
+ ['任務','根據以下資料，致電安華旅行社，查詢旅行團資料。'],
+ ['經理留言','公司想在下個月組織員工到山東旅遊，麻煩你向旅行社查詢一下旅行團資料。'],
+ ['出發日期','3 月 18 日'],['天數','3 至 4 天'],['預算','3500 元／人以內'],['指定景點','珍珠養殖基地（開貝取珠）']];
+const ROLE_B=[['情景','你是安華旅行社的職員謝浩。客戶來電，查詢旅行團資料，請你協助有關工作。'],
+ ['任務','接聽電話，根據旅行社的旅行團資料，向客戶介紹旅行團。']];
+const STEPS_A=['打招呼，自我介紹，簡單說明致電目的；','回應對方問題，並請對方推薦合適的旅行團；',
+ '詢問旅行團的團費、景點及特色；','複述團費與景點，表示需要考慮，稍後再做決定；','致謝並道別。'];
+const STEPS_B=['打招呼，自我介紹，詢問對方致電目的；','詢問對方出發日期、天數、預算，以及要參觀的景點；',
+ '複述日期、天數和預算，以及要參觀的景點，推薦合適的旅行團；','回應對方問題；','致謝並道別。'];
+const TOURS=[
+ ['山東 4 日文化遊','3680 元／人',['風箏一條街（風箏製作）','珍珠養殖基地','康有為故居']],
+ ['山東 4 日逍遙遊','3290 元／人',['泰山','珍珠養殖基地','青島啤酒廠（百年釀造史）']]
+];
+function cardRows(c){return c.map(r=>`<div class="l"><span class="k">${esc(r[0])}</span><span class="v">${esc(r[1])}</span></div>`).join('')}
+function renderSpeak9(){
+  $('#roleA').innerHTML=cardRows(ROLE_A);
+  $('#roleB').innerHTML=cardRows(ROLE_B);
+  $('#stepA').innerHTML=STEPS_A.map(s=>`<li>${esc(s)}</li>`).join('');
+  $('#stepB').innerHTML=STEPS_B.map(s=>`<li>${esc(s)}</li>`).join('');
+  $('#tours').innerHTML=TOURS.map(t=>`<div class="dc"><div class="l"><span class="k">${esc(t[0])}</span><span class="v">團費：<b style="color:var(--gold)">${esc(t[1])}</b></span></div>
+    <div class="l"><span class="k">主要景點</span><span class="v">${t[2].map(x=>esc(x)).join('、')}</span></div>
+    <button class="mini" data-speak="${esc(t[0]+'，團費'+t[1]+'，主要景點：'+t[2].join('、'))}">🔊</button></div>`).join('');
+  $('#t-mc').innerHTML=
+    qHTML('t1',1,'公司預算 3500 元／人以內，又指定要參觀「珍珠養殖基地」，應該推薦哪一個旅行團？','山東 4 日逍遙遊（3290 元）',['山東 4 日文化遊（3680 元）'],'文化遊 3680 元超出預算；逍遙遊 3290 元在預算內，又有珍珠養殖基地')+
+    qHTML('t2',2,'以下哪個景點，兩個旅行團都會去？','珍珠養殖基地',['泰山','康有為故居','青島啤酒廠'],'');
+}
+const RATE=['整體表現：切合題目要求，完成任務','內容豐富，組織有條理','運用正確的詞彙，以完整句子對話','語音面貌'];
+const RATE_OPTS=[['A','A（優秀）'],['B','B（良好）'],['C','C（及格）'],['F','F（不及格）']];
+let rateState={};
+function renderRate(){
+  $('#rate').innerHTML=RATE.map((q,i)=>`<div class="arow">
+    <div class="aq">${esc(q)}</div>
+    <div class="aopts">${RATE_OPTS.map(o=>`<button class="rateopt aopt${rateState[i]===o[0]?' sel':''}" data-rt="${i}" data-rv="${o[0]}">${esc(o[1])}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 延伸學習：詞匯表 ================= */
+const GLOSSARY=[['出差','chū chāi','到外地辦理公事'],['預訂','yù dìng','事先訂好（機票、酒店等）'],
+ ['往返','wǎng fǎn','來回，去和回來'],['經濟艙','jīng jì cāng','飛機上較便宜的座位等級'],
+ ['商務套房','shāng wù tào fáng','酒店裡較高級的房間'],['入住','rù fáng','辦手續住進酒店'],
+ ['退房','tuì fáng','辦手續離開酒店'],['行程','xíng chéng','旅行的路線和安排'],
+ ['團費','tuán fèi','參加旅行團要付的費用'],['導遊','dǎo yóu','帶團並講解的人'],
+ ['名勝古蹟','míng shèng gǔ jī','有名的風景和古蹟'],['兒化音','ér huà yīn','普通話裡帶「兒」尾的讀法'],
+ ['旅行社','lǚ xíng shè','辦理旅行業務的機構'],['養殖基地','yǎng zhí jī dì','人工飼養水產或動物的場地']];
+function renderGlossary(){
+  $('#glossary').innerHTML=GLOSSARY.map(g=>`<div class="glorow rvscope">
+    <span class="w">${esc(g[0])}</span>
+    <span class="mean">${esc(g[2])}</span>
+    <button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <button class="mini" data-speak="${esc(g[0])}">🔊</button>
+    <span class="ansbox"><span class="py">${esc(g[1])}</span></span>
+  </div>`).join('');
+}
+
+/* ================= 自我評估 ================= */
+const ASSESS=['說出出差及旅行前的準備工作','預訂機票和酒店','安排出差及旅遊行程'];
+const AOPTS=['能','部分','否'];
+let aState={};
+function renderAssess(){
+  $('#assess').innerHTML=ASSESS.map((q,i)=>`<div class="arow">
+    <div class="aq">${i+1}. ${esc(q)}</div>
+    <div class="aopts">${AOPTS.map(o=>`<button class="aopt${aState[i]===o?' sel':''}" data-aq="${i}" data-av="${o}">${o}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 事件（委派） ================= */
+document.addEventListener('click',function(e){
+  const gt=e.target.closest('[data-goto]');
+  if(gt){ show(gt.dataset.goto); return; }
+  const fin=e.target.closest('[data-fin]');
+  if(fin){ setDone(Number(fin.dataset.fin)); toast('✅ 已記錄完成，進度更新咗！'); show('map'); return; }
+  const sp=e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const t=e.target.closest('[data-act]');
+  if(t){
+    const act=t.dataset.act;
+    if(act==='rv'){ const s=t.closest('.rvscope'); if(s){const b=s.querySelector('.ansbox'); if(b)b.classList.add('on');} return; }
+    if(act==='rvw'){
+      const id=t.dataset.target; const w=id?document.getElementById(id):null;
+      if(w){
+        if(w.querySelector('.ansbox')){ w.querySelectorAll('.ansbox').forEach(b=>b.classList.add('on')); t.textContent='🙈 已揭曉'; }
+        else { w.classList.toggle('on'); t.textContent=w.classList.contains('on')?'🙈 收起拼音':'👁 揭曉拼音'; }
+      }
+      return;
+    }
+    if(act==='rvmc'){
+      const rd=t.closest('.rd'); const o=QZ[rd.dataset.q];
+      rd.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok'); });
+      rd.querySelector('.ansbox').classList.add('on');
+      const fb=rd.querySelector('.fb'); fb.textContent='答案：'+o.a; fb.className='fb ok';
+      return;
+    }
+    if(act==='opt'){
+      const rd=t.closest('.rd'); const q=rd.dataset.q; const v=t.dataset.v; const o=QZ[q]; const fb=rd.querySelector('.fb');
+      if(v===o.a){
+        rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')});
+        rd.querySelector('.ansbox').classList.add('on'); fb.textContent='✓ 答對了！'; fb.className='fb ok';
+      } else {
+        if(!rd.dataset.tried){ rd.dataset.tried='1'; t.classList.add('no'); t.disabled=true; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+        else { t.classList.add('no'); t.disabled=true; rd.querySelector('.ansbox').classList.add('on'); rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')}); fb.textContent='答案：'+o.a+(o.txt?('（'+o.txt+'）'):''); fb.className='fb warn'; }
+      }
+      return;
+    }
+    if(act==='ck'){
+      const bk=t.closest('.bk'); const inp=bk.querySelector('input'); const alts=(bk.dataset.ans||'').split('|'); const fb=bk.querySelector('.fb');
+      if(alts.some(a=>normEq(inp.value,a))){ fb.textContent='✓ 答對了'; fb.className='fb ok'; bk.classList.add('ok'); inp.disabled=true; t.disabled=true; }
+      else if(!bk.dataset.tried){ bk.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+      else { fb.textContent='答案：'+alts[0]; fb.className='fb warn'; bk.querySelector('.ansbox').classList.add('on'); }
+      return;
+    }
+    if(act==='mt'){
+      const g=t.dataset.g; const box=t.closest('.multi'); if(box.dataset.locked)return;
+      t.classList.toggle('sel');
+      return;
+    }
+    if(act==='mck'){
+      const g=t.dataset.g; const box=t.closest('.multi'); if(box.dataset.locked)return;
+      const ans=MULTI[g]||[];
+      const sel=Array.from(box.querySelectorAll('.mopt.sel')).map(x=>x.dataset.v);
+      const ok=sel.length===ans.length && sel.every(v=>ans.indexOf(v)>=0);
+      const fb=box.querySelector('.fb');
+      if(ok){
+        box.querySelectorAll('.mopt').forEach(x=>{x.classList.remove('sel'); if(ans.indexOf(x.dataset.v)>=0)x.classList.add('ok')});
+        fb.textContent='✓ 全部答對了！'; fb.className='fb ok'; box.dataset.locked='1'; t.disabled=true;
+      } else if(!box.dataset.tried){
+        box.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no';
+      } else {
+        box.querySelectorAll('.mopt').forEach(x=>{ if(ans.indexOf(x.dataset.v)>=0)x.classList.add('ok'); else if(x.classList.contains('sel'))x.classList.add('no'); });
+        fb.textContent='答案：'+ans.join('、'); fb.className='fb warn'; box.dataset.locked='1'; t.disabled=true;
+      }
+      return;
+    }
+    if(act==='mrv'){
+      const g=t.dataset.g; const box=t.closest('.multi'); const ans=MULTI[g]||[];
+      box.querySelectorAll('.mopt').forEach(x=>{ if(ans.indexOf(x.dataset.v)>=0)x.classList.add('ok'); });
+      const fb=box.querySelector('.fb'); fb.textContent='答案：'+ans.join('、'); fb.className='fb ok';
+      box.dataset.locked='1'; t.disabled=true;
+      return;
+    }
+  }
+  const aq=e.target.closest('[data-aq]'); if(aq){ aState[aq.dataset.aq]=aq.dataset.av; lsSet('vch1101spk5_self',JSON.stringify(aState)); renderAssess(); renderTiles(); return; }
+  const rt=e.target.closest('[data-rt]'); if(rt){ rateState[rt.dataset.rt]=rt.dataset.rv; lsSet('vch1101spk5_rate',JSON.stringify(rateState)); renderRate(); return; }
+});
+
+/* ================= 鍵盤：Enter 即核對 ================= */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('bi')){
+    const bk=e.target.closest('.bk'); const mini=bk.querySelector('[data-act="ck"]'); if(mini)mini.click();
+  }
+});
+document.addEventListener('input',function(e){
+  if(e.target && e.target.id==='peer'){ lsSet('vch1101spk5_peer',e.target.value); }
+  if(e.target && e.target.id==='advice'){ lsSet('vch1101spk5_advice',e.target.value); }
+  if(e.target && e.target.id==='extra-place'){ lsSet('vch1101spk5_extraplace',e.target.value); }
+});
+
+/* ================= 初始化 ================= */
+function init(){
+  renderCountries(); renderPlaces(); renderLandmarks(); renderPrep();
+  renderFlight(); renderTravel(); renderTour(); renderTrip(); renderSpeak9();
+  renderGlossary();
+  renderTiles(); renderProgress();
+  const s0=lsGet('vch1101spk5_self'); if(s0){try{aState=JSON.parse(s0)||{}}catch(x){}}
+  const r0=lsGet('vch1101spk5_rate'); if(r0){try{rateState=JSON.parse(r0)||{}}catch(x){}}
+  renderAssess(); renderRate(); renderTiles();
+  const pe=lsGet('vch1101spk5_peer'); if(pe!=null&&pe!=='')$('#peer').value=pe;
+  const ad=lsGet('vch1101spk5_advice'); if(ad!=null&&ad!=='')$('#advice').value=ad;
+  const ex=lsGet('vch1101spk5_extraplace'); if(ex!=null&&ex!=='')$('#extra-place').value=ex;
+  ['e1','e2','e3','e4'].forEach(id=>{const v=lsGet('vch1101spk5_'+id); if(v!=null&&v!=='')$('#'+id).value=v;});
+}
+init();
+
+/* ================= 自動自測（?selftest） ================= */
+function runSelfTest(){
+  const out=[]; const errs=[];
+  try{
+    clearDone();
+    // 1) 地圖項目（10 進度 + 自我評估 = 11）
+    out.push('map_tiles='+$$('#tiles .tile').length);
+    // 2) 每個活動可進入
+    let entered=0; MAP.forEach(m=>{ show(m.id); if($('#'+m.id).classList.contains('on'))entered++; });
+    out.push('entered='+entered+'/'+MAP.length);
+    // 3) 答案可揭（所有 👁 揭曉 掣）
+    const reveal=$$('[data-act="rv"]').length+$$('[data-act="rvmc"]').length+$$('[data-act="rvw"]').length+$$('[data-act="mrv"]').length;
+    out.push('reveal_btns='+reveal);
+    const rv=$$('[data-act="rv"]'); rv.forEach(b=>{ try{b.click();}catch(x){errs.push('rv '+x)} });
+    const rw=$$('[data-act="rvw"]'); rw.forEach(b=>{try{b.click()}catch(x){errs.push('rvw '+x)}});
+    const rm=$$('[data-act="rvmc"]'); rm.forEach(b=>{try{b.click()}catch(x){errs.push('rvmc '+x)}});
+    const mr=$$('[data-act="mrv"]'); mr.forEach(b=>{try{b.click()}catch(x){errs.push('mrv '+x)}});
+    out.push('ansbox_on='+$$('.ansbox.on').length);
+    // 4) 填空／多選核對掣可運作
+    const ck=$$('[data-act="ck"]'); ck.forEach(b=>{try{ b.click(); }catch(x){errs.push('ck '+x)} });
+    const mk=$$('[data-act="mck"]'); mk.forEach(b=>{try{ b.click(); }catch(x){errs.push('mck '+x)} });
+    out.push('ck_btns='+ck.length+'|mck_btns='+mk.length);
+    // 5) 進度計數
+    for(let i=1;i<=TOTAL;i++) setDone(i);
+    out.push('progress_done='+doneCount()+'|ptxt='+$('#ptxt').textContent);
+    // 6) 自我評估全選 → 地圖 self tile 打勾
+    [0,1,2].forEach(i=>{aState[i]='能'}); renderAssess(); renderTiles();
+    out.push('self_done='+selfAllDone());
+    // 7) 橫向溢出
+    const de=document.documentElement;
+    out.push('overflow='+(de.scrollWidth-de.clientWidth)+'|sw='+de.scrollWidth+'|cw='+de.clientWidth);
+    out.push('errors='+(window.__errs?window.__errs.length:0)+(window.__errs&&window.__errs.length?('::'+window.__errs.join(';')):''));
+    clearDone(); aState={}; renderAssess(); renderTiles();
+  }catch(e){ errs.push('FATAL '+e.message+'\n'+e.stack); }
+  const line='SELFTEST|'+out.join('|')+(errs.length?('|EXC='+errs.join(';')):'');
+  const pre=$('#selftest'); if(pre)pre.textContent=line;
+  try{document.title='OK '+line}catch(e){}
+  return line;
+}
+if(location.search.indexOf('selftest')>=0){ setTimeout(runSelfTest,80); }
+window.__selftest=runSelfTest;
+</script>
+</body>
+</html>
