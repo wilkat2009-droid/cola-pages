@@ -1,0 +1,608 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>問路與指路 課堂對戰｜VCH1101</title><style>
+*{margin:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"PingFang HK","PingFang TC","Microsoft JhengHei",sans-serif;background:#0e1520;color:#eaf2f8;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:14px 14px 26px;min-height:100%;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column}
+.screen.on{display:flex}
+h1{font-size:clamp(22px,4.6vw,38px);letter-spacing:2px;line-height:1.3}
+.sub{color:#93a9ba;font-size:clamp(13px,2.4vw,16px);margin-top:8px}
+.card{background:#141f2c;border:1px solid #24384a;border-radius:18px;padding:18px 20px;margin-top:16px}
+.card h2{font-size:clamp(16px,2.6vw,20px);color:#ffd08a;margin-bottom:10px}
+.card li{font-size:clamp(13.5px,2.2vw,16px);line-height:1.95;margin-left:18px;color:#cfe2ef}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-weight:800;border-radius:999px;padding:16px 34px;
+ font-size:clamp(16px,2.6vw,20px);background:#ec7d3a;color:#1a1004;margin-top:18px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,125,58,.4)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.topbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:#16222e;border:1px solid #24384a;border-radius:999px;padding:7px 14px;font-size:clamp(12px,2vw,14.5px);font-weight:700;color:#cfe2ef;white-space:nowrap}
+.pill.hot{color:#ffd08a;border-color:#7a5a1e}
+.tbar{height:12px;background:#16222e;border:1px solid #24384a;border-radius:999px;overflow:hidden;margin-bottom:14px}
+.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#a3e635);transition:width .1s linear}
+.tbar i.warn{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.stem{background:#132030;border:1px solid #26455c;border-left:6px solid #ec7d3a;border-radius:14px;padding:16px 18px;
+ font-size:clamp(16px,2.9vw,25px);line-height:1.7;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;flex:1;min-height:210px}
+.opt{display:flex;align-items:center;gap:12px;border:0;border-radius:16px;padding:14px 16px;cursor:pointer;font-family:inherit;
+ text-align:left;color:#fff;font-size:clamp(14px,2.5vw,20px);font-weight:700;line-height:1.45;transition:.12s;min-height:74px}
+.opt:hover{filter:brightness(1.12)}
+.opt .mk{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:18px}
+.opt.a{background:#d92543} .opt.b{background:#1368ce} .opt.c{background:#d89e00} .opt.d{background:#26890c}
+.opt.dim{opacity:.32}
+.opt.right{outline:4px solid #a7f3d0}
+.opt.wrong{outline:4px solid #fecaca}
+.reveal{margin-top:14px;background:#101b27;border:1px solid #2b4459;border-radius:16px;padding:16px 18px;display:none}
+.reveal.on{display:block}
+.rv-t{font-size:clamp(17px,3vw,24px);font-weight:800}
+.rv-t.ok{color:#4ade80} .rv-t.no{color:#fb7185}
+.rv-a{margin-top:8px;font-size:clamp(14px,2.4vw,18px);color:#ffd08a;font-weight:700}
+.rv-w{margin-top:6px;color:#a9bccb;font-size:clamp(12.5px,2.1vw,15.5px);line-height:1.7}
+.score-big{font-size:clamp(40px,11vw,84px);font-weight:900;color:#ffd08a;line-height:1.1;letter-spacing:1px}
+.stat{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.wrong-item{background:#141f2c;border:1px solid #24384a;border-left:5px solid #fb7185;border-radius:12px;padding:12px 14px;margin-top:10px}
+.wrong-item b{color:#fb7185}
+.wrong-item p{color:#cfe2ef;font-size:clamp(13px,2.2vw,15.5px);line-height:1.7;margin-top:4px}
+.brand{color:#5c7186;font-size:12.5px;margin-top:18px;text-align:center}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr;gap:8px;min-height:0}
+ .opt{min-height:60px;padding:12px 14px}
+ .wrap{padding:10px 10px 20px}
+ .card{padding:14px 15px}
+}
+</style></head><body><div class="wrap">
+
+<!-- 開始 -->
+<section class="screen on" id="s-start">
+  <h1>🎮 問路與指路 課堂對戰<br><span style="font-size:.62em;color:#93a9ba">照課本出題・活動一至課外學習　·　21 題（照課本練習題）</span></h1>
+  <div class="card"><h2>玩法</h2>
+    <ul>
+      <li>四色大掣，揀啱就得分，<b>越快撳越多分</b>（滿分 1500）</li>
+      <li>每題 17 秒，時間到會自動揭曉答案</li>
+      <li>答完即刻有解釋——就係課本嗰句</li>
+      <li>完場有分數、正確率同錯題回顧，可以再玩一次</li>
+    </ul>
+  </div>
+  <div class="card"><h2>點玩</h2>
+    <ul>
+      <li><b>一部手機自己玩</b>：掃碼打開呢頁，單手玩到尾</li>
+      <li><b>大屏一齊玩</b>：老師投影，學生舉手／讀出答案，老師撳落去</li>
+      <li>鍵盤 1 2 3 4 都可以作答（老師大屏最方便）</li>
+    </ul>
+    <p class="sub" id="best-rec" style="margin-top:12px">最佳紀錄：—</p>
+  </div>
+  <div><button class="btn" id="go">▶ 開始對戰</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+  <div class="brand">VCH1101 職業中文 · 杜老師 · 題目照課本《問路與指路》（活動一至課外學習）</div>
+</section>
+
+<!-- 答題 -->
+<section class="screen" id="s-quiz">
+  <div class="topbar">
+    <span class="pill" id="p-qno">第 1 / 21 題</span>
+    <span class="pill hot" id="p-score">0 分</span>
+    <span class="pill" id="p-streak">連對 0</span>
+    <span class="pill" id="p-timer">17s</span>
+  </div>
+  <div class="tbar"><i id="tfill"></i></div>
+  <div class="stem" id="stem"></div>
+  <div class="grid" id="opts"></div>
+  <div class="reveal" id="reveal">
+    <div class="rv-t" id="rv-t"></div>
+    <div class="rv-a" id="rv-a"></div>
+    <div class="rv-w" id="rv-w"></div>
+    <button class="btn" id="next">下一題 ▶</button>
+  </div>
+</section>
+
+<!-- 完場 -->
+<section class="screen" id="s-end">
+  <h1>🏁 完成 21 題！</h1>
+  <div class="score-big" id="e-score">0</div>
+  <div class="stat">
+    <span class="pill" id="e-lv">正確 0 / 21</span>
+    <span class="pill hot" id="e-rate">正確率 0%</span>
+    <span class="pill" id="e-best">最長連對 0</span>
+    <span class="pill" id="e-recb">最佳紀錄 0</span>
+  </div>
+  <div class="card" id="e-wrong-wrap"><h2>錯題回顧</h2><div id="e-wrong"></div></div>
+  <div><button class="btn" id="again">🔁 再玩一次</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+</section>
+
+</div>
+<script>
+const Q = [
+{
+"no": 1,
+"q": "課本活動一「把以下粵語改寫成普通話」：粵語『轉右』，普通話規範講法係？",
+"src": "活動一　說一說",
+"opts": [
+"向左拐",
+"向右拐（向右轉）",
+"向前走",
+"轉彎"
+],
+"ok": [
+2
+],
+"why": "課本活動一答案：轉右→向右拐／向右轉。",
+"time": 17
+},
+{
+"no": 2,
+"q": "課本活動一「把以下粵語改寫成普通話」：粵語『搭的士』，普通話規範講法係？",
+"src": "活動一　說一說",
+"opts": [
+"打的",
+"搭出租",
+"叫的士",
+"搭地鐵"
+],
+"ok": [
+1
+],
+"why": "課本活動一答案：搭的士→打的（普通話規範講法亦作「乘坐出租車」）。",
+"time": 17
+},
+{
+"no": 3,
+"q": "課本活動二「交通工具與設施」：詞語『人行橫道』嘅漢語拼音係？",
+"src": "活動二　你說我猜",
+"opts": [
+"rén xíng tiān qiáo",
+"rén xíng lù kǒu",
+"rén xíng héng dào",
+"rén xíng kuà dào"
+],
+"ok": [
+3
+],
+"why": "課本活動二標音：人行橫道 rén xíng héng dào；人行天橋 rén xíng tiān qiáo 係另一樣設施。",
+"time": 17
+},
+{
+"no": 4,
+"q": "課本活動二：『十字路口』同『丁字路口』嘅漢語拼音依次係？",
+"src": "活動二　你說我猜",
+"opts": [
+"sì zì lù kǒu ／ dīng zì lù kǒu",
+"shí zì lù kǒu ／ dīng zì lù kǒu",
+"shí zì lù kǒu ／ dìng zì lù kǒu",
+"shí zì lù kǒu ／ dīng zì lù kòu"
+],
+"ok": [
+2
+],
+"why": "課本活動二標音：十字路口 shí zì lù kǒu、丁字路口 dīng zì lù kǒu（「十」讀 shí，「丁」讀 dīng）。",
+"time": 17
+},
+{
+"no": 5,
+"q": "課本活動二：詞語『出租車』（香港俗稱「的士」）嘅漢語拼音係？",
+"src": "活動二　你說我猜",
+"opts": [
+"chū zū chē",
+"chū zū cē",
+"chū cū chē",
+"qū zū chē"
+],
+"ok": [
+1
+],
+"why": "課本活動二標音：出租車 chū zū chē。",
+"time": 17
+},
+{
+"no": 6,
+"q": "課本活動三練習一粵普對譯：粵語『蕩失路』，普通話規範講法係？",
+"src": "活動三　粵普對譯（練習一）",
+"opts": [
+"走失",
+"失路",
+"蕩路",
+"迷路"
+],
+"ok": [
+4
+],
+"why": "課本活動三練習一答案：蕩失路→迷路。",
+"time": 17
+},
+{
+"no": 7,
+"q": "課本活動三練習一粵普對譯：粵語『揸車』，普通話規範講法係？",
+"src": "活動三　粵普對譯（練習一）",
+"opts": [
+"搭車",
+"開車",
+"停車",
+"泊車"
+],
+"ok": [
+2
+],
+"why": "課本活動三練習一答案：揸車→開車。",
+"time": 17
+},
+{
+"no": 8,
+"q": "課本活動三練習二：粵語『你行到篤，轉右就係喇。』嘅普通話規範講法係？",
+"src": "活動三　粵普對譯（練習二）",
+"opts": [
+"你走到盡頭，向右拐就到了。",
+"你行到盡頭，轉右就是了。",
+"你走到尾，轉右就是。",
+"你走到盡頭，向左拐就到了。"
+],
+"ok": [
+1
+],
+"why": "課本活動三練習二答案：你行到篤，轉右就係喇。→你走到盡頭，向右拐就到了。",
+"time": 17
+},
+{
+"no": 9,
+"q": "課本活動三練習二：粵語『由呢度過去好近㗎，行兩個字就到喇。』譯成普通話『從這裡過去很近的，走（　）就到了』，括號應填？",
+"src": "活動三　粵普對譯（練習二）",
+"opts": [
+"2 分鐘",
+"10 分鐘",
+"20 分鐘",
+"2 小時"
+],
+"ok": [
+2
+],
+"why": "課本活動三練習二答案：行兩個字＝走 10 分鐘就到了（粵語「一個字」＝五分鐘）。",
+"time": 17
+},
+{
+"no": 10,
+"q": "課本活動四練習一（行人由九龍灣地鐵站去利星科技公司）：按課本答案，行人要『順著大業街一直往（　）走，經過一個十字路口，繼續向前走』？",
+"src": "活動四　學會看地圖（練習一）",
+"opts": [
+"南",
+"東",
+"西",
+"北"
+],
+"ok": [
+4
+],
+"why": "課本活動四練習一答案：順著大業街一直往北走，經過一個十字路口繼續向前走；左手邊是東九龍交通部，它的對面就是利星科技公司。",
+"time": 17
+},
+{
+"no": 11,
+"q": "課本活動四練習一答案：行人沿大業街往北走，『在你的左手邊是（　），它的對面就是利星科技公司』？",
+"src": "活動四　學會看地圖（練習一）",
+"opts": [
+"牛頭角警署",
+"牛頭角救護站",
+"製衣業訓練局",
+"東九龍交通部"
+],
+"ok": [
+4
+],
+"why": "課本活動四練習一答案：左手邊是東九龍交通部，它的對面就是利星科技公司。",
+"time": 17
+},
+{
+"no": 12,
+"q": "課本活動四練習二（行人由利星科技公司去牛頭角警署）：按課本答案，行人要『順著大業街往南走，在第一個十字路口向（　）拐，沿著（　）往西走』？",
+"src": "活動四　學會看地圖（練習二）",
+"opts": [
+"東／兆業街",
+"西／兆業街",
+"西／大業街",
+"南／兆業街"
+],
+"ok": [
+2
+],
+"why": "課本活動四練習二答案：順著大業街往南走，在第一個十字路口向西（右）拐，沿著兆業街往西走，經過東九龍交通部，牛頭角警署就在右手邊。",
+"time": 17
+},
+{
+"no": 13,
+"q": "課本活動五聆聽對話：趙惠怡講『我們公司在第一街 68 號嘉禾商業大廈七樓』，佢所屬嘅長江公司地址係？",
+"src": "活動五　聆聽對話",
+"opts": [
+"第一街 86 號嘉禾商業大廈七樓",
+"第一街 68 號嘉禾商業大廈七樓",
+"第一街 68 號嘉禾商業大廈一樓",
+"第三街 68 號嘉禾商業大廈七樓"
+],
+"ok": [
+2
+],
+"why": "課本活動五：趙惠怡講我們公司在第一街 68 號嘉禾商業大廈七樓。",
+"time": 17
+},
+{
+"no": 14,
+"q": "課本活動五：柳子俊住喺華廈酒店（就在第一街的路口），趙惠怡指路『你沿著第一街一直往（　）走，過了泰安路的路口，嘉禾商業大廈就在你的（　）手邊』？",
+"src": "活動五　聆聽對話",
+"opts": [
+"西／左",
+"東／左",
+"西／右",
+"南／左"
+],
+"ok": [
+1
+],
+"why": "課本活動五原文：沿著第一街一直往西走，過了泰安路的路口，嘉禾商業大廈就在你的左手邊。",
+"time": 17
+},
+{
+"no": 15,
+"q": "課本活動五：柳子俊問『得走多長時間』，趙惠怡答『很近，大約走（　）就到了』？",
+"src": "活動五　聆聽對話",
+"opts": [
+"五分鐘",
+"二十分鐘",
+"半個小時",
+"十分鐘"
+],
+"ok": [
+4
+],
+"why": "課本活動五原文：趙惠怡答「很近，大約走十分鐘就到了」。",
+"time": 17
+},
+{
+"no": 16,
+"q": "課本活動五「指路時，你知道有什麼要注意的嗎」欄：如果不是面對面指路，首先要確定問路人的（　），然後才可以清楚地（　）？",
+"src": "活動五　聆聽對話（指路注意事項）",
+"opts": [
+"方向／指出路線",
+"位置／描述方位",
+"位置／提供資料",
+"姓名／提供資料"
+],
+"ok": [
+3
+],
+"why": "課本活動五：如果不是面對面指路，首先要確定問路人的位置，然後我們才可以清楚地提供資料。",
+"time": 17
+},
+{
+"no": 17,
+"q": "課本活動六資料卡：角色甲『你在地點 A，打算到（　）用餐』，於是致電該處問路。括號應填？",
+"src": "活動六　問路與指路",
+"opts": [
+"華廈酒店",
+"和風日本料理",
+"法蘭西餐廳",
+"富豪花園"
+],
+"ok": [
+3
+],
+"why": "課本活動六資料卡（地點 A）：你在地點 A，打算到法蘭西餐廳用餐，致電餐廳問路。",
+"time": 17
+},
+{
+"no": 18,
+"q": "課本活動六資料卡：另一組角色甲『你在地點 B，打算到（　）』，於是致電該處問路。括號應填？",
+"src": "活動六　問路與指路",
+"opts": [
+"法蘭西餐廳",
+"和風日本料理",
+"公共游泳池",
+"華廈酒店"
+],
+"ok": [
+4
+],
+"why": "課本活動六資料卡（地點 B）：你在地點 B，打算到華廈酒店，致電酒店問路。",
+"time": 17
+},
+{
+"no": 19,
+"q": "課本活動七對話練習：角色甲係嘉樂創新科技有限公司嘅行政助理（　），佢要去興利電子公司送產品樣本？",
+"src": "活動七　對話練習",
+"opts": [
+"周天健",
+"柳子俊",
+"陳文傑",
+"趙惠怡"
+],
+"ok": [
+3
+],
+"why": "課本活動七角色甲：你係嘉樂創新科技有限公司的行政助理陳文傑，要去興利電子公司送產品樣本。",
+"time": 17
+},
+{
+"no": 20,
+"q": "課本活動七對話練習：角色乙周天健係興利電子公司接待處職員，佢公司（興利電子公司）嘅地址係？",
+"src": "活動七　對話練習",
+"opts": [
+"快達路 17 號華比大廈四樓",
+"快達路 17 號華比大廈七樓",
+"創新路 17 號華比大廈四樓",
+"快達路 71 號華比大廈四樓"
+],
+"ok": [
+1
+],
+"why": "課本活動七角色乙：來電者詢問興利電子公司的地址（快達路 17 號華比大廈四樓）並問路。",
+"time": 17
+},
+{
+"no": 21,
+"q": "課本課外學習 4.2「網上自學資源」提供邊個普通話自學平台嘅連結？",
+"src": "課外學習　4.2 網上自學資源",
+"opts": [
+"香港大學普通話自學平台",
+"香港中文大學普通話自學平台",
+"香港教育大學普通話自學平台",
+"香港理工大學普通話自學平台"
+],
+"ok": [
+3
+],
+"why": "課本課外學習 4.2：網上自學資源連結「香港教育大學普通話自學平台」。",
+"time": 17
+}
+];
+const MARK = ["▲","◆","●","■"];
+const CLS  = ["a","b","c","d"];
+const LS = "vch1101_quizsp6_best";
+const S = {i:0, score:0, right:0, streak:0, best:0, wrong:[], answered:false,
+            left:0, tick:null, t0:0};
+
+const $ = id => document.getElementById(id);
+const show = id => document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k)) || null; } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+function showBestRec() {
+  const b = lsGet(LS);
+  $("best-rec").textContent = b
+    ? "最佳紀錄：" + b.score + " 分　·　正確率 " + b.rate + "%（" + b.right + " / " + Q.length + "）"
+    : "最佳紀錄：—";
+}
+
+function render() {
+  const q = Q[S.i];
+  S.answered = false;
+  $("p-qno").textContent = "第 " + (S.i + 1) + " / " + Q.length + " 題";
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  $("stem").textContent = q.q;
+  const box = $("opts"); box.innerHTML = "";
+  q.opts.forEach((t, k) => {
+    const b = document.createElement("button");
+    b.className = "opt " + CLS[k];
+    b.dataset.k = k;
+    b.innerHTML = '<span class="mk">' + MARK[k] + '</span><span>' + t + '</span>';
+    b.onclick = () => pick(k);
+    box.appendChild(b);
+  });
+  $("reveal").classList.remove("on");
+  $("tfill").classList.remove("warn");
+  startTimer(q.time);
+  window.scrollTo(0, 0);
+}
+
+function startTimer(sec) {
+  clearInterval(S.tick);
+  S.left = sec;
+  const total = sec;
+  $("p-timer").textContent = sec + "s";
+  $("tfill").style.width = "100%";
+  S.t0 = Date.now();
+  S.tick = setInterval(() => {
+    S.left -= 0.1;
+    const pct = Math.max(0, S.left / total);
+    $("tfill").style.width = (pct * 100) + "%";
+    $("tfill").classList.toggle("warn", pct < .34);
+    $("p-timer").textContent = Math.max(0, Math.ceil(S.left)) + "s";
+    if (S.left <= 0) { clearInterval(S.tick); pick(-1); }
+  }, 100);
+}
+
+function pick(k) {
+  if (S.answered) return;
+  S.answered = true;
+  clearInterval(S.tick);
+  const q = Q[S.i];
+  const isOk = q.ok.indexOf(k + 1) > -1;
+  const used = Math.min(q.time, (Date.now() - S.t0) / 1000);
+  if (isOk) {
+    S.score += 1000 + Math.round(500 * Math.max(0, 1 - used / q.time));
+    S.right++; S.streak++; S.best = Math.max(S.best, S.streak);
+  } else {
+    S.streak = 0;
+    S.wrong.push({no: q.no, q: q.q, ans: q.ok.map(i => q.opts[i - 1]).join("／"), why: q.why});
+  }
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  document.querySelectorAll(".opt").forEach(el => {
+    const kk = +el.dataset.k;
+    if (q.ok.indexOf(kk + 1) > -1) el.classList.add("right");
+    else if (kk === k) el.classList.add("wrong");
+    else el.classList.add("dim");
+    el.onclick = null;
+  });
+  $("rv-t").textContent = isOk ? "✅ 答啱！ +" + Math.round(1000 + 500 * Math.max(0, 1 - used / q.time)) + " 分"
+                               : (k < 0 ? "⏰ 時間到" : "❌ 答錯");
+  $("rv-t").className = "rv-t " + (isOk ? "ok" : "no");
+  $("rv-a").textContent = "正確答案：" + q.ok.map(i => q.opts[i - 1]).join("／");
+  $("rv-w").textContent = q.why || "";
+  $("next").textContent = (S.i === Q.length - 1) ? "睇結果 🏁" : "下一題 ▶";
+  $("reveal").classList.add("on");
+}
+
+function next() {
+  if (S.i >= Q.length - 1) { end(); return; }
+  S.i++; render();
+}
+
+function end() {
+  $("e-score").textContent = S.score;
+  $("e-lv").textContent = "正確 " + S.right + " / " + Q.length;
+  const rate = Math.round(S.right / Q.length * 100);
+  $("e-rate").textContent = "正確率 " + rate + "%";
+  $("e-best").textContent = "最長連對 " + S.best;
+  const b = lsGet(LS);
+  if (!b || S.score > b.score) lsSet(LS, {score: S.score, rate: rate, right: S.right});
+  const nb = lsGet(LS) || {score: 0};
+  $("e-recb").textContent = "最佳紀錄 " + nb.score;
+  const w = $("e-wrong"); w.innerHTML = "";
+  if (!S.wrong.length) {
+    w.innerHTML = '<p style="color:#4ade80;font-weight:700">全對！冇錯題，好犀利 🎉</p>';
+  } else {
+    S.wrong.forEach(x => {
+      const d = document.createElement("div");
+      d.className = "wrong-item";
+      d.innerHTML = '<b>第 ' + x.no + ' 題</b><p>' + x.q + '</p><p>✔ ' + x.ans + '</p><p>' + x.why + '</p>';
+      w.appendChild(d);
+    });
+  }
+  showBestRec();
+  show("s-end");
+}
+
+function start() {
+  S.i = 0; S.score = 0; S.right = 0; S.streak = 0; S.best = 0; S.wrong = []; S.answered = false;
+  clearInterval(S.tick);
+  $("e-wrong").innerHTML = "";
+  $("e-score").textContent = "0";
+  $("e-lv").textContent = "正確 0 / " + Q.length;
+  $("e-rate").textContent = "正確率 0%";
+  $("e-best").textContent = "最長連對 0";
+  showBestRec();
+  show("s-quiz"); render();
+}
+
+$("go").onclick = start;
+$("again").onclick = start;
+$("next").onclick = next;
+document.addEventListener("keydown", e => {
+  if (!$("s-quiz").classList.contains("on")) return;
+  if (!S.answered && "1234".indexOf(e.key) > -1) pick(+e.key - 1);
+  else if (S.answered && (e.key === "Enter" || e.key === " ")) next();
+});
+
+showBestRec();
+
+// 自動實跑用
+window.__qz = {
+  state: S, q: Q,
+  pick: pick, next: next, start: start,
+  idx: () => S.i, score: () => S.score, right: () => S.right,
+  optCount: () => document.querySelectorAll(".opt").length,
+  optClasses: () => [...document.querySelectorAll(".opt")].map(el => el.className),
+  revealOn: () => $("reveal").classList.contains("on"),
+  wrongCount: () => S.wrong.length,
+  screen: () => [...document.querySelectorAll(".screen")].find(s => s.classList.contains("on")).id,
+  best: () => lsGet(LS)
+};
+</script></body></html>

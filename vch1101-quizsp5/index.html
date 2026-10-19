@@ -1,0 +1,608 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>安排出差及旅遊行程 課堂對戰｜VCH1101</title><style>
+*{margin:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"PingFang HK","PingFang TC","Microsoft JhengHei",sans-serif;background:#0e1520;color:#eaf2f8;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:14px 14px 26px;min-height:100%;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column}
+.screen.on{display:flex}
+h1{font-size:clamp(22px,4.6vw,38px);letter-spacing:2px;line-height:1.3}
+.sub{color:#93a9ba;font-size:clamp(13px,2.4vw,16px);margin-top:8px}
+.card{background:#141f2c;border:1px solid #24384a;border-radius:18px;padding:18px 20px;margin-top:16px}
+.card h2{font-size:clamp(16px,2.6vw,20px);color:#ffd08a;margin-bottom:10px}
+.card li{font-size:clamp(13.5px,2.2vw,16px);line-height:1.95;margin-left:18px;color:#cfe2ef}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-weight:800;border-radius:999px;padding:16px 34px;
+ font-size:clamp(16px,2.6vw,20px);background:#ec7d3a;color:#1a1004;margin-top:18px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,125,58,.4)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.topbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:#16222e;border:1px solid #24384a;border-radius:999px;padding:7px 14px;font-size:clamp(12px,2vw,14.5px);font-weight:700;color:#cfe2ef;white-space:nowrap}
+.pill.hot{color:#ffd08a;border-color:#7a5a1e}
+.tbar{height:12px;background:#16222e;border:1px solid #24384a;border-radius:999px;overflow:hidden;margin-bottom:14px}
+.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#a3e635);transition:width .1s linear}
+.tbar i.warn{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.stem{background:#132030;border:1px solid #26455c;border-left:6px solid #ec7d3a;border-radius:14px;padding:16px 18px;
+ font-size:clamp(16px,2.9vw,25px);line-height:1.7;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;flex:1;min-height:210px}
+.opt{display:flex;align-items:center;gap:12px;border:0;border-radius:16px;padding:14px 16px;cursor:pointer;font-family:inherit;
+ text-align:left;color:#fff;font-size:clamp(14px,2.5vw,20px);font-weight:700;line-height:1.45;transition:.12s;min-height:74px}
+.opt:hover{filter:brightness(1.12)}
+.opt .mk{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:18px}
+.opt.a{background:#d92543} .opt.b{background:#1368ce} .opt.c{background:#d89e00} .opt.d{background:#26890c}
+.opt.dim{opacity:.32}
+.opt.right{outline:4px solid #a7f3d0}
+.opt.wrong{outline:4px solid #fecaca}
+.reveal{margin-top:14px;background:#101b27;border:1px solid #2b4459;border-radius:16px;padding:16px 18px;display:none}
+.reveal.on{display:block}
+.rv-t{font-size:clamp(17px,3vw,24px);font-weight:800}
+.rv-t.ok{color:#4ade80} .rv-t.no{color:#fb7185}
+.rv-a{margin-top:8px;font-size:clamp(14px,2.4vw,18px);color:#ffd08a;font-weight:700}
+.rv-w{margin-top:6px;color:#a9bccb;font-size:clamp(12.5px,2.1vw,15.5px);line-height:1.7}
+.score-big{font-size:clamp(40px,11vw,84px);font-weight:900;color:#ffd08a;line-height:1.1;letter-spacing:1px}
+.stat{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.wrong-item{background:#141f2c;border:1px solid #24384a;border-left:5px solid #fb7185;border-radius:12px;padding:12px 14px;margin-top:10px}
+.wrong-item b{color:#fb7185}
+.wrong-item p{color:#cfe2ef;font-size:clamp(13px,2.2vw,15.5px);line-height:1.7;margin-top:4px}
+.brand{color:#5c7186;font-size:12.5px;margin-top:18px;text-align:center}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr;gap:8px;min-height:0}
+ .opt{min-height:60px;padding:12px 14px}
+ .wrap{padding:10px 10px 20px}
+ .card{padding:14px 15px}
+}
+</style></head><body><div class="wrap">
+
+<!-- 開始 -->
+<section class="screen on" id="s-start">
+  <h1>🎮 安排出差及旅遊行程 課堂對戰<br><span style="font-size:.62em;color:#93a9ba">照課本出題・活動一至活動九　·　21 題（照課本練習題）</span></h1>
+  <div class="card"><h2>玩法</h2>
+    <ul>
+      <li>四色大掣，揀啱就得分，<b>越快撳越多分</b>（滿分 1500）</li>
+      <li>每題 17 秒，時間到會自動揭曉答案</li>
+      <li>答完即刻有解釋——就係課本嗰句</li>
+      <li>完場有分數、正確率同錯題回顧，可以再玩一次</li>
+    </ul>
+  </div>
+  <div class="card"><h2>點玩</h2>
+    <ul>
+      <li><b>一部手機自己玩</b>：掃碼打開呢頁，單手玩到尾</li>
+      <li><b>大屏一齊玩</b>：老師投影，學生舉手／讀出答案，老師撳落去</li>
+      <li>鍵盤 1 2 3 4 都可以作答（老師大屏最方便）</li>
+    </ul>
+    <p class="sub" id="best-rec" style="margin-top:12px">最佳紀錄：—</p>
+  </div>
+  <div><button class="btn" id="go">▶ 開始對戰</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+  <div class="brand">VCH1101 職業中文 · 杜老師 · 題目照課本《安排出差及旅遊行程》（活動一至活動九）</div>
+</section>
+
+<!-- 答題 -->
+<section class="screen" id="s-quiz">
+  <div class="topbar">
+    <span class="pill" id="p-qno">第 1 / 21 題</span>
+    <span class="pill hot" id="p-score">0 分</span>
+    <span class="pill" id="p-streak">連對 0</span>
+    <span class="pill" id="p-timer">17s</span>
+  </div>
+  <div class="tbar"><i id="tfill"></i></div>
+  <div class="stem" id="stem"></div>
+  <div class="grid" id="opts"></div>
+  <div class="reveal" id="reveal">
+    <div class="rv-t" id="rv-t"></div>
+    <div class="rv-a" id="rv-a"></div>
+    <div class="rv-w" id="rv-w"></div>
+    <button class="btn" id="next">下一題 ▶</button>
+  </div>
+</section>
+
+<!-- 完場 -->
+<section class="screen" id="s-end">
+  <h1>🏁 完成 21 題！</h1>
+  <div class="score-big" id="e-score">0</div>
+  <div class="stat">
+    <span class="pill" id="e-lv">正確 0 / 21</span>
+    <span class="pill hot" id="e-rate">正確率 0%</span>
+    <span class="pill" id="e-best">最長連對 0</span>
+    <span class="pill" id="e-recb">最佳紀錄 0</span>
+  </div>
+  <div class="card" id="e-wrong-wrap"><h2>錯題回顧</h2><div id="e-wrong"></div></div>
+  <div><button class="btn" id="again">🔁 再玩一次</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+</section>
+
+</div>
+<script>
+const Q = [
+{
+"no": 1,
+"q": "課本活動一「你說我猜」國家名稱：以下邊個國家嘅漢語拼音係「ruì shì」？",
+"src": "活動一　你說我猜",
+"opts": [
+"瑞士",
+"瑞典",
+"西班牙",
+"希臘"
+],
+"ok": [
+1
+],
+"why": "課本活動一國家名稱表：瑞士讀 ruì shì；西班牙係 xī bān yá、希臘係 xī là，讀音都唔同。",
+"time": 17
+},
+{
+"no": 2,
+"q": "課本活動二「名稱大不同」：粵語叫「紐西蘭」，普通話規範譯名係？",
+"src": "活動二　名稱大不同",
+"opts": [
+"紐希蘭",
+"新希蘭",
+"紐西蘭",
+"新西蘭"
+],
+"ok": [
+4
+],
+"why": "課本活動二答案：紐西蘭→新西蘭（xīn xī lán）。",
+"time": 17
+},
+{
+"no": 3,
+"q": "課本活動二「名稱大不同」：粵語叫「杜拜」，普通話規範譯名係？",
+"src": "活動二　名稱大不同",
+"opts": [
+"杜拜",
+"迪拜",
+"迪白",
+"多拜"
+],
+"ok": [
+2
+],
+"why": "課本活動二答案：杜拜→迪拜（dí bài）；紐卡素→紐卡爾斯、肯雅→肯尼亞。",
+"time": 17
+},
+{
+"no": 4,
+"q": "課本活動三「認識世界名勝」：泰姬陵位於邊度？",
+"src": "活動三　認識世界名勝",
+"opts": [
+"埃及開羅",
+"意大利羅馬",
+"印度阿格拉",
+"德國科隆"
+],
+"ok": [
+3
+],
+"why": "課本活動三：泰姬陵位於印度阿格拉；埃及開羅係獅身人面像／金字塔、意大利羅馬係鬥獸場、德國係科隆大教堂。",
+"time": 17
+},
+{
+"no": 5,
+"q": "課本活動三「認識世界名勝」：魚尾獅位於邊個國家？",
+"src": "活動三　認識世界名勝",
+"opts": [
+"馬來西亞",
+"新加坡",
+"泰國",
+"印度"
+],
+"ok": [
+2
+],
+"why": "課本活動三：魚尾獅位於新加坡。",
+"time": 17
+},
+{
+"no": 6,
+"q": "課本活動四「出差前的準備」：去新加坡出差，以下邊項屬於「需要準備的工作」？",
+"src": "活動四　出差前的準備",
+"opts": [
+"預訂機票",
+"換洗衣物",
+"洗漱用品",
+"筆記本電腦"
+],
+"ok": [
+1
+],
+"why": "課本活動四「需要準備的工作」：預訂機票、預訂酒店、規劃行程、與對方公司溝通；換洗衣物、洗漱用品、筆記本電腦屬「需要準備的行李」。",
+"time": 17
+},
+{
+"no": 7,
+"q": "課本活動四「出差前的準備」：以下邊項屬於「需要準備的行李」？",
+"src": "活動四　出差前的準備",
+"opts": [
+"預訂酒店",
+"規劃行程",
+"與對方公司溝通",
+"護照等有效身份證件"
+],
+"ok": [
+4
+],
+"why": "課本活動四「需要準備的行李」：護照等有效身份證件、現金／信用卡、換洗衣物、洗漱用品、筆記本電腦、工作資料／文件；其餘三項屬「需要準備的工作」。",
+"time": 17
+},
+{
+"no": 8,
+"q": "課本活動五對話一：程子英幫王俊傑預訂香港往返新加坡嘅機票，出發同回程日期係？",
+"src": "活動五　預訂機票（對話一）",
+"opts": [
+"11月8日出發、11月18日回",
+"11月12日出發、11月8日回",
+"11月8日出發、11月12日回",
+"11月18日出發、11月8日回"
+],
+"ok": [
+3
+],
+"why": "課本活動五錄音：程子英講「11月8日出發，11月12日回來」。",
+"time": 17
+},
+{
+"no": 9,
+"q": "課本活動五對話一：職員查完之後覆述，11月8日去程航班幾點出發？",
+"src": "活動五　預訂機票（對話一）",
+"opts": [
+"中午12點50分",
+"中午12點半",
+"下午1點50分",
+"上午11點50分"
+],
+"ok": [
+1
+],
+"why": "課本活動五錄音：去程 11月8日中午12點50分出發，回程 11月12日中午12點半返回。",
+"time": 17
+},
+{
+"no": 10,
+"q": "課本活動五對話一：機票連兩地機場稅同燃油附加費，一共幾錢港幣？",
+"src": "活動五　預訂機票（對話一）",
+"opts": [
+"港幣一千六百元",
+"港幣三千五百元",
+"港幣兩千五百元",
+"港幣四千五百元"
+],
+"ok": [
+2
+],
+"why": "課本活動五錄音：機票加兩地機場稅和燃油附加費，一共港幣三千五百元。",
+"time": 17
+},
+{
+"no": 11,
+"q": "課本活動五對話二：新加坡城市酒店商務套房一晚房費係幾錢港幣？",
+"src": "活動五　預訂酒店（對話二）",
+"opts": [
+"港幣一千元",
+"港幣一千四百元",
+"港幣六百元",
+"港幣一千六百元"
+],
+"ok": [
+4
+],
+"why": "課本活動五錄音：新加坡城市酒店，商務套房一晚房費港幣一千六百元。",
+"time": 17
+},
+{
+"no": 12,
+"q": "課本活動六練習三「北京名勝」：以下邊項係北京嘅景點？",
+"src": "活動六　旅行前的準備（練習三　北京名勝）",
+"opts": [
+"外灘",
+"兵馬俑",
+"故宮",
+"中山陵"
+],
+"ok": [
+3
+],
+"why": "課本活動六練習三答案：北京景點有王府井步行街、長城、天安門廣場、頤和園、故宮；外灘在上海、兵馬俑在西安、中山陵在南京。",
+"time": 17
+},
+{
+"no": 13,
+"q": "課本活動六練習一粵普對譯：粵語「雪糕」，普通話規範講法係？",
+"src": "活動六　旅行前的準備（練習一　粵普對譯）",
+"opts": [
+"冰淇淋",
+"甜筒",
+"冰棍",
+"雪糕"
+],
+"ok": [
+1
+],
+"why": "課本活動六練習一答案：雪糕→冰淇淋。",
+"time": 17
+},
+{
+"no": 14,
+"q": "課本活動六練習二「讀一讀」注意兒化音：以下邊個詞語係練習二列出嘅兒化詞？",
+"src": "活動六　旅行前的準備（練習二　兒化音）",
+"opts": [
+"雪糕",
+"冰淇淋",
+"冰棍兒",
+"雪條"
+],
+"ok": [
+3
+],
+"why": "課本活動六練習二列出的兒化詞：去哪兒、小孩兒、老頭兒、冰棍兒、花兒、鳥兒、針尖兒、胖墩兒。",
+"time": 17
+},
+{
+"no": 15,
+"q": "課本活動六練習一粵普對譯：粵語「打波」，普通話規範講法係？",
+"src": "活動六　旅行前的準備（練習一　粵普對譯）",
+"opts": [
+"踢球",
+"打球",
+"打波",
+"打籃球"
+],
+"ok": [
+2
+],
+"why": "課本活動六練習一答案：打波→打球；輸賭→打賭、爬頭→超車、遊車河→坐車遊覽。",
+"time": 17
+},
+{
+"no": 16,
+"q": "課本活動七：「上有天堂，下有（a）＿＿」，(a) 應該填邊個？",
+"src": "活動七　查詢旅行團資料",
+"opts": [
+"蘇州",
+"杭州",
+"江浙",
+"蘇杭"
+],
+"ok": [
+4
+],
+"why": "課本活動七填空答案：上有天堂，下有蘇杭。",
+"time": 17
+},
+{
+"no": 17,
+"q": "課本活動七：「華東四日遊」嘅行程係邊個城市順序（香港出發→…→香港）？",
+"src": "活動七　查詢旅行團資料",
+"opts": [
+"香港→杭州→蘇州→上海→香港",
+"香港→蘇州→杭州→上海→香港",
+"香港→上海→蘇州→杭州→香港",
+"香港→杭州→上海→蘇州→香港"
+],
+"ok": [
+1
+],
+"why": "課本活動七錄音：行程先去杭州、蘇州，最後從上海回香港，即香港→杭州→蘇州→上海→香港。",
+"time": 17
+},
+{
+"no": 18,
+"q": "課本活動七：「華東四日遊」團費每人2500元，若現在報名可便宜100元；如果現在報名，每人團費係？",
+"src": "活動七　查詢旅行團資料",
+"opts": [
+"每人2500元",
+"每人2400元",
+"每人2600元",
+"每人3500元"
+],
+"ok": [
+2
+],
+"why": "課本活動七參考答案：團費每人2400元（錄音講原價二千五百元，現在報名便宜一百元）。",
+"time": 17
+},
+{
+"no": 19,
+"q": "課本活動八對話：天天旅行社職員講「團費是每人兩千五百元，另加＿＿的導遊服務費」，橫線係幾錢？",
+"src": "活動八　安排旅遊行程",
+"opts": [
+"一百四十元",
+"二百元",
+"二百四十元",
+"四百二十元"
+],
+"ok": [
+3
+],
+"why": "課本活動八對話：團費每人兩千五百元，另加二百四十元的導遊服務費。",
+"time": 17
+},
+{
+"no": 20,
+"q": "課本活動九角色乙：「安華旅行社春季旅行團優惠計劃」中，「山東4日文化遊」團費每人幾錢？",
+"src": "活動九　對話練習",
+"opts": [
+"3290元",
+"3500元",
+"2500元",
+"3680元"
+],
+"ok": [
+4
+],
+"why": "課本活動九資料：山東4日文化遊團費3680元／人；山東4日逍遙遊團費3290元／人。",
+"time": 17
+},
+{
+"no": 21,
+"q": "課本活動九角色甲任務卡：經理孫勇指定行程要去邊個景點？",
+"src": "活動九　對話練習",
+"opts": [
+"珍珠養殖基地",
+"泰山",
+"青島啤酒廠",
+"風箏一條街"
+],
+"ok": [
+1
+],
+"why": "課本活動九角色甲任務卡：指定景點係珍珠養殖基地（開貝取珠）；泰山、青島啤酒廠、風箏一條街係旅行社兩個團嘅景點。",
+"time": 17
+}
+];
+const MARK = ["▲","◆","●","■"];
+const CLS  = ["a","b","c","d"];
+const LS = "vch1101_quizsp5_best";
+const S = {i:0, score:0, right:0, streak:0, best:0, wrong:[], answered:false,
+            left:0, tick:null, t0:0};
+
+const $ = id => document.getElementById(id);
+const show = id => document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k)) || null; } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+function showBestRec() {
+  const b = lsGet(LS);
+  $("best-rec").textContent = b
+    ? "最佳紀錄：" + b.score + " 分　·　正確率 " + b.rate + "%（" + b.right + " / " + Q.length + "）"
+    : "最佳紀錄：—";
+}
+
+function render() {
+  const q = Q[S.i];
+  S.answered = false;
+  $("p-qno").textContent = "第 " + (S.i + 1) + " / " + Q.length + " 題";
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  $("stem").textContent = q.q;
+  const box = $("opts"); box.innerHTML = "";
+  q.opts.forEach((t, k) => {
+    const b = document.createElement("button");
+    b.className = "opt " + CLS[k];
+    b.dataset.k = k;
+    b.innerHTML = '<span class="mk">' + MARK[k] + '</span><span>' + t + '</span>';
+    b.onclick = () => pick(k);
+    box.appendChild(b);
+  });
+  $("reveal").classList.remove("on");
+  $("tfill").classList.remove("warn");
+  startTimer(q.time);
+  window.scrollTo(0, 0);
+}
+
+function startTimer(sec) {
+  clearInterval(S.tick);
+  S.left = sec;
+  const total = sec;
+  $("p-timer").textContent = sec + "s";
+  $("tfill").style.width = "100%";
+  S.t0 = Date.now();
+  S.tick = setInterval(() => {
+    S.left -= 0.1;
+    const pct = Math.max(0, S.left / total);
+    $("tfill").style.width = (pct * 100) + "%";
+    $("tfill").classList.toggle("warn", pct < .34);
+    $("p-timer").textContent = Math.max(0, Math.ceil(S.left)) + "s";
+    if (S.left <= 0) { clearInterval(S.tick); pick(-1); }
+  }, 100);
+}
+
+function pick(k) {
+  if (S.answered) return;
+  S.answered = true;
+  clearInterval(S.tick);
+  const q = Q[S.i];
+  const isOk = q.ok.indexOf(k + 1) > -1;
+  const used = Math.min(q.time, (Date.now() - S.t0) / 1000);
+  if (isOk) {
+    S.score += 1000 + Math.round(500 * Math.max(0, 1 - used / q.time));
+    S.right++; S.streak++; S.best = Math.max(S.best, S.streak);
+  } else {
+    S.streak = 0;
+    S.wrong.push({no: q.no, q: q.q, ans: q.ok.map(i => q.opts[i - 1]).join("／"), why: q.why});
+  }
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  document.querySelectorAll(".opt").forEach(el => {
+    const kk = +el.dataset.k;
+    if (q.ok.indexOf(kk + 1) > -1) el.classList.add("right");
+    else if (kk === k) el.classList.add("wrong");
+    else el.classList.add("dim");
+    el.onclick = null;
+  });
+  $("rv-t").textContent = isOk ? "✅ 答啱！ +" + Math.round(1000 + 500 * Math.max(0, 1 - used / q.time)) + " 分"
+                               : (k < 0 ? "⏰ 時間到" : "❌ 答錯");
+  $("rv-t").className = "rv-t " + (isOk ? "ok" : "no");
+  $("rv-a").textContent = "正確答案：" + q.ok.map(i => q.opts[i - 1]).join("／");
+  $("rv-w").textContent = q.why || "";
+  $("next").textContent = (S.i === Q.length - 1) ? "睇結果 🏁" : "下一題 ▶";
+  $("reveal").classList.add("on");
+}
+
+function next() {
+  if (S.i >= Q.length - 1) { end(); return; }
+  S.i++; render();
+}
+
+function end() {
+  $("e-score").textContent = S.score;
+  $("e-lv").textContent = "正確 " + S.right + " / " + Q.length;
+  const rate = Math.round(S.right / Q.length * 100);
+  $("e-rate").textContent = "正確率 " + rate + "%";
+  $("e-best").textContent = "最長連對 " + S.best;
+  const b = lsGet(LS);
+  if (!b || S.score > b.score) lsSet(LS, {score: S.score, rate: rate, right: S.right});
+  const nb = lsGet(LS) || {score: 0};
+  $("e-recb").textContent = "最佳紀錄 " + nb.score;
+  const w = $("e-wrong"); w.innerHTML = "";
+  if (!S.wrong.length) {
+    w.innerHTML = '<p style="color:#4ade80;font-weight:700">全對！冇錯題，好犀利 🎉</p>';
+  } else {
+    S.wrong.forEach(x => {
+      const d = document.createElement("div");
+      d.className = "wrong-item";
+      d.innerHTML = '<b>第 ' + x.no + ' 題</b><p>' + x.q + '</p><p>✔ ' + x.ans + '</p><p>' + x.why + '</p>';
+      w.appendChild(d);
+    });
+  }
+  showBestRec();
+  show("s-end");
+}
+
+function start() {
+  S.i = 0; S.score = 0; S.right = 0; S.streak = 0; S.best = 0; S.wrong = []; S.answered = false;
+  clearInterval(S.tick);
+  $("e-wrong").innerHTML = "";
+  $("e-score").textContent = "0";
+  $("e-lv").textContent = "正確 0 / " + Q.length;
+  $("e-rate").textContent = "正確率 0%";
+  $("e-best").textContent = "最長連對 0";
+  showBestRec();
+  show("s-quiz"); render();
+}
+
+$("go").onclick = start;
+$("again").onclick = start;
+$("next").onclick = next;
+document.addEventListener("keydown", e => {
+  if (!$("s-quiz").classList.contains("on")) return;
+  if (!S.answered && "1234".indexOf(e.key) > -1) pick(+e.key - 1);
+  else if (S.answered && (e.key === "Enter" || e.key === " ")) next();
+});
+
+showBestRec();
+
+// 自動實跑用
+window.__qz = {
+  state: S, q: Q,
+  pick: pick, next: next, start: start,
+  idx: () => S.i, score: () => S.score, right: () => S.right,
+  optCount: () => document.querySelectorAll(".opt").length,
+  optClasses: () => [...document.querySelectorAll(".opt")].map(el => el.className),
+  revealOn: () => $("reveal").classList.contains("on"),
+  wrongCount: () => S.wrong.length,
+  screen: () => [...document.querySelectorAll(".screen")].find(s => s.classList.contains("on")).id,
+  best: () => lsGet(LS)
+};
+</script></body></html>
