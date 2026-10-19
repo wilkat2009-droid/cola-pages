@@ -1,0 +1,608 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>初次見面 課堂對戰｜VCH1101</title><style>
+*{margin:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"PingFang HK","PingFang TC","Microsoft JhengHei",sans-serif;background:#0e1520;color:#eaf2f8;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:14px 14px 26px;min-height:100%;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column}
+.screen.on{display:flex}
+h1{font-size:clamp(22px,4.6vw,38px);letter-spacing:2px;line-height:1.3}
+.sub{color:#93a9ba;font-size:clamp(13px,2.4vw,16px);margin-top:8px}
+.card{background:#141f2c;border:1px solid #24384a;border-radius:18px;padding:18px 20px;margin-top:16px}
+.card h2{font-size:clamp(16px,2.6vw,20px);color:#ffd08a;margin-bottom:10px}
+.card li{font-size:clamp(13.5px,2.2vw,16px);line-height:1.95;margin-left:18px;color:#cfe2ef}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-weight:800;border-radius:999px;padding:16px 34px;
+ font-size:clamp(16px,2.6vw,20px);background:#ec7d3a;color:#1a1004;margin-top:18px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,125,58,.4)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.topbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:#16222e;border:1px solid #24384a;border-radius:999px;padding:7px 14px;font-size:clamp(12px,2vw,14.5px);font-weight:700;color:#cfe2ef;white-space:nowrap}
+.pill.hot{color:#ffd08a;border-color:#7a5a1e}
+.tbar{height:12px;background:#16222e;border:1px solid #24384a;border-radius:999px;overflow:hidden;margin-bottom:14px}
+.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#a3e635);transition:width .1s linear}
+.tbar i.warn{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.stem{background:#132030;border:1px solid #26455c;border-left:6px solid #ec7d3a;border-radius:14px;padding:16px 18px;
+ font-size:clamp(16px,2.9vw,25px);line-height:1.7;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;flex:1;min-height:210px}
+.opt{display:flex;align-items:center;gap:12px;border:0;border-radius:16px;padding:14px 16px;cursor:pointer;font-family:inherit;
+ text-align:left;color:#fff;font-size:clamp(14px,2.5vw,20px);font-weight:700;line-height:1.45;transition:.12s;min-height:74px}
+.opt:hover{filter:brightness(1.12)}
+.opt .mk{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:18px}
+.opt.a{background:#d92543} .opt.b{background:#1368ce} .opt.c{background:#d89e00} .opt.d{background:#26890c}
+.opt.dim{opacity:.32}
+.opt.right{outline:4px solid #a7f3d0}
+.opt.wrong{outline:4px solid #fecaca}
+.reveal{margin-top:14px;background:#101b27;border:1px solid #2b4459;border-radius:16px;padding:16px 18px;display:none}
+.reveal.on{display:block}
+.rv-t{font-size:clamp(17px,3vw,24px);font-weight:800}
+.rv-t.ok{color:#4ade80} .rv-t.no{color:#fb7185}
+.rv-a{margin-top:8px;font-size:clamp(14px,2.4vw,18px);color:#ffd08a;font-weight:700}
+.rv-w{margin-top:6px;color:#a9bccb;font-size:clamp(12.5px,2.1vw,15.5px);line-height:1.7}
+.score-big{font-size:clamp(40px,11vw,84px);font-weight:900;color:#ffd08a;line-height:1.1;letter-spacing:1px}
+.stat{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.wrong-item{background:#141f2c;border:1px solid #24384a;border-left:5px solid #fb7185;border-radius:12px;padding:12px 14px;margin-top:10px}
+.wrong-item b{color:#fb7185}
+.wrong-item p{color:#cfe2ef;font-size:clamp(13px,2.2vw,15.5px);line-height:1.7;margin-top:4px}
+.brand{color:#5c7186;font-size:12.5px;margin-top:18px;text-align:center}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr;gap:8px;min-height:0}
+ .opt{min-height:60px;padding:12px 14px}
+ .wrap{padding:10px 10px 20px}
+ .card{padding:14px 15px}
+}
+</style></head><body><div class="wrap">
+
+<!-- 開始 -->
+<section class="screen on" id="s-start">
+  <h1>🎮 初次見面 課堂對戰<br><span style="font-size:.62em;color:#93a9ba">照課本出題・活動一至延伸學習一　·　21 題（照課本練習題）</span></h1>
+  <div class="card"><h2>玩法</h2>
+    <ul>
+      <li>四色大掣，揀啱就得分，<b>越快撳越多分</b>（滿分 1500）</li>
+      <li>每題 17 秒，時間到會自動揭曉答案</li>
+      <li>答完即刻有解釋——就係課本嗰句</li>
+      <li>完場有分數、正確率同錯題回顧，可以再玩一次</li>
+    </ul>
+  </div>
+  <div class="card"><h2>點玩</h2>
+    <ul>
+      <li><b>一部手機自己玩</b>：掃碼打開呢頁，單手玩到尾</li>
+      <li><b>大屏一齊玩</b>：老師投影，學生舉手／讀出答案，老師撳落去</li>
+      <li>鍵盤 1 2 3 4 都可以作答（老師大屏最方便）</li>
+    </ul>
+    <p class="sub" id="best-rec" style="margin-top:12px">最佳紀錄：—</p>
+  </div>
+  <div><button class="btn" id="go">▶ 開始對戰</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+  <div class="brand">VCH1101 職業中文 · 杜老師 · 題目照課本《初次見面》（活動一至延伸學習一）</div>
+</section>
+
+<!-- 答題 -->
+<section class="screen" id="s-quiz">
+  <div class="topbar">
+    <span class="pill" id="p-qno">第 1 / 21 題</span>
+    <span class="pill hot" id="p-score">0 分</span>
+    <span class="pill" id="p-streak">連對 0</span>
+    <span class="pill" id="p-timer">17s</span>
+  </div>
+  <div class="tbar"><i id="tfill"></i></div>
+  <div class="stem" id="stem"></div>
+  <div class="grid" id="opts"></div>
+  <div class="reveal" id="reveal">
+    <div class="rv-t" id="rv-t"></div>
+    <div class="rv-a" id="rv-a"></div>
+    <div class="rv-w" id="rv-w"></div>
+    <button class="btn" id="next">下一題 ▶</button>
+  </div>
+</section>
+
+<!-- 完場 -->
+<section class="screen" id="s-end">
+  <h1>🏁 完成 21 題！</h1>
+  <div class="score-big" id="e-score">0</div>
+  <div class="stat">
+    <span class="pill" id="e-lv">正確 0 / 21</span>
+    <span class="pill hot" id="e-rate">正確率 0%</span>
+    <span class="pill" id="e-best">最長連對 0</span>
+    <span class="pill" id="e-recb">最佳紀錄 0</span>
+  </div>
+  <div class="card" id="e-wrong-wrap"><h2>錯題回顧</h2><div id="e-wrong"></div></div>
+  <div><button class="btn" id="again">🔁 再玩一次</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+</section>
+
+</div>
+<script>
+const Q = [
+{
+"no": 1,
+"q": "課本活動一「猜字謎寫姓氏」謎語：「西人說早上好」──謎底係邊個姓氏？",
+"src": "活動一　猜字謎寫姓氏",
+"opts": [
+"覃",
+"談",
+"譚",
+"譯"
+],
+"ok": [
+3
+],
+"why": "課本活動一謎語1謎底係「譚」：取「言」（西人說）、「西」、「早」合成「譚」字（言＋覃，覃＝西＋早）。",
+"time": 17
+},
+{
+"no": 2,
+"q": "課本活動一「猜字謎寫姓氏」謎語：「枯泉」──謎底係邊個姓氏？",
+"src": "活動一　猜字謎寫姓氏",
+"opts": [
+"原",
+"白",
+"泉",
+"百"
+],
+"ok": [
+2
+],
+"why": "課本活動一謎語4謎底係「白」：泉水「枯」咗即係冇水，「泉」字去咗水就剩低「白」。",
+"time": 17
+},
+{
+"no": 3,
+"q": "課本活動一「猜字謎寫姓氏」謎語：「一加一不是二」──謎底係邊個姓氏？",
+"src": "活動一　猜字謎寫姓氏",
+"opts": [
+"王",
+"玉",
+"豐",
+"田"
+],
+"ok": [
+1
+],
+"why": "課本活動一謎語3謎底係「王」：三個「一」橫疊加中間貫一豎，就係「王」，所以「一加一不是二」。",
+"time": 17
+},
+{
+"no": 4,
+"q": "課本活動一「猜字謎寫姓氏」謎語：「沒有舌頭」──謎底係邊個姓氏？",
+"src": "活動一　猜字謎寫姓氏",
+"opts": [
+"田",
+"古",
+"甘",
+"占"
+],
+"ok": [
+2
+],
+"why": "課本活動一謎語2謎底係「古」：「舌」字冇咗上頭（冇咗「舌頭」），剩低嘅就係「古」。",
+"time": 17
+},
+{
+"no": 5,
+"q": "課本活動一「猜字謎寫姓氏」謎語：「碰上皮就破，挨著包就炸，若問哪裡來，老家在岩下。」──謎底係邊個姓氏？",
+"src": "活動一　猜字謎寫姓氏",
+"opts": [
+"皮",
+"炮",
+"石",
+"岩"
+],
+"ok": [
+3
+],
+"why": "課本活動一謎語9謎底係「石」：石＋皮＝破，石＋包＝炮（炸），而「岩」字下面就係「石」。",
+"time": 17
+},
+{
+"no": 6,
+"q": "課本活動二練習一對話：人事部秘書楊可欣講「請出示你的身份證明文件，謝謝」，陳嘉文答「好的，這是我的＿＿＿＿」。橫線應填？",
+"src": "活動二　新人報到",
+"opts": [
+"員工證",
+"身份證",
+"名片",
+"學生證"
+],
+"ok": [
+2
+],
+"why": "課本活動二練習一答案：陳嘉文出示嘅係「身份證」；「員工證」係之後核對完個人資料先發嘅，唔係報到時出示嘅文件。",
+"time": 17
+},
+{
+"no": 7,
+"q": "課本活動二練習二粵普用語對照表：粵語「唔好意思」，普通話應該講？",
+"src": "活動二　新人報到（粵普用語差異）",
+"opts": [
+"對不起",
+"不要緊",
+"不用謝",
+"不好意思"
+],
+"ok": [
+4
+],
+"why": "課本練習二粵普對照：唔好意思→很抱歉／不好意思；對不起係「對唔住」，不要緊係「唔緊要」，不用謝一類係「唔使客氣」。",
+"time": 17
+},
+{
+"no": 8,
+"q": "課本活動二練習二粵普用語對照表：粵語「早抖」，普通話應該講？",
+"src": "活動二　新人報到（粵普用語差異）",
+"opts": [
+"晚安",
+"早安",
+"再見",
+"早點睡"
+],
+"ok": [
+1
+],
+"why": "課本練習二粵普對照：早抖→晚安；而「早晨」先係→早安／早上好。",
+"time": 17
+},
+{
+"no": 9,
+"q": "課本活動三錄音稿：同學3講「我姓黎，叫楚橋，黎明的黎，清楚的楚，橋樑的橋，是＿＿＿＿的＿＿＿＿。」橫線兩個位應該係？",
+"src": "活動三　認識新同事",
+"opts": [
+"京港酒店／接待員",
+"永安百貨公司／售貨員",
+"美麗華餐廳／服務員",
+"有線電訊公司／技工"
+],
+"ok": [
+3
+],
+"why": "課本活動三聆聽答案：黎楚橋係「美麗華餐廳」嘅「服務員」；京港酒店接待員係徐明章，永安百貨售貨員係許家敏，有線電訊技工係黃浩洋。",
+"time": 17
+},
+{
+"no": 10,
+"q": "課本活動三錄音稿：同學4講「我姓許，叫家敏，言午許，家庭的家，敏捷的敏，我是＿＿＿＿公司的＿＿＿＿。」橫線兩個位應該係？",
+"src": "活動三　認識新同事",
+"opts": [
+"永安百貨公司／售貨員",
+"京港酒店／接待員",
+"大通公關公司／秘書",
+"有線電訊公司／技工"
+],
+"ok": [
+1
+],
+"why": "課本活動三聆聽答案：許家敏係「永安百貨公司」嘅「售貨員」；大通公關秘書係李芳莉，京港酒店接待員係徐明章。",
+"time": 17
+},
+{
+"no": 11,
+"q": "課本活動三錄音稿：同學5講「我姓黃，叫浩洋，黃色的黃，浩大的浩，海洋的洋，我是＿＿＿＿公司的＿＿＿＿。」橫線兩個位應該係？",
+"src": "活動三　認識新同事",
+"opts": [
+"大通公關公司／秘書",
+"京港酒店／接待員",
+"佳佳電子有限公司／業務推廣助理",
+"有線電訊公司／技工"
+],
+"ok": [
+4
+],
+"why": "課本活動三聆聽答案：黃浩洋係「有線電訊公司」嘅「技工」；佳佳電子有限公司業務推廣助理係王曉欣。",
+"time": 17
+},
+{
+"no": 12,
+"q": "課本活動四「普通話加油站」列出四種介紹姓名嘅方法。「三橫王」「雙立人徐」「三日晶」係邊一種方法嘅例子？",
+"src": "活動四　自我介紹（四種介紹姓名方法）",
+"opts": [
+"拆字法",
+"結構法",
+"配詞法",
+"聯想法"
+],
+"ok": [
+2
+],
+"why": "課本活動四：結構法例子係「三橫王／雙立人徐／三日晶」；拆字法例子係「弓長張／立早章」，配詞法係「樹葉的葉」，聯想法係「孔子的孔」。",
+"time": 17
+},
+{
+"no": 13,
+"q": "課本活動四對話：甲自我介紹「我叫陳嘉梅，耳東陳，嘉賓的嘉，梅花的梅」。當中「耳東陳」係用咗邊一種介紹姓名嘅方法？",
+"src": "活動四　自我介紹",
+"opts": [
+"拆字法",
+"配詞法",
+"結構法",
+"聯想法"
+],
+"ok": [
+1
+],
+"why": "課本活動四：「耳東陳」係把「陳」拆成「耳」同「東」，屬拆字法；參考答案仲有「言午許／木子李／木可柯」。",
+"time": 17
+},
+{
+"no": 14,
+"q": "課本活動四對話：乙自我介紹「我姓李，木子李，叫＿＿＿＿，國家的國，雄偉的雄。我在廣告傳媒部做創意策劃。」橫線應填乙嘅全名？",
+"src": "活動四　自我介紹",
+"opts": [
+"陳嘉梅",
+"江清風",
+"李國雄",
+"游詠依"
+],
+"ok": [
+3
+],
+"why": "課本活動四對話：乙叫「李國雄」（木子李，國家的國，雄偉的雄），喺廣告傳媒部做創意策劃。",
+"time": 17
+},
+{
+"no": 15,
+"q": "課本活動五練習一錄音稿：「我們公司有很多部門，包括(a)工程部、電腦部、(b)＿＿＿＿部、零件部和(c)品質管理部。」橫線(b)應填邊個部門？",
+"src": "活動五　認識新工作（常見工作部門）",
+"opts": [
+"零件部",
+"行政部",
+"總務部",
+"維修部"
+],
+"ok": [
+4
+],
+"why": "課本活動五練習一錄音稿答案：(a)工程部、電腦部、(b)維修部、零件部和(c)品質管理部。",
+"time": 17
+},
+{
+"no": 16,
+"q": "課本活動五練習一錄音稿：「和大部分具(d)＿＿＿＿的公司一樣，我們還有行政部、(e)會計部、(f)採購部和總務部。」橫線(d)應填？",
+"src": "活動五　認識新工作（常見工作部門）",
+"opts": [
+"制度",
+"名氣",
+"規模",
+"經驗"
+],
+"ok": [
+3
+],
+"why": "課本活動五練習一錄音稿答案：和大部分具「規模」的公司一樣；其餘部門係行政部、會計部、採購部和總務部。",
+"time": 17
+},
+{
+"no": 17,
+"q": "課本活動五練習二「工作職責」連線：「＿＿＿＿負責處理公司雜務。」橫線應填邊個部門？",
+"src": "活動五　認識新工作（工作職責）",
+"opts": [
+"總務部",
+"人力資源部",
+"會計部",
+"採購部"
+],
+"ok": [
+1
+],
+"why": "課本活動五練習二連線答案：總務部→處理公司雜務（D）；人力資源部招聘員工，會計部處理賬目，採購部採購公司各種物資。",
+"time": 17
+},
+{
+"no": 18,
+"q": "課本活動五練習三對話一（按時赴約）：莊小姐臨走前對接待員講「好的，謝謝您，＿＿＿＿先生。」呢位接待員姓咩？",
+"src": "活動五　初次見面（對話一　按時赴約）",
+"opts": [
+"莊",
+"高",
+"湯",
+"黎"
+],
+"ok": [
+4
+],
+"why": "課本對話一：接待員姓「黎」（莊小姐叫佢「黎先生」，佢自己亦講「我姓黎」）；莊小姐係樂高公司訪客，高經理係被訪者。",
+"time": 17
+},
+{
+"no": 19,
+"q": "課本活動五練習三對話二（臨時拜訪）：王秘書對冇預約嘅程先生講「您不介意的話，請在＿＿＿＿等一會兒，我這就告訴他您來了。」橫線應填？",
+"src": "活動五　初次見面（對話二　臨時拜訪）",
+"opts": [
+"會議室",
+"會客室",
+"接待處",
+"辦公室"
+],
+"ok": [
+2
+],
+"why": "課本對話二：王秘書請程先生喺「會客室」等，因為湯經理正在開會，快開完。",
+"time": 17
+},
+{
+"no": 20,
+"q": "課本延伸學習一將常見姓氏分三關。以下邊一組係「讀音相近嘅姓氏」（第二關）嘅例子？",
+"src": "延伸學習一　常見姓氏",
+"opts": [
+"毛──茅",
+"姜──江",
+"魏──衛",
+"李──黎"
+],
+"ok": [
+4
+],
+"why": "課本延伸學習一：第二關「讀音相近」例子係李──黎；毛──茅、姜──江、魏──衛都屬第一關「發音相同」。",
+"time": 17
+},
+{
+"no": 21,
+"q": "課本延伸學習一第三關「多音字姓氏」：姓氏「查」除咗一般讀 chá（調查），作姓氏時讀？",
+"src": "延伸學習一　常見姓氏（多音字）",
+"opts": [
+"chá",
+"zā",
+"zhā",
+"chā"
+],
+"ok": [
+3
+],
+"why": "課本延伸學習一第三關：查──一般讀 chá（調查），作姓氏讀 zhā（查良鏞，即金庸）。",
+"time": 17
+}
+];
+const MARK = ["▲","◆","●","■"];
+const CLS  = ["a","b","c","d"];
+const LS = "vch1101_quizsp1_best";
+const S = {i:0, score:0, right:0, streak:0, best:0, wrong:[], answered:false,
+            left:0, tick:null, t0:0};
+
+const $ = id => document.getElementById(id);
+const show = id => document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k)) || null; } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+function showBestRec() {
+  const b = lsGet(LS);
+  $("best-rec").textContent = b
+    ? "最佳紀錄：" + b.score + " 分　·　正確率 " + b.rate + "%（" + b.right + " / " + Q.length + "）"
+    : "最佳紀錄：—";
+}
+
+function render() {
+  const q = Q[S.i];
+  S.answered = false;
+  $("p-qno").textContent = "第 " + (S.i + 1) + " / " + Q.length + " 題";
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  $("stem").textContent = q.q;
+  const box = $("opts"); box.innerHTML = "";
+  q.opts.forEach((t, k) => {
+    const b = document.createElement("button");
+    b.className = "opt " + CLS[k];
+    b.dataset.k = k;
+    b.innerHTML = '<span class="mk">' + MARK[k] + '</span><span>' + t + '</span>';
+    b.onclick = () => pick(k);
+    box.appendChild(b);
+  });
+  $("reveal").classList.remove("on");
+  $("tfill").classList.remove("warn");
+  startTimer(q.time);
+  window.scrollTo(0, 0);
+}
+
+function startTimer(sec) {
+  clearInterval(S.tick);
+  S.left = sec;
+  const total = sec;
+  $("p-timer").textContent = sec + "s";
+  $("tfill").style.width = "100%";
+  S.t0 = Date.now();
+  S.tick = setInterval(() => {
+    S.left -= 0.1;
+    const pct = Math.max(0, S.left / total);
+    $("tfill").style.width = (pct * 100) + "%";
+    $("tfill").classList.toggle("warn", pct < .34);
+    $("p-timer").textContent = Math.max(0, Math.ceil(S.left)) + "s";
+    if (S.left <= 0) { clearInterval(S.tick); pick(-1); }
+  }, 100);
+}
+
+function pick(k) {
+  if (S.answered) return;
+  S.answered = true;
+  clearInterval(S.tick);
+  const q = Q[S.i];
+  const isOk = q.ok.indexOf(k + 1) > -1;
+  const used = Math.min(q.time, (Date.now() - S.t0) / 1000);
+  if (isOk) {
+    S.score += 1000 + Math.round(500 * Math.max(0, 1 - used / q.time));
+    S.right++; S.streak++; S.best = Math.max(S.best, S.streak);
+  } else {
+    S.streak = 0;
+    S.wrong.push({no: q.no, q: q.q, ans: q.ok.map(i => q.opts[i - 1]).join("／"), why: q.why});
+  }
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  document.querySelectorAll(".opt").forEach(el => {
+    const kk = +el.dataset.k;
+    if (q.ok.indexOf(kk + 1) > -1) el.classList.add("right");
+    else if (kk === k) el.classList.add("wrong");
+    else el.classList.add("dim");
+    el.onclick = null;
+  });
+  $("rv-t").textContent = isOk ? "✅ 答啱！ +" + Math.round(1000 + 500 * Math.max(0, 1 - used / q.time)) + " 分"
+                               : (k < 0 ? "⏰ 時間到" : "❌ 答錯");
+  $("rv-t").className = "rv-t " + (isOk ? "ok" : "no");
+  $("rv-a").textContent = "正確答案：" + q.ok.map(i => q.opts[i - 1]).join("／");
+  $("rv-w").textContent = q.why || "";
+  $("next").textContent = (S.i === Q.length - 1) ? "睇結果 🏁" : "下一題 ▶";
+  $("reveal").classList.add("on");
+}
+
+function next() {
+  if (S.i >= Q.length - 1) { end(); return; }
+  S.i++; render();
+}
+
+function end() {
+  $("e-score").textContent = S.score;
+  $("e-lv").textContent = "正確 " + S.right + " / " + Q.length;
+  const rate = Math.round(S.right / Q.length * 100);
+  $("e-rate").textContent = "正確率 " + rate + "%";
+  $("e-best").textContent = "最長連對 " + S.best;
+  const b = lsGet(LS);
+  if (!b || S.score > b.score) lsSet(LS, {score: S.score, rate: rate, right: S.right});
+  const nb = lsGet(LS) || {score: 0};
+  $("e-recb").textContent = "最佳紀錄 " + nb.score;
+  const w = $("e-wrong"); w.innerHTML = "";
+  if (!S.wrong.length) {
+    w.innerHTML = '<p style="color:#4ade80;font-weight:700">全對！冇錯題，好犀利 🎉</p>';
+  } else {
+    S.wrong.forEach(x => {
+      const d = document.createElement("div");
+      d.className = "wrong-item";
+      d.innerHTML = '<b>第 ' + x.no + ' 題</b><p>' + x.q + '</p><p>✔ ' + x.ans + '</p><p>' + x.why + '</p>';
+      w.appendChild(d);
+    });
+  }
+  showBestRec();
+  show("s-end");
+}
+
+function start() {
+  S.i = 0; S.score = 0; S.right = 0; S.streak = 0; S.best = 0; S.wrong = []; S.answered = false;
+  clearInterval(S.tick);
+  $("e-wrong").innerHTML = "";
+  $("e-score").textContent = "0";
+  $("e-lv").textContent = "正確 0 / " + Q.length;
+  $("e-rate").textContent = "正確率 0%";
+  $("e-best").textContent = "最長連對 0";
+  showBestRec();
+  show("s-quiz"); render();
+}
+
+$("go").onclick = start;
+$("again").onclick = start;
+$("next").onclick = next;
+document.addEventListener("keydown", e => {
+  if (!$("s-quiz").classList.contains("on")) return;
+  if (!S.answered && "1234".indexOf(e.key) > -1) pick(+e.key - 1);
+  else if (S.answered && (e.key === "Enter" || e.key === " ")) next();
+});
+
+showBestRec();
+
+// 自動實跑用
+window.__qz = {
+  state: S, q: Q,
+  pick: pick, next: next, start: start,
+  idx: () => S.i, score: () => S.score, right: () => S.right,
+  optCount: () => document.querySelectorAll(".opt").length,
+  optClasses: () => [...document.querySelectorAll(".opt")].map(el => el.className),
+  revealOn: () => $("reveal").classList.contains("on"),
+  wrongCount: () => S.wrong.length,
+  screen: () => [...document.querySelectorAll(".screen")].find(s => s.classList.contains("on")).id,
+  best: () => lsGet(LS)
+};
+</script></body></html>
