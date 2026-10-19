@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:,">
+<title>課次一 初次見面｜普通話對話與事務文書｜VCH1101</title>
+<style>
+:root{
+  --bg:#0f1720;--pan:#141f2c;--pan2:#101a25;--line:#24384a;
+  --ink:#eaf2f8;--muted:#9db1c2;--or:#ec7d3a;--teal:#14b8a6;
+  --gold:#ffd08a;--ok:#4ade80;--no:#fb7185;--blue:#59b6e8;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang TC","PingFang HK",sans-serif;
+  font-size:18px;line-height:1.62;overflow-x:hidden;
+}
+img,video,audio{max-width:100%}
+h1{font-size:clamp(27px,7vw,44px);line-height:1.2;margin:0;letter-spacing:.5px}
+h2{font-size:clamp(21px,5vw,30px);line-height:1.25;margin:0}
+h3{font-size:clamp(18px,4.4vw,22px);margin:0}
+p{margin:8px 0}
+.muted{color:var(--muted);font-size:.92em}
+.big{font-size:1.18em;font-weight:800}
+button{font-family:inherit}
+
+/* ---------- 頂欄 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:rgba(15,23,32,.97);
+  border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;
+  padding:9px 12px;flex-wrap:wrap;
+}
+.brandbtn{background:none;border:0;color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:8px;flex:1;min-width:150px}
+.pbar{height:11px;background:#26374a;border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.ptxt{color:var(--gold);font-weight:900;font-size:14px;white-space:nowrap}
+.finbtn{background:var(--or);color:#1a1004;border:0;font-weight:900;border-radius:99px;padding:9px 15px;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ---------- 畫面 ---------- */
+main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;width:100%}
+.screen{display:none;animation:rise .28s ease}
+.screen.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin:12px 0}
+.card.soft-teal{background:#10261f;border-color:#1d5a4a}
+.card.soft-blue{background:#102230;border-color:#24526f}
+.card.soft-gold{background:#241f10;border-color:#5c4a1c}
+.eyebrow{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.14em;margin-bottom:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;border-radius:12px;
+  padding:13px 20px;font-size:17px;background:var(--or);color:#1a1004;transition:.13s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.btn.teal{background:var(--teal);color:#04201c}
+.btn.done{background:var(--ok);color:#052a15}
+.mini{border:1px solid #38566e;background:#16283a;color:#cfe6f5;border-radius:9px;
+  padding:6px 11px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini:hover{background:#1f3448}
+.mini.rv{border-color:#7a5a1e;color:var(--gold)}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:center;padding:16px 4px}
+.cover .em{font-size:clamp(46px,15vw,84px);line-height:1}
+.outcomes{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px;text-align:left}
+.outcome{background:var(--pan);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:clamp(16px,4.4vw,20px);font-weight:700}
+.outcome:nth-child(2){border-left-color:var(--or)}
+.outcome:nth-child(3){border-left-color:var(--gold)}
+.outcome:nth-child(4){border-left-color:var(--blue)}
+
+/* ---------- 地圖 ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{position:relative;text-align:left;background:var(--pan);border:1px solid var(--line);
+  border-radius:15px;padding:13px 13px 13px;cursor:pointer;color:var(--ink);transition:.13s;min-width:0}
+.tile:hover{border-color:var(--or)}
+.tile .tn{display:inline-block;background:var(--teal);color:#04201c;font-weight:900;font-size:12px;border-radius:8px;padding:3px 9px;margin-bottom:7px}
+.tile .tem{font-size:24px}
+.tile .tt{font-weight:800;font-size:clamp(15px,3.8vw,18px);line-height:1.35;margin-top:3px}
+.tile .ts{color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5}
+.tile .tick{position:absolute;top:11px;right:12px;font-size:20px;font-weight:900;color:var(--ok)}
+.tile.done{border-color:var(--ok);background:#12251b}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 通用題目 ---------- */
+.qcard{background:var(--pan);border:1px solid var(--line);border-radius:15px;padding:14px;margin:11px 0}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+.qnum{flex:0 0 auto;width:32px;height:32px;border-radius:9px;background:var(--or);color:#1a1004;font-weight:900;display:grid;place-items:center;font-size:16px}
+.qtext{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.55;flex:1;min-width:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.opt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:12px;
+  font-size:clamp(17px,4.6vw,21px);font-weight:800;cursor:pointer}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.opt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4;opacity:.85}
+.fb{margin-top:7px;font-weight:800;font-size:15px}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--no)} .fb.warn{color:var(--gold)}
+
+/* ---------- 揭曉盒 ---------- */
+.ansbox{display:none;align-items:center;gap:7px;background:#152a1e;border:1px solid #2f7a52;
+  border-radius:10px;padding:7px 11px;margin-top:7px;color:#bff5d3;font-weight:800;font-size:clamp(16px,4.3vw,20px)}
+.ansbox.on{display:inline-flex}
+.ansbox .py{color:var(--gold);font-weight:700;font-size:.9em}
+.speakbt{background:#0e2130;border:1px solid #2c5068;color:#bfe3ff;border-radius:8px;padding:4px 9px;font-size:14px;cursor:pointer;font-weight:800}
+
+/* ---------- 填空 ---------- */
+.bk{display:inline-flex;align-items:center;gap:3px;flex-wrap:nowrap;margin:2px 3px;vertical-align:middle;max-width:100%}
+.bk input{width:6em;max-width:60vw;background:transparent;border:0;border-bottom:2px solid var(--gold);color:#fff;
+  border-radius:0;padding:2px 3px;font-size:16px;font-family:inherit;text-align:center}
+.bk input:focus{outline:none;border-bottom-color:var(--blue)}
+.bk.ok input{border-bottom-color:var(--ok);color:#bff5d3}
+.bk .fb{display:inline-block;margin:0 0 0 3px;font-size:.82em;white-space:nowrap}
+
+/* 活動五練習一：段落填空要讀得順。預設只顯示空格，撳一撳先出現「核對／揭曉」掣。 */
+#deptfill{line-height:2.15}
+#deptfill .bk{gap:2px;margin:1px 2px}
+#deptfill .bk input{width:5.4em}
+#deptfill .bk .mini,#deptfill .bk .fb{display:none}
+#deptfill .bk.touched .mini,#deptfill .bk.touched .fb{display:inline-block}
+#deptfill .bk .mini{border:0;background:none;padding:0 2px;font-size:12px;line-height:1;color:var(--gold)}
+#deptfill .bk .fb{font-size:.78em}
+#deptfill .lab{font-size:.8em;font-weight:700;color:var(--muted)}
+.lab{color:var(--gold);font-weight:900}
+
+/* ---------- 對話 ---------- */
+.dlg{display:flex;flex-direction:column;gap:9px}
+.bub{background:var(--pan2);border:1px solid var(--line);border-radius:13px;padding:11px 13px}
+.bub .sp{display:block;font-weight:900;color:var(--blue);font-size:14px;margin-bottom:3px}
+.bub.b .sp{color:var(--or)}
+
+/* ---------- 配對 ---------- */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.mcol{display:flex;flex-direction:column;gap:8px;min-width:0}
+.mrow{display:flex;gap:6px;align-items:stretch;min-width:0}
+.mitem{flex:1;min-width:0;text-align:left;border:1px solid #35536b;background:#16283a;color:var(--ink);
+  border-radius:10px;padding:10px;font-size:clamp(13.5px,3.6vw,16px);font-weight:700;cursor:pointer;overflow-wrap:anywhere}
+.mitem.sel{border-color:var(--gold);background:#2a2410}
+.mitem.done{background:#123a24;border-color:var(--ok);color:#bff5d3;cursor:default}
+.mitem.used{opacity:.45;cursor:default}
+.mitem.shake{background:#3a1420;border-color:var(--no)}
+
+/* ---------- 詞語 / 姓氏卡 ---------- */
+.gridc{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.kw,.snc{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.kw .w,.snc .w{font-size:clamp(18px,5vw,23px);font-weight:800}
+@media(min-width:640px){.gridc{grid-template-columns:repeat(3,1fr)}}
+
+.details{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:10px 0}
+.details summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.details p{margin:9px 0 0}
+
+video{width:100%;border-radius:12px;background:#000;margin-top:8px}
+
+/* ---------- 百家姓計分板 ---------- */
+.teams{display:flex;flex-direction:column;gap:9px}
+.team{display:flex;align-items:center;gap:9px;background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:9px 11px}
+.team .tname{flex:1;font-weight:800;min-width:0;overflow-wrap:anywhere}
+.team .tpt{color:var(--gold);font-weight:900;font-size:22px;min-width:2.2em;text-align:right}
+.team .sbtn{width:40px;height:40px;border-radius:10px;border:1px solid #38566e;background:#16283a;color:#fff;font-size:20px;font-weight:900;cursor:pointer}
+
+/* ---------- 自我評估 ---------- */
+.assess{display:flex;flex-direction:column;gap:10px}
+.arow{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+.arow .aq{font-weight:800;font-size:clamp(16px,4.4vw,20px);margin-bottom:7px}
+.aopts{display:flex;gap:8px;flex-wrap:wrap}
+.aopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:99px;padding:9px 18px;font-weight:800;font-size:16px;cursor:pointer}
+.aopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+
+/* ---------- 出口卡 ---------- */
+.exit-in{width:100%;background:#0c1a24;border:1px solid #35536b;color:#fff;border-radius:10px;
+  padding:12px;font-size:17px;font-family:inherit;margin-top:6px;min-width:0}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);z-index:60;
+  background:var(--pan);border:1px solid var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;
+  font-weight:800;opacity:0;transition:.25s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  body{font-size:17px}
+  .opts{grid-template-columns:1fr 1fr}
+  .bk input{width:5.6em;font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brandbtn" onclick="show('cover')">🏠 初次見面</button>
+  <button class="brandbtn" onclick="show('map')">🗺 活動地圖</button>
+  <div class="prog"><div class="pbar"><i id="pbar"></i></div><span class="ptxt" id="ptxt">進度 0/9</span></div>
+  <button class="finbtn" onclick="show('exit')">🏁 課堂收結</button>
+</header>
+
+<main id="main">
+
+<!-- ============ 封面 ============ -->
+<section class="screen on" id="cover">
+  <div class="cover">
+    <div class="em">🤝</div>
+    <div class="eyebrow" style="margin-top:10px">VCH1101 職業中文・普通話對話（GCCH103A(P)）</div>
+    <h1>課次一　初次見面</h1>
+    <p class="big" style="color:var(--gold)">兩小時・服務／設計與科技</p>
+    <p class="muted">完成本課後，你能用普通話——</p>
+  </div>
+  <div class="outcomes">
+    <div class="outcome">1️⃣ 介紹自己</div>
+    <div class="outcome">2️⃣ 說出行業中常見的工作職位</div>
+    <div class="outcome">3️⃣ 說出行業中常見的工作任務</div>
+    <div class="outcome">4️⃣ 掌握初次見面的基本社交用語</div>
+  </div>
+  <div class="navrow">
+    <button class="btn" onclick="show('map')">🗺 開始・去活動地圖 ▶</button>
+    <button class="btn ghost" onclick="show('exit')">🏁 直接去課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動地圖 ============ -->
+<section class="screen" id="map">
+  <div class="eyebrow">🗺 活動地圖</div>
+  <h2>今日有 7 個活動 ＋ 2 個延伸學習</h2>
+  <p class="muted">可以跳住玩。玩完就撳「✅ 完成本節」，右上角進度會自動記錄（重新整理都唔會消失）。</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('self')">📋 自我評估</button>
+    <button class="btn" onclick="show('exit')">🏁 課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動一 ============ -->
+<section class="screen" id="s1">
+  <div class="eyebrow">🧩 活動一</div>
+  <h2>猜字謎寫姓氏</h2>
+  <p class="muted">謎底都係常見姓氏。揀一個，答啱就會揭答案。答錯有第二次機會；真係唔識，可以撳「👁 揭曉」。</p>
+  <div id="riddles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="1">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二・對話填空 ============ -->
+<section class="screen" id="s2">
+  <div class="eyebrow">📝 活動二・練習一</div>
+  <h2>新人報到（對話填空）</h2>
+  <p class="muted">你係新入職嘅設計部助理<b>陳嘉文</b>，第一日到駿興設計公司人事部報到。填好 8 個空格，再同隔籬位二人一組讀一次。</p>
+  <div class="card soft-blue"><div class="dlg" id="dlg2"></div></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="2">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二・粵普 ============ -->
+<section class="screen" id="s3">
+  <div class="eyebrow">🗣️ 活動二・練習二</div>
+  <h2>粵語 ↔ 普通話・社交用語</h2>
+  <p class="muted">呢 14 句係初次見面最常用嘅社交用語。先自己講一次，再撳「👁 揭曉」睇普通話。</p>
+  <div class="card"><div id="social"></div></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="3">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動三 ============ -->
+<section class="screen" id="s4">
+  <div class="eyebrow">🎬 活動三</div>
+  <h2>認識新同事</h2>
+  <p class="muted">睇片，聽清楚 6 位同學嘅姓名同職業，填落空格。</p>
+  <div class="card soft-blue">
+    <div class="rowbtns">
+      <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/files/speak1/act3_colleagues_nosub.mp4" target="_blank" rel="noopener">🎬 播片（先・無字幕）</a>
+      <a class="btn ghost" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/files/speak1/act3_colleagues_sub.mp4" target="_blank" rel="noopener">🎬 核對（後・有字幕）</a>
+    </div>
+    <p class="muted" style="margin-top:9px">先睇「無字幕」邊聽邊填；填完再睇「有字幕」自己核對。</p>
+  </div>
+  <div id="colleagues"></div>
+  <details class="details">
+    <summary>📄 錄音稿（點開先睇，核對用）</summary>
+    <p>教師：歡迎各位同學來參加這門人際溝通課程。首先讓我介紹一下自己。我是你們班的導師，我姓江，叫清風。</p>
+    <p>徐（男）：大家好，我姓徐，叫明章，雙立人徐，明白的明，文章的章，是京港酒店旅遊部的接待員，請多指教。</p>
+    <p>王（女）：你們好！我姓王，叫曉欣，三橫王，知曉的曉，欣賞的欣，是佳佳電子有限公司的業務推廣助理。請多多關照。</p>
+    <p>黎（男）：大家早！我姓黎，叫楚橋，黎明的黎，清楚的楚，橋樑的橋，是美麗華餐廳的服務員。我們的餐廳位於旺角，歡迎大家來用餐。</p>
+    <p>許（女）：各位好！我姓許，叫家敏，言午許，家庭的家，敏捷的敏，我是永安百貨公司的售貨員，我們公司在彌敦道，歡迎大家來購物。</p>
+    <p>黃（男）：早上好！我姓黃，叫浩洋，黃色的黃，浩大的浩，海洋的洋，我是有線電訊公司的技工。</p>
+    <p>李（女）：大家好，我姓李，叫芳莉，木子李，芬芳的芳，茉莉花的莉，我是大通公關公司的秘書，負責接待訪客，很高興認識大家。</p>
+  </details>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="4">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動四 ============ -->
+<section class="screen" id="s5">
+  <div class="eyebrow">🙋 活動四</div>
+  <h2>自我介紹</h2>
+  <p class="muted">想畀對方記得你，可以用唔同方法介紹自己嘅名。先讀示範對話，再寫低你自己嘅一句。</p>
+  <div class="card soft-blue">
+    <h3 style="color:var(--gold)">示範對話</h3>
+    <div class="dlg" style="margin-top:8px">
+      <div class="bub"><span class="sp">甲</span>您好，我叫陳嘉梅，耳東陳，嘉賓的嘉，梅花的梅。我是產品研發部的一名設計師。請問您貴姓？</div>
+      <div class="bub b"><span class="sp">乙</span>您好，我姓李，木子李，叫李國雄，國家的國，雄偉的雄。我在廣告傳媒部做創意策劃。很高興認識您。</div>
+    </div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini" onclick="speak('您好，我叫陳嘉梅，耳東陳，嘉賓的嘉，梅花的梅。我是產品研發部的一名設計師。請問您貴姓？')">🔊 讀甲（普通話）</button>
+      <button class="mini" onclick="speak('您好，我姓李，木子李，叫李國雄，國家的國，雄偉的雄。我在廣告傳媒部做創意策劃。很高興認識您。')">🔊 讀乙（普通話）</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="color:var(--gold)">四種介紹姓名的方法</h3>
+    <div id="methods" style="margin-top:9px"></div>
+  </div>
+  <div class="card soft-gold">
+    <h3>✍️ 寫自己嘅一句</h3>
+    <p class="muted">填落去，範本句子即刻出現。跟住大聲用普通話讀出嚟。</p>
+    <div style="margin-top:8px">
+      <input class="exit-in" id="i-name" placeholder="我叫……（姓名）" oninput="buildIntro()">
+      <input class="exit-in" id="i-a" placeholder="＿＿的＿＿（第一組，例：黃色的黃）" oninput="buildIntro()">
+      <input class="exit-in" id="i-b" placeholder="＿＿的＿＿（第二組，例：浩大的浩）" oninput="buildIntro()">
+      <input class="exit-in" id="i-role" placeholder="我是……（例：青年學院的一名學生）" oninput="buildIntro()">
+    </div>
+    <div class="ansbox on" id="intro-out" style="margin-top:10px;display:flex"></div>
+    <div class="rowbtns" style="margin-top:9px">
+      <button class="mini" onclick="speak(document.getElementById('intro-out').innerText)">🔊 聽一次（普通話）</button>
+    </div>
+  </div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="5">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五・部門職責 ============ -->
+<section class="screen" id="s6">
+  <div class="eyebrow">🏢 活動五・練習一＋二</div>
+  <h2>認識新工作（部門與職責）</h2>
+
+  <div class="card">
+    <h3>練習一・常見工作部門</h3>
+    <p class="muted">聆聽錄音，完成 (a)–(g) 填空。撳一撳空格，就會出現「✓ 核對」同「👁 揭曉」掣。</p>
+    <div class="card soft-blue" style="margin:10px 0"><div id="deptfill"></div></div>
+  </div>
+
+  <div class="card">
+    <h3>練習二・工作職責（連線配對）</h3>
+    <p class="muted">先撳左邊一個部門 → 再撳右邊一項職責。配對正確會變綠。唔肯定可以撳部門隔籬嘅「👁」揭曉。</p>
+    <div class="match" style="margin-top:9px">
+      <div class="mcol" id="depCol"></div>
+      <div class="mcol" id="dutyCol"></div>
+    </div>
+    <div class="fb" id="matchFb"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="6">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五・初次見面 ============ -->
+<section class="screen" id="s7">
+  <div class="eyebrow">🤝 活動五・練習三</div>
+  <h2>認識新工作（初次見面）</h2>
+  <p class="muted">1. 大聲朗讀詞語。2. 睇兩段對話。3. 二人一組，分角色讀出嚟。</p>
+  <div class="card">
+    <h3>重點詞語</h3>
+    <div class="gridc" id="keywords" style="margin-top:9px"></div>
+  </div>
+  <div class="card soft-blue">
+    <h3>對話一・按時赴約</h3>
+    <div class="dlg" style="margin-top:8px">
+      <div class="bub"><span class="sp">莊小姐</span>先生，早上好。請問營業部的高經理在嗎？</div>
+      <div class="bub"><span class="sp">接待員</span>您早，您一定是樂高公司的莊小姐了。</div>
+      <div class="bub"><span class="sp">莊小姐</span>我就是。請問怎麼稱呼您呢？</div>
+      <div class="bub"><span class="sp">接待員</span>我姓黎，高經理吩咐過，說您一到就馬上通知他。請您跟我來吧，高經理正等著您呢。</div>
+      <div class="bub"><span class="sp">莊小姐</span>好的，謝謝您，黎先生。</div>
+      <div class="bub"><span class="sp">接待員</span>甭客氣。</div>
+    </div>
+  </div>
+  <div class="card soft-blue">
+    <h3>對話二・臨時拜訪</h3>
+    <div class="dlg" style="margin-top:8px">
+      <div class="bub"><span class="sp">王秘書</span>您好，先生，請問您找誰？</div>
+      <div class="bub"><span class="sp">程先生</span>你好，我想向湯經理了解一下貴公司的產品。</div>
+      <div class="bub"><span class="sp">王秘書</span>請問您有沒有預約？</div>
+      <div class="bub"><span class="sp">程先生</span>不好意思，我沒有。</div>
+      <div class="bub"><span class="sp">王秘書</span>請問您貴姓？</div>
+      <div class="bub"><span class="sp">程先生</span>我姓程，這是我的名片。</div>
+      <div class="bub"><span class="sp">王秘書</span>程先生，湯經理正在開會，不過應該快開完了。您不介意的話，請在會客室等一會兒，我這就告訴他您來了。</div>
+      <div class="bub"><span class="sp">程先生</span>好，麻煩你了！</div>
+      <div class="bub"><span class="sp">王秘書</span>不客氣。程先生，您要喝點兒甚麼嗎？我們有茶和咖啡。</div>
+      <div class="bub"><span class="sp">程先生</span>那就請你給我一杯咖啡吧。謝謝！</div>
+      <div class="bub"><span class="sp">王秘書</span>不用謝，我馬上為您準備。</div>
+    </div>
+  </div>
+  <div class="card soft-gold">
+    <p class="big">🎭 分角色朗讀：一人做職員／秘書，一人做訪客。讀完交換角色再讀一次。</p>
+  </div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="7">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸一 ============ -->
+<section class="screen" id="s8">
+  <div class="eyebrow">🔤 延伸學習一</div>
+  <h2>常見姓氏</h2>
+  <p class="muted">先自己讀出聲，再撳「👁 揭曉」睇拼音，核對你讀得啱唔啱。</p>
+
+  <div class="card">
+    <h3>第一關・發音相同的姓氏（4 組）</h3>
+    <div class="gridc" id="sn1" style="margin-top:9px"></div>
+  </div>
+  <div class="card">
+    <h3>第二關・讀音相近的姓氏（13 組）</h3>
+    <div id="sn2" style="margin-top:9px"></div>
+  </div>
+  <div class="card">
+    <h3>第三關・多音字姓氏（6 個）</h3>
+    <div id="sn3" style="margin-top:9px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="8">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸二 ============ -->
+<section class="screen" id="s9">
+  <div class="eyebrow">📖 延伸學習二</div>
+  <h2>百家姓・分組接龍</h2>
+  <div class="card">
+    <h3>玩法</h3>
+    <ol style="margin:8px 0 0;padding-left:22px">
+      <li>分組。每組派一張姓氏卡（下面「姓氏卡池」）。</li>
+      <li>用 1 分鐘準備。</li>
+      <li>每組在 30 秒內接龍讀出卡上嘅姓氏。</li>
+      <li>讀對一個得 1 分，讀錯唔扣分，超時 1 秒扣 1 分。</li>
+      <li>其他組可以舉手補答讀錯嘅姓氏，答對得 1 分。</li>
+      <li>得分最高嘅組勝出。老師最後帶讀較難嘅姓氏。</li>
+    </ol>
+  </div>
+  <div class="card">
+    <h3>姓氏卡池（可以自己加）</h3>
+    <p class="big" style="letter-spacing:3px;line-height:1.9">李　王　張　劉　陳　楊　黃　趙　吳　周　徐　孫　馬　朱　胡　郭　何　高　林　羅　鄭　梁　謝　宋　唐　許　韓　馮　鄧　曹</p>
+    <p class="muted">（參考《2007 年中國百家姓最新排行榜》常見姓氏。）</p>
+  </div>
+  <div class="card">
+    <h3>計分板</h3>
+    <div class="teams" id="teams" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:11px">
+      <button class="mini" data-teamadd="1">＋ 加一組</button>
+      <button class="mini" data-teamreset="1">↺ 重新開始</button>
+    </div>
+  </div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="9">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 自我評估 ============ -->
+<section class="screen" id="self">
+  <div class="eyebrow">📋 自我評估</div>
+  <h2>完成本課之後，你能做到嗎？</h2>
+  <p class="muted">每一行揀一個。冇標準答案，老實就得。</p>
+  <div class="assess" id="assess" style="margin-top:11px"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn" onclick="show('exit')">🏁 去課堂收結 ▶</button>
+  </div>
+</section>
+
+<!-- ============ 出口卡 ============ -->
+<section class="screen" id="exit">
+  <div class="eyebrow">🏁 課堂收結</div>
+  <h2>出口卡</h2>
+  <p class="muted">打字唔得就口頭講、或寫喺紙條交畀老師。答完先播下課歌。</p>
+  <div class="card">
+    <h3>今日學到嘅 3 樣</h3>
+    <input class="exit-in" id="e1" placeholder="1.">
+    <input class="exit-in" id="e2" placeholder="2.">
+    <input class="exit-in" id="e3" placeholder="3.">
+  </div>
+  <div class="card">
+    <h3>最想再練嘅一樣</h3>
+    <input class="exit-in" id="e4" placeholder="我想再練……">
+  </div>
+  <div class="navrow">
+    <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone" target="_blank" rel="noopener">🎵 去下課歌區 ▶</a>
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+  </div>
+  <p class="muted" style="margin-top:14px">下課歌區（總台）：
+    <span class="muted" style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone</span>
+  </p>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<pre id="selftest" style="display:none"></pre>
+
+<script>
+"use strict";
+window.__errs=[];
+window.addEventListener('error',function(e){try{window.__errs.push(String(e.message||e))}catch(x){}});
+window.addEventListener('unhandledrejection',function(e){try{window.__errs.push('rej:'+String(e.reason))}catch(x){}});
+/* ================= 基礎工具 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let toastTimer=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1900)}
+function speak(txt){try{if(!('speechSynthesis'in window)){toast('此裝置暫無語音，請跟老師讀');return}const u=new SpeechSynthesisUtterance(String(txt).replace(/[＿_]/g,'…'));u.lang='zh-CN';u.rate=.85;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}catch(e){toast('此裝置暫無語音，請跟老師讀')}}
+/* 正規化：去空白／標點，並忽略尾部「部」 */
+function norm(s){return String(s).replace(/[\s\u3000，。、！？!?,.／/「」『』（）()]/g,'').replace(/部$/,'')}
+function normEq(a,b){return norm(a)===norm(b)&&norm(a)!==''}
+
+/* ================= 進度（localStorage） ================= */
+const KEY=i=>'vch1101spk1_a'+i;
+const MEM={}; /* 記憶體後備：就算 localStorage 被封（隱私模式／file://）都唔會即場失效 */
+function lsGet(k){try{const v=localStorage.getItem(k);return v===null?(k in MEM?MEM[k]:null):v}catch(e){return k in MEM?MEM[k]:null}}
+function lsSet(k,v){MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){delete MEM[k];try{localStorage.removeItem(k)}catch(e){}}
+function isDone(i){return lsGet(KEY(i))==='1'}
+function setDone(i){lsSet(KEY(i),'1'); renderProgress(); renderTiles(); }
+function clearDone(){for(let i=1;i<=9;i++)lsDel(KEY(i)); renderProgress(); renderTiles();}
+function doneCount(){let n=0;for(let i=1;i<=9;i++)if(isDone(i))n++;return n}
+function renderProgress(){const n=doneCount();$('#ptxt').textContent='進度 '+n+'/9';$('#pbar').style.width=(n/9*100)+'%'}
+
+/* ================= 畫面切換 ================= */
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));try{window.scrollTo(0,0)}catch(e){} if(id==='map')renderTiles();}
+
+/* ================= 活動地圖 ================= */
+const MAP=[
+ {id:'s1',n:1,em:'🧩',t:'活動一・猜字謎寫姓氏',s:'10 條字謎，猜出常見姓氏'},
+ {id:'s2',n:2,em:'📝',t:'活動二・新人報到（對話填空）',s:'8 個空格・陳嘉文／楊可欣'},
+ {id:'s3',n:3,em:'🗣️',t:'活動二・新人報到（粵普社交用語）',s:'14 組粵語 ↔ 普通話'},
+ {id:'s4',n:4,em:'🎬',t:'活動三・認識新同事',s:'6 位同學的姓名＋職業（聽力）'},
+ {id:'s5',n:5,em:'🙋',t:'活動四・自我介紹',s:'四種介紹姓名方法＋寫自己一句'},
+ {id:'s6',n:6,em:'🏢',t:'活動五・認識新工作（部門職責）',s:'填空 (a)–(g)＋連線配對'},
+ {id:'s7',n:7,em:'🤝',t:'活動五・認識新工作（初次見面）',s:'9 個重點詞語＋兩段對話'},
+ {id:'s8',n:8,em:'🔤',t:'延伸學習一・常見姓氏',s:'同音／近音／多音字三關'},
+ {id:'s9',n:9,em:'📖',t:'延伸學習二・百家姓',s:'分組接龍＋計分板'}
+];
+function renderTiles(){
+  const el=$('#tiles'); if(!el) return;
+  el.innerHTML=MAP.map(m=>{
+    const d=isDone(m.n);
+    return `<button class="tile${d?' done':''}" data-goto="${m.id}">
+      <span class="tn">${m.n}</span>
+      <div class="tem">${m.em}</div>
+      <div class="tt">${esc(m.t)}</div>
+      <div class="ts">${esc(m.s)}</div>
+      <span class="tick">${d?'✓':''}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ================= 活動一：字謎 ================= */
+const RIDDLES=[
+ {q:'西人說早上好',a:'譚',py:'tán',o:['古','譚','王','呂']},
+ {q:'沒有舌頭',a:'古',py:'gǔ',o:['石','白','古','葉']},
+ {q:'一加一不是二',a:'王',py:'wáng',o:['呂','任','魏','王']},
+ {q:'枯泉',a:'白',py:'bái',o:['白','古','石','潘']},
+ {q:'兩口不分',a:'呂',py:'lǚ',o:['葉','譚','呂','王']},
+ {q:'菜田除草灌水',a:'潘',py:'pān',o:['葉','白','呂','潘']},
+ {q:'百年前是草，百年後是木。',a:'葉',py:'yè',o:['葉','古','任','石']},
+ {q:'左邊加一是千，右邊減一是千。',a:'任',py:'rén',o:['王','任','魏','呂']},
+ {q:'碰上皮就破，挨著包就炸，若問哪裡來，老家在岩下。',a:'石',py:'shí',o:['古','白','葉','石']},
+ {q:'千字不像千，八字排兩邊。有個女孩兒，總被鬼來纏。',a:'魏',py:'wèi',o:['任','王','魏','呂']}
+];
+function renderRiddles(){
+  $('#riddles').innerHTML=RIDDLES.map((r,i)=>`
+    <div class="qcard rd rvscope" data-i="${i}">
+      <div class="qhead"><span class="qnum">${i+1}</span><span class="qtext">${esc(r.q)}</span></div>
+      <div class="opts">${r.o.map(o=>`<button class="opt" data-act="opt" data-i="${i}" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+      <div class="fb"></div>
+      <button class="mini rv" data-act="rv-rd">👁 揭曉</button>
+      <div class="ansbox"><span>${esc(r.a)}</span><span class="py">${esc(r.py)}</span>
+        <button class="speakbt" data-speak="${esc(r.a)}">🔊 用普通話讀一遍</button></div>
+    </div>`).join('');
+}
+
+/* ================= 活動二練習一：對話填空 ================= */
+const DLG2=[
+ {sp:'陳嘉文',cls:'',t:['早上好，我叫',{a:'陳嘉文'},'，是新來的',{a:'設計部助理'},'，今天是我第一天來公司報到。']},
+ {sp:'楊可欣',cls:'b',t:[{a:'早上好'},'，我叫',{a:'楊可欣'},'，是人事部的',{a:'秘書'},'。請出示你的身份證明文件，謝謝。']},
+ {sp:'陳嘉文',cls:'',t:['好的，這是我的',{a:'身份證'},'。']},
+ {sp:'楊可欣',cls:'b',t:['請稍等……你將在',{a:'設計部'},'工作，這是你的員工證，請核對一下上面的個人資料。']},
+ {sp:'陳嘉文',cls:'',t:['資料正確，謝謝你。']},
+ {sp:'楊可欣',cls:'b',t:['我現在帶你去',{a:'設計部'},'，請跟我來。']}
+];
+function blankHTML(a){return `<span class="bk rvscope" data-ans="${esc(a)}"><input class="bi" autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(a)}</span></span><span class="fb"></span></span>`}
+function renderTokens(t){return t.map(x=>typeof x==='string'?esc(x):blankHTML(x.a)).join('')}
+function renderDlg2(){
+  $('#dlg2').innerHTML=DLG2.map(l=>`<div class="bub ${l.cls}"><span class="sp">${esc(l.sp)}</span>${renderTokens(l.t)}</div>`).join('');
+}
+
+/* ================= 活動二練習二：粵普 ================= */
+const SOCIAL=[
+ ['早晨','早安／早上好'],['早抖','晚安'],['等埋我','等等我'],['唔緊要','不要緊'],
+ ['冇所謂','沒關係／無所謂'],['唔該你先','先謝謝你了'],['對唔住','對不起'],['唔好意思','很抱歉／不好意思'],
+ ['勞煩晒你','太麻煩你了'],['唔該','勞駕／謝謝'],['等一陣','稍等／等一會兒'],['請入嚟','請進'],
+ ['唔洗客氣','別客氣／不客氣'],['飲乜嘢','喝點甚麼']
+];
+function renderSocial(){
+  $('#social').innerHTML=SOCIAL.map((p,i)=>`
+    <div class="pair rvscope" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)">
+      <b style="flex:1;min-width:9em;color:#bfe3ff">${i+1}. ${esc(p[0])}</b>
+      <button class="mini rv" data-act="rv">👁 揭曉</button>
+      <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span>
+    </div>`).join('');
+}
+
+/* ================= 活動三：認識新同事 ================= */
+const COL=[
+ {who:'老師（例子）',name:'江清風',job:'課程導師',ex:true},
+ {who:'同學 1',name:'徐明章',job:'京港酒店旅遊部接待員'},
+ {who:'同學 2',name:'王曉欣',job:'佳佳電子有限公司業務推廣助理'},
+ {who:'同學 3',name:'黎楚橋',job:'美麗華餐廳服務員'},
+ {who:'同學 4',name:'許家敏',job:'永安百貨公司售貨員'},
+ {who:'同學 5',name:'黃浩洋',job:'有線電訊公司技工'},
+ {who:'同學 6',name:'李芳莉',job:'大通公關公司秘書'}
+];
+function renderColleagues(){
+  $('#colleagues').innerHTML=COL.map(c=>{
+    if(c.ex){
+      return `<div class="crow qcard" style="border-left:5px solid var(--teal)">
+        <div class="qhead"><span class="qnum">例</span><span class="qtext">${esc(c.who)}</span></div>
+        <p><b>姓名：</b>${esc(c.name)}　<b>職業：</b>${esc(c.job)}</p></div>`;
+    }
+    return `<div class="crow qcard">
+      <div class="qhead"><span class="qnum">👤</span><span class="qtext">${esc(c.who)}</span></div>
+      <p><b>姓名：</b><span class="bk rvscope" data-ans="${esc(c.name)}"><input class="bi" autocomplete="off" spellcheck="false" placeholder="姓名"><button class="mini" data-act="ck">✓</button><button class="mini rv" data-act="rv">👁</button><span class="ansbox"><span>${esc(c.name)}</span></span><span class="fb"></span></span></p>
+      <p><b>職業：</b><span class="bk rvscope" data-ans="${esc(c.job)}"><input class="bi" style="width:12em" autocomplete="off" spellcheck="false" placeholder="職業"><button class="mini" data-act="ck">✓</button><button class="mini rv" data-act="rv">👁</button><span class="ansbox"><span>${esc(c.job)}</span></span><span class="fb"></span></span></p>
+    </div>`;
+  }).join('');
+}
+
+/* ================= 活動四：四種方法 + 範本句 ================= */
+const METHODS=[
+ ['1. 拆字法','把字拆開講，例：弓長張／立早章／四維羅／田心思'],
+ ['2. 配詞法','用詞語講，例：樹葉的葉／美麗的麗／歷史的史'],
+ ['3. 結構法','講字的結構，例：三橫王／雙立人徐／三日晶'],
+ ['4. 聯想法','聯想名人，例：孔子的孔；鄭成功的鄭']
+];
+function renderMethods(){$('#methods').innerHTML=METHODS.map(m=>`<div class="card" style="margin:8px 0"><b style="color:var(--gold)">${esc(m[0])}</b><div class="muted" style="margin-top:3px">${esc(m[1])}</div></div>`).join('')}
+function buildIntro(){
+  const n=$('#i-name').value.trim()||'＿＿',a=$('#i-a').value.trim()||'＿＿的＿＿',b=$('#i-b').value.trim()||'＿＿的＿＿',r=$('#i-role').value.trim()||'＿＿';
+  $('#intro-out').innerHTML=`<span>我叫 ${esc(n)}，${esc(a)}，${esc(b)}，我是 ${esc(r)}，很高興認識您。</span>`;
+}
+
+/* ================= 活動五練習一：部門填空 ================= */
+const DEPTFILL=[
+ '我在一家電腦公司工作，我們公司主要的業務是銷售電腦及提供與電腦有關的服務。我們公司有很多部門，包括',
+ {a:'工程',lab:'(a)'},'部、電腦部、',
+ {a:'維修',lab:'(b)'},'部、零件部和',
+ {a:'品質管理',lab:'(c)'},'部。和大部分具',
+ {a:'規模',lab:'(d)'},'的公司一樣，我們還有行政部、',
+ {a:'會計',lab:'(e)'},'部、',
+ {a:'採購',lab:'(f)'},'部和總務部。今年我們公司還新成立了',
+ {a:'培訓',lab:'(g)'},'部，負責培訓員工。'
+];
+function renderDeptFill(){
+  $('#deptfill').innerHTML=DEPTFILL.map(x=>typeof x==='string'?esc(x):`<span class="bk rvscope" data-ans="${esc(x.a)}"><span class="lab">${esc(x.lab)}</span><input class="bi" style="width:5.4em" autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓</button><button class="mini rv" data-act="rv">👁</button><span class="ansbox"><span>${esc(x.a)}</span></span><span class="fb"></span></span>`).join('');
+}
+
+/* ================= 活動五練習二：部門↔職責 配對 ================= */
+const DEPTS=[['人力資源部','E'],['採購部','A'],['總務部','D'],['營業部','B'],['公關部','H'],['會計部','C'],['生產部','I'],['資訊科技部','G'],['維修部','F']];
+const DUTIES={A:'採購公司各種物資',B:'銷售產品',C:'處理賬目',D:'處理公司雜務',E:'招聘員工',F:'提供修理及安裝服務',G:'管理電腦系統',H:'宣傳和推廣',I:'製造產品'};
+let mSel=null, mDone={};
+function dutyOrder(){ // 固定「打亂」次序，令答案唔會順序對上
+  const ks=Object.keys(DUTIES); const order=[]; for(let i=0;i<ks.length;i++){order.push(ks[(i*4+2)%ks.length])}
+  // 去重保序
+  const seen={},out=[]; order.concat(ks).forEach(k=>{if(!seen[k]){seen[k]=1;out.push(k)}}); return out;
+}
+function renderMatch(){
+  const used={}; Object.values(mDone).forEach(v=>used[v]=1);
+  $('#depCol').innerHTML=DEPTS.map((d,i)=>{
+    const done=mDone[i]!=null;
+    return `<div class="mrow">
+      <button class="mitem${done?' done':''}${mSel===i?' sel':''}" data-dep="${i}">${i+1}. ${esc(d[0])}${done?' → '+esc(DUTIES[mDone[i]]):''}</button>
+      <button class="mini rv" data-act="rvdep" data-dep="${i}" title="揭曉">👁</button>
+    </div>`;
+  }).join('');
+  $('#dutyCol').innerHTML=dutyOrder().map(k=>`<button class="mitem${used[k]?' used':''}" data-duty="${k}">${k}. ${esc(DUTIES[k])}</button>`).join('');
+}
+function mClickDep(i){ if(mDone[i]!=null)return; mSel=(mSel===i?null:i); renderMatch(); }
+function mClickDuty(k){
+  if(Object.values(mDone).includes(k)){ toast('呢項職責已經配對咗'); return; }
+  if(mSel==null){ toast('先撳左邊一個部門'); return; }
+  const correct=DEPTS[mSel][1]===k;
+  if(correct){ mDone[mSel]=k; $('#matchFb').textContent='✓ 配對正確！'; $('#matchFb').className='fb ok'; mSel=null; renderMatch(); if(Object.keys(mDone).length===9){$('#matchFb').textContent='✓ 九組全部配對正確！'; setDone(6); toast('九組全對，好嘢！');} }
+  else { const b=$$('#dutyCol .mitem').find(x=>x.dataset.duty===k); if(b){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),600)} mSel=null; $('#matchFb').textContent='✗ 唔啱，再試一次。'; $('#matchFb').className='fb no'; renderMatch(); }
+}
+function mReveal(i){ if(mDone[i]!=null)return; mDone[i]=DEPTS[i][1]; mSel=null; $('#matchFb').textContent='👁 已揭曉一組。'; $('#matchFb').className='fb warn'; renderMatch(); }
+
+/* ================= 活動五練習三：重點詞語 ================= */
+const KW=[['您好','nín hǎo'],['預約','yù yuē'],['確認','què rèn'],['請問','qǐng wèn'],['稍等','shāo děng'],['貴姓','guì xìng'],['準備','zhǔn bèi'],['見面','jiàn miàn'],['不用謝','bú yòng xiè']];
+function renderKW(){
+  $('#keywords').innerHTML=KW.map(k=>`<div class="kw rvscope"><span class="w">${esc(k[0])}</span>
+    <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(k[1])}</span><button class="speakbt" data-speak="${esc(k[0])}">🔊</button></span></div></div>`).join('');
+}
+
+/* ================= 延伸一：姓氏 ================= */
+const SN1=[['毛','máo','茅','máo'],['姜','jiāng','江','jiāng'],['嚴','yán','顏','yán'],['魏','wèi','衛','wèi']];
+const SN2=[['李','lǐ','黎','lí'],['王','wáng','黃','huáng','汪','wāng'],['周','zhōu','鄒','zōu'],['張','zhāng','江','jiāng','蔣','jiǎng'],['盧','lú','陸','lù'],['吳','wú','武','wǔ','胡','hú'],['許','xǔ','徐','xú'],['秦','qín','錢','qián'],['石','shí','史','shǐ'],['韋','wéi','魏','wèi'],['劉','liú','柳','liǔ'],['陳','chén','程','chéng'],['鄭','zhèng','曾','zēng']];
+const SN3=[['區','qū　地區','oū　區瑞強'],['華','huá　中華','huà　華國鋒'],['仇','chóu　仇人','qiú　仇英'],['單','dān　簡單','shàn　單立文'],['查','chá　調查','zhā　查良鏞（金庸）'],['任','rèn　任務','rén　任賢齊']];
+function snCard(ch,py){return `<span style="display:inline-block;margin:3px 9px 3px 0"><b style="font-size:1.35em">${esc(ch)}</b> <span class="muted">${esc(py)}</span>`}
+function renderSN(){
+  $('#sn1').innerHTML=SN1.map(g=>`<div class="snc rvscope">
+    <div class="w">${esc(g[0])}　${esc(g[2])}</div>
+    <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(g[1])}　${esc(g[3])}</span><button class="speakbt" data-speak="${esc(g[0])}、${esc(g[2])}">🔊</button></span></div></div>`).join('');
+  $('#sn2').innerHTML=SN2.map(g=>{
+    let chars=[],pys=[];
+    for(let i=0;i<g.length;i+=2){chars.push(g[i]);pys.push(g[i+1])}
+    return `<div class="snc rvscope" style="margin:8px 0">
+      <div class="w">${chars.map(esc).join('　')}</div>
+      <div><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+      <span class="ansbox"><span class="py">${pys.map(esc).join('　')}</span><button class="speakbt" data-speak="${chars.join('、')}">🔊</button></span></div></div>`;
+  }).join('');
+  $('#sn3').innerHTML=SN3.map(g=>`<div class="snc rvscope" style="margin:8px 0">
+    <div class="w">${esc(g[0])}</div>
+    <div><button class="mini rv" data-act="rv">👁 揭曉讀音</button>
+    <span class="ansbox" style="display:block"><span class="py">姓氏讀音：${esc(g[2])}　｜　一般讀音：${esc(g[1])}</span><button class="speakbt" data-speak="${esc(g[2].split('　')[0])}">🔊</button></span></div></div>`).join('');
+}
+
+/* ================= 延伸二：計分板 ================= */
+let TEAMS=['第一組','第二組'];
+function renderTeams(){
+  $('#teams').innerHTML=TEAMS.map((t,i)=>`<div class="team">
+    <span class="tname">${esc(t)}</span>
+    <button class="sbtn" data-tm="-" data-i="${i}">−</button>
+    <span class="tpt" data-pt="${i}">0</span>
+    <button class="sbtn" data-tm="+" data-i="${i}">＋</button>
+  </div>`).join('');
+}
+function setTeam(i,d){const el=$$('#teams .tpt').find(x=>x.dataset.pt==String(i));if(el){el.textContent=Math.max(0,(parseInt(el.textContent||'0',10)||0)+d)}}
+
+/* ================= 自我評估 ================= */
+const ASSESS=['用普通話介紹自己','說出常見工作職位','掌握初次見面的基本社交用語'];
+const AOPTS=['能','部分','否'];
+let aState={};
+function renderAssess(){
+  $('#assess').innerHTML=ASSESS.map((q,i)=>`<div class="arow">
+    <div class="aq">${i+1}. ${esc(q)}</div>
+    <div class="aopts">${AOPTS.map(o=>`<button class="aopt${aState[i]===o?' sel':''}" data-aq="${i}" data-av="${o}">${o}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 事件（委派） ================= */
+document.addEventListener('click',function(e){
+  const _dbk=e.target.closest&&e.target.closest('#deptfill .bk'); if(_dbk)_dbk.classList.add('touched');
+  const gt=e.target.closest('[data-goto]');
+  if(gt){ show(gt.dataset.goto); return; }
+  const fin=e.target.closest('[data-fin]');
+  if(fin){ setDone(Number(fin.dataset.fin)); toast('✅ 已記錄完成，進度更新咗！'); show('map'); return; }
+  const sp=e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const t=e.target.closest('[data-act]');
+  if(t){
+    const act=t.dataset.act;
+    if(act==='rv'){ const s=t.closest('.rvscope'); if(s){const b=s.querySelector('.ansbox'); if(b)b.classList.add('on');} return; }
+    if(act==='rv-rd'){
+      const rd=t.closest('.rd');
+      rd.querySelectorAll('.opt').forEach(o=>{ if(o.dataset.v===RIDDLES[+rd.dataset.i].a)o.classList.add('ok'); o.disabled=true; });
+      rd.querySelector('.ansbox').classList.add('on');
+      const fb=rd.querySelector('.fb'); fb.textContent='答案：'+RIDDLES[+rd.dataset.i].a; fb.className='fb ok';
+      return;
+    }
+    if(act==='opt'){
+      const rd=t.closest('.rd'); const i=+rd.dataset.i; const v=t.dataset.v; const fb=rd.querySelector('.fb');
+      if(v===RIDDLES[i].a){
+        rd.querySelectorAll('.opt').forEach(o=>{o.disabled=true; if(o.dataset.v===RIDDLES[i].a)o.classList.add('ok')});
+        rd.querySelector('.ansbox').classList.add('on'); fb.textContent='✓ 答對了！'; fb.className='fb ok';
+      } else {
+        if(!rd.dataset.tried){ rd.dataset.tried='1'; t.classList.add('no'); t.disabled=true; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+        else { t.classList.add('no'); t.disabled=true; rd.querySelector('.ansbox').classList.add('on'); rd.querySelectorAll('.opt').forEach(o=>{o.disabled=true; if(o.dataset.v===RIDDLES[i].a)o.classList.add('ok')}); fb.textContent='答案：'+RIDDLES[i].a; fb.className='fb warn'; }
+      }
+      return;
+    }
+    if(act==='ck'){
+      const bk=t.closest('.bk'); const inp=bk.querySelector('input'); const ans=bk.dataset.ans; const fb=bk.querySelector('.fb');
+      if(normEq(inp.value,ans)){ fb.textContent='✓ 答對了'; fb.className='fb ok'; bk.classList.add('ok'); inp.disabled=true; t.disabled=true; }
+      else if(!bk.dataset.tried){ bk.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+      else { fb.textContent='答案：'+ans; fb.className='fb warn'; bk.querySelector('.ansbox').classList.add('on'); }
+      return;
+    }
+    if(act==='rvdep'){ mReveal(+t.dataset.dep); return; }
+  }
+  const dep=e.target.closest('[data-dep]'); if(dep && dep.classList.contains('mitem')){ mClickDep(+dep.dataset.dep); return; }
+  const dty=e.target.closest('[data-duty]'); if(dty){ mClickDuty(dty.dataset.duty); return; }
+  const tm=e.target.closest('[data-tm]'); if(tm){ setTeam(+tm.dataset.i, tm.dataset.tm==='+'?1:-1); return; }
+  const ta=e.target.closest('[data-teamadd]'); if(ta){ TEAMS.push('第'+ (TEAMS.length+1) +'組'); renderTeams(); return; }
+  const tr=e.target.closest('[data-teamreset]'); if(tr){ TEAMS=['第一組','第二組']; renderTeams(); return; }
+  const aq=e.target.closest('[data-aq]'); if(aq){ aState[aq.dataset.aq]=aq.dataset.av; lsSet('vch1101spk1_self',JSON.stringify(aState)); renderAssess(); return; }
+});
+
+/* ================= 一鍵全開（老師用） ================= */
+/* 活動五練習一：一撳空格先顯示核對／揭曉掣 */
+document.addEventListener('focusin',e=>{const bk=e.target&&e.target.closest&&e.target.closest('#deptfill .bk'); if(bk)bk.classList.add('touched')});
+document.addEventListener('input',e=>{const bk=e.target&&e.target.closest&&e.target.closest('#deptfill .bk'); if(bk)bk.classList.add('touched')});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('bi')){
+    const bk=e.target.closest('.bk'); const mini=bk.querySelector('[data-act="ck"]'); if(mini)mini.click();
+  }
+});
+
+/* ================= 初始化 ================= */
+function init(){
+  renderTiles(); renderRiddles(); renderDlg2(); renderSocial(); renderColleagues();
+  renderMethods(); renderDeptFill(); renderMatch(); renderKW(); renderSN();
+  renderTeams(); renderAssess(); renderProgress(); buildIntro();
+  const s0=lsGet('vch1101spk1_self'); if(s0){try{aState=JSON.parse(s0)}catch(x){}}
+  renderAssess();
+}
+init();
+
+/* ================= 自動自測（?selftest） ================= */
+function runSelfTest(){
+  const out=[]; const errs=[];
+  try{
+    clearDone();
+    // 1) 地圖 9 個項目
+    out.push('map_tiles='+$$('#tiles .tile').length);
+    // 2) 每個活動可進入
+    let entered=0; MAP.forEach(m=>{ show(m.id); if($('#'+m.id).classList.contains('on'))entered++; });
+    out.push('entered='+entered+'/'+MAP.length);
+    // 3) 答案可揭（撳所有 rv 掣）
+    const rv=$$('[data-act="rv"]'); let rvn=0;
+    rv.forEach(b=>{ try{b.click(); rvn++;}catch(x){errs.push('rv '+x)} });
+    const on=$$('.ansbox.on').length;
+    out.push('reveal_btns='+rvn+'|ansbox_on='+on);
+    // 4) 字謎揭曉
+    const rr=$$('[data-act="rv-rd"]'); rr.forEach(b=>{try{b.click()}catch(x){errs.push('rd '+x)}});
+    out.push('riddle_reveal='+rr.length);
+    // 5) 配對揭曉（逐個重新查詢，避免 DOM 重繪後 stale）
+    for(let i=0;i<9;i++){ try{mReveal(i)}catch(x){errs.push('dep '+x)} }
+    out.push('match_done='+Object.keys(mDone).length);
+    // 6) 進度計數
+    for(let i=1;i<=9;i++) setDone(i);
+    out.push('progress_done='+doneCount()+'|ptxt='+$('#ptxt').textContent);
+    // 7) 橫向溢出
+    const de=document.documentElement;
+    out.push('overflow='+(de.scrollWidth-de.clientWidth)+'|sw='+de.scrollWidth+'|cw='+de.clientWidth);
+    out.push('errors='+(window.__errs?window.__errs.length:0)+(window.__errs&&window.__errs.length?('::'+window.__errs.join(';')):''));
+    clearDone();
+  }catch(e){ errs.push('FATAL '+e.message+'\n'+e.stack); }
+  const line='SELFTEST|'+out.join('|')+(errs.length?('|EXC='+errs.join(';')):'');
+  const pre=$('#selftest'); if(pre)pre.textContent=line;
+  try{document.title='OK '+line}catch(e){}
+  return line;
+}
+if(location.search.indexOf('selftest')>=0){ setTimeout(runSelfTest,60); }
+window.__selftest=runSelfTest;
+</script>
+</body>
+</html>
