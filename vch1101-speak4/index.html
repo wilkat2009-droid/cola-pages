@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1720">
+<link rel="icon" href="data:,">
+<title>課次四 採購物料｜普通話對話與事務文書｜VCH1101</title>
+<style>
+:root{
+  --bg:#0f1720;--pan:#141f2c;--pan2:#101a25;--line:#24384a;
+  --ink:#eaf2f8;--muted:#9db1c2;--or:#ec7d3a;--teal:#14b8a6;
+  --gold:#ffd08a;--ok:#4ade80;--no:#fb7185;--blue:#59b6e8;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang TC","PingFang HK",sans-serif;
+  font-size:18px;line-height:1.62;overflow-x:hidden;
+}
+img,video,audio{max-width:100%}
+h1{font-size:clamp(27px,7vw,44px);line-height:1.2;margin:0;letter-spacing:.5px}
+h2{font-size:clamp(21px,5vw,30px);line-height:1.25;margin:0}
+h3{font-size:clamp(18px,4.4vw,22px);margin:0;overflow-wrap:anywhere}
+p{margin:8px 0;overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:.92em}
+.big{font-size:1.18em;font-weight:800}
+button{font-family:inherit}
+
+/* ---------- 頂欄 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:rgba(15,23,32,.97);
+  border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;
+  padding:9px 12px;flex-wrap:wrap;
+}
+.brandbtn{background:none;border:0;color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.prog{display:flex;align-items:center;gap:8px;flex:1;min-width:150px}
+.pbar{height:11px;background:#26374a;border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.ptxt{color:var(--gold);font-weight:900;font-size:14px;white-space:nowrap}
+.finbtn{background:var(--or);color:#1a1004;border:0;font-weight:900;border-radius:99px;padding:9px 15px;font-size:14px;cursor:pointer;white-space:nowrap}
+
+/* ---------- 畫面 ---------- */
+main{max-width:1000px;margin:0 auto;padding:16px 13px 60px;width:100%}
+.screen{display:none;animation:rise .28s ease}
+.screen.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin:12px 0;min-width:0}
+.card.soft-teal{background:#10261f;border-color:#1d5a4a}
+.card.soft-blue{background:#102230;border-color:#24526f}
+.card.soft-gold{background:#241f10;border-color:#5c4a1c}
+.eyebrow{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.14em;margin-bottom:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;border-radius:12px;
+  padding:13px 20px;font-size:17px;background:var(--or);color:#1a1004;transition:.13s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.btn.teal{background:var(--teal);color:#04201c}
+.btn.done{background:var(--ok);color:#052a15}
+.mini{border:1px solid #38566e;background:#16283a;color:#cfe6f5;border-radius:9px;
+  padding:6px 11px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini:hover{background:#1f3448}
+.mini.rv{border-color:#7a5a1e;color:var(--gold)}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:center;padding:16px 4px}
+.cover .em{font-size:clamp(46px,15vw,84px);line-height:1}
+.outcomes{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px;text-align:left}
+.outcome{background:var(--pan);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:clamp(16px,4.4vw,20px);font-weight:700}
+.outcome:nth-child(2){border-left-color:var(--or)}
+.outcome:nth-child(3){border-left-color:var(--gold)}
+.outcome:nth-child(4){border-left-color:var(--blue)}
+
+/* ---------- 地圖 ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{position:relative;text-align:left;background:var(--pan);border:1px solid var(--line);
+  border-radius:15px;padding:13px 13px 13px;cursor:pointer;color:var(--ink);transition:.13s;min-width:0}
+.tile:hover{border-color:var(--or)}
+.tile .tn{display:inline-block;background:var(--teal);color:#04201c;font-weight:900;font-size:12px;border-radius:8px;padding:3px 9px;margin-bottom:7px}
+.tile .tem{font-size:24px}
+.tile .tt{font-weight:800;font-size:clamp(15px,3.8vw,18px);line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+.tile .ts{color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5;overflow-wrap:anywhere}
+.tile .tick{position:absolute;top:11px;right:12px;font-size:20px;font-weight:900;color:var(--ok)}
+.tile.done{border-color:var(--ok);background:#12251b}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 通用題目 ---------- */
+.qcard{background:var(--pan);border:1px solid var(--line);border-radius:15px;padding:14px;margin:11px 0;min-width:0}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+.qnum{flex:0 0 auto;width:32px;height:32px;border-radius:9px;background:var(--or);color:#1a1004;font-weight:900;display:grid;place-items:center;font-size:16px}
+.qtext{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.55;flex:1;min-width:0;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+.opts.three{grid-template-columns:1fr 1fr 1fr}
+.opt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:11px;padding:12px;
+  font-size:clamp(16px,4.4vw,20px);font-weight:800;cursor:pointer;overflow-wrap:anywhere}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{background:#123a24;border-color:var(--ok);color:#bff5d3}
+.opt.no{background:#3a1420;border-color:var(--no);color:#ffc9d4;opacity:.85}
+.fb{margin-top:7px;font-weight:800;font-size:15px;overflow-wrap:anywhere}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--no)} .fb.warn{color:var(--gold)}
+
+/* ---------- 揭曉盒 ---------- */
+.ansbox{display:none;align-items:center;gap:7px;flex-wrap:wrap;background:#152a1e;border:1px solid #2f7a52;
+  border-radius:10px;padding:7px 11px;margin-top:7px;color:#bff5d3;font-weight:800;font-size:clamp(16px,4.3vw,20px);overflow-wrap:anywhere}
+.ansbox.on{display:inline-flex}
+.ansbox .py{color:var(--gold);font-weight:700;font-size:.9em}
+.speakbt{background:#0e2130;border:1px solid #2c5068;color:#bfe3ff;border-radius:8px;padding:4px 9px;font-size:14px;cursor:pointer;font-weight:800}
+
+/* ---------- 填空 ---------- */
+.bk{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin:2px 3px;vertical-align:middle;max-width:100%}
+.bk input{width:6em;max-width:60vw;background:transparent;border:0;border-bottom:2px solid var(--gold);color:#fff;
+  border-radius:0;padding:2px 3px;font-size:16px;font-family:inherit;text-align:center}
+.bk input:focus{outline:none;border-bottom-color:var(--blue)}
+.bk.ok input{border-bottom-color:var(--ok);color:#bff5d3}
+.bk .fb{display:inline-block;margin:0 0 0 3px;font-size:.82em;white-space:nowrap}
+.lab{color:var(--gold);font-weight:900}
+
+/* ---------- 對話 ---------- */
+.dlg{display:flex;flex-direction:column;gap:9px}
+.bub{background:var(--pan2);border:1px solid var(--line);border-radius:13px;padding:11px 13px;min-width:0;overflow-wrap:anywhere}
+.bub .sp{display:block;font-weight:900;color:var(--blue);font-size:14px;margin-bottom:3px}
+.bub.b .sp{color:var(--or)}
+.line{line-height:2.15}
+
+/* ---------- 粵普對照 ---------- */
+.pair{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.pair .kk{flex:1;min-width:8em;color:#bfe3ff;font-weight:800;overflow-wrap:anywhere}
+
+/* ---------- 量／單位 row ---------- */
+.eq{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:5px 0;border-bottom:1px dashed #22384a;font-size:clamp(15px,4vw,18px);min-width:0;overflow-wrap:anywhere}
+.eq .rhs{color:var(--muted)}
+.subh{color:var(--gold);font-weight:800;margin:9px 0 3px;font-size:15px}
+.cat{color:var(--blue);font-weight:900;margin:12px 0 2px;font-size:clamp(16px,4.4vw,19px)}
+
+/* ---------- ruby 拼音 ---------- */
+.ruby{display:inline-block;text-align:center;margin:0 1px;vertical-align:top}
+.ruby .py{display:block;font-size:.6em;color:var(--gold);line-height:1.15}
+.ruby .ch{display:block;font-size:1.08em;line-height:1.3}
+.rvwrap{display:none}
+.rvwrap.on{display:block;margin-top:8px;background:#0f2318;border:1px solid #2f7a52;border-radius:10px;padding:9px 11px;overflow-wrap:anywhere}
+.tw{line-height:1.85;font-size:clamp(17px,4.6vw,21px);overflow-wrap:anywhere}
+
+/* ---------- 詳情 ---------- */
+.details{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:10px 0}
+.details summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.details p{margin:9px 0 0}
+
+/* ---------- 清單 ---------- */
+.listrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line)}
+.listrow .nm{flex:1;min-width:4.5em;font-weight:800;overflow-wrap:anywhere}
+.listrow .qt{color:var(--gold);font-weight:900;white-space:nowrap}
+.qa{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:9px 0;overflow-wrap:anywhere}
+
+/* ---------- 資料卡 ---------- */
+.dc{background:var(--pan2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:9px 0;overflow-wrap:anywhere}
+.dc .l{display:flex;gap:8px;padding:3px 0;flex-wrap:wrap}
+.dc .k{color:var(--gold);font-weight:800;min-width:5.5em}
+.dc .v{flex:1;min-width:0;overflow-wrap:anywhere}
+
+/* ---------- 自我評估 / 互評 ---------- */
+.assess{display:flex;flex-direction:column;gap:10px}
+.arow{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.arow .aq{font-weight:800;font-size:clamp(16px,4.4vw,20px);margin-bottom:7px}
+.aopts{display:flex;gap:8px;flex-wrap:wrap}
+.aopt{border:1px solid #35536b;background:#16283a;color:var(--ink);border-radius:99px;padding:9px 18px;font-weight:800;font-size:16px;cursor:pointer}
+.aopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+.rateopt.sel{background:var(--teal);color:#04201c;border-color:var(--teal)}
+
+/* ---------- 出口卡 ---------- */
+.exit-in{width:100%;background:#0c1a24;border:1px solid #35536b;color:#fff;border-radius:10px;
+  padding:12px;font-size:17px;font-family:inherit;margin-top:6px;min-width:0}
+textarea.exit-in{min-height:3.4em;resize:vertical}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);z-index:60;
+  background:var(--pan);border:1px solid var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;
+  font-weight:800;opacity:0;transition:.25s;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){
+  body{font-size:17px}
+  .bk input{width:5.4em;font-size:15px}
+  .eq .rhs{font-size:.95em}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brandbtn" onclick="show('cover')">🏠 採購物料</button>
+  <button class="brandbtn" onclick="show('map')">🗺 活動地圖</button>
+  <div class="prog"><div class="pbar"><i id="pbar"></i></div><span class="ptxt" id="ptxt">進度 0/8</span></div>
+  <button class="finbtn" onclick="show('exit')">🏁 課堂收結</button>
+</header>
+
+<main id="main">
+
+<!-- ============ 封面 ============ -->
+<section class="screen on" id="cover">
+  <div class="cover">
+    <div class="em">🧰</div>
+    <div class="eyebrow" style="margin-top:10px">VCH1101 職業中文・普通話對話（GCCH103A(P)）</div>
+    <h1>課次四　採購物料</h1>
+    <p class="big" style="color:var(--gold)">兩小時・服務／設計與科技</p>
+    <p class="muted">完成本課後，你能用普通話——</p>
+  </div>
+  <div class="outcomes">
+    <div class="outcome">1️⃣ 說出常見行業用品名稱</div>
+    <div class="outcome">2️⃣ 查詢物品價格與報價</div>
+    <div class="outcome">3️⃣ 採購物料</div>
+  </div>
+  <div class="navrow">
+    <button class="btn" onclick="show('map')">🗺 開始・去活動地圖 ▶</button>
+    <button class="btn ghost" onclick="show('exit')">🏁 直接去課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動地圖 ============ -->
+<section class="screen" id="map">
+  <div class="eyebrow">🗺 活動地圖</div>
+  <h2>今日有 7 個活動 ＋ 1 個延伸學習 ＋ 自我評估</h2>
+  <p class="muted">可以跳住玩。玩完就撳「✅ 完成本節」，右上角進度會自動記錄（重新整理都唔會消失）。</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('self')">📋 自我評估</button>
+    <button class="btn" onclick="show('exit')">🏁 課堂收結</button>
+  </div>
+</section>
+
+<!-- ============ 活動一 ============ -->
+<section class="screen" id="s1">
+  <div class="eyebrow">🧰 活動一</div>
+  <h2>常見工具</h2>
+  <p class="muted">睇住提示，用普通話講出工具名稱，填落空格。答錯有第二次機會；唔肯定就撳「👁 揭曉」，答案會連拼音一齊出。</p>
+  <div class="card">
+    <h3>說出以下工具嘅名稱</h3>
+    <div id="tools" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="tools">👁 揭曉全部</button>
+    </div>
+  </div>
+  <details class="details">
+    <summary>💡 多學一點點</summary>
+    <p>「筆記本電腦」內地又叫「筆電」；「行動電源」又叫「充電寶」；「膠帶」喺香港叫「膠紙」。同一個物件，唔同地方講法可能唔同。</p>
+  </details>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="1">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動二 ============ -->
+<section class="screen" id="s2">
+  <div class="eyebrow">🏷️ 活動二</div>
+  <h2>購物用語</h2>
+  <p class="muted">原本係「掃一掃玩遊戲」，喺呢頁直接做：睇提示，填上相應嘅購物用語。答錯有第二次機會；唔識就撳「👁 揭曉」。</p>
+  <div class="card">
+    <h3>填上購物用語</h3>
+    <div id="shop" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="shop">👁 揭曉全部</button>
+      <button class="mini" data-speak="五折優惠，買二送一，刷卡，付現金，會員卡，收據，禮券，零錢。">🔊 讀一次用語</button>
+    </div>
+  </div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="2">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動三 ============ -->
+<section class="screen" id="s3">
+  <div class="eyebrow">🗣️ 活動三</div>
+  <h2>粵普對譯</h2>
+  <p class="muted">把以下句子改寫成符合普通話規範嘅句子。先自己講一次，再撳「👁 揭曉普通話」核對，然後大聲讀出嚟。</p>
+  <div class="card">
+    <h3>句子對譯（8 句）</h3>
+    <div id="sent3" style="margin-top:8px"></div>
+  </div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="3">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動四 ============ -->
+<section class="screen" id="s4">
+  <div class="eyebrow">🖥️ 活動四</div>
+  <h2>常見電腦辦公用品</h2>
+  <p class="muted">睇住提示，用普通話講出以下電腦辦公用品，填落空格。答案連拼音一齊揭曉。</p>
+  <div class="card">
+    <h3>說出以下電腦辦公用品嘅名稱</h3>
+    <div id="pc" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="pc">👁 揭曉全部</button>
+    </div>
+  </div>
+  <details class="details">
+    <summary>💡 提示卡（拼音）</summary>
+    <p>優盤 yōu pán｜光盤 guāng pán｜光盤驅動器 guāng pán qū dòng qì｜鍵盤 jiàn pán｜顯示器 xiǎn shì qì｜硬盤 yìng pán</p>
+    <p>鼠標 shǔ biāo｜打印機 dǎ yìn jī｜觸控板 chù kòng bǎn｜路由器 lù yóu qì｜音箱 yīn xiāng｜主機 zhǔ jī</p>
+  </details>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="4">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動五 ============ -->
+<section class="screen" id="s5">
+  <div class="eyebrow">💰 活動五</div>
+  <h2>詢價與報價</h2>
+  <p class="muted">先睇資料卡，說出常見辦公用品嘅名稱，然後完成對話練習同理解題。</p>
+
+  <div class="card">
+    <h3>資料卡・說出辦公用品名稱</h3>
+    <div id="office" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="office">👁 揭曉全部</button>
+    </div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>對話練習・填上缺漏</h3>
+    <p class="muted">參考課本對話，把空格填好，再撳「✓ 核對」或「👁 揭曉」。</p>
+    <div class="qa" style="margin-top:8px">
+      <div class="dlg">
+        <div class="bub"><span class="sp">顧客</span>您好，我們公司想訂購一些辦公用品。</div>
+        <div class="bub b"><span class="sp">店員</span>您好，請問您想訂購什麼辦公用品？</div>
+        <div class="bub" id="pricefill"><span class="sp">顧客</span>我想訂購 <span id="pf"></span> 個文件夾，請問要 <span id="pf2"></span>？</div>
+        <div class="bub b"><span class="sp">店員</span>文件夾的價格是每個 <span id="pf3"></span> 元，購買 <span id="pf4"></span> 個以上有 <span id="pf5"></span> 優惠。</div>
+      </div>
+    </div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="pricefill">👁 揭曉全部</button>
+      <button class="mini" data-speak="我想訂購二十個文件夾，請問要多少錢？文件夾的價格是每個二十八元，購買十個以上有八五折優惠。">🔊 讀對話</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>理解題・揀出正確答案</h3>
+    <div id="q5" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="5">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動六 ============ -->
+<section class="screen" id="s6">
+  <div class="eyebrow">📞 活動六</div>
+  <h2>採購物料</h2>
+  <p class="muted">呢段係安建五金公司趙怡同立信汽車工程公司柳方嘅電話對話（原本要「掃一掃聽一聽」，喺呢頁用內建朗讀掣代替）。先聽／讀對話，再圈出難讀詞語，最後做理解題。</p>
+
+  <div class="card">
+    <h3>對話・採購物料</h3>
+    <div class="dlg" style="margin-top:8px" id="dialog6"></div>
+  </div>
+
+  <div class="card">
+    <h3>難讀詞語</h3>
+    <div id="kw6" style="margin-top:9px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>理解題・聽一聽對話</h3>
+    <div id="q6" style="margin-top:8px"></div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="6">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 活動七 ============ -->
+<section class="screen" id="s7">
+  <div class="eyebrow">📝 活動七</div>
+  <h2>對話練習</h2>
+  <p class="muted">情景：惠澤廣告創意公司嘅採購員楊濤，打電話向威爾森電子產品有限公司嘅銷售員郭文訂購辦公用品。2 人一組，分別扮演角色甲、乙。</p>
+
+  <div class="card">
+    <h3>資料卡（一）採購清單・角色甲</h3>
+    <div class="dc" id="cardA" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>資料卡（二）報價單・角色乙</h3>
+    <div class="dc" id="cardB" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>整理訂單・填上缺漏</h3>
+    <p class="muted">根據採購清單，把楊濤要訂購嘅內容填落空格。</p>
+    <div class="line" id="fill7" style="margin-top:9px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini rv" data-act="rvw" data-target="fill7">👁 揭曉全部</button>
+      <button class="mini" data-speak="我想訂購十五台卓安牌高清掃描儀，三十對佳寶牌無線藍牙音箱和二十台悅百牌彩色打印機。">🔊 讀範文（普通話）</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>報價理解題</h3>
+    <div id="q7" style="margin-top:8px"></div>
+  </div>
+
+  <details class="details">
+    <summary>📖 參考示範對話</summary>
+    <div class="dlg" id="demo7" style="margin-top:9px"></div>
+  </details>
+
+  <div class="card">
+    <h3>📝 對話練習互評表</h3>
+    <p class="muted">組員姓名：<input class="exit-in" style="display:inline-block;width:auto;min-width:9em;margin-top:4px" id="peer" placeholder="＿＿＿"></p>
+    <p class="muted">完成對話練習後，請根據組員嘅表現，為佢／她揀一個評級。</p>
+    <div id="rate" style="margin-top:9px"></div>
+    <div style="margin-top:10px">
+      <p class="muted" style="margin:0 0 4px">為幫助組員下次進步，畀佢／她一啲建議：</p>
+      <textarea class="exit-in" id="advice" placeholder="＿＿＿"></textarea>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="7">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 延伸學習 ============ -->
+<section class="screen" id="s8">
+  <div class="eyebrow">🛍️ 延伸學習</div>
+  <h2>購物天堂</h2>
+  <p class="muted">原本係「睇視頻做練習」，喺呢頁直接做：粵普對譯、辨音識調、多學一點點同讀一讀。</p>
+
+  <div class="card">
+    <h3>練習一・粵普對譯（6 組）</h3>
+    <p class="muted">先自己講，再撳「👁 揭曉普通話」核對。</p>
+    <div id="pair8" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-blue">
+    <h3>練習二・辨音識調（8 題）</h3>
+    <p class="muted">「模」字有兩個讀音：mó 同 mú。揀出下面詞語嘅正確讀音，答錯有第二次機會。</p>
+    <div id="mou8" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h3>練習三・多學一點點</h3>
+    <p class="muted">你知道以下詞語嘅意思嗎？填一填，再撳「👁 揭曉」。</p>
+    <div id="extra8" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card soft-gold">
+    <h3>練習四・讀一讀（注意輕聲）</h3>
+    <p class="muted">讀出以下詞語，注意輕聲嘅用法。</p>
+    <div id="light8" style="margin-top:8px"></div>
+    <div class="rowbtns" style="margin-top:10px">
+      <button class="mini" data-speak="好的，做得好，逛逛，月亮，漂亮。">🔊 讀一次（普通話）</button>
+    </div>
+  </div>
+
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn done" data-fin="8">✅ 完成本節</button>
+  </div>
+</section>
+
+<!-- ============ 自我評估 ============ -->
+<section class="screen" id="self">
+  <div class="eyebrow">📋 自我評估</div>
+  <h2>完成本課之後，你能做到嗎？</h2>
+  <p class="muted">每一行揀一個。冇標準答案，老實就得。</p>
+  <div class="assess" id="assess" style="margin-top:11px"></div>
+  <div class="navrow">
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+    <button class="btn" onclick="show('exit')">🏁 去課堂收結 ▶</button>
+  </div>
+</section>
+
+<!-- ============ 出口卡 ============ -->
+<section class="screen" id="exit">
+  <div class="eyebrow">🏁 課堂收結</div>
+  <h2>出口卡</h2>
+  <p class="muted">打字唔得就口頭講、或寫喺紙條交畀老師。答完先播下課歌。</p>
+  <div class="card">
+    <h3>今日學到嘅 3 樣</h3>
+    <input class="exit-in" id="e1" placeholder="1.">
+    <input class="exit-in" id="e2" placeholder="2.">
+    <input class="exit-in" id="e3" placeholder="3.">
+  </div>
+  <div class="card">
+    <h3>最想再練嘅一樣</h3>
+    <input class="exit-in" id="e4" placeholder="我想再練……">
+  </div>
+  <div class="navrow">
+    <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone" target="_blank" rel="noopener">🎵 去下課歌區 ▶</a>
+    <a class="btn ghost" href="https://wilkat2009-droid.github.io/cola-pages/vch1101-closesp4/" target="_blank" rel="noopener">🧩 採購物料・課堂小結練習</a>
+    <button class="btn ghost" onclick="show('map')">🗺 回活動地圖</button>
+  </div>
+  <p class="muted" style="margin-top:14px">下課歌區（總台）：
+    <span class="muted" style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101/#outro-zone</span>
+  </p>
+  <p class="muted">課次四課堂收結練習：
+    <span class="muted" style="word-break:break-all">https://wilkat2009-droid.github.io/cola-pages/vch1101-closesp4/</span>
+  </p>
+</section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<pre id="selftest" style="display:none"></pre>
+
+<script>
+"use strict";
+window.__errs=[];
+window.addEventListener('error',function(e){try{window.__errs.push(String(e.message||e))}catch(x){}});
+window.addEventListener('unhandledrejection',function(e){try{window.__errs.push('rej:'+String(e.reason))}catch(x){}});
+/* ================= 基礎工具 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let toastTimer=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1900)}
+function speak(txt){try{if(!('speechSynthesis'in window)){toast('此裝置暫無語音，請跟老師讀');return}const u=new SpeechSynthesisUtterance(String(txt).replace(/[＿_]/g,'…'));u.lang='zh-CN';u.rate=.82;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}catch(e){toast('此裝置暫無語音，請跟老師讀')}}
+/* 正規化：去空白／標點，方便比對填空 */
+function norm(s){return String(s).replace(/[\s\u3000，。、！？!?,.／/「」『』（）()：:；;－—–~～$＄]/g,'').toLowerCase()}
+function normEq(a,b){return norm(a)===norm(b)&&norm(a)!==''}
+
+/* ================= 進度（localStorage） ================= */
+const TOTAL=8;
+const KEY=i=>'vch1101spk4_a'+i;
+const MEM={}; /* 記憶體後備：就算 localStorage 被封（隱私模式／file://）都唔會即場失效 */
+function lsGet(k){try{const v=localStorage.getItem(k);return v===null?(k in MEM?MEM[k]:null):v}catch(e){return k in MEM?MEM[k]:null}}
+function lsSet(k,v){MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){delete MEM[k];try{localStorage.removeItem(k)}catch(e){}}
+function isDone(i){return lsGet(KEY(i))==='1'}
+function setDone(i){lsSet(KEY(i),'1'); renderProgress(); renderTiles(); }
+function clearDone(){for(let i=1;i<=TOTAL;i++)lsDel(KEY(i)); renderProgress(); renderTiles();}
+function doneCount(){let n=0;for(let i=1;i<=TOTAL;i++)if(isDone(i))n++;return n}
+function renderProgress(){const n=doneCount();$('#ptxt').textContent='進度 '+n+'/'+TOTAL;$('#pbar').style.width=(n/TOTAL*100)+'%'}
+
+/* ================= 畫面切換 ================= */
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));try{window.scrollTo(0,0)}catch(e){} if(id==='map')renderTiles();}
+
+/* ================= 活動地圖 ================= */
+const MAP=[
+ {id:'s1',n:1,em:'🧰',t:'活動一・常見工具',s:'說出 8 種常見工具名稱＋拼音'},
+ {id:'s2',n:2,em:'🏷️',t:'活動二・購物用語',s:'8 個購物用語填空'},
+ {id:'s3',n:3,em:'🗣️',t:'活動三・粵普對譯',s:'8 句句子對譯'},
+ {id:'s4',n:4,em:'🖥️',t:'活動四・常見電腦辦公用品',s:'12 種電腦用品＋拼音'},
+ {id:'s5',n:5,em:'💰',t:'活動五・詢價與報價',s:'資料卡＋對話填空＋理解題'},
+ {id:'s6',n:6,em:'📞',t:'活動六・採購物料',s:'對話朗讀＋難讀詞語＋理解題'},
+ {id:'s7',n:7,em:'📝',t:'活動七・對話練習',s:'採購清單＋報價單＋互評表'},
+ {id:'s8',n:8,em:'🛍️',t:'延伸學習・購物天堂',s:'粵普對譯＋辨音識調＋多學一點點'},
+ {id:'self',n:'📋',em:'✅',t:'自我評估',s:'3 個學習成果自評',self:true}
+];
+function selfAllDone(){return [0,1,2].every(i=>aState[i])}
+function renderTiles(){
+  const el=$('#tiles'); if(!el) return;
+  el.innerHTML=MAP.map(m=>{
+    const d=m.self?selfAllDone():isDone(m.n);
+    return `<button class="tile${d?' done':''}" data-goto="${m.id}">
+      <span class="tn">${esc(m.n)}</span>
+      <div class="tem">${m.em}</div>
+      <div class="tt">${esc(m.t)}</div>
+      <div class="ts">${esc(m.s)}</div>
+      <span class="tick">${d?'✓':''}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ================= 共用小部件 ================= */
+function blankHTML(ans,extra){return `<span class="bk rvscope" data-ans="${esc(ans)}"><input class="bi" ${extra||''} autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(String(ans).split('|')[0])}</span></span><span class="fb"></span></span>`}
+/* 名稱題：揭曉時連拼音一齊出 */
+function fillName(ans,py,extra){return `<span class="bk rvscope" data-ans="${esc(ans)}"><input class="bi" ${extra||''} autocomplete="off" spellcheck="false" placeholder="＿＿"><button class="mini" data-act="ck">✓ 核對</button><button class="mini rv" data-act="rv">👁 揭曉</button><span class="ansbox"><span>${esc(String(ans).split('|')[0])} <span class="py">${esc(py||'')}</span></span><button class="speakbt" data-speak="${esc(String(ans).split('|')[0])}">🔊</button></span><span class="fb"></span></span>`}
+
+/* ================= MC 通用 ================= */
+const QZ={}; let __mc=0;
+function mcHTML(num,qtext,opts,correct,ex,three){
+  __mc++; const qid='mc'+__mc; QZ[qid]={a:correct,txt:ex||''};
+  const cls='opts'+((three||opts.length===3)?' three':'');
+  return `<div class="rd" data-q="${qid}" style="margin:11px 0">
+    <div class="qhead"><span class="qnum">${num}</span><span class="qtext">${esc(qtext)}</span></div>
+    <div class="${cls}">${opts.map(o=>`<button class="opt" data-act="opt" data-q="${qid}" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+    <div class="fb"></div>
+    <button class="mini rv" data-act="rvmc" data-q="${qid}">👁 揭曉</button>
+    <div class="ansbox"><span>答案：${esc(correct)}${ex?'（'+esc(ex)+'）':''}</span></div>
+  </div>`;
+}
+
+/* ================= 活動一：常見工具 ================= */
+const TOOLS=[
+ ['🧮','可以計算加減乘除嘅文具',['計算器'],'jì suàn qì'],
+ ['🖊️','用嚟寫字、有筆芯嘅原子筆',['圓珠筆'],'yuán zhū bǐ'],
+ ['💻','可以隨身攜帶嘅電腦',['筆記本電腦','筆電'],'bǐ jì běn diàn nǎo'],
+ ['🩹','用嚟黏貼紙張、物品嘅膠紙',['膠帶','膠紙'],'jiāo dài'],
+ ['✂️','用嚟剪紙、剪布嘅工具',['剪刀'],'jiǎn dāo'],
+ ['👗','店舖用嚟掛起服裝展示嘅架',['服裝展示架'],'fú zhuāng zhǎn shì jià'],
+ ['📱','可以影相、上網嘅手提電話',['智能手機','照相機'],'zhì néng shǒu jī'],
+ ['🔋','可以幫手機充電、隨身攜帶嘅電池',['行動電源','充電寶'],'xíng dòng diàn yuán']
+];
+function renderTools(){
+  $('#tools').innerHTML=TOOLS.map((t,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${t[0]} ${esc(t[1])}</b>
+    ${fillName(t[2].join('|'),t[3],'style="width:8em"')}
+  </div>`).join('');
+}
+
+/* ================= 活動二：購物用語 ================= */
+const SHOP=[
+ ['價錢減半，只收原價一半，呢種優惠叫咩？',['五折優惠','半價優惠'],'wǔ zhé yōu huì'],
+ ['買兩件，送一件，呢種推廣叫咩？',['買二送一'],'mǎi èr sòng yī'],
+ ['用銀行卡／信用卡結帳，叫做？',['刷卡'],'shuā kǎ'],
+ ['唔用卡，用紙幣、硬幣畀錢，叫做？',['付現金'],'fù xiàn jīn'],
+ ['百貨公司發嘅、有折扣同積分嘅身份卡叫咩？',['會員卡','貴賓卡'],'huì yuán kǎ'],
+ ['買完嘢，店員畀你嘅付款憑證叫咩？',['收據'],'shōu jù'],
+ ['商場送嘅、可以當現金用嘅券叫咩？',['禮券'],'lǐ quàn'],
+ ['一毫、五毫、一元嘅碎銀，叫做？',['零錢','硬幣'],'líng qián']
+];
+function renderShop(){
+  $('#shop').innerHTML=SHOP.map((s,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(s[0])}</b>
+    ${fillName(s[1].join('|'),s[2],'style="width:7em"')}
+  </div>`).join('');
+}
+
+/* ================= 活動三：粵普對譯 ================= */
+const SENT3=[
+ ['呢對安全鞋點賣？','這雙安全鞋怎麼賣？'],
+ ['深水埗有好多五金舖。','深水埗有很多五金店。'],
+ ['落訂時要俾五百蚊按金先。','訂貨時要先付五百元押金。'],
+ ['我唔鍾意呢款油壓鑽，有冇其他牌子嘅？','我不喜歡這款油壓鑽，有沒有其他牌子的？'],
+ ['唔該俾張單我，我要返公司claim錢。','請給我一張收據，我要回公司報銷。'],
+ ['宜家碌銀聯卡仲有5%嘅優惠。','現在刷銀聯卡還有百分之五的優惠／九五折優惠。'],
+ ['二百蚊貴得滯，有冇折頭啊？','兩百塊太貴了，有沒有折扣／可不可以打折？'],
+ ['唔該，可不可以幫手唱啲散紙？','勞駕／不好意思，可不可以幫我換點零錢？']
+];
+function renderSent3(){
+  $('#sent3').innerHTML=SENT3.map((p,i)=>`<div class="qa rvscope">
+    <div style="color:#bfe3ff;font-weight:800">${i+1}. ${esc(p[0])}</div>
+    <div style="margin-top:6px"><button class="mini rv" data-act="rv">👁 揭曉普通話</button>
+    <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span></div>
+  </div>`).join('');
+}
+
+/* ================= 活動四：電腦辦公用品 ================= */
+const PC=[
+ ['💾','插喺電腦 USB 位、用嚟儲存檔案嘅小型儲存裝置',['優盤'],'yōu pán'],
+ ['💿','圓形、用嚟儲存音樂或檔案嘅光碟',['光盤'],'guāng pán'],
+ ['📀','電腦入面用嚟讀光碟嘅裝置',['光盤驅動器'],'guāng pán qū dòng qì'],
+ ['⌨️','有好多按鍵、用嚟打字嘅輸入裝置',['鍵盤'],'jiàn pán'],
+ ['🖥️','電腦用嚟顯示畫面嘅螢幕',['顯示器'],'xiǎn shì qì'],
+ ['🗄️','電腦入面用嚟長期儲存資料嘅裝置',['硬盤'],'yìng pán'],
+ ['🖱️','用手移動、用嚟點擊嘅裝置',['鼠標'],'shǔ biāo'],
+ ['🖨️','用嚟將文件印喺紙上嘅裝置',['打印機'],'dǎ yìn jī'],
+ ['👆','手提電腦上用手指滑動、控制畫面指標嘅感應板',['觸控板'],'chù kòng bǎn'],
+ ['📶','用嚟連接 Wi-Fi、分配網絡嘅裝置',['路由器'],'lù yóu qì'],
+ ['🔊','用嚟播放聲音嘅喇叭裝置',['音箱'],'yīn xiāng'],
+ ['🖲️','電腦主體、安裝零件嘅箱',['主機'],'zhǔ jī']
+];
+function renderPC(){
+  $('#pc').innerHTML=PC.map((t,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${t[0]} ${esc(t[1])}</b>
+    ${fillName(t[2].join('|'),t[3],'style="width:8em"')}
+  </div>`).join('');
+}
+
+/* ================= 活動五：詢價與報價 ================= */
+const OFFICE=[
+ ['🗂️','用嚟夾住文件、方便保存嘅文具',['文件夾'],'wén jiàn jiā'],
+ ['📚','放喺枱上、用嚟把書立起嘅架',['書立'],'shū lì'],
+ ['🕳️','用嚟喺紙上打孔、方便裝訂嘅文具',['打孔器'],'dǎ kǒng qì']
+];
+function renderOffice(){
+  $('#office').innerHTML=OFFICE.map((t,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${t[0]} ${esc(t[1])}</b>
+    ${fillName(t[2].join('|'),t[3],'style="width:8em"')}
+  </div>`).join('');
+}
+function renderPriceFill(){
+  $('#pf').innerHTML=blankHTML('二十|20','style="width:4.5em"');
+  $('#pf2').innerHTML=blankHTML('多少錢|價格是多少','style="width:6.5em"');
+  $('#pf3').innerHTML=blankHTML('二十八|28','style="width:4.5em"');
+  $('#pf4').innerHTML=blankHTML('十|10','style="width:3.5em"');
+  $('#pf5').innerHTML=blankHTML('八五折|85折','style="width:4.5em"');
+}
+function renderQ5(){
+  $('#q5').innerHTML=
+    mcHTML(1,'一個文件夾多少錢？',['十八元','二十八元','八十五元','二十元'],'二十八元','對話：「文件夾的價格是每個二十八元」。')+
+    mcHTML(2,'購買多少個以上有八五折優惠？',['五個','八個','十個','二十個'],'十個','對話：「購買十個以上有八五折優惠」。');
+}
+
+/* ================= 活動六：採購物料 ================= */
+const DLG6=[
+ ['趙怡','早上好，安建五金公司，我姓趙，請問有什麼可以幫忙？'],
+ ['柳方','您好，我是立信汽車工程公司的職員柳方。我們公司想訂購一些工具。'],
+ ['趙怡','柳先生，請問您想訂購什麼工具？'],
+ ['柳方','我想訂購五台太保牌金屬切割機和二十罐光亮牌防鏽潤滑劑，請問價錢是多少？'],
+ ['趙怡','一台太保牌金屬切割機的價錢是兩千五百六十元，您要訂五台。一罐光亮牌防鏽潤滑劑要二百四十元，一共是二十罐。請問您要現在下訂單嗎？'],
+ ['柳方','好的，如果我現在訂貨的話，請問能在下週五送貨到我們公司嗎？'],
+ ['趙怡','沒問題，那我們就下週五下午三點前送到你們公司。請問你們公司的地址在哪裡？'],
+ ['柳方','那太好了，我們公司的地址是九龍灣偉業街三十號，我的電話是四一三六五零七二。'],
+ ['趙怡','我記一下，九龍灣偉業街三十號，好的，已幫您確認訂單，我們會準時送貨的。'],
+ ['柳方','謝謝您，再見。'],
+ ['趙怡','不客氣，再見。']
+];
+const KW6=[['切割','qiē gē'],['防鏽','fáng xiù'],['潤滑劑','rùn huá jì'],['罐','guàn'],['訂單','dìng dān']];
+function renderDlg6(){
+  $('#dialog6').innerHTML=DLG6.map((l,i)=>`<div class="bub ${(i%2)?'b':''}"><span class="sp">${esc(l[0])}</span>${esc(l[1])}
+    <div style="margin-top:6px"><button class="mini" data-speak="${esc(l[1])}">🔊 讀一次</button></div></div>`).join('');
+  $('#kw6').innerHTML=KW6.map(k=>`<div class="qa rvscope"><span style="font-weight:800;color:#bfe3ff">${esc(k[0])}</span>
+    <div style="margin-top:6px"><button class="mini rv" data-act="rv">👁 揭曉拼音</button>
+    <span class="ansbox"><span class="py">${esc(k[1])}</span><button class="speakbt" data-speak="${esc(k[0])}">🔊</button></span></div></div>`).join('');
+}
+function renderQ6(){
+  $('#q6').innerHTML=
+    mcHTML(1,'柳方想訂購多少台金屬切割機？',['兩台','二十台','五台','五十台'],'五台','柳方說：「我想訂購五台太保牌金屬切割機……」。')+
+    mcHTML(2,'一台太保牌金屬切割機要多少錢？',['兩千六百五十元','兩千五百六十元','兩千零六十元','兩千五百元'],'兩千五百六十元','趙怡報價：「兩千五百六十元」。')+
+    mcHTML(3,'一罐光亮牌防鏽潤滑劑要多少錢？',['四百二十元','二百元','二百四十元','二百零八元'],'二百四十元','趙怡報價：「二百四十元」。')+
+    mcHTML(4,'柳方一共訂購多少罐防鏽潤滑劑？',['五罐','十二罐','二百罐','二十罐'],'二十罐','趙怡說：「一共是二十罐」。')+
+    mcHTML(5,'柳方公司嘅地址在哪裡？',['九龍啟成街三號','九龍灣宏開道三十號','九龍灣偉業街三十號','九龍灣偉業街十三號'],'九龍灣偉業街三十號','柳方說：「我們公司的地址是九龍灣偉業街三十號」。')+
+    mcHTML(6,'趙怡答應幾時送貨？',['本週五下午三點前','下週三下午五點前','下週五上午三點前','下週五下午三點前'],'下週五下午三點前','趙怡說：「下週五下午三點前送到你們公司」。')+
+    mcHTML(7,'柳方嘅電話號碼是多少？',['四一三六五零二七','四一三六五零七二','四一三五零六七二','四一三六五七零二'],'四一三六五零七二','柳方說：「我的電話是四一三六五零七二」。');
+}
+
+/* ================= 活動七：對話練習 ================= */
+const CARDA=[['公司','惠澤廣告創意公司'],['地址','九龍啟成街3號'],['指定送貨時間','4月3日（星期二）14:00']];
+const ORDER=[['高清掃描儀','卓安','15台'],['無線藍牙音箱','佳寶','30對'],['彩色打印機','悅百','20台']];
+const QUOTE=[['高清掃描儀','佳惠','$2150/台'],['高清掃描儀','卓安','$2590/台'],
+ ['無線藍牙音箱','蘇來','$1968/對'],['無線藍牙音箱','佳寶','$1780/對'],
+ ['彩色打印機','悅百','$2988/台'],['彩色打印機','惠利','$3350/台']];
+const DEMO7=[
+ ['乙','早上好，威爾森電子產品有限公司，我姓郭，請問有甚麼可以幫忙？'],
+ ['甲','您好，我是惠澤廣告創意公司的採購員楊濤，我們公司想訂購一些辦公用品。'],
+ ['乙','楊先生，您好，請問您想訂購甚麼用品？'],
+ ['甲','我想訂購15台卓安牌高清掃描儀，30對佳寶牌無線藍牙音箱和20台悅百牌彩色打印機，請問價錢是多少？'],
+ ['乙','一台卓安牌高清掃描儀的價錢是2590元，您要訂15台。一對佳寶牌無線藍牙音箱要1780元，您要30對，一台悅百牌彩色打印機的價錢是2988元，一共是20台。'],
+ ['甲','好的，如果我現在訂貨的話，請問能在4月3日星期二下午2點送貨到我們公司嗎？'],
+ ['乙','沒問題，那我們就4月3日星期二下午2點送到你們公司。請問你們公司的地址在哪裡？'],
+ ['甲','我們公司的地址是九龍啟成街3號。'],
+ ['乙','我記一下，九龍啟成街3號，好的，我們會準時送貨的。'],
+ ['甲','謝謝您，再見。'],
+ ['乙','不客氣，歡迎隨時致電，再見。']
+];
+function renderCards7(){
+  $('#cardA').innerHTML=CARDA.map(r=>`<div class="l"><span class="k">${esc(r[0])}</span><span class="v">${esc(r[1])}</span></div>`).join('')+
+    `<div class="subh" style="margin-top:8px">採購清單</div>`+
+    `<div class="listrow" style="font-weight:900;color:var(--gold)"><span class="nm">產品名稱</span><span style="min-width:5em">品牌</span><span class="qt">數量</span></div>`+
+    ORDER.map(o=>`<div class="listrow"><span class="nm">${esc(o[0])}</span><span style="min-width:5em">${esc(o[1])}</span><span class="qt">${esc(o[2])}</span></div>`).join('');
+  $('#cardB').innerHTML=`<div class="l"><span class="k">公司</span><span class="v">威爾森電子產品有限公司</span></div>`+
+    `<div class="l"><span class="k">送貨時間</span><span class="v">星期一至星期六　10:00-18:00</span></div>`+
+    `<div class="subh" style="margin-top:8px">報價單</div>`+
+    `<div class="listrow" style="font-weight:900;color:var(--gold)"><span class="nm">產品名稱</span><span style="min-width:5em">品牌</span><span class="qt">價格</span></div>`+
+    QUOTE.map(o=>`<div class="listrow"><span class="nm">${esc(o[0])}</span><span style="min-width:5em">${esc(o[1])}</span><span class="qt">${esc(o[2])}</span></div>`).join('');
+  $('#demo7').innerHTML=DEMO7.map((l,i)=>`<div class="bub ${(i%2)?'b':''}"><span class="sp">${esc(l[0])}</span>${esc(l[1])}
+    <div style="margin-top:6px"><button class="mini" data-speak="${esc(l[1])}">🔊 讀一次</button></div></div>`).join('');
+  $('#fill7').innerHTML='我想訂購 '+blankHTML('15台|15 台|十五台','style="width:5.5em"')+' '+blankHTML('卓安','style="width:4.5em"')+' 牌高清掃描儀、'+blankHTML('30對|30 對|三十對','style="width:5.5em"')+' '+blankHTML('佳寶','style="width:4.5em"')+' 牌無線藍牙音箱同 '+blankHTML('20台|20 台|二十台','style="width:5.5em"')+' '+blankHTML('悅百','style="width:4.5em"')+' 牌彩色打印機。';
+}
+function renderQ7(){
+  $('#q7').innerHTML=
+    mcHTML(1,'卓安牌高清掃描儀每台多少錢？',['$2150','$2590','$2988','$1780'],'$2590','報價單：卓安牌高清掃描儀 $2590/台。')+
+    mcHTML(2,'佳寶牌無線藍牙音箱每對多少錢？',['$1968','$2988','$1780','$3350'],'$1780','報價單：佳寶牌無線藍牙音箱 $1780/對。')+
+    mcHTML(3,'悅百牌彩色打印機每台多少錢？',['$2150','$3350','$2988','$2590'],'$2988','報價單：悅百牌彩色打印機 $2988/台。');
+}
+const RATE=['整體表現：切合題目要求，完成任務','內容豐富，組織有條理','運用正確的詞彙，以完整句子對話','語音面貌'];
+const RATE_OPTS=[['A','A（優秀）'],['B','B（良好）'],['C','C（及格）'],['F','F（不及格）']];
+let rateState={};
+function renderRate(){
+  $('#rate').innerHTML=RATE.map((q,i)=>`<div class="arow">
+    <div class="aq">${esc(q)}</div>
+    <div class="aopts">${RATE_OPTS.map(o=>`<button class="rateopt aopt${rateState[i]===o[0]?' sel':''}" data-rt="${i}" data-rv="${o[0]}">${esc(o[1])}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 延伸學習：購物天堂 ================= */
+const PAIR8=[
+ ['行街','逛街'],['超抵','很划算／合算'],['攞飛','拿號'],
+ ['度身','量（尺寸）'],['高踭鞋','高跟鞋'],['過橋拆板','過河拆橋']
+];
+function renderPair8(){
+  $('#pair8').innerHTML=PAIR8.map((p,i)=>`<div class="pair rvscope">
+    <b class="kk">${i+1}. ${esc(p[0])}</b>
+    <button class="mini rv" data-act="rv">👁 揭曉</button>
+    <span class="ansbox"><span>${esc(p[1])}</span><button class="speakbt" data-speak="${esc(p[1].split('／')[0])}">🔊</button></span>
+  </div>`).join('');
+}
+const MOU=[
+ ['模範','mó',['mú','mó']],
+ ['模樣','mú',['mú','mó']],
+ ['模糊','mó',['mó','mú']],
+ ['模型','mó',['mú','mó']],
+ ['模子','mú',['mú','mó']],
+ ['模擬','mó',['mó','mú']],
+ ['模仿','mó',['mú','mó']],
+ ['模具','mú',['mú','mó']]
+];
+function renderMou(){
+  $('#mou8').innerHTML=MOU.map((m,i)=>{
+    const qid='mou'+(i+1); QZ[qid]={a:m[1],txt:'mó：模範、模糊、模型、模擬、模仿；mú：模樣、模子、模具。'};
+    return `<div class="rd" data-q="${qid}" style="margin:9px 0">
+      <div class="qhead"><span class="qnum">${i+1}</span><span class="qtext">${esc(m[0])}</span></div>
+      <div class="opts">${m[2].map(o=>`<button class="opt" data-act="opt" data-q="${qid}" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+      <div class="fb"></div>
+      <button class="mini rv" data-act="rvmc" data-q="${qid}">👁 揭曉</button>
+      <div class="ansbox"><span>答案：${esc(m[1])}（模：mó 或 mú，要睇詞語）</span></div>
+    </div>`;
+  }).join('');
+}
+const EXTRA8=[
+ ['貓膩',['隱秘或曖昧的事情','隱秘的事情','曖昧的事情']],
+ ['貓眼兒',['防盜眼']],
+ ['沒門兒',['不可能']],
+ ['湊合',['還可以']]
+];
+function renderExtra8(){
+  $('#extra8').innerHTML=EXTRA8.map((e,i)=>`<div class="pair">
+    <b class="kk">${i+1}. ${esc(e[0])}</b>
+    ${blankHTML(e[1].join('|'),'style="width:9em"')}
+  </div>`).join('');
+}
+const LIGHT8=[['好的','hǎo de'],['做得好','zuò de hǎo'],['逛逛','guàng guang'],['月亮','yuè liang'],['漂亮','piào liang']];
+function renderLight8(){
+  $('#light8').innerHTML=LIGHT8.map(w=>`<div class="pair">
+    <b class="kk">${esc(w[0])}</b>
+    <button class="mini" data-speak="${esc(w[0])}">🔊 聽聽</button>
+    <span class="muted">輕聲：${esc(w[1])}</span>
+  </div>`).join('');
+}
+
+/* ================= 自我評估 ================= */
+const ASSESS=['說出常見行業用品名稱','查詢物品價格與報價','進行物料採購'];
+const AOPTS=['能','部分','否'];
+let aState={};
+function renderAssess(){
+  $('#assess').innerHTML=ASSESS.map((q,i)=>`<div class="arow">
+    <div class="aq">${i+1}. ${esc(q)}</div>
+    <div class="aopts">${AOPTS.map(o=>`<button class="aopt${aState[i]===o?' sel':''}" data-aq="${i}" data-av="${o}">${o}</button>`).join('')}</div>
+  </div>`).join('');
+}
+
+/* ================= 事件（委派） ================= */
+document.addEventListener('click',function(e){
+  const gt=e.target.closest('[data-goto]');
+  if(gt){ show(gt.dataset.goto); return; }
+  const fin=e.target.closest('[data-fin]');
+  if(fin){ setDone(Number(fin.dataset.fin)); toast('✅ 已記錄完成，進度更新咗！'); show('map'); return; }
+  const sp=e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const t=e.target.closest('[data-act]');
+  if(t){
+    const act=t.dataset.act;
+    if(act==='rv'){ const s=t.closest('.rvscope'); if(s){const b=s.querySelector('.ansbox'); if(b)b.classList.add('on');} return; }
+    if(act==='rvw'){
+      const id=t.dataset.target; const w=id?document.getElementById(id):null;
+      if(w){
+        if(w.querySelector('.bk')||w.querySelector('.ansbox')){
+          w.querySelectorAll('.ansbox').forEach(b=>b.classList.add('on'));
+          t.textContent='🙈 已揭曉';
+        } else if(w.classList.contains('rvwrap')){
+          w.classList.toggle('on');
+          t.textContent=w.classList.contains('on')?'🙈 收起拼音':'👁 揭曉拼音';
+        }
+      }
+      return;
+    }
+    if(act==='rvmc'){
+      const rd=t.closest('.rd'); const o=QZ[rd.dataset.q];
+      rd.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok'); });
+      rd.querySelector('.ansbox').classList.add('on');
+      const fb=rd.querySelector('.fb'); fb.textContent='答案：'+o.a+(o.txt?('（'+o.txt+'）'):''); fb.className='fb ok';
+      return;
+    }
+    if(act==='opt'){
+      const rd=t.closest('.rd'); const q=rd.dataset.q; const v=t.dataset.v; const o=QZ[q]; const fb=rd.querySelector('.fb');
+      if(v===o.a){
+        rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')});
+        rd.querySelector('.ansbox').classList.add('on'); fb.textContent='✓ 答對了！'; fb.className='fb ok';
+      } else {
+        if(!rd.dataset.tried){ rd.dataset.tried='1'; t.classList.add('no'); t.disabled=true; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+        else { t.classList.add('no'); t.disabled=true; rd.querySelector('.ansbox').classList.add('on'); rd.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(x.dataset.v===o.a)x.classList.add('ok')}); fb.textContent='答案：'+o.a+(o.txt?('（'+o.txt+'）'):''); fb.className='fb warn'; }
+      }
+      return;
+    }
+    if(act==='ck'){
+      const bk=t.closest('.bk'); const inp=bk.querySelector('input'); const alts=(bk.dataset.ans||'').split('|'); const fb=bk.querySelector('.fb');
+      if(alts.some(a=>normEq(inp.value,a))){ fb.textContent='✓ 答對了'; fb.className='fb ok'; bk.classList.add('ok'); inp.disabled=true; t.disabled=true; }
+      else if(!bk.dataset.tried){ bk.dataset.tried='1'; fb.textContent='✗ 再試一次'; fb.className='fb no'; }
+      else { fb.textContent='答案：'+alts[0]; fb.className='fb warn'; bk.querySelector('.ansbox').classList.add('on'); }
+      return;
+    }
+  }
+  const aq=e.target.closest('[data-aq]'); if(aq){ aState[aq.dataset.aq]=aq.dataset.av; lsSet('vch1101spk4_self',JSON.stringify(aState)); renderAssess(); renderTiles(); return; }
+  const rt=e.target.closest('[data-rt]'); if(rt){ rateState[rt.dataset.rt]=rt.dataset.rv; lsSet('vch1101spk4_rate',JSON.stringify(rateState)); renderRate(); return; }
+});
+
+/* ================= 鍵盤：Enter 即核對 ================= */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.target && e.target.classList && e.target.classList.contains('bi')){
+    const bk=e.target.closest('.bk'); const mini=bk.querySelector('[data-act="ck"]'); if(mini)mini.click();
+  }
+});
+document.addEventListener('input',function(e){
+  if(e.target && e.target.id==='peer'){ lsSet('vch1101spk4_peer',e.target.value); }
+  if(e.target && e.target.id==='advice'){ lsSet('vch1101spk4_advice',e.target.value); }
+});
+
+/* ================= 初始化 ================= */
+function init(){
+  renderTools(); renderShop(); renderSent3(); renderPC();
+  renderOffice(); renderPriceFill(); renderQ5();
+  renderDlg6(); renderQ6();
+  renderCards7(); renderQ7(); renderRate();
+  renderPair8(); renderMou(); renderExtra8(); renderLight8();
+  renderTiles(); renderProgress();
+  const s0=lsGet('vch1101spk4_self'); if(s0){try{aState=JSON.parse(s0)||{}}catch(x){}}
+  const r0=lsGet('vch1101spk4_rate'); if(r0){try{rateState=JSON.parse(r0)||{}}catch(x){}}
+  renderAssess(); renderRate(); renderTiles();
+  const pe=lsGet('vch1101spk4_peer'); if(pe!=null&&pe!=='')$('#peer').value=pe;
+  const ad=lsGet('vch1101spk4_advice'); if(ad!=null&&ad!=='')$('#advice').value=ad;
+}
+init();
+
+/* ================= 自動自測（?selftest） ================= */
+function runSelfTest(){
+  const out=[]; const errs=[];
+  try{
+    clearDone();
+    // 1) 地圖項目（8 進度 + 自我評估 = 9）
+    out.push('map_tiles='+$$('#tiles .tile').length);
+    // 2) 每個活動可進入
+    let entered=0; MAP.forEach(m=>{ show(m.id); if($('#'+m.id).classList.contains('on'))entered++; });
+    out.push('entered='+entered+'/'+MAP.length);
+    // 3) 全部揭曉掣（rv / rvmc / rvw）逐個撳，確認冇例外
+    const rvbs=$$('[data-act^="rv"]'); let rvbN=0;
+    rvbs.forEach(b=>{ try{ b.click(); rvbN++; }catch(x){ errs.push('rv:'+x); } });
+    out.push('reveal_btns='+rvbN+'/'+rvbs.length);
+    // 4) 揭曉後 ansbox 有幾多開咗
+    out.push('ansbox_on='+$$('.ansbox.on').length);
+    // 5) 填空掣逐個撳，確認有反應（唔輸出，但要做）
+    const ck=$$('[data-act="ck"]'); ck.forEach(b=>{ try{ b.click(); }catch(x){ errs.push('ck:'+x); } });
+    // 6) 進度計數
+    for(let i=1;i<=TOTAL;i++) setDone(i);
+    out.push('progress_done='+doneCount());
+    out.push('ptxt='+$('#ptxt').textContent);
+    // 7) 自我評估全選 → 地圖 self tile 打鈎（唔輸出，但要做）
+    [0,1,2].forEach(i=>{aState[i]='能'}); renderAssess(); renderTiles();
+    // 8) 橫向溢出
+    const de=document.documentElement;
+    out.push('overflow='+(de.scrollWidth-de.clientWidth));
+    out.push('sw='+de.scrollWidth);
+    out.push('cw='+de.clientWidth);
+    out.push('errors='+(window.__errs?window.__errs.length:0)+(window.__errs&&window.__errs.length?('::'+window.__errs.join(';')):''));
+    clearDone(); aState={}; renderAssess(); renderTiles();
+  }catch(e){ errs.push('FATAL '+e.message+'\n'+e.stack); }
+  const line='SELFTEST|'+out.join('|')+(errs.length?('|EXC='+errs.join(';')):'');
+  const pre=$('#selftest'); if(pre)pre.textContent=line;
+  try{document.title='OK '+line}catch(e){}
+  return line;
+}
+if(location.search.indexOf('selftest')>=0){ setTimeout(runSelfTest,80); }
+window.__selftest=runSelfTest;
+</script>
+</body>
+</html>
