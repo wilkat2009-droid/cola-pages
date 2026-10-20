@@ -7,11 +7,21 @@
 body{font-family:"PingFang TC","PingFang HK","Microsoft JhengHei",sans-serif;background:#0b1420;color:#e9f1f8;min-height:100vh}
 a{color:#8fd7d2}
 .top{position:sticky;top:0;z-index:20;background:#0b1420ee;backdrop-filter:blur(8px);border-bottom:1px solid #1e3145;padding:10px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.top h1{font-size:17px;color:#ffd08a;letter-spacing:1px;flex:1;min-width:160px}
-.top .lnk{font-size:13px;color:#bfe3ff;text-decoration:none;border:1px solid #2c5068;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.top h1{font-size:17px;color:#ffd08a;letter-spacing:1px;flex:1;min-width:140px}
+.top .lnk{font-size:13px;color:#bfe3ff;text-decoration:none;border:1px solid #2c5068;padding:6px 12px;border-radius:999px;white-space:nowrap;background:none;cursor:pointer}
 .wrap{max-width:1080px;margin:0 auto;padding:14px 14px 60px}
+#app{display:none}
+/* 鎖 */
+#lock{max-width:420px;margin:8vh auto 0;background:linear-gradient(160deg,#10202f,#0d1a26);border:1px solid #24405a;border-radius:22px;padding:28px 24px;text-align:center}
+#lock .ico{font-size:46px}
+#lock h2{font-size:20px;color:#ffd08a;margin:10px 0 6px}
+#lock p{font-size:13.5px;color:#8aa6bd;line-height:1.8}
+#pw{width:100%;margin-top:16px;background:#0a1622;border:1px solid #2c5068;color:#e9f1f8;border-radius:12px;padding:14px 16px;font-size:17px;letter-spacing:2px;text-align:center}
+#pw:focus{outline:2px solid #14b8a6}
+#go{width:100%;margin-top:12px;background:#14b8a6;color:#04211d;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:800;cursor:pointer}
+#err{color:#ff8f7a;font-size:13.5px;margin-top:10px;min-height:18px}
 .classes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.cls{background:#132234;border:1px solid #24405a;color:#cfe3f3;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;line-height:1.35}
+.cls{background:#132234;border:1px solid #24405a;color:#cfe3f3;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;line-height:1.35;text-align:left}
 .cls small{display:block;font-weight:400;font-size:11.5px;color:#8aa6bd;margin-top:2px}
 .cls.on{background:#14b8a6;border-color:#14b8a6;color:#04211d}
 .cls.on small{color:#05403a}
@@ -47,11 +57,21 @@ th,td{padding:9px 8px;border-bottom:1px solid #1d3345;text-align:left}
 th{color:#8aa6bd;font-size:12.5px;font-weight:700;position:sticky;top:58px;background:#0b1420}
 td.n{color:#7ff0d9;font-variant-numeric:tabular-nums}
 .hint{font-size:13px;color:#7f9ab0;line-height:1.8;margin-top:12px;text-align:center}
-@media print{.top,.classes,.tabs,.row,.btn,.search,.hint{display:none!important}body{background:#fff;color:#000}
+@media print{.top,.classes,.tabs,.row,.btn,.search,.hint,#lock{display:none!important}body{background:#fff;color:#000}
  .g{border-color:#999;background:#fff}.g h3{color:#000}.g li small{color:#555}table{font-size:12pt}th{background:#fff;color:#000}}
 </style></head><body>
-<div class="top"><h1>🧰 班級百寶箱</h1><a class="lnk" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/">← 回大連結</a></div>
-<div class="wrap">
+<div class="top"><h1>🧰 班級百寶箱</h1><a class="lnk" href="https://wilkat2009-droid.github.io/cola-pages/vch1101/">← 回大連結</a><button class="lnk" id="lockBtn" style="display:none">🔒 上鎖</button></div>
+
+<div id="lock">
+  <div class="ico">🔒</div>
+  <h2>請輸入密碼</h2>
+  <p>呢頁載有學生姓名，已加密。<br>打啱密碼就見得到名單、隨機點名同分組。</p>
+  <input id="pw" type="password" autocomplete="off" placeholder="密碼" autofocus>
+  <button id="go">解鎖</button>
+  <div id="err"></div>
+</div>
+
+<div class="wrap" id="app">
   <div class="classes" id="classes"></div>
   <div class="tabs">
     <button class="tab on" data-p="pick">🎯 隨機點名</button>
@@ -93,16 +113,27 @@ td.n{color:#7ff0d9;font-variant-numeric:tabular-nums}
     <table><thead><tr><th style="width:52px">#</th><th>中文名</th><th>英文名</th><th style="width:70px">班別</th></tr></thead><tbody id="rows"></tbody></table>
   </div>
 </div>
+
 <script>
-const CLASSES = [{"code":"FS113352","label":"FS113352 1B","when":"28/09 Mon 11:30-13:30","venue":"YCM-YCLC-604","students":[{"zh":"羅梓峰","en":"LO Tsz Fung","k":"S1:1B","tag":""},{"zh":"蔡少彬","en":"TSAI Siu Pan","k":"S1:1B","tag":""},{"zh":"彭子悠","en":"PANG Tsz Yau Phoebe","k":"S1:1B","tag":""},{"zh":"黃樂瑤","en":"WONG Lok Yiu","k":"S1:1B","tag":""},{"zh":"李嘉雯","en":"LI Ka Man","k":"S1:1B","tag":""},{"zh":"戴日浠","en":"TAI Yat Hei","k":"S1:1B","tag":""},{"zh":"周希璇","en":"CHOW Hei Shuen Sophie","k":"S1:1B","tag":""},{"zh":"陳美詩","en":"CHAN Mei Sze","k":"S1:1B","tag":""},{"zh":"梁煒煒","en":"LIANG Weiwei","k":"S1:1B","tag":""},{"zh":"鍾思漫","en":"CHUNG Sze Mau","k":"S1:1B","tag":""},{"zh":"張盈","en":"CHEUNG Ying","k":"S1:1B","tag":""},{"zh":"吳文希","en":"WU Man Hei","k":"S1:1B","tag":""},{"zh":"梁善澄","en":"LEUNG Sin Ching","k":"S1:1B","tag":""},{"zh":"曾景揚","en":"TSANG King Yeung","k":"S1:1B","tag":""},{"zh":"潘文暢","en":"POON Man Cheong","k":"S1:1B","tag":""},{"zh":"麥晴","en":"MAK Ching","k":"S1:1B","tag":""},{"zh":"黃嘉銘","en":"WONG Ka Ming","k":"S1:1B","tag":""},{"zh":"鄭嘉詠","en":"CHENG Ka Wing","k":"S1:1B","tag":""},{"zh":"余嘉欣","en":"YU Jia Yin","k":"S1:1B","tag":""},{"zh":"楊嘉豪","en":"YEUNG Ka Ho","k":"S1:1B","tag":""},{"zh":"阮嘉誠","en":"NGUYEN Ka Shing","k":"S1:1B","tag":""},{"zh":"冼雨陽","en":"SIN Yu Yeung Jennifer","k":"S1:1B","tag":""},{"zh":"施文錶","en":"SZE Man Piu","k":"S1:1B","tag":""},{"zh":"周子澄","en":"CHOW Tsz Ching","k":"S1:1B","tag":""},{"zh":"黃驛佳","en":"WONG Yik Kai","k":"S1:1B","tag":""},{"zh":"葉采怡","en":"YIP Tsoi Yi","k":"S1:1B","tag":""},{"zh":"吳心蕾","en":"NG Sum Lui","k":"S1:1B","tag":""},{"zh":"黎靜欣","en":"LAI Ching Yan","k":"S1:1B","tag":""},{"zh":"陳旭兒","en":"CHEN Yuk Yi","k":"S1:1B","tag":""}]},{"code":"FS113376-1C","label":"FS113376 1C","when":"29/09 Tue 09:30-11:30","venue":"YCM-YCLC-604","students":[{"zh":"邵逸朗","en":"SHIU Yat Long","k":"S1:1C","tag":""},{"zh":"屈善衡","en":"WAT Sin Hang","k":"S1:1C","tag":""},{"zh":"廖悅媞","en":"LIU Yuet Tai","k":"S1:1C","tag":""},{"zh":"鄧煦橋","en":"DENG Ue Kiu","k":"S1:1C","tag":""},{"zh":"文裕淇","en":"MAN Yu Ki","k":"S1:1C","tag":""},{"zh":"倪進","en":"NGAI Chun Ivan","k":"S1:1C","tag":""},{"zh":"吳詠彤","en":"NG Wing Tong","k":"S1:1C","tag":""},{"zh":"羅弘譽","en":"LUO Hongyu","k":"S1:1C","tag":""},{"zh":"施俊言","en":"SZE Chun Yin","k":"S1:1C","tag":""},{"zh":"譚晉軒","en":"TAM Chun Hin","k":"S1:1C","tag":""},{"zh":"蘇澤浩","en":"SO Chak Ho","k":"S1:1C","tag":""},{"zh":"王明思","en":"WANG Ming Sze, Wisdom","k":"S1:1C","tag":""},{"zh":"柯鈞鵬","en":"O Kwan Pang","k":"S1:1C","tag":""},{"zh":"李卓蕎","en":"LEE Cheuk Kiu","k":"S1:1C","tag":""},{"zh":"彭康澤","en":"PENG Hong Chak","k":"S1:1C","tag":""},{"zh":"吳梓淇","en":"NG Tsz Ki","k":"S1:1C","tag":""},{"zh":"覃俊睎","en":"CHUM Chun Hei","k":"S1:1C","tag":""},{"zh":"胡嘉怡","en":"HU Ka Yi","k":"S1:1C","tag":""},{"zh":"陳曉珮","en":"CHAN Hiu Pui","k":"S1:1C","tag":""},{"zh":"陳至榮","en":"CHAN Chi Wing","k":"S1:1C","tag":""},{"zh":"張曉揚","en":"CHEUNG Hiu Yeung","k":"S1:1C","tag":""},{"zh":"顏羽翹","en":"NGAN Hermosa Y","k":"S1:1C","tag":""},{"zh":"吳智杰","en":"NG Chi Kit","k":"S1:1C","tag":""},{"zh":"張家晴","en":"CHEUNG Ka Ching","k":"S1:1C","tag":""},{"zh":"彭晞帆","en":"PANG Hei Fan","k":"S1:1C","tag":""},{"zh":"陳彥晴","en":"CHAN Yin Ching","k":"S1:1C","tag":""},{"zh":"黃浚諺","en":"WONG Tsun Yin","k":"S1:1C","tag":""},{"zh":"黎穎琳","en":"LAI Wing Lam","k":"S1:1C","tag":""},{"zh":"羅昊天","en":"LAW Ho Tin","k":"S1:1C","tag":""}]},{"code":"FS113383-1A","label":"FS113383 1A","when":"28/09 Mon 09:30-11:30","venue":"YCM-YCLC-604","students":[{"zh":"郭潁嘉","en":"KWOK Wing Ka","k":"S1:3A","tag":""},{"zh":"文承冑","en":"MAN Shing Chau","k":"S1:2B","tag":"RS"},{"zh":"陳知言","en":"CHAN Chi Yin","k":"S1:1A","tag":""},{"zh":"吳怡霖","en":"WU Yi Lam","k":"S1:1A","tag":""},{"zh":"林旭昇","en":"LAM Yuk Sing","k":"S1:1A","tag":""},{"zh":"梁月盈","en":"LEUNG Yuet Ying","k":"S1:1A","tag":""},{"zh":"梁月彦","en":"LEUNG Yuet Yin","k":"S1:1A","tag":""},{"zh":"潘頌澄","en":"PUN Chung Ching","k":"S1:1A","tag":""},{"zh":"張文朗","en":"CHEUNG Man Long","k":"S1:1A","tag":""},{"zh":"李芊悅","en":"LI Chin Yuet Yvie","k":"S1:1A","tag":""},{"zh":"尹曉桐","en":"WAN Hiu Tung","k":"S1:1A","tag":""},{"zh":"石依玲","en":"SHIH Yee Ling Eling","k":"S1:1A","tag":""},{"zh":"歐陽少美","en":"AU YEUNG Siu Mei","k":"S1:1A","tag":""},{"zh":"張煒侖","en":"CHEUNG Wai Lun","k":"S1:1A","tag":""},{"zh":"歐陽澄","en":"AU Yeung Ching","k":"S1:1A","tag":""},{"zh":"伍賀東","en":"NG Ho Tung","k":"S1:1A","tag":""},{"zh":"康子妍","en":"KONG Tsz Yin","k":"S1:1A","tag":""},{"zh":"林卓錡","en":"LAM Anna","k":"S1:1A","tag":""},{"zh":"方加穎","en":"FONG Adriana Gabriel","k":"S1:1A","tag":""},{"zh":"温家樂","en":"PUNMONGKOL Makarakom","k":"S1:1A","tag":""},{"zh":"禤樂妍","en":"HUEN Lok Yin","k":"S1:1A","tag":""},{"zh":"黎昊臻","en":"LAI Ho Chun","k":"S1:1A","tag":""},{"zh":"唐偕達","en":"TANG Xieda","k":"S1:1A","tag":""},{"zh":"張梓穎","en":"CHEUNG Tsz Wing, Vife","k":"S1:1A","tag":""},{"zh":"楊麒霖","en":"YEUNG Ki Lam","k":"S1:1A","tag":""},{"zh":"黃文琪","en":"WONG Man Ki","k":"S1:1A","tag":""},{"zh":"蕭雅娜","en":"SHIU Nga Na, Anna","k":"S1:1A","tag":""},{"zh":"勞美欣","en":"LO Rheanne Mangali","k":"S1:1A","tag":""},{"zh":"程浩霖","en":"CHING Ho Lam","k":"S1:1A","tag":""},{"zh":"王佳寅","en":"WANG Kai Yan","k":"S1:1A","tag":""}]},{"code":"FS113393-1A","label":"FS113393 1A","when":"29/09 Tue 14:30-16:30","venue":"YCM-YCLC-602","students":[{"zh":"王衍晴","en":"WONG Hin Ching Avis","k":"S1:1A","tag":""},{"zh":"廖鋭韜","en":"LIU Yui To","k":"S1:1A","tag":""},{"zh":"蕭尉娜","en":"SHIU Wai Na","k":"S1:1A","tag":""},{"zh":"施宛其","en":"SHIH Uen Ki","k":"S1:1A","tag":""},{"zh":"譚穎琳","en":"TAM Wing Lam","k":"S1:1A","tag":""},{"zh":"賴婷玉","en":"LAI Ting Yuk","k":"S1:1A","tag":""},{"zh":"丁博森","en":"DING Poksum","k":"S1:1A","tag":""},{"zh":"陳杏穎","en":"CHEN Hang Wing","k":"S1:1A","tag":""},{"zh":"林卓謙","en":"LAM Cheuk Him","k":"S1:1A","tag":""},{"zh":"何柏嶢","en":"HO Pak Yiu","k":"S1:1A","tag":""},{"zh":"蔡芷慧","en":"TSOI Tsz Wai","k":"S1:1A","tag":""},{"zh":"李慧盈","en":"LI Wai Ying","k":"S1:1A","tag":""},{"zh":"岑詠晴","en":"SHUM Wing Ching","k":"S1:1A","tag":""},{"zh":"區穎圓","en":"AU Wing Yuen","k":"S1:1A","tag":""},{"zh":"何偉韜","en":"HO Wai Tao","k":"S1:1A","tag":""},{"zh":"何尉詩","en":"HO Wai Sze","k":"S1:1A","tag":""},{"zh":"阮思捷","en":"YUEN Sze Chit","k":"S1:1A","tag":""},{"zh":"伍朗軒","en":"NG Long Hin","k":"S1:1A","tag":""},{"zh":"石曉晉","en":"SHEK Xiao Jin Keith","k":"S1:1A","tag":""},{"zh":"曾曉恩","en":"JEN Hiu Yan","k":"S1:1A","tag":""},{"zh":"黎卓霖","en":"LAI Cheuk Lam Angie","k":"S1:1A","tag":""},{"zh":"袁澤鋒","en":"YUEN Chak Fung","k":"S1:1A","tag":""},{"zh":"傅惜蕊","en":"FU Sik Yui","k":"S1:1A","tag":""},{"zh":"王懿琳","en":"WONG Yee Lam Shereen","k":"S1:1A","tag":""},{"zh":"朱天龠","en":"CHU Tin Yeuk","k":"S1:1A","tag":""},{"zh":"陳慧妍","en":"CHAN Isabella","k":"S1:1A","tag":""},{"zh":"梁焯婷","en":"LEUNG Cheuk Ting","k":"S1:1A","tag":""},{"zh":"蔣玥","en":"TSEUNG Yuet","k":"S1:1A","tag":""},{"zh":"王希渝","en":"WONG Hei Yu","k":"S1:1A","tag":""},{"zh":"吳泓澤","en":"WU Wang Chak","k":"S1:1A","tag":""},{"zh":"徐思悅","en":"CHUI Sze Yuet","k":"S1:1A","tag":""},{"zh":"吳芯銣","en":"WU Sum Yu","k":"S1:1A","tag":""},{"zh":"許臻潁","en":"HUI Chun Wing","k":"S1:1A","tag":""}]},{"code":"FS113393-1C","label":"FS113393 1C","when":"29/09 Tue 11:30-13:30","venue":"YCM-YCLC-501","students":[{"zh":"陳雅渟","en":"CHAN Ksenja","k":"S1:1C","tag":""},{"zh":"劉采瑤","en":"LIU Choi Yiu","k":"S1:1C","tag":""},{"zh":"周珈儀","en":"CHOW Ka Yi","k":"S1:1C","tag":""},{"zh":"崔逸婷","en":"TSUI Yat Ting","k":"S1:1C","tag":""},{"zh":"曾華晉","en":"TSANG Wah Chun","k":"S1:1C","tag":""},{"zh":"葉坤豪","en":"IP Kwan Ho","k":"S1:1C","tag":""},{"zh":"張証皓","en":"CHEUNG Ching Ho","k":"S1:1C","tag":""},{"zh":"張梓晴","en":"CHEUNG Tsz Ching","k":"S1:1C","tag":""},{"zh":"李曜希","en":"LEE Yiu Hei","k":"S1:1C","tag":""},{"zh":"潘心羽","en":"POON Sum Yu","k":"S1:1C","tag":""},{"zh":"杜家榛","en":"TU Jia-Jhen","k":"S1:1C","tag":""},{"zh":"陳籽羽","en":"CHAN Tsz Yu","k":"S1:1C","tag":""},{"zh":"李雨峻","en":"LI Yu Chun","k":"S1:1C","tag":""},{"zh":"梁雅蕾","en":"LIANG Yalei","k":"S1:1C","tag":""},{"zh":"邢慇桐","en":"XING Yan Tung","k":"S1:1C","tag":""},{"zh":"陳浩森","en":"CHAN Ho Sum","k":"S1:1C","tag":""},{"zh":"曾嘉桸","en":"TSANG Ka Hei","k":"S1:1C","tag":""},{"zh":"陳佳熙","en":"CHAN Kai Hei","k":"S1:1C","tag":""},{"zh":"謝芷晴","en":"TSE Tsz Ching","k":"S1:1C","tag":""},{"zh":"池泳瑤","en":"CHI Lisa","k":"S1:1C","tag":""},{"zh":"王安盈","en":"WONG On Ying","k":"S1:1C","tag":""},{"zh":"鄭詠瞳","en":"CHENG Wing Tung","k":"S1:1C","tag":""},{"zh":"何俊潼","en":"HO Chun Tung","k":"S1:1C","tag":""},{"zh":"吳心蕾","en":"NG Sum Lui Jasmine","k":"S1:1C","tag":""},{"zh":"林淑雯","en":"LOWERY Elisabth","k":"S1:1C","tag":""},{"zh":"曾浩男","en":"TSANG Ho Nam","k":"S1:1C","tag":""},{"zh":"程衍雅","en":"CHING Hin Nga","k":"S1:1C","tag":""},{"zh":"梁凱晴","en":"LEUNG Hoi Ching","k":"S1:1C","tag":""},{"zh":"顏梓鍵","en":"YAN Zijian","k":"S1:1C","tag":""},{"zh":"陳雅夢","en":"CHAN Nga Mong","k":"S1:1C","tag":""},{"zh":"陳嘉誠","en":"TRAN Gai Thanh Royal","k":"S1:1C","tag":""},{"zh":"陳耀祈","en":"CHAN Yiu Kei","k":"S1:1C","tag":""}]}];
+const ENC = {"s": "haVGyv/RGWM92ChF9zSPeQ==", "i": "1q2/lYeCdeaUjPET", "c": "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", "n": 200000};
 const $ = s => document.querySelector(s);
+const b64 = s => { const b = atob(s); const u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; };
+let CLASSES = null, ci = 0, drawn = [], groupsCache = [];
+
+async function unlock(pw){
+  const te = new TextEncoder();
+  const base = await crypto.subtle.importKey('raw', te.encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(ENC.s), iterations:ENC.n, hash:'SHA-256'},
+      base, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(ENC.i)}, key, b64(ENC.c));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
 const store = {
-  get(k, d){ try{ const v = localStorage.getItem('colabox_'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
-  set(k, v){ try{ localStorage.setItem('colabox_'+k, JSON.stringify(v)); }catch(e){} }
+  get(k, d){ try{ const v = sessionStorage.getItem('colabox_'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ sessionStorage.setItem('colabox_'+k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ sessionStorage.removeItem('colabox_'+k); }catch(e){} }
 };
-let ci = store.get('ci', 0); if (ci < 0 || ci >= CLASSES.length) ci = 0;
-let drawn = store.get('drawn_' + ci, []);
-let groupsCache = [];
 
 function cur(){ return CLASSES[ci]; }
 
@@ -111,9 +142,8 @@ function renderClasses(){
     '<button class="cls' + (i === ci ? ' on' : '') + '" data-i="' + i + '">' + c.label +
     '<small>' + c.students.length + ' 人　' + c.when + '　' + c.venue + '</small></button>').join('');
   document.querySelectorAll('.cls').forEach(b => b.onclick = () => {
-    ci = +b.dataset.i; store.set('ci', ci);
-    drawn = store.get('drawn_' + ci, []);
-    groupsCache = []; renderClasses(); renderPick(); renderGroups(); renderList();
+    ci = +b.dataset.i; drawn = []; groupsCache = [];
+    renderClasses(); renderPick(); renderGroups(); renderList();
     $('#pickName').textContent = '準備好'; $('#pickEn').textContent = '撳下面個掣開始抽人';
   });
 }
@@ -134,13 +164,13 @@ function draw(){
   const used = new Set(drawn.map(s => s.zh + '|' + s.en));
   const pool = c.students.filter(s => !used.has(s.zh + '|' + s.en));
   const s = pool[Math.floor(Math.random() * pool.length)];
-  drawn.push(s); store.set('drawn_' + ci, drawn);
+  drawn.push(s);
   $('#pickName').textContent = s.zh;
   $('#pickEn').textContent = s.en + (s.tag === 'RS' ? '　·　重讀' : '');
   renderPick();
 }
 
-function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
 
 function makeGroups(){
   const size = Math.max(2, Math.min(6, +$('#gsize').value || 3));
@@ -166,27 +196,51 @@ function renderList(){
     (s.tag === 'RS' ? '<span class="rs">重讀</span>' : '') + '</td><td>' + s.en + '</td><td>' + s.k + '</td></tr>').join('');
 }
 
-document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
-  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
-  document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + t.dataset.p));
-  if (t.dataset.p === 'list') renderList();
-});
-$('#drawBtn').onclick = draw;
-$('#resetBtn').onclick = () => { drawn = []; store.set('drawn_' + ci, drawn); $('#pickName').textContent = '準備好'; $('#pickEn').textContent = '撳下面個掣開始抽人'; renderPick(); };
-$('#groupBtn').onclick = makeGroups;
-$('#againBtn').onclick = makeGroups;
-$('#copyBtn').onclick = () => {
-  if (!groupsCache.length) return;
-  const txt = groupsCache.map((g, i) => '第' + (i + 1) + '組：' + g.map(s => s.zh).join('、')).join('\n');
-  const done = () => { $('#copyBtn').textContent = '✅ 已複製'; setTimeout(() => $('#copyBtn').textContent = '📋 複製', 1400); };
-  if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, done);
-  else { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); done(); }
-};
-$('#printBtn').onclick = () => window.print();
-$('#q').oninput = renderList;
-document.addEventListener('keydown', e => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-  if (e.code === 'Space' || e.code === 'Enter') { e.preventDefault(); if ($('#p-pick').classList.contains('on')) draw(); }
-});
-renderClasses(); renderPick(); renderList();
+function boot(){
+  ci = store.get('ci', 0); if (ci < 0 || ci >= CLASSES.length) ci = 0;
+  $('#lock').style.display = 'none';
+  $('#app').style.display = 'block';
+  $('#lockBtn').style.display = 'inline-block';
+  document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
+    document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + t.dataset.p));
+    if (t.dataset.p === 'list') renderList();
+  });
+  $('#drawBtn').onclick = draw;
+  $('#resetBtn').onclick = () => { drawn = []; $('#pickName').textContent = '準備好'; $('#pickEn').textContent = '撳下面個掣開始抽人'; renderPick(); };
+  $('#groupBtn').onclick = makeGroups;
+  $('#againBtn').onclick = makeGroups;
+  $('#copyBtn').onclick = () => {
+    if (!groupsCache.length) return;
+    const txt = groupsCache.map((g, i) => '第' + (i + 1) + '組：' + g.map(s => s.zh).join('、')).join('\n');
+    const done = () => { $('#copyBtn').textContent = '✅ 已複製'; setTimeout(() => $('#copyBtn').textContent = '📋 複製', 1400); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, done);
+    else { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); done(); }
+  };
+  $('#printBtn').onclick = () => window.print();
+  $('#q').oninput = renderList;
+  $('#lockBtn').onclick = () => { store.del('pw'); location.reload(); };
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+    if (e.code === 'Space' || e.code === 'Enter') { e.preventDefault(); if ($('#p-pick').classList.contains('on')) draw(); }
+  });
+  renderClasses(); renderPick(); renderList();
+}
+
+async function tryUnlock(pw, silent){
+  $('#err').textContent = '';
+  try {
+    CLASSES = await unlock(pw);
+    store.set('pw', pw);
+    boot();
+  } catch (e) {
+    if (!silent) $('#err').textContent = '密碼唔啱，再試一次。';
+    store.del('pw');
+  }
+}
+
+$('#go').onclick = () => { const v = $('#pw').value.trim(); if (!v) { $('#err').textContent = '請輸入密碼'; return; } tryUnlock(v, false); };
+$('#pw').addEventListener('keydown', e => { if (e.key === 'Enter') $('#go').click(); });
+const saved = store.get('pw', '');
+if (saved) tryUnlock(saved, true);
 </script></body></html>
