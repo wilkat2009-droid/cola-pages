@@ -1,0 +1,583 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>第六課 課堂對戰｜VCH1101</title><style>
+*{margin:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"PingFang HK","PingFang TC","Microsoft JhengHei",sans-serif;background:#0e1520;color:#eaf2f8;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:14px 14px 26px;min-height:100%;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column}
+.screen.on{display:flex}
+h1{font-size:clamp(22px,4.6vw,38px);letter-spacing:2px;line-height:1.3}
+.sub{color:#93a9ba;font-size:clamp(13px,2.4vw,16px);margin-top:8px}
+.card{background:#141f2c;border:1px solid #24384a;border-radius:18px;padding:18px 20px;margin-top:16px}
+.card h2{font-size:clamp(16px,2.6vw,20px);color:#ffd08a;margin-bottom:10px}
+.card li{font-size:clamp(13.5px,2.2vw,16px);line-height:1.95;margin-left:18px;color:#cfe2ef}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-weight:800;border-radius:999px;padding:16px 34px;
+ font-size:clamp(16px,2.6vw,20px);background:#ec7d3a;color:#1a1004;margin-top:18px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,125,58,.4)}
+.btn.ghost{background:#1b2c3a;color:#bfe3ff;border:1px solid #2c5068}
+.topbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:#16222e;border:1px solid #24384a;border-radius:999px;padding:7px 14px;font-size:clamp(12px,2vw,14.5px);font-weight:700;color:#cfe2ef;white-space:nowrap}
+.pill.hot{color:#ffd08a;border-color:#7a5a1e}
+.tbar{height:12px;background:#16222e;border:1px solid #24384a;border-radius:999px;overflow:hidden;margin-bottom:14px}
+.tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#a3e635);transition:width .1s linear}
+.tbar i.warn{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.stem{background:#132030;border:1px solid #26455c;border-left:6px solid #ec7d3a;border-radius:14px;padding:16px 18px;
+ font-size:clamp(16px,2.9vw,25px);line-height:1.7;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;flex:1;min-height:210px}
+.opt{display:flex;align-items:center;gap:12px;border:0;border-radius:16px;padding:14px 16px;cursor:pointer;font-family:inherit;
+ text-align:left;color:#fff;font-size:clamp(14px,2.5vw,20px);font-weight:700;line-height:1.45;transition:.12s;min-height:74px}
+.opt:hover{filter:brightness(1.12)}
+.opt .mk{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:18px}
+.opt.a{background:#d92543} .opt.b{background:#1368ce} .opt.c{background:#d89e00} .opt.d{background:#26890c}
+.opt.dim{opacity:.32}
+.opt.right{outline:4px solid #a7f3d0}
+.opt.wrong{outline:4px solid #fecaca}
+.reveal{margin-top:14px;background:#101b27;border:1px solid #2b4459;border-radius:16px;padding:16px 18px;display:none}
+.reveal.on{display:block}
+.rv-t{font-size:clamp(17px,3vw,24px);font-weight:800}
+.rv-t.ok{color:#4ade80} .rv-t.no{color:#fb7185}
+.rv-a{margin-top:8px;font-size:clamp(14px,2.4vw,18px);color:#ffd08a;font-weight:700}
+.rv-w{margin-top:6px;color:#a9bccb;font-size:clamp(12.5px,2.1vw,15.5px);line-height:1.7}
+.score-big{font-size:clamp(40px,11vw,84px);font-weight:900;color:#ffd08a;line-height:1.1;letter-spacing:1px}
+.stat{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.wrong-item{background:#141f2c;border:1px solid #24384a;border-left:5px solid #fb7185;border-radius:12px;padding:12px 14px;margin-top:10px}
+.wrong-item b{color:#fb7185}
+.wrong-item p{color:#cfe2ef;font-size:clamp(13px,2.2vw,15.5px);line-height:1.7;margin-top:4px}
+.brand{color:#5c7186;font-size:12.5px;margin-top:18px;text-align:center}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr;gap:8px;min-height:0}
+ .opt{min-height:60px;padding:12px 14px}
+ .wrap{padding:10px 10px 20px}
+ .card{padding:14px 15px}
+}
+</style></head><body><div class="wrap">
+
+<!-- 開始 -->
+<section class="screen on" id="s-start">
+  <h1>🎮 第六課 課堂對戰<br><span style="font-size:.62em;color:#93a9ba">總複習　·　21 題（照課本練習題）</span></h1>
+  <div class="card"><h2>玩法</h2>
+    <ul>
+      <li>四色大掣，揀啱就得分，<b>越快撳越多分</b>（滿分 1500）</li>
+      <li>每題 17 秒，時間到會自動揭曉答案</li>
+      <li>答完即刻有解釋——就係課本嗰句</li>
+      <li>完場有分數、正確率同錯題回顧，可以再玩一次</li>
+    </ul>
+  </div>
+  <div class="card"><h2>點玩</h2>
+    <ul>
+      <li><b>一部手機自己玩</b>：掃碼打開呢頁，單手玩到尾</li>
+      <li><b>大屏一齊玩</b>：老師投影，學生舉手／讀出答案，老師撳落去</li>
+      <li>鍵盤 1 2 3 4 都可以作答（老師大屏最方便）</li>
+    </ul>
+  </div>
+  <div><button class="btn" id="go">▶ 開始對戰</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+  <div class="brand">VCH1101 職業中文 · 杜老師 · 題目照課本第六課（甲／乙）</div>
+</section>
+
+<!-- 答題 -->
+<section class="screen" id="s-quiz">
+  <div class="topbar">
+    <span class="pill" id="p-qno">第 1 / 21 題</span>
+    <span class="pill hot" id="p-score">0 分</span>
+    <span class="pill" id="p-streak">連對 0</span>
+    <span class="pill" id="p-timer">17s</span>
+  </div>
+  <div class="tbar"><i id="tfill"></i></div>
+  <div class="stem" id="stem"></div>
+  <div class="grid" id="opts"></div>
+  <div class="reveal" id="reveal">
+    <div class="rv-t" id="rv-t"></div>
+    <div class="rv-a" id="rv-a"></div>
+    <div class="rv-w" id="rv-w"></div>
+    <button class="btn" id="next">下一題 ▶</button>
+  </div>
+</section>
+
+<!-- 完場 -->
+<section class="screen" id="s-end">
+  <h1>🏁 完成 21 題！</h1>
+  <div class="score-big" id="e-score">0</div>
+  <div class="stat">
+    <span class="pill" id="e-lv">正確 0 / 21</span>
+    <span class="pill hot" id="e-rate">正確率 0%</span>
+    <span class="pill" id="e-best">最長連對 0</span>
+  </div>
+  <div class="card" id="e-wrong-wrap"><h2>錯題回顧</h2><div id="e-wrong"></div></div>
+  <div><button class="btn" id="again">🔁 再玩一次</button>
+  <a class="btn ghost" href="../vch1101/" style="text-decoration:none">← 回總台</a></div>
+</section>
+
+</div>
+<script>
+const Q = [
+{
+"no": 1,
+"q": "課本活動一第1題：「酒後駕駛是（　）交通安全的危險行為。」（候選詞：妄顧／罔顧／莽顧）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"妄顧",
+"莽顧",
+"罔顧",
+"顧及"
+],
+"ok": [
+3
+],
+"why": "課本活動一第1題正確答案為「罔顧」——「罔顧」指不顧、不理會，酒後駕駛是不顧交通安全的危險行為。",
+"time": 17
+},
+{
+"no": 2,
+"q": "課本活動一第2題：「在本屆的校際運動會上，我校健兒……表現令人（　）。」（候選詞：側目／注視／矚目）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"矚目",
+"側目",
+"注視",
+"囑目"
+],
+"ok": [
+1
+],
+"why": "課本活動一第2題正確答案為「矚目」——「矚目」指受人注目，句中形容健兒表現出眾、惹人注目。",
+"time": 17
+},
+{
+"no": 3,
+"q": "課本活動一第4題：「雙方經過多次會談，彼此（　）意見，終於就合作的問題達成共識。」（候選詞：接收／交換／溝通）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"接收",
+"交換",
+"溝通",
+"收發"
+],
+"ok": [
+2
+],
+"why": "課本活動一第4題正確答案為「交換」——雙方彼此交換意見，終於達成共識。",
+"time": 17
+},
+{
+"no": 4,
+"q": "課本活動一第5題：「這家餐廳的（　）很有格調，難怪能吸引那麼多追求品味的年輕人光顧。」（候選詞：裝飾／裝置／裝潢）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"裝飾",
+"裝置",
+"裝配",
+"裝潢"
+],
+"ok": [
+4
+],
+"why": "課本活動一第5題正確答案為「裝潢」——「裝潢」指室內裝修布置，餐廳裝潢很有格調。",
+"time": 17
+},
+{
+"no": 5,
+"q": "課本活動一第9題：「工會主席去信（　）政府關注失業率持續高企的問題。」（候選詞：促進／促使／促請）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"促進",
+"促使",
+"促請",
+"催促"
+],
+"ok": [
+3
+],
+"why": "課本活動一第9題正確答案為「促請」——「促請」指催促請求，工會主席去信促請政府關注失業問題。",
+"time": 17
+},
+{
+"no": 6,
+"q": "課本活動一第10題：「我們應該努力（　）夢想，以正面的心態肯定自己的存在價值。」（候選詞：謀求／尋求／追求）應選哪個詞語？",
+"src": "活動一　詞語辨析",
+"opts": [
+"追求",
+"謀求",
+"尋求",
+"追尋"
+],
+"ok": [
+1
+],
+"why": "課本活動一第10題正確答案為「追求」——努力追求夢想，以正面心態肯定自己的存在價值。",
+"time": 17
+},
+{
+"no": 7,
+"q": "課本活動二第1題：「以你的才幹，只要認真地工作，一定會奪得別人的賞識。」這句屬於哪種毛病？",
+"src": "活動二　改正病句",
+"opts": [
+"成分殘缺",
+"搭配不當",
+"成分贅餘",
+"詞序不當"
+],
+"ok": [
+2
+],
+"why": "課本活動二第1題注明「搭配不當」——「奪得賞識」搭配不當，應改為「獲得別人的賞識」。",
+"time": 17
+},
+{
+"no": 8,
+"q": "課本活動二第2題：「這次展覽會現正即將展出新發現的明代文物。」這句屬於哪種毛病？",
+"src": "活動二　改正病句",
+"opts": [
+"搭配不當",
+"詞序不當",
+"成分贅餘",
+"成分殘缺"
+],
+"ok": [
+3
+],
+"why": "課本活動二第2題注明「成分贅餘」——「現正」與「即將」語意重複，刪去其一即可。",
+"time": 17
+},
+{
+"no": 9,
+"q": "課本活動二第3題：「只要不屈不撓的保持著精神，我們一定能克服這次難關。」這句屬於哪種毛病？",
+"src": "活動二　改正病句",
+"opts": [
+"搭配不當",
+"成分殘缺",
+"成分贅餘",
+"詞序不當"
+],
+"ok": [
+4
+],
+"why": "課本活動二第3題注明「詞序不當」——應改為「只要保持著不屈不撓的精神」。",
+"time": 17
+},
+{
+"no": 10,
+"q": "課本活動二第5題：「參觀過科學館後，明白了科學領域是多麼廣闊。」這句屬於哪種毛病？",
+"src": "活動二　改正病句",
+"opts": [
+"搭配不當",
+"成分殘缺（欠主語）",
+"成分贅餘",
+"詞序不當"
+],
+"ok": [
+2
+],
+"why": "課本活動二第5題注明「成分殘缺：欠主語」——須補上主語，如「參觀過科學館後，我們明白了……」。",
+"time": 17
+},
+{
+"no": 11,
+"q": "課本活動三第1題：「他性情暴燥，常常無故發脾氣，同事均不敢接近他。」句中的錯別字應改為哪個字？",
+"src": "活動三　改正錯別字",
+"opts": [
+"燥",
+"噪",
+"操",
+"躁"
+],
+"ok": [
+4
+],
+"why": "課本活動三第1題：錯別字「燥」應改為「躁」，「暴躁」指性情急躁易怒。",
+"time": 17
+},
+{
+"no": 12,
+"q": "課本活動三第2題：「張經理的口才了得，每次演講總是坐無虛席。」句中「坐」字應改為哪個字？",
+"src": "活動三　改正錯別字",
+"opts": [
+"座",
+"坐",
+"挫",
+"剉"
+],
+"ok": [
+1
+],
+"why": "課本活動三第2題：錯別字「坐」應改為「座」，「座無虛席」指座位全滿，形容聽眾極多。",
+"time": 17
+},
+{
+"no": 13,
+"q": "課本活動三第3題：「這家電子公司推出的新產品令全城觸目。」句中「令全城觸目」應改為「令全城（　）目」，括號內應填哪個字？",
+"src": "活動三　改正錯別字",
+"opts": [
+"觸",
+"囑",
+"矚",
+"屬"
+],
+"ok": [
+3
+],
+"why": "課本活動三第3題：錯別字「觸」應改為「矚」，「矚目」指受人注目。",
+"time": 17
+},
+{
+"no": 14,
+"q": "課本活動三第4題：「努力工作故然重要，但也要有適當的休息。」句中「故然」應改為哪個詞？",
+"src": "活動三　改正錯別字",
+"opts": [
+"固然",
+"故然",
+"顧然",
+"雇然"
+],
+"ok": [
+1
+],
+"why": "課本活動三第4題：錯別字「故」應改為「固」，「固然」表示承認某事實，然後轉折。",
+"time": 17
+},
+{
+"no": 15,
+"q": "課本活動四：電郵「正文」分「引言／主體／結尾」三部分。「引言」應寫甚麼？",
+"src": "活動四　重溫電郵格式及要點",
+"opts": [
+"主要內容",
+"附上聯絡人方法（姓名、電話號碼）供查詢之用",
+"發文者職銜及姓名",
+"自我介紹並指出寫作目的"
+],
+"ok": [
+4
+],
+"why": "課本活動四：引言＝自我介紹並指出寫作目的。",
+"time": 17
+},
+{
+"no": 16,
+"q": "課本活動四：電郵「正文」分「引言／主體／結尾」三部分。「結尾」應寫甚麼？",
+"src": "活動四　重溫電郵格式及要點",
+"opts": [
+"附上聯絡人方法（姓名、電話號碼）供查詢之用",
+"自我介紹並指出寫作目的",
+"主要內容",
+"發文者職銜及姓名"
+],
+"ok": [
+1
+],
+"why": "課本活動四：結尾＝附上聯絡人方法(姓名、電話號碼)供查詢之用。",
+"time": 17
+},
+{
+"no": 17,
+"q": "課本活動四註明：以上要點必須用文字段落表達。如以列點方式表達、沒有完整的句子，評級不得高於？",
+"src": "活動四　重溫電郵格式及要點",
+"opts": [
+"B級",
+"D級",
+"F1",
+"不評級"
+],
+"ok": [
+3
+],
+"why": "課本活動四註：如以列點方式表達，沒有完整的句子，評級不得高於F1。",
+"time": 17
+},
+{
+"no": 18,
+"q": "模擬練習情景：你是建鴻智能家居公司的行政助理汪嘉明，冼國强總經理安排你發電郵向主管曹國興交代工作安排。這封電郵的收件者（正本）應是誰？",
+"src": "模擬練習　預備練習（撰寫電郵）",
+"opts": [
+"冼國强總經理",
+"主管曹國興",
+"聯絡人陳主任",
+"盈建科技公司"
+],
+"ok": [
+2
+],
+"why": "預備練習任務：撰寫一封簡短電郵給主管曹國興，故收件者（正本）是曹國興。",
+"time": 17
+},
+{
+"no": 19,
+"q": "模擬練習任務：撰寫一封簡短電郵給主管曹國興，並抄送電郵給冼總經理。以下哪一項「收件者／副本」完全符合任務要求？",
+"src": "模擬練習　預備練習（撰寫電郵）",
+"opts": [
+"收件者：冼總經理；副本：曹國興",
+"收件者：曹國興；副本：盈建科技公司",
+"收件者：盈建科技公司；副本：曹國興",
+"收件者：曹國興；副本：冼總經理"
+],
+"ok": [
+4
+],
+"why": "預備練習任務：收件者是主管曹國興，副本抄送給冼總經理。",
+"time": 17
+},
+{
+"no": 20,
+"q": "模擬練習資料一：冼總經理在 WhatsApp 表示在上海出差時遺失證件，補領手續需一至兩天，暫無法回港，故請曹國興協助跟進明天及後天的工作。冼總經理因何未能回港？",
+"src": "模擬練習　資料一（冼總與曹國興對話）",
+"opts": [
+"遺失證件，補領手續需一至兩天",
+"出席智能家居展開幕儀式",
+"多功能會議室空調故障",
+"留在上海主持洽談合作會議"
+],
+"ok": [
+1
+],
+"why": "資料一：冼總經理在上海出差，不慎遺失證件，補領手續需一至兩天，暫無法回港。",
+"time": 17
+},
+{
+"no": 21,
+"q": "模擬練習：10/7（四）10:00-12:00 原定在多功能會議室洽談合作，因空調故障停用。據會議室預訂表：多功能會議室 10:00-12:00「已預訂」，商務會議室 10:00-12:00「可預訂」。會議應改到哪裏？",
+"src": "模擬練習　資料二・資料三（工作日程・會議室預訂表）",
+"opts": [
+"多功能會議室 13:00-15:00",
+"商務會議室 10:00-12:00",
+"商務會議室 13:00-15:00",
+"多功能會議室 10:00-12:00"
+],
+"ok": [
+2
+],
+"why": "資料三會議室預訂表：10/7 10:00-12:00 商務會議室「可預訂」，多功能會議室該時段「已預訂」，故會議改到商務會議室。",
+"time": 17
+}
+];
+const MARK = ["▲","◆","●","■"];
+const CLS  = ["a","b","c","d"];
+const S = {i:0, score:0, right:0, streak:0, best:0, wrong:[], answered:false,
+            left:0, tick:null, t0:0};
+
+const $ = id => document.getElementById(id);
+const show = id => document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
+
+function render() {
+  const q = Q[S.i];
+  S.answered = false;
+  $("p-qno").textContent = "第 " + (S.i + 1) + " / " + Q.length + " 題";
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  $("stem").textContent = q.q;
+  const box = $("opts"); box.innerHTML = "";
+  q.opts.forEach((t, k) => {
+    const b = document.createElement("button");
+    b.className = "opt " + CLS[k];
+    b.dataset.k = k;
+    b.innerHTML = '<span class="mk">' + MARK[k] + '</span><span>' + t + '</span>';
+    b.onclick = () => pick(k);
+    box.appendChild(b);
+  });
+  $("reveal").classList.remove("on");
+  $("tfill").classList.remove("warn");
+  startTimer(q.time);
+  window.scrollTo(0, 0);
+}
+
+function startTimer(sec) {
+  clearInterval(S.tick);
+  S.left = sec;
+  const total = sec;
+  $("p-timer").textContent = sec + "s";
+  $("tfill").style.width = "100%";
+  S.t0 = Date.now();
+  S.tick = setInterval(() => {
+    S.left -= 0.1;
+    const pct = Math.max(0, S.left / total);
+    $("tfill").style.width = (pct * 100) + "%";
+    $("tfill").classList.toggle("warn", pct < .34);
+    $("p-timer").textContent = Math.max(0, Math.ceil(S.left)) + "s";
+    if (S.left <= 0) { clearInterval(S.tick); pick(-1); }
+  }, 100);
+}
+
+function pick(k) {
+  if (S.answered) return;
+  S.answered = true;
+  clearInterval(S.tick);
+  const q = Q[S.i];
+  const isOk = q.ok.indexOf(k + 1) > -1;
+  const used = Math.min(q.time, (Date.now() - S.t0) / 1000);
+  if (isOk) {
+    S.score += 1000 + Math.round(500 * Math.max(0, 1 - used / q.time));
+    S.right++; S.streak++; S.best = Math.max(S.best, S.streak);
+  } else {
+    S.streak = 0;
+    S.wrong.push({no: q.no, q: q.q, ans: q.ok.map(i => q.opts[i - 1]).join("／"), why: q.why});
+  }
+  $("p-score").textContent = S.score + " 分";
+  $("p-streak").textContent = "連對 " + S.streak;
+  document.querySelectorAll(".opt").forEach(el => {
+    const kk = +el.dataset.k;
+    if (q.ok.indexOf(kk + 1) > -1) el.classList.add("right");
+    else if (kk === k) el.classList.add("wrong");
+    else el.classList.add("dim");
+    el.onclick = null;
+  });
+  $("rv-t").textContent = isOk ? "✅ 答啱！ +" + Math.round(1000 + 500 * Math.max(0, 1 - used / q.time)) + " 分"
+                               : (k < 0 ? "⏰ 時間到" : "❌ 答錯");
+  $("rv-t").className = "rv-t " + (isOk ? "ok" : "no");
+  $("rv-a").textContent = "正確答案：" + q.ok.map(i => q.opts[i - 1]).join("／");
+  $("rv-w").textContent = q.why || "";
+  $("next").textContent = (S.i === Q.length - 1) ? "睇結果 🏁" : "下一題 ▶";
+  $("reveal").classList.add("on");
+}
+
+function next() {
+  if (S.i >= Q.length - 1) { end(); return; }
+  S.i++; render();
+}
+
+function end() {
+  $("e-score").textContent = S.score;
+  $("e-lv").textContent = "正確 " + S.right + " / " + Q.length;
+  $("e-rate").textContent = "正確率 " + Math.round(S.right / Q.length * 100) + "%";
+  $("e-best").textContent = "最長連對 " + S.best;
+  const w = $("e-wrong"); w.innerHTML = "";
+  if (!S.wrong.length) {
+    w.innerHTML = '<p style="color:#4ade80;font-weight:700">全對！冇錯題，好犀利 🎉</p>';
+  } else {
+    S.wrong.forEach(x => {
+      const d = document.createElement("div");
+      d.className = "wrong-item";
+      d.innerHTML = '<b>第 ' + x.no + ' 題</b><p>' + x.q + '</p><p>✔ ' + x.ans + '</p><p>' + x.why + '</p>';
+      w.appendChild(d);
+    });
+  }
+  show("s-end");
+}
+
+function start() {
+  S.i = 0; S.score = 0; S.right = 0; S.streak = 0; S.best = 0; S.wrong = [];
+  $("e-wrong").innerHTML = "";
+  $("e-score").textContent = "0";
+  $("e-lv").textContent = "正確 0 / " + Q.length;
+  $("e-rate").textContent = "正確率 0%";
+  $("e-best").textContent = "最長連對 0";
+  show("s-quiz"); render();
+}
+
+$("go").onclick = start;
+$("again").onclick = start;
+$("next").onclick = next;
+document.addEventListener("keydown", e => {
+  if (!$("s-quiz").classList.contains("on")) return;
+  if (!S.answered && "1234".indexOf(e.key) > -1) pick(+e.key - 1);
+  else if (S.answered && (e.key === "Enter" || e.key === " ")) next();
+});
+
+// 自動實跑用
+window.__qz = {
+  state: S, q: Q,
+  pick: pick, next: next, start: start,
+  idx: () => S.i, score: () => S.score, right: () => S.right,
+  optCount: () => document.querySelectorAll(".opt").length,
+  revealOn: () => $("reveal").classList.contains("on"),
+  screen: () => [...document.querySelectorAll(".screen")].find(s => s.classList.contains("on")).id
+};
+</script></body></html>
