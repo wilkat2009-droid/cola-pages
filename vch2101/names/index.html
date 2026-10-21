@@ -37,26 +37,10 @@ td.nm{font-weight:900;font-size:15px;letter-spacing:1px}
 @media(max-width:560px){.groups{grid-template-columns:1fr}.grp{padding:10px 12px;font-size:14px}}
 .rows{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
 .note{font-size:12px;color:#8a846f;line-height:1.75;margin-top:4px}
-#gate{position:fixed;inset:0;z-index:9;background:#f7f4ec;display:flex;align-items:center;justify-content:center;padding:20px}
-#gate .box{max-width:340px;width:100%;background:#fff;border:1px solid #e8e0cd;border-radius:18px;padding:22px;text-align:center}
-#gate h2{font-size:17px;margin-bottom:6px}
-#gate p{font-size:13px;color:#6b7793;margin-bottom:14px}
-#gate input{width:100%;padding:13px;border-radius:11px;border:1px solid #cfc7b3;font-size:20px;
-  text-align:center;letter-spacing:9px;font-family:inherit}
-#gate button{margin-top:10px;width:100%}
-#gmsg{font-size:12.5px;color:#b8471c;height:18px;margin-top:7px}
 .hide{display:none!important}
 </style></head><body>
 
-<div id="gate"><div class="box">
-  <h2>🔒 班務名單</h2>
-  <p>學生姓名屬個人資料，只給老師用。<br>密碼與教師專區相同。</p>
-  <input id="pw" type="password" inputmode="numeric" placeholder="••••" onkeydown="if(event.key==='Enter')chk()">
-  <button class="go" onclick="chk()">開啟</button>
-  <div id="gmsg"></div>
-</div></div>
-
-<div id="app" class="hide">
+<div id="app">
 <header><h1>VCH2101 班務名單</h1><p>上課時打開就能用：名單、分組、抽人提問</p></header>
 <main>
   <div class="tabs">
@@ -96,10 +80,7 @@ td.nm{font-weight:900;font-size:15px;letter-spacing:1px}
 <script>
 const D={"WED":{"label":"星期三","time":"09:30–11:30","room":"103H","sub":"FS113381 A2A ＋ FS113384 2B 混班","students":[{"no":1,"name":"張璟霖","sid":"250243708","cls":"S1:2B"},{"no":2,"name":"張晟殷","sid":"250295742","cls":"S1:2B"},{"no":3,"name":"蔡駿宏","sid":"250329830","cls":"S1:2B"},{"no":4,"name":"馮鋭淇","sid":"250283061","cls":"S1:2B"},{"no":5,"name":"何天信","sid":"250314423","cls":"S1:A2A"},{"no":6,"name":"何彥彤","sid":"250109095","cls":"S1:2B"},{"no":7,"name":"黃致遠","sid":"250719094","cls":"S1:A2A"},{"no":8,"name":"郭依行","sid":"250195189","cls":"S1:2B"},{"no":9,"name":"劉志强","sid":"250341437","cls":"S1:A2A"},{"no":10,"name":"劉嘉豪","sid":"250607300","cls":"S1:A2A"},{"no":11,"name":"李安皓","sid":"250265172","cls":"S1:2B"},{"no":12,"name":"梁嘉瀚","sid":"250504151","cls":"S1:A2A"},{"no":13,"name":"李子健","sid":"250594822","cls":"S1:A2A"},{"no":14,"name":"李睿樺","sid":"250084072","cls":"S1:2B"},{"no":15,"name":"林俊杰","sid":"250449028","cls":"S1:A2A"},{"no":16,"name":"吳熙晟","sid":"250372101","cls":"S1:2B"},{"no":17,"name":"畢天宇","sid":"250295508","cls":"S1:2B"},{"no":18,"name":"蕭弘浚","sid":"250223826","cls":"S1:2B"},{"no":19,"name":"蘇心妍","sid":"250083272","cls":"S1:2B"},{"no":20,"name":"曾建程","sid":"250382444","cls":"S1:2B"},{"no":21,"name":"曾領熠","sid":"250426710","cls":"S1:2B"},{"no":22,"name":"曾梓聰","sid":"250305069","cls":"S1:2B"},{"no":23,"name":"王竣熙","sid":"250315352","cls":"S1:2B"},{"no":24,"name":"黃子桓","sid":"250398755","cls":"S1:2B"},{"no":25,"name":"黃穎峯","sid":"250191050","cls":"S1:2B"},{"no":26,"name":"許可聖","sid":"250714989","cls":"S1:A2A"},{"no":27,"name":"邱浩僑","sid":"250365681","cls":"S1:A2A"},{"no":28,"name":"邱成徳","sid":"250377422","cls":"S1:A2A"},{"no":29,"name":"楊啟樂","sid":"250192870","cls":"S1:2P"},{"no":30,"name":"余翱博","sid":"250314447","cls":"S1:2B"},{"no":31,"name":"朱天霖","sid":"250344427","cls":"S1:A2A"},{"no":32,"name":"莊梓森","sid":"250269091","cls":"S1:2B"}],"groups":[["張璟霖","劉志强","畢天宇","黃穎峯"],["張晟殷","劉嘉豪","蕭弘浚","許可聖"],["蔡駿宏","李安皓","蘇心妍","邱浩僑"],["馮鋭淇","梁嘉瀚","曾建程","邱成徳"],["何天信","李子健","曾領熠","楊啟樂"],["何彥彤","李睿樺","曾梓聰","余翱博"],["黃致遠","林俊杰","王竣熙","朱天霖"],["郭依行","吳熙晟","黃子桓","莊梓森"]]},"THUR":{"label":"星期四","time":"09:30–11:30","room":"317A","sub":"FS113387 2A（含 3A 一位）","students":[{"no":1,"name":"陳凱彤","sid":"250305057","cls":"S1:2A"},{"no":2,"name":"陳煦霖","sid":"250295674","cls":"S1:2A"},{"no":3,"name":"張玉凝","sid":"240516594","cls":"S1:3A"},{"no":4,"name":"蔣宛軒","sid":"250108105","cls":"S1:2A"},{"no":5,"name":"蔡天晴","sid":"250208245","cls":"S1:2A"},{"no":6,"name":"莊曉南","sid":"250415209","cls":"S1:2A"},{"no":7,"name":"周浩文","sid":"250231722","cls":"S1:2A"},{"no":8,"name":"鄧家怡","sid":"250149204","cls":"S1:2A"},{"no":9,"name":"馮芷婷","sid":"250261529","cls":"S1:2A"},{"no":10,"name":"許詩琳","sid":"250259522","cls":"S1:2A"},{"no":11,"name":"黎仲心","sid":"250439895","cls":"S1:2A"},{"no":12,"name":"林穎","sid":"250403002","cls":"S1:2A"},{"no":13,"name":"劉志浩","sid":"250395704","cls":"S1:2A"},{"no":14,"name":"梁苡澄","sid":"250172140","cls":"S1:2A"},{"no":15,"name":"梁雅怡","sid":"250301925","cls":"S1:2A"},{"no":16,"name":"梁宇期","sid":"250384437","cls":"S1:2A"},{"no":17,"name":"梁嘉楠","sid":"250431130","cls":"S1:2A"},{"no":18,"name":"林君怡","sid":"250439533","cls":"S1:2A"},{"no":19,"name":"廖麗莹","sid":"250242435","cls":"S1:2A"},{"no":20,"name":"柯智桐","sid":"250314656","cls":"S1:2A"},{"no":21,"name":"龐詠茵","sid":"250242668","cls":"S1:2A"},{"no":22,"name":"蕭穎楠","sid":"250242379","cls":"S1:2A"},{"no":23,"name":"謝劉燕","sid":"250286585","cls":"S1:2A"},{"no":24,"name":"蔡鈺瑩","sid":"250314841","cls":"S1:2A"},{"no":25,"name":"徐樂兒","sid":"250308902","cls":"S1:2A"},{"no":26,"name":"黃靖峰","sid":"250368996","cls":"S1:2A"},{"no":27,"name":"黃詩恩","sid":"250583414","cls":"S1:2A"},{"no":28,"name":"余穎琪","sid":"250385667","cls":"S1:2A"},{"no":29,"name":"余釔澄","sid":"240360269","cls":"S1:2A"},{"no":30,"name":"祝可兒","sid":"250314816","cls":"S1:2A"}],"groups":[["陳凱彤","馮芷婷","梁嘉楠","徐樂兒"],["陳煦霖","許詩琳","林君怡","黃靖峰"],["張玉凝","黎仲心","廖麗莹","黃詩恩"],["蔣宛軒","林穎","柯智桐","余穎琪"],["蔡天晴","劉志浩","龐詠茵","余釔澄"],["莊曉南","梁苡澄","蕭穎楠","祝可兒"],["周浩文","梁雅怡","謝劉燕"],["鄧家怡","梁宇期","蔡鈺瑩"]]}};
 let c='WED',pool=[],last='';
-function chk(){if(document.getElementById('pw').value.trim()==='2101'){
-  document.getElementById('gate').classList.add('hide');
-  document.getElementById('app').classList.remove('hide');draw();}else{
-  document.getElementById('gmsg').textContent='密碼不對，再試一次。';}}
+draw();
 function sw(k){c=k;pool=[];last='';
   document.getElementById('tWED').className=k==='WED'?'on':'';
   document.getElementById('tTHUR').className=k==='THUR'?'on':'';
