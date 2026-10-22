@@ -802,6 +802,7 @@
   .avatar-card{background:var(--card-alt);border:1px solid var(--line);border-radius:16px;padding:16px;}
   .avatar-stage{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
   .avatar-ring{position:relative;width:190px;height:190px;border-radius:50%;padding:7px;background:var(--ring-bg,#e2e5ea);box-shadow:0 8px 22px rgba(0,0,0,.12);animation:avatar-bob 4.2s ease-in-out infinite;flex:0 0 auto;}
+  .avatar-notice{margin:7px 0 0;padding:7px 9px;border-radius:9px;background:#fff4f4;border:1px solid #f3b7b7;color:#a5272a;font-size:11.5px;font-weight:700;line-height:1.5;}
   .avatar-photo{width:100%;height:100%;border-radius:50%;background-color:#fff;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9aa1ad;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);}
   .avatar-photo b{font-size:40px;line-height:1;}
   .avatar-photo small{font-size:11px;font-weight:700;margin-top:2px;}
@@ -1011,7 +1012,7 @@
       <div class="shop-section">
         <h3>🧑‍🎨 我的造型 <span>放自己張相上去，用分數換相框同掛飾</span></h3>
         <div id="avatarCard"></div>
-        <input type="file" id="avatarFile" accept="image/*" hidden>
+        <input type="file" id="avatarFile" accept="image/*,.heic,.heif,.jpg,.jpeg,.png,.webp" hidden>
       </div>
       <div id="shopHero"></div>
       <div class="shop-section">
@@ -1426,8 +1427,8 @@ let rewardState = loadRewards();
 let rewardSoundContext = null;
 let rewardToastTimer = null;
 function saveRewards(){
-  try{ localStorage.setItem(REWARD_KEY, JSON.stringify(rewardState)); }
-  catch(err){ console.warn("無法保存獎勵進度", err); }
+  try{ localStorage.setItem(REWARD_KEY, JSON.stringify(rewardState)); return true; }
+  catch(err){ console.warn("無法保存獎勵進度", err); return false; }
 }
 function showRewardToast(text){
   const toast = $("#rewardToast");
@@ -1558,6 +1559,15 @@ function bindTeacherPanel(){
   /* 網址尾巴加 #setpoints=2014 可以直接設定分數（方便老師遙控） */
   const command = /(?:^|[#&])setpoints=(\d+)/.exec(location.hash || "");
   if(command) teacherSetPoints(command[1]);
+  /* 網址尾巴加 #setavatar=<base64> 可以直接放入相片（老師遙控用，唔會上傳） */
+  const avatarCmd = /(?:^|[#&])setavatar=([A-Za-z0-9+/=_-]+)/.exec(location.hash || "");
+  if(avatarCmd){
+    const payload = avatarCmd[1].replace(/-/g, "+").replace(/_/g, "/");
+    if(payload.length > 200){
+      rewardState.avatar.photo = payload.indexOf("data:image") === 0 ? payload : "data:image/jpeg;base64," + payload;
+      saveRewards(); renderRewards(); renderNavAvatar();
+    }
+  }
   /* 同一個瀏覽器開咗幾個分頁時，保持分數一致 */
   window.addEventListener("storage", event => {
     if(event.key !== REWARD_KEY) return;
@@ -1944,6 +1954,25 @@ function avatarItemCardHTML(item){
     <button class="mini-btn${equipped ? " mastered" : ""}" data-avatar="${item.kind === "frame" ? "frame:" : "outfit:"}${escapeHtml(item.id)}" ${equipped ? "disabled" : ""}>${escapeHtml(label)}</button>
   </article>`;
 }
+let avatarNoticeText = "";
+function setAvatarNotice(text){
+  avatarNoticeText = text || "";
+  const card = $("#avatarCard");
+  if(card){
+    const old = card.querySelector("[data-avatar-notice]");
+    if(old) old.remove();
+    if(avatarNoticeText){
+      const box = card.querySelector(".avatar-info");
+      if(box){
+        const p = document.createElement("p");
+        p.className = "avatar-notice";
+        p.setAttribute("data-avatar-notice", "1");
+        p.textContent = avatarNoticeText;
+        box.appendChild(p);
+      }
+    }
+  }
+}
 function avatarPanelHTML(){
   const kit = avatarEquipped();
   const ownCount = AVATAR_ITEMS.filter(item => rewardState.ownedSkins.includes(item.id)).length;
@@ -1957,6 +1986,7 @@ function avatarPanelHTML(){
           <button class="mini-btn" data-avatar="upload">📷 ${kit.photo ? "換一張相" : "上傳相片／影相"}</button>
           ${kit.photo ? `<button class="mini-btn ghost" data-avatar="clear">移除相片</button>` : ""}
         </div>
+        ${avatarNoticeText ? `<p class="avatar-notice" data-avatar-notice="1">${escapeHtml(avatarNoticeText)}</p>` : ""}
         <div class="avatar-tags">
           <span class="reward-rule">相框：${escapeHtml(kit.frame.name)}</span>
           <span class="reward-rule">頭飾：${kit.head ? escapeHtml(kit.head.name) : "未有"}</span>
@@ -1994,9 +2024,21 @@ function buyAvatarItem(kind, id){
   else rewardState.avatar.hand = id;
   saveRewards(); renderRewards(); renderNavAvatar();
 }
+function looksLikeHeic(file){
+  const name = (file.name || "").toLowerCase();
+  if(/\.(heic|heif)$/.test(name)) return true;
+  if(/^image\/(heic|heif)$/i.test(file.type || "")) return true;
+  return false;
+}
+const HEIC_HELP = "呢張係 iPhone 嘅 HEIC 格式，瀏覽器讀唔到。請喺「預覽程式」打開 → 檔案 → 輸出 → 格式揀 JPEG → 存好再上傳；或者直接影一張／用截圖都可以。";
 function handleAvatarPhoto(file){
   if(!file) return;
-  if(!/^image\//.test(file.type || "")){ showRewardToast("請揀一張相片檔案"); return; }
+  setAvatarNotice("");
+  const isImage = /^image\//.test(file.type || "") || /\.(jpg|jpeg|png|webp|gif|bmp|heic|heif)$/i.test(file.name || "");
+  if(!isImage){ setAvatarNotice("請揀一張相片檔案（JPG／PNG）。"); return; }
+  if(looksLikeHeic(file)){ setAvatarNotice(HEIC_HELP); return; }
+  if(file.size > 40 * 1024 * 1024){ setAvatarNotice("張相太大（超過 40MB），換一張細啲嘅。"); return; }
+  const fail = () => setAvatarNotice("呢張相讀唔到，試另一張（JPG 或 PNG）。");
   const reader = new FileReader();
   reader.onload = () => {
     const img = new Image();
@@ -2008,16 +2050,30 @@ function handleAvatarPhoto(file){
         const context = canvas.getContext("2d");
         const edge = Math.min(img.width, img.height) || side;
         context.drawImage(img, (img.width - edge) / 2, (img.height - edge) / 2, edge, edge, 0, 0, side, side);
-        rewardState.avatar.photo = canvas.toDataURL("image/jpeg", 0.82);
-        saveRewards(); renderRewards(); renderNavAvatar();
+        let encoded = "";
+        try{ encoded = canvas.toDataURL("image/jpeg", 0.82); }catch(e){ encoded = ""; }
+        if(!encoded || encoded.length < 200){
+          try{ encoded = canvas.toDataURL("image/png"); }catch(e){ encoded = ""; }
+        }
+        if(!encoded || encoded.length < 200){ fail(); return; }
+        rewardState.avatar.photo = encoded;
+        const saved = saveRewards();
+        renderRewards(); renderNavAvatar();
+        if(!saved){
+          setAvatarNotice("相片已經放上去，但呢部機嘅瀏覽器儲存空間滿咗，關掉再開就會唔見。");
+          return;
+        }
         playRewardSound("bonus");
         showRewardToast("相片已經放上去（只存在呢部機）");
-      }catch(err){ showRewardToast("呢張相讀唔到，試另一張"); }
+      }catch(err){ fail(); }
     };
-    img.onerror = () => showRewardToast("呢張相讀唔到，試另一張");
+    img.onerror = () => {
+      if(looksLikeHeic(file)) setAvatarNotice(HEIC_HELP);
+      else fail();
+    };
     img.src = reader.result;
   };
-  reader.onerror = () => showRewardToast("呢張相讀唔到，試另一張");
+  reader.onerror = fail;
   reader.readAsDataURL(file);
 }
 /* ---- 荷荷伴讀 ---- */
