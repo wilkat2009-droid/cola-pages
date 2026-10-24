@@ -11,6 +11,7 @@
     --teal:#0071e3; --teal-dark:#0051a8; --red:#d70015; --gold:#b25e00;
     --line:#e5e5ea; --shadow:0 4px 16px rgba(0,0,0,.05);
     --t1:#d70015; --t2:#b25e00; --t3:#a28400; --t4:#007a78; --t5:#0071e3; --t6:#5856d6;
+    --brand:#0e7c7b;
     --focus:0 0 0 3px rgba(0,113,227,.35);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -179,7 +180,7 @@
   .word-visual.char-card{position:relative;background:
       radial-gradient(circle at 78% 22%, rgba(14,124,123,.14) 0 26%, transparent 27%),
       linear-gradient(150deg,#eef8f5 0%,#fffaf0 100%);border-style:solid;border-color:#d7ebe7;}
-  .word-visual.char-card .cc-char{font-family:"Songti SC","Noto Serif TC",serif;font-size:clamp(26px,3.4vw,40px);font-weight:700;color:#0e7c7b;line-height:1.1;text-align:center;padding:0 6px;letter-spacing:.02em;}
+  .word-visual.char-card .cc-char{font-family:"Songti SC","Noto Serif TC",serif;font-size:clamp(26px,3.4vw,40px);font-weight:700;color:var(--brand);line-height:1.1;text-align:center;padding:0 6px;letter-spacing:.02em;}
   .word-visual.char-card .cc-tag{position:absolute;left:8px;bottom:7px;font-size:10px;font-weight:800;color:#a46700;background:rgba(255,244,210,.9);border:1px solid #f0d9a2;border-radius:999px;padding:2px 7px;}
   .word-card .top{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; min-width:0;}
   .word-card .top > div{min-width:0;}
@@ -258,6 +259,7 @@
   @media(max-width:520px){.q-options{grid-template-columns:1fr;}}
   .q-opt{
     border:1px solid var(--line); background:var(--card-alt); border-radius:12px; padding:14px 10px;
+    color:var(--ink);
     font-size:19px; font-weight:700; cursor:pointer; transition:all .15s; min-height:48px;
   }
   .q-opt:hover{border-color:var(--teal); background:#fff;}
@@ -280,13 +282,13 @@
   .usc-pdf{text-decoration:none;display:inline-flex;align-items:center;}
   .unit-score-card{background:linear-gradient(180deg,#fffdf7,#f4fbf9);border:1.5px solid #e0c68a;border-radius:16px;padding:14px 16px;margin:0 0 14px;}
   .usc-head{text-align:center;margin-bottom:8px;}
-  .usc-title{font-family:"Songti SC","Noto Serif TC",serif;font-size:23px;font-weight:800;color:#0e7c7b;letter-spacing:2px;margin-top:4px;}
+  .usc-title{font-family:"Songti SC","Noto Serif TC",serif;font-size:23px;font-weight:800;color:var(--brand);letter-spacing:2px;margin-top:4px;}
   .usc-sub{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
   .usc-table{width:100%;border-collapse:collapse;}
   .usc-table td{border-bottom:1px solid #e6efed;padding:5px 6px;vertical-align:middle;}
   .usc-lyr{font-family:"Songti SC","Noto Serif TC",serif;font-size:18px;letter-spacing:4px;white-space:nowrap;color:#253536;}
   .usc-num{font-family:"Courier New",monospace;font-size:16px;font-weight:700;letter-spacing:3px;white-space:nowrap;color:#b978a5;}
-  .usc-chd{font-size:12px;font-weight:800;color:#c8892f;white-space:nowrap;letter-spacing:1px;width:72px;}
+  .usc-chd{font-size:12px;font-weight:800;color:#8a5c1c;white-space:nowrap;letter-spacing:1px;width:72px;}
   .usc-play{width:44px;text-align:right;}
   tr.hi .usc-lyr, tr.hi .usc-num{color:#c2534f;}
   .usc-foot{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap;}
@@ -618,7 +620,7 @@
   .card-tag.review{background:#e7f6ec;color:#1d7a44;}
   .card-tag.preview{background:#fff3df;color:#a46700;}
   .print-links{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;}
-  .print-links a{font-size:13px;font-weight:700;color:#0e7c7b;background:#eef8f6;border:1px solid #bfe3dc;border-radius:999px;padding:9px 14px;text-decoration:none;}
+  .print-links a{font-size:13px;font-weight:700;color:var(--brand);background:#eef8f6;border:1px solid #bfe3dc;border-radius:999px;padding:9px 14px;text-decoration:none;}
   .print-links a:hover{background:#dff2ee;}
   .game-print{text-align:center;}
   .game-print a{display:inline-block;font-size:12.5px;font-weight:700;color:#8b5a00;background:#fff8e7;border:1px solid #f0d28d;border-radius:999px;padding:7px 13px;text-decoration:none;}
@@ -655,31 +657,31 @@
   .game-beat i.hit{transform:scale(1.35);background:#f5c451;}
   .game-roles{display:flex;gap:8px;justify-content:center;align-items:center;font-weight:800;font-size:13px;}
   .game-roles .role-a,.game-roles .role-b{padding:6px 12px;border-radius:999px;}
-  .game-roles .role-a{background:#e6f4f2;color:#0e7c7b;}
+  .game-roles .role-a{background:#e6f4f2;color:var(--brand);}
   .game-roles .role-b{background:#fff1d3;color:#8b5a00;}
   .game-map{display:flex;align-items:center;gap:6px;justify-content:center;padding:4px 0 8px;}
   .map-dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #cfe4e0;color:#9db3b0;font-weight:800;font-size:13px;}
-  .map-dot.done{background:#0e7c7b;border-color:#0e7c7b;color:#fff;}
+  .map-dot.done{background:#0e7c7b;border-color:var(--brand);color:#fff;}
   .map-dot.now{border-color:#f5c451;background:#fff8e7;color:#8b5a00;transform:scale(1.12);}
   .map-flag{font-size:20px;margin-left:2px;}
   .game-memgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
-  .mem-card{aspect-ratio:3/4;border:2px solid #d9e8e5;border-radius:13px;background:linear-gradient(150deg,#e9f7f3,#fff6e2);cursor:pointer;display:grid;place-items:center;font-size:19px;font-weight:800;color:#0e7c7b;padding:6px;min-width:0;}
+  .mem-card{aspect-ratio:3/4;border:2px solid #d9e8e5;border-radius:13px;background:linear-gradient(150deg,#e9f7f3,#fff6e2);cursor:pointer;display:grid;place-items:center;font-size:19px;font-weight:800;color:var(--brand);padding:6px;min-width:0;}
   .mem-card .mem-front{display:none;flex-direction:column;align-items:center;gap:2px;font-family:"Songti SC","Noto Serif TC",serif;font-size:24px;line-height:1.15;word-break:break-word;}
   .mem-card.up .mem-front{display:flex;}
   .mem-card.up .mem-back{display:none;}
   .mem-card.up{border-color:var(--game-color,#0e7c7b);background:#fff;}
   .mem-card[disabled]{opacity:.75;cursor:default;}
   .sort-pool{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;min-height:44px;}
-  .chip{border:1.5px solid #cfe4e0;background:#fff;border-radius:999px;padding:7px 13px;font-size:17px;font-weight:800;color:#0e7c7b;cursor:pointer;font-family:"Songti SC","Noto Serif TC",serif;}
+  .chip{border:1.5px solid #cfe4e0;background:#fff;border-radius:999px;padding:7px 13px;font-size:17px;font-weight:800;color:var(--brand);cursor:pointer;font-family:"Songti SC","Noto Serif TC",serif;}
   .chip.sel{background:#f5c451;border-color:#d99b2c;color:#6d4500;}
   .sort-bins{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
   .sort-bin{border:2px dashed #bfe3dc;border-radius:14px;background:#f4fbf9;padding:9px;min-height:86px;cursor:pointer;}
   .sort-bin.again{border-color:#f0d28d;background:#fffaf0;}
-  .sort-bin b{display:block;font-size:13px;color:#0e7c7b;margin-bottom:6px;text-align:center;}
+  .sort-bin b{display:block;font-size:13px;color:var(--brand);margin-bottom:6px;text-align:center;}
   .sort-bin.again b{color:#8b5a00;}
   .game-style-swap{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-2px 0 10px;}
   .game-style-swap .swap-label{font-size:12px;font-weight:700;color:#5f716f;}
-  .swap-btn{border:1px solid #cfe6e0;background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:#0e7c7b;cursor:pointer;}
+  .swap-btn{border:1px solid #cfe6e0;background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;color:var(--brand);cursor:pointer;}
   .swap-btn:hover{background:#f2fbf8;}
   .swap-btn.on{background:var(--game-color,#0e7c7b);color:#fff;border-color:transparent;}
   .bin-items{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;}
@@ -690,7 +692,7 @@
   .tre-hit{display:grid;gap:8px;}
   .speed-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
   .opt-card{border:2px solid #d9e8e5;background:#fff;border-radius:13px;padding:10px 6px;cursor:pointer;display:grid;gap:2px;place-items:center;font-family:"Songti SC","Noto Serif TC",serif;}
-  .opt-card strong{font-size:27px;color:#0e7c7b;line-height:1.1;}
+  .opt-card strong{font-size:27px;color:var(--brand);line-height:1.1;}
   .opt-card span{font-size:13px;color:var(--teal);font-weight:800;font-family:-apple-system,sans-serif;}
   .opt-card.shake{animation:gameShake .4s;}
   .opt-card .game-pic{display:block;margin:0 auto 4px;}
@@ -709,20 +711,20 @@
   @keyframes gameShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
   .game-singer{text-align:center;background:#fff;border-radius:13px;padding:10px;}
   .game-singer .mic{font-size:32px;}
-  .game-singer strong{display:block;color:#0e7c7b;font-size:16px;margin:2px 0 4px;}
+  .game-singer strong{display:block;color:var(--brand);font-size:16px;margin:2px 0 4px;}
   .game-singer p{font-size:12.5px;color:var(--ink-soft);margin:0;}
   .game-missions{display:grid;gap:7px;}
   .mission-item{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid #d9e8e5;border-radius:12px;padding:9px 11px;cursor:pointer;font-size:13px;}
   .mission-item:has(input:checked){border-color:var(--game-color,#0e7c7b);background:#f2fbf9;}
-  .mission-item b{color:#0e7c7b;}
+  .mission-item b{color:var(--brand);}
   .mission-item input{margin-top:3px;}
   /* 🎹 數字鋼琴：老師彈真琴，孩子撳屏幕鍵；數字同音高綁埋一齊 */
-  .piano-task{text-align:center;font-size:19px;font-weight:800;color:#0e7c7b;background:linear-gradient(90deg,#fff8e7,#eef8f5);border:1.5px solid #e0b361;border-radius:12px;padding:8px 10px;margin:0 0 9px;}
+  .piano-task{text-align:center;font-size:19px;font-weight:800;color:var(--brand);background:linear-gradient(90deg,#fff8e7,#eef8f5);border:1.5px solid #e0b361;border-radius:12px;padding:8px 10px;margin:0 0 9px;}
   .piano-task em{font-style:normal;font-size:14px;color:var(--teal);font-weight:800;margin-left:5px;}
   .piano-task .piano-count{display:block;font-size:13px;color:var(--ink-soft);font-weight:600;margin-top:2px;}
   .piano-keys{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;}
   .pkey{border:2px solid #d9e8e5;border-bottom-width:5px;border-radius:0 0 10px 10px;background:#fff;cursor:pointer;display:grid;gap:1px;place-items:center;padding:9px 2px 7px;font-family:inherit;}
-  .pkey .pkey-num{width:20px;height:20px;border-radius:50%;background:var(--k,#0e7c7b);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;font-family:-apple-system,sans-serif;}
+  .pkey .pkey-num{width:20px;height:20px;border-radius:50%;background:var(--k,#0e7c7b);box-shadow:inset 0 0 0 30px rgba(0,0,0,.30);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);font-size:12px;font-weight:800;display:grid;place-items:center;font-family:-apple-system,sans-serif;}
   .pkey .pkey-ch{font-size:23px;font-weight:800;color:#253536;font-family:"Songti SC","Noto Serif TC",serif;line-height:1.1;}
   .pkey .pkey-jp{font-size:10.5px;color:var(--teal);font-weight:700;font-family:-apple-system,sans-serif;}
   .pkey.hit{transform:translateY(3px);background:linear-gradient(180deg,#fff,#eef8f5);border-bottom-width:2px;}
@@ -802,9 +804,10 @@
   .avatar-card{background:var(--card-alt);border:1px solid var(--line);border-radius:16px;padding:16px;}
   .avatar-stage{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
   .avatar-ring{position:relative;width:190px;height:190px;border-radius:50%;padding:7px;background:var(--ring-bg,#e2e5ea);box-shadow:0 8px 22px rgba(0,0,0,.12);animation:avatar-bob 4.2s ease-in-out infinite;flex:0 0 auto;}
+  .avatar-notice{margin:7px 0 0;padding:7px 9px;border-radius:9px;background:#fff4f4;border:1px solid #f3b7b7;color:#a5272a;font-size:11.5px;font-weight:700;line-height:1.5;}
   .avatar-photo{width:100%;height:100%;border-radius:50%;background-color:#fff;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9aa1ad;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);}
   .avatar-photo b{font-size:40px;line-height:1;}
-  .avatar-photo small{font-size:11px;font-weight:700;margin-top:2px;}
+  .avatar-photo small{font-size:11px;font-weight:700;margin-top:2px;color:#5f6b7a;}
   .avatar-photo.has-photo b,.avatar-photo.has-photo small{display:none;}
   .ring-deco{position:absolute;transform:translate(-50%,-50%);font-size:17px;font-style:normal;line-height:1;animation:avatar-twinkle 3.2s ease-in-out infinite;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;}
   .avatar-head{position:absolute;left:50%;top:-6px;transform:translate(-50%,-30%) rotate(-6deg);font-size:46px;font-style:normal;line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));animation:avatar-tilt 3.6s ease-in-out infinite;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;}
@@ -886,6 +889,86 @@
   /* ---------- footer ---------- */
   footer{margin-top:60px; padding:32px 0 44px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:13px; text-align:center;}
   footer b{color:var(--teal); font-weight:700;}
+
+  /* ---------- 深色主題：固定淺色底嘅區塊一律跟住主題走 ----------
+     杜老師 2026-10-25 01:23：「孩子把背景改成深色，結果你的字一下子變得淺了，
+     完全看不見，這個對比度不夠。」→ 以下區塊原本寫死 #fff / #fff9e7，
+     在深色主題下就變成「淺字＋白底」。 */
+  body.is-dark .lesson-plan, body.is-dark .lesson-mini, body.is-dark .lesson-pattern,
+  body.is-dark .game-prompt, body.is-dark .cloze-sentence,
+  body.is-dark .game-singer, body.is-dark .mission-item{background:var(--card-alt); color:var(--ink);}
+  body.is-dark .game-achieved{background:linear-gradient(90deg,rgba(255,214,10,.14),rgba(14,124,123,.22)); color:var(--ink);}
+  body.is-dark .game-prompt, body.is-dark .game-achieved, body.is-dark .cloze-sentence{border-color:rgba(255,214,10,.42);}
+  body.is-dark .lesson-row.done, body.is-dark .lesson-card.done{background:rgba(46,158,91,.18);}
+  body.is-dark .q-opt:hover{background:var(--card);}
+  body.is-dark .unit-song-lyrics{color:#e6c07b;}
+  body.is-dark .game-cardface{background:var(--card); border-color:var(--teal);}
+  body.is-dark .game-cardface strong, body.is-dark .game-singer strong,
+  body.is-dark .mission-item b, body.is-dark .sort-bin b, body.is-dark .opt-card strong{color:var(--teal);}
+  body.is-dark .opt-card, body.is-dark .chip, body.is-dark .pkey, body.is-dark .tre-box,
+  body.is-dark .sort-bin, body.is-dark .bin-items span, body.is-dark .game-dot,
+  body.is-dark .map-dot, body.is-dark .swap-btn,
+  body.is-dark .lesson-spiral .ls-play, body.is-dark .lesson-talk .tk-play,
+  body.is-dark .lesson-nations .ln-chip, body.is-dark .sort-bin.again{background:var(--card-alt);}
+  body.is-dark .mem-card, body.is-dark .tre-box{background:linear-gradient(150deg,rgba(14,124,123,.24),rgba(245,196,81,.14));}
+  body.is-dark .mem-card.up, body.is-dark .tre-box.opened{background:var(--card);}
+  body.is-dark .chip, body.is-dark .mem-card, body.is-dark .bin-items span,
+  body.is-dark .pkey .pkey-ch, body.is-dark .swap-btn, body.is-dark .opt-card span{color:var(--ink);}
+  body.is-dark .chip.sel{background:rgba(245,196,81,.32); color:#ffe08a;}
+  body.is-dark .map-dot{color:var(--ink-soft);}
+  body.is-dark .game-beat i{background:rgba(245,196,81,.32); border-color:#b9892f;}
+  body.is-dark .game-beat i.hit{background:#f5c451;}
+  body.is-dark .unit-score-card{background:linear-gradient(180deg,var(--card),var(--card-alt)); border-color:rgba(224,198,138,.45);}
+  body.is-dark .usc-table td{border-bottom-color:var(--line);}
+  body.is-dark .usc-lyr, body.is-dark .pkey .pkey-ch{color:var(--ink);}
+  body.is-dark .hero-brand{color:#7fd4d2; border-color:rgba(127,212,210,.32);}
+  body.is-dark .mini-btn.mastered{color:#6ee7a8 !important; background:rgba(46,158,91,.22);}
+  body.is-dark .avatar-photo small{color:#98a2b3;}
+  body.is-dark .usc-chd{color:#e0b073;}
+  /* 聲調色號（.tn1…）原本寫死深紅深藍，深底上幾乎睇唔見 → 深色主題換同一色系的淺版 */
+  body.is-dark .tn1{color:#ff9a94 !important;}
+  body.is-dark .tn2{color:#ffb066 !important;}
+  body.is-dark .tn3{color:#e2c95c !important;}
+  body.is-dark .tn4{color:#6fd6d4 !important;}
+  body.is-dark .tn5{color:#8fbcff !important;}
+  body.is-dark .tn6{color:#a9a7ff !important;}
+  /* 深色主題：原本寫死淺底的幾個小區塊 */
+  body.is-dark .print-links a{background:rgba(99,211,205,.14); border-color:rgba(99,211,205,.4); color:#8fe3dd;}
+  body.is-dark .print-links a:hover{background:rgba(99,211,205,.24);}
+  body.is-dark .lesson-song{background:rgba(234,88,12,.12); border-color:rgba(234,88,12,.45);}
+  body.is-dark .lesson-spiral{background:rgba(217,119,6,.14); border-color:rgba(217,119,6,.45);}
+  body.is-dark .unit-song-badge{color:#ffc776; background:rgba(178,94,0,.26);}
+  body.is-dark .lesson-pattern .tk-head{color:#c4a6ff;}
+  body.is-dark .pt-chip{background:rgba(167,139,250,.22); color:#cbb6ff;}
+  body.is-dark .game-style-swap .swap-label{color:var(--ink-soft);}
+  body.is-dark .avatar-photo small{color:#5f6b7a;}
+  body.is-dark .lsong-lyr, body.is-dark .lesson-song .lsong-more li{color:var(--ink);}
+  body.is-dark .lp-done{color:#6ee7c8;}
+  body.is-dark .ls-head, body.is-dark .lesson-spiral .ls-row b{color:#ffcc85;}
+  body.is-dark .finals .fin b, body.is-dark .month-tag.fest, body.is-dark .q-feedback.bad,
+  body.is-dark .card-tag.preview, body.is-dark .ls-play, body.is-dark .game-print a{color:#ff9a94;}
+  body.is-dark .game-print a{background:rgba(139,90,0,.25); border-color:rgba(255,214,10,.35);}
+  body.is-dark .jyp-box h3{color:#a3b2ff;}
+  body.is-dark .lsong-head b{color:#ffb27a;}
+  body.is-dark .lesson-mini .tk-head{color:#ffc177;}
+  body.is-dark .game-btn, body.is-dark .mini-btn.game-btn{color:#ffd08a; background:rgba(139,90,0,.28);}
+  /* 聲調圓圈：深色主題保持圓圈本色，但壓深一層令白色數字夠 contrast */
+  body.is-dark .tone-card .num{color:#fff; box-shadow:inset 0 0 0 30px rgba(0,0,0,.34);}
+  /* 品牌綠文字：深色主題用淺一級的同一色系 */
+  body.is-dark{--brand:#63d3cd;}
+  /* 情景對話氣泡、小課文氣泡 */
+  body.is-dark .lesson-talk, body.is-dark .lesson-mini .tk-row{background:rgba(14,124,123,.18);}
+  body.is-dark .lesson-talk .tk-row .tk-who{background:rgba(99,211,205,.22); color:#9fe9e4;}
+  body.is-dark .lesson-talk .tk-row.s .tk-who{background:rgba(234,88,12,.26); color:#ffb27a;}
+  /* 導覽列：基礎皮膚冇設 --nav，夜晚會變成淺灰底＋灰字 */
+  body.is-dark nav{background:rgba(28,28,30,.92);}
+  body.is-dark .q-feedback.good{color:#6ee7a8;}
+  body.is-dark .lesson-status.done, body.is-dark .card-tag.review,
+  body.is-dark .lesson-row.done .lr-no, body.is-dark .q-opt.correct{background:rgba(46,158,91,.22); color:#8fe3b0;}
+  body.is-dark .q-opt.wrong{background:rgba(215,0,21,.22);}
+  body.is-dark .mic-toggle.mic-on, body.is-dark .record-status.good{background:rgba(46,158,91,.22); color:#8fe3b0; border-color:rgba(46,158,91,.5);}
+  body.is-dark .record-status.warn{background:rgba(215,0,21,.22); color:#ff9d94;}
+  body.is-dark .avatar-notice{background:rgba(215,0,21,.2); color:#ffb3ad; border-color:rgba(255,150,145,.45);}
 </style>
 
 <style id="yuhe-beta-style">
@@ -1056,7 +1139,7 @@
       <div class="shop-section">
         <h3>🧑‍🎨 我的造型 <span>放自己張相上去，用分數換相框同掛飾</span></h3>
         <div id="avatarCard"></div>
-        <input type="file" id="avatarFile" accept="image/*" hidden>
+        <input type="file" id="avatarFile" accept="image/*,.heic,.heif,.jpg,.jpeg,.png,.webp" hidden>
       </div>
       <div id="shopHero"></div>
       <div class="shop-section">
@@ -1473,8 +1556,8 @@ let rewardState = loadRewards();
 let rewardSoundContext = null;
 let rewardToastTimer = null;
 function saveRewards(){
-  try{ localStorage.setItem(REWARD_KEY, JSON.stringify(rewardState)); }
-  catch(err){ console.warn("無法保存獎勵進度", err); }
+  try{ localStorage.setItem(REWARD_KEY, JSON.stringify(rewardState)); return true; }
+  catch(err){ console.warn("無法保存獎勵進度", err); return false; }
 }
 function showRewardToast(text){
   const toast = $("#rewardToast");
@@ -1605,6 +1688,26 @@ function bindTeacherPanel(){
   /* 網址尾巴加 #setpoints=2014 可以直接設定分數（方便老師遙控） */
   const command = /(?:^|[#&])setpoints=(\d+)/.exec(location.hash || "");
   if(command) teacherSetPoints(command[1]);
+  /* 網址尾巴加 #openunit=4 可以直接開某個單元、收埋其他（老師遙控用） */
+  const unitCmd = /(?:^|[#&])openunit=(\d+)/.exec(location.hash || "");
+  if(unitCmd){
+    setTimeout(() => {
+      setOpenUnit(unitCmd[1]);
+      const target = document.querySelector('.unit-details[data-unit="' + Number(unitCmd[1]) + '"]');
+      if(target && target.scrollIntoView) target.scrollIntoView({block:"start"});
+    }, 80);
+  }
+  /* 網址尾巴加 #setavatar=<base64> 可以直接放入相片（老師遙控用，唔會上傳） */
+  const avatarCmd = /(?:^|[#&])setavatar=([A-Za-z0-9+/=_-]+)/.exec(location.hash || "");
+  if(avatarCmd){
+    let rawCmd = avatarCmd[1];
+    try{ rawCmd = decodeURIComponent(rawCmd); }catch(e){}
+    const payload = rawCmd.replace(/-/g, "+").replace(/_/g, "/");
+    if(payload.length > 200){
+      rewardState.avatar.photo = payload.indexOf("data:image") === 0 ? payload : "data:image/jpeg;base64," + payload;
+      saveRewards(); renderRewards(); renderNavAvatar();
+    }
+  }
   /* 同一個瀏覽器開咗幾個分頁時，保持分數一致 */
   window.addEventListener("storage", event => {
     if(event.key !== REWARD_KEY) return;
@@ -1657,8 +1760,45 @@ function showSticker(reason=""){
   stickerTimer = setTimeout(() => pop.classList.remove("show"), 2200);
 }
 /* ---- 主題套用（base 用 CSS class，時令／收藏主題用 inline CSS 變數） ---- */
-const PAL_VARS = ["paper","card","card-alt","ink","ink-soft","teal","teal-dark","gold","line","shadow","nav"];
+const PAL_VARS = ["paper","card","card-alt","ink","ink-soft","teal","teal-dark","gold","red","line","shadow","nav",
+  "t1","t2","t3","t4","t5","t6"];
 function clearPalVars(){ PAL_VARS.forEach(name => document.body.style.removeProperty("--" + name)); }
+/* 相對亮度與對比度（WCAG），用嚟自動校正深色主題嘅字色 */
+function toHexColor(value, fallback){
+  const text = String(value || "").trim();
+  if(/^#[0-9a-f]{6}$/i.test(text)) return text;
+  if(/^#[0-9a-f]{3}$/i.test(text)) return "#" + text.slice(1).split("").map(c => c + c).join("");
+  const rgb = /^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/i.exec(text);
+  if(rgb) return "#" + [1,2,3].map(i => Number(rgb[i]).toString(16).padStart(2, "0")).join("");
+  return fallback;
+}
+function relLum(hex){
+  const rgb = hexToRgb(hex).map(v => { const c = v / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); });
+  return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+}
+function contrastRatio(a, b){
+  const x = relLum(a), y = relLum(b);
+  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+}
+/* 2026-10-25 杜老師：「孩子把背景改成深色，字就變淺得完全睇唔見。」
+   任何主題套用之後自動驗一次：正文與卡片／紙底對比度不足就自動校正，
+   同時記住呢個係深色主題（body.is-dark），令寫死淺色底嘅區塊跟住轉。 */
+function guardContrast(){
+  const cs = getComputedStyle(document.body);
+  const paper = toHexColor(cs.getPropertyValue("--paper"), "#f7f5f0");
+  const card = toHexColor(cs.getPropertyValue("--card"), "#ffffff");
+  let ink = toHexColor(cs.getPropertyValue("--ink"), "#1d1d1f");
+  const dark = relLum(paper) < 0.42;
+  document.body.classList.toggle("is-dark", dark);
+  const pick = surface => relLum(surface) < 0.42 ? "#f5f5f7" : "#1d1d1f";
+  if(contrastRatio(card, ink) < 4.5) ink = pick(card);
+  if(contrastRatio(paper, ink) < 4.5) ink = pick(paper);
+  document.body.style.setProperty("--ink", ink);
+  const soft = toHexColor(cs.getPropertyValue("--ink-soft"), "#515154");
+  const softBase = relLum(card) < 0.42 ? card : paper;
+  document.body.style.setProperty("--ink-soft",
+    contrastRatio(softBase, soft) < 3.4 ? mixColor(ink, softBase, .34) : soft);
+}
 function applyTheme(theme){
   document.body.classList.remove(...THEMES.map(item => "skin-" + item.id));
   clearPalVars();
@@ -1666,6 +1806,7 @@ function applyTheme(theme){
     Object.keys(theme.pal).forEach(name => document.body.style.setProperty("--" + name, theme.pal[name]));
   }
   document.body.classList.add("skin-" + ((theme && theme.id) || "classic"));
+  guardContrast();
   renderBgFx(theme);
 }
 function applySkin(id, persist=true){
@@ -1991,6 +2132,25 @@ function avatarItemCardHTML(item){
     <button class="mini-btn${equipped ? " mastered" : ""}" data-avatar="${item.kind === "frame" ? "frame:" : "outfit:"}${escapeHtml(item.id)}" ${equipped ? "disabled" : ""}>${escapeHtml(label)}</button>
   </article>`;
 }
+let avatarNoticeText = "";
+function setAvatarNotice(text){
+  avatarNoticeText = text || "";
+  const card = $("#avatarCard");
+  if(card){
+    const old = card.querySelector("[data-avatar-notice]");
+    if(old) old.remove();
+    if(avatarNoticeText){
+      const box = card.querySelector(".avatar-info");
+      if(box){
+        const p = document.createElement("p");
+        p.className = "avatar-notice";
+        p.setAttribute("data-avatar-notice", "1");
+        p.textContent = avatarNoticeText;
+        box.appendChild(p);
+      }
+    }
+  }
+}
 function avatarPanelHTML(){
   const kit = avatarEquipped();
   const ownCount = AVATAR_ITEMS.filter(item => rewardState.ownedSkins.includes(item.id)).length;
@@ -2004,6 +2164,7 @@ function avatarPanelHTML(){
           <button class="mini-btn" data-avatar="upload">📷 ${kit.photo ? "換一張相" : "上傳相片／影相"}</button>
           ${kit.photo ? `<button class="mini-btn ghost" data-avatar="clear">移除相片</button>` : ""}
         </div>
+        ${avatarNoticeText ? `<p class="avatar-notice" data-avatar-notice="1">${escapeHtml(avatarNoticeText)}</p>` : ""}
         <div class="avatar-tags">
           <span class="reward-rule">相框：${escapeHtml(kit.frame.name)}</span>
           <span class="reward-rule">頭飾：${kit.head ? escapeHtml(kit.head.name) : "未有"}</span>
@@ -2041,9 +2202,21 @@ function buyAvatarItem(kind, id){
   else rewardState.avatar.hand = id;
   saveRewards(); renderRewards(); renderNavAvatar();
 }
+function looksLikeHeic(file){
+  const name = (file.name || "").toLowerCase();
+  if(/\.(heic|heif)$/.test(name)) return true;
+  if(/^image\/(heic|heif)$/i.test(file.type || "")) return true;
+  return false;
+}
+const HEIC_HELP = "呢張係 iPhone 嘅 HEIC 格式，瀏覽器讀唔到。請喺「預覽程式」打開 → 檔案 → 輸出 → 格式揀 JPEG → 存好再上傳；或者直接影一張／用截圖都可以。";
 function handleAvatarPhoto(file){
   if(!file) return;
-  if(!/^image\//.test(file.type || "")){ showRewardToast("請揀一張相片檔案"); return; }
+  setAvatarNotice("");
+  const isImage = /^image\//.test(file.type || "") || /\.(jpg|jpeg|png|webp|gif|bmp|heic|heif)$/i.test(file.name || "");
+  if(!isImage){ setAvatarNotice("請揀一張相片檔案（JPG／PNG）。"); return; }
+  if(looksLikeHeic(file)){ setAvatarNotice(HEIC_HELP); return; }
+  if(file.size > 40 * 1024 * 1024){ setAvatarNotice("張相太大（超過 40MB），換一張細啲嘅。"); return; }
+  const fail = () => setAvatarNotice("呢張相讀唔到，試另一張（JPG 或 PNG）。");
   const reader = new FileReader();
   reader.onload = () => {
     const img = new Image();
@@ -2055,16 +2228,30 @@ function handleAvatarPhoto(file){
         const context = canvas.getContext("2d");
         const edge = Math.min(img.width, img.height) || side;
         context.drawImage(img, (img.width - edge) / 2, (img.height - edge) / 2, edge, edge, 0, 0, side, side);
-        rewardState.avatar.photo = canvas.toDataURL("image/jpeg", 0.82);
-        saveRewards(); renderRewards(); renderNavAvatar();
+        let encoded = "";
+        try{ encoded = canvas.toDataURL("image/jpeg", 0.82); }catch(e){ encoded = ""; }
+        if(!encoded || encoded.length < 200){
+          try{ encoded = canvas.toDataURL("image/png"); }catch(e){ encoded = ""; }
+        }
+        if(!encoded || encoded.length < 200){ fail(); return; }
+        rewardState.avatar.photo = encoded;
+        const saved = saveRewards();
+        renderRewards(); renderNavAvatar();
+        if(!saved){
+          setAvatarNotice("相片已經放上去，但呢部機嘅瀏覽器儲存空間滿咗，關掉再開就會唔見。");
+          return;
+        }
         playRewardSound("bonus");
         showRewardToast("相片已經放上去（只存在呢部機）");
-      }catch(err){ showRewardToast("呢張相讀唔到，試另一張"); }
+      }catch(err){ fail(); }
     };
-    img.onerror = () => showRewardToast("呢張相讀唔到，試另一張");
+    img.onerror = () => {
+      if(looksLikeHeic(file)) setAvatarNotice(HEIC_HELP);
+      else fail();
+    };
     img.src = reader.result;
   };
-  reader.onerror = () => showRewardToast("呢張相讀唔到，試另一張");
+  reader.onerror = fail;
   reader.readAsDataURL(file);
 }
 /* ---- 荷荷伴讀 ---- */
