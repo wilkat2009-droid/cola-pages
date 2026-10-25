@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="yuhe-build" content="20261025074952">
+<meta name="yuhe-build" content="20261025082854">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>粵語學堂 · Canto Class — 學粵語，由聲調開始</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e7c7b'/><text x='50' y='72' font-size='60' text-anchor='middle' fill='%23fffdf8' font-family='serif'>粵</text></svg>">
@@ -510,6 +510,12 @@
   .count-cell b{position:absolute;right:4px;bottom:2px;font-size:11px;font-weight:800;color:var(--teal);}
   .count-cell.done{background:rgba(14,124,123,.12);border-style:solid;border-color:var(--teal);}
   .count-total{margin-top:10px;font-size:14px;font-weight:800;color:var(--ink);}
+  .wg-play{margin-left:auto;border:1px solid var(--teal);background:var(--teal);color:#fff;border-radius:999px;padding:7px 14px;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer;min-height:34px;}
+  .wg-play:hover{background:var(--teal-dark);}
+  .count-cell.pop{animation:countPop .42s ease;}
+  @keyframes countPop{0%{transform:scale(1)}45%{transform:scale(1.18)}100%{transform:scale(1)}}
+  .clock-sec{animation:clockTick 60s steps(60,end) infinite;transform-origin:100px 100px;}
+  @keyframes clockTick{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   .clock-wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
   .clock-face{width:210px;height:210px;flex:none;}
   .clock-side{display:flex;flex-direction:column;gap:8px;min-width:150px;}
@@ -2976,7 +2982,7 @@ function lessonWidgetBlock(lesson){
   if(w.type === "count"){
     const emoji = w.emoji || "👧";
     const cells = Array.from({length: w.n}, (_, i) => `<button type="button" class="count-cell" data-count="${i+1}">${emoji}<b>${i+1}</b></button>`).join("");
-    return `<div class="lesson-widget" data-widget="count"><div class="wg-head">🔢 數一數 · ${escapeHtml(w.unit || "")}<span class="wg-note">逐個撳，一路數一路講</span></div>
+    return `<div class="lesson-widget" data-widget="count"><div class="wg-head">🔢 數一數 · ${escapeHtml(w.unit || "")}<span class="wg-note">逐個撳，一路數一路講</span><button type="button" class="wg-play" data-count-seq="1">▶ 逐個數一次</button></div>
       <div class="count-grid">${cells}</div>
       <p class="count-total">呢度有 <b>${w.n}</b> ${escapeHtml(w.unit || "")}。</p></div>`;
   }
@@ -2995,6 +3001,7 @@ function lessonWidgetBlock(lesson){
           ${nums}
           <line x1="100" y1="100" x2="100" y2="52" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" transform="rotate(${hd} 100 100)"/>
           <line x1="100" y1="100" x2="100" y2="30" stroke="var(--teal)" stroke-width="4.5" stroke-linecap="round" transform="rotate(${md} 100 100)"/>
+          <line class="clock-sec" x1="100" y1="104" x2="100" y2="38" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" transform="rotate(0 100 100)"/>
           <circle cx="100" cy="100" r="6" fill="var(--teal)"/>
         </svg>
         <div class="clock-side"><div class="clock-digital">${h}:${String(m).padStart(2,"0")}</div><div class="clock-say">${escapeHtml(w.say || "")}</div></div>
@@ -3086,12 +3093,32 @@ function bindLessonActions(container){
       if(button.dataset.action === "shadow"){ closeLessonView(); openShadowing(id); }
     });
   });
+  function countCharOf(n){
+    const cn = ["零","一","二","三","四","五","六","七","八","九","十"];
+    if(n <= 10) return cn[n];
+    if(n < 20) return "十" + cn[n - 10];
+    if(n === 20) return "二十";
+    if(n < 100) return cn[Math.floor(n / 10)] + "十" + (n % 10 ? cn[n % 10] : "");
+    return "";
+  }
+  container.querySelectorAll("[data-count-seq]").forEach(button => {
+    button.addEventListener("click", () => {
+      const widget = button.closest("[data-widget='count']");
+      const cells = Array.from(widget.querySelectorAll(".count-cell"));
+      cells.forEach(c => c.classList.remove("done"));
+      cells.forEach((cell, i) => setTimeout(() => {
+        cell.classList.add("done", "pop");
+        setTimeout(() => cell.classList.remove("pop"), 450);
+        const ch = countCharOf(i + 1);
+        const word = ch ? (DATA.words || []).find(w => w.char === ch) : null;
+        if(word && word.audio) play(word.audio, cell);
+      }, 620 * i));
+    });
+  });
   container.querySelectorAll(".count-cell").forEach(cell => {
     cell.addEventListener("click", () => {
       cell.classList.toggle("done");
-      const n = Number(cell.dataset.count);
-      const cn = ["零","一","二","三","四","五","六","七","八","九","十"];
-      const ch = n <= 10 ? cn[n] : (n < 20 ? "十" + cn[n - 10] : (n === 20 ? "二十" : ""));
+      const ch = countCharOf(Number(cell.dataset.count));
       const word = ch ? (DATA.words || []).find(w => w.char === ch) : null;
       if(word && word.audio) play(word.audio, cell);
     });
