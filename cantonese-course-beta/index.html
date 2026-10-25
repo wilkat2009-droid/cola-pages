@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="yuhe-build" content="20261025103801">
+<meta name="yuhe-build" content="20261025105035">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>粵語學堂 · Canto Class — 學粵語，由聲調開始</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e7c7b'/><text x='50' y='72' font-size='60' text-anchor='middle' fill='%23fffdf8' font-family='serif'>粵</text></svg>">
@@ -528,35 +528,47 @@
   .cal-d.empty{background:none;border:0;}
   body.is-dark .count-cell,body.is-dark .cal-d{background:rgba(255,255,255,.07);}
   body.is-dark .cal-d.today{background:var(--teal);color:#04211f;}
-  .ld-main{display:flex;flex-direction:column;gap:12px;min-width:0;}
-  /* 2026-10-25 杜老師：字都擠在中間，兩邊空住，滑動又花時間 → 用盡闊度、正文分兩欄 */
-  @media(min-width:1200px){
-    .lv-cols{grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:18px;}
-    .ld-main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;}
-    .ld-main>*{min-width:0;}
-    .ld-main .lesson-plan,.ld-main .lesson-mini,.ld-main .lesson-media,.ld-main .lesson-widget{grid-column:1 / -1;}
-  }
-  @media(min-width:1680px){
-    .lv-cols{grid-template-columns:minmax(0,330px) minmax(0,1fr);}
-    .ld-main{grid-template-columns:repeat(3,minmax(0,1fr));}
-    .ld-main .lesson-plan{grid-column:1 / 3;}
-    .ld-main .lesson-mini{grid-column:3 / 4;}
-    .ld-main .lesson-media{grid-column:1 / -1;}
-  }
-  /* 全屏版把字放大返（原本為咗塞入細卡縮到 11.5px） */
-  .lesson-view .lesson-song .lsong-lyr,.lesson-view .lesson-talk .tk-row{font-size:14.5px;}
-  .lesson-view .lesson-talk .tk-row b{font-size:17px;}
-  .lesson-view .lesson-talk .tk-head,.lesson-view .lesson-spiral .ls-head{font-size:13px;}
-  .lesson-view .lesson-talk .tk-div{font-size:13px;}
-  .lesson-view .lesson-plan .lp-row,.lesson-view .lesson-mini .tk-row,.lesson-view .lesson-pattern .tk-row{font-size:14.5px;}
-  .lesson-view .lesson-plan .lp-body b{font-size:15.5px;}
-  .lesson-view .lesson-plan .lp-done{font-size:12.5px;}
-  .lesson-view .lesson-talk .tk-hint,.lesson-view .lesson-song .lsong-more>summary,.lesson-view .lesson-spiral .ls-more>summary{font-size:12.5px;}
-  .lesson-view .lesson-nations .ln-head{font-size:12px;}
-  .lesson-view .lesson-nations .ln-head .ln-q{font-size:14px;}
-  .lesson-view .lesson-nations .ln-eg,.lesson-view .lesson-spiral .ls-row{font-size:14.5px;}
-  .lesson-view .lesson-nations .ln-chip{font-size:13.5px;min-height:36px;}
-  .lesson-view .lesson-spiral .ls-row b{font-size:16px;}
+  .ld-main{display:flex;flex-direction:column;gap:14px;min-width:0;}
+  /* 2026-10-25 10:46 杜老師：「仍然是字非常小的，我寧願你是順著排，就好像在手機裡一樣，這樣字就會足夠的大」
+     → 一律單欄順排（唔再分兩欄三欄）；字級放大；內容上限收窄到 1020px 令每行唔會太長 */
+  .lv-cols{display:block;}
+  .ld-side{position:static;margin-bottom:16px;}
+  .lesson-view-body .lv-inner{max-width:1020px;}
+  /* 全屏版字級全面放大（2026-10-25 10:46 杜老師：字要夠大，寧願順排） */
+  .lesson-view .ld-hero h3{font-size:31px;}
+  .lesson-view .ld-hero .ld-no{font-size:14.5px;}
+  .lesson-view .ld-hero .lesson-goal{font-size:17px;}
+  .lesson-view .ld-card h4{font-size:15px;}
+  .lesson-view .ld-word{font-size:17.5px;min-height:44px;padding:8px 15px;}
+  .lesson-view .ld-word small{font-size:14px;}
+  .lesson-view .lesson-practice{font-size:15.5px;}
+  .lesson-view .mini-btn{font-size:16px;min-height:44px;}
+  .lesson-view .lesson-song .lsong-lyr,.lesson-view .lesson-talk .tk-row{font-size:18px;}
+  .lesson-view .lesson-talk .tk-row b{font-size:21px;}
+  .lesson-view .lesson-talk .tk-head,.lesson-view .lesson-spiral .ls-head{font-size:15px;}
+  .lesson-view .lesson-talk .tk-div{font-size:15px;}
+  .lesson-view .lesson-plan .lp-row,.lesson-view .lesson-mini .tk-row,.lesson-view .lesson-pattern .tk-row{font-size:18px;}
+  .lesson-view .lesson-plan .lp-body b{font-size:19px;}
+  .lesson-view .lesson-plan .lp-done{font-size:14.5px;}
+  .lesson-view .lesson-talk .tk-hint,.lesson-view .lesson-song .lsong-more>summary,.lesson-view .lesson-spiral .ls-more>summary{font-size:14.5px;}
+  .lesson-view .lesson-nations .ln-head{font-size:14px;}
+  .lesson-view .lesson-nations .ln-head .ln-q{font-size:17px;}
+  .lesson-view .lesson-nations .ln-eg,.lesson-view .lesson-spiral .ls-row{font-size:17.5px;}
+  .lesson-view .lesson-nations .ln-chip{font-size:16px;min-height:42px;}
+  .lesson-view .lesson-nations .ln-chip small{font-size:13px;}
+  .lesson-view .lesson-spiral .ls-row b{font-size:19px;}
+  .lesson-view .jp{font-size:15.5px;}
+  .lesson-view .lesson-media .md-head,.lesson-view .lesson-widget .wg-head{font-size:16px;}
+  .lesson-view .lesson-media .md-note,.lesson-view .lesson-widget .wg-note{font-size:13.5px;}
+  .lesson-view .md-item figcaption{font-size:15.5px;padding:9px 11px 11px;}
+  .lesson-view .md-grid{grid-template-columns:repeat(auto-fill,minmax(232px,1fr));}
+  .lesson-view .count-cell{font-size:38px;min-height:70px;}
+  .lesson-view .count-cell b{font-size:13px;}
+  .lesson-view .count-total{font-size:17px;}
+  .lesson-view .wg-play{font-size:14.5px;min-height:40px;}
+  .lesson-view .cal-h{font-size:13.5px;}
+  .lesson-view .cal-d{font-size:16px;padding:8px 0;}
+  .lesson-view .clock-say{font-size:17px;}
   .lesson-view .lesson-nations .ln-eg .game-pic img{width:80px;height:80px;}
   .lesson-view .lesson-nations .ln-chip .game-pic img{width:38px;height:38px;}
   @media(max-width:980px){
@@ -1055,6 +1067,33 @@
   body.is-dark .mic-toggle.mic-on, body.is-dark .record-status.good{background:rgba(46,158,91,.22); color:#8fe3b0; border-color:rgba(46,158,91,.5);}
   body.is-dark .record-status.warn{background:rgba(215,0,21,.22); color:#ff9d94;}
   body.is-dark .avatar-notice{background:rgba(215,0,21,.2); color:#ffb3ad; border-color:rgba(255,150,145,.45);}
+  /* 最後壓軸：全屏課堂頁字級放大（放喺 style 最尾，蓋過前面所有細字規則） */
+  .lesson-view .lv-crumb b{font-size:18px;}
+  .lesson-view .lv-crumb span{font-size:13px;}
+  .lesson-view .lv-back,.lesson-view .fab-top,.lesson-view .fab-back{font-size:15px;}
+  .lesson-view .lesson-status{font-size:13.5px;min-height:34px;}
+  .lesson-view .ld-len{font-size:14.5px;}
+  .lesson-view .ld-word small{font-size:15px;color:var(--ink-soft);opacity:.95;}
+  .lesson-view .tk-head{font-size:16px;}
+  .lesson-view .tk-set{font-size:13.5px;}
+  .lesson-view .lp-min{font-size:14.5px;min-width:46px;}
+  .lesson-view .pt-chip{font-size:14.5px;min-height:34px;padding:5px 11px;}
+  .lesson-view .tk-who{font-size:13.5px;padding:3px 9px;}
+  .lesson-view .tk-play{font-size:14px;min-width:38px;min-height:36px;}
+  .lesson-view .gk-head{font-size:15px;}
+  .lesson-view .gk-note{font-size:13px;}
+  .lesson-view .gk-chip{font-size:16px;min-height:40px;}
+  .lesson-view .lsong-badge{font-size:13px;}
+  .lesson-view .ls-play{font-size:14px;min-height:34px;}
+  .lesson-view .md-play{font-size:13.5px;padding:4px 10px;}
+  .lesson-view .lesson-spiral li,.lesson-view .lesson-nations li{font-size:15px;line-height:1.55;}
+  /* 仲有幾粒漏網之魚（粵拼、角色標籤、清單、括號註），一律拉到 13px 以上 */
+  .lesson-view small{font-size:13px !important;line-height:1.45;}
+  .lesson-view .gk-chip small{font-size:13px !important;}
+  .lesson-view .tk-who{font-size:13.5px !important;padding:3px 9px !important;}
+  .lesson-view li{font-size:15px !important;line-height:1.6;}
+  .lesson-view em{font-size:13px !important;}
+  .lesson-view .ln-head em{font-size:13px !important;}
 </style>
 
 <style id="yuhe-beta-style">
