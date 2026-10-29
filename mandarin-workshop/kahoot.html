@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>《你好，深圳》· Kahoot 十題</title><style>
+  :root{ --forest:#1E4A38; --cream:#FBF8F1; --pink:#E4407B; --gold:#D6CC92;
+         --mint:#E5F3EA; --grey:#5A6A62; }
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body{ background:var(--forest); font-family:"PingFang TC","Helvetica Neue","Microsoft JhengHei",sans-serif;
+        color:var(--cream); min-height:100vh; display:flex; flex-direction:column; }
+  .top{ display:flex; align-items:baseline; justify-content:space-between;
+        padding:2.4vh 3.2vw 0; font-size:1.5vw; letter-spacing:.22em; color:var(--gold); font-weight:700; }
+  .q{ text-align:center; padding:3.2vh 4vw 0; }
+  .q .py{ font-family:Arial,"Helvetica Neue",sans-serif; font-size:5.6vw; font-weight:700;
+          line-height:1.08; letter-spacing:.01em; }
+  .q .hz{ font-size:2.1vw; color:var(--gold); margin-top:.6vh; letter-spacing:.1em; }
+  .q .ask{ font-size:2.4vw; color:var(--mint); margin-top:1.2vh; }
+  .opts{ flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+         gap:1.6vh 1.6vw; padding:3vh 4vw 3.4vh; }
+  .opt{ display:flex; align-items:center; gap:1.4vw; background:var(--c); border-radius:1.2vw;
+        padding:0 2vw; cursor:pointer; transition:.18s transform,.18s filter; min-height:0; }
+  .opt:hover{ transform:translateY(-3px); }
+  .opt .sh{ font-size:2.4vw; opacity:.9; }
+  .opt .tx{ font-size:2.1vw; font-weight:700; line-height:1.2; }
+  .opt .sub{ display:block; font-size:1.3vw; font-weight:400; opacity:.85; margin-top:.3vh; }
+  .opt.dead{ filter:grayscale(.55) brightness(.62); }
+  .opt.right{ box-shadow:0 0 0 .45vw var(--cream) inset, 0 0 2.4vw rgba(251,248,241,.55); }
+  .opt.right::after{ content:"✓"; margin-left:auto; font-size:3vw; font-weight:800; }
+  .foot{ min-height:12vh; padding:0 4vw 3vh; display:flex; align-items:center; gap:2vw; }
+  .why{ font-size:1.7vw; line-height:1.5; color:var(--mint); }
+  .why b{ color:var(--cream); }
+  .btn{ margin-left:auto; background:var(--gold); color:#20301F; border:0; border-radius:1vw;
+        padding:1.5vh 2.4vw; font-size:1.7vw; font-weight:800; cursor:pointer;
+        font-family:inherit; white-space:nowrap; }
+  .btn.ghost{ background:transparent; color:var(--gold); box-shadow:0 0 0 .2vw var(--gold) inset; margin-left:0; }
+  .btn:disabled{ opacity:.35; cursor:default; }
+  @media (max-width:700px){
+    .top{ font-size:3.4vw; } .q .py{ font-size:9vw; } .q .hz{ font-size:4.4vw; }
+    .q .ask{ font-size:4.6vw; } .opt .tx{ font-size:4.2vw; } .opt .sub{ font-size:3vw; }
+    .opt .sh{ font-size:4.6vw; } .why{ font-size:3.4vw; } .btn{ font-size:3.6vw; padding:1.2vh 4vw; }
+    .opts{ gap:1.2vh 3vw; padding:2vh 4vw; } .foot{ min-height:16vh; flex-wrap:wrap; }
+  }
+</style></head><body><div class="top"><span>你好，深圳　KAHOOT</span><span id="n"></span></div><div class="q"><div class="py" id="qpy"></div><div class="hz" id="qhz"></div><div class="ask" id="qask"></div></div><div class="opts" id="opts"></div><div class="foot"><div class="why" id="why"></div><button class="btn ghost" onclick="if(i>0){i--;render();}">上一題</button><button class="btn" id="next" onclick="next()">下一題</button></div><script>
+  var Q = [{"q": "nǐ hɑ̌o", "sub": "你好", "ask": "= ?", "o": [["Hello", ""], ["Thank you", ""], ["Goodbye", ""], ["Sorry", ""]], "ok": 0, "w": "一進門就講這句，最容易拿分。", "a": "答對：Hello"}, {"q": "xièxie", "sub": "谢谢", "ask": "= ?", "o": [["Please", ""], ["Thank you", ""], ["Excuse me", ""], ["You're welcome", ""]], "ok": 1, "w": "別人幫你蓋章、遞茶，就講這句。", "a": "答對：Thank you"}, {"q": "zɑ̀ijiɑ̀n", "sub": "再见", "ask": "= ?", "o": [["Good morning", ""], ["Good night", ""], ["Goodbye", ""], ["See you tomorrow", ""]], "ok": 2, "w": "離開課室之前講，講完就可以走。", "a": "答對：Goodbye"}, {"q": "How much?", "sub": "多少钱？怎麼說", "ask": "", "o": [["duōshɑo qiɑ́n?", "多少钱？"], ["tɑ̀i ɡuì le", "太贵了"], ["piɑ́nyi diɑ̌n", "便宜点"], ["wǒ yɑ̀o zhèɡe", "我要这个"]], "ok": 0, "w": "「多少钱」＝how much；講價的第一步是問價。", "a": "答對：duōshɑo qiɑ́n?"}, {"q": "chɑ́cɑ̄ntīnɡ", "sub": "茶餐厅", "ask": "— what is it?", "o": [["A place to eat and drink", ""], ["A train station", ""], ["A hotel", ""], ["A hospital", ""]], "ok": 0, "w": "香港最地道的那種小餐廳：奶茶、菠蘿油、蛋撻。", "a": "答對：A place to eat and drink"}, {"q": "Which one is 5?", "sub": "5 是哪一個音？", "ask": "", "o": [["shí", "十"], ["wǔ", "五"], ["èrshí", "二十"], ["wǔshí", "五十"]], "ok": 1, "w": "十、五、二十、五十——講價全靠這幾個。", "a": "答對：wǔ"}, {"q": "The noodles were great.", "sub": "好吃，怎麼說？", "ask": "", "o": [["tɑ̀i ɡuì le", "太贵了"], ["hɑ̌ochī", "好吃"], ["zɑ̀ijiɑ̀n", "再见"], ["xièxie", "谢谢"]], "ok": 1, "w": "好吃＝delicious。說一句，老闆笑得比什麼都甜。", "a": "答對：hɑ̌ochī"}, {"q": "You need the washroom.", "sub": "洗手間，問哪一句？", "ask": "", "o": [["wǒ yɑ̀o zhèɡe", "我要这个"], ["duōshɑo qiɑ́n?", "多少钱？"], ["qǐnɡwèn xǐshǒujiɑ̄n zɑ̀i nɑ̌r?", "请问洗手间在哪儿？"], ["qǐnɡ shuō mɑ̀n yìdiɑ̌n", "请说慢一点"]], "ok": 2, "w": "問路那一站的招牌句：请问…在哪儿？", "a": "答對：qǐnɡwèn xǐshǒujiɑ̄n zɑ̀i nɑ̌r?"}, {"q": "wǒ jiɑ̀o …", "sub": "我叫…，後面接甚麼？", "ask": "", "o": [["your name", ""], ["your country", ""], ["your age", ""], ["your phone number", ""]], "ok": 0, "w": "我叫＋名字；國家要講「我是…人」，兩句不要搞混。", "a": "答對：your name"}, {"q": "Our song, first line", "sub": "《你好歌》第一句", "ask": "", "o": [["xièxie xièxie xièxie nǐ", "谢谢谢谢谢谢你"], ["zɑ̀ijiɑ̀n zɑ̀ijiɑ̀n zɑ̀ijiɑ̀n ba", "再见再见再见吧"], ["nǐ hɑ̌o nǐ hɑ̌o nǐ hɑ̌o ma", "你好你好你好吗"], ["wǒ shì wǒ shì wǒ shì rén", "我是我是我是人"]], "ok": 2, "w": "唱得出來就等於全對，最後一題是送分。", "a": "答對：nǐ hɑ̌o nǐ hɑ̌o nǐ hɑ̌o ma"}];
+  var i = 0, answered = false, score = 0;
+  var el = function (id) { return document.getElementById(id); };
+
+  function optHTML(o, idx) {
+    var shape = ['▲', '◆', '●', '■'][idx];
+    var col = ['#C2454E', '#2D6CDF', '#C9922F', '#2F7D5B'][idx];
+    return '<div class="opt" data-i="' + idx + '" style="--c:' + col + '">' +
+           '<span class="sh">' + shape + '</span><span class="tx">' + o[0] +
+           (o[1] ? '<span class="sub">' + o[1] + '</span>' : '') + '</span></div>';
+  }
+
+  function render() {
+    answered = false;
+    var q = Q[i];
+    el('n').textContent = (i + 1) + ' / ' + Q.length;
+    el('qpy').textContent = q.q;
+    el('qhz').textContent = q.sub || '';
+    el('qask').textContent = q.ask || '';
+    var html = '';
+    for (var k = 0; k < 4; k++) html += optHTML(q.o[k], k);
+    el('opts').innerHTML = html;
+    el('why').innerHTML = '';
+    el('next').disabled = true;
+    var nodes = document.querySelectorAll('.opt');
+    for (var j = 0; j < nodes.length; j++) nodes[j].onclick = pick;
+  }
+
+  function pick(e) {
+    if (answered) return;
+    answered = true;
+    var q = Q[i];
+    var nodes = document.querySelectorAll('.opt');
+    for (var j = 0; j < nodes.length; j++) {
+      if (j === q.ok) nodes[j].classList.add('right');
+      else nodes[j].classList.add('dead');
+      nodes[j].onclick = null;
+    }
+    el('why').innerHTML = '<b>' + q.a + '</b>　' + q.w;
+    el('next').disabled = false;
+  }
+
+  function next() {
+    if (i < Q.length - 1) { i++; render(); }
+    else { el('qpy').textContent = 'Finished'; el('qhz').textContent = '全部答完';
+           el('qask').textContent = ''; el('opts').innerHTML = ''; el('why').textContent = '';
+           el('next').disabled = true; }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { if (!el('next').disabled) next(); }
+    if (e.key === 'ArrowLeft' && i > 0) { i--; render(); }
+    var k = '1234'.indexOf(e.key);
+    if (k >= 0 && !answered) pick();
+  });
+
+  render();
+</script></body></html>
