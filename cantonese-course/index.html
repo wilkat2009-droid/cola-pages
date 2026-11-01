@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="yuhe-build" content="20261101120223">
+<meta name="yuhe-build" content="20261101130430">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>粵語學堂 · Canto Class — 學粵語，由聲調開始</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e7c7b'/><text x='50' y='72' font-size='60' text-anchor='middle' fill='%23fffdf8' font-family='serif'>粵</text></svg>">
@@ -945,6 +945,12 @@
   @media(max-width:640px){.reward-card{padding:18px 15px;}.points-total strong{font-size:36px;}.reward-toast{right:14px;bottom:14px;left:14px;text-align:center;}}
 
   /* ---------- 跟讀與錄音 ---------- */
+  .speak-done{display:flex;flex-direction:column;align-items:center;gap:8px;margin:14px 0 4px;}
+  .speak-done-btn{font-size:20px;font-weight:800;padding:16px 30px;min-width:min(100%,360px);border-radius:16px;
+    background:linear-gradient(135deg,#12a3a1,#0e7c7b);color:#fff;border:0;box-shadow:0 8px 22px rgba(14,124,123,.28);}
+  .speak-done-btn:active{transform:translateY(1px);}
+  .speak-done-hint{margin:0;font-size:13px;color:var(--ink-soft);text-align:center;max-width:46em!important;line-height:1.5;}
+  .record-actions{opacity:.92;}
   .speaking-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);}
   .speaking-controls{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px;}
   .speaking-controls label{font-size:13px;font-weight:600;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;}
@@ -1419,7 +1425,7 @@ body.cert-lock{overflow:hidden;}
     <div class="sec-head">
       <div class="en">Shadowing · 跟讀練習</div>
       <h2>聽住讀，再聽自己</h2>
-      <p>選一課、詞彙或短句，先聽內置示範，再錄音跟讀。瀏覽器只會作輕量文字匹配，不是真正的音素級發音判定。</p>
+      <p>選一課、詞彙或短句，按<b>「✅ 我講完喇」</b>就當練習完成，唔使開麥克風。想聽返自己把聲，先至開錄音。</p>
     </div>
     <div class="speaking-card">
       <div class="speaking-controls">
@@ -1438,6 +1444,10 @@ body.cert-lock{overflow:hidden;}
         </label>
       </div>
       <div class="target-display" id="targetDisplay"></div>
+      <div class="speak-done">
+        <button class="btn speak-done-btn" id="speakDone" type="button">✅ 我講完喇（唔使錄音）</button>
+        <p class="speak-done-hint">按一下就算練習咗一次：+5 分、計星，仲會排入「今日複習」。錄音係可選嘅，想聽返自己把聲先開。</p>
+      </div>
       <div class="record-actions">
         <button class="btn" id="demoPlay">▶ 再聽示範</button>
         <button class="btn ghost mic-toggle" id="micToggle" aria-pressed="false">🔒 錄音：未開啟</button>
@@ -1447,7 +1457,7 @@ body.cert-lock{overflow:hidden;}
         <button class="btn ghost" id="saveRecord" disabled>保存本地錄音</button>
         <button class="btn ghost" id="deleteRecord" disabled>刪除錄音</button>
       </div>
-      <div class="record-status" id="recordStatus" role="status">尚未錄音。建議用 localhost 或 HTTPS 開啟以使用麥克風。</div>
+      <div class="record-status" id="recordStatus" role="status">錄音預設關閉；上面「✅ 我講完喇」已經可以完成練習，唔使開麥克風。</div>
       <div class="speech-feedback" id="speechFeedback">
         <div><b>語音轉寫</b><span id="transcript">—</span></div>
         <div><b>匹配百分比</b><span id="matchScore">—</span></div>
@@ -3964,6 +3974,7 @@ function finishGame(){
     const oldOnes = G.deck.filter(c => c.tag === "review" && G.spokenWords.indexOf(normWord(c.label)) >= 0).length;
     $("#gameBoard").innerHTML = `<div class="game-win"><div class="game-win-emoji">🎉</div><strong>今日開口任務完成！</strong><p>你識得讀 ${G.spokenWords.length} 個唔同嘅詞，一共開口 ${G.spoken} 次，全部聽得明。${oldOnes ? `其中 ${oldOnes} 個係以前學過嘅舊詞，你仲記得！` : ""}聽日再玩多一輪，會越講越順。</p><button class="btn" id="gameAgainBtn">🎲 再玩一輪</button></div>`;
     addPoints(10, "完成本課遊戲");
+    notePractice(G.lesson.id, "完成本課遊戲", 0);
     // 慶祝畫面係之後先插入嘅，所以要喺呢度先綁到「再玩一輪」按鈕。
     const againBtn = $("#gameAgainBtn");
     if(againBtn) againBtn.onclick = () => { const replayId = G.lesson.id, replayStyle = G.style; G = null; openLessonGame(replayId, replayStyle); };
@@ -5144,12 +5155,29 @@ function reviewLesson(id){
   updateProgress(id, {status: old.status === "mastered" ? "mastered" : "in-progress", reviews, lastPractice:Date.now(), nextReviewAt:nextReviewAt(reviews)});
   renderLessons(); renderReviewSummary(); openShadowing(id);
 }
-function recordPractice(id){
+function notePractice(id, label, pts){
   const old = getProgress(id);
   const reviews = (old.reviews || 0) + 1;
   updateProgress(id, {status: old.status === "mastered" ? "mastered" : "in-progress", reviews, lastPractice:Date.now(), nextReviewAt:nextReviewAt(reviews)});
-  addPoints(5, "完成跟讀錄音");
+  if(pts) addPoints(pts, label || "完成練習");
   renderLessons(); renderReviewSummary();
+}
+function recordPractice(id){
+  notePractice(id, "完成跟讀錄音", 5);
+}
+/* 唔使錄音嘅開口紀錄：孩子講完，老師／家長按一下就算練過。
+   三分鐘內同一課重複按唔再加分，免得亂撳刷分。 */
+const SPOKEN_COOLDOWN = 3 * 60 * 1000;
+function markSpokenDone(id){
+  const old = getProgress(id);
+  const fresh = old.lastPractice && (Date.now() - old.lastPractice) < SPOKEN_COOLDOWN;
+  notePractice(id, "開口跟讀", fresh ? 0 : 5);
+  const btn = $("#speakDone");
+  if(btn){ btn.textContent = "✅ 記低咗！"; setTimeout(() => { btn.textContent = "✅ 我講完喇（唔使錄音）"; }, 1400); }
+  const lesson = DATA.lessons.find(l => l.id === id) || selectedLesson();
+  const left = Math.min(Math.max((getProgress(id).reviews || 1) - 1, 0), REVIEW_INTERVALS.length - 1);
+  const nextDays = REVIEW_INTERVALS[left];
+  setRecordStatus(`✅ 已記錄：第 ${lesson.number} 課「${lesson.title}」講咗一次${fresh ? "（今堂已加過分）" : "，+5 分"}。下次複習：${nextDays} 天後。`, "good");
 }
 function openShadowing(id){
   selectedLessonId = id;
@@ -5271,9 +5299,11 @@ function micUnavailableMessage(){
    2026-09-17 改：預設「開」（杜老師當日錄唔到音，因為開關預設關咗而冇人知）。
    要靜音就自己熄；熄咗就永遠唔會讀取麥克風（自動評分都唔會啟動）。 */
 const MIC_KEY = "yuhe-mic";
+/* 2026-11-01 改：預設「關」。杜老師講明唔想每次都要同手機聯動、開麥克風有延遲，
+   孩子講完錄音機先準備好。上課一律用「✅ 我講完喇」按鈕；要錄音先自己開。 */
 let micOn = (() => {
-  try { const v = localStorage.getItem(MIC_KEY); return v === null ? true : v === "on"; }
-  catch(err){ return true; }
+  try { const v = localStorage.getItem(MIC_KEY); return v === null ? false : v === "on"; }
+  catch(err){ return false; }
 })();
 function renderMicToggle(){
   const btn = $("#micToggle");
@@ -5293,8 +5323,8 @@ function setMic(on){
   if(!micOn) stopRecording();
   renderMicToggle();
   setRecordStatus(micOn
-    ? "錄音已開啟：而家按「開始錄音」先至會讀取麥克風。記得將手機放遠少少。"
-    : "錄音已關閉：唔會讀取麥克風，環境音同手機都混唔入嚟。聽示範、玩遊戲、計星照常。", micOn ? "good" : "warn");
+    ? "錄音已開啟：而家按「開始錄音」先至會讀取麥克風。如果啟動好慢，係 macOS 用咗手機做麥克風 — 去「系統設定 → 聲音 → 輸入」揀『內置麥克風』就會即刻開到。"
+    : "錄音已關閉：唔會讀取麥克風。「✅ 我講完喇」照樣計分計複習，聽示範、玩遊戲都照常。", micOn ? "good" : "warn");
 }
 async function startRecording(){
   if(!micOn){ setRecordStatus("錄音而家係關閉嘅 — 撳上面「🔇 錄音：已關閉」開啟，先至用到麥克風。", "warn"); return; }
@@ -5371,6 +5401,9 @@ $("#sTargetType").onchange = () => { renderTargetOptions(); updateTargetDisplay(
 $("#sTarget").onchange = updateTargetDisplay;
 $("#demoPlay").onclick = function(){ play(currentSpeakingTarget().audio, this); };
 $("#micToggle").onclick = () => setMic(!micOn);
+const speakDoneBtn = $("#speakDone");
+if(speakDoneBtn) speakDoneBtn.onclick = () => markSpokenDone(selectedLessonId);
+
 $("#startRecord").onclick = startRecording;
 $("#stopRecord").onclick = stopRecording;
 $("#playRecord").onclick = playRecording;
