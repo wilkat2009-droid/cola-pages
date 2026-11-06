@@ -1,182 +1,72 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="面試班">
-<meta name="application-name" content="面試班">
-<meta name="theme-color" content="#ffffff">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230891b2'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='%23fff' font-family='PingFang TC,sans-serif'%3E面%3C/text%3E%3C/svg%3E">
-<title>面試班｜小一面試訓練</title>
-<style>
-  :root{--ink:#151515;--main:#0b6f8c;--line:#cfc8ba;--soft:#f6f4ef;--grey:#666}
-  *{box-sizing:border-box}
-  html,body{margin:0;background:#fff;color:var(--ink);
-    font-family:"PingFang HK","Hiragino Sans GB","Heiti TC","Kaiti TC","Microsoft JhengHei",sans-serif;
-    font-size:17px;line-height:1.72;-webkit-text-size-adjust:100%}
-  body{padding:env(safe-area-inset-top) 0 calc(60px + env(safe-area-inset-bottom))}
-  header{padding:16px 16px 10px;border-bottom:2.5px solid var(--ink)}
-  h1{font-size:21px;margin:0 0 3px;letter-spacing:.5px}
-  .sub{font-size:13.5px;color:var(--grey)}
-  .rule{margin:12px 16px;background:var(--soft);border-left:5px solid var(--main);
-    padding:10px 13px;font-size:15.5px;line-height:1.68}
-  nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);
-    overflow-x:auto;white-space:nowrap;padding:8px 10px;-webkit-overflow-scrolling:touch}
-  nav a{display:inline-block;font-size:14.5px;color:var(--main);text-decoration:none;
-    border:1px solid var(--line);border-radius:20px;padding:3px 12px;margin:0 5px 0 0;background:#fff}
-  section{padding:4px 16px 0}
-  h2{font-size:18.5px;color:var(--main);margin:24px 0 8px;border-left:5px solid var(--main);padding-left:9px}
-  h3{font-size:16px;margin:16px 0 5px}
-  .tag{display:inline-block;font-size:12.5px;color:#fff;background:var(--main);border-radius:999px;
-    padding:1px 10px;margin-left:6px;vertical-align:2px;letter-spacing:.5px}
-  .tag.light{color:var(--main);background:#eaf4f7;border:1px solid #cfe4ea}
-  table{width:100%;border-collapse:collapse;margin:6px 0 12px}
-  th,td{border:1px solid var(--line);padding:7px 8px;vertical-align:top;text-align:left}
-  th{background:var(--soft);font-size:13.5px;font-weight:700}
-  td{font-size:15px}
-  td.k{width:19%;background:var(--soft);font-weight:700}
-  td.mid{width:41%}
-  ol,ul{margin:6px 0 12px 1.2em;padding:0} li{margin:5px 0;font-size:15.5px}
-  .card{border:1.5px solid var(--line);border-radius:9px;padding:10px 13px;margin:10px 0;background:#fff;font-size:15.5px}
-  .card b{color:var(--main)}
-  .note{font-size:14.5px;color:#4a4a4a;background:var(--soft);border-radius:8px;padding:9px 12px;margin:8px 0 14px;line-height:1.62}
-  .week{border-left:4px solid var(--main);padding:2px 0 2px 12px;margin:10px 0}
-  .week b{color:var(--main)}
-  footer{text-align:center;color:#8a8a8a;font-size:13px;margin-top:44px;padding:0 16px;letter-spacing:.5px}
-  @media print{nav{display:none}body{font-size:12pt}h2{page-break-after:avoid}}
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>課程大連結｜菲凡・語荷</title><style>
+:root{--gold:#b88c45;--ink:#263238;--line:#e4dac7;--mut:#8a7a5e}
+*{box-sizing:border-box}
+body{margin:0;background:#f2eee6;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+header{background:#fff;border-bottom:3px solid var(--gold);padding:16px 20px}
+h1{margin:0 0 4px;font-size:20px}
+.sub{color:var(--mut);font-size:12.5px}
+main{max-width:1060px;margin:0 auto;padding:14px 16px 50px}
+input{width:100%;max-width:420px;font-size:15px;padding:9px 13px;border:1.5px solid var(--line);border-radius:24px;background:#fff;outline:none;margin-top:10px}
+input:focus{border-color:var(--gold)}
+.band{background:#faf7f0;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
+.band h2{margin:0;font-size:16px;color:#8a6d3b}
+.band .note{font-size:12px;color:var(--mut);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:11px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.card.hide{display:none}
+.chead h3{margin:0;font-size:13.5px;line-height:1.4;word-break:break-all}
+.desc{font-size:12px;color:var(--mut);margin:3px 0 6px}
+ul.fl{list-style:none;margin:0;padding:0;font-size:12.5px}
+ul.fl li{display:flex;gap:8px;justify-content:space-between;border-top:1px dotted #ece2d0;padding:3px 0}
+ul.fl li a{word-break:break-all;color:#2f6b8f;text-decoration:none}
+ul.fl li a:hover{text-decoration:underline}
+.sz{color:#b8ab94;flex:none;font-size:11px}
+.empty{font-size:12px;color:#b8ab94}
+footer{text-align:center;color:#b8ab94;font-size:11.5px;padding:22px}
 </style></head><body>
-
 <header>
-  <h1>面試班</h1>
-  <div class="sub">小一面試訓練 · 本地學校線／國際學校線 · 杜薇老師</div>
+<h1>課程大連結</h1>
+<div class="sub"><a href="家長必讀.html" style="color:#0b6f8c;font-weight:600">家長必讀：學校在看什麼、家長怎麼準備 →</a><br>菲凡文化教育／語荷教育　｜　面試班：菲凡課程・語荷課程　｜　家長講座<br>
+公開版只收通用教材；學生個人材料與語荷母版不上公開網。本機完整版在電腦的 00-總入口.html。　更新：2026-11-06</div>
+<input id="q" placeholder="篩選：工作紙／講座／大綱／顧問">
 </header>
-
-<div class="rule">
-  面試不是把孩子教成答案，而是讓孩子在陌生問題面前，也能聽得懂、想得到、說得清楚。
-</div>
-
-<nav>
-  <a href="#ability">五樣能力</a>
-  <a href="#onsite">現場長什麼樣</a>
-  <a href="#parent">家長面談</a>
-  <a href="#fourweeks">考前四週</a>
-  <a href="#dress">服裝與文件</a>
-</nav>
-
-<section id="ability">
-<h2>一、學校真正在看什麼</h2>
-<p>名校不是只考中英數。除了識字和數感，學校看的是這五樣——而這五樣，全部可以在家、在課堂練出來。</p>
-<table>
-  <tr><th>能力</th><th>課堂怎麼練</th><th>在家怎麼練</th></tr>
-  <tr>
-    <td class="k">表達</td>
-    <td class="mid">完整句練習：把「唔知」改成「我唔係好識，可以教我嗎」；一分鐘自我介紹；看圖說故事，講完要說出理由。</td>
-    <td>晚飯後一分鐘自我介紹，中英輪流；讀完繪本問「你最喜歡哪一頁？為什麼？」</td>
-  </tr>
-  <tr>
-    <td class="k">邏輯</td>
-    <td class="mid">聽多步指令做動作；物件分類並說出分類理由；圖卡排序講成一個故事；找規律。</td>
-    <td>收玩具時按顏色或大小分類，讓他自己講「我為什麼這樣分」。</td>
-  </tr>
-  <tr>
-    <td class="k">禮儀</td>
-    <td class="mid">進門問好、離座說多謝、不打斷別人、會等輪候；老師說話時眼睛看著老師。</td>
-    <td>出門前練一次打招呼，離開時說再見；在家玩輪流說話的遊戲。</td>
-  </tr>
-  <tr>
-    <td class="k">情緒</td>
-    <td class="mid">情景卡應對：玩具被同學搶走、看到同學不開心、東西做不完、答錯問題——先接納情緒，再一起想辦法。</td>
-    <td>孩子講不出來時不要替他答，先讓他講完，再示範一次完整的說法。</td>
-  </tr>
-  <tr>
-    <td class="k">自理</td>
-    <td class="mid">綁鞋帶、拉拉鏈、折衣服、收拾書包、上廁所會求助。</td>
-    <td>每天留一件「自己完成」的事，做完說一次自己是怎麼做到的。</td>
-  </tr>
-</table>
-<div class="note">一句提醒：孩子答不出來的時候，最差的答案不是「不知道」，是不肯再開口。所以練的不是標準答案，是敢講、肯想、講得完整。</div>
-</section>
-
-<section id="onsite">
-<h2>二、面試現場長什麼樣</h2>
-
-<h3>國際學校線<span class="tag light">前線觀察 · 2026 年 9 月</span></h3>
-<ul>
-  <li>由老師以小組形式把孩子帶進課室。</li>
-  <li>一次面試通常包括<b>一個中文故事、一個英文故事</b>。</li>
-  <li>單對單問話時，其他孩子在旁邊畫畫、拼積木——<b>不是逐個站起來輪答</b>，而是在同一間房裡被輪流叫去講話。</li>
-  <li>單獨問話主要圍繞剛才那個故事，老師會就同一個故事問一串問題，中英文皆然。</li>
-  <li>有認字環節，認的是幼稚園階段見過的字，繁體簡體都可以。</li>
-  <li>有個人連結題，例如「你最喜歡哪一頁？為什麼？」</li>
-  <li>最後是自由對答：自我介紹、說喜歡什麼、介紹自己的幼稚園——問題看老師臨場發揮。</li>
-</ul>
-<p><b>練什麼：</b>故事聽完要講得出，字要認得出，還要說得出「為什麼」。所以課堂以聽故事、講故事、認字、講理由為主。</p>
-
-<h3>本地學校線<span class="tag light">常見環節</span></h3>
-<ul>
-  <li>常見次序：小組活動或遊戲 → 個別面談 → 家長面談。</li>
-  <li>常見內容：自我介紹、聽指令做動作、看圖說故事、朗讀、組詞續句、簡單數感與圖形規律、生活常識、情景應對、小組合作。</li>
-  <li>課堂會按孩子實際情況補：反應速度、輪候耐性、臨場不搶不躲。</li>
-</ul>
-<div class="note">每間學校的輪數、形式、考核內容都不一樣，而且每年會調整。報名前請以校方最新公布的收生資料為準；本頁只寫通用訓練方向，不代替任何一所學校的官方要求。</div>
-</section>
-
-<section id="parent">
-<h2>三、家長面談怎麼準備</h2>
-<p>學校見家長，不是看家長的學歷或收入，而是確認三件事：<b>你了解這所學校</b>、<b>你的家教方向跟學校合得來</b>、<b>你願意配合學校</b>。</p>
-<div class="card">
-  <b>答題思路（不是背稿）</b><br>
-  具體了解學校 ＋ 平日真實做法 ＋ 遇到衝突怎麼引導 ＋ 明確家校合作態度。<br>
-  講自己家真的怎麼做，比背金句有用。父母兩人的說法要先對過一次，不要一個講東一個講西。
-</div>
-<h3>常被問到的方向</h3>
-<ul>
-  <li>為什麼選我們學校？</li>
-  <li>你的教育理念是什麼？</li>
-  <li>孩子有什麼優點和缺點？</li>
-  <li>孩子受挫、發脾氣的時候，你會怎麼處理？</li>
-  <li>平日誰陪孩子學習？每天大概多長時間？</li>
-  <li>你對孩子有什麼期望？</li>
-  <li>還申請了哪些學校？</li>
-</ul>
-<h3>幾句最好不要說</h3>
-<ul>
-  <li>「我們很忙，沒時間管孩子。」</li>
-  <li>「你們是名校，所以我們才來。」</li>
-  <li>「孩子交給你們就好了。」</li>
-  <li>只講分數和名次，講不出孩子是怎樣的人。</li>
-  <li>孩子答不出來時，家長當場替他答。</li>
-</ul>
-</section>
-
-<section id="fourweeks">
-<h2>四、考前四週怎麼排</h2>
-<div class="week"><b>第 1 週</b>　記熟個人資料：姓名、年齡、住址、就讀幼稚園。練日常問題。</div>
-<div class="week"><b>第 2 週</b>　加看圖說話、生活常識、聽三步指令做動作。</div>
-<div class="week"><b>第 3 週</b>　請親友做一次輕鬆的模擬面試，用手機錄影回看，調整聲音、眼神、動作。</div>
-<div class="week"><b>第 4 週</b>　穩定作息，準備服裝，確認路線，提早 10 至 15 分鐘到。</div>
-<h3>每天可以做的小練習</h3>
-<ul>
-  <li>晚飯後一分鐘自我介紹，中英輪流。</li>
-  <li>朗讀一小段，念給家人聽。</li>
-  <li>講一件今天發生的事，講清楚時間、人物、發生什麼、後來怎樣。</li>
-  <li>每週兩三次情境模擬，例如「同學不借玩具給你，怎麼辦」。</li>
-</ul>
-<div class="note">面試前一晚不要硬灌。面試結束後也別追問「你剛才講了什麼」，像放學一樣輕鬆收場，孩子下次才不會怕。</div>
-</section>
-
-<section id="dress">
-<h2>五、服裝與文件</h2>
-<ul>
-  <li><b>孩子：</b>乾淨、合身、平常穿得順的衣服就好——襯衫長褲或連身裙，鞋子擦乾淨。不必西裝領帶，也不建議臨時換上平時不穿的隆重打扮，穿不慣反而緊張。</li>
-  <li><b>家長：</b>整潔大方。情況許可的話，父母一同出席。</li>
-  <li><b>文件：</b>要交什麼、交多少頁、有沒有頁數限制，一律以校方公布的要求為準，不要自己加。個人資料夾宜精簡，重點放在孩子本人的表現和興趣，而不是把證書疊高。</li>
-</ul>
-</section>
-
-<footer>杜薇老師</footer>
+<main>
+<section class="band"><h2>菲凡課程</h2><div class="note">對外・國際學校線（VSA／YCIS／ISF／SISHK／CDNIS／哈羅）</div><div class="grid"><div class="card"><div class="chead"><h3>20260828-當前交付-菲凡-12節60分鐘課件</h3></div><div class="desc">菲凡班 12 節課件（當前交付版）</div><ul class="fl"><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E4%B8%AD%E6%96%87%E6%95%85%E4%BA%8B-%E5%B0%8F%E7%BE%8E%E6%B2%92%E6%9C%89%E5%B8%B6%E5%82%98%EF%BC%88L6%20%E6%9B%BF%E6%8F%9B%E5%8D%A1%EF%BC%89.pdf">中文故事-小美沒有帶傘（L6 替換卡）.pdf</a><span class="sz">3.0MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%85%A8%E7%9C%9F%E6%A8%A1%E6%93%AC%E8%A9%95%E5%88%86%E8%A1%A8-%E6%95%99%E5%B8%AB%E7%94%A8.pdf">全真模擬評分表-教師用.pdf</a><span class="sz">0.8MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC5%E7%AF%80.pdf">家庭練習卡-第5節.pdf</a><span class="sz">0.8MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC6%E7%AF%80.pdf">家庭練習卡-第6節.pdf</a><span class="sz">0.7MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%AE%B6%E9%95%B7%E9%9D%A2%E8%AB%87-%E5%85%A5%E5%AD%B8%E6%99%82%E9%96%93%E9%80%9F%E6%9F%A5-%E6%95%99%E5%B8%AB%E7%94%A8.pdf">家長面談-入學時間速查-教師用.pdf</a><span class="sz">1.0MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%B1%95%E7%A4%BA%E9%A0%81-%E7%AC%AC6%E7%AF%80.pdf">展示頁-第6節.pdf</a><span class="sz">7.8MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%B7%A5%E4%BD%9C%E7%B4%99-%E7%AC%AC10%E7%AF%80.pdf">工作紙-第10節.pdf</a><span class="sz">4.5MB</span></li><li><a href="files/20260828-%E7%95%B6%E5%89%8D%E4%BA%A4%E4%BB%98-%E8%8F%B2%E5%87%A1-12%E7%AF%8060%E5%88%86%E9%90%98%E8%AA%B2%E4%BB%B6/%E5%B7%A5%E4%BD%9C%E7%B4%99-%E7%AC%AC11%E7%AF%80.pdf">工作紙-第11節.pdf</a><span class="sz">8.8MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261008-VEO加難升級</h3></div><div class="desc">VEO 同班孩子的加難版</div><ul class="fl"><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E7%9C%8B%E5%9C%96%E8%AA%AA%E6%95%85%E4%BA%8B-%E5%8A%A0%E9%9B%A3%E7%89%88-%E5%AD%B8%E7%94%9F%E7%94%A8.pdf">看圖說故事-加難版-學生用.pdf</a><span class="sz">1.3MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E7%A8%8B%E5%BA%8F%E6%95%85%E4%BA%8B%E4%BA%94%E6%A0%BC-%E4%B8%8B%E9%9B%A8%E5%A4%A9-%E5%AD%B8%E7%94%9F%E7%94%A8.pdf">程序故事五格-下雨天-學生用.pdf</a><span class="sz">2.0MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E7%A8%8B%E5%BA%8F%E6%95%85%E4%BA%8B%E4%BA%94%E6%A0%BC-%E4%B8%8B%E9%9B%A8%E5%A4%A9-%E7%B7%B4%E7%BF%92-%E5%AD%B8%E7%94%9F%E7%94%A8.pdf">程序故事五格-下雨天-練習-學生用.pdf</a><span class="sz">0.5MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E7%A8%8B%E5%BA%8F%E6%95%85%E4%BA%8B%E8%88%87%E7%9C%8B%E5%9C%96%E8%AA%AA%E6%95%85%E4%BA%8B-%E6%95%99%E5%B8%AB%E7%AD%94%E6%A1%88.pdf">程序故事與看圖說故事-教師答案.pdf</a><span class="sz">1.9MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E7%AC%AC7%E7%AF%80-%E6%95%99%E5%B8%AB%E8%AA%B2%E4%BB%B6.pdf">第7節-教師課件.pdf</a><span class="sz">1.9MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E9%80%A3%E6%8E%A5%E8%A9%9E%E8%88%87%E5%9B%9B%E8%A6%81%E7%B4%A0-%E5%8A%A0%E9%9B%A3%E5%B7%A5%E5%85%B7%E5%8C%85-%E6%95%99%E5%B8%AB%E7%94%A8.pdf">連接詞與四要素-加難工具包-教師用.pdf</a><span class="sz">1.2MB</span></li><li><a href="files/20261008-VEO%E5%8A%A0%E9%9B%A3%E5%8D%87%E7%B4%9A/%E9%80%A3%E6%8E%A5%E8%A9%9E%E8%88%87%E5%9B%9B%E8%A6%81%E7%B4%A0-%E5%8A%A0%E9%9B%A3%E7%B7%B4%E7%BF%92-%E5%AD%B8%E7%94%9F%E7%94%A8.pdf">連接詞與四要素-加難練習-學生用.pdf</a><span class="sz">0.7MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20260929-首輪贈品-兩份</h3></div><div class="desc">首輪贈品</div><ul class="fl"><li><a href="files/20260929-%E9%A6%96%E8%BC%AA%E8%B4%88%E5%93%81-%E5%85%A9%E4%BB%BD/%E5%85%A8%E6%B8%AF%E5%90%8D%E6%A0%A1%E7%94%B3%E8%AB%8B%E6%99%82%E9%96%93%E8%A1%A8-%E8%8F%B2%E5%87%A1.pdf">全港名校申請時間表-菲凡.pdf</a><span class="sz">1.2MB</span></li><li><a href="files/20260929-%E9%A6%96%E8%BC%AA%E8%B4%88%E5%93%81-%E5%85%A9%E4%BB%BD/%E5%AD%B8%E6%A0%A1%E6%94%B6%E7%89%87%E8%A6%8F%E6%A0%BC%E6%B8%85%E5%96%AE-%E8%8F%B2%E5%87%A1.pdf">學校收片規格清單-菲凡.pdf</a><span class="sz">0.8MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20260929-首輪贈品-核對</h3></div><div class="desc">首輪贈品核對</div><ul class="fl"><li><a href="files/20260929-%E9%A6%96%E8%BC%AA%E8%B4%88%E5%93%81-%E6%A0%B8%E5%B0%8D/%EF%BC%88%E5%85%A7%E9%83%A8%C2%B7%E4%B8%8D%E7%99%BC%E5%AE%B6%E9%95%B7%EF%BC%89%E6%A0%B8%E5%B0%8D%E5%A0%B1%E5%91%8A-%E5%85%A9%E4%BB%BD%E9%A6%96%E8%BC%AA%E8%B4%88%E5%93%81-%E8%8F%B2%E5%87%A1.pdf">（內部·不發家長）核對報告-兩份首輪贈品-菲凡.pdf</a><span class="sz">1.8MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261012-工作紙改版-大圖打分版</h3></div><div class="desc">工作紙改版規範：大圖、打分</div><ul class="fl"><li><a href="files/20261012-%E5%B7%A5%E4%BD%9C%E7%B4%99%E6%94%B9%E7%89%88-%E5%A4%A7%E5%9C%96%E6%89%93%E5%88%86%E7%89%88/%E5%B7%A5%E4%BD%9C%E7%B4%99-%E7%AC%AC8%E7%AF%80%EF%BC%88%E5%A4%A7%E5%9C%96%C2%B7%E6%89%93%E5%88%86%E7%89%88%EF%BC%89.pdf">工作紙-第8節（大圖·打分版）.pdf</a><span class="sz">7.6MB</span></li></ul></div></div></section>
+<section class="band"><h2>語荷課程</h2><div class="note">母版・一對一上門（不外發）</div><div class="grid"><div class="card"><div class="chead"><h3>語荷課程（母版・不外發）</h3></div><div class="desc">母版 12 節與一對一材料不上公開網，只在本機看</div><div class="empty">（不公開）</div></div></div></section>
+<section class="band"><h2>兩邊共用</h2><div class="note">課程設計、校情查證、顧問資料、故事庫</div><div class="grid"><div class="card"><div class="chead"><h3>20261104-進階面試班（12月至3月）</h3></div><div class="desc">進階面試班 12 節教材（通用）</div><ul class="fl"><li><a href="files/20261104-%E9%80%B2%E9%9A%8E%E9%9D%A2%E8%A9%A6%E7%8F%AD%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/00-%E5%AD%A9%E5%AD%90%E7%94%A8%E6%89%93%E5%8D%B0%E5%8C%85%EF%BC%8810%E4%BB%BD%E5%B7%A5%E4%BD%9C%E7%B4%99%EF%BC%8B3%E9%A0%81%E5%AE%B6%E5%BA%AD%E5%8D%A1%EF%BC%89.pdf">00-孩子用打印包（10份工作紙＋3頁家庭卡）.pdf</a><span class="sz">6.0MB</span></li><li><a href="files/20261104-%E9%80%B2%E9%9A%8E%E9%9D%A2%E8%A9%A6%E7%8F%AD%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/%E5%AE%B6%E5%BA%AD%E5%8D%A1-%E7%AC%AC01-04%E7%AF%80.pdf">家庭卡-第01-04節.pdf</a><span class="sz">0.8MB</span></li><li><a href="files/20261104-%E9%80%B2%E9%9A%8E%E9%9D%A2%E8%A9%A6%E7%8F%AD%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/%E5%AE%B6%E5%BA%AD%E5%8D%A1-%E7%AC%AC05-08%E7%AF%80.pdf">家庭卡-第05-08節.pdf</a><span class="sz">0.7MB</span></li><li><a href="files/20261104-%E9%80%B2%E9%9A%8E%E9%9D%A2%E8%A9%A6%E7%8F%AD%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/%E5%AE%B6%E5%BA%AD%E5%8D%A1-%E7%AC%AC09-12%E7%AF%80.pdf">家庭卡-第09-12節.pdf</a><span class="sz">0.7MB</span></li><li><a href="files/20261104-%E9%80%B2%E9%9A%8E%E9%9D%A2%E8%A9%A6%E7%8F%AD%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/%E7%AC%AC01%E7%AF%80-%E5%B7%A5%E4%BD%9C%E7%B4%99.pdf">第01節-工作紙.pdf</a><span class="sz">0.4MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261103-第二輪課程（12月至3月）</h3></div><div class="desc">第二輪課程大綱</div><ul class="fl"><li><a href="files/20261103-%E7%AC%AC%E4%BA%8C%E8%BC%AA%E8%AA%B2%E7%A8%8B%EF%BC%8812%E6%9C%88%E8%87%B33%E6%9C%88%EF%BC%89/%E7%AC%AC%E4%BA%8C%E8%BC%AA%E8%AA%B2%E7%A8%8B%E5%A4%A7%E7%B6%B1%EF%BC%88%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">第二輪課程大綱（教師用）.pdf</a><span class="sz">1.2MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261002-本地小學面試課程</h3></div><div class="desc">本地小學面試課程（粵語主線）</div><ul class="fl"><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%90%84%E6%A0%A1%E6%8B%9B%E7%94%9F%E7%AF%80%E5%A5%8F%E8%A1%A8-2028-29%E5%AD%B8%E5%B9%B4-%E8%8F%B2%E5%87%A1.pdf">各校招生節奏表-2028-29學年-菲凡.pdf</a><span class="sz">1.4MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%90%84%E6%A0%A1%E9%9D%A2%E8%A9%A6%E5%B0%8D%E7%85%A7%E8%A1%A8-%E8%8F%B2%E5%87%A1.pdf">各校面試對照表-菲凡.pdf</a><span class="sz">1.5MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC10%E7%AF%80.pdf">家庭練習卡-第10節.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC11%E7%AF%80.pdf">家庭練習卡-第11節.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC12%E7%AF%80.pdf">家庭練習卡-第12節.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC1%E7%AF%80.pdf">家庭練習卡-第1節.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC2%E7%AF%80.pdf">家庭練習卡-第2節.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261002-%E6%9C%AC%E5%9C%B0%E5%B0%8F%E5%AD%B8%E9%9D%A2%E8%A9%A6%E8%AA%B2%E7%A8%8B/%E5%AE%B6%E5%BA%AD%E7%B7%B4%E7%BF%92%E5%8D%A1-%E7%AC%AC3%E7%AF%80.pdf">家庭練習卡-第3節.pdf</a><span class="sz">0.6MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261002-面試班堂數-市場對照</h3></div><div class="desc">面試班堂數與市場對照</div><ul class="fl"><li><a href="files/20261002-%E9%9D%A2%E8%A9%A6%E7%8F%AD%E5%A0%82%E6%95%B8-%E5%B8%82%E5%A0%B4%E5%B0%8D%E7%85%A7/02-%E8%AA%B2%E7%A8%8B%E5%96%AE%E5%85%83%E7%B5%90%E6%A7%8B%E8%88%87%E5%AE%9A%E5%83%B9%E5%BB%BA%E8%AD%B0%EF%BC%88%E5%85%A7%E9%83%A8%EF%BC%89.pdf">02-課程單元結構與定價建議（內部）.pdf</a><span class="sz">1.3MB</span></li><li><a href="files/20261002-%E9%9D%A2%E8%A9%A6%E7%8F%AD%E5%A0%82%E6%95%B8-%E5%B8%82%E5%A0%B4%E5%B0%8D%E7%85%A7/03-%E5%8D%9A%E9%87%87%E7%9C%BE%E9%95%B7-%E6%88%91%E5%80%91%E7%9A%84%E5%AE%8C%E6%95%B4%E5%A5%97%E9%A4%90%EF%BC%88%E5%85%A7%E9%83%A8%EF%BC%89.pdf">03-博采眾長-我們的完整套餐（內部）.pdf</a><span class="sz">1.1MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261102-顧問底冊-升小面試</h3></div><div class="desc">升小面試顧問底冊＋家長避坑清單</div><ul class="fl"><li><a href="files/20261102-%E9%A1%A7%E5%95%8F%E5%BA%95%E5%86%8A-%E5%8D%87%E5%B0%8F%E9%9D%A2%E8%A9%A6/00-%E5%8D%87%E5%B0%8F%E9%9D%A2%E8%A9%A6%E9%A1%A7%E5%95%8F%E5%BA%95%E5%86%8A%EF%BC%88%E6%95%99%E5%B8%AB%E7%94%A8%C2%B7%E6%AC%8A%E5%A8%81%E7%89%88%EF%BC%89.pdf">00-升小面試顧問底冊（教師用·權威版）.pdf</a><span class="sz">2.0MB</span></li><li><a href="files/20261102-%E9%A1%A7%E5%95%8F%E5%BA%95%E5%86%8A-%E5%8D%87%E5%B0%8F%E9%9D%A2%E8%A9%A6/01-%E5%8D%87%E5%B0%8F%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E9%81%BF%E5%9D%91%E8%88%87%E6%BA%96%E5%82%99%E6%B8%85%E5%96%AE%EF%BC%88%E5%85%A9%E9%A0%81%EF%BC%89.pdf">01-升小面試-家長避坑與準備清單（兩頁）.pdf</a><span class="sz">1.1MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261106-2028入學-面試時間（菲凡）</h3></div><div class="desc">2028 年 8 月入學：面試時間一頁</div><ul class="fl"><li><a href="files/20261106-2028%E5%85%A5%E5%AD%B8-%E9%9D%A2%E8%A9%A6%E6%99%82%E9%96%93%EF%BC%88%E8%8F%B2%E5%87%A1%EF%BC%89/2028%E5%B9%B4%E5%85%A5%E5%AD%B8-%E9%9D%A2%E8%A9%A6%E6%99%82%E9%96%93%EF%BC%88%E4%B8%80%E9%A0%81%C2%B7%E5%AE%B6%E9%95%B7%E5%8F%AF%E7%9C%8B%EF%BC%89.pdf">2028年入學-面試時間（一頁·家長可看）.pdf</a><span class="sz">1.2MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261007-真故事庫</h3></div><div class="desc">真故事庫</div><ul class="fl"><li><a href="files/20261007-%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB/%E7%AC%AC5%E7%AF%80-%E5%88%86%E9%8F%A1%E5%9C%96%EF%BC%88%E6%95%99%E5%B8%AB%E5%B1%95%E7%A4%BA%C2%B7%E4%B8%80%E9%A0%81%E4%B8%80%E6%A0%BC%C2%B76%E9%A0%81%EF%BC%89.pdf">第5節-分鏡圖（教師展示·一頁一格·6頁）.pdf</a><span class="sz">0.8MB</span></li><li><a href="files/20261007-%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB/%E7%AC%AC5%E7%AF%80-%E5%88%86%E9%8F%A1%E5%B0%8F%E5%8D%A1%EF%BC%88%E5%AD%B8%E7%94%9F%E6%8E%92%E5%BA%8F%E7%94%A8%C2%B7%E7%B4%94%E5%9C%96%E7%84%A1%E7%B7%A8%E8%99%9F%C2%B71%E9%A0%81%EF%BC%89.pdf">第5節-分鏡小卡（學生排序用·純圖無編號·1頁）.pdf</a><span class="sz">0.7MB</span></li><li><a href="files/20261007-%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB/%E7%AC%AC7%E7%AF%80-%E5%88%86%E9%8F%A1%E5%9C%96%EF%BC%88%E6%95%99%E5%B8%AB%E5%B1%95%E7%A4%BA%C2%B7%E4%B8%80%E9%A0%81%E4%B8%80%E6%A0%BC%C2%B76%E9%A0%81%EF%BC%89.pdf">第7節-分鏡圖（教師展示·一頁一格·6頁）.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261007-%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB/%E7%AC%AC7%E7%AF%80-%E5%88%86%E9%8F%A1%E5%B0%8F%E5%8D%A1%EF%BC%88%E5%AD%B8%E7%94%9F%E6%8E%92%E5%BA%8F%E7%94%A8%C2%B7%E7%B4%94%E5%9C%96%E7%84%A1%E7%B7%A8%E8%99%9F%C2%B71%E9%A0%81%EF%BC%89.pdf">第7節-分鏡小卡（學生排序用·純圖無編號·1頁）.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261007-%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB/%E9%9D%A2%E8%A9%A6%E7%8F%AD%E7%9C%9F%E6%95%85%E4%BA%8B%E5%BA%AB-%E6%95%99%E5%B8%AB%E7%94%A8%E6%89%8B%E5%86%8A-%E8%8F%B2%E5%87%A1.pdf">面試班真故事庫-教師用手冊-菲凡.pdf</a><span class="sz">2.5MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20260922-繪本故事時間</h3></div><div class="desc">繪本故事時間</div><ul class="fl"><li><a href="files/20260922-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93/%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%9B%B8%E5%96%AE-%E9%A6%99%E6%B8%AF%E5%85%AC%E5%85%B1%E5%9C%96%E6%9B%B8%E9%A4%A8.pdf">繪本故事書單-香港公共圖書館.pdf</a><span class="sz">2.0MB</span></li><li><a href="files/20260922-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93/%E8%8F%B2%E5%87%A1-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93-%E6%95%99%E5%B8%AB%E5%8D%A1.pdf">菲凡-繪本故事時間-教師卡.pdf</a><span class="sz">0.9MB</span></li><li><a href="files/20260922-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93/%E8%8F%B2%E5%87%A1-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93-%E8%A7%80%E5%AF%9F%E8%A1%A8.pdf">菲凡-繪本故事時間-觀察表.pdf</a><span class="sz">0.5MB</span></li><li><a href="files/20260922-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93/%E8%AA%9E%E8%8D%B7-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93-%E6%95%99%E5%B8%AB%E5%8D%A1.pdf">語荷-繪本故事時間-教師卡.pdf</a><span class="sz">0.8MB</span></li><li><a href="files/20260922-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93/%E8%AA%9E%E8%8D%B7-%E7%B9%AA%E6%9C%AC%E6%95%85%E4%BA%8B%E6%99%82%E9%96%93-%E8%A7%80%E5%AF%9F%E8%A1%A8.pdf">語荷-繪本故事時間-觀察表.pdf</a><span class="sz">0.5MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20260928-故事體檢</h3></div><div class="desc">故事體檢</div><ul class="fl"><li><a href="files/20260928-%E6%95%85%E4%BA%8B%E9%AB%94%E6%AA%A2/%E6%95%85%E4%BA%8B%E9%AB%94%E6%AA%A2%E8%88%87%E7%B9%AA%E6%9C%AC%E6%9B%BF%E4%BB%A3%E5%BB%BA%E8%AD%B0.pdf">故事體檢與繪本替代建議.pdf</a><span class="sz">1.3MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261012-英文故事大書-L7</h3></div><div class="desc">英文故事大書</div><ul class="fl"><li><a href="files/20261012-%E8%8B%B1%E6%96%87%E6%95%85%E4%BA%8B%E5%A4%A7%E6%9B%B8-L7/%E7%AC%AC7%E7%AF%80-%E8%8B%B1%E6%96%87%E6%95%85%E4%BA%8B%E5%A4%A7%E6%9B%B8-The%20Crow%20and%20the%20Pitcher.pdf">第7節-英文故事大書-The Crow and the Pitcher.pdf</a><span class="sz">1.3MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261027-幼升小英文面試-家長填空版</h3></div><div class="desc">幼升小英文面試：家長填空版</div><ul class="fl"><li><a href="files/20261027-%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E5%A1%AB%E7%A9%BA%E7%89%88/%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-12%E9%A1%8C%E5%AE%B6%E9%95%B7%E7%89%88%EF%BC%88%E4%B8%AD%E6%96%87%E8%A7%A3%E9%87%8B%EF%BC%8B%E5%8F%A5%E5%9E%8B%E5%A1%AB%E7%A9%BA%EF%BC%89.pdf">幼升小英文面試-12題家長版（中文解釋＋句型填空）.pdf</a><span class="sz">0.9MB</span></li><li><a href="files/20261027-%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E5%A1%AB%E7%A9%BA%E7%89%88/%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6%E5%95%8F%E9%A1%8C20%E9%A1%8C%EF%BC%88%E5%8F%A5%E5%BC%8F%E5%A1%AB%E7%A9%BA%C2%B7%E7%AE%80%E4%BD%93%EF%BC%89.pdf">幼升小英文面試問題20題（句式填空·简体）.pdf</a><span class="sz">0.4MB</span></li><li><a href="files/20261027-%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E5%A1%AB%E7%A9%BA%E7%89%88/%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6%E5%95%8F%E9%A1%8C30%E9%A1%8C%EF%BC%88%E5%85%A9%E6%AC%84%E5%A4%A7%E5%AD%97%E7%89%88%C2%B7%E7%AE%80%E4%BD%93%EF%BC%89.pdf">幼升小英文面試問題30題（兩欄大字版·简体）.pdf</a><span class="sz">0.5MB</span></li><li><a href="files/20261027-%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E5%A1%AB%E7%A9%BA%E7%89%88/%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6%E5%95%8F%E9%A1%8C30%E9%A1%8C%EF%BC%88%E5%9F%BA%E6%9C%AC%EF%BC%8B%E8%88%88%E8%B6%A3%EF%BC%8B%E8%AC%9B%E4%B8%80%E8%AC%9B%C2%B7%E7%AE%80%E4%BD%93%EF%BC%89.pdf">幼升小英文面試問題30題（基本＋興趣＋講一講·简体）.pdf</a><span class="sz">0.5MB</span></li><li><a href="files/20261027-%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6-%E5%AE%B6%E9%95%B7%E5%A1%AB%E7%A9%BA%E7%89%88/%E5%B9%BC%E5%8D%87%E5%B0%8F%E8%8B%B1%E6%96%87%E9%9D%A2%E8%A9%A6%E5%95%8F%E9%A1%8C34%E9%A1%8C%EF%BC%88%E5%85%A9%E6%AC%84%E5%A4%A7%E5%AD%97%E7%89%88%C2%B7%E7%AE%80%E4%BD%93%EF%BC%89.pdf">幼升小英文面試問題34題（兩欄大字版·简体）.pdf</a><span class="sz">0.6MB</span></li></ul></div></div></section>
+<section class="band"><h2>家長講座</h2><div class="note">11-07 兩場：第一部分 09:30–10:25、第二部分 10:30–11:30</div>
+<div class="grid"><div class="card"><div class="chead"><h3>20261027-家長講座-海報</h3></div><div class="desc">11-07 兩場講座海報</div><ul class="fl"><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E5%8E%9F%E5%A7%8B%E5%A5%97%E9%A4%90%E6%B5%B7%E5%A0%B1-20260828%EF%BC%88%E8%AA%BF%E5%87%BA%EF%BC%89.pdf">原始套餐海報-20260828（調出）.pdf</a><span class="sz">0.4MB</span></li><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E6%B5%B7%E5%A0%B1-%E5%85%A9%E5%A0%B4%E5%90%8C%E4%B8%80%E5%A4%A9%EF%BC%8811-07%C2%B79%3A30-11%3A30%EF%BC%89.pdf">海報-兩場同一天（11-07·9:30-11:30）.pdf</a><span class="sz">6.9MB</span></li><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E6%B5%B7%E5%A0%B1-%E5%85%A9%E5%A0%B4%E5%90%8C%E4%B8%80%E5%A4%A9%EF%BC%8811-07%C2%B7%E7%B2%BE%E7%B7%BB%E7%89%88%C2%B7%E8%8D%89%E7%A8%BF%EF%BC%89.pdf">海報-兩場同一天（11-07·精緻版·草稿）.pdf</a><span class="sz">4.5MB</span></li><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E6%B5%B7%E5%A0%B1-%E8%AC%9B%E5%BA%A7%E4%B8%80%EF%BC%8810-31%C2%B7%E5%AD%A9%E5%AD%90%E9%80%B2%E5%A0%B4%E4%B9%8B%E5%BE%8C%EF%BC%89.pdf">海報-講座一（10-31·孩子進場之後）.pdf</a><span class="sz">1.2MB</span></li><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E6%B5%B7%E5%A0%B1-%E8%AC%9B%E5%BA%A7%E4%B8%80%EF%BC%8810-31%C2%B7%E7%B0%A1%E7%89%88%EF%BC%89.pdf">海報-講座一（10-31·簡版）.pdf</a><span class="sz">6.9MB</span></li><li><a href="files/20261027-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%B5%B7%E5%A0%B1/%E6%B5%B7%E5%A0%B1-%E8%AC%9B%E5%BA%A7%E4%BA%8C%EF%BC%8811-21%C2%B7%E6%A8%A1%E6%93%AC%E9%9D%A2%E8%A9%A6%E7%8F%BE%E5%A0%B4%EF%BC%89.pdf">海報-講座二（11-21·模擬面試現場）.pdf</a><span class="sz">1.3MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261011-家長講座-通知</h3></div><div class="desc">家長講座通知</div><ul class="fl"><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E9%80%9A%E7%9F%A5/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E9%80%9A%E7%9F%A5%EF%BC%88%E5%85%A9%E5%A0%B4%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">家長講座通知（兩場）-菲凡.pdf</a><span class="sz">0.9MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E9%80%9A%E7%9F%A5/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E9%80%9A%E7%9F%A5%EF%BC%88%E5%85%A9%E5%A0%B4%EF%BC%89%EF%BC%8811-07%C2%B7%E6%94%B9%E6%AD%A3%EF%BC%89.pdf">家長講座通知（兩場）（11-07·改正）.pdf</a><span class="sz">1.0MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261011-家長講座-演示PPT</h3></div><div class="desc">講座投影片</div><ul class="fl"><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%BC%94%E7%A4%BAPPT/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%B8%80-%E8%AA%B2%E5%A0%82%E6%BC%94%E7%A4%BA.pdf">家長講座一-課堂演示.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E6%BC%94%E7%A4%BAPPT/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E8%AA%B2%E5%A0%82%E6%BC%94%E7%A4%BA.pdf">家長講座二-課堂演示.pdf</a><span class="sz">0.6MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261011-家長講座-融合版</h3></div><div class="desc">講座融合版</div><ul class="fl"><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%B8%80-%E8%AA%B2%E5%A0%82%E6%BC%94%E7%A4%BA.pdf">家長講座一-課堂演示.pdf</a><span class="sz">0.7MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E8%AA%B2%E5%A0%82%E6%BC%94%E7%A4%BA.pdf">家長講座二-課堂演示.pdf</a><span class="sz">0.6MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E8%AC%9B%E5%BA%A7%E4%B8%80-%E5%AE%B6%E9%95%B7%E5%B8%B6%E5%9B%9E%E5%AE%B6%EF%BC%88%E4%B8%80%E5%BC%B5%E9%9B%99%E9%9D%A2%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座一-家長帶回家（一張雙面）-菲凡.pdf</a><span class="sz">1.0MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E8%AC%9B%E5%BA%A7%E4%B8%80-%E6%95%99%E5%B8%AB%E6%89%8B%E5%86%8A-%E5%8D%87%E5%B0%8F%E7%94%B3%E8%AB%8B%E7%AF%80%E5%A5%8F%E8%88%87%E9%87%8D%E8%A6%81%E6%97%A5%E6%9C%9F%E8%88%87%E6%96%87%E4%BB%B6%E6%BA%96%E5%82%99%EF%BC%88%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座一-教師手冊-升小申請節奏與重要日期與文件準備（國際學校線）-菲凡.pdf</a><span class="sz">1.9MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E5%AE%B6%E9%95%B7%E5%B8%B6%E5%9B%9E%E5%AE%B6%EF%BC%88%E4%B8%80%E5%BC%B5%E9%9B%99%E9%9D%A2%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座二-家長帶回家（一張雙面）-菲凡.pdf</a><span class="sz">1.1MB</span></li><li><a href="files/20261011-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%9E%8D%E5%90%88%E7%89%88/%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E6%95%99%E5%B8%AB%E6%89%8B%E5%86%8A-%E5%AE%B6%E9%95%B7%E9%9D%A2%E8%AB%87%E8%88%87%E9%9D%A2%E8%A9%A6%E5%89%8D%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%AE%89%E6%8E%92%EF%BC%88%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座二-教師手冊-家長面談與面試前的家庭安排（國際學校線）-菲凡.pdf</a><span class="sz">1.7MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261026-家長講座-編排</h3></div><div class="desc">講座編排</div><ul class="fl"><li><a href="files/20261026-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E7%B7%A8%E6%8E%92/%E5%85%A9%E5%A0%B4%E5%90%8C%E4%B8%80%E5%A4%A9%E4%B8%8A%E5%8D%88-%E7%B8%BD%E7%B7%A8%E6%8E%92%EF%BC%8810-31%C2%B79%3A00-11%3A00%C2%B7%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">兩場同一天上午-總編排（10-31·9:00-11:00·教師用）.pdf</a><span class="sz">1.5MB</span></li><li><a href="files/20261026-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E7%B7%A8%E6%8E%92/%E5%85%A9%E5%A0%B4%E5%90%8C%E4%B8%80%E5%A4%A9%E4%B8%8A%E5%8D%88-%E7%B8%BD%E7%B7%A8%E6%8E%92%EF%BC%8811-07%C2%B79%3A30-11%3A30%C2%B7%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">兩場同一天上午-總編排（11-07·9:30-11:30·教師用）.pdf</a><span class="sz">1.6MB</span></li><li><a href="files/20261026-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E7%B7%A8%E6%8E%92/%E5%85%A9%E5%A0%B4%E8%AC%9B%E5%BA%A7-%E5%85%A7%E5%AE%B9%E5%84%B2%E5%82%99%E5%8C%85%EF%BC%88%E4%B8%89%E5%B0%8F%E6%99%82%E9%87%8F%C2%B7%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">兩場講座-內容儲備包（三小時量·教師用）.pdf</a><span class="sz">2.2MB</span></li><li><a href="files/20261026-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E7%B7%A8%E6%8E%92/%E8%AC%9B%E5%BA%A7%E4%B8%80-%E7%B7%A8%E6%8E%92%E8%A1%A8%EF%BC%8810-31%C2%B780%E5%88%86%E9%90%98%C2%B7%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">講座一-編排表（10-31·80分鐘·教師用）.pdf</a><span class="sz">1.3MB</span></li><li><a href="files/20261026-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E7%B7%A8%E6%8E%92/%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E7%B7%A8%E6%8E%92%E8%A1%A8%EF%BC%8811-21%C2%B790%E5%88%86%E9%90%98%C2%B7%E6%95%99%E5%B8%AB%E7%94%A8%EF%BC%89.pdf">講座二-編排表（11-21·90分鐘·教師用）.pdf</a><span class="sz">1.4MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261107-家長講座-加入今日查證資料</h3></div><div class="desc">講座一 32 張／講座二 29 張</div><ul class="fl"><li><a href="files/20261107-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%8A%A0%E5%85%A5%E4%BB%8A%E6%97%A5%E6%9F%A5%E8%AD%89%E8%B3%87%E6%96%99/11-07-%E6%96%B0%E5%A2%9E%E9%A0%81-%E6%95%99%E5%B8%AB%E8%AC%9B%E7%A8%BF.pdf">11-07-新增頁-教師講稿.pdf</a><span class="sz">1.8MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261107-家長講座-講稿本</h3></div><div class="desc">兩場逐張講稿本</div><ul class="fl"><li><a href="files/20261107-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%AC%9B%E7%A8%BF%E6%9C%AC/%E7%AC%AC%E4%B8%80%E5%A0%B4-%E8%AC%9B%E7%A8%BF%E6%9C%AC%EF%BC%8832%E5%BC%B5%EF%BC%89.pdf">第一場-講稿本（32張）.pdf</a><span class="sz">1.5MB</span></li><li><a href="files/20261107-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E8%AC%9B%E7%A8%BF%E6%9C%AC/%E7%AC%AC%E4%BA%8C%E5%A0%B4-%E8%AC%9B%E7%A8%BF%E6%9C%AC%EF%BC%8829%E5%BC%B5%EF%BC%89.pdf">第二場-講稿本（29張）.pdf</a><span class="sz">1.5MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20261006-家長講座-國際學校線</h3></div><div class="desc">國際學校線講座</div><ul class="fl"><li><a href="files/20261006-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A/%E8%AC%9B%E5%BA%A7%E4%B8%80-%E5%AE%B6%E9%95%B7%E5%B8%B6%E5%9B%9E%E5%AE%B6%EF%BC%88%E4%B8%80%E5%BC%B5%E9%9B%99%E9%9D%A2%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座一-家長帶回家（一張雙面）-菲凡.pdf</a><span class="sz">1.0MB</span></li><li><a href="files/20261006-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A/%E8%AC%9B%E5%BA%A7%E4%B8%80-%E6%95%99%E5%B8%AB%E6%89%8B%E5%86%8A-%E5%8D%87%E5%B0%8F%E7%94%B3%E8%AB%8B%E7%AF%80%E5%A5%8F%E8%88%87%E9%87%8D%E8%A6%81%E6%97%A5%E6%9C%9F%E8%88%87%E6%96%87%E4%BB%B6%E6%BA%96%E5%82%99%EF%BC%88%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座一-教師手冊-升小申請節奏與重要日期與文件準備（國際學校線）-菲凡.pdf</a><span class="sz">1.7MB</span></li><li><a href="files/20261006-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A/%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E5%AE%B6%E9%95%B7%E5%B8%B6%E5%9B%9E%E5%AE%B6%EF%BC%88%E4%B8%80%E5%BC%B5%E9%9B%99%E9%9D%A2%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座二-家長帶回家（一張雙面）-菲凡.pdf</a><span class="sz">1.0MB</span></li><li><a href="files/20261006-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A/%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E6%95%99%E5%B8%AB%E6%89%8B%E5%86%8A-%E5%AE%B6%E9%95%B7%E9%9D%A2%E8%AB%87%E8%88%87%E9%9D%A2%E8%A9%A6%E5%89%8D%E7%9A%84%E5%AE%B6%E5%BA%AD%E5%AE%89%E6%8E%92%EF%BC%88%E5%9C%8B%E9%9A%9B%E5%AD%B8%E6%A0%A1%E7%B7%9A%EF%BC%89-%E8%8F%B2%E5%87%A1.pdf">講座二-教師手冊-家長面談與面試前的家庭安排（國際學校線）-菲凡.pdf</a><span class="sz">1.6MB</span></li></ul></div>
+<div class="card"><div class="chead"><h3>20260929-家長講座-大綱</h3></div><div class="desc">講座大綱</div><ul class="fl"><li><a href="files/20260929-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%A4%A7%E7%B6%B1/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%B8%80-%E5%A4%A7%E7%B6%B1-%E5%8D%87%E5%B0%8F%E7%94%B3%E8%AB%8B%E7%AF%80%E5%A5%8F%E8%88%87%E9%87%8D%E8%A6%81%E6%97%A5%E6%9C%9F%E8%88%87%E6%96%87%E4%BB%B6%E6%BA%96%E5%82%99%EF%BC%88%E8%8F%B2%E5%87%A1%EF%BC%89.pdf">家長講座一-大綱-升小申請節奏與重要日期與文件準備（菲凡）.pdf</a><span class="sz">1.0MB</span></li><li><a href="files/20260929-%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7-%E5%A4%A7%E7%B6%B1/%E5%AE%B6%E9%95%B7%E8%AC%9B%E5%BA%A7%E4%BA%8C-%E5%A4%A7%E7%B6%B1-%E5%AE%B6%E9%95%B7%E9%9D%A2%E8%A9%A6%E6%83%85%E5%A2%83%E8%88%87%E9%9D%A2%E8%A9%A6%E5%89%8D%E5%AE%B6%E5%BA%AD%E5%AE%89%E6%8E%92%E5%8F%8A%E7%AD%94%E5%95%8F%EF%BC%88%E8%8F%B2%E5%87%A1%EF%BC%89.pdf">家長講座二-大綱-家長面試情境與面試前家庭安排及答問（菲凡）.pdf</a><span class="sz">1.0MB</span></li></ul></div></div></section>
+</main>
+<footer>這一頁由 `_工具-腳本/部署-課程大連結到GitHubPages.py` 產生；只列通用教材。</footer>
+<script>
+const q=document.getElementById('q'),cards=[...document.querySelectorAll('.card')];
+q.addEventListener('input',()=>{const k=q.value.trim().toLowerCase();
+cards.forEach(el=>{const hit=!k||el.innerText.toLowerCase().includes(k);el.classList.toggle('hide',!hit);});
+document.querySelectorAll('.band').forEach(b=>{const any=[...b.querySelectorAll('.card')].some(x=>!x.classList.contains('hide'));b.style.display=any?'':'none';});});
+</script>
 </body></html>
