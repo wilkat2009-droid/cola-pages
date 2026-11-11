@@ -44,6 +44,14 @@ li{margin:5px 0;font-size:13.8px}
 .cd button{border:0;border-radius:12px;padding:11px 18px;font-size:14px;font-weight:900;font-family:inherit;cursor:pointer;background:#1f6fb2;color:#fff}
 .cd button.alt{background:#eef6ff;color:#123a5f;border:1px solid #cddff2}
 footer{text-align:center;color:#93a1b5;font-size:12px;margin-top:26px}
+@media(max-width:600px){
+table,thead,tbody,tr,td,th{display:block;width:100%}
+thead{display:none}
+tr{border:1px solid #dbe6f2;border-radius:12px;padding:9px 11px;margin-top:9px;background:#fbfdff}
+td{border:0;padding:2px 0;font-size:13.4px}
+td[data-l]::before{content:attr(data-l) "　";font-weight:900;color:#1f6fb2}
+td.n{font-size:14px}
+}
 @media print{.noprint{display:none!important}body{background:#fff}.card{box-shadow:none;break-inside:avoid}}
 </style></head><body><div class="wrap">
 
@@ -66,10 +74,10 @@ IA 之前必須先完成 <b>25 小時教學</b> —— 也就是要排到本單�
 <div class="card">
 <h2><i>甲乙丙丁</i>四部分與分數</h2>
 <table><thead><tr><th>部分</th><th>形式</th><th>分</th><th>操練用什麼</th></tr></thead><tbody>
-<tr><td class="n">甲部</td><td>選擇題（顯題）</td><td class="n">10</td><td>第 7–13 課聽力音頻：先聽一遍 → 直接圈答案</td></tr>
-<tr><td class="n">乙部</td><td>選擇題（不顯題）</td><td class="n">20</td><td>同一批音頻，但問題不出現在錄音裡 —— 練「聽完自己找重點」</td></tr>
-<tr><td class="n">丙部</td><td>更改及填寫表格</td><td class="n">10</td><td>第 8–10 課（工作任務、交通安排、外出用餐）的表格類活動</td></tr>
-<tr><td class="n">丁部</td><td>短答題</td><td class="n">10</td><td>每段音頻聽完，用一句話答「誰、做什麼、幾時／幾點」</td></tr>
+<tr><td class="n">甲部</td><td data-l="形式">選擇題（顯題）</td><td class="n" data-l="分">10</td><td data-l="操練">第 7–13 課聽力音頻：先聽一遍 → 直接圈答案</td></tr>
+<tr><td class="n">乙部</td><td data-l="形式">選擇題（不顯題）</td><td class="n" data-l="分">20</td><td data-l="操練">同一批音頻，但問題不出現在錄音裡 —— 練「聽完自己找重點」</td></tr>
+<tr><td class="n">丙部</td><td data-l="形式">更改及填寫表格</td><td class="n" data-l="分">10</td><td data-l="操練">第 8–10 課（工作任務、交通安排、外出用餐）的表格類活動</td></tr>
+<tr><td class="n">丁部</td><td data-l="形式">短答題</td><td class="n" data-l="分">10</td><td data-l="操練">每段音頻聽完，用一句話答「誰、做什麼、幾時／幾點」</td></tr>
 </tbody></table>
 <p class="sub" style="margin-top:9px">範圍就是第 7–13 課那七個課題：初來乍到、工作任務、交通安排、外出用餐、職業裝、辦理手續、職業安全。42 段音頻都在大入口的「🔊 聽力音頻」裡。</p>
 </div>
@@ -118,9 +126,9 @@ IA 之前必須先完成 <b>25 小時教學</b> —— 也就是要排到本單�
 <div class="card">
 <h2><i>缺席</i>缺席與遲交的罰則</h2>
 <table><thead><tr><th>情況</th><th>有有效證明文件</th><th>沒有有效證明文件</th></tr></thead><tbody>
-<tr><td class="n">缺席 IA／TA</td><td>恢復上課後 <b>3 個工作天內</b>交證明 → 安排補考；補考在主考後<b>兩個授課周內</b>；<b>補考分數視作原考分數，不扣分</b></td><td><b>0 分</b>，不獲補考</td></tr>
-<tr><td class="n">缺席補考</td><td colspan="2">不再有補考機會</td></tr>
-<tr><td class="n">遲交作業<br>（學習紀錄冊／專題研習冊）</td><td>期限後 3 個工作天內交證明 → 接納，<b>不予扣分</b></td><td>逾期 1 個工作天 <b>−20%</b>；逾期 2–5 個工作天 <b>−30%</b>；逾期 5 個工作天以上 <b>0 分</b></td></tr>
+<tr><td class="n">缺席 IA／TA</td><td data-l="有證明">恢復上課後 <b>3 個工作天內</b>交證明 → 安排補考；補考在主考後<b>兩個授課周內</b>；<b>補考分數視作原考分數，不扣分</b></td><td data-l="沒證明"><b>0 分</b>，不獲補考</td></tr>
+<tr><td class="n">缺席補考</td><td data-l="說明" colspan="2">不再有補考機會</td></tr>
+<tr><td class="n">遲交作業<br>（學習紀錄冊／專題研習冊）</td><td data-l="有證明">期限後 3 個工作天內交證明 → 接納，<b>不予扣分</b></td><td data-l="沒證明">逾期 1 個工作天 <b>−20%</b>；逾期 2–5 個工作天 <b>−30%</b>；逾期 5 個工作天以上 <b>0 分</b></td></tr>
 </tbody></table>
 <p class="sub" style="margin-top:9px">有效證明文件＝醫生證明書、住院紀錄、學生事務處或其他部門簽發的證明信等。所有遲交作業都要在期限後七個工作天內繳交。</p>
 </div>
