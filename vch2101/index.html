@@ -43,6 +43,13 @@ footer{margin-top:20px;text-align:center;font-size:12px;color:#68758b}
 .qrbox b{display:block;font-size:14px;color:#243247}
 .qrbox em{font-style:normal;font-size:12px;color:#68758b}
 @media(max-width:560px){.qrbox .qc{width:calc(50% - 7px);padding:9px}.qrbox img{width:100%;height:auto}}
+@media(max-width:620px){
+table,thead,tbody,tr,td,th{display:block;width:100%}
+thead{display:none}
+tr{border:1px solid #eadfca;border-radius:13px;padding:9px 11px;margin-top:9px;background:#fffdf8}
+td{border:0;padding:2px 0;font-size:13.5px}
+td[data-l]::before{content:attr(data-l) "　";font-weight:900;color:#b3711f}
+}
 .song{border:1px solid #eadfca;border-radius:16px;background:linear-gradient(135deg,#fffaf0,#fff6e3);padding:13px 15px;margin-top:10px}
 .song .sh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
 .song .sh b{font-size:15px;color:#243247}
@@ -140,10 +147,10 @@ footer{margin-top:20px;text-align:center;font-size:12px;color:#68758b}
 <section id="ia"><h2>📝 綜合評核（IA）· 佔 50%</h2>
 <p class="note">普通話聆聽筆試：<b>30 分鐘</b>、四部分共 <b>50 分</b>、佔單元總成績 <b>50%</b>。<b>隨堂進行</b>，日期由科組安排（學生指引上的日期由你自己填）；<b>IA 前要先完成 25 小時教學</b>，所以要排到最後。</p>
 <table><thead><tr><th>部分</th><th>形式</th><th>分</th></tr></thead><tbody>
-<tr><td>甲部</td><td>選擇題（顯題）</td><td><b>10</b></td></tr>
-<tr><td>乙部</td><td>選擇題（不顯題）</td><td><b>20</b></td></tr>
-<tr><td>丙部</td><td>更改及填寫表格</td><td><b>10</b></td></tr>
-<tr><td>丁部</td><td>短答題</td><td><b>10</b></td></tr>
+<tr><td>甲部</td><td data-l="形式">選擇題（顯題）</td><td data-l="分"><b>10</b></td></tr>
+<tr><td>乙部</td><td data-l="形式">選擇題（不顯題）</td><td data-l="分"><b>20</b></td></tr>
+<tr><td>丙部</td><td data-l="形式">更改及填寫表格</td><td data-l="分"><b>10</b></td></tr>
+<tr><td>丁部</td><td data-l="形式">短答題</td><td data-l="分"><b>10</b></td></tr>
 </tbody></table>
 <ul>
 <li><b>前兩星期</b>派《學生指引》＋鼓勵溫習筆記；<b>前一星期</b>再提醒日期、時間、地點與電子產品罰則；<b>當天</b>檢查計時設備、門外貼座位表、宣讀、播錄音。</li>
@@ -153,7 +160,7 @@ footer{margin-top:20px;text-align:center;font-size:12px;color:#68758b}
 </ul>
 <a class="btn big dark" href="https://wilkat2009-droid.github.io/cola-pages/vch2101/ia/" target="_blank" rel="noopener">▶ 打開 IA 頁（四部分 × 流程 × 宣讀稿 × 倒計時）</a>
 <a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch2101/ia/VCH2101-IA-2-學生指引(FT).docx" download>📄 學生指引（派給學生）</a>
-<a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch2101/ia/VCH2101-IA-1-綜合評核工作指引.doc" download>🔐 工作指引（老師／監考）</a>
+<a class="btn" href="https://wilkat2009-droid.github.io/cola-pages/vch2101/ia/VCH2101-IA-1-綜合評核工作指引.doc" download>🔐 工作指引（老師）</a>
 <p class="note">正式評核卷不會放在網頁上；IA 頁放的是四份官方附件與流程工具。</p>
 </section>
 
