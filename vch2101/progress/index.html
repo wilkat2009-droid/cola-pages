@@ -39,7 +39,7 @@ textarea{width:100%;min-height:120px;border:1px solid #d7e3f2;border-radius:12px
 .chase li{margin:5px 0;font-size:13.5px}
 .chase b{color:#123a5f}
 footer{text-align:center;color:#93a1b5;font-size:11.5px;margin-top:24px}
-@media(max-width:620px){th,td{padding:4px 2px;font-size:12.5px}th{font-size:10px}td input{width:40px;padding:5px 2px;font-size:12.5px;border-radius:8px}.hidesm{display:none}td.nm{font-size:12.5px}.light{width:11px;height:11px;margin-right:2px}.tot{font-size:12px}}
+@media(max-width:620px){th,td{padding:4px 2px;font-size:12.5px}th{font-size:10px}td input{width:37px;padding:5px 1px;font-size:12px;border-radius:7px}.hidesm{display:none}td.nm{font-size:12.5px}.light{width:11px;height:11px;margin-right:2px}.tot{font-size:12px}}
 @media print{.noprint{display:none}body{background:#fff}.card{box-shadow:none}}
 </style></head><body><div class="wrap">
 
@@ -114,11 +114,11 @@ function render(){
   else if(lc[0]==='r')items.push('<li><b>'+st.name+'</b>（'+D[st.ck].label+'）→ 總分 '+c.tot.toFixed(1)+'／100，危險</li>');}
  document.getElementById('chase').innerHTML=items.length?items.join(''):'<li>目前沒有要追的——都齊了。</li>';
  const tb=document.getElementById('tb');
- let t='<thead><tr><th>燈</th><th>座</th><th>姓名</th>'+(cur==='ALL'?'<th class="hidesm">班</th>':'')+'<th class="hidesm">學號</th>';
+ let t='<thead><tr><th>燈</th><th class="hidesm">座</th><th>姓名</th>'+(cur==='ALL'?'<th class="hidesm">班</th>':'')+'<th class="hidesm">學號</th>';
  for(const p of F)t+='<th>'+p[1]+'</th>';
  t+='<th>總分</th><th class="hidesm">已入</th></tr></thead><tbody>';
  for(const st of stus){const m=get(st.sid),lc=light(st.sid),c=calc(st.sid);
-  t+='<tr><td>'+(lc[0]?'<span class="light '+lc[0]+'"></span>'+lc[1]:'<span class="miss">未入</span>')+'</td><td>'+st.no+'</td><td class="nm">'+st.name+'</td>'+(cur==='ALL'?'<td class="hidesm">'+D[st.ck].label+'</td>':'')+'<td class="sn hidesm">'+st.sid+'</td>';
+  t+='<tr><td>'+(lc[0]?'<span class="light '+lc[0]+'"></span><span class="hidesm">'+lc[1]+'</span>':'<span class="miss">未入</span>')+'</td><td class="hidesm">'+st.no+'</td><td class="nm">'+st.name+'</td>'+(cur==='ALL'?'<td class="hidesm">'+D[st.ck].label+'</td>':'')+'<td class="sn hidesm">'+st.sid+'</td>';
   for(const p of F)t+='<td><input inputmode="decimal" value="'+(m[p[0]]!=null?m[p[0]]:'')+'" placeholder="–" onchange="set(\''+st.sid+'\',\''+p[0]+'\',this.value);render()"></td>';
   t+='<td class="tot">'+(c.w?c.tot.toFixed(1):'–')+'<div class="bar"><i style="width:'+c.w+'%"></i></div></td><td class="sn hidesm">'+c.w+'%</td></tr>';}
  tb.innerHTML=t+'</tbody>';
