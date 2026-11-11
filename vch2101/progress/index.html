@@ -1,0 +1,149 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>VCH2101 追分儀表盤</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",Arial,sans-serif;color:#23303f;background:linear-gradient(150deg,#f6f9ff,#fff9ef 60%,#f2fff6);line-height:1.55}
+.wrap{max-width:1060px;margin:0 auto;padding:18px 12px 70px}
+.ey{font-size:11px;font-weight:900;letter-spacing:.14em;color:#1f6fb2}
+h1{font-size:clamp(21px,5.4vw,29px);margin:4px 0 3px}
+.sub{color:#66748c;font-size:13px;margin:0}
+.tabs{display:flex;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+.tab{border:1px solid #d7e3f2;background:#fff;color:#41506a;padding:9px 16px;border-radius:999px;font-weight:900;font-size:14px;cursor:pointer;font-family:inherit}
+.tab.on{background:#1f6fb2;border-color:#1f6fb2;color:#fff}
+.card{background:#fff;border:1px solid #dfe8f3;border-radius:18px;padding:14px;margin-top:13px;box-shadow:0 8px 20px #1f3f6b09}
+.card h2{font-size:14.5px;margin:0 0 8px}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.sum div{background:#f6faff;border:1px solid #e2ecf7;border-radius:13px;padding:9px 11px}
+.sum b{display:block;font-size:19px;color:#1f6fb2}
+.sum span{font-size:11.5px;color:#71809a}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{border-bottom:1px solid #edf2f8;padding:6px 5px;text-align:left;vertical-align:middle}
+th{font-size:11px;color:#5c6c86;font-weight:900;white-space:nowrap}
+td.nm{font-weight:800;white-space:nowrap}
+td.sn{color:#8a97ac;font-size:11.5px;white-space:nowrap}
+td input{width:52px;padding:6px 5px;border:1px solid #d7e3f2;border-radius:9px;font-size:14px;font-weight:800;text-align:center;font-family:inherit;background:#fbfdff}
+td input:focus{outline:2px solid #1f6fb2;background:#fff}
+.tot{font-weight:900;white-space:nowrap}
+.light{display:inline-block;width:14px;height:14px;border-radius:50%;background:#d5dde8;vertical-align:-2px;margin-right:4px}
+.light.g{background:#22a06b}.light.y{background:#f0a02a}.light.r{background:#d84a3a}
+.miss{color:#b0bccd;font-size:12px}
+.bar{height:5px;border-radius:4px;background:#edf2f8;margin-top:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:#1f6fb2}
+.btn{display:inline-block;padding:9px 13px;border-radius:11px;border:1px solid #d7e3f2;background:#fff;color:#23303f;font-weight:800;font-size:13px;text-decoration:none;cursor:pointer;font-family:inherit;margin:4px 6px 0 0}
+.btn.main{background:#1f6fb2;border-color:#1f6fb2;color:#fff}
+.btn.warn{background:#fff1ec;border-color:#f3c7b5;color:#8a3417}
+textarea{width:100%;min-height:120px;border:1px solid #d7e3f2;border-radius:12px;padding:10px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#fbfdff}
+.note{font-size:12px;color:#7d8aa0;margin-top:7px}
+.chase li{margin:5px 0;font-size:13.5px}
+.chase b{color:#123a5f}
+footer{text-align:center;color:#93a1b5;font-size:11.5px;margin-top:24px}
+@media(max-width:620px){th,td{padding:5px 3px}td input{width:44px;padding:5px 3px;font-size:13px}.hidesm{display:none}}
+@media print{.noprint{display:none}body{background:#fff}.card{box-shadow:none}}
+</style></head><body><div class="wrap">
+
+<p class="ey">VCH2101 / VCH2101B · 學期衝刺</p>
+<h1>📋 追分儀表盤</h1>
+<p class="sub">每個學生一行：TA 35%／網上評核 10%／高效溝通 2%／PBL 3%／IA 50%。分數只存在你自己的手機／電腦裡（不上傳）；換設備就用「匯出 CSV」再在那邊匯入。</p>
+
+<div class="tabs noprint">
+<button class="tab on" data-c="WED" onclick="pick('WED')">星期三（32 人）</button>
+<button class="tab" data-c="THUR" onclick="pick('THUR')">星期四（30 人）</button>
+<button class="tab" onclick="pickAll()">兩班合計</button>
+</div>
+
+<div class="card"><h2>班級概況</h2><div class="sum" id="sum"></div></div>
+
+<div class="card"><h2>🔴 今日要追的人</h2><ul class="chase" id="chase"></ul>
+<p class="note">追的標準：① 有項目還沒分數（缺交、未考）② TA 不及格（&lt;40，30–39 補考上限 40 分）③ 總分低於已入分數的六成。IA 未考之前不算「缺」，全班一起衝。</p></div>
+
+<div class="card"><h2>學生一覽（格子直接填分，填完自動存）</h2><div style="overflow-x:auto"><table id="tb"></table></div>
+<div class="noprint">
+<button class="btn main" onclick="expCsv()">⬇ 匯出 CSV</button>
+<button class="btn" onclick="tgImp()">📋 從 Excel 貼上匯入</button>
+<button class="btn warn" onclick="wipe()">清空本班分數</button>
+</div>
+<div id="imp" style="display:none;margin-top:10px" class="noprint">
+<textarea id="impTa" placeholder="從 Excel 複製幾欄貼進來，每行一個學生：&#10;學號（或姓名）　TA　網上　溝通　PBL　IA&#10;例：250243708　72　　85　90　　"></textarea>
+<p class="note">欄位次序：學號／姓名 → TA → 網上 → 溝通 → PBL → IA。空著的欄保持原樣；用 Tab 或多個空格分開都可以。</p>
+<button class="btn main" onclick="imp()">匯入</button>
+</div>
+<p class="note">計分：總分＝TA×35%＋網上×10%＋溝通×2%＋PBL×3%＋IA×50%，只計已填的項，右邊顯示「已入幾 %」。IA 未考之前，全班重點都壓在這 50% 上。</p>
+</div>
+
+<footer>VCH2101 追分儀表盤 · 名單與 VTC Student lists.xlsx 一致 · 分數只存本機瀏覽器</footer>
+</div>
+<script>
+const D={"WED":{"label":"星期三","room":"103H","time":"09:30–11:30","students":[{"no":1,"name":"張璟霖","sid":"250243708","cls":"S1:2B","course":"FS113384"},{"no":2,"name":"張晟殷","sid":"250295742","cls":"S1:2B","course":"FS113384"},{"no":3,"name":"蔡駿宏","sid":"250329830","cls":"S1:2B","course":"FS113384"},{"no":4,"name":"馮鋭淇","sid":"250283061","cls":"S1:2B","course":"FS113384"},{"no":5,"name":"何天信","sid":"250314423","cls":"S1:A2A","course":"FS113381"},{"no":6,"name":"何彥彤","sid":"250109095","cls":"S1:2B","course":"FS113384"},{"no":7,"name":"黃致遠","sid":"250719094","cls":"S1:A2A","course":"FS113381"},{"no":8,"name":"郭依行","sid":"250195189","cls":"S1:2B","course":"FS113384"},{"no":9,"name":"劉志强","sid":"250341437","cls":"S1:A2A","course":"FS113381"},{"no":10,"name":"劉嘉豪","sid":"250607300","cls":"S1:A2A","course":"FS113381"},{"no":11,"name":"李安皓","sid":"250265172","cls":"S1:2B","course":"FS113384"},{"no":12,"name":"梁嘉瀚","sid":"250504151","cls":"S1:A2A","course":"FS113381"},{"no":13,"name":"李子健","sid":"250594822","cls":"S1:A2A","course":"FS113381"},{"no":14,"name":"李睿樺","sid":"250084072","cls":"S1:2B","course":"FS113384"},{"no":15,"name":"林俊杰","sid":"250449028","cls":"S1:A2A","course":"FS113381"},{"no":16,"name":"吳熙晟","sid":"250372101","cls":"S1:2B","course":"FS113384"},{"no":17,"name":"畢天宇","sid":"250295508","cls":"S1:2B","course":"FS113384"},{"no":18,"name":"蕭弘浚","sid":"250223826","cls":"S1:2B","course":"FS113384"},{"no":19,"name":"蘇心妍","sid":"250083272","cls":"S1:2B","course":"FS113388"},{"no":20,"name":"曾建程","sid":"250382444","cls":"S1:2B","course":"FS113384"},{"no":21,"name":"曾領熠","sid":"250426710","cls":"S1:2B","course":"FS113384"},{"no":22,"name":"曾梓聰","sid":"250305069","cls":"S1:2B","course":"FS113384"},{"no":23,"name":"王竣熙","sid":"250315352","cls":"S1:2B","course":"FS113384"},{"no":24,"name":"黃子桓","sid":"250398755","cls":"S1:2B","course":"FS113384"},{"no":25,"name":"黃穎峯","sid":"250191050","cls":"S1:2B","course":"FS113384"},{"no":26,"name":"許可聖","sid":"250714989","cls":"S1:A2A","course":"FS113381"},{"no":27,"name":"邱浩僑","sid":"250365681","cls":"S1:A2A","course":"FS113381"},{"no":28,"name":"邱成徳","sid":"250377422","cls":"S1:A2A","course":"FS113381"},{"no":29,"name":"楊啟樂","sid":"250192870","cls":"S1:2P","course":"FS313377"},{"no":30,"name":"余翱博","sid":"250314447","cls":"S1:2B","course":"FS113384"},{"no":31,"name":"朱天霖","sid":"250344427","cls":"S1:A2A","course":"FS113381"},{"no":32,"name":"莊梓森","sid":"250269091","cls":"S1:2B","course":"FS113384"}]},"THUR":{"label":"星期四","room":"317A","time":"09:30–11:30","students":[{"no":1,"name":"陳凱彤","sid":"250305057","cls":"S1:2A","course":"FS113387"},{"no":2,"name":"陳煦霖","sid":"250295674","cls":"S1:2A","course":"FS113387"},{"no":3,"name":"張玉凝","sid":"240516594","cls":"S1:3A","course":"FS113387"},{"no":4,"name":"蔣宛軒","sid":"250108105","cls":"S1:2A","course":"FS113387"},{"no":5,"name":"蔡天晴","sid":"250208245","cls":"S1:2A","course":"FS113387"},{"no":6,"name":"莊曉南","sid":"250415209","cls":"S1:2A","course":"FS113387"},{"no":7,"name":"周浩文","sid":"250231722","cls":"S1:2A","course":"FS113387"},{"no":8,"name":"鄧家怡","sid":"250149204","cls":"S1:2A","course":"FS113387"},{"no":9,"name":"馮芷婷","sid":"250261529","cls":"S1:2A","course":"FS113387"},{"no":10,"name":"許詩琳","sid":"250259522","cls":"S1:2A","course":"FS113387"},{"no":11,"name":"黎仲心","sid":"250439895","cls":"S1:2A","course":"FS113387"},{"no":12,"name":"林穎","sid":"250403002","cls":"S1:2A","course":"FS113387"},{"no":13,"name":"劉志浩","sid":"250395704","cls":"S1:2A","course":"FS113387"},{"no":14,"name":"梁苡澄","sid":"250172140","cls":"S1:2A","course":"FS113387"},{"no":15,"name":"梁雅怡","sid":"250301925","cls":"S1:2A","course":"FS113387"},{"no":16,"name":"梁宇期","sid":"250384437","cls":"S1:2A","course":"FS113387"},{"no":17,"name":"梁嘉楠","sid":"250431130","cls":"S1:2A","course":"FS113387"},{"no":18,"name":"林君怡","sid":"250439533","cls":"S1:2A","course":"FS113387"},{"no":19,"name":"廖麗莹","sid":"250242435","cls":"S1:2A","course":"FS113387"},{"no":20,"name":"柯智桐","sid":"250314656","cls":"S1:2A","course":"FS113387"},{"no":21,"name":"龐詠茵","sid":"250242668","cls":"S1:2A","course":"FS113387"},{"no":22,"name":"蕭穎楠","sid":"250242379","cls":"S1:2A","course":"FS113387"},{"no":23,"name":"謝劉燕","sid":"250286585","cls":"S1:2A","course":"FS113387"},{"no":24,"name":"蔡鈺瑩","sid":"250314841","cls":"S1:2A","course":"FS113387"},{"no":25,"name":"徐樂兒","sid":"250308902","cls":"S1:2A","course":"FS113387"},{"no":26,"name":"黃靖峰","sid":"250368996","cls":"S1:2A","course":"FS113387"},{"no":27,"name":"黃詩恩","sid":"250583414","cls":"S1:2A","course":"FS113387"},{"no":28,"name":"余穎琪","sid":"250385667","cls":"S1:2A","course":"FS113387"},{"no":29,"name":"余釔澄","sid":"240360269","cls":"S1:2A","course":"FS113387"},{"no":30,"name":"祝可兒","sid":"250314816","cls":"S1:2A","course":"FS113387"}]}};
+const W={ta:35,net:10,comm:2,pbl:3,ia:50};
+const F=[['ta','TA 35%'],['net','網上 10%'],['comm','溝通 2%'],['pbl','PBL 3%'],['ia','IA 50%']];
+let cur='WED';
+function $g(k){try{return JSON.parse(localStorage.getItem('pg:'+k)||'null')}catch(e){return null}}
+function $s(k,v){try{localStorage.setItem('pg:'+k,JSON.stringify(v))}catch(e){}}
+function get(sid){return $g(sid)||{}}
+function set(sid,f,v){const m=get(sid);if(v===''||v==null)delete m[f];else m[f]=+v;$s(sid,m)}
+function num(x){const n=parseFloat(x);return isNaN(n)?null:n}
+function calc(sid){const m=get(sid);let tot=0,w=0;for(const k in W){if(m[k]!=null){tot+=m[k]*W[k]/100;w+=W[k]}}return {tot:tot,w:w}}
+function light(sid){const m=get(sid),c=calc(sid);
+ if(Object.keys(m).length===0)return ['','未入'];
+ if(c.w===100){if(c.tot>=60)return ['g','安全'];if(c.tot>=40)return ['y','偏弱'];return ['r','危險'];}
+ return c.tot/c.w>=60?['g','安全']:['y','偏弱'];}
+function missList(sid){const m=get(sid),o=[];for(const p of F)if(m[p[0]]==null)o.push(p[1]);if(m.ta!=null&&m.ta<40)o.push('TA 補考');return o;}
+function pick(c){cur=c;document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.toggle('on',t.dataset.c===c));render()}
+function pickAll(){cur='ALL';document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.remove('on'));render()}
+function stats(stus){const s={n:stus.length,full:0,ge60:0,lt40ta:0,comp:{}};for(const p of F)s.comp[p[0]]={c:0,s:0};
+ for(const st of stus){const m=get(st.sid);let w=0,tot=0;
+  for(const k in W){if(m[k]!=null){s.comp[k].c++;s.comp[k].s+=+m[k];w+=W[k];tot+=m[k]*W[k]/100}}
+  if(w===100){s.full++;if(tot>=60)s.ge60++}if(m.ta!=null&&m.ta<40)s.lt40ta++}
+ return s;}
+function render(){
+ const cls=cur==='ALL'?['WED','THUR']:[cur];
+ const stus=cls.flatMap(function(c){return D[c].students.map(function(s){return Object.assign({cls:c},s)})});
+ const box=document.getElementById('sum');let h='';
+ for(const c of cls){const d=D[c],s=stats(d.students);
+  h+='<div><b>'+s.full+'/'+s.n+'</b><span>'+d.label+' 已入齊五項</span></div>';
+  h+='<div><b>'+s.ge60+'</b><span>'+d.label+' 總評 ≥60</span></div>';
+  h+='<div><b>'+s.lt40ta+'</b><span>'+d.label+' TA 需補考</span></div>';}
+ if(cur==='ALL'){const s=stats(stus);h+='<div><b>'+s.full+'/'+s.n+'</b><span>兩班已入齊</span></div>';}
+ box.innerHTML=h;
+ const items=[];
+ for(const st of stus){const miss=missList(st.sid),lc=light(st.sid),c=calc(st.sid);
+  const onlyIA=miss.length===1&&miss[0]==='IA 50%';
+  if(!onlyIA&&miss.length)items.push('<li><b>'+st.name+'</b>（'+D[st.cls].label+'）→ 缺：'+miss.join('、')+'</li>');
+  else if(lc[0]==='r')items.push('<li><b>'+st.name+'</b>（'+D[st.cls].label+'）→ 總分 '+c.tot.toFixed(1)+'／100，危險</li>');}
+ document.getElementById('chase').innerHTML=items.length?items.join(''):'<li>目前沒有要追的——都齊了。</li>';
+ const tb=document.getElementById('tb');
+ let t='<thead><tr><th>燈</th><th>座</th><th>姓名</th>'+(cur==='ALL'?'<th class="hidesm">班</th>':'')+'<th class="hidesm">學號</th>';
+ for(const p of F)t+='<th>'+p[1]+'</th>';
+ t+='<th>總分</th><th class="hidesm">已入</th></tr></thead><tbody>';
+ for(const st of stus){const m=get(st.sid),lc=light(st.sid),c=calc(st.sid);
+  t+='<tr><td>'+(lc[0]?'<span class="light '+lc[0]+'"></span>'+lc[1]:'<span class="miss">未入</span>')+'</td><td>'+st.no+'</td><td class="nm">'+st.name+'</td>'+(cur==='ALL'?'<td class="hidesm">'+D[st.cls].label+'</td>':'')+'<td class="sn hidesm">'+st.sid+'</td>';
+  for(const p of F)t+='<td><input inputmode="decimal" value="'+(m[p[0]]!=null?m[p[0]]:'')+'" placeholder="–" onchange="set(\''+st.sid+'\',\''+p[0]+'\',this.value);render()"></td>';
+  t+='<td class="tot">'+(c.w?c.tot.toFixed(1):'–')+'<div class="bar"><i style="width:'+c.w+'%"></i></div></td><td class="sn hidesm">'+c.w+'%</td></tr>';}
+ tb.innerHTML=t+'</tbody>';
+}
+function tgImp(){const el=document.getElementById('imp');el.style.display=el.style.display==='none'?'block':'none'}
+function imp(){
+ const lines=document.getElementById('impTa').value.trim().split(/\n+/);let n=0;
+ const all=D.WED.students.concat(D.THUR.students);
+ for(const ln of lines){const p=ln.trim().split(/[\t ]+/);if(!p[0])continue;
+  const st=all.find(function(s){return s.sid===p[0]})||all.find(function(s){return s.name===p[0]});
+  if(!st)continue;const m=get(st.sid);const keys=['ta','net','comm','pbl','ia'];
+  for(let i=1;i<p.length&&i<=5;i++){const v=num(p[i]);if(v!=null)m[keys[i-1]]=v}$s(st.sid,m);n++;}
+ document.getElementById('impTa').value='';render();alert('匯入 '+n+' 行。');
+}
+function expCsv(){
+ const cls=cur==='ALL'?['WED','THUR']:[cur];
+ const stus=cls.flatMap(function(c){return D[c].students.map(function(s){return Object.assign({cls:c},s)})});
+ let csv='班別,座號,姓名,學號,TA35,網上10,溝通2,PBL3,IA50,總分,已入%\n';
+ for(const st of stus){const m=get(st.sid),c=calc(st.sid);
+  csv+=[D[st.cls].label,st.no,st.name,st.sid,m.ta!=null?m.ta:'',m.net!=null?m.net:'',m.comm!=null?m.comm:'',m.pbl!=null?m.pbl:'',m.ia!=null?m.ia:'',c.w?c.tot.toFixed(1):'',c.w].join(',')+'\n';}
+ const b=new Blob(['\ufeff'+csv],{type:'text/csv'});const a=document.createElement('a');
+ a.href=URL.createObjectURL(b);a.download='VCH2101-追分-'+(cur==='ALL'?'兩班':D[cur].label)+'.csv';a.click();}
+function wipe(){
+ if(!confirm('真的清空 '+D[cur].label+' 的分數？'))return;
+ for(const st of D[cur].students)localStorage.removeItem('pg:'+st.sid);render();}
+render();
+</script>
+</body></html>
