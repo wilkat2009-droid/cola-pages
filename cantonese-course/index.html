@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="yuhe-build" content="20261112004519">
+<meta name="yuhe-build" content="20261112172723">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>粵語學堂 · Canto Class — 學粵語，由聲調開始</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e7c7b'/><text x='50' y='72' font-size='60' text-anchor='middle' fill='%23fffdf8' font-family='serif'>粵</text></svg>">
@@ -947,6 +947,8 @@
     font-size:calc(var(--av-size,190px) * var(--head-k,.9));font-style:normal;line-height:1;z-index:3;pointer-events:none;
     filter:drop-shadow(0 4px 10px rgba(0,0,0,.28));animation:avatar-tilt 4.4s ease-in-out infinite;
     font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;transform-origin:50% 60%;}
+  .avatar-head.head-steady{animation:none;}
+  .nav-avatar-head.head-steady{animation:none;}
   .avatar-hand{position:absolute;right:-6px;bottom:2px;font-size:34px;font-style:normal;line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.22));animation:avatar-float 3.2s ease-in-out infinite;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;}
   .avatar-info{flex:1;min-width:240px;}
   .avatar-info h4{font-size:15px;font-weight:800;margin-bottom:6px;}
@@ -2445,7 +2447,8 @@ function ringDecoHTML(frame){
      帽子也有遮擋圓圈上部，較好地包裹圓圈上部」
    k = 相對圓圈直徑嘅大小；top/left = 擺位（%）。 */
 const HEAD_FIT = {
-  "ao-cap":    {k: 0.88, top: "2%",  left: "50%"},
+  /* 2026-11-12 杜老師：帽要戴企正、喺腦袋正上面 → ao-cap 取消搖擺動畫、top 對準髮際（實照像素標定 −19%） */
+  "ao-cap":    {k: 0.88, top: "-19%", left: "50%", steady: true},
   "ao-bow":    {k: 0.58, top: "10%", left: "72%"},
   "ao-magic":  {k: 0.58, top: "8%",  left: "26%"},
   "ao-phone":  {k: 1.06, top: "34%", left: "50%"},
@@ -2461,13 +2464,17 @@ function headStyle(id){
   const f = HEAD_FIT[id] || {k: 0.88, top: "14%", left: "50%"};
   return `--head-k:${f.k};--head-top:${f.top};--head-left:${f.left};`;
 }
+function headSteadyClass(id){
+  const f = HEAD_FIT[id];
+  return f && f.steady ? " head-steady" : "";
+}
 function avatarCircleHTML(extraClass){
   const kit = avatarEquipped();
   const ringStyle = kit.frame.grad ? `--ring-bg:${kit.frame.grad};` : `--ring-bg:${kit.frame.ring || "#e2e5ea"};`;
   const photo = kit.photo
     ? `<div class="avatar-photo has-photo" style="background-image:url('${kit.photo}')"></div>`
     : `<div class="avatar-photo"><b>＋</b><small>放你張相</small></div>`;
-  const head = kit.head ? `<i class="avatar-head" style="${headStyle(kit.head.id)}">${kit.head.emoji}</i>` : "";
+  const head = kit.head ? `<i class="avatar-head${headSteadyClass(kit.head.id)}" style="${headStyle(kit.head.id)}">${kit.head.emoji}</i>` : "";
   const hand = kit.hand ? `<i class="avatar-hand">${kit.hand.emoji}</i>` : "";
   return `<div class="avatar-ring ${extraClass || ""}" style="${ringStyle}">${ringDecoHTML(kit.frame)}${photo}${head}${hand}</div>`;
 }
@@ -2541,7 +2548,7 @@ function renderNavAvatar(){
   const kit = avatarEquipped();
   if(!kit.photo){ box.classList.remove("on"); box.innerHTML = ""; return; }
   box.classList.add("on");
-  box.innerHTML = `<span class="nav-avatar-face" style="background-image:url('${kit.photo}')"></span>${kit.head ? `<i class="nav-avatar-head" style="${headStyle(kit.head.id)}">${kit.head.emoji}</i>` : ""}`;
+  box.innerHTML = `<span class="nav-avatar-face" style="background-image:url('${kit.photo}')"></span>${kit.head ? `<i class="nav-avatar-head${headSteadyClass(kit.head.id)}" style="${headStyle(kit.head.id)}">${kit.head.emoji}</i>` : ""}`;
 }
 function buyAvatarItem(kind, id){
   const item = AVATAR_MAP[id];
