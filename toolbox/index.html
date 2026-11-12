@@ -603,6 +603,28 @@ textarea.roster-big{min-height:180px;font-size:16px;line-height:1.9}
 .flow-item .fi-name{flex:1}
 .flow-item .fi-min{color:var(--ink-soft);font-size:13px}
 
+
+/* ===================== 工作紙：連線／填空／拼音默寫 ===================== */
+.cloze-text{font-size:19px;line-height:2.35;font-family:var(--kai);cursor:pointer;user-select:none}
+.cloze-text span.ch-x{border-radius:3px;transition:background .12s}
+.cloze-text span.ch-x:hover{background:#F5E7DC}
+.blank-box{display:inline-block;width:1em;height:1.12em;border-bottom:2px solid var(--accent);margin:0 1px;vertical-align:-.22em}
+.match-cols{display:flex;gap:64px;margin-top:10px}
+.match-col{flex:1;display:flex;flex-direction:column;gap:30px}
+.match-item{font-family:var(--kai);font-size:18px;line-height:1.25}
+.match-item b{color:var(--accent);font-weight:700;margin-right:4px}
+.ans-line{font-size:14px;margin-top:16px;color:var(--ink-soft);line-height:2}
+.pydict-row{display:flex;align-items:flex-end;gap:2mm;margin-bottom:3.5mm;flex-wrap:wrap}
+.pydict-py{width:34mm;font-size:12pt;color:#555;font-family:'Helvetica Neue',Arial,sans-serif;word-break:break-all}
+.pydict-boxes{display:flex;gap:1.5mm}
+.pydict-boxes .tz{--cw:14mm}
+
+/* ===================== 筆順 ===================== */
+.stroke-stage{min-height:min(52vh,430px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.stroke-holder{width:min(300px,72vw);aspect-ratio:1/1;background:#FFFDF6;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.stroke-word{font-family:var(--kai);font-size:22px;color:var(--stage-ink);letter-spacing:.1em}
+.stroke-hint{font-size:13px;color:var(--ink-soft);margin-top:12px}
+
 /* ===================== 列印 ===================== */
 #print-root{display:none}
 @media print{
@@ -616,6 +638,14 @@ textarea.roster-big{min-height:180px;font-size:16px;line-height:1.9}
   .print-name{border:.3mm solid #999;border-radius:2mm;padding:3mm 2mm;text-align:center;font-size:12pt;font-family:'Kaiti TC','PingFang TC',serif}
   .print-att{display:flex;justify-content:space-between;border-bottom:.2mm dashed #bbb;padding:2.4mm 0;font-size:12pt}
   .print-att .mk{letter-spacing:6mm;color:#555}
+  .cloze-text{font-size:12pt;line-height:2.5}
+  .cloze-text span.ch-x:hover{background:none}
+  .blank-box{width:4.6mm;height:5.2mm;border-bottom:.35mm solid #333;margin:0 .9mm;vertical-align:-.1em}
+  .match-cols{gap:20mm}
+  .match-col{gap:9mm}
+  .match-item{font-size:13pt}
+  .ans-line{font-size:11pt;margin-top:8mm;color:#333}
+  .pydict-boxes .tz{--cw:14mm}
 }
 
 
@@ -945,7 +975,7 @@ body[data-view="games"] .topbar{display:none}
   <!-- ============ 首頁 ============ -->
   <section class="panel active" id="p-home">
     <div class="hero">
-      <h1>十五件工具，十五款遊戲</h1>
+      <h1>十六件工具，十五款遊戲</h1>
       <p>免登入 · 免安裝 · 關掉網路照樣上課</p>
     </div>
     <div class="tiles">
@@ -956,7 +986,8 @@ body[data-view="games"] .topbar{display:none}
       <button class="tool-tile" data-go="attend"><span class="ico">✅</span><span class="t-name">點名</span><span class="t-sub">一鍵全到</span></button>
       <button class="tool-tile" data-go="dict"><span class="ico">🔊</span><span class="t-name">默書機</span><span class="t-sub">自動報詞聽寫</span></button>
       <button class="tool-tile" data-go="pinyin"><span class="ico">🔤</span><span class="t-name">拼音標註</span><span class="t-sub">多音字逐个改</span></button>
-      <button class="tool-tile" data-go="sheet"><span class="ico">✍️</span><span class="t-name">生字簿</span><span class="t-sub">田字格／字卡列印</span></button>
+      <button class="tool-tile" data-go="sheet"><span class="ico">✍️</span><span class="t-name">工作紙</span><span class="t-sub">田字格、連線、填空</span></button>
+      <button class="tool-tile" data-go="stroke"><span class="ico">🖌</span><span class="t-name">筆順</span><span class="t-sub">逐筆動畫示範</span></button>
       <button class="tool-tile" data-go="timer"><span class="ico">⏳</span><span class="t-name">計時器</span><span class="t-sub">倒數計時</span></button>
       <button class="tool-tile" data-go="score"><span class="ico">🏅</span><span class="t-name">計分板</span><span class="t-sub">小組／個人</span></button>
       <button class="tool-tile" data-go="vote"><span class="ico">🗳</span><span class="t-name">投票器</span><span class="t-sub">現場表決</span></button>
@@ -967,7 +998,7 @@ body[data-view="games"] .topbar{display:none}
       <button class="tool-tile" data-go="games"><span class="ico">🎮</span><span class="t-name">字趣工坊</span><span class="t-sub">15 款課堂遊戲</span></button>
     </div>
 
-    <p class="home-foot">第 1.0 版 · 2026-11-12　｜　免費給中文老師使用　　離線可用：把這個 .html 檔存到桌面，雙擊就開</p>
+    <p class="home-foot">第 1.1 版 · 2026-11-12　｜　免費給中文老師使用　　離線可用：把這個 .html 檔存到桌面，雙擊就開</p>
 
     <button class="room-card" type="button" data-go="games">
       <span class="room-ico">🎮</span>
@@ -1147,26 +1178,38 @@ body[data-view="games"] .topbar{display:none}
     <div class="att-list" id="att-list"></div>
   </section>
 
-  <!-- ============ 生字簿／字卡 ============ -->
+
+  <!-- ============ 工作紙 ============ -->
   <section class="panel" id="p-sheet">
-    <h2 class="section-title">生字簿／字卡</h2>
-    <p class="section-note">貼上生字或詞語，直接排出可列印的田字格、米字格、方格或字卡。</p>
+    <h2 class="section-title">工作紙</h2>
+    <p class="section-note">貼上課文或詞語，直接排出可列印的工作紙：田字格、字卡、連線題、課文填空、看拼音寫詞語。</p>
 
     <div class="card">
-      <p class="label">生字／詞語（一行一個；貼一整段也行，會自動拆成單字）</p>
+      <p class="label" id="sheet-input-label">生字／詞語（一行一個；貼一整段也行）</p>
       <textarea id="sheet-input" style="min-height:110px" placeholder="春天&#10;花園&#10;或者整段課文貼進來"></textarea>
 
       <div class="btn-row" style="margin-top:12px">
-        <select id="sheet-mode" style="width:auto;min-width:130px">
+        <select id="sheet-mode" style="width:auto;min-width:150px">
           <option value="tian">田字格</option>
           <option value="mi">米字格</option>
           <option value="fang">方格</option>
           <option value="card">字卡（剪開用）</option>
+          <option value="match">連線題（連一連）</option>
+          <option value="cloze">課文填空（點字挖空）</option>
+          <option value="pydict">看拼音寫詞語</option>
         </select>
-        <label class="label" style="margin:0">每個字 <input type="number" id="sheet-per" value="3" min="1" max="8" style="width:70px;display:inline-block;margin:0 6px"> 格</label>
-        <label class="label" style="margin:0">每行 <input type="number" id="sheet-cols" value="9" min="4" max="12" style="width:70px;display:inline-block;margin:0 6px"> 格</label>
-        <label class="btn" style="gap:8px;cursor:pointer"><input type="checkbox" id="sheet-trace" checked style="width:16px;height:16px;margin:0"> 首格淡字描紅</label>
+        <span id="sheet-grid-opts" style="display:inline-flex;gap:14px;align-items:center">
+          <label class="label" style="margin:0">每個字 <input type="number" id="sheet-per" value="3" min="1" max="8" style="width:70px;display:inline-block;margin:0 6px"> 格</label>
+          <label class="label" style="margin:0">每行 <input type="number" id="sheet-cols" value="9" min="4" max="12" style="width:70px;display:inline-block;margin:0 6px"> 格</label>
+        </span>
+        <span id="sheet-blank-opts" style="display:none;gap:10px;align-items:center">
+          <label class="label" style="margin:0">每 <input type="number" id="sheet-blank-n" value="4" min="2" max="10" style="width:64px;display:inline-block;margin:0 6px"> 個字挖一個</label>
+          <button class="btn" id="sheet-blank-auto">自動挖空</button>
+          <button class="btn" id="sheet-blank-none">全部還原</button>
+        </span>
+        <label class="btn" style="gap:8px;cursor:pointer"><input type="checkbox" id="sheet-trace" checked style="width:16px;height:16px;margin:0"> <span id="sheet-trace-label">首格淡字描紅</span></label>
         <label class="btn" style="gap:8px;cursor:pointer"><input type="checkbox" id="sheet-py" style="width:16px;height:16px;margin:0"> 加拼音</label>
+        <label class="btn" id="sheet-ans-label" style="gap:8px;cursor:pointer;display:none"><input type="checkbox" id="sheet-ans" checked style="width:16px;height:16px;margin:0"> 附答案</label>
       </div>
 
       <p class="label" style="margin-top:16px">標題（列印在頂部）</p>
@@ -1179,6 +1222,38 @@ body[data-view="games"] .topbar{display:none}
     </div>
 
     <div class="sheet-preview" id="sheet-preview"></div>
+    <p class="section-note" style="margin-top:12px;font-size:13px">連線題：一行一對，用「甲=乙」自己配；只寫詞語就自動配拼音。填空：在預覽裡直接點字，點哪個挖哪個。</p>
+  </section>
+
+  <!-- ============ 筆順 ============ -->
+  <section class="panel" id="p-stroke">
+    <h2 class="section-title">筆順</h2>
+    <p class="section-note">逐筆動畫示範，投屏跟著寫。第一次看某個字要連網取資料，看完自動記住，以後離線照放。</p>
+
+    <div class="stage stroke-stage" id="stroke-stage">
+      <div class="stroke-holder" id="stroke-holder"></div>
+      <div class="stroke-word" id="stroke-word"></div>
+      <button class="fs-btn" data-fs="stroke-stage">⛶ 全屏</button>
+    </div>
+
+    <div class="btn-row" style="margin-top:16px">
+      <button class="btn primary big" id="stroke-play">▶ 播放筆順</button>
+      <button class="btn" id="stroke-quiz">✏️ 描紅練習</button>
+      <button class="btn" id="stroke-slow">🐢 慢速</button>
+      <button class="btn" id="stroke-prev">← 上一字</button>
+      <button class="btn" id="stroke-next">下一字 →</button>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <p class="label">要練的字（一行一個，或直接貼詞語，自動拆字）</p>
+      <textarea id="stroke-input" style="min-height:80px" placeholder="春天花園好"></textarea>
+      <div class="btn-row" style="margin-top:10px">
+        <button class="btn primary" id="stroke-load">載入</button>
+        <button class="btn" id="stroke-sample">範例</button>
+      </div>
+      <div class="chips" id="stroke-chips" style="margin-top:10px"></div>
+      <p class="stroke-hint" id="stroke-hint"></p>
+    </div>
   </section>
 
   <!-- ============ 計時器 ============ -->
@@ -1633,6 +1708,16 @@ body[data-view="games"] .topbar{display:none}
 window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏㟆㠣𫵷㥮㤘㩜㨫㩳㧐㩵擜㺏𤠋䁪𥇢䁻䀥䃮鿎䊷䌶䋙䌺䋚䌻䋹䌿䋻䌾䍦䍠䎱䎬䓣𬜯䙡䙌䜀䜧䝼䞍䡵𫟦䥇䦂䥑鿏䥕𬭯䥱䥾䦛䦶䦟䦷䧢𨸟䮄𫠊䯀䯅䰾鲃䱷䲣䱽䲝䲁鳚䲘鳤䴉鹮丟丢並并乾干亂乱亙亘亞亚佇伫佈布佔占併并來来侖仑侶侣侷局俁俣係系俔伣俠侠俥伡俬私倀伥倆俩倈俫倉仓個个們们倖幸倫伦倲㑈偉伟偑㐽側侧偵侦偽伪傌㐷傑杰傖伧傘伞備备傢家傭佣傯偬傳传傴伛債债傷伤傾倾僂偻僅仅僉佥僑侨僕仆僞伪僤𫢸僥侥僨偾僱雇價价儀仪儁俊儂侬億亿儈侩儉俭儎傤儐傧儔俦儕侪儘尽償偿優优儲储儷俪儸㑩儺傩儻傥儼俨兇凶兌兑兒儿兗兖內内兩两冊册冑胄冪幂凈净凍冻凜凛凱凯別别刪删剄刭則则剋克剎刹剗刬剛刚剝剥剮剐剴剀創创剷铲劃划劄札劇剧劉刘劊刽劌刿劍剑劏㓥劑剂劚㔉勁劲動动務务勛勋勝胜勞劳勢势勣𪟝勩勚勱劢勳勋勵励勸劝勻匀匭匦匯汇匱匮區区協协卹恤卻却卽即厙厍厠厕厤历厭厌厲厉厴厣參参叄叁叢丛吒咤吳吴吶呐呂吕咼呙員员唄呗唸念問问啓启啞哑啟启啢唡喎㖞喚唤喪丧喫吃喬乔單单喲哟嗆呛嗇啬嗊唝嗎吗嗚呜嗩唢嗰𠮶嗶哔嘆叹嘍喽嘓啯嘔呕嘖啧嘗尝嘜唛嘩哗嘮唠嘯啸嘰叽嘵哓嘸呒嘽啴噁恶噓嘘噚㖊噝咝噠哒噥哝噦哕噯嗳噲哙噴喷噸吨噹当嚀咛嚇吓嚌哜嚐尝嚕噜嚙啮嚥咽嚦呖嚧𠰷嚨咙嚮向嚲亸嚳喾嚴严嚶嘤囀啭囁嗫囂嚣囅冁囈呓囉啰囌苏囑嘱囪囱圇囵國国圍围園园圓圆圖图團团垻坝埡垭埨𫭢埰采執执堅坚堊垩堖垴堝埚堯尧報报場场塊块塋茔塏垲塒埘塗涂塚冢塢坞塤埙塵尘塸𫭟塹堑塿𪣻墊垫墜坠墠𫮃墮堕墰坛墳坟墶垯墻墙墾垦壇坛壋垱壎埙壓压壗𡋤壘垒壙圹壚垆壜坛壞坏壟垄壠垅壢坜壩坝壪塆壯壮壺壶壼壸壽寿夠够夢梦夥伙夾夹奐奂奧奥奩奁奪夺奬奖奮奋奼姹妝妆姍姗姦奸娙𫰛娛娱婁娄婦妇婭娅媧娲媯妫媰㛀媼媪媽妈嫋袅嫗妪嫵妩嫺娴嫻娴嫿婳嬀妫嬃媭嬈娆嬋婵嬌娇嬙嫱嬡嫒嬤嬷嬪嫔嬰婴嬸婶孃娘孋㛤孌娈孫孙學学孻𡥧孿孪宮宫寀采寢寝實实寧宁審审寫写寬宽寵宠寶宝將将專专尋寻對对導导尷尴屆届屍尸屓屃屜屉屢屡層层屨屦屬属岡冈峯峰峴岘島岛峽峡崍崃崑昆崗岗崙仑崢峥崬岽嵐岚嵗岁嵽𫶇嵾㟥嶁嵝嶄崭嶇岖嶔嵚嶗崂嶠峤嶢峣嶧峄嶨峃嶮崄嶸嵘嶺岭嶼屿嶽岳巋岿巒峦巔巅巖岩巘𪩘巰巯巹卺帥帅師师帳帐帶带幀帧幃帏幓㡎幗帼幘帻幟帜幣币幫帮幬帱幷并幹干幾几庫库廁厕廂厢廄厩廈厦廎庼廕荫廚厨廝厮廞𫷷廟庙廠厂廡庑廢废廣广廩廪廬庐廳厅弒弑弔吊弳弪張张強强彄𫸩彆别彈弹彌弥彎弯彔录彙汇彠彟彥彦彫雕彲彨彿佛後后徑径從从徠徕復复徵征徹彻恆恒恥耻悅悦悞悮悵怅悶闷悽凄惡恶惱恼惲恽惻恻愛爱愜惬愨悫愴怆愷恺愾忾慄栗態态慍愠慘惨慚惭慟恸慣惯慤悫慪怄慫怂慮虑慳悭慶庆慺㥪慼戚慾欲憂忧憊惫憐怜憑凭憒愦憖慭憚惮憤愤憫悯憮怃憲宪憶忆懇恳應应懌怿懍懔懞蒙懟怼懣懑懤㤽懨恹懲惩懶懒懷怀懸悬懺忏懼惧懾慑戀恋戇戆戔戋戧戗戩戬戰战戱戯戲戏戶户扞捍拋抛拚拼挩捝挱挲挾挟捨舍捫扪捱挨捲卷掃扫掄抡掆㧏掗挜掙挣掛挂採采揀拣揚扬換换揮挥揯搄損损搖摇搗捣搧扇搵揾搶抢摑掴摜掼摟搂摯挚摳抠摶抟摺折摻掺撈捞撏挦撐撑撓挠撝㧑撟挢撣掸撥拨撫抚撲扑撳揿撻挞撾挝撿捡擁拥擄掳擇择擊击擋挡擓㧟擔担據据擠挤擡抬擣捣擬拟擯摈擰拧擱搁擲掷擴扩擷撷擺摆擻擞擼撸擽㧰擾扰攄摅攆撵攏拢攔拦攖撄攙搀攛撺攜携攝摄攢攒攣挛攤摊攪搅攬揽敎教敓敚敗败敘叙敵敌數数斂敛斃毙斆敩斕斓斬斩斷断於于旂旗旣既昇升時时晉晋晛𬀪晝昼暈晕暉晖暐𬀩暘旸暢畅暫暂曄晔曆历曇昙曉晓曏向曖暧曠旷曥𣆐曨昽曬晒書书會会朥𦛨朧胧朮术東东枴拐柵栅柺拐査查桱𣐕桿杆梔栀梘枧梜𬂩條条梟枭梲棁棄弃棊棋棖枨棗枣棟栋棡㭎棧栈棲栖棶梾椏桠椲㭏楊杨楓枫楨桢業业極极榘矩榦干榪杩榮荣榲榅榿桤構构槍枪槓杠槤梿槧椠槨椁槮椮槳桨槶椢槼椝樁桩樂乐樅枞樑梁樓楼標标樞枢樢㭤樣样樧榝樫㭴樳桪樸朴樹树樺桦樿椫橈桡橋桥機机橢椭橫横橯𣓿檁檩檉柽檔档檜桧檟槚檢检檣樯檮梼檯台檳槟檸柠檻槛櫃柜櫍𬃊櫓橹櫚榈櫛栉櫝椟櫞橼櫟栎櫥橱櫧槠櫨栌櫪枥櫫橥櫬榇櫱蘖櫳栊櫸榉櫻樱欄栏欅榉權权欏椤欒栾欓𣗋欖榄欞棂欽钦歎叹歐欧歟欤歡欢歲岁歷历歸归歿殁殘残殞殒殤殇殨㱮殫殚殭僵殮殓殯殡殰㱩殲歼殺杀殻壳殼壳毀毁毆殴毿毵氂牦氈毡氌氇氣气氫氢氬氩氳氲氾泛汎泛汙污決决沒没沖冲況况泝溯洩泄洶汹浹浃浿𬇙涇泾涗涚涼凉淒凄淚泪淥渌淨净淩凌淪沦淵渊淶涞淺浅渙涣減减渢沨渦涡測测渾浑湊凑湋𣲗湞浈湧涌湯汤溈沩準准溝沟溫温溮浉溳涢溼湿滄沧滅灭滌涤滎荥滙汇滬沪滯滞滲渗滷卤滸浒滻浐滾滚滿满漁渔漊溇漍𬇹漚沤漢汉漣涟漬渍漲涨漵溆漸渐漿浆潁颍潑泼潔洁潕𣲘潙沩潚㴋潛潜潤润潯浔潰溃潷滗潿涠澀涩澆浇澇涝澐沄澗涧澠渑澤泽澦滪澩泶澫𬇕澮浍澱淀澾㳠濁浊濃浓濄㳡濆𣸣濕湿濘泞濚溁濛蒙濜浕濟济濤涛濧㳔濫滥濰潍濱滨濺溅濼泺濾滤瀂澛瀅滢瀆渎瀇㲿瀉泻瀋沈瀏浏瀕濒瀘泸瀝沥瀟潇瀠潆瀦潴瀧泷瀨濑瀰弥瀲潋瀾澜灃沣灄滠灑洒灒𪷽灕漓灘滩灙𣺼灝灏灡㳕灣湾灤滦灧滟灩滟災灾為为烏乌烴烃無无煉炼煒炜煙烟煢茕煥焕煩烦煬炀煱㶽熅煴熒荧熗炝熰𬉼熱热熲颎熾炽燀𬊤燁烨燈灯燉炖燒烧燖𬊈燙烫燜焖營营燦灿燬毁燭烛燴烩燶㶶燻熏燼烬燾焘爍烁爐炉爛烂爭争爲为爺爷爾尔牀床牆墙牘牍牴抵牽牵犖荦犛牦犢犊犧牺狀状狹狭狽狈猙狰猶犹猻狲獁犸獃呆獄狱獅狮獎奖獨独獪狯獫猃獮狝獰狞獱㺍獲获獵猎獷犷獸兽獺獭獻献獼猕玀猡現现琱雕琺珐琿珲瑋玮瑒玚瑣琐瑤瑶瑩莹瑪玛瑲玱璉琏璊𫞩璕𬍤璗𬍡璡琎璣玑璦瑷璫珰璯㻅環环璵玙璸瑸璽玺璿璇瓅𬍛瓊琼瓏珑瓔璎瓚瓒瓛𤩽甌瓯甕瓮產产産产畝亩畢毕畫画異异畵画當当疇畴疊叠痙痉痠酸痾疴瘂痖瘋疯瘍疡瘓痪瘞瘗瘡疮瘧疟瘮瘆瘲疭瘺瘘瘻瘘療疗癆痨癇痫癉瘅癒愈癘疠癟瘪癡痴癢痒癤疖癥症癧疬癩癞癬癣癭瘿癮瘾癰痈癱瘫癲癫發发皁皂皚皑皰疱皸皲皺皱盃杯盜盗盞盏盡尽監监盤盘盧卢盪荡眞真眥眦眾众睍𪾢睏困睜睁睞睐瞘眍瞜䁖瞞瞒瞶瞆瞼睑矇蒙矓眬矚瞩矯矫硃朱硜硁硤硖硨砗硯砚碕埼碩硕碭砀碸砜確确碼码碽䂵磑硙磚砖磠硵磣碜磧碛磯矶磽硗磾䃅礄硚礎础礐𬒈礙碍礦矿礪砺礫砾礬矾礱砻祕秘祿禄禍祸禎祯禕祎禡祃禦御禪禅禮礼禰祢禱祷禿秃秈籼稅税稈秆稏䅉稜棱稟禀種种稱称穀谷穇䅟穌稣積积穎颖穠秾穡穑穢秽穩稳穫获穭穞窩窝窪洼窮穷窯窑窵窎窶窭窺窥竄窜竅窍竇窦竈灶竊窃竪竖競竞筆笔筍笋筧笕筴䇲箇个箋笺箏筝箚札節节範范築筑篋箧篔筼篠筿篢𬕂篤笃篩筛篳筚篸𥮾簀箦簍篓簑蓑簞箪簡简簣篑簫箫簹筜簽签簾帘籃篮籅𥫣籌筹籔䉤籙箓籛篯籜箨籟籁籠笼籤签籩笾籪簖籬篱籮箩籲吁粵粤糉粽糝糁糞粪糧粮糰团糲粝糴籴糶粜糹纟糾纠紀纪紂纣紃𬘓約约紅红紆纡紇纥紈纨紉纫紋纹納纳紐纽紓纾純纯紕纰紖纼紗纱紘纮紙纸級级紛纷紜纭紝纴紞𬘘紡纺紬䌷紮扎細细紱绂紲绁紳绅紵纻紹绍紺绀紼绋紿绐絀绌終终絃弦組组絅䌹絆绊絎绗結结絕绝絛绦絝绔絞绞絡络絢绚給给絨绒絪𬘡絰绖統统絲丝絳绛絶绝絹绢絺𫄨綁绑綃绡綄𬘫綆绠綈绨綉绣綌绤綎𬘩綏绥綐䌼綑捆經经綖𫄧綜综綝𬘭綞缍綠绿綡𫟅綢绸綣绻綧𬘯綪𬘬綫线綬绶維维綯绹綰绾綱纲網网綳绷綴缀綵彩綸纶綹绺綺绮綻绽綽绰綾绫綿绵緄绲緇缁緊紧緋绯緑绿緒绪緓绬緔绱緗缃緘缄緙缂線线緝缉緞缎締缔緡缗緣缘緦缌編编緩缓緬缅緯纬緱缑緲缈練练緶缏緹缇緻致緼缊縈萦縉缙縊缢縋缒縐绉縑缣縕缊縗缞縛缚縝缜縞缟縟缛縣县縧绦縫缝縭缡縮缩縯𬙂縱纵縲缧縳䌸縴纤縵缦縶絷縷缕縹缥總总績绩繃绷繅缫繆缪繒缯織织繕缮繚缭繞绕繡绣繢缋繩绳繪绘繫系繭茧繮缰繯缳繰缲繳缴繶𫄷繸䍁繹绎繻𦈡繼继繽缤繾缱繿䍀纁𫄸纆𬙊纇颣纈缬纊纩續续纍累纏缠纓缨纔才纕𬙋纖纤纘缵纜缆缽钵罃䓨罈坛罌罂罎坛罰罚罵骂罷罢羅罗羆罴羈羁羋芈羣群羥羟羨羡義义羶膻習习翫玩翬翚翹翘翽翙耬耧耮耢聖圣聞闻聯联聰聪聲声聳耸聵聩聶聂職职聹聍聽听聾聋肅肃脅胁脈脉脛胫脣唇脩修脫脱脹胀腎肾腖胨腡脶腦脑腫肿腳脚腸肠膃腽膕腘膚肤膞䏝膠胶膢𦝼膩腻膽胆膾脍膿脓臉脸臍脐臏膑臘腊臚胪臟脏臠脔臢臜臥卧臨临臺台與与興兴舉举舊旧舖铺舘馆艙舱艤舣艦舰艫舻艱艰艷艳芻刍苧苎茲兹荊荆莊庄莖茎莢荚莧苋華华菴庵菸烟萇苌萊莱萬万萴荝萵莴葉叶葒荭葤荮葦苇葯药葷荤蒍𫇭蒐搜蒓莼蒔莳蒕蒀蒞莅蒼苍蓀荪蓆席蓋盖蓮莲蓯苁蓴莼蓽荜蔄𬜬蔔卜蔘参蔞蒌蔣蒋蔥葱蔦茑蔭荫蔯𫈟蔿𫇭蕁荨蕆蒇蕎荞蕒荬蕓芸蕕莸蕘荛蕢蒉蕩荡蕪芜蕭萧蕷蓣薀蕰薈荟薊蓟薌芗薑姜薔蔷薘荙薟莶薦荐薩萨薳䓕薴苧薵䓓薹苔薺荠藍蓝藎荩藝艺藥药藪薮藭䓖藴蕴藶苈藹蔼藺蔺蘀萚蘄蕲蘆芦蘇苏蘊蕴蘋苹蘚藓蘞蔹蘟𦻕蘢茏蘭兰蘺蓠蘿萝虆蔂虉𬟁處处虛虚虜虏號号虧亏虯虬蛺蛱蛻蜕蜆蚬蝀𬟽蝕蚀蝟猬蝦虾蝨虱蝸蜗螄蛳螞蚂螢萤螮䗖螻蝼螿螀蟄蛰蟈蝈蟎螨蟣虮蟬蝉蟯蛲蟲虫蟳𫊻蟶蛏蟻蚁蠁蚃蠅蝇蠆虿蠍蝎蠐蛴蠑蝾蠔蚝蠟蜡蠣蛎蠨蟏蠱蛊蠶蚕蠻蛮衆众衊蔑術术衕同衚胡衛卫衝冲袞衮袷夹裊袅裏里補补裝装裡里製制複复褌裈褘袆褲裤褳裢褸褛褻亵襀𫌀襇裥襉裥襏袯襖袄襝裣襠裆襤褴襪袜襬摆襯衬襲袭襴襕覈核見见覎觃規规覓觅視视覘觇覡觋覥觍覦觎親亲覬觊覯觏覲觐覷觑覺觉覽览覿觌觀观觴觞觶觯觸触訁讠訂订訃讣計计訊讯訌讧討讨訏𬣙訐讦訒讱訓训訕讪訖讫託托記记訛讹訝讶訟讼訢䜣訣诀訥讷訩讻訪访設设許许訴诉訶诃診诊註注証证詀𧮪詁诂詆诋詎讵詐诈詒诒詔诏評评詖诐詗诇詘诎詛诅詝𬣞詞词詠咏詡诩詢询詣诣試试詩诗詪𬣳詫诧詬诟詭诡詮诠詰诘話话該该詳详詵诜詷𫍣詼诙詿诖誄诔誅诛誆诓誇夸誌志認认誑诳誒诶誕诞誘诱誚诮語语誠诚誡诫誣诬誤误誥诰誦诵誨诲說说説说誰谁課课誶谇誹诽誼谊誾訚調调諂谄諄谆談谈諉诿請请諍诤諏诹諑诼諒谅諓𬣡論论諗谂諛谀諜谍諝谞諞谝諟𬤊諡谥諢诨諤谔諦谛諧谐諫谏諭谕諮咨諱讳諲𬤇諳谙諴𫍯諶谌諷讽諸诸諺谚諼谖諾诺謀谋謁谒謂谓謄誊謅诌謊谎謎谜謏𫍲謐谧謔谑謖谡謗谤謙谦謚谥講讲謝谢謠谣謡谣謨谟謫谪謬谬謭谫謳讴謹谨謾谩譁哗證证譎谲譏讥譓𬤝譖谮識识譙谯譚谭譜谱譞𫍽譟噪譫谵譭毁譯译議议譴谴護护譸诪譽誉譾谫讀读讅谉變变讋詟讌䜩讎雠讒谗讓让讕谰讖谶讚赞讜谠讞谳谿溪豈岂豎竖豐丰豔艳豬猪豶豮貍狸貓猫貙䝙貝贝貞贞貟贠負负財财貢贡貧贫貨货販贩貪贪貫贯責责貯贮貰贳貲赀貳贰貴贵貶贬買买貸贷貺贶費费貼贴貽贻貿贸賀贺賁贲賂赂賃赁賄贿賅赅資资賈贾賊贼賑赈賒赊賓宾賕赇賙赒賚赉賜赐賞赏賠赔賡赓賢贤賣卖賤贱賦赋賧赕質质賫赍賬账賭赌賰䞐賴赖賵赗賺赚賻赙購购賽赛賾赜贄贽贅赘贇赟贈赠贊赞贋赝贍赡贏赢贐赆贓赃贔赑贖赎贗赝贛赣贜赃赬赪趕赶趙赵趨趋趲趱跡迹踐践踰逾踴踊蹌跄蹕跸蹟迹蹠跖蹣蹒蹤踪蹺跷躂跶躉趸躊踌躋跻躍跃躎䟢躑踯躒跞躓踬躕蹰躚跹躡蹑躥蹿躦躜躪躏軀躯車车軋轧軌轨軍军軏𫐄軑轪軒轩軔轫軛轭軝𬨂軟软軤轷軫轸軲轱軸轴軹轵軺轺軻轲軼轶軾轼較较輄𨐈輅辂輇辁輈辀載载輊轾輋𪨶輒辄輓挽輔辅輕轻輗𫐐輛辆輜辎輝辉輞辋輟辍輥辊輦辇輩辈輪轮輬辌輮𫐓輯辑輳辏輶𬨎輸输輻辐輼辒輾辗輿舆轀辒轂毂轄辖轅辕轆辘轉转轍辙轎轿轔辚轟轰轡辔轢轹轤轳辦办辭辞辮辫辯辩農农迴回逕径這这連连週周進进遊游運运過过達达違违遙遥遜逊遞递遠远遡溯適适遲迟遶绕遷迁選选遺遗遼辽邁迈還还邇迩邊边邏逻邐逦郟郏郵邮鄆郓鄉乡鄒邹鄔邬鄖郧鄧邓鄩𬩽鄭郑鄰邻鄲郸鄳𫑡鄴邺鄶郐鄺邝酇酂酈郦醃腌醖酝醜丑醞酝醟蒏醣糖醫医醬酱醱酦醲𬪩釀酿釁衅釃酾釅酽釋释釐厘釒钅釓钆釔钇釕钌釗钊釘钉釙钋針针釣钓釤钐釦扣釧钏釩钒釴𬬩釵钗釷钍釹钕釺钎釾䥺釿𬬱鈀钯鈁钫鈃钘鈄钭鈅钥鈇𫓧鈈钚鈉钠鈍钝鈎钩鈐钤鈑钣鈒钑鈔钞鈕钮鈞钧鈡钟鈣钙鈥钬鈦钛鈧钪鈮铌鈰铈鈳钶鈴铃鈷钴鈸钹鈹铍鈺钰鈽钸鈾铀鈿钿鉀钾鉅巨鉆钻鉈铊鉉铉鉊𬬿鉋铇鉍铋鉑铂鉕钷鉗钳鉚铆鉛铅鉝𫟷鉞钺鉢钵鉤钩鉥𬬸鉦钲鉧𬭁鉬钼鉭钽鉮𬬹鉳锫鉶铏鉷𫟹鉸铰鉺铒鉻铬鉿铪銀银銃铳銅铜銈𫓯銍铚銑铣銓铨銖铢銘铭銚铫銛铦銜衔銠铑銣铷銥铱銦铟銨铵銩铥銪铕銫铯銬铐銱铞銳锐銶𨱇銷销銹锈銻锑銼锉鋁铝鋃锒鋅锌鋇钡鋌铤鋏铗鋐𬭎鋒锋鋗𫓶鋙铻鋝锊鋟锓鋣铘鋤锄鋥锃鋦锔鋨锇鋩铓鋪铺鋭锐鋮铖鋯锆鋰锂鋱铽鋶锍鋸锯鋹𬬮鋼钢錀𬬭錁锞錄录錆锖錇锫錈锩錏铔錐锥錒锕錕锟錘锤錙锱錚铮錛锛錞𬭚錟锬錠锭錡锜錢钱錤𫓹錦锦錨锚錩锠錫锡錮锢錯错録录錳锰錶表錸铼錼镎鍀锝鍁锨鍃锪鍅钫鍆钔鍇锴鍈锳鍊炼鍋锅鍍镀鍔锷鍘铡鍚钖鍛锻鍠锽鍤锸鍥锲鍩锘鍬锹鍭𬭤鍰锾鍵键鍶锶鍺锗鍼针鍾钟鎂镁鎄锿鎇镅鎊镑鎌镰鎓𬭩鎔镕鎖锁鎘镉鎚锤鎛镈鎝𨱏鎡镃鎢钨鎣蓥鎦镏鎧铠鎩铩鎪锼鎬镐鎭镇鎮镇鎰镒鎲镋鎳镍鎵镓鎶鿔鎸镌鎿镎鏃镞鏇旋鏈链鏌镆鏍镙鏏𬭬鏐镠鏑镝鏗铿鏘锵鏜镗鏝镘鏞镛鏟铲鏡镜鏢镖鏤镂鏨錾鏰镚鏵铧鏷镤鏹镪鏺䥽鏻𬭸鏽锈鐃铙鐄𨱑鐇𫔍鐋铴鐍𫔎鐏𨱔鐐镣鐒铹鐓镦鐔镡鐘钟鐙镫鐝镢鐠镨鐥䦅鐦锎鐧锏鐨镄鐩𬭼鐫镌鐮镰鐯䦃鐲镯鐳镭鐵铁鐶镮鐸铎鐺铛鐽𫟼鐿镱鑄铸鑊镬鑌镔鑑鉴鑒鉴鑔镲鑕锧鑞镴鑠铄鑣镳鑥镥鑪𬬻鑭镧鑰钥鑱镵鑲镶鑷镊鑹镩鑼锣鑽钻鑾銮鑿凿钁镢钂镋長长門门閂闩閃闪閆闫閈闬閉闭開开閌闶閎闳閏闰閑闲閒闲間间閔闵閘闸閡阂閣阁閤合閥阀閨闺閩闽閫阃閬阆閭闾閱阅閲阅閶阊閹阉閻阎閼阏閽阍閾阈閿阌闃阒闆板闇暗闈闱闉𬮱闊阔闋阕闌阑闍阇闐阗闑𫔶闒阘闓闿闔阖闕阙闖闯關关闞阚闠阓闡阐闢辟闤阛闥闼陘陉陝陕陞升陣阵陰阴陳陈陸陆陽阳隉陧隊队階阶隑𬮿隕陨際际隤𬯎隨随險险隮𬯀隯陦隱隐隴陇隸隶隻只雋隽雖虽雙双雛雏雜杂雞鸡離离難难雲云電电霑沾霢霡霧雾霽霁靂雳靄霭靆叇靈灵靉叆靚靓靜静靝靔靦腼靨靥鞏巩鞝绱鞦秋鞽鞒韁缰韃鞑韆千韉鞯韋韦韌韧韍韨韓韩韙韪韜韬韝鞲韞韫韻韵響响頁页頂顶頃顷項项順顺頇顸須须頊顼頌颂頍𫠆頎颀頏颃預预頑顽頒颁頓顿頔𬱖頗颇領领頜颌頠𬱟頡颉頤颐頦颏頫𫖯頭头頮颒頰颊頲颋頴颕頵𫖳頷颔頸颈頹颓頻频頽颓顆颗題题額额顎颚顏颜顒颙顓颛顔颜顗𫖮願愿顙颡顛颠類类顢颟顥颢顧顾顫颤顬颥顯显顰颦顱颅顳颞顴颧風风颭飐颮飑颯飒颱台颳刮颶飓颸飔颺飏颻飖颼飕飀飗飄飘飆飙飈飚飛飞飠饣飢饥飣饤飥饦飩饨飪饪飫饫飭饬飯饭飱飧飲饮飴饴飼饲飽饱飾饰飿饳餃饺餄饸餅饼餈糍餉饷養养餌饵餎饹餏饻餑饽餒馁餓饿餕馂餖饾餗𫗧餘余餚肴餛馄餜馃餞饯餡馅館馆餬糊餱糇餳饧餵喂餶馉餷馇餸𩠌餺馎餼饩餾馏餿馊饁馌饃馍饅馒饈馐饉馑饊馓饋馈饌馔饑饥饒饶饗飨饘𫗴饜餍饞馋饢馕馬马馭驭馮冯馱驮馳驰馴驯馹驲馼𫘜駁驳駃𫘝駉𬳶駐驻駑驽駒驹駓𬳵駔驵駕驾駘骀駙驸駛驶駝驼駟驷駡骂駢骈駪𬳽駭骇駰骃駱骆駸骎駼𬳿駿骏騁骋騂骍騄𫘧騅骓騊𫘦騌骔騍骒騎骑騏骐騑𬴂騖骛騙骗騞𬴃騠𫘨騤骙騧䯄騫骞騭骘騮骝騰腾騱𫘬騵𫘪騶驺騷骚騸骟騾骡驀蓦驁骜驂骖驃骠驄骢驅驱驊骅驌骕驍骁驎𬴊驏骣驕骄驗验驚惊驛驿驟骤驢驴驤骧驥骥驦骦驪骊驫骉骯肮髏髅髒脏體体髕髌髖髋髮发鬆松鬍胡鬚须鬢鬓鬥斗鬧闹鬨哄鬩阋鬮阄鬱郁鬹鬶魎魉魘魇魚鱼魛鱽魟𫚉魢鱾魨鲀魯鲁魴鲂魷鱿魺鲄鮀𬶍鮁鲅鮃鲆鮆𫚖鮈𬶋鮊鲌鮋鲉鮍鲏鮎鲇鮐鲐鮑鲍鮒鲋鮓鲊鮚鲒鮜鲘鮝鲞鮞鲕鮟𩽾鮠𬶏鮡𬶐鮣䲟鮦鲖鮪鲔鮫鲛鮭鲑鮮鲜鮳鲓鮶鲪鮸𩾃鮺鲝鯀鲧鯁鲠鯇鲩鯉鲤鯊鲨鯒鲬鯔鲻鯕鲯鯖鲭鯗鲞鯛鲷鯝鲴鯡鲱鯢鲵鯤鲲鯧鲳鯨鲸鯪鲮鯫鲰鯰鲶鯴鲺鯷鳀鯻𬶟鯽鲫鯿鳊鰁鳈鰂鲗鰃鳂鰆䲠鰈鲽鰉鳇鰊𬶠鰌䲡鰍鳅鰏鲾鰐鳄鰒鳆鰓鳃鰛鳁鰜鳒鰟鳑鰠鳋鰣鲥鰤𫚕鰥鳏鰧䲢鰨鳎鰩鳐鰭鳍鰮鳁鰱鲢鰲鳌鰳鳓鰵鳘鰶𬶭鰷鲦鰹鲣鰺鲹鰻鳗鰼鳛鰾鳔鱀𬶨鱂鳉鱅鳙鱇𩾌鱈鳕鱉鳖鱒鳟鱔鳝鱖鳜鱗鳞鱘鲟鱚𬶮鱝鲼鱟鲎鱠鲙鱣鳣鱤鳡鱧鳢鱨鲿鱭鲚鱯鳠鱲𫚭鱷鳄鱸鲈鱺鲡鳥鸟鳧凫鳩鸠鳬凫鳲鸤鳳凤鳴鸣鳶鸢鳾䴓鴆鸩鴇鸨鴉鸦鴒鸰鴕鸵鴛鸳鴝鸲鴞鸮鴟鸱鴣鸪鴦鸯鴨鸭鴯鸸鴰鸹鴴鸻鴷䴕鴻鸿鴿鸽鵁䴔鵂鸺鵃鸼鵏𬷕鵐鹀鵑鹃鵒鹆鵓鹁鵜鹈鵝鹅鵟𫛭鵠鹄鵡鹉鵪鹌鵬鹏鵮鹐鵯鹎鵰雕鵲鹊鵷鹓鵾鹍鶄䴖鶇鸫鶉鹑鶊鹒鶓鹋鶖鹙鶘鹕鶚鹗鶠𬸘鶡鹖鶥鹛鶩鹜鶪䴗鶬鸧鶯莺鶱𬸣鶲鹟鶴鹤鶹鹠鶺鹡鶻鹘鶼鹣鶿鹚鷀鹚鷁鹢鷂鹞鷄鸡鷉䴘鷊鹝鷓鹧鷖鹥鷗鸥鷙鸷鷚鹨鷟𬸦鷥鸶鷦鹪鷫鹔鷭𬸪鷯鹩鷲鹫鷳鹇鷴鹇鷸鹬鷹鹰鷺鹭鷽鸴鸂㶉鸇鹯鸊䴙鸌鹱鸏鹲鸑𬸚鸕鸬鸘鹴鸚鹦鸛鹳鸝鹂鸞鸾鹵卤鹹咸鹺鹾鹼碱鹽盐麗丽麥麦麩麸麪面麫面麬𤿲麯曲麳𪎌麴曲麵面麼么麽么黃黄黌黉點点黨党黲黪黴霉黶黡黷黩黽黾黿鼋鼂鼌鼉鼍鼕冬鼴鼹齊齐齋斋齎赍齏齑齒齿齔龀齕龁齗龂齘𬹼齙龅齜龇齟龃齠龆齡龄齣出齦龈齧啮齪龊齬龉齮𬺈齯𫠜齲龋齶腭齷龌齼𬺓龍龙龎厐龐庞龑䶮龔龚龕龛龜龟鿁䜤鿓鿒𠁞𠀾𠌥𠌥𠏢𠏢𠐊𠐊𠗣㓆𠞆𠞆𠠎𠠎𠬙𠬙𠼤𠼤𠽃𠽃𠿕𠿕𡂡𡂡𡃄𡃄𡃕𠴛𡃤𡃤𡄔𡄔𡄣𡄣𡅏𠲥𡅯𡅯𡑍𫭼𡑭𡋗𡓁𡓁𡓾𡋀𡔖𡍣𡞵㛟𡟫𡟫𡠹㛿𡢃㛠𡮉𡭜𡮣𡭬𡳳𡳃𡸗𡸗𡹬𡹬𡻕岁𡽗𡽗𡾱㟜𡿖𡿖𢍰𢍰𢠼𢠼𢣐𢣐𢣚𢘝𢣭𢣭𢤩𢤩𢤱𢤱𢤿𢤿𢯷𢯷𢶒𢶒𢶫𢫞𢷮𢷮𢹿𢬦𢺳𢺳𣈶暅𣋋𣋋𣍐𣍐𣙎㭣𣜬𣜬𣝕𣝕𣞻𣘓𣠩𣞎𣠲𣑶𣯩𣯩𣯴𣯴𣯶毶𣽏𣽏𣾷㳢𣿉𣿉𤁣𣺽𤄷𤄷𤅶𣷷𤑳𤑳𤑹𤑹𤒎𤒎𤒻𤒻𤓌𤓌𤓎𤓎𤓩𤊰𤘀𤘀𤛮𤛮𤛱𤛱𤜆𤜆𤠮𤠮𤢟𤢟𤢻𤢻𤩂𤩂𤪺㻘𤫩㻏𤬅𤬅𤳷𤳷𤳸𤳄𤷃𤷃𤸫𤸫𤺔𤺔𥊝𥅿𥌃𥅘𥏝𥏝𥕥𥐰𥖅𥐯𥖲𥖲𥗇𥗇𥗽𬒗𥜐𥜐𥜰𥜰𥞵𥞵𥢢䅪𥢶𥢶𥢷𥢷𥨐𥨐𥪂𥪂𥯤𥯤𥴨𥴨𥴼𥴼𥵃𥵃𥵊𥵊𥶽𥶽𥸠𥮋𥻦𥻦𥼽𥹥𥽖𥽖𥾯𥾯𥿊𥿊𦀖𦀖𦂅𦂅𦃄𦃄𦃩𦃩𦅇𦅇𦅈𦅈𦆲𦆲𦒀𦒀𦔖𦔖𦘧𡳒𦟼𦟼𦠅𦠅𦡝𦡝𦢈𦢈𦣎𦟗𦧺𦧺𦪙䑽𦪽𦪽𦱌𦱌𦾟𦾟𧎈𧎈𧒯𧒯𧔥𧔥𧕟𧕟𧜗䘞𧜵䙊𧝞䘛𧞫𧞫𧟀𧝧𧡴𧡴𧢄𧢄𧦝𧦝𧦧𧦧𧩕𧩕𧩙䜥𧩼𧩼𧫝𧫝𧬤𧬤𧭈𧭈𧭹𧭹𧳟𧳟𧵳䞌𧶔𧶔𧶧䞎𧷎𧷎𧸘𧸘𧹈𧹈𧽯𧽯𨂐𨂐𨄣𨄣𨅍𨅍𨆪𨆪𨇁𨇁𨇞𨇞𨇤𨇤𨇰𨇰𨇽𨇽𨈊𨈊𨈌𨈌𨊰䢀𨊸䢁𨊻𨊻𨋢䢂𨌈𨌈𨍰𨍰𨎌𨎌𨎮𨎮𨏠𨏠𨏥𨏥𨞺𨞺𨟊𨟊𨢿𨢿𨣈𨣈𨣞𨣞𨣧𨣧𨤻𨤰𨥛𨥛𨥟𨥟𨦫䦀𨧀𬭊𨧜䦁𨧰𨧰𨧱𨧱𨨏𬭛𨨛𨨛𨨢𨨢𨩰𨩰𨪕𨪕𨫒𨫒𨬖𨬖𨭆𬭶𨭎𬭳𨭖𨭖𨭸𨭸𨮂𨮂𨮳𨮳𨯅䥿𨯟𨯟𨰃𨰃𨰋𨰋𨰥𨰥𨰲𨰲𨲳𨲳𨳑𨳑𨳕𨳕𨴗𨴗𨴹𨴹𨵩𨵩𨵸𨵸𨶀𨶀𨶏𨶏𨶮𨶮𨶲𨶲𨷲𨷲𨼳𨼳𨽏𨽏𩀨𩀨𩅙𩅙𩎖𩎖𩎢𩎢𩏂𩏂𩏠𩏠𩏪𩏪𩏷𩏷𩑔𩑔𩒎𩒎𩓣𩓣𩓥𩓥𩔑𩔑𩔳𩔳𩖰𩖰𩗀𩗀𩗓𩗓𩗴𩗴𩘀𩘀𩘝𩘝𩘹𩘹𩘺𩘺𩙈𩙈𩚛𩚛𩚥𩚥𩚩𩚩𩚵𩚵𩛆𩛆𩛌𩛌𩛡𩛡𩛩𩛩𩜇𩜇𩜦𩜦𩜵𩜵𩝔𩝔𩝽𩝽𩞄𩞄𩞦𩞦𩞯䭪𩟐𩟐𩟗𩟗𩠴𩠠𩡣𩡣𩡺𩡺𩢡𩢡𩢴𩢴𩢸𩢸𩢾𩢾𩣏𩣏𩣑䯃𩣫𩣫𩣵𩣵𩣺𩣺𩤊𩤊𩤙𩤙𩤲𩤲𩤸𩤸𩥄𩥄𩥇𩥇𩥉𩥉𩥑𩥑𩦠𩦠𩧆𩧆𩭙𩭙𩯁𩯁𩯳𩯳𩰀𩰀𩰹𩰹𩳤𩳤𩴵𩴵𩵦𩵦𩵩𩵩𩵹𩵹𩶁𩶁𩶘䲞𩶰𩶰𩶱𩶱𩷰𩷰𩸃𩸃𩸄𩸄𩸡𩸡𩸦𩸦𩻗𩻗𩻬𩻬𩻮𩻮𩼶𩼶𩽇𩽇𩿅𩿅𩿤𩿤𩿪𩿪𪀖𪀖𪀦𪀦𪀾𪀾𪁈𪁈𪁖𪁖𪂆𪂆𪃍𪃍𪃏𪃏𪃒𪃒𪃧𪃧𪄆𪄆𪄕𪄕𪅂𪅂𪆷𪆷𪇳𪇳𪈼𪈼𪉸𪉸𪋿𪋿𪌭𪌭𪍠𪍠𪓰𪓰𪔵𪔵𪘀𪘀𪘯𪘯𪙏𪙏𪟖𪟖𪷓𪷓𫒡𫒡𫜦𫜦𰻞𰻝";
 </script>
 <script>
+/*! Hanzi Writer v3.5.0 | MIT | 內嵌以便離線使用 */
+/**
+ * Hanzi Writer v3.5.0 | https://chanind.github.io/hanzi-writer
+ */
+
+var HanziWriter=function(){"use strict";var t;const e="undefined"==typeof window?global:window,r=e.performance&&(()=>e.performance.now())||(()=>Date.now()),i=e.requestAnimationFrame||(t=>setTimeout(()=>t(r()),1e3/60)),s=e.cancelAnimationFrame||clearTimeout;function o(t){return t[t.length-1]}const n=(t,e)=>t<0?e+t:t;function a(t,e){const r={...t};for(const i in e){const s=t[i],o=e[i];s!==o&&(s&&o&&"object"==typeof s&&"object"==typeof o&&!Array.isArray(o)?r[i]=a(s,o):r[i]=o)}return r}let h=0;function l(){return h++,h}function c(t){return t.reduce((t,e)=>e+t,0)/t.length}function d(t){const e=t.toUpperCase().trim();if(/^#([A-F0-9]{3}){1,2}$/.test(e)){let t=e.substring(1).split("");3===t.length&&(t=[t[0],t[0],t[1],t[1],t[2],t[2]]);const r=""+t.join("");return{r:parseInt(r.slice(0,2),16),g:parseInt(r.slice(2,4),16),b:parseInt(r.slice(4,6),16),a:1}}const r=e.match(/^RGBA?\((\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*(\d*\.?\d+))?\)$/);if(r)return{r:parseInt(r[1],10),g:parseInt(r[2],10),b:parseInt(r[3],10),a:parseFloat(r[4]||1,10)};throw new Error("Invalid color: "+t)}function u(t,e){const r={};for(let i=0;i<e;i++)r[i]=t;return r}function _(t,e){const r={};for(let i=0;i<t;i++)r[i]=e(i);return r}const p=(null===(t=e.navigator)||void 0===t?void 0:t.userAgent)||"",g=p.indexOf("MSIE ")>0||p.indexOf("Trident/")>0||p.indexOf("Edge/")>0,k=()=>{};class m{constructor(t,e,r=k){this._mutationChains=[],this._onStateChange=r,this.state={options:{drawingFadeDuration:e.drawingFadeDuration,drawingWidth:e.drawingWidth,drawingColor:d(e.drawingColor),strokeColor:d(e.strokeColor),outlineColor:d(e.outlineColor),radicalColor:d(e.radicalColor||e.strokeColor),highlightColor:d(e.highlightColor)},character:{main:{opacity:e.showCharacter?1:0,strokes:{}},outline:{opacity:e.showOutline?1:0,strokes:{}},highlight:{opacity:1,strokes:{}}},userStrokes:null};for(let e=0;e<t.strokes.length;e++)this.state.character.main.strokes[e]={opacity:1,displayPortion:1},this.state.character.outline.strokes[e]={opacity:1,displayPortion:1},this.state.character.highlight.strokes[e]={opacity:0,displayPortion:1}}overwriteOnStateChange(t){this._onStateChange=t}updateState(t){const e=a(this.state,t);this._onStateChange(e,this.state),this.state=e}run(t,e={}){const r=t.map(t=>t.scope);return this.cancelMutations(r),new Promise(i=>{const s={_isActive:!0,_index:0,_resolve:i,_mutations:t,_loop:e.loop,_scopes:r};this._mutationChains.push(s),this._run(s)})}_run(t){if(!t._isActive)return;const e=t._mutations;if(t._index>=e.length){if(!t._loop)return t._isActive=!1,this._mutationChains=this._mutationChains.filter(e=>e!==t),void t._resolve({canceled:!1});t._index=0}t._mutations[t._index].run(this).then(()=>{t._isActive&&(t._index++,this._run(t))})}_getActiveMutations(){return this._mutationChains.map(t=>t._mutations[t._index])}pauseAll(){this._getActiveMutations().forEach(t=>t.pause())}resumeAll(){this._getActiveMutations().forEach(t=>t.resume())}cancelMutations(t){for(const e of this._mutationChains)for(const r of e._scopes)for(const i of t)(r.startsWith(i)||i.startsWith(r))&&this._cancelMutationChain(e)}cancelAll(){this.cancelMutations([""])}_cancelMutationChain(t){var e;t._isActive=!1;for(let e=t._index;e<t._mutations.length;e++)t._mutations[e].cancel(this);null===(e=t._resolve)||void 0===e||e.call(t,{canceled:!0}),this._mutationChains=this._mutationChains.filter(e=>e!==t)}}const f=(t,e)=>({x:t.x-e.x,y:t.y-e.y}),v=t=>Math.sqrt(Math.pow(t.x,2)+Math.pow(t.y,2)),y=(t,e)=>v(f(t,e)),C=(t,e=1)=>{const r=10*e;return{x:Math.round(r*t.x)/r,y:Math.round(r*t.y)/r}},w=t=>{let e=t[0];return t.slice(1).reduce((t,r)=>{const i=y(r,e);return e=r,t+i},0)},S=(t,e,r)=>{const i=f(e,t),s=r/v(i);return{x:e.x+s*i.x,y:e.y+s*i.y}},P=t=>{const e=((t,e=30)=>{const r=w(t)/(e-1),i=[t[0]],s=o(t),n=t.slice(1);for(let t=0;t<e-2;t++){let t=o(i),e=r,s=!1;for(;!s;){const r=y(t,n[0]);if(r<e)e-=r,t=n.shift();else{const o=S(t,n[0],e-r);i.push(o),s=!0}}}return i.push(s),i})(t),r={x:c(e.map(t=>t.x)),y:c(e.map(t=>t.y))},i=e.map(t=>f(t,r)),s=Math.sqrt(c([Math.pow(i[0].x,2)+Math.pow(i[0].y,2),Math.pow(o(i).x,2)+Math.pow(o(i).y,2)]));return((t,e=.05)=>{const r=t.slice(0,1);for(const i of t.slice(1)){const t=r[r.length-1],s=y(i,t);if(s>e){const o=Math.ceil(s/e),n=s/o;for(let e=0;e<o;e++)r.push(S(i,t,-1*n*(e+1)))}else r.push(i)}return r})(i.map(t=>({x:t.x/s,y:t.y/s})))};function D(t,e=!1){const r=C(t[0]),i=t.slice(1);let s=`M ${r.x} ${r.y}`;return i.forEach(t=>{const e=C(t);s+=` L ${e.x} ${e.y}`}),e&&(s+="Z"),s}const x=(t,e)=>{const r=(t=>{if(t.length<3)return t;const e=[t[0],t[1]];return t.slice(2).forEach(t=>{const r=e.length,i=f(t,e[r-1]),s=f(e[r-1],e[r-2]);i.y*s.x-i.x*s.y==0&&e.pop(),e.push(t)}),e})(t);if(r.length<2)return r;const i=r[1],s=r[0],o=S(i,s,e),n=r.slice(1);return n.unshift(o),n};class M{constructor(t,e,r,i=!1){this.path=t,this.points=e,this.strokeNum=r,this.isInRadical=i}getStartingPoint(){return this.points[0]}getEndingPoint(){return this.points[this.points.length-1]}getLength(){return w(this.points)}getVectors(){let t=this.points[0];return this.points.slice(1).map(e=>{const r=f(e,t);return t=e,r})}getDistance(t){const e=this.points.map(e=>y(e,t));return Math.min(...e)}getAverageDistance(t){return t.reduce((t,e)=>t+this.getDistance(e),0)/t.length}}class R{constructor(t,e){this.symbol=t,this.strokes=e}}function T({radStrokes:t,strokes:e,medians:r}){return e.map((e,i)=>{const s=r[i].map(t=>{const[e,r]=t;return{x:e,y:r}});return new M(e,s,i,(o=i,(null!==(n=null==t?void 0:t.indexOf(o))&&void 0!==n?n:-1)>=0));var o,n})}const[A,O]=[{x:0,y:-124},{x:1024,y:900}],b=O.x-A.x,$=O.y-A.y;class L{constructor(t){const{padding:e,width:r,height:i}=t;this.padding=e,this.width=r,this.height=i;const s=r-2*e,o=i-2*e,n=s/b,a=o/$;this.scale=Math.min(n,a);const h=e+(s-this.scale*b)/2,l=e+(o-this.scale*$)/2;this.xOffset=-1*A.x*this.scale+h,this.yOffset=-1*A.y*this.scale+l}convertExternalPoint(t){return{x:(t.x-this.xOffset)/this.scale,y:(this.height-this.yOffset-t.y)/this.scale}}}const z=(t,e)=>{const r=(t=>{const e=[];let r=t[0];return t.slice(1).forEach(t=>{e.push(f(t,r)),r=t}),e})(t),i=e.getVectors();return c(r.map(t=>{const e=i.map(e=>{return i=t,((r=e).x*i.x+r.y*i.y)/v(r)/v(i);var r,i});return Math.max(...e)}))>0},E=t=>{if(t.length<2)return t;const[e,...r]=t,i=[e];for(const t of r)s=t,o=i[i.length-1],(s.x!==o.x||s.y!==o.y)&&i.push(t);var s,o;return i},W=[Math.PI/16,Math.PI/32,0,-1*Math.PI/32,-1*Math.PI/16],F=(t,e,r)=>{const i=P(t),s=P(e);let o=1/0;return W.forEach(t=>{const e=((t,e)=>{const r=t.length>=e.length?t:e,i=t.length>=e.length?e:t,s=(t,e,s,o)=>{if(0===t&&0===e)return y(r[0],i[0]);if(t>0&&0===e)return Math.max(s[0],y(r[t],i[0]));const n=o[o.length-1];return 0===t&&e>0?Math.max(n,y(r[0],i[e])):Math.max(Math.min(s[e],s[e-1],n),y(r[t],i[e]))};let o=[];for(let t=0;t<r.length;t++){const e=[];for(let r=0;r<i.length;r++)e.push(s(t,r,o,e));o=e}return o[i.length-1]})(i,((t,e)=>t.map(t=>({x:Math.cos(e)*t.x-Math.sin(e)*t.y,y:Math.sin(e)*t.x+Math.cos(e)*t.y})))(s,t));e<o&&(o=e)}),o<=.4*r},H=(t,e,r)=>{const{leniency:i=1,isOutlineVisible:s=!1,checkBackwards:o=!0}=r,n=e.getAverageDistance(t),a=n<=350*(s||e.strokeNum>0?.5:1)*i;if(!a)return{isMatch:!1,avgDist:n,meta:{isStrokeBackwards:!1}};const h=((t,e,r)=>{const i=y(e.getStartingPoint(),t[0]),s=y(e.getEndingPoint(),t[t.length-1]);return i<=250*r&&s<=250*r})(t,e,i),l=z(t,e),c=F(t,e.points,i),d=((t,e,r)=>r*(w(t)+25)/(e.getLength()+25)>=.35)(t,e,i),u=a&&h&&l&&c&&d;if(o&&!u){if(H([...t].reverse(),e,{...r,checkBackwards:!1}).isMatch)return{isMatch:u,avgDist:n,meta:{isStrokeBackwards:!0}}}return{isMatch:u,avgDist:n,meta:{isStrokeBackwards:!1}}};class I{constructor(t,e,r){this.id=t,this.points=[e],this.externalPoints=[r]}appendPoint(t,e){this.points.push(t),this.externalPoints.push(e)}}class B{constructor(t,e,r={}){this._tick=t=>{if(null!==this._startPauseTime)return;const e=Math.min(1,(t-this._startTime-this._pausedDuration)/this._duration);if(1===e)this._renderState.updateState(this._values),this._frameHandle=void 0,this.cancel(this._renderState);else{const t=j(e),r=q(this._startState,this._values,t);this._renderState.updateState(r),this._frameHandle=i(this._tick)}},this.scope=t,this._valuesOrCallable=e,this._duration=r.duration||0,this._force=r.force,this._pausedDuration=0,this._startPauseTime=null}run(t){return this._values||this._inflateValues(t),0===this._duration&&t.updateState(this._values),0===this._duration||N(t.state,this._values)?Promise.resolve():(this._renderState=t,this._startState=t.state,this._startTime=performance.now(),this._frameHandle=i(this._tick),new Promise(t=>{this._resolve=t}))}_inflateValues(t){let e=this._valuesOrCallable;"function"==typeof this._valuesOrCallable&&(e=this._valuesOrCallable(t.state)),this._values=function(t,e){const r=t.split("."),i={};let s=i;for(let t=0;t<r.length;t++){const i=t===r.length-1?e:{};s[r[t]]=i,s=i}return i}(this.scope,e)}pause(){null===this._startPauseTime&&(this._frameHandle&&s(this._frameHandle),this._startPauseTime=performance.now())}resume(){null!==this._startPauseTime&&(this._frameHandle=i(this._tick),this._pausedDuration+=performance.now()-this._startPauseTime,this._startPauseTime=null)}cancel(t){var e;null===(e=this._resolve)||void 0===e||e.call(this),this._resolve=void 0,s(this._frameHandle||-1),this._frameHandle=void 0,this._force&&(this._values||this._inflateValues(t),t.updateState(this._values))}}function q(t,e,r){const i={};for(const s in e){const o=e[s],n=null==t?void 0:t[s];i[s]="number"==typeof n&&"number"==typeof o&&o>=0?r*(o-n)+n:q(n,o,r)}return i}function N(t,e){for(const r in e){const i=e[r],s=null==t?void 0:t[r];if(i>=0){if(i!==s)return!1}else if(!N(s,i))return!1}return!0}B.Delay=class{constructor(t){this._duration=t,this._startTime=null,this._paused=!1,this.scope="delay."+t}run(){return this._startTime=r(),this._runningPromise=new Promise(t=>{this._resolve=t,this._timeout=setTimeout(()=>this.cancel(),this._duration)}),this._runningPromise}pause(){if(this._paused)return;const t=performance.now()-(this._startTime||0);this._duration=Math.max(0,this._duration-t),clearTimeout(this._timeout),this._paused=!0}resume(){this._paused&&(this._startTime=performance.now(),this._timeout=setTimeout(()=>this.cancel(),this._duration),this._paused=!1)}cancel(){clearTimeout(this._timeout),this._resolve&&this._resolve(),this._resolve=void 0}};const j=t=>-Math.cos(t*Math.PI)/2+.5,U=(t,e,r)=>[new B(`character.${t}.strokes`,u({opacity:1,displayPortion:1},e.strokes.length),{duration:r,force:!0})],V=(t,e,r)=>[new B("character."+t,{opacity:1,strokes:u({opacity:1,displayPortion:1},e.strokes.length)},{duration:r,force:!0})],Q=(t,e,r)=>[new B(`character.${t}.opacity`,0,{duration:r,force:!0}),...U(t,e,0)],G=(t,e,r)=>[new B("options."+t,e,{duration:r})],X=(t,e,r)=>{const i=t.strokeNum,s=(t.getLength()+600)/(3*r);return[new B("options.highlightColor",e),new B("character.highlight",{opacity:1,strokes:{[i]:{displayPortion:0,opacity:0}}}),new B("character.highlight.strokes."+i,{displayPortion:1,opacity:1},{duration:s}),new B(`character.highlight.strokes.${i}.opacity`,0,{duration:s,force:!0})]},K=(t,e,r)=>{const i=e.strokeNum,s=(e.getLength()+600)/(3*r);return[new B("character."+t,{opacity:1,strokes:{[i]:{displayPortion:0,opacity:1}}}),new B(`character.${t}.strokes.${i}.displayPortion`,1,{duration:s})]},Y=(t,e,r,i,s)=>{let o=Q(t,e,r);return o=o.concat(U(t,e,0)),o.push(new B("character."+t,{opacity:1,strokes:u({opacity:0},e.strokes.length)},{force:!0})),e.strokes.forEach((e,r)=>{r>0&&o.push(new B.Delay(s)),o=o.concat(K(t,e,i))}),o},J=(t,e)=>[new B(`userStrokes.${t}.opacity`,0,{duration:e}),new B("userStrokes."+t,null,{force:!0})];class Z{constructor(t,e,r){this._currentStrokeIndex=0,this._mistakesOnStroke=0,this._totalMistakes=0,this._character=t,this._renderState=e,this._isActive=!1,this._positioner=r}startQuiz(t){this._isActive=!0,this._options=t;const e=n(t.quizStartStrokeNum,this._character.strokes.length);return this._currentStrokeIndex=Math.min(e,this._character.strokes.length-1),this._mistakesOnStroke=0,this._totalMistakes=0,this._renderState.run((r=this._character,i=t.strokeFadeDuration,s=this._currentStrokeIndex,[...Q("main",r,i),new B("character.highlight",{opacity:1,strokes:u({opacity:0},r.strokes.length)},{force:!0}),new B("character.main",{opacity:1,strokes:_(r.strokes.length,t=>({opacity:t<s?1:0}))},{force:!0})]));var r,i,s}startUserStroke(t){if(!this._isActive)return null;if(this._userStroke)return this.endUserStroke();const e=this._positioner.convertExternalPoint(t),r=l();return this._userStroke=new I(r,e,t),this._renderState.run(((t,e)=>[new B("quiz.activeUserStrokeId",t,{force:!0}),new B("userStrokes."+t,{points:[e],opacity:1},{force:!0})])(r,e))}continueUserStroke(t){if(!this._userStroke)return Promise.resolve();const e=this._positioner.convertExternalPoint(t);this._userStroke.appendPoint(e,t);const r=this._userStroke.points.slice(0);return this._renderState.run((i=this._userStroke.id,[new B(`userStrokes.${i}.points`,r,{force:!0})]));var i}setPositioner(t){this._positioner=t}endUserStroke(){var t;if(!this._userStroke)return;if(this._renderState.run(J(this._userStroke.id,null!==(t=this._options.drawingFadeDuration)&&void 0!==t?t:300)),1===this._userStroke.points.length)return void(this._userStroke=void 0);const{acceptBackwardsStrokes:e,markStrokeCorrectAfterMisses:r}=this._options,i=this._getCurrentStroke(),{isMatch:s,meta:o}=function(t,e,r,i={}){const s=e.strokes,o=E(t.points);if(o.length<2)return{isMatch:!1,meta:{isStrokeBackwards:!1}};const{isMatch:n,meta:a,avgDist:h}=H(o,s[r],i);if(!n)return{isMatch:n,meta:a};const l=s.slice(r+1);let c=h;for(let t=0;t<l.length;t++){const{isMatch:e,avgDist:r}=H(o,l[t],{...i,checkBackwards:!1});e&&r<c&&(c=r)}if(c<h){const t=.6*(c+h)/(2*h),{isMatch:e,meta:n}=H(o,s[r],{...i,leniency:(i.leniency||1)*t});return{isMatch:e,meta:n}}return{isMatch:n,meta:a}}(this._userStroke,this._character,this._currentStrokeIndex,{isOutlineVisible:this._renderState.state.character.outline.opacity>0,leniency:this._options.leniency}),n=r&&this._mistakesOnStroke+1>=r;if(s||n||o.isStrokeBackwards&&e)this._handleSuccess(o);else{this._handleFailure(o);const{showHintAfterMisses:t,highlightColor:e,strokeHighlightSpeed:r}=this._options;!1!==t&&this._mistakesOnStroke>=t&&this._renderState.run(X(i,d(e),r))}this._userStroke=void 0}cancel(){this._isActive=!1,this._userStroke&&this._renderState.run(J(this._userStroke.id,this._options.drawingFadeDuration))}_getStrokeData({isCorrect:t,meta:e}){return{character:this._character.symbol,strokeNum:this._currentStrokeIndex,mistakesOnStroke:this._mistakesOnStroke,totalMistakes:this._totalMistakes,strokesRemaining:this._character.strokes.length-this._currentStrokeIndex-(t?1:0),drawnPath:(r=this._userStroke,{pathString:D(r.externalPoints),points:r.points.map(t=>C(t))}),isBackwards:e.isStrokeBackwards};var r}_handleSuccess(t){if(!this._options)return;const{strokes:e,symbol:r}=this._character,{onCorrectStroke:i,onComplete:s,highlightOnComplete:o,strokeFadeDuration:n,highlightCompleteColor:a,highlightColor:h,strokeHighlightDuration:l}=this._options;null==i||i({...this._getStrokeData({isCorrect:!0,meta:t})});let c=(u="main",_=this._currentStrokeIndex,[new B(`character.${u}.strokes.${_}`,{displayPortion:1,opacity:1},{duration:n,force:!0})]);var u,_;this._mistakesOnStroke=0,this._currentStrokeIndex+=1;this._currentStrokeIndex===e.length&&(this._isActive=!1,null==s||s({character:r,totalMistakes:this._totalMistakes}),o&&(c=c.concat(((t,e,r)=>[new B("options.highlightColor",e),...Q("highlight",t),...V("highlight",t,r/2),...Q("highlight",t,r/2)])(this._character,d(a||h),2*(l||0))))),this._renderState.run(c)}_handleFailure(t){var e,r;this._mistakesOnStroke+=1,this._totalMistakes+=1,null===(e=(r=this._options).onMistake)||void 0===e||e.call(r,this._getStrokeData({isCorrect:!1,meta:t}))}_getCurrentStroke(){return this._character.strokes[this._currentStrokeIndex]}}function tt(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}function et(t,e,r){t.setAttributeNS(null,e,r)}function rt(t,e){Object.keys(e).forEach(r=>et(t,r,e[r]))}function it(t){var e;null==t||null===(e=t.parentNode)||void 0===e||e.removeChild(t)}class st{constructor(t){this.stroke=t,this._pathLength=t.getLength()+st.STROKE_WIDTH/2}_getStrokeDashoffset(t){return.999*this._pathLength*(1-t)}_getColor({strokeColor:t,radicalColor:e}){return e&&this.stroke.isInRadical?e:t}}st.STROKE_WIDTH=200;class ot extends st{constructor(t){super(t),this._oldProps=void 0}mount(t){this._animationPath=tt("path"),this._clip=tt("clipPath"),this._strokePath=tt("path");const e="mask-"+l();et(this._clip,"id",e),et(this._strokePath,"d",this.stroke.path),this._animationPath.style.opacity="0",et(this._animationPath,"clip-path",function(t){let e="";return window.location&&window.location.href&&(e=window.location.href.replace(/#[^#]*$/,"").replace(/"/gi,"%22")),`url("${e}#${t}")`}(e));const r=x(this.stroke.points,100);return et(this._animationPath,"d",D(r)),rt(this._animationPath,{stroke:"#FFFFFF","stroke-width":200..toString(),fill:"none","stroke-linecap":"round","stroke-linejoin":"miter","stroke-dasharray":`${this._pathLength},${this._pathLength}`}),this._clip.appendChild(this._strokePath),t.defs.appendChild(this._clip),t.svg.appendChild(this._animationPath),this}render(t){var e,r;if(t===this._oldProps||!this._animationPath)return;t.displayPortion!==(null===(e=this._oldProps)||void 0===e?void 0:e.displayPortion)&&(this._animationPath.style.strokeDashoffset=this._getStrokeDashoffset(t.displayPortion).toString());const i=this._getColor(t);if(!this._oldProps||i!==this._getColor(this._oldProps)){const{r:t,g:e,b:r,a:s}=i;rt(this._animationPath,{stroke:`rgba(${t},${e},${r},${s})`})}t.opacity!==(null===(r=this._oldProps)||void 0===r?void 0:r.opacity)&&(this._animationPath.style.opacity=t.opacity.toString()),this._oldProps=t}}class nt{constructor(t){this._oldProps=void 0,this._strokeRenderers=t.strokes.map(t=>new ot(t))}mount(t){const e=t.createSubRenderTarget();this._group=e.svg,this._strokeRenderers.forEach(t=>{t.mount(e)})}render(t){var e,r;if(t===this._oldProps||!this._group)return;const{opacity:i,strokes:s,strokeColor:o,radicalColor:n=null}=t;var a;i!==(null===(e=this._oldProps)||void 0===e?void 0:e.opacity)&&(this._group.style.opacity=i.toString(),g||(0===i?this._group.style.display="none":0===(null===(a=this._oldProps)||void 0===a?void 0:a.opacity)&&this._group.style.removeProperty("display")));const h=!this._oldProps||o!==this._oldProps.strokeColor||n!==this._oldProps.radicalColor;if(h||s!==(null===(r=this._oldProps)||void 0===r?void 0:r.strokes))for(let t=0;t<this._strokeRenderers.length;t++){var l;!h&&null!==(l=this._oldProps)&&void 0!==l&&l.strokes&&s[t]===this._oldProps.strokes[t]||this._strokeRenderers[t].render({strokeColor:o,radicalColor:n,opacity:s[t].opacity,displayPortion:s[t].displayPortion})}this._oldProps=t}}class at{constructor(){this._oldProps=void 0}mount(t){this._path=tt("path"),t.svg.appendChild(this._path)}render(t){var e,r,i,s;if(this._path&&t!==this._oldProps){if(t.strokeColor!==(null===(e=this._oldProps)||void 0===e?void 0:e.strokeColor)||t.strokeWidth!==(null===(r=this._oldProps)||void 0===r?void 0:r.strokeWidth)){const{r:e,g:r,b:i,a:s}=t.strokeColor;rt(this._path,{fill:"none",stroke:`rgba(${e},${r},${i},${s})`,"stroke-width":t.strokeWidth.toString(),"stroke-linecap":"round","stroke-linejoin":"round"})}t.opacity!==(null===(i=this._oldProps)||void 0===i?void 0:i.opacity)&&et(this._path,"opacity",t.opacity.toString()),t.points!==(null===(s=this._oldProps)||void 0===s?void 0:s.points)&&et(this._path,"d",D(t.points)),this._oldProps=t}}destroy(){it(this._path)}}class ht{constructor(t){this.node=t}addPointerStartListener(t){this.node.addEventListener("mousedown",e=>{t(this._eventify(e,this._getMousePoint))}),this.node.addEventListener("touchstart",e=>{t(this._eventify(e,this._getTouchPoint))})}addPointerMoveListener(t){this.node.addEventListener("mousemove",e=>{t(this._eventify(e,this._getMousePoint))}),this.node.addEventListener("touchmove",e=>{t(this._eventify(e,this._getTouchPoint))})}addPointerEndListener(t){document.addEventListener("mouseup",t),document.addEventListener("touchend",t)}getBoundingClientRect(){return this.node.getBoundingClientRect()}updateDimensions(t,e){this.node.setAttribute("width",""+t),this.node.setAttribute("height",""+e)}_eventify(t,e){return{getPoint:()=>e.call(this,t),preventDefault:()=>t.preventDefault()}}_getMousePoint(t){const{left:e,top:r}=this.getBoundingClientRect();return{x:t.clientX-e,y:t.clientY-r}}_getTouchPoint(t){const{left:e,top:r}=this.getBoundingClientRect();return{x:t.touches[0].clientX-e,y:t.touches[0].clientY-r}}}class lt extends ht{constructor(t,e){super(t),this.svg=t,this.defs=e,"createSVGPoint"in t&&(this._pt=t.createSVGPoint())}static init(t,e="100%",r="100%"){const i="string"==typeof t?document.getElementById(t):t;if(!i)throw new Error("HanziWriter target element not found: "+t);const s=i.nodeName.toUpperCase(),o=(()=>{if("SVG"===s||"G"===s)return i;{const t=tt("svg");return i.appendChild(t),t}})();rt(o,{width:e,height:r});const n=tt("defs");return o.appendChild(n),new lt(o,n)}createSubRenderTarget(){const t=tt("g");return this.svg.appendChild(t),new lt(t,this.defs)}_getMousePoint(t){if(this._pt&&(this._pt.x=t.clientX,this._pt.y=t.clientY,"getScreenCTM"in this.node)){var e;const t=this._pt.matrixTransform(null===(e=this.node.getScreenCTM())||void 0===e?void 0:e.inverse());return{x:t.x,y:t.y}}return super._getMousePoint.call(this,t)}_getTouchPoint(t){if(this._pt&&(this._pt.x=t.touches[0].clientX,this._pt.y=t.touches[0].clientY,"getScreenCTM"in this.node)){var e;const t=this._pt.matrixTransform(null===(e=this.node.getScreenCTM())||void 0===e?void 0:e.inverse());return{x:t.x,y:t.y}}return super._getTouchPoint(t)}}var ct={HanziWriterRenderer:class{constructor(t,e){this._character=t,this._positioner=e,this._mainCharRenderer=new nt(t),this._outlineCharRenderer=new nt(t),this._highlightCharRenderer=new nt(t),this._userStrokeRenderers={}}mount(t){const e=t.createSubRenderTarget(),r=e.svg,{xOffset:i,yOffset:s,height:o,scale:n}=this._positioner;et(r,"transform",`translate(${i}, ${o-s}) scale(${n}, ${-1*n})`),this._outlineCharRenderer.mount(e),this._mainCharRenderer.mount(e),this._highlightCharRenderer.mount(e),this._positionedTarget=e}render(t){const{main:e,outline:r,highlight:i}=t.character,{outlineColor:s,radicalColor:o,highlightColor:n,strokeColor:a,drawingWidth:h,drawingColor:l}=t.options;this._outlineCharRenderer.render({opacity:r.opacity,strokes:r.strokes,strokeColor:s}),this._mainCharRenderer.render({opacity:e.opacity,strokes:e.strokes,strokeColor:a,radicalColor:o}),this._highlightCharRenderer.render({opacity:i.opacity,strokes:i.strokes,strokeColor:n});const c=t.userStrokes||{};for(const t in this._userStrokeRenderers){var d;if(!c[t])null===(d=this._userStrokeRenderers[t])||void 0===d||d.destroy(),delete this._userStrokeRenderers[t]}for(const t in c){const e=c[t];if(!e)continue;const r={strokeWidth:h,strokeColor:l,...e};(()=>{if(this._userStrokeRenderers[t])return this._userStrokeRenderers[t];const e=new at;return e.mount(this._positionedTarget),this._userStrokeRenderers[t]=e,e})().render(r)}}destroy(){it(this._positionedTarget.svg),this._positionedTarget.defs.innerHTML=""}},createRenderTarget:lt.init};const dt=(t,e)=>{t.beginPath();const r=e[0],i=e.slice(1);t.moveTo(r.x,r.y);for(const e of i)t.lineTo(e.x,e.y);t.stroke()};class ut extends st{constructor(t,e=!0){super(t),e&&Path2D?this._path2D=new Path2D(this.stroke.path):this._pathCmd=(t=>{const e=t.split(/(^|\s+)(?=[A-Z])/).filter(t=>" "!==t),r=[t=>t.beginPath()];for(const t of e){const[e,...i]=t.split(/\s+/),s=i.map(t=>parseFloat(t));"M"===e?r.push(t=>t.moveTo(...s)):"L"===e?r.push(t=>t.lineTo(...s)):"C"===e?r.push(t=>t.bezierCurveTo(...s)):"Q"===e&&r.push(t=>t.quadraticCurveTo(...s))}return t=>r.forEach(e=>e(t))})(this.stroke.path),this._extendedMaskPoints=x(this.stroke.points,st.STROKE_WIDTH/2)}render(t,e){if(e.opacity<.05)return;var r;(t.save(),this._path2D)?t.clip(this._path2D):(null===(r=this._pathCmd)||void 0===r||r.call(this,t),t.globalAlpha=0,t.stroke(),t.clip());const{r:i,g:s,b:o,a:n}=this._getColor(e),a=1===n?`rgb(${i},${s},${o})`:`rgb(${i},${s},${o},${n})`,h=this._getStrokeDashoffset(e.displayPortion);t.globalAlpha=e.opacity,t.strokeStyle=a,t.fillStyle=a,t.lineWidth=st.STROKE_WIDTH,t.lineCap="round",t.lineJoin="round",t.setLineDash([this._pathLength,this._pathLength],h),t.lineDashOffset=h,dt(t,this._extendedMaskPoints),t.restore()}}class _t{constructor(t){this._strokeRenderers=t.strokes.map(t=>new ut(t))}render(t,e){if(e.opacity<.05)return;const{opacity:r,strokeColor:i,radicalColor:s,strokes:o}=e;for(let e=0;e<this._strokeRenderers.length;e++)this._strokeRenderers[e].render(t,{strokeColor:i,radicalColor:s,opacity:o[e].opacity*r,displayPortion:o[e].displayPortion||0})}}function pt(t,e){if(e.opacity<.05)return;const{opacity:r,strokeWidth:i,strokeColor:s,points:o}=e,{r:n,g:a,b:h,a:l}=s;t.save(),t.globalAlpha=r,t.lineWidth=i,t.strokeStyle=`rgba(${n},${a},${h},${l})`,t.lineCap="round",t.lineJoin="round",dt(t,o),t.restore()}class gt extends ht{constructor(t){super(t)}static init(t,e="100%",r="100%"){const i="string"==typeof t?document.getElementById(t):t;if(!i)throw new Error("HanziWriter target element not found: "+t);const s=i.nodeName.toUpperCase(),o=(()=>{if("CANVAS"===s)return i;const t=document.createElement("canvas");return i.appendChild(t),t})();return o.setAttribute("width",e),o.setAttribute("height",r),new gt(o)}getContext(){return this.node.getContext("2d")}}var kt={HanziWriterRenderer:class{constructor(t,e){this.destroy=k,this._character=t,this._positioner=e,this._mainCharRenderer=new _t(t),this._outlineCharRenderer=new _t(t),this._highlightCharRenderer=new _t(t)}mount(t){this._target=t}_animationFrame(t){const{width:e,height:r,scale:i,xOffset:s,yOffset:o}=this._positioner,n=this._target.getContext();n.clearRect(0,0,e,r),n.save(),n.translate(s,r-o),n.transform(1,0,0,-1,0,0),n.scale(i,i),t(n),n.restore(),n.draw&&n.draw()}render(t){const{outline:e,main:r,highlight:i}=t.character,{outlineColor:s,strokeColor:o,radicalColor:n,highlightColor:a,drawingColor:h,drawingWidth:l}=t.options;this._animationFrame(c=>{this._outlineCharRenderer.render(c,{opacity:e.opacity,strokes:e.strokes,strokeColor:s}),this._mainCharRenderer.render(c,{opacity:r.opacity,strokes:r.strokes,strokeColor:o,radicalColor:n}),this._highlightCharRenderer.render(c,{opacity:i.opacity,strokes:i.strokes,strokeColor:a});const d=t.userStrokes||{};for(const t in d){const e=d[t];if(e){pt(c,{strokeWidth:l,strokeColor:h,...e})}}})}},createRenderTarget:gt.init};const mt={charDataLoader:(t,e,r)=>{const i=new XMLHttpRequest;i.overrideMimeType&&i.overrideMimeType("application/json"),i.open("GET",(t=>`https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/${t}.json`)(t),!0),i.onerror=t=>{r(i,t)},i.onreadystatechange=()=>{4===i.readyState&&(200===i.status?e(JSON.parse(i.responseText)):0!==i.status&&r&&r(i))},i.send(null)},onLoadCharDataError:null,onLoadCharDataSuccess:null,showOutline:!0,showCharacter:!0,renderer:"svg",width:0,height:0,padding:20,strokeAnimationSpeed:1,strokeFadeDuration:400,strokeHighlightDuration:200,strokeHighlightSpeed:2,delayBetweenStrokes:1e3,delayBetweenLoops:2e3,strokeColor:"#555",radicalColor:null,highlightColor:"#AAF",outlineColor:"#DDD",drawingColor:"#333",leniency:1,showHintAfterMisses:3,highlightOnComplete:!0,highlightCompleteColor:null,markStrokeCorrectAfterMisses:!1,acceptBackwardsStrokes:!1,quizStartStrokeNum:0,drawingFadeDuration:300,drawingWidth:4,strokeWidth:2,outlineWidth:2,rendererOverride:{}};class ft{constructor(t){this._loadCounter=0,this._isLoading=!1,this.loadingFailed=!1,this._options=t}_debouncedLoad(t,e){const r=t=>{var r;e===this._loadCounter&&(null===(r=this._resolve)||void 0===r||r.call(this,t))},i=t=>{var r;e===this._loadCounter&&(null===(r=this._reject)||void 0===r||r.call(this,t))},s=this._options.charDataLoader(t,r,i);s&&("then"in s?s.then(r).catch(i):r(s))}_setupLoadingPromise(){return new Promise((t,e)=>{this._resolve=t,this._reject=e}).then(t=>{var e,r;return this._isLoading=!1,null===(e=(r=this._options).onLoadCharDataSuccess)||void 0===e||e.call(r,t),t}).catch(t=>{if(this._isLoading=!1,this.loadingFailed=!0,this._options.onLoadCharDataError)return void this._options.onLoadCharDataError(t);if(t instanceof Error)throw t;const e=new Error("Failed to load char data for "+this._loadingChar);throw e.reason=t,e})}loadCharData(t){this._loadingChar=t;const e=this._setupLoadingPromise();return this.loadingFailed=!1,this._isLoading=!0,this._loadCounter++,this._debouncedLoad(t,this._loadCounter),e}}class vt{constructor(t,e={}){const{HanziWriterRenderer:r,createRenderTarget:i}="canvas"===e.renderer?kt:ct,s=e.rendererOverride||{};this._renderer={HanziWriterRenderer:s.HanziWriterRenderer||r,createRenderTarget:s.createRenderTarget||i},this.target=this._renderer.createRenderTarget(t,e.width,e.height),this._options=this._assignOptions(e),this._loadingManager=new ft(this._options),this._setupListeners()}static create(t,e,r){const i=new vt(t,r);return i.setCharacter(e),i}static loadCharacterData(t,e={}){const r=(()=>{const{_loadingManager:r,_loadingOptions:i}=vt;return(null==r?void 0:r._loadingChar)===t&&i===e?r:new ft({...mt,...e})})();return vt._loadingManager=r,vt._loadingOptions=e,r.loadCharData(t)}static getScalingTransform(t,e,r=0){const i=new L({width:t,height:e,padding:r});return{x:i.xOffset,y:i.yOffset,scale:i.scale,transform:(s=`\n        translate(${i.xOffset}, ${i.height-i.yOffset})\n        scale(${i.scale}, ${-1*i.scale})\n      `,s.replace(/^\s+/,"").replace(/\s+$/,"")).replace(/\s+/g," ")};var s}showCharacter(t={}){return this._options.showCharacter=!0,this._withData(()=>{var e;return null===(e=this._renderState)||void 0===e?void 0:e.run(V("main",this._character,"number"==typeof t.duration?t.duration:this._options.strokeFadeDuration)).then(e=>{var r;return null===(r=t.onComplete)||void 0===r||r.call(t,e),e})})}hideCharacter(t={}){return this._options.showCharacter=!1,this._withData(()=>{var e;return null===(e=this._renderState)||void 0===e?void 0:e.run(Q("main",this._character,"number"==typeof t.duration?t.duration:this._options.strokeFadeDuration)).then(e=>{var r;return null===(r=t.onComplete)||void 0===r||r.call(t,e),e})})}animateCharacter(t={}){return this.cancelQuiz(),this._withData(()=>{var e;return null===(e=this._renderState)||void 0===e?void 0:e.run(Y("main",this._character,this._options.strokeFadeDuration,this._options.strokeAnimationSpeed,this._options.delayBetweenStrokes)).then(e=>{var r;return null===(r=t.onComplete)||void 0===r||r.call(t,e),e})})}animateStroke(t,e={}){return this.cancelQuiz(),this._withData(()=>{var r;return null===(r=this._renderState)||void 0===r?void 0:r.run(((t,e,r,i)=>{const s=e.strokes[r];return[new B("character."+t,r=>{const i=r.character[t],s={opacity:1,strokes:{}};for(let t=0;t<e.strokes.length;t++)s.strokes[t]={opacity:i.opacity*i.strokes[t].opacity};return s}),...K(t,s,i)]})("main",this._character,n(t,this._character.strokes.length),this._options.strokeAnimationSpeed)).then(t=>{var r;return null===(r=e.onComplete)||void 0===r||r.call(e,t),t})})}highlightStroke(t,e={}){return this._withData(()=>{var r,i;if(this._character&&this._renderState)return this._renderState.run(X((r=this._character.strokes,i=t,r[n(i,r.length)]),d(this._options.highlightColor),this._options.strokeHighlightSpeed)).then(t=>{var r;return null===(r=e.onComplete)||void 0===r||r.call(e,t),t})})}async loopCharacterAnimation(){return this.cancelQuiz(),this._withData(()=>this._renderState.run(((t,e,r,i,s,o)=>{const n=Y(t,e,r,i,s);return n.push(new B.Delay(o)),n})("main",this._character,this._options.strokeFadeDuration,this._options.strokeAnimationSpeed,this._options.delayBetweenStrokes,this._options.delayBetweenLoops),{loop:!0}))}pauseAnimation(){return this._withData(()=>{var t;return null===(t=this._renderState)||void 0===t?void 0:t.pauseAll()})}resumeAnimation(){return this._withData(()=>{var t;return null===(t=this._renderState)||void 0===t?void 0:t.resumeAll()})}showOutline(t={}){return this._options.showOutline=!0,this._withData(()=>{var e;return null===(e=this._renderState)||void 0===e?void 0:e.run(V("outline",this._character,"number"==typeof t.duration?t.duration:this._options.strokeFadeDuration)).then(e=>{var r;return null===(r=t.onComplete)||void 0===r||r.call(t,e),e})})}hideOutline(t={}){return this._options.showOutline=!1,this._withData(()=>{var e;return null===(e=this._renderState)||void 0===e?void 0:e.run(Q("outline",this._character,"number"==typeof t.duration?t.duration:this._options.strokeFadeDuration)).then(e=>{var r;return null===(r=t.onComplete)||void 0===r||r.call(t,e),e})})}updateDimensions({width:t,height:e,padding:r}){if(void 0!==t&&(this._options.width=t),void 0!==e&&(this._options.height=e),void 0!==r&&(this._options.padding=r),this.target.updateDimensions(this._options.width,this._options.height),this._character&&this._renderState&&this._hanziWriterRenderer&&this._positioner){this._hanziWriterRenderer.destroy();const t=this._initAndMountHanziWriterRenderer(this._character);this._renderState.overwriteOnStateChange(e=>t.render(e)),t.render(this._renderState.state),this._quiz&&this._quiz.setPositioner(this._positioner)}}updateColor(t,e,r={}){var i;let s=[];const o=d((()=>"radicalColor"!==t||e?e:this._options.strokeColor)());this._options[t]=e;const n=null!==(i=r.duration)&&void 0!==i?i:this._options.strokeFadeDuration;return s=s.concat(G(t,o,n)),"radicalColor"!==t||e||(s=s.concat(G(t,null,0))),this._withData(()=>{var t;return null===(t=this._renderState)||void 0===t?void 0:t.run(s).then(t=>{var e;return null===(e=r.onComplete)||void 0===e||e.call(r,t),t})})}quiz(t={}){return this._withData(async()=>{this._character&&this._renderState&&this._positioner&&(this.cancelQuiz(),this._quiz=new Z(this._character,this._renderState,this._positioner),this._options={...this._options,...t},this._quiz.startQuiz(this._options))})}cancelQuiz(){this._quiz&&(this._quiz.cancel(),this._quiz=void 0)}setCharacter(t){return this.cancelQuiz(),this._char=t,this._hanziWriterRenderer&&this._hanziWriterRenderer.destroy(),this._renderState&&this._renderState.cancelAll(),this._hanziWriterRenderer=null,this._withDataPromise=this._loadingManager.loadCharData(t).then(e=>{if(!e||this._loadingManager.loadingFailed)return;this._character=function(t,e){const r=T(e);return new R(t,r)}(t,e),this._renderState=new m(this._character,this._options,t=>r.render(t));const r=this._initAndMountHanziWriterRenderer(this._character);r.render(this._renderState.state)}),this._withDataPromise}_initAndMountHanziWriterRenderer(t){const{width:e,height:r,padding:i}=this._options;this._positioner=new L({width:e,height:r,padding:i});const s=new this._renderer.HanziWriterRenderer(t,this._positioner);return s.mount(this.target),this._hanziWriterRenderer=s,s}async getCharacterData(){if(!this._char)throw new Error("setCharacter() must be called before calling getCharacterData()");return await this._withData(()=>this._character)}_assignOptions(t){const e={...mt,...t};return t.strokeAnimationDuration&&!t.strokeAnimationSpeed&&(e.strokeAnimationSpeed=500/t.strokeAnimationDuration),t.strokeHighlightDuration&&!t.strokeHighlightSpeed&&(e.strokeHighlightSpeed=500/e.strokeHighlightDuration),t.highlightCompleteColor||(e.highlightCompleteColor=e.highlightColor),this._fillWidthAndHeight(e)}_fillWidthAndHeight(t){const e={...t};if(e.width&&!e.height)e.height=e.width;else if(e.height&&!e.width)e.width=e.height;else if(!e.width&&!e.height){const{width:t,height:r}=this.target.getBoundingClientRect(),i=Math.min(t,r);e.width=i,e.height=i}return e}_withData(t){if(this._loadingManager.loadingFailed)throw Error("Failed to load character data. Call setCharacter and try again.");return this._withDataPromise?this._withDataPromise.then(()=>{if(!this._loadingManager.loadingFailed)return t()}):Promise.resolve().then(t)}_setupListeners(){this.target.addPointerStartListener(t=>{this._quiz&&(t.preventDefault(),this._quiz.startUserStroke(t.getPoint()))}),this.target.addPointerMoveListener(t=>{this._quiz&&(t.preventDefault(),this._quiz.continueUserStroke(t.getPoint()))}),this.target.addPointerEndListener(()=>{var t;null===(t=this._quiz)||void 0===t||t.endUserStroke()})}}return vt._loadingManager=null,vt._loadingOptions=null,vt}();
+//# sourceMappingURL=hanzi-writer.min.js.map
+
+</script>
+<script>
 (function(){
   'use strict';
 
@@ -1660,7 +1745,7 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
   }
 
   /* ---------------- 路由 ---------------- */
-  var VIEWS = ['home','roster','dict','pick','group','seats','attend','pinyin','sheet','timer','score','vote','wheel','board','sound','think','games'];
+  var VIEWS = ['home','roster','dict','pick','group','seats','attend','pinyin','sheet','stroke','timer','score','vote','wheel','board','sound','think','games'];
   function go(id){
     if(VIEWS.indexOf(id) < 0) id = 'home';
     $$('.panel').forEach(function(p){ p.classList.toggle('active', p.id === 'p-' + id); });
@@ -1678,6 +1763,7 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
     if(id === 'seats') renderSeats();
     if(id === 'attend') renderAttend();
     if(id === 'sheet') sheetRender();
+    if(id === 'stroke') strokeEnter();
     if(id === 'sound') sndPaint();
     window.scrollTo(0, 0);
   }
@@ -4010,15 +4096,22 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
   /* ================================================================
      生字簿／字卡
      ================================================================ */
+
   var sheet = {
     mode: store.get('sheet.mode', 'tian'),
     per: store.get('sheet.per', 3),
     cols: store.get('sheet.cols', 9),
     trace: store.get('sheet.trace', true),
     py: store.get('sheet.py', false),
+    ans: store.get('sheet.ans', true),
+    blankN: store.get('sheet.blankN', 4),
     title: store.get('sheet.title', ''),
     text: store.get('sheet.text', '')
   };
+  var sheetBlanks = [];
+  var matchOrder = [], matchSig = '';
+  try{ sheetBlanks = (store.get('sheet.blanks', '') || '').split(',').filter(Boolean).map(Number); }catch(e){ sheetBlanks = []; }
+
   function sheetPinyin(w){
     try{
       var simp = fixZhe(Array.from(String(w)).map(toSimp).join(''));
@@ -4038,40 +4131,130 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
   function sheetLines(text){
     return String(text || '').split(/\r?\n/).map(function(x){ return x.trim(); }).filter(Boolean);
   }
+  function sheetSaveBlanks(){
+    store.set('sheet.blanks', sheetBlanks.join(','));
+  }
+  function sheetPairs(text){
+    var out = [];
+    sheetLines(text).forEach(function(line){
+      var t = line.trim();
+      if(!t) return;
+      var i = t.indexOf('=');
+      if(i > 0){ var a = t.slice(0, i).trim(), b = t.slice(i + 1).trim(); if(a && b) out.push([a, b]); }
+      else out.push([t, sheetPinyin(t)]);
+    });
+    return out;
+  }
   function sheetRender(){
     var box = $('#sheet-preview');
     if(!box) return;
     var modeEl = $('#sheet-mode'), perEl = $('#sheet-per'), colEl = $('#sheet-cols'),
-        trEl = $('#sheet-trace'), pyEl = $('#sheet-py'), tEl = $('#sheet-title'), inEl = $('#sheet-input');
+        trEl = $('#sheet-trace'), pyEl = $('#sheet-py'), ansEl = $('#sheet-ans'),
+        tEl = $('#sheet-title'), inEl = $('#sheet-input');
     if(modeEl) modeEl.value = sheet.mode;
     if(perEl) perEl.value = sheet.per;
     if(colEl) colEl.value = sheet.cols;
     if(trEl) trEl.checked = !!sheet.trace;
     if(pyEl) pyEl.checked = !!sheet.py;
+    if(ansEl) ansEl.checked = !!sheet.ans;
     if(tEl && document.activeElement !== tEl) tEl.value = sheet.title;
     if(inEl && document.activeElement !== inEl && inEl.value !== sheet.text) inEl.value = sheet.text;
 
-    var titleHtml = '<p class="sheet-title-out">' + esc(sheet.title || '') + '</p>';
-    var isCard = sheet.mode === 'card';
-    var items = isCard ? sheetLines(sheet.text) : sheetChars(sheet.text);
-    var html = '';
-    if(!items.length){
-      box.innerHTML = '<p class="section-note" style="margin:0">貼上生字或詞語，這裡就會出現格紙。</p>';
-      return;
+    var m = sheet.mode;
+    var gridMode = (m === 'tian' || m === 'mi' || m === 'fang');
+    var gOpts = $('#sheet-grid-opts'), bOpts = $('#sheet-blank-opts'), aLab = $('#sheet-ans-label');
+    if(gOpts) gOpts.style.display = gridMode ? 'inline-flex' : 'none';
+    if(bOpts) bOpts.style.display = m === 'cloze' ? 'inline-flex' : 'none';
+    if(aLab) aLab.style.display = (m === 'match' || m === 'cloze' || m === 'pydict') ? 'inline-flex' : 'none';
+    var trLab = $('#sheet-trace-label');
+    if(trLab) trLab.textContent = (m === 'cloze') ? '答案裡標出挖空的字' : (m === 'pydict' ? '首字淡字提示' : '首格淡字描紅');
+    var inLab = $('#sheet-input-label');
+    if(inLab){
+      inLab.textContent = m === 'match' ? '連線題內容（一行一對，用「甲=乙」自己配；只寫詞語就自動配拼音）'
+        : m === 'pydict' ? '詞語（一行一個，會自動標拼音）'
+        : m === 'cloze' ? '課文（貼整段；在下面的預覽裡點字就能挖空）'
+        : '生字／詞語（一行一個；貼一整段也行）';
     }
-    if(isCard){
-      html += titleHtml + '<div class="card-grid">';
-      items.forEach(function(w){
-        html += '<div class="word-card">'
-          + (sheet.py ? '<div class="wc-py">' + esc(sheetPinyin(w)) + '</div>' : '<div class="wc-py"></div>')
-          + '<div class="wc-ch">' + esc(w) + '</div></div>';
+
+    var titleHtml = sheet.title ? '<p class="sheet-title-out">' + esc(sheet.title) + '</p>' : '';
+    var items = [];
+    var html = '';
+    if(m === 'card') items = sheetLines(sheet.text);
+    else if(m === 'pydict') items = sheetLines(sheet.text);
+    else if(gridMode) items = sheetChars(sheet.text);
+
+    if(m === 'match'){
+      var pairs = sheetPairs(sheet.text);
+      if(!pairs.length){
+        box.innerHTML = '<p class="section-note" style="margin:0">先在上方寫上內容（一行一對，或一行一個詞語自動配拼音）。</p>';
+        return;
+      }
+      var sig = pairs.map(function(p){ return p[0] + '=' + p[1]; }).join('|');
+      if(matchSig !== sig){ matchSig = sig; matchOrder = shuffleArr(pairs.map(function(_, i){ return i; })); }
+      var letters = 'ABCDEFGHIJKLMN';
+      var leftHtml = '', rightHtml = '', ansParts = [];
+      pairs.forEach(function(p, i){
+        leftHtml += '<div class="match-item"><b>' + (i + 1) + '.</b> ' + esc(p[0]) + '</div>';
+        ansParts.push((i + 1) + '-(' + letters[matchOrder.indexOf(i)] + ')');
       });
-      html += '</div>';
+      matchOrder.forEach(function(j, k){
+        rightHtml += '<div class="match-item"><b>' + letters[k] + '.</b> ' + esc(pairs[j][1]) + '</div>';
+      });
+      html += titleHtml + '<div class="match-cols"><div class="match-col">' + leftHtml + '</div><div class="match-col">' + rightHtml + '</div></div>';
+      if(sheet.ans) html += '<div class="ans-line">答案：' + ansParts.join('　') + '</div>';
+    } else if(m === 'cloze'){
+      var chars = Array.from(sheet.text || '');
+      if(!chars.length){
+        box.innerHTML = '<p class="section-note" style="margin:0">貼上課文，然後在這裡直接點字挖空。</p>';
+        return;
+      }
+      var body = '', line = '', idx = 0;
+      chars.forEach(function(ch){
+        if(ch === '\n'){
+          body += '<div class="cloze-line">' + line + '</div>';
+          line = ''; idx++; return;
+        }
+        var blanked = sheetBlanks.indexOf(idx) >= 0;
+        if(blanked) line += '<span class="blank-box" data-i="' + idx + '" title="' + esc(ch) + '"></span>';
+        else line += '<span class="ch-x" data-i="' + idx + '">' + esc(ch) + '</span>';
+        idx++;
+      });
+      body += '<div class="cloze-line">' + line + '</div>';
+      html += titleHtml + '<div class="cloze-text">' + body + '</div>';
+      if(sheet.ans && sheetBlanks.length){
+        var ansChars = chars.map(function(ch, i){
+          if(sheetBlanks.indexOf(i) >= 0) return '<span style="color:#A33A2A;font-weight:700">' + esc(ch) + '</span>';
+          return esc(ch);
+        });
+        html += '<div class="ans-line">答案：' + ansChars.join('') + '</div>';
+      }
+    } else if(m === 'pydict'){
+      if(!items.length){
+        box.innerHTML = '<p class="section-note" style="margin:0">先在上方寫上詞語（一行一個）。</p>';
+        return;
+      }
+      var rows = '';
+      items.forEach(function(w){
+        var wc = Array.from(w).filter(function(c){ return /[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/.test(c); });
+        if(!wc.length) return;
+        var boxes = '';
+        wc.forEach(function(c, k){
+          var inner = (sheet.trace && k === 0) ? '<span class="ch trace">' + esc(c) + '</span>' : '';
+          boxes += '<div class="tz fang" style="--cw:14mm">' + inner + '</div>';
+        });
+        rows += '<div class="pydict-row"><div class="pydict-py">' + esc(sheetPinyin(w)) + '</div><div class="pydict-boxes">' + boxes + '</div></div>';
+      });
+      html += titleHtml + rows;
+      if(!html.replace(titleHtml, '').trim()) html = '<p class="section-note" style="margin:0">詞語裡沒有中文字。</p>';
     } else {
+      if(!items.length){
+        box.innerHTML = '<p class="section-note" style="margin:0">貼上生字或詞語，這裡就會出現格紙。</p>';
+        return;
+      }
       var cols = Math.max(4, Math.min(12, sheet.cols));
       var per = Math.max(1, Math.min(8, sheet.per));
       var cw = (178 / cols).toFixed(2);
-      var cls = sheet.mode === 'mi' ? 'tz mi' : (sheet.mode === 'fang' ? 'tz fang' : 'tz');
+      var cls = m === 'mi' ? 'tz mi' : (m === 'fang' ? 'tz fang' : 'tz');
       /* 每行放幾個字：一個字的幾格要黏在一起，不能被換行切開 */
       var perRow = Math.max(1, Math.floor(cols / per));
       var rowsHtml = '';
@@ -4098,19 +4281,24 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
   }
   (function bindSheet(){
     if(!$('#sheet-print')) return;
-    var map = { 'sheet-mode':'mode', 'sheet-per':'per', 'sheet-cols':'cols', 'sheet-title':'title' };
+    var map = { 'sheet-per':'per', 'sheet-cols':'cols', 'sheet-title':'title', 'sheet-blank-n':'blankN' };
     Object.keys(map).forEach(function(id){
       var el = $('#' + id);
       if(!el) return;
       el.addEventListener('change', function(){
         var k = map[id];
-        sheet[k] = (k === 'per' || k === 'cols') ? Math.max(1, parseInt(this.value, 10) || 1) : this.value;
+        sheet[k] = (k === 'per' || k === 'cols' || k === 'blankN') ? Math.max(1, parseInt(this.value, 10) || 1) : this.value;
         store.set('sheet.' + k, sheet[k]);
         sheetRender();
       });
       if(map[id] === 'title'){
         el.addEventListener('input', function(){ sheet.title = this.value; store.set('sheet.title', sheet.title); sheetRender(); });
       }
+    });
+    $('#sheet-mode').addEventListener('change', function(){
+      sheet.mode = this.value;
+      store.set('sheet.mode', sheet.mode);
+      sheetRender();
     });
     $('#sheet-input').addEventListener('input', function(){
       sheet.text = this.value;
@@ -4123,16 +4311,193 @@ window.__PY_T2S__ = "㑯㑔㑳㑇㑶㐹㓨刾㗲𠵾㘚㘎㜄㚯㜏㛣㜢𡞱㠏
     $('#sheet-py').addEventListener('change', function(){
       sheet.py = this.checked; store.set('sheet.py', sheet.py); sheetRender();
     });
+    $('#sheet-ans').addEventListener('change', function(){
+      sheet.ans = this.checked; store.set('sheet.ans', sheet.ans); sheetRender();
+    });
+    $('#sheet-blank-auto').addEventListener('click', function(){
+      var chars = Array.from(sheet.text || '');
+      sheetBlanks = [];
+      var n = Math.max(2, Math.min(10, sheet.blankN));
+      var cnt = 0;
+      chars.forEach(function(ch, i){
+        if(ch === '\n') return;
+        cnt++;
+        if(cnt % n === 0 && /[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/.test(ch)) sheetBlanks.push(i);
+      });
+      sheetSaveBlanks();
+      sheetRender();
+      toast('挖了 ' + sheetBlanks.length + ' 個空，預覽裡還可以點字再改');
+    });
+    $('#sheet-blank-none').addEventListener('click', function(){
+      sheetBlanks = [];
+      sheetSaveBlanks();
+      sheetRender();
+    });
+    /* 填空模式：點字挖空 */
+    $('#sheet-preview').addEventListener('click', function(e){
+      var t = e.target.closest('[data-i]');
+      if(!t || sheet.mode !== 'cloze') return;
+      var i = parseInt(t.dataset.i, 10);
+      var at = sheetBlanks.indexOf(i);
+      if(at >= 0) sheetBlanks.splice(at, 1); else sheetBlanks.push(i);
+      sheetBlanks.sort(function(a, b){ return a - b; });
+      sheetSaveBlanks();
+      sheetRender();
+    });
     $('#sheet-sample').addEventListener('click', function(){
-      $('#sheet-input').value = '春天\n花園\n蝴蝶\n我們一起去公園看花';
+      var sample = {
+        match: '春天=chūn tiān\n花園=huā yuán\n蝴蝶=hú dié\n蜜蜂=mì fēng',
+        cloze: '春天來了，花園裡開滿了花。蝴蝶在花間飛來飛去，蜜蜂也忙著採蜜。我們一起去看花吧！',
+        pydict: '春天\n花園\n蝴蝶\n蜜蜂',
+        card: '春天\n花園\n蝴蝶\n蜜蜂'
+      };
+      $('#sheet-input').value = sample[sheet.mode] || '春天\n花園\n蝴蝶\n蜜蜂';
       sheet.text = $('#sheet-input').value;
       store.set('sheet.text', sheet.text);
       sheetRender();
     });
     $('#sheet-print').addEventListener('click', function(){
       var box = $('#sheet-preview');
-      if(!box || !box.querySelector('.tz, .word-card')){ toast('先貼上生字'); return; }
+      if(!box || !box.querySelector('.tz, .word-card, .match-item, .cloze-text, .pydict-row')){ toast('先貼上內容'); return; }
       doPrint(box.innerHTML);
+    });
+  })();
+
+  /* ================================================================
+     筆順（hanzi-writer 內嵌；筆畫資料第一次連網取，之後存起來離線用）
+     ================================================================ */
+  var HW = window.HanziWriter || null;
+  var stroke = { list: [], idx: 0, writer: null, slow: store.get('stroke.slow', false), cur: '' };
+  try{ stroke.list = store.get('stroke.list', []) || []; }catch(e){ stroke.list = []; }
+  var strokeCache = {};
+  function strokeChips(){
+    var box = $('#stroke-chips');
+    if(!box) return;
+    box.innerHTML = '';
+    stroke.list.forEach(function(ch, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = ch;
+      if(i === stroke.idx) b.style.cssText = 'background:var(--accent);color:#fff;border-color:var(--accent)';
+      b.addEventListener('click', function(){ stroke.idx = i; strokeShow(); });
+      box.appendChild(b);
+    });
+  }
+  function strokeGetData(simp){
+    if(strokeCache[simp]) return Promise.resolve(strokeCache[simp]);
+    var cached = store.get('stroke.d.' + simp, null);
+    if(cached && cached.strokes){
+      strokeCache[simp] = cached;
+      return Promise.resolve(cached);
+    }
+    if(!window.fetch){
+      $('#stroke-hint').textContent = '這個瀏覽器太舊，取不到「' + simp + '」的筆畫資料。';
+      return Promise.reject(new Error('no fetch'));
+    }
+    $('#stroke-hint').textContent = '第一次看「' + simp + '」，正在取筆畫資料……（要連網）';
+    return fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/' + encodeURIComponent(simp) + '.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(j){
+        strokeCache[simp] = j;
+        try{ store.set('stroke.d.' + simp, j); }catch(e){}
+        $('#stroke-hint').textContent = '已記住「' + simp + '」，下次離線也能放。';
+        return j;
+      })
+      .catch(function(){
+        $('#stroke-hint').textContent = '取不到「' + simp + '」的筆畫資料（要連網，或這個字沒有資料）。';
+        return null;
+      });
+  }
+  function strokeShow(){
+    if(!HW){ toast('筆順引擎沒載入'); return; }
+    if(!stroke.list.length){ $('#stroke-holder').innerHTML = ''; $('#stroke-word').textContent = ''; return; }
+    if(stroke.idx >= stroke.list.length) stroke.idx = stroke.list.length - 1;
+    if(stroke.idx < 0) stroke.idx = 0;
+    var ch = stroke.list[stroke.idx];
+    var simp = toSimp(ch);
+    stroke.cur = ch;
+    $('#stroke-word').textContent = ch + (ch !== simp ? '（簡：' + simp + '）' : '');
+    strokeChips();
+    var holder = $('#stroke-holder');
+    holder.innerHTML = '';
+    if(stroke.writer){ try{ stroke.writer.hideCharacter(); }catch(e){} stroke.writer = null; }
+    strokeGetData(simp).then(function(data){
+      if(!data || !data.strokes){ holder.innerHTML = '<p class="section-note" style="margin:0">沒有筆畫資料</p>'; return; }
+      if(stroke.cur !== ch) return;
+      stroke.writer = HanziWriter.create(holder, simp, {
+        width: holder.clientWidth - 8 || 280,
+        height: holder.clientWidth - 8 || 280,
+        padding: 10,
+        strokeColor: '#232019',
+        radicalColor: '#A33A2A',
+        showOutline: true,
+        strokeAnimationSpeed: stroke.slow ? 0.45 : 1,
+        delayBetweenStrokes: stroke.slow ? 1400 : 420,
+        charDataLoader: function(c){ return strokeGetData(c); }
+      });
+    });
+  }
+  function strokeEnter(){ strokeRender(); if(stroke.list.length) strokeShow(); }
+  function strokeRender(){
+    var inEl = $('#stroke-input');
+    if(inEl && document.activeElement !== inEl && stroke.list.length) inEl.value = stroke.list.join('\n');
+    var slow = $('#stroke-slow');
+    if(slow) slow.textContent = stroke.slow ? '🐢 慢速（開）' : '🐢 慢速';
+    strokeChips();
+    if(!stroke.list.length){
+      var h = $('#stroke-holder');
+      if(h) h.innerHTML = '<p class="section-note" style="margin:0">先在下面貼上要練的字</p>';
+      var w = $('#stroke-word');
+      if(w) w.textContent = '';
+    }
+  }
+  (function bindStroke(){
+    if(!$('#stroke-load')) return;
+    $('#stroke-load').addEventListener('click', function(){
+      var chars = sheetChars($('#stroke-input').value);
+      if(!chars.length){ toast('先寫上要練的字'); return; }
+      stroke.list = chars;
+      stroke.idx = 0;
+      store.set('stroke.list', stroke.list);
+      strokeShow();
+      toast('已備好 ' + chars.length + ' 個字');
+    });
+    $('#stroke-sample').addEventListener('click', function(){
+      $('#stroke-input').value = '春風花園蝴蝶';
+      $('#stroke-load').click();
+    });
+    $('#stroke-play').addEventListener('click', function(){
+      if(!stroke.writer){ toast('等字載入好再按'); return; }
+      try{ stroke.writer.animateCharacter(); }catch(e){}
+    });
+    $('#stroke-quiz').addEventListener('click', function(){
+      if(!stroke.writer){ toast('等字載入好再按'); return; }
+      try{
+        stroke.writer.quiz({
+          onMistake: function(){ toast('筆順不對，再試'); },
+          onComplete: function(){ toast('寫對了！'); toast; }
+        });
+      }catch(e){}
+    });
+    $('#stroke-slow').addEventListener('click', function(){
+      stroke.slow = !stroke.slow;
+      store.set('stroke.slow', stroke.slow);
+      $('#stroke-slow').textContent = stroke.slow ? '🐢 慢速（開）' : '🐢 慢速';
+      if(stroke.list.length) strokeShow();
+    });
+    $('#stroke-prev').addEventListener('click', function(){
+      if(!stroke.list.length) return;
+      stroke.idx = Math.max(0, stroke.idx - 1);
+      strokeShow();
+    });
+    $('#stroke-next').addEventListener('click', function(){
+      if(!stroke.list.length) return;
+      stroke.idx = Math.min(stroke.list.length - 1, stroke.idx + 1);
+      strokeShow();
+    });
+    window.addEventListener('resize', function(){
+      if(document.body.dataset.view === 'stroke' && stroke.list.length && !stroke.writer) return;
     });
   })();
 
