@@ -38,7 +38,7 @@ body{
 }
 .slide{
   position:absolute; inset:0; display:none; flex-direction:column;
-  padding:clamp(24px,4.4vmin,62px) clamp(28px,5vw,96px) clamp(30px,5vh,60px);
+  padding:clamp(14px,2.6vmin,36px) clamp(16px,3vw,52px) clamp(14px,2.8vmin,34px);
   overflow:hidden;
 }
 .slide.active{display:flex}
@@ -51,73 +51,73 @@ body{
 h1,h2,h3{font-family:var(--serif); font-weight:600; margin:0; letter-spacing:.015em; line-height:1.16}
 p{margin:0}
 .kicker{
-  font-size:clamp(20px,2.1vmin,30px); letter-spacing:.22em; color:var(--acc);
+  font-size:clamp(24px,3vmin,44px); letter-spacing:.22em; color:var(--acc);
   text-transform:none; font-weight:600;
 }
-.lead{font-size:clamp(20px,2.2vmin,34px); color:var(--cream-dim)}
+.lead{font-size:clamp(26px,3.2vmin,50px); color:var(--cream-dim)}
 
 /* ---------- 封面 ---------- */
 .s-cover{align-items:center; justify-content:center; text-align:center; gap:clamp(10px,2vmin,26px)}
-.s-cover h1{font-size:clamp(48px,9.2vmin,132px); line-height:1.04}
-.s-cover .sub{font-size:clamp(20px,2.6vmin,40px); color:var(--cream-dim); font-family:var(--serif)}
-.s-cover .cover-art{width:min(60vmin,620px); max-width:86vw}
-.s-cover .cover-art svg, .s-cover .cover-art img.art{display:block; width:100%; height:auto}
+.s-cover h1{font-size:min(clamp(60px,12vmin,190px),92vw); line-height:1.04}
+.s-cover .sub{font-size:clamp(26px,3.6vmin,56px); color:var(--cream-dim); font-family:var(--serif)}
+.s-cover .cover-art{width:min(80vmin,1120px); height:min(74vh,58vw); max-width:92vw}
+.s-cover .cover-art svg, .s-cover .cover-art img.art{display:block; width:100%; height:100%; object-fit:contain}
 
 /* ---------- 一句話滿版 ---------- */
 .s-big{align-items:center; justify-content:center; text-align:center; gap:clamp(14px,2.6vmin,34px)}
-.s-big .big-line{font-size:clamp(44px,8vmin,120px); line-height:1.14; max-width:22em}
-.s-big .big-art{width:min(46vmin,460px)}
-.s-big .big-art svg, .s-big .big-art img.art{display:block;width:100%;height:auto}
+.s-big .big-line{font-size:min(clamp(56px,11.5vmin,185px),92vw); line-height:1.14; max-width:24em}
+.s-big .big-art{width:min(80vmin,1160px); height:min(70vh,56vw); max-width:92vw}
+.s-big .big-art svg, .s-big .big-art img.art{display:block;width:100%;height:100%;object-fit:contain}
 
 /* ---------- 活動頁 ---------- */
 .s-activity{gap:clamp(10px,2.2vmin,30px)}
 .act-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex:none}
-.act-head h2{font-size:clamp(34px,5.4vmin,84px)}
+.act-head h2{font-size:min(clamp(46px,7.4vmin,118px),92vw)}
 .act-min{
-  font-family:var(--serif); color:var(--acc); font-size:clamp(24px,3.4vmin,52px);
+  font-family:var(--serif); color:var(--acc); font-size:clamp(30px,4.6vmin,72px);
   flex:none; border:2px solid var(--acc); border-radius:999px;
   padding:clamp(4px,1vh,10px) clamp(16px,2vw,30px);
 }
-.act-body{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr minmax(0,42%); gap:clamp(18px,3vw,54px); align-items:center}
+.act-body{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr minmax(0,46%); gap:clamp(18px,3vw,54px); align-items:center}
 .act-cmd{
-  font-family:var(--serif); font-size:clamp(34px,5.6vmin,86px); line-height:1.28; color:var(--gold);
+  font-family:var(--serif); font-size:min(clamp(46px,7.8vmin,124px),92vw); line-height:1.24; color:var(--gold);
 }
-.act-art{display:flex; align-items:center; justify-content:center; min-height:0}
-.act-art svg{display:block; width:100%; height:auto; max-height:60vh}
-.act-art svg, .act-art img.art{display:block; width:100%; height:auto; max-height:60vh; object-fit:contain}
+.act-art{display:flex; align-items:center; justify-content:center; min-height:0; height:100%; align-self:stretch}
+.act-art svg{display:block; width:100%; height:100%; object-fit:contain}
+.act-art svg, .act-art img.art{display:block; width:100%; height:100%; object-fit:contain}
 
 /* ---------- 左圖右文 ---------- */
-.split-art{display:flex; align-items:center; justify-content:center; min-height:0}
-.split-art svg{display:block; width:100%; height:auto; max-height:70vh; color:#f2ecdf}
-.split-art svg, .split-art img.art{display:block; width:100%; height:auto; max-height:70vh; color:#f2ecdf; object-fit:contain}
+.split-art{display:flex; align-items:center; justify-content:center; min-height:0; height:100%; align-self:stretch}
+.split-art svg{display:block; width:100%; height:100%; color:#f2ecdf; object-fit:contain}
+.split-art svg, .split-art img.art{display:block; width:100%; height:100%; color:#f2ecdf; object-fit:contain}
 .split-text{display:flex; flex-direction:column; gap:clamp(10px,1.7vmin,24px); min-width:0}
-.pos-name{font-size:clamp(40px,6.6vmin,102px); color:var(--cream); line-height:1}
+.pos-name{font-size:min(clamp(54px,9vmin,142px),92vw); color:var(--cream); line-height:1}
 .split-text .line{display:flex; flex-direction:column; gap:4px}
-.split-text .lbl{font-size:clamp(18px,1.8vmin,26px); letter-spacing:.16em; color:var(--acc); font-weight:600}
-.split-text .line p{font-size:clamp(20px,2.3vmin,34px); color:var(--cream); line-height:1.42}
+.split-text .lbl{font-size:clamp(22px,2.6vmin,38px); letter-spacing:.16em; color:var(--acc); font-weight:600}
+.split-text .line p{font-size:clamp(26px,3.4vmin,50px); color:var(--cream); line-height:1.38}
 .split-text .quote{
   margin-top:clamp(4px,1vmin,12px); border-left:6px solid var(--acc);
   padding:clamp(8px,1.4vh,16px) clamp(12px,1.6vw,22px); background:rgba(67,168,159,.10);
   border-radius:0 14px 14px 0;
 }
-.split-text .quote p{font-family:var(--serif); color:var(--gold); font-size:clamp(22px,2.5vmin,38px)}
+.split-text .quote p{font-family:var(--serif); color:var(--gold); font-size:clamp(28px,3.6vmin,54px)}
 
 /* ---------- 卡片格 ---------- */
 .s-cards{gap:clamp(12px,2.4vmin,30px)}
 .cards-head{flex:none; display:flex; align-items:baseline; gap:clamp(12px,2vw,28px); flex-wrap:wrap}
-.cards-head h2{font-size:clamp(34px,5vmin,80px)}
-.cards-grid{flex:1 1 auto; min-height:0; display:grid; gap:clamp(10px,1.8vmin,22px); align-content:center}
+.cards-head h2{font-size:min(clamp(44px,7vmin,112px),92vw)}
+.cards-grid{flex:1 1 auto; min-height:0; display:grid; gap:clamp(10px,1.8vmin,22px); align-content:stretch; grid-auto-rows:1fr}
 .cols-4{grid-template-columns:repeat(4,1fr)}
 .cols-3{grid-template-columns:repeat(3,1fr)}
 .card{
   background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.11); border-radius:18px;
   padding:clamp(12px,2.2vmin,26px); display:flex; flex-direction:column;
-  align-items:center; text-align:center; gap:clamp(6px,1.2vmin,14px); min-width:0;
+  align-items:center; text-align:center; gap:clamp(6px,1.2vmin,14px); min-width:0; justify-content:center;
 }
-.card svg{display:block; width:clamp(40px,6vmin,74px); height:auto; color:var(--acc)}
-.card h3{font-size:clamp(24px,2.9vmin,44px)}
-.card p{font-size:clamp(18px,1.9vmin,27px); color:var(--cream-dim); line-height:1.35}
+.card svg{display:block; width:clamp(56px,9vmin,122px); height:auto; color:var(--acc)}
+.card h3{font-size:clamp(32px,4.2vmin,62px)}
+.card p{font-size:clamp(23px,2.7vmin,40px); color:var(--cream-dim); line-height:1.32}
 
 /* 少了哪一樣：遊戲卡 */
 .game-card{
@@ -125,16 +125,16 @@ p{margin:0}
   background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.11); border-radius:18px;
   padding:clamp(12px,2.2vmin,26px); display:flex; flex-direction:column;
-  align-items:center; gap:clamp(6px,1.2vmin,14px); min-width:0;
+  align-items:center; gap:clamp(6px,1.2vmin,14px); min-width:0; justify-content:center;
   transition:border-color .2s, background .2s;
 }
 .game-card:hover{border-color:var(--acc); background:rgba(67,168,159,.10)}
-.game-card svg{display:block; width:100%; height:auto; max-height:38vh}
-  .cards-grid .card img.art{display:block; width:100%; height:auto; max-height:38vh; object-fit:contain; border-radius:10px}
-  .game-card img.art{display:block; width:100%; height:auto; max-height:38vh; object-fit:contain; border-radius:10px}
-.gc-q{font-size:clamp(22px,2.6vmin,40px); font-family:var(--serif); color:var(--gold)}
+.game-card svg{display:block; width:100%; height:auto; max-height:52vh}
+  .cards-grid .card img.art{display:block; width:100%; height:auto; max-height:52vh; object-fit:contain; border-radius:10px}
+  .game-card img.art{display:block; width:100%; height:auto; max-height:52vh; object-fit:contain; border-radius:10px}
+.gc-q{font-size:clamp(30px,3.8vmin,58px); font-family:var(--serif); color:var(--gold)}
 .gc-a{
-  font-size:clamp(26px,3.2vmin,48px); font-family:var(--serif); color:var(--acc); font-weight:600;
+  font-size:clamp(34px,4.8vmin,70px); font-family:var(--serif); color:var(--acc); font-weight:600;
   letter-spacing:.08em;
 }
 .gc-a[hidden]{display:none}
@@ -143,14 +143,14 @@ p{margin:0}
 .s-quiz{gap:clamp(10px,2vmin,26px)}
 .quiz-head{flex:none; display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2vw,30px); align-items:center}
 .quiz-head .qicon{color:var(--acc); display:flex; align-items:center}
-.quiz-head .qicon svg{display:block; width:clamp(46px,7vmin,88px); height:auto}
-.quiz-q{font-size:clamp(30px,4.4vmin,66px); line-height:1.25}
+.quiz-head .qicon svg{display:block; width:clamp(60px,10vmin,132px); height:auto}
+.quiz-q{font-size:min(clamp(44px,6.3vmin,100px),92vw); line-height:1.22}
 .quiz-bar{flex:none; height:clamp(8px,1.1vmin,13px); border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden}
 .quiz-bar i{display:block; height:100%; width:100%; background:var(--gold)}
 .quiz-opts{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:clamp(10px,1.5vmin,20px)}
 .quiz-opt{
   display:flex; align-items:center; gap:clamp(10px,1.5vmin,22px); text-align:left;
-  font-family:var(--sans); color:var(--cream); font-size:clamp(20px,2.3vmin,34px); line-height:1.3;
+  font-family:var(--sans); color:var(--cream); font-size:clamp(28px,3.7vmin,56px); line-height:1.26;
   padding:clamp(10px,1.7vmin,22px) clamp(14px,1.8vw,26px); border-radius:16px;
   border:2.5px solid var(--qc); background:rgba(255,255,255,.05); cursor:pointer;
   transition:background .18s, opacity .18s, box-shadow .18s;
@@ -158,8 +158,8 @@ p{margin:0}
 .quiz-opt:hover{background:rgba(255,255,255,.13)}
 .quiz-opt .qmark{
   flex:none; display:grid; place-items:center; color:#fff; background:var(--qc);
-  width:clamp(36px,4vmin,58px); height:clamp(36px,4vmin,58px); border-radius:13px;
-  font-size:clamp(19px,2.1vmin,32px);
+  width:clamp(46px,5.6vmin,80px); height:clamp(46px,5.6vmin,80px); border-radius:15px;
+  font-size:clamp(26px,3vmin,46px);
 }
 .k-red{--qc:var(--k-red)} .k-blue{--qc:var(--k-blue)}
 .k-yellow{--qc:var(--k-yellow)} .k-green{--qc:var(--k-green)}
@@ -168,7 +168,7 @@ p{margin:0}
 .quiz-opt.wrong{background:rgba(226,27,60,.24)}
 .quiz-opt.dim{opacity:.3}
 .quiz-fb{
-  flex:none; font-size:clamp(20px,2.3vmin,34px); color:var(--cream);
+  flex:none; font-size:clamp(26px,3.2vmin,48px); color:var(--cream);
   border-left:6px solid var(--acc); padding-left:clamp(12px,1.4vw,20px); min-height:1.4em;
 }
 .quiz-fb[hidden]{display:none}
@@ -177,10 +177,10 @@ p{margin:0}
 
 /* ---------- 收尾 ---------- */
 .s-end{align-items:center; justify-content:center; text-align:center; gap:clamp(12px,2.4vmin,30px)}
-.s-end .end-kicker{font-size:clamp(22px,2.4vmin,36px); color:var(--cream-dim); letter-spacing:.14em}
-.s-end h1{font-size:clamp(46px,8.6vmin,124px)}
-.s-end .end-art{width:min(50vmin,500px)}
-.s-end .end-art svg, .s-end .end-art img.art{display:block;width:100%;height:auto}
+.s-end .end-kicker{font-size:clamp(28px,3.4vmin,52px); color:var(--cream-dim); letter-spacing:.14em}
+.s-end h1{font-size:min(clamp(58px,11vmin,175px),92vw)}
+.s-end .end-art{width:min(96vmin,1600px); height:min(82vh,62vw); max-width:94vw}
+.s-end .end-art svg, .s-end .end-art img.art{display:block;width:100%;height:100%;object-fit:contain}
 
 /* ---------- 頁碼 / 進度條 ---------- */
 .pager{
