@@ -649,6 +649,35 @@ textarea.roster-big{min-height:180px;font-size:16px;line-height:1.9}
 }
 
 
+  /* ---- 寫作圖表 ---- */
+  .wd-groups{display:flex;flex-direction:column;gap:20px;margin-top:14px}
+  .wd-gtitle{font-weight:700;font-size:1.05rem;margin:0 0 10px;color:var(--gold-ink);display:flex;align-items:center;gap:8px}
+  .wd-gtitle .cnt{font-size:.8rem;color:var(--ink);opacity:.65;font-weight:400}
+  .wd-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+  .wd-card{background:#fff;border:1.5px solid rgba(35,32,25,.14);border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;font:inherit;transition:.15s}
+  .wd-card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 4px 14px rgba(163,58,42,.12)}
+  .wd-card b{display:block;font-size:1.02rem}
+  .wd-card span{display:block;font-size:.82rem;opacity:.7;margin-top:3px}
+  .wd-card .wg{display:inline-block;width:auto;font-size:.72rem;background:var(--paper);border:1px solid rgba(35,32,25,.18);border-radius:99px;padding:1px 8px;margin-bottom:6px;color:var(--gold-ink);opacity:1}
+  .wd-editor{margin-top:18px;background:#fff;border:1.5px solid rgba(35,32,25,.14);border-radius:14px;padding:16px}
+  .wd-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .wd-top h3{margin:0;font-size:1.15rem;flex:1;min-width:200px}
+  .wd-cols{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:16px}
+  .wd-form{display:flex;flex-direction:column;gap:10px;max-height:560px;overflow:auto;padding-right:4px}
+  .wd-form label{font-size:.82rem;font-weight:700;color:var(--gold-ink);display:block;margin-bottom:3px}
+  .wd-form input,.wd-form textarea{width:100%;box-sizing:border-box;font:inherit;padding:7px 10px;border:1.5px solid rgba(35,32,25,.2);border-radius:8px;background:var(--paper);resize:vertical}
+  .wd-stage-wrap{border:1.5px solid rgba(35,32,25,.14);border-radius:12px;background:#fff;padding:8px;display:flex;align-items:center;justify-content:center}
+  .wd-prev{width:100%}
+  .wd-prev svg{width:100%;height:auto;display:block}
+  .wd-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  @media (max-width:760px){.wd-cols{grid-template-columns:1fr}}
+  .wd-overlay{position:fixed;inset:0;background:var(--dark);z-index:120;display:none;align-items:center;justify-content:center;padding:4vh 3vw}
+  .wd-overlay.show{display:flex}
+  .wd-overlay .wd-stage{width:100%;max-width:1500px}
+  .wd-overlay svg{width:100%;height:auto;max-height:92vh;display:block}
+  .wd-ovbar{position:absolute;top:14px;right:16px;display:flex;gap:10px;z-index:2}
+  .wd-ovbar button{background:rgba(248,241,226,.12);border:1px solid rgba(248,241,226,.3);color:var(--stage-ink);border-radius:10px;padding:8px 16px;font-size:1rem;cursor:pointer}
+
 /* ===== 中文遊戲工坊 ===== */
 .zq{}
 
@@ -975,7 +1004,7 @@ body[data-view="games"] .topbar{display:none}
   <!-- ============ 首頁 ============ -->
   <section class="panel active" id="p-home">
     <div class="hero">
-      <h1>十六件工具，十五款遊戲</h1>
+      <h1>十七件工具，十五款遊戲</h1>
       <p>免登入 · 免安裝 · 關掉網路照樣上課</p>
     </div>
     <div class="tiles">
@@ -995,10 +1024,11 @@ body[data-view="games"] .topbar{display:none}
       <button class="tool-tile" data-go="board"><span class="ico">📺</span><span class="t-name">大字板</span><span class="t-sub">投屏讀句</span></button>
       <button class="tool-tile" data-go="sound"><span class="ico">🎚</span><span class="t-name">音量計</span><span class="t-sub">課堂安靜度</span></button>
       <button class="tool-tile" data-go="think"><span class="ico">💭</span><span class="t-name">思考常規</span><span class="t-sub">25 個提問框架</span></button>
+      <button class="tool-tile" data-go="write"><span class="ico">🧭</span><span class="t-name">寫作圖表</span><span class="t-sub">字詞句篇 17 張圖</span></button>
       <button class="tool-tile" data-go="games"><span class="ico">🎮</span><span class="t-name">字趣工坊</span><span class="t-sub">15 款課堂遊戲</span></button>
     </div>
 
-    <p class="home-foot">第 1.1 版 · 2026-11-12　｜　免費給中文老師使用　　離線可用：把這個 .html 檔存到桌面，雙擊就開</p>
+    <p class="home-foot">第 1.2 版 · 2026-11-15　｜　免費給中文老師使用　　離線可用：把這個 .html 檔存到桌面，雙擊就開</p>
 
     <button class="room-card" type="button" data-go="games">
       <span class="room-ico">🎮</span>
@@ -1563,6 +1593,47 @@ body[data-view="games"] .topbar{display:none}
     <div id="routine-groups"></div>
   </section>
 
+  <!-- ============ 寫作圖表 ============ -->
+  <section class="panel" id="p-write">
+    <h2 class="section-title">寫作圖表</h2>
+    <p class="section-note">從字、詞、句到篇章的圖示支架（三明治、魚骨圖、起承轉合、故事山、雙氣泡……）。選一張，填好就能投影；「列印（空白）」直接印給學生練，填了的印出來就是示範。</p>
+    <div class="seg" id="wd-mode">
+      <button class="seg-btn active" type="button" data-g="all">全部</button>
+      <button class="seg-btn" type="button" data-g="字">字</button>
+      <button class="seg-btn" type="button" data-g="詞">詞</button>
+      <button class="seg-btn" type="button" data-g="句">句</button>
+      <button class="seg-btn" type="button" data-g="篇">篇</button>
+    </div>
+    <div id="wd-cards"></div>
+    <div id="wd-editor" class="wd-editor" hidden>
+      <div class="wd-top">
+        <button class="btn ghost" type="button" id="wd-back">← 圖表列表</button>
+        <h3 id="wd-title"></h3>
+      </div>
+      <div class="wd-cols">
+        <div class="wd-form" id="wd-form"></div>
+        <div>
+          <div class="wd-stage-wrap"><div class="wd-prev" id="wd-prev"></div></div>
+          <div class="wd-actions">
+            <button class="btn" type="button" id="wd-stage-btn">🖥 投影</button>
+            <button class="btn" type="button" id="wd-print-fill">🖨 列印（已填）</button>
+            <button class="btn ghost" type="button" id="wd-print-blank">🖨 列印（空白）</button>
+            <button class="btn ghost" type="button" id="wd-copy">複製內容</button>
+            <button class="btn ghost" type="button" id="wd-clear">清空</button>
+          </div>
+          <p class="section-note" style="margin-top:10px">填寫自動保存，下次打開還在。</p>
+        </div>
+      </div>
+    </div>
+    <div class="wd-overlay" id="wd-overlay">
+      <div class="wd-ovbar">
+        <button type="button" id="wd-ov-fs">⛶ 全屏</button>
+        <button type="button" id="wd-ov-close">✕ 關閉</button>
+      </div>
+      <div class="wd-stage" id="wd-stage"></div>
+    </div>
+  </section>
+
 
   <!-- ============ 中文遊戲工坊（原字趣工坊，已併入） ============ -->
   <section class="panel" id="p-games">
@@ -1745,7 +1816,7 @@ var HanziWriter=function(){"use strict";var t;const e="undefined"==typeof window
   }
 
   /* ---------------- 路由 ---------------- */
-  var VIEWS = ['home','roster','dict','pick','group','seats','attend','pinyin','sheet','stroke','timer','score','vote','wheel','board','sound','think','games'];
+  var VIEWS = ['home','roster','dict','pick','group','seats','attend','pinyin','sheet','stroke','timer','score','vote','wheel','board','sound','think','write','games'];
   function go(id){
     if(VIEWS.indexOf(id) < 0) id = 'home';
     $$('.panel').forEach(function(p){ p.classList.toggle('active', p.id === 'p-' + id); });
@@ -4700,6 +4771,300 @@ var HanziWriter=function(){"use strict";var t;const e="undefined"==typeof window
   flowRender();
 
   renderRoutines();
+
+  /* ================================================================
+     寫作圖表（字詞句篇）
+     ================================================================ */
+  var WD_INK='#232019', WD_ACC='#A33A2A', WD_GRN='#2E6157', WD_GOLD='#7F5C17', WD_PAP='#F7F2E7';
+  var wdFontAttr = "font-family=\"'Kaiti TC','Kaiti','STKaiti','BiauKai',serif\"";
+  function wdEsc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function wdWrap(t,n){t=String(t==null?'':t).trim().replace(/\s*\n\s*/g,' ');if(!t)return [''];var out=[];for(var i=0;i<t.length;i+=n)out.push(t.slice(i,i+n));return out.slice(0,4);}
+  function wdT(x,y,txt,fs,color,anchor,weight){
+    var lines=(txt==null?'':String(txt)).split('\n'); if(!lines.length)lines=[''];
+    var s='<text x="'+x+'" y="'+y+'" text-anchor="'+(anchor||'middle')+'" font-size="'+(fs||22)+'" fill="'+(color||WD_INK)+'"'+(weight?' font-weight="'+weight+'"':'')+'>';
+    lines.forEach(function(l,i){ s+='<tspan x="'+x+'" dy="'+(i?Math.round((fs||22)*1.3):0)+'">'+wdEsc(l)+'</tspan>'; });
+    return s+'</text>';
+  }
+  function wdRect(x,y,w,h,fill,stroke,rx,sw,dash){
+    return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(rx==null?10:rx)+'" fill="'+(fill||'#fff')+'" stroke="'+(stroke||WD_INK)+'" stroke-width="'+(sw||2.5)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';
+  }
+  function wdBlankLine(x,y,w){ return '<line x1="'+x+'" y1="'+y+'" x2="'+(x+w)+'" y2="'+y+'" stroke="#B9AE9A" stroke-width="2" stroke-dasharray="7 6"/>'; }
+  function wdBox(x,y,w,h,val,label,o){
+    o=o||{}; var fs=o.fs||24;
+    var s=wdRect(x,y,w,h,o.fill||'#fff',o.stroke||WD_INK,o.rx,o.sw,o.dash);
+    if(label) s+=wdT(x+12,y+22,label,15,WD_GOLD,'start',700);
+    var lines=wdWrap(val,Math.max(3,Math.floor((w-24)/fs)));
+    var lh=fs*1.3, tot=lines.length*lh;
+    var y0=y+h/2-tot/2+fs*0.82+(label?9:0);
+    if(val&&String(val).trim()){ s+=wdT(x+w/2,y0,lines.join('\n'),fs,o.vc||WD_INK); }
+    else { s+=wdBlankLine(x+14,y+h/2+(label?9:0),w-28); }
+    return s;
+  }
+  function wdCircle(cx,cy,r,val,label,o){
+    o=o||{}; var fs=o.fs||22;
+    var s='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+(o.fill||'#fff')+'" fill-opacity="'+(o.fo==null?1:o.fo)+'" stroke="'+(o.stroke||WD_GRN)+'" stroke-width="2.5"/>';
+    if(label) s+=wdT(cx,cy-r+20,label,15,WD_GOLD);
+    var lines=wdWrap(val,Math.max(2,Math.floor((r*1.55)/fs)));
+    var lh=fs*1.3, y0=cy-lines.length*lh/2+fs*0.8+(label?6:0);
+    if(val&&String(val).trim()){ s+=wdT(cx,y0,lines.join('\n'),fs,o.vc||WD_INK); }
+    else { s+=wdBlankLine(cx-r*0.55,cy+(label?6:0),r*1.1); }
+    return s;
+  }
+  function wdArrow(x1,y1,x2,y2,color){
+    var c=color||WD_ACC, ang=Math.atan2(y2-y1,x2-x1), L=13, a1=ang+2.65, a2=ang-2.65;
+    return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="3"/>'+
+      '<polygon points="'+x2+','+y2+' '+(x2+L*Math.cos(a1)).toFixed(1)+','+(y2+L*Math.sin(a1)).toFixed(1)+' '+(x2+L*Math.cos(a2)).toFixed(1)+','+(y2+L*Math.sin(a2)).toFixed(1)+'" fill="'+c+'"/>';
+  }
+  function wdHead(t){ return wdT(22,36,t,23,WD_GOLD,'start',700); }
+  function wdLine(x1,y1,x2,y2,color,sw){ return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(color||WD_INK)+'" stroke-width="'+(sw||2.5)+'"/>'; }
+
+  var WD=[
+  {id:'zi4',grp:'字',skill:'讀·寫',name:'識字四格',desc:'音・形・義・用，一個字一張卡',
+   fields:[{k:'z',label:'生字',ph:'例：蝶'},{k:'yin',label:'讀音',ph:'例：dié（ㄉㄧㄝˊ）'},{k:'xing',label:'字形（部首、筆畫）',ph:'例：虫部，15 畫'},{k:'yi',label:'意思',ph:'例：蝴蝶的蝶'},{k:'yong',label:'例詞／例句',ph:'例：蝴蝶、蝶泳',ta:1}],
+   svg:function(v){ return wdHead('識字四格')
+     +wdBox(60,90,240,110,v.yin,'讀音',{fs:24})
+     +wdBox(600,90,240,110,v.xing,'字形（部首、筆畫）',{fs:24})
+     +wdBox(340,200,220,180,v.z,'生字',{fs:88,stroke:WD_ACC,vc:WD_ACC})
+     +wdBox(60,330,240,120,v.yi,'意思',{fs:22})
+     +wdBox(600,330,240,120,v.yong,'例詞／例句',{fs:22})
+     +wdLine(300,145,340,240,WD_GOLD,2)+wdLine(600,145,560,240,WD_GOLD,2)
+     +wdLine(300,390,340,330,WD_GOLD,2)+wdLine(600,390,560,330,WD_GOLD,2);}},
+  {id:'bubble',grp:'詞',skill:'說·寫',name:'詞語聯想氣泡圖',desc:'中心詞長出六個詞，寫作前開腦',
+   fields:[{k:'c',label:'中心詞',ph:'例：春天'},{k:'b1',label:'詞 1',ph:''},{k:'b2',label:'詞 2',ph:''},{k:'b3',label:'詞 3',ph:''},{k:'b4',label:'詞 4',ph:''},{k:'b5',label:'詞 5',ph:''},{k:'b6',label:'詞 6',ph:''}],
+   svg:function(v){ return wdHead('詞語聯想氣泡圖')
+     +wdCircle(450,300,95,v.c,'中心詞',{fill:WD_PAP,stroke:WD_ACC,fs:26,vc:WD_ACC})
+     +wdCircle(180,130,70,v.b1,'',{fs:20})+wdCircle(450,95,64,v.b2,'',{fs:20})+wdCircle(720,130,70,v.b3,'',{fs:20})
+     +wdCircle(180,480,70,v.b4,'',{fs:20})+wdCircle(450,505,64,v.b5,'',{fs:20})+wdCircle(720,480,70,v.b6,'',{fs:20})
+     +wdLine(450,205,450,159,WD_GRN,2)+wdLine(370,255,238,166,WD_GRN,2)+wdLine(530,255,662,166,WD_GRN,2)
+     +wdLine(370,345,238,446,WD_GRN,2)+wdLine(450,395,450,441,WD_GRN,2)+wdLine(530,345,662,446,WD_GRN,2);}},
+  {id:'tchart',grp:'詞',skill:'寫',name:'近義反義 T字表',desc:'一個詞，向左找近義、向右找反義',
+   fields:[{k:'w',label:'詞語',ph:'例：開心'},{k:'l1',label:'近義 1',ph:''},{k:'l2',label:'近義 2',ph:''},{k:'l3',label:'近義 3',ph:''},{k:'r1',label:'反義 1',ph:''},{k:'r2',label:'反義 2',ph:''},{k:'r3',label:'反義 3',ph:''}],
+   svg:function(v){ return wdHead('近義反義 T字表')
+     +wdBox(250,60,400,70,v.w,'詞語',{fill:WD_PAP,fs:28,vc:WD_ACC,stroke:WD_ACC})
+     +wdLine(450,130,450,530,WD_INK,3)
+     +wdT(260,170,'近義詞',22,WD_GRN,'middle',700)+wdT(640,170,'反義詞',22,WD_ACC,'middle',700)
+     +wdBox(80,190,350,100,v.l1,'',{fs:22,stroke:WD_GRN})+wdBox(80,305,350,100,v.l2,'',{fs:22,stroke:WD_GRN})+wdBox(80,420,350,100,v.l3,'',{fs:22,stroke:WD_GRN})
+     +wdBox(470,190,350,100,v.r1,'',{fs:22,stroke:WD_ACC})+wdBox(470,305,350,100,v.r2,'',{fs:22,stroke:WD_ACC})+wdBox(470,420,350,100,v.r3,'',{fs:22,stroke:WD_ACC});}},
+  {id:'who6',grp:'句',skill:'說·寫',name:'六何法',desc:'何人・何時・何地・何事・為何・如何',
+   fields:[{k:'t',label:'題目／主題',ph:'例：運動會那天'},{k:'f1',label:'何人',ph:''},{k:'f2',label:'何時',ph:''},{k:'f3',label:'何地',ph:''},{k:'f4',label:'何事',ph:''},{k:'f5',label:'為何',ph:''},{k:'f6',label:'如何',ph:''}],
+   svg:function(v){ return wdHead('六何法（5W1H）')
+     +wdBox(250,55,400,60,v.t,'題目／主題',{fill:WD_PAP,fs:24,vc:WD_ACC,stroke:WD_ACC})
+     +wdBox(30,140,270,140,v.f1,'何人',{fs:22})+wdBox(315,140,270,140,v.f2,'何時',{fs:22})+wdBox(600,140,270,140,v.f3,'何地',{fs:22})
+     +wdBox(30,320,270,140,v.f4,'何事',{fs:22})+wdBox(315,320,270,140,v.f5,'為何',{fs:22})+wdBox(600,320,270,140,v.f6,'如何',{fs:22});}},
+  {id:'expand',grp:'句',skill:'寫',name:'擴句火車',desc:'誰＋在哪裡＋做什麼＋怎麼樣，車廂一節節加長',
+   fields:[{k:'f1',label:'誰',ph:'例：小妹妹'},{k:'f2',label:'在哪裡',ph:'例：在花園裡'},{k:'f3',label:'做什麼',ph:'例：澆花'},{k:'f4',label:'怎麼樣',ph:'例：一邊唱歌',ta:1},{k:'sent',label:'組成的句子',ph:'',ta:1}],
+   svg:function(v){ return wdHead('擴句火車')
+     +wdBox(25,120,190,130,v.f1,'誰',{fs:22,fill:WD_PAP})+wdArrow(218,185,243,185)
+     +wdBox(247,120,190,130,v.f2,'在哪裡',{fs:22})+wdArrow(440,185,465,185)
+     +wdBox(469,120,190,130,v.f3,'做什麼',{fs:22})+wdArrow(662,185,687,185)
+     +wdBox(691,120,190,130,v.f4,'怎麼樣',{fs:22})
+     +wdBox(60,330,780,150,v.sent,'把四節車廂接起來 → 組成的句子',{fs:26,fill:WD_PAP,stroke:WD_ACC,vc:WD_ACC});}},
+  {id:'sandwich',grp:'篇',skill:'寫',name:'三明治寫作法',desc:'麵包—餡—餡—麵包：開頭・重點・感受・結尾',
+   fields:[{k:'t',label:'題目',ph:'例：我最難忘的一天'},{k:'s1',label:'開頭（點題）',ph:'',ta:1},{k:'s2',label:'重點＋例子',ph:'',ta:1},{k:'s3',label:'感受／細節',ph:'',ta:1},{k:'s4',label:'結尾（呼應開頭）',ph:'',ta:1}],
+   svg:function(v){ return wdHead('三明治寫作法'+(v.t?'：'+v.t:''))
+     +wdBox(170,70,560,85,v.s1,'開頭・麵包（點題）',{fs:20,fill:'#E9DFC8'})
+     +wdBox(170,165,560,125,v.s2,'重點＋例子（餡）',{fs:20,stroke:WD_ACC})
+     +wdBox(170,300,560,125,v.s3,'感受／細節（餡）',{fs:20,stroke:WD_ACC})
+     +wdBox(170,435,560,85,v.s4,'結尾・麵包（呼應開頭）',{fs:20,fill:'#E9DFC8'});}},
+  {id:'qicheng',grp:'篇',skill:'寫',name:'起承轉合',desc:'四段推進，記敘文的骨架',
+   fields:[{k:'q1',label:'起（開頭：什麼事）',ph:'',ta:1},{k:'q2',label:'承（發展）',ph:'',ta:1},{k:'q3',label:'轉（轉折）',ph:'',ta:1},{k:'q4',label:'合（結果／感受）',ph:'',ta:1}],
+   svg:function(v){ return wdHead('起承轉合')
+     +wdBox(25,210,190,170,v.q1,'起',{fs:20,fill:WD_PAP})+wdArrow(218,295,243,295)
+     +wdBox(247,210,190,170,v.q2,'承',{fs:20})+wdArrow(440,295,465,295)
+     +wdBox(469,210,190,170,v.q3,'轉',{fs:20,stroke:WD_ACC,vc:WD_ACC})+wdArrow(662,295,687,295)
+     +wdBox(691,210,190,170,v.q4,'合',{fs:20,fill:WD_PAP});}},
+  {id:'fishbone',grp:'篇',skill:'讀·寫',name:'魚骨圖',desc:'魚頭是主題，四根骨頭寫原因和特點',
+   fields:[{k:'t',label:'主題（魚頭）',ph:'例：為什麼大家都愛這本書'},{k:'b1',label:'骨 1',ph:'',ta:1},{k:'b2',label:'骨 2',ph:'',ta:1},{k:'b3',label:'骨 3',ph:'',ta:1},{k:'b4',label:'骨 4',ph:'',ta:1}],
+   svg:function(v){ return wdHead('魚骨圖')
+     +wdLine(70,300,740,300,WD_INK,4)
+     +wdBox(748,250,142,100,v.t,'主題',{fill:WD_ACC,vc:'#F8F1E2',fs:20,label:''})
+     +wdBox(90,70,180,85,v.b1,'骨 1',{fs:18})+wdLine(200,155,225,300,WD_INK,3)
+     +wdBox(320,70,180,85,v.b2,'骨 2',{fs:18})+wdLine(430,155,455,300,WD_INK,3)
+     +wdBox(90,445,180,85,v.b3,'骨 3',{fs:18})+wdLine(200,445,225,300,WD_INK,3)
+     +wdBox(320,445,180,85,v.b4,'骨 4',{fs:18})+wdLine(430,445,455,300,WD_INK,3);}},
+  {id:'storymtn',grp:'篇',skill:'讀·寫',name:'故事山',desc:'開端爬坡、高潮在山頂、結局下山',
+   fields:[{k:'t',label:'故事名',ph:'例：迷路的小貓'},{k:'s1',label:'開端',ph:'',ta:1},{k:'s2',label:'發展',ph:'',ta:1},{k:'s3',label:'高潮',ph:'',ta:1},{k:'s4',label:'結局',ph:'',ta:1}],
+   svg:function(v){ return wdHead('故事山'+(v.t?'：'+v.t:''))
+     +'<polyline points="60,480 260,300 450,140 640,300 840,480" fill="none" stroke="'+WD_GRN+'" stroke-width="4"/>'
+     +'<circle cx="260" cy="300" r="9" fill="'+WD_ACC+'"/><circle cx="450" cy="140" r="9" fill="'+WD_ACC+'"/><circle cx="640" cy="300" r="9" fill="'+WD_ACC+'"/>'
+     +wdBox(50,380,180,90,v.s1,'開端',{fs:18})
+     +wdBox(240,180,190,90,v.s2,'發展',{fs:18})
+     +wdBox(350,50,200,80,v.s3,'高潮',{fs:18,stroke:WD_ACC,vc:WD_ACC})
+     +wdBox(620,380,180,90,v.s4,'結局',{fs:18});}},
+  {id:'hand5',grp:'篇',skill:'說·讀',name:'五指複述法',desc:'五根手指記五件事，說故事不漏情節',
+   fields:[{k:'t',label:'故事名',ph:'例：龜兔賽跑'},{k:'f1',label:'誰（人物）',ph:''},{k:'f2',label:'何時何地',ph:''},{k:'f3',label:'開始',ph:''},{k:'f4',label:'中間（經過）',ph:''},{k:'f5',label:'結果',ph:''}],
+   svg:function(v){ return wdHead('五指複述法')
+     +wdBox(40,110,190,72,v.f1,'誰（人物）',{fs:18})+wdBox(225,55,190,72,v.f2,'何時何地',{fs:18})+wdBox(410,35,190,72,v.f3,'開始',{fs:18})
+     +wdBox(595,55,190,72,v.f4,'中間（經過）',{fs:18})+wdBox(760,110,130,72,v.f5,'結果',{fs:18})
+     +wdLine(135,182,370,320,WD_GOLD,2)+wdLine(320,127,410,300,WD_GOLD,2)+wdLine(505,107,450,290,WD_GOLD,2)
+     +wdLine(690,127,500,300,WD_GOLD,2)+wdLine(825,182,535,320,WD_GOLD,2)
+     +wdCircle(450,410,115,v.t,'故事名（說給同學聽）',{fill:WD_PAP,stroke:WD_ACC,fs:24,vc:WD_ACC});}},
+  {id:'dubble',grp:'篇',skill:'說·寫',name:'雙氣泡圖',desc:'兩樣東西比一比：中間是共同點，兩邊是各自特點',
+   fields:[{k:'a',label:'甲',ph:'例：城市'},{k:'b',label:'乙',ph:'例：鄉村'},{k:'m1',label:'共同 1',ph:''},{k:'m2',label:'共同 2',ph:''},{k:'m3',label:'共同 3',ph:''},{k:'l1',label:'甲特有 1',ph:''},{k:'l2',label:'甲特有 2',ph:''},{k:'r1',label:'乙特有 1',ph:''},{k:'r2',label:'乙特有 2',ph:''}],
+   svg:function(v){ return wdHead('雙氣泡圖（比較）')
+     +wdCircle(220,300,115,v.a,'甲',{fill:WD_PAP,stroke:WD_ACC,fs:24,vc:WD_ACC})
+     +wdCircle(680,300,115,v.b,'乙',{fill:WD_PAP,stroke:WD_GRN,fs:24,vc:WD_GRN})
+     +wdCircle(450,120,62,v.m1,'',{fs:18})+wdCircle(450,300,62,v.m2,'',{fs:18})+wdCircle(450,480,62,v.m3,'',{fs:18})
+     +wdCircle(80,140,62,v.l1,'',{fs:18,stroke:WD_ACC})+wdCircle(80,460,62,v.l2,'',{fs:18,stroke:WD_ACC})
+     +wdCircle(820,140,62,v.r1,'',{fs:18,stroke:WD_GRN})+wdCircle(820,460,62,v.r2,'',{fs:18,stroke:WD_GRN})
+     +wdLine(305,235,400,155,WD_GOLD,2)+wdLine(335,300,388,300,WD_GOLD,2)+wdLine(305,365,400,445,WD_GOLD,2)
+     +wdLine(595,235,500,155,WD_GOLD,2)+wdLine(565,300,512,300,WD_GOLD,2)+wdLine(595,365,500,445,WD_GOLD,2)
+     +wdLine(160,215,110,190,WD_ACC,2)+wdLine(160,385,110,425,WD_ACC,2)
+     +wdLine(740,215,790,190,WD_GRN,2)+wdLine(740,385,790,425,WD_GRN,2);}},
+  {id:'tree',grp:'篇',skill:'寫',name:'樹形圖（分類）',desc:'一個主題分三類，每類找兩個例',
+   fields:[{k:'root',label:'主題',ph:'例：秋天的水果'},{k:'b1',label:'類 1',ph:''},{k:'b2',label:'類 2',ph:''},{k:'b3',label:'類 3',ph:''},{k:'l1',label:'類 1 例 1',ph:''},{k:'l2',label:'類 1 例 2',ph:''},{k:'l3',label:'類 2 例 1',ph:''},{k:'l4',label:'類 2 例 2',ph:''},{k:'l5',label:'類 3 例 1',ph:''},{k:'l6',label:'類 3 例 2',ph:''}],
+   svg:function(v){ return wdHead('樹形圖（分類）')
+     +wdBox(340,45,220,70,v.root,'主題',{fill:WD_PAP,stroke:WD_ACC,fs:24,vc:WD_ACC})
+     +wdLine(450,115,450,140,WD_INK,2.5)+wdLine(180,140,720,140,WD_INK,2.5)
+     +wdLine(180,140,180,180,WD_INK,2.5)+wdLine(450,140,450,180,WD_INK,2.5)+wdLine(720,140,720,180,WD_INK,2.5)
+     +wdBox(60,180,240,70,v.b1,'類 1',{fs:20,stroke:WD_GRN})+wdBox(330,180,240,70,v.b2,'類 2',{fs:20,stroke:WD_GRN})+wdBox(600,180,240,70,v.b3,'類 3',{fs:20,stroke:WD_GRN})
+     +wdBox(60,300,240,70,v.l1,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'})+wdBox(60,390,240,70,v.l2,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'})
+     +wdBox(330,300,240,70,v.l3,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'})+wdBox(330,390,240,70,v.l4,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'})
+     +wdBox(600,300,240,70,v.l5,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'})+wdBox(600,390,240,70,v.l6,'',{fs:19,dash:'7 6',stroke:'#B9AE9A'});}},
+  {id:'flow',grp:'篇',skill:'讀·寫',name:'流程圖（步驟）',desc:'說明文、實驗、做手工，一步一步排好',
+   fields:[{k:'f1',label:'第一步',ph:'',ta:1},{k:'f2',label:'第二步',ph:'',ta:1},{k:'f3',label:'第三步',ph:'',ta:1},{k:'f4',label:'第四步',ph:'',ta:1}],
+   svg:function(v){ return wdHead('流程圖（步驟）')
+     +wdBox(25,210,190,170,v.f1,'第一步',{fs:20,fill:WD_PAP})+wdArrow(218,295,243,295)
+     +wdBox(247,210,190,170,v.f2,'第二步',{fs:20})+wdArrow(440,295,465,295)
+     +wdBox(469,210,190,170,v.f3,'第三步',{fs:20})+wdArrow(662,295,687,295)
+     +wdBox(691,210,190,170,v.f4,'第四步',{fs:20});}},
+  {id:'brace',grp:'篇',skill:'讀·寫',name:'括號圖（整體與部分）',desc:'課文、物品、身體——整體拆開看部分',
+   fields:[{k:'w',label:'整體',ph:'例：我的學校'},{k:'p1',label:'部分 1',ph:''},{k:'p2',label:'部分 2',ph:''},{k:'p3',label:'部分 3',ph:''}],
+   svg:function(v){ return wdHead('括號圖（整體與部分）')
+     +wdBox(60,180,240,220,v.w,'整體',{fill:WD_PAP,stroke:WD_ACC,fs:30,vc:WD_ACC})
+     +'<path d="M310,180 C355,180 355,260 385,280 C355,300 355,380 310,380" fill="none" stroke="'+WD_INK+'" stroke-width="3"/>'
+     +wdBox(430,80,220,110,v.p1,'部分 1',{fs:20})+wdBox(430,240,220,110,v.p2,'部分 2',{fs:20})+wdBox(430,400,220,110,v.p3,'部分 3',{fs:20})
+     +wdLine(385,280,430,135,WD_GOLD,2)+wdLine(385,280,430,295,WD_GOLD,2)+wdLine(385,280,430,455,WD_GOLD,2);}},
+  {id:'timeline',grp:'篇',skill:'讀·寫',name:'時間線',desc:'事情先後排一排，記敘文不再亂序',
+   fields:[{k:'t',label:'題目',ph:'例：我的一天'},{k:'e1',label:'事件 1（早）',ph:''},{k:'e2',label:'事件 2',ph:''},{k:'e3',label:'事件 3',ph:''},{k:'e4',label:'事件 4（晚）',ph:''}],
+   svg:function(v){ return wdHead('時間線')
+     +wdBox(250,55,400,60,v.t,'題目',{fill:WD_PAP,fs:24,vc:WD_ACC,stroke:WD_ACC})
+     +wdLine(60,320,840,320,WD_GRN,4)
+     +'<circle cx="130" cy="320" r="13" fill="'+WD_ACC+'"/><circle cx="340" cy="320" r="13" fill="'+WD_ACC+'"/><circle cx="550" cy="320" r="13" fill="'+WD_ACC+'"/><circle cx="760" cy="320" r="13" fill="'+WD_ACC+'"/>'
+     +wdT(130,350,'先',16,WD_GOLD)+wdT(760,350,'後',16,WD_GOLD)
+     +wdBox(60,180,180,95,v.e1,'事件 1',{fs:19})+wdLine(150,275,130,307,WD_GOLD,2)
+     +wdBox(250,370,180,95,v.e2,'事件 2',{fs:19})+wdLine(340,370,340,333,WD_GOLD,2)
+     +wdBox(460,180,180,95,v.e3,'事件 3',{fs:19})+wdLine(550,275,550,307,WD_GOLD,2)
+     +wdBox(650,370,180,95,v.e4,'事件 4',{fs:19})+wdLine(740,370,760,333,WD_GOLD,2);}},
+  {id:'kwl',grp:'篇',skill:'聽·說·讀',name:'KWL 表',desc:'讀課文前後：已知道・想知道・學到了',
+   fields:[{k:'k1',label:'已知道 1',ph:''},{k:'k2',label:'已知道 2',ph:''},{k:'k3',label:'已知道 3',ph:''},{k:'w1',label:'想知道 1',ph:''},{k:'w2',label:'想知道 2',ph:''},{k:'w3',label:'想知道 3',ph:''},{k:'l1',label:'學到了 1',ph:''},{k:'l2',label:'學到了 2',ph:''},{k:'l3',label:'學到了 3',ph:''}],
+   svg:function(v){ return wdHead('KWL 表')
+     +wdRect(30,70,270,60,WD_GRN,WD_GRN,10)+wdT(165,110,'K・我已知道',22,'#fff','middle',700)
+     +wdRect(315,70,270,60,WD_ACC,WD_ACC,10)+wdT(450,110,'W・我想知道',22,'#fff','middle',700)
+     +wdRect(600,70,270,60,WD_GOLD,WD_GOLD,10)+wdT(735,110,'L・我學到了',22,'#fff','middle',700)
+     +wdBox(30,150,270,110,v.k1,'',{fs:19,stroke:WD_GRN})+wdBox(30,280,270,110,v.k2,'',{fs:19,stroke:WD_GRN})+wdBox(30,410,270,110,v.k3,'',{fs:19,stroke:WD_GRN})
+     +wdBox(315,150,270,110,v.w1,'',{fs:19,stroke:WD_ACC})+wdBox(315,280,270,110,v.w2,'',{fs:19,stroke:WD_ACC})+wdBox(315,410,270,110,v.w3,'',{fs:19,stroke:WD_ACC})
+     +wdBox(600,150,270,110,v.l1,'',{fs:19,stroke:WD_GOLD})+wdBox(600,280,270,110,v.l2,'',{fs:19,stroke:WD_GOLD})+wdBox(600,410,270,110,v.l3,'',{fs:19,stroke:WD_GOLD});}},
+  {id:'venn',grp:'篇',skill:'說·寫',name:'維恩圖',desc:'兩個圈圈疊一疊，相同與不同一眼看清',
+   fields:[{k:'a',label:'甲',ph:'例：月亮'},{k:'b',label:'乙',ph:'例：太陽'},{k:'l1',label:'甲特有',ph:''},{k:'r1',label:'乙特有',ph:''},{k:'mid',label:'共同點',ph:'',ta:1}],
+   svg:function(v){ return wdHead('維恩圖')
+     +wdT(330,105,'甲：'+(v.a||''),22,WD_ACC,'middle',700)+wdT(570,105,'乙：'+(v.b||''),22,WD_GRN,'middle',700)
+     +'<circle cx="330" cy="330" r="160" fill="rgba(163,58,42,.10)" stroke="'+WD_ACC+'" stroke-width="3"/>'
+     +'<circle cx="570" cy="330" r="160" fill="rgba(46,97,87,.10)" stroke="'+WD_GRN+'" stroke-width="3"/>'
+     +wdT(235,340,wdWrap(v.l1,9).join('\n'),20,WD_INK)+wdT(450,328,wdWrap(v.mid,7).join('\n'),18,WD_ACC)+wdT(665,340,wdWrap(v.r1,9).join('\n'),20,WD_INK)
+     +((v.l1||v.mid||v.r1)?'':'')+wdBlankLine(190,340,90)+wdBlankLine(620,340,90);}}
+  ];
+  // 空白維恩圖時不要虛線蓋字（上面 blankLine 只在沒值時出現）
+  var wdCards=$('#wd-cards');
+  function wdRenderCards(){
+    var b=$('#wd-mode .seg-btn.active'); var g=b?b.dataset.g:'all';
+    var html='';
+    ['字','詞','句','篇'].forEach(function(grp){
+      if(g!=='all'&&g!==grp) return;
+      var list=WD.filter(function(d){return d.grp===grp;});
+      if(!list.length) return;
+      html+='<div class="wd-groups"><p class="wd-gtitle">'+grp+'圖　<span class="cnt">'+list.length+' 張</span></p><div class="wd-cards">';
+      list.forEach(function(d){ html+='<button type="button" class="wd-card" data-id="'+d.id+'"><span class="wg">'+d.skill+'</span><b>'+d.name+'</b><span>'+d.desc+'</span></button>'; });
+      html+='</div></div>';
+    });
+    wdCards.innerHTML=html||'<p class="section-note">沒有這類圖表。</p>';
+  }
+  $('#wd-mode').addEventListener('click',function(e){
+    var b=e.target.closest('.seg-btn'); if(!b)return;
+    $$('#wd-mode .seg-btn').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active'); wdRenderCards();
+  });
+  wdRenderCards();
+  var wdCur=null, wdVals={};
+  wdCards.addEventListener('click',function(e){
+    var c=e.target.closest('.wd-card'); if(!c)return;
+    wdOpen(c.dataset.id);
+  });
+  function wdOpen(id){
+    wdCur=null;
+    WD.forEach(function(d){ if(d.id===id) wdCur=d; });
+    if(!wdCur) return;
+    wdVals=store.get('wd.'+id,{});
+    $('#wd-title').textContent=wdCur.name+'（'+wdCur.grp+'・'+wdCur.skill+'）';
+    var f=$('#wd-form'); f.innerHTML='';
+    wdCur.fields.forEach(function(fd){
+      var w=document.createElement('div');
+      var lab=document.createElement('label'); lab.textContent=fd.label; w.appendChild(lab);
+      var inp=document.createElement(fd.ta?'textarea':'input');
+      if(!fd.ta) inp.type='text';
+      if(fd.ta) inp.rows=2;
+      inp.value=wdVals[fd.k]||'';
+      inp.placeholder=fd.ph||fd.label;
+      inp.addEventListener('input',function(){
+        wdVals[fd.k]=inp.value;
+        store.set('wd.'+wdCur.id,wdVals);
+        wdPaint();
+      });
+      w.appendChild(inp); f.appendChild(w);
+    });
+    $('#wd-editor').hidden=false; wdCards.style.display='none';
+    wdPaint();
+    $('#wd-editor').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('#wd-back').addEventListener('click',function(){
+    $('#wd-editor').hidden=true; wdCards.style.display=''; wdCur=null;
+  });
+  function wdSvgDoc(blank){
+    var vals={};
+    wdCur.fields.forEach(function(fd){ vals[fd.k]=blank?'':(wdVals[fd.k]||''); });
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" '+wdFontAttr+' style="width:100%;height:auto;display:block"><rect x="0" y="0" width="900" height="560" fill="#FFFFFF"/>'+wdCur.svg(vals,blank)+'</svg>';
+  }
+  function wdPaint(){ if(wdCur) $('#wd-prev').innerHTML=wdSvgDoc(false); }
+  $('#wd-stage-btn').addEventListener('click',function(){
+    if(!wdCur) return;
+    $('#wd-stage').innerHTML=wdSvgDoc(false);
+    $('#wd-overlay').classList.add('show');
+    if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
+  });
+  $('#wd-ov-fs').addEventListener('click',function(){
+    if(document.fullscreenElement){ if(document.exitFullscreen) document.exitFullscreen(); }
+    else if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
+  });
+  function wdClose(){ $('#wd-overlay').classList.remove('show'); }
+  $('#wd-ov-close').addEventListener('click',function(){ wdClose(); if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen(); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&$('#wd-overlay').classList.contains('show')){
+      wdClose(); if(document.fullscreenElement&&document.exitFullscreen) document.exitFullscreen();
+    }
+  });
+  $('#wd-print-fill').addEventListener('click',function(){
+    if(!wdCur) return;
+    doPrint('<div style="font-family:serif"><h2 style="margin:0 0 4mm">'+wdEsc(wdCur.name)+'（'+wdEsc(wdCur.grp)+'）</h2>'+wdSvgDoc(false)+'</div>');
+  });
+  $('#wd-print-blank').addEventListener('click',function(){
+    if(!wdCur) return;
+    doPrint('<div style="font-family:serif"><h2 style="margin:0 0 4mm">'+wdEsc(wdCur.name)+'（'+wdEsc(wdCur.grp)+'）</h2>'+wdSvgDoc(true)+'</div>');
+  });
+  $('#wd-copy').addEventListener('click',function(){
+    if(!wdCur) return;
+    var lines=[wdCur.name+'（'+wdCur.grp+'）'];
+    wdCur.fields.forEach(function(fd){
+      var v=(wdVals[fd.k]||'').trim();
+      if(v) lines.push(fd.label+'：'+v);
+    });
+    copyText(lines.join('\n'));
+  });
+  $('#wd-clear').addEventListener('click',function(){
+    if(!wdCur) return;
+    wdVals={}; store.set('wd.'+wdCur.id,wdVals);
+    wdOpen(wdCur.id); toast('已清空');
+  });
+
   renderBoard();
   drawWheel();
   renderTeams();
