@@ -4,14 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316202c'/%3E%3Cg stroke='%23b07cc4' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 20h56v34a28 28 0 0 1-56 0z'/%3E%3Cpath d='M40 58a13 13 0 0 0 20 0'/%3E%3C/g%3E%3Ccircle cx='39' cy='37' r='4' fill='%23b07cc4'/%3E%3Ccircle cx='61' cy='37' r='4' fill='%23b07cc4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316202c'/%3E%3Cg stroke='%23e0b25c' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 20h56v34a28 28 0 0 1-56 0z'/%3E%3Cpath d='M40 58a13 13 0 0 0 20 0'/%3E%3C/g%3E%3Ccircle cx='39' cy='37' r='4' fill='%23e0b25c'/%3E%3Ccircle cx='61' cy='37' r='4' fill='%23e0b25c'/%3E%3C/svg%3E">
 <title>第四節課 · 劇本來了！</title>
 <style>
   :root{
-    --bg:#0d131c; --bg-2:#16202c; --bg-3:#1e2c3a;
-    --cream:#f6f1e7; --cream-dim:rgba(246,241,231,.68);
-    --gold:#e0b25c; --gold-deep:#b8863b; --terra:#d8674a; --teal:#43a89f; --plum:#c490d8;
+    /* Primitive tokens */
+    --bg:#0d131c; --bg-2:#16202c; --bg-deep:#121a24; --bg-overlay:rgba(5,8,12,.94);
+    --cream:#f6f1e7; --cream-dim:rgba(246,241,231,.72); --cream-faint:rgba(246,241,231,.42);
+    --border-subtle:rgba(246,241,231,.14); --surface-tint:rgba(246,241,231,.06);
+    --gold:#e0b25c; --gold-hover:#ecc474; --ink-on-gold:#1c1204;
+    --terra:#d8674a; --teal:#43a89f;
     --k-red:#e21b3c; --k-blue:#1368ce; --k-yellow:#d89e00; --k-green:#26890c;
+
+    /* Semantic stage tokens (warm theatrical amber + jade teal, no AI purple glow) */
+    --accent:var(--gold);
+    --accent-secondary:var(--teal);
+    --accent-alert:var(--terra);
+
     --serif:"Songti TC","Noto Serif TC","Source Han Serif TC","PingFang TC",serif;
     --sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
   }
@@ -19,8 +28,8 @@
   html,body{height:100%;margin:0;overflow:hidden}
   body{
     background:
-      radial-gradient(1100px 620px at 84% -12%, rgba(196,144,216,.16), transparent 62%),
-      radial-gradient(900px 560px at 6% 110%, rgba(224,178,92,.11), transparent 62%),
+      radial-gradient(1100px 620px at 84% -12%, rgba(224,178,92,.15), transparent 62%),
+      radial-gradient(900px 560px at 6% 110%, rgba(67,168,159,.11), transparent 62%),
       var(--bg);
     color:var(--cream);
     font-family:var(--sans);
@@ -41,37 +50,37 @@
 
   .s-title{
     font-family:var(--serif); font-weight:600;
-    font-size:min(clamp(48px,8.8vmin,148px),92vw); line-height:1.08; margin:0;
+    font-size:min(clamp(52px,9.2vmin,156px),92vw); line-height:1.08; margin:0;
   }
-  .s-title.sm{font-size:min(clamp(36px,6.2vmin,96px),92vw)}
-  .s-kicker{font-size:clamp(22px,3vmin,44px); color:var(--plum); letter-spacing:.2em; margin:0}
-  b.hi{color:var(--gold); font-weight:inherit}
-  b.pl{color:var(--plum); font-weight:inherit}
+  .s-title.sm{font-size:min(clamp(38px,6.4vmin,98px),92vw)}
+  .s-kicker{font-size:clamp(24px,3.2vmin,48px); color:var(--accent-secondary); letter-spacing:.18em; margin:0}
+  b.hi{color:var(--accent); font-weight:inherit}
+  b.tl{color:var(--accent-secondary); font-weight:inherit}
 
   /* ---------- 進場動效 ---------- */
   .anim{opacity:0}
-  .slide.play .anim{animation:rise .58s cubic-bezier(.2,.7,.2,1) both}
+  .slide.play .anim{animation:rise .56s cubic-bezier(.2,.7,.2,1) both}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
   /* ---------- 封面 ---------- */
   .s-cover{--disp:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(6px,1.4vmin,20px)}
-  .cover-sub{font-family:var(--serif); font-size:clamp(26px,3.8vmin,58px); letter-spacing:.26em; color:var(--plum); margin:0}
-  .cover-title{font-family:var(--serif); font-weight:600; font-size:min(clamp(56px,12vmin,204px),92vw); line-height:1.06; margin:0}
+  .cover-sub{font-family:var(--serif); font-size:clamp(26px,3.8vmin,58px); letter-spacing:.26em; color:var(--accent); margin:0}
+  .cover-title{font-family:var(--serif); font-weight:600; font-size:min(clamp(56px,12vmin,208px),92vw); line-height:1.06; margin:0}
   .cover-art{flex:1 1 0; min-height:0; width:min(100%,1240px)}
   .cover-art img.art{width:100%; height:100%; display:block; object-fit:contain; border-radius:clamp(12px,1.8vmin,24px)}
 
   /* ---------- 活動頁 ---------- */
   .s-activity{--disp:flex; flex-direction:column; gap:clamp(8px,1.6vmin,24px)}
   .act-head{display:flex; align-items:baseline; justify-content:space-between; gap:clamp(12px,2vmin,34px)}
-  .act-name{font-family:var(--serif); font-weight:600; font-size:min(clamp(42px,7.4vmin,118px),92vw); line-height:1.06; margin:0}
-  .act-min{font-family:var(--serif); font-size:clamp(26px,4.2vmin,68px); color:var(--plum); flex:none; margin:0}
+  .act-name{font-family:var(--serif); font-weight:600; font-size:min(clamp(44px,7.6vmin,122px),92vw); line-height:1.06; margin:0}
+  .act-min{font-family:var(--serif); font-size:clamp(28px,4.4vmin,70px); color:var(--accent); flex:none; margin:0}
   .act-body{display:grid; grid-template-columns:minmax(0,.96fr) minmax(0,1.08fr); gap:clamp(14px,2.8vmin,50px); flex:1 1 auto; min-height:0; align-items:center}
-  .act-stack{display:flex; flex-direction:column; justify-content:center; gap:clamp(10px,2vmin,30px); min-height:0}
-  .act-line{font-family:var(--serif); font-size:min(clamp(32px,5.6vmin,94px),92vw); line-height:1.24; margin:0}
+  .act-stack{display:flex; flex-direction:column; justify-content:center; gap:clamp(12px,2.2vmin,32px); min-height:0}
+  .act-line{font-family:var(--serif); font-size:min(clamp(36px,6vmin,100px),92vw); line-height:1.24; margin:0}
   .act-pill{
-    font-family:var(--serif); font-weight:600; font-size:min(clamp(28px,4.8vmin,78px),92vw); line-height:1.22;
-    margin:0; padding:clamp(8px,1.4vmin,20px) clamp(14px,2.2vmin,32px);
-    background:rgba(246,241,231,.06); border-left:clamp(4px,.7vmin,8px) solid var(--gold);
+    font-family:var(--serif); font-weight:600; font-size:min(clamp(30px,5vmin,80px),92vw); line-height:1.22;
+    margin:0; padding:clamp(10px,1.6vmin,22px) clamp(14px,2.2vmin,32px);
+    background:var(--surface-tint); border-left:clamp(4px,.7vmin,8px) solid var(--accent);
     border-radius:0 clamp(10px,1.5vmin,18px) clamp(10px,1.5vmin,18px) 0;
   }
   .act-art{display:flex; align-items:center; justify-content:center; min-height:0; height:100%; max-height:76vh; align-self:stretch}
@@ -83,30 +92,36 @@
   .s-cards.cols-3{grid-template-columns:repeat(3,1fr)}
   .s-cards.cols-4{grid-template-columns:repeat(4,1fr)}
   .s-cards>.s-title, .s-cards>.cards-foot{grid-column:1/-1; text-align:center}
-  .cards-foot{font-family:var(--serif); font-weight:600; font-size:min(clamp(30px,4.8vmin,76px),92vw); color:var(--gold); margin:0; line-height:1.18}
+  .cards-foot{font-family:var(--serif); font-weight:600; font-size:min(clamp(32px,5vmin,78px),92vw); color:var(--accent); margin:0; line-height:1.18}
   .s-card{
     display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(6px,1vmin,14px);
     min-height:0; padding:clamp(10px,1.6vmin,24px);
-    background:linear-gradient(180deg,var(--bg-2),#131b25);
-    border:1px solid rgba(246,241,231,.13); border-radius:clamp(12px,1.8vmin,24px);
+    background:linear-gradient(180deg,var(--bg-2),var(--bg-deep));
+    border:1px solid var(--border-subtle); border-radius:clamp(12px,1.8vmin,24px);
   }
   .c-art{flex:1 1 0; min-height:0; width:100%}
   .c-art img.art{width:100%; height:100%; display:block; object-fit:contain; border-radius:clamp(8px,1.2vmin,16px)}
-  .c-badge{font-family:var(--serif); font-weight:600; font-size:clamp(22px,3vmin,46px); color:var(--plum); margin:0}
-  .c-title{font-family:var(--serif); font-weight:600; font-size:clamp(26px,4vmin,62px); line-height:1.14; margin:0}
-  .c-line{font-size:clamp(21px,2.8vmin,42px); line-height:1.35; color:var(--cream-dim); margin:0}
+  .c-badge{font-family:var(--serif); font-weight:600; font-size:clamp(24px,3.4vmin,52px); color:var(--accent); margin:0}
+  .c-title{font-family:var(--serif); font-weight:600; font-size:clamp(28px,4.2vmin,64px); line-height:1.14; margin:0}
+  .c-line{font-size:clamp(22px,2.9vmin,44px); line-height:1.34; color:var(--cream-dim); margin:0}
+
+  /* 無圖分組大字卡（善用版面空間） */
+  .s-cards.big-type .s-card{gap:clamp(12px,2.2vmin,32px); padding:clamp(16px,2.6vmin,40px) clamp(12px,2vmin,28px)}
+  .s-cards.big-type .c-badge{font-size:clamp(48px,8.8vmin,136px); line-height:1; color:var(--accent)}
+  .s-cards.big-type .c-title{font-size:clamp(32px,4.8vmin,74px); color:var(--cream)}
+  .s-cards.big-type .c-line{font-size:clamp(24px,3.6vmin,54px); line-height:1.42; color:var(--cream-dim)}
 
   /* ---------- 步驟卡 ---------- */
   .s-steps{--disp:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto minmax(0,1fr); gap:clamp(12px,2.2vmin,36px); align-items:stretch}
   .s-steps>.s-title{grid-column:1/-1; text-align:center}
   .step{
-    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(8px,1.6vmin,22px);
-    min-height:0; padding:clamp(12px,2.2vmin,34px);
-    background:linear-gradient(180deg,var(--bg-2),#131b25);
-    border:1px solid rgba(246,241,231,.13); border-radius:clamp(12px,1.8vmin,24px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(10px,2vmin,28px);
+    min-height:0; padding:clamp(14px,2.4vmin,38px);
+    background:linear-gradient(180deg,var(--bg-2),var(--bg-deep));
+    border:1px solid var(--border-subtle); border-radius:clamp(12px,1.8vmin,24px);
   }
-  .step-num{font-family:var(--serif); font-weight:600; font-size:clamp(54px,11vmin,168px); line-height:1; color:var(--plum)}
-  .step-txt{font-family:var(--serif); font-weight:600; font-size:clamp(28px,4.4vmin,68px); line-height:1.24; margin:0; color:var(--cream)}
+  .step-num{font-family:var(--serif); font-weight:600; font-size:clamp(60px,12vmin,180px); line-height:1; color:var(--accent)}
+  .step-txt{font-family:var(--serif); font-weight:600; font-size:clamp(30px,4.8vmin,74px); line-height:1.24; margin:0; color:var(--cream)}
 
   /* ---------- 左文右圖 ---------- */
   .s-split{--disp:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1.08fr); gap:clamp(16px,3.2vmin,54px); align-items:stretch}
@@ -114,27 +129,30 @@
   .split-art{display:flex; align-items:center; justify-content:center; min-height:0; height:100%; align-self:stretch}
   .split-art img.art{width:100%; height:100%; display:block; object-fit:contain; border-radius:clamp(12px,1.8vmin,24px)}
   .split-line{font-size:min(clamp(26px,4.8vmin,74px),92vw); line-height:1.34; margin:0; color:var(--cream)}
-  .split-line.dim{color:var(--cream-dim); font-size:min(clamp(23px,4vmin,62px),92vw)}
+  .split-line.dim{color:var(--cream-dim); font-size:min(clamp(24px,4.2vmin,64px),92vw)}
 
   /* ---------- 劇本名場面試讀頁 ---------- */
-  .s-read{--disp:flex; flex-direction:column; justify-content:space-between; gap:clamp(8px,1.5vmin,20px)}
-  .read-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:2px solid rgba(246,241,231,.14); padding-bottom:clamp(6px,1.1vmin,14px)}
-  .read-tag{font-family:var(--serif); font-size:clamp(22px,3.2vmin,48px); color:var(--plum); margin:0}
-  .read-lines{display:flex; flex-direction:column; justify-content:center; gap:clamp(8px,1.5vmin,22px); flex:1 1 auto; min-height:0}
+  .s-read{--disp:flex; flex-direction:column; justify-content:space-between; gap:clamp(8px,1.4vmin,18px)}
+  .read-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:2px solid var(--border-subtle); padding-bottom:clamp(6px,1vmin,14px)}
+  .read-tag{font-family:var(--serif); font-size:clamp(22px,3.2vmin,48px); color:var(--accent-secondary); margin:0}
+  .read-lines{display:flex; flex-direction:column; justify-content:center; gap:clamp(7px,1.3vmin,18px); flex:1 1 auto; min-height:0}
   .r-row{
-    display:grid; grid-template-columns:clamp(110px,17vw,260px) minmax(0,1fr); gap:clamp(10px,1.8vmin,28px);
-    align-items:baseline; padding:clamp(6px,1.1vmin,16px) clamp(12px,2vmin,28px);
-    background:rgba(246,241,231,.05); border-radius:clamp(10px,1.4vmin,18px);
+    display:grid; grid-template-columns:clamp(110px,17vw,256px) minmax(0,1fr); gap:clamp(10px,1.8vmin,28px);
+    align-items:baseline; padding:clamp(6px,1vmin,14px) clamp(12px,2vmin,28px);
+    background:var(--surface-tint); border-radius:clamp(10px,1.4vmin,18px);
   }
-  .r-who{font-family:var(--serif); font-weight:600; font-size:min(clamp(24px,4vmin,60px),92vw); color:var(--gold); line-height:1.2}
-  .r-say{font-size:min(clamp(24px,4vmin,60px),92vw); line-height:1.28; margin:0; color:var(--cream)}
+  .r-who{font-family:var(--serif); font-weight:600; font-size:min(clamp(23px,3.8vmin,56px),92vw); color:var(--accent); line-height:1.2}
+  .r-say{font-size:min(clamp(23px,3.8vmin,56px),92vw); line-height:1.28; margin:0; color:var(--cream)}
   .r-emo{color:var(--cream-dim); font-size:.86em; margin-right:.25em}
 
   @media (max-width:1100px){
     .s-split .s-title{font-size:min(clamp(34px,6.2vmin,94px),92vw)}
     .s-split .split-line{font-size:min(clamp(22px,4vmin,60px),92vw)}
     .s-split .split-line.dim{font-size:min(clamp(20px,3.6vmin,54px),92vw)}
-    .r-who, .r-say{font-size:min(clamp(20px,3.5vmin,50px),92vw)}
+    .r-who, .r-say{font-size:min(clamp(19px,3.3vmin,48px),92vw)}
+    .s-cards.big-type .c-badge{font-size:clamp(38px,7.2vmin,96px)}
+    .s-cards.big-type .c-title{font-size:clamp(26px,4vmin,56px)}
+    .s-cards.big-type .c-line{font-size:clamp(20px,3vmin,42px)}
   }
 
   /* ---------- 外部連結按鈕 ---------- */
@@ -142,16 +160,16 @@
     display:inline-flex; align-items:center; gap:clamp(8px,1.2vmin,16px); align-self:flex-start;
     margin-top:clamp(6px,1.4vmin,20px); padding:clamp(10px,1.8vmin,26px) clamp(18px,2.8vmin,44px);
     font-family:var(--serif); font-weight:600; font-size:clamp(22px,3.4vmin,54px); line-height:1.1;
-    color:#1c1204; background:var(--gold); border-radius:999px; text-decoration:none;
+    color:var(--ink-on-gold); background:var(--accent); border-radius:999px; text-decoration:none;
     box-shadow:0 6px 24px rgba(224,178,92,.32);
   }
-  .lnk:hover{filter:brightness(1.08)}
+  .lnk:hover{background:var(--gold-hover)}
 
   /* ---------- 問答頁 ---------- */
   .s-quiz{--disp:flex; flex-direction:column; gap:clamp(8px,1.5vmin,22px)}
   .quiz-q{font-family:var(--serif); font-weight:600; font-size:min(clamp(36px,5.6vmin,86px),92vw); line-height:1.18; margin:0}
   .quiz-qbar{height:clamp(8px,1.3vmin,15px); border-radius:999px; background:rgba(246,241,231,.10); overflow:hidden; margin-top:clamp(6px,1.2vmin,14px)}
-  .quiz-qbar>i{display:block; height:100%; width:100%; border-radius:999px; background:linear-gradient(90deg,var(--plum),var(--gold))}
+  .quiz-qbar>i{display:block; height:100%; width:100%; border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--accent-alert))}
   .quiz-grid{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:clamp(10px,1.7vmin,26px); flex:1 1 auto; min-height:0}
   .quiz-opt{
     display:flex; align-items:center; gap:clamp(8px,1.5vmin,22px);
@@ -175,14 +193,14 @@
   .s-quiz.revealed .quiz-opt.picked.wrong{opacity:.72; filter:grayscale(.55)}
   .quiz-fb{
     min-height:1.35em; margin:0; font-family:var(--serif);
-    font-size:clamp(20px,2.6vmin,42px); line-height:1.3; color:var(--gold);
+    font-size:clamp(20px,2.6vmin,42px); line-height:1.3; color:var(--accent);
     opacity:0; transition:opacity .3s ease;
   }
   .s-quiz.revealed .quiz-fb{opacity:1}
 
   /* ---------- 收尾 ---------- */
   .s-end{--disp:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(8px,1.6vmin,24px)}
-  .end-next{font-size:clamp(26px,3.6vmin,56px); letter-spacing:.18em; color:var(--plum); margin:0}
+  .end-next{font-size:clamp(26px,3.6vmin,56px); letter-spacing:.18em; color:var(--cream-dim); margin:0}
   .end-title{font-family:var(--serif); font-weight:600; font-size:min(clamp(50px,10vmin,162px),92vw); line-height:1.08; margin:0}
   .end-art{flex:1 1 0; min-height:0; width:min(100%,1200px)}
   .end-art img.art{width:100%; height:100%; display:block; object-fit:contain; border-radius:clamp(12px,1.8vmin,24px)}
@@ -190,19 +208,19 @@
   /* ---------- 頁碼 / 進度條 / 浮層 ---------- */
   .pageno{
     position:fixed; right:clamp(10px,1.4vmin,20px); bottom:clamp(8px,1.1vmin,15px);
-    font-size:clamp(11px,1.35vmin,17px); color:rgba(246,241,231,.42);
+    font-size:clamp(11px,1.35vmin,17px); color:var(--cream-faint);
     font-variant-numeric:tabular-nums; z-index:60; pointer-events:none;
   }
   .progress{position:fixed; left:0; right:0; bottom:0; height:3px; background:rgba(246,241,231,.10); z-index:60}
-  .progress>i{display:block; height:100%; background:linear-gradient(90deg,var(--plum),var(--gold)); transform-origin:left; transform:scaleX(0); transition:transform .35s ease}
+  .progress>i{display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-alert)); transform-origin:left; transform:scaleX(0); transition:transform .35s ease}
 
-  .overlay{position:fixed; inset:0; z-index:80; background:rgba(5,8,12,.94)}
+  .overlay{position:fixed; inset:0; z-index:80; background:var(--bg-overlay)}
   .overlay[hidden]{display:none}
   #timerOverlay{display:flex}
   #timerOverlay[hidden]{display:none}
   .timer-inner{margin:auto; display:flex; flex-direction:column; align-items:center; gap:clamp(14px,3vmin,44px); text-align:center}
   .timer-clock{font-family:var(--serif); font-weight:600; font-size:clamp(120px,26vmin,340px); line-height:1; font-variant-numeric:tabular-nums}
-  .timer-clock.zero{color:var(--terra)}
+  .timer-clock.zero{color:var(--accent-alert)}
   .pill{
     cursor:pointer; font-family:var(--sans); font-weight:600; color:var(--cream);
     font-size:clamp(16px,1.9vmin,28px);
@@ -212,15 +230,15 @@
   }
   .pill:hover{background:rgba(246,241,231,.18)}
   .timer-btns{display:flex; flex-wrap:wrap; gap:clamp(8px,1.4vmin,20px); justify-content:center}
-  #tStart{background:var(--gold); color:#1d1405; border-color:var(--gold)}
-  #tStart:hover{background:#caa058}
+  #tStart{background:var(--accent); color:var(--ink-on-gold); border-color:var(--accent)}
+  #tStart:hover{background:var(--gold-hover)}
   #notesOverlay{display:block}
   #notesOverlay[hidden]{display:none}
   .notes-inner{height:100%; overflow-y:auto; padding:clamp(18px,4vmin,64px); max-width:1500px}
-  .notes-tag{font-family:var(--serif); font-size:clamp(18px,2.2vmin,32px); letter-spacing:.24em; color:var(--plum); margin:0 0 clamp(10px,2vmin,28px)}
+  .notes-tag{font-family:var(--serif); font-size:clamp(18px,2.2vmin,32px); letter-spacing:.24em; color:var(--accent); margin:0 0 clamp(10px,2vmin,28px)}
   .notes-body{font-size:clamp(20px,2.6vmin,38px); line-height:1.62}
   .notes-body p{margin:0 0 .7em}
-  .notes-body .n-h{color:var(--gold); font-family:var(--serif)}
+  .notes-body .n-h{color:var(--accent); font-family:var(--serif)}
 </style>
 </head>
 <body>
@@ -235,7 +253,7 @@
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>今天是全班第一次見到我們的劇本《我們家的味道》。先告訴大家一個好消息：二十個人，每個人都有角色、每個人都要上台！但在看劇本之前，先把嘴巴、臉和默契熱開。</p>
+    <p>今天是全班第一次見到我們的劇本《我們家的味道》。先告訴大家一個好消息：二十個人，每個人都有角色，每個人都要上台！看劇本之前，先把嘴巴、臉和默契熱開。</p>
   </template>
 </section>
 
@@ -247,9 +265,9 @@
   </div>
   <div class="act-body">
     <div class="act-stack">
-      <p class="act-pill anim">b — p — m — f　　d — t — n — l</p>
+      <p class="act-pill anim">b · p · m · f　　d · t · n · l</p>
       <p class="act-pill anim">外婆的老滷，煮了三十年。</p>
-      <p class="act-pill anim">一碟白豆腐，穩穩端上桌。</p>
+      <p class="act-pill anim">一盤白豆腐，穩穩端上桌。</p>
     </div>
     <div class="act-art anim">
       <img class="art" src="assets/art/L4-p02.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-p02">
@@ -257,7 +275,7 @@
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>全班站在座位前、雙手叉腰。第一行練嘴唇彈力（b p m f）和舌尖彈力（d t n l）；第二、三行直接就是我們劇本裡的重點字（「老滷 lǎo lǔ」「三十年 sān shí nián」「白豆腐 bái dòu fu」「穩穩 wěn wěn」）。先慢讀一遍，再加快一遍。</p>
+    <p>全班站在座位前，雙手叉腰。第一行練嘴唇彈力（b p m f）和舌尖彈力（d t n l）。第二、三行就是劇本裡的重點字（「老滷 lǎo lǔ」「三十年 sān shí nián」「白豆腐 bái dòu fu」「穩穩 wěn wěn」）。先慢讀一遍，再加快一遍。</p>
   </template>
 </section>
 
@@ -275,7 +293,7 @@
   </div>
   <template class="notes">
     <p class="n-h">怎麼帶（G02 鏡子 Lv3）</p>
-    <p>前後或左右兩位一組，面對面隔一步距離（安全不碰撞）。第一輪 1 分鐘 A 帶 B 跟；第二輪 1 分鐘交換；第三輪升級：取消誰是本人，兩個人一起慢慢動，外人看不出誰在帶，最後一起同步說一句：「比賽，開始！」——這正是戲裡保安熊仔小隊五人同步的練法。</p>
+    <p>前後或左右兩位一組，面對面隔一步距離，安全不碰撞。第一輪 1 分鐘 A 帶 B 跟，第二輪 1 分鐘交換。第三輪升級：取消誰是本人，兩個人一起慢慢動，外人看不出誰在帶，最後一起同步說一句：「比賽，開始！」這就是戲裡保安熊仔小隊五人同步的練法。</p>
   </template>
 </section>
 
@@ -308,22 +326,22 @@
 <!-- ══════════ 5 劇名揭曉（2 分） ══════════ -->
 <section class="slide s-split" data-timer="120">
   <div class="split-text">
-    <p class="s-kicker anim">我們的劇名</p>
+    <p class="s-kicker anim">校園親子食神大賽</p>
     <h2 class="s-title anim">《我們家的味道》</h2>
-    <p class="split-line anim">一罐養了 <b class="hi">三十年</b> 的老滷引子。</p>
-    <p class="split-line dim anim">一碟最家常的白豆腐與白雞蛋。</p>
+    <p class="split-line anim">一罐留了 <b class="hi">三十年</b> 的老滷引子。</p>
+    <p class="split-line dim anim">一盤最家常的白豆腐和白雞蛋。</p>
   </div>
   <div class="split-art anim">
     <img class="art" src="assets/art/L4-p05.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-p05">
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>指著右邊的圖問孩子：「誰見過家裡煮滷水雞翼、滷水蛋？」解釋什麼叫「老滷引子」：外婆的媽媽三十年前煮了一鍋滷菜，每次吃完留下一碗舊湯，下次再加進去煮，整整養了三十年！這就是安仔一家的秘密武器。</p>
+    <p>指著右邊的圖問孩子：「誰見過家裡煮滷水雞翼、滷水蛋？」解釋什麼叫「老滷引子」：外婆的媽媽三十年前煮了一鍋滷菜，每次吃完留下一碗舊湯，下次再倒進去接著煮，整整養了三十年！這就是安仔一家的看家寶貝。</p>
   </template>
 </section>
 
 <!-- ══════════ 6 二十個人，人人有戲（3 分） ══════════ -->
-<section class="slide s-cards cols-4" data-timer="180">
+<section class="slide s-cards cols-4 big-type" data-timer="180">
   <h2 class="s-title sm anim">二十個人，人人有戲</h2>
   <div class="s-card anim">
     <p class="c-badge">4 人</p>
@@ -347,7 +365,7 @@
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>4 + 4 + 5 + 7 = 剛好 20 人！跟孩子強調兩件事：第一，這齣戲沒有「背景板」，每個人都有台詞和動作；第二，這齣戲裡**沒有一個壞人**——明仔和軍師只是太怕輸、一時做錯事，最後每個人都學會了成長。</p>
+    <p>4 + 4 + 5 + 7 = 剛好 20 人！跟孩子講清楚兩件事：第一，這齣戲沒有人站著發呆，每個人都有台詞和動作。第二，這齣戲裡沒有一個壞人，明仔和軍師只是太怕輸、一時做錯事，最後每個人都懂事了。</p>
   </template>
 </section>
 
@@ -357,26 +375,26 @@
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L3-p08a.webp?v=1" alt="" loading="eager" decoding="async" data-art="L3-p08a"></div>
     <h3 class="c-title">安仔</h3>
-    <p class="c-line">樂觀外向，一時炫耀闖了禍</p>
+    <p class="c-line">愛笑愛現，忍不住拿秘方給人看</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L3-p08d.webp?v=2" alt="" loading="eager" decoding="async" data-art="L3-p08d"></div>
     <h3 class="c-title">安爸</h3>
-    <p class="c-line">應變力高，用白豆腐雞蛋救場</p>
+    <p class="c-line">遇事不慌，拿白豆腐和雞蛋救全場</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L3-p08e.webp?v=1" alt="" loading="eager" decoding="async" data-art="L3-p08e"></div>
     <h3 class="c-title">安媽</h3>
-    <p class="c-line">保護家人，從袋底掏出一隻襪子</p>
+    <p class="c-line">最疼家人，翻保溫袋竟掏出一隻襪子</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L4-char-grandma.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-char-grandma"></div>
     <h3 class="c-title">外婆</h3>
-    <p class="c-line">慢條斯理，守護三十年老滷</p>
+    <p class="c-line">越急她越慢，手裡守著三十年老滷</p>
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>外婆是全劇極出彩的角色——別人越急，她越慢，解三層花布時全場伸長脖子看她！安爸則在好肉好菜被買光時想出絕招。</p>
+    <p>外婆是全劇很搶眼的角色，別人越急她越慢，解三層花布時全場伸長脖子看她！安爸則在好肉好菜被買光時想出妙招。</p>
   </template>
 </section>
 
@@ -386,26 +404,26 @@
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L3-p08c.webp?v=1" alt="" loading="eager" decoding="async" data-art="L3-p08c"></div>
     <h3 class="c-title">明仔</h3>
-    <p class="c-line">好勝怕輸，嘗菜有五個表情變化</p>
+    <p class="c-line">太怕拿不到冠軍，試菜連變五個表情</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L4-char-mingba.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-char-mingba"></div>
     <h3 class="c-title">明爸</h3>
-    <p class="c-line">拿報紙遮臉，最後放下報紙支持兒子</p>
+    <p class="c-line">全程拿報紙遮臉，最後摺好報紙拍拍兒子</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L4-char-team.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-char-team"></div>
     <h3 class="c-title">軍師甲 · 乙</h3>
-    <p class="c-line">情報員碎步、買菜順手買了貓糧</p>
+    <p class="c-line">一個走情報員碎步，一個買菜買到貓糧</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L3-p08b.webp?v=1" alt="" loading="eager" decoding="async" data-art="L3-p08b"></div>
     <h3 class="c-title">保安熊仔 5 人</h3>
-    <p class="c-line">五人同步動作，國安行動知識庫</p>
+    <p class="c-line">五個人動作一模一樣，一出場就點醒大家</p>
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>讓孩子看到明仔和兩位軍師有多好玩（不是討人厭的反派，是有喜劇動作、有內心戲的好角色！）；熊仔小隊五個人一起轉頭、一起邁步，帥氣又有氣勢。</p>
+    <p>讓孩子看到明仔和兩位軍師有多好玩，有喜劇動作又有內心戲。熊仔小隊五個人一起轉頭、一起邁步，帥氣又有氣勢。</p>
   </template>
 </section>
 
@@ -415,7 +433,7 @@
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L4-char-stage.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-char-stage"></div>
     <h3 class="c-title">主持人</h3>
-    <p class="c-line">聲音洪亮控全場，絆到電線也裝沒事</p>
+    <p class="c-line">聲音響亮鎮全場，絆到電線也面不改色</p>
   </div>
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L2-p06.webp?v=1" alt="" loading="eager" decoding="async" data-art="L2-p06"></div>
@@ -425,11 +443,11 @@
   <div class="s-card anim">
     <div class="c-art"><img class="art" src="assets/art/L1-p18.webp?v=1" alt="" loading="eager" decoding="async" data-art="L1-p18"></div>
     <h3 class="c-title">A/B班同學 · 攝影師</h3>
-    <p class="c-line">護友助威、勇敢澄清道歉、全場大合照</p>
+    <p class="c-line">替朋友出頭、群組說出真相、拍全場大合照</p>
   </div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>特別提評審乙（全場笑點擔當：聞香飄起來、肚子咕嚕叫、搶吃第二筷被敲手）和 B 班同學（最後勇敢在班級群組澄清道歉的關鍵人物）。</p>
+    <p>特別提評審乙（聞香飄起來、肚子咕嚕叫、搶吃第二筷被敲手）和 B 班同學（最後主動在年級大群裡講清真相並道歉）。</p>
   </template>
 </section>
 
@@ -441,7 +459,7 @@
   <div class="step anim"><span class="step-num">3</span><p class="step-txt">別人唸，眼睛跟著看</p></div>
   <template class="notes">
     <p class="n-h">怎麼講</p>
-    <p>先給孩子定心丸：今天第一次讀劇本，不考背書、不怕吃螺絲，唸錯一個字直接往下唸，把整齣戲熱熱鬧鬧聽一遍就是成功！</p>
+    <p>先給孩子定心丸：今天第一次讀劇本，不考背書、不怕吃螺絲，唸錯一個字直接往下唸，把整齣戲熱熱鬧鬧唸完就是成功！</p>
   </template>
 </section>
 
@@ -454,7 +472,7 @@
   <div class="read-lines">
     <div class="r-row anim"><span class="r-who">外婆</span><p class="r-say"><span class="r-emo">（慢而溫和）</span>安仔，拿著。這是你太姥姥傳下來的方子。</p></div>
     <div class="r-row anim"><span class="r-who">安仔</span><p class="r-say"><span class="r-emo">（瞪大眼）</span>咦？只有三樣家常料？</p></div>
-    <div class="r-row anim"><span class="r-who">外婆</span><p class="r-say"><span class="r-emo">（微笑）</span>三樣就夠了。家的味道不是越貴越好，是記得住才好。</p></div>
+    <div class="r-row anim"><span class="r-who">外婆</span><p class="r-say"><span class="r-emo">（微笑）</span>家常菜嘛，三樣就夠了。吃過一次記一輩子，才是好味道。</p></div>
     <div class="r-row anim"><span class="r-who">外婆</span><p class="r-say"><span class="r-emo">（捧出小罐）</span>每次留一碗，你太姥姥煮了十年，我接著煮了二十年。</p></div>
     <div class="r-row anim"><span class="r-who">安仔</span><p class="r-say"><span class="r-emo">（拍胸口）</span>外婆放心，今天我們贏定了！</p></div>
   </div>
@@ -471,15 +489,16 @@
     <p class="read-tag">場 3 節選</p>
   </div>
   <div class="read-lines">
-    <div class="r-row anim"><span class="r-who">軍師甲</span><p class="r-say"><span class="r-emo">（試探）</span>要是覺得不妥，不用也沒關係，我刪掉就好。</p></div>
+    <div class="r-row anim"><span class="r-who">軍師甲</span><p class="r-say"><span class="r-emo">（小聲問）</span>明仔，要是不太好，就算了吧？我現在刪掉也行。</p></div>
     <div class="r-row anim"><span class="r-who">軍師乙</span><p class="r-say"><span class="r-emo">（小聲嘀咕）</span>對呀明仔，人家說不能公開的……</p></div>
     <div class="r-row anim"><span class="r-who">明仔</span><p class="r-say"><span class="r-emo">（沉默三秒，咬牙）</span>發出去！發到年級大群裡，就說這方子誰家都會做！</p></div>
     <div class="r-row anim"><span class="r-who">明爸</span><p class="r-say"><span class="r-emo">（翻報紙，不抬頭）</span>管他什麼招，拿得到冠軍就行。</p></div>
-    <div class="r-row anim"><span class="r-who">保安熊仔</span><p class="r-say"><span class="r-emo">（齊聲）</span>不是不能分享——是要先問過它屬於誰！</p></div>
+    <div class="r-row anim"><span class="r-who">保安熊仔</span><p class="r-say"><span class="r-emo">（舉手提問）</span>好東西要分享，第一件事是什麼？</p></div>
+    <div class="r-row anim"><span class="r-who">熊仔隊員</span><p class="r-say"><span class="r-emo">（齊聲）</span>先問過主人答不答應！</p></div>
   </div>
   <template class="notes">
     <p class="n-h">怎麼帶</p>
-    <p>重點讓孩子體驗明仔開口前那「安靜三秒」：全班一起屏住呼吸數三秒，再唸出「發出去！」感受什麼叫戲劇張力。</p>
+    <p>重點讓孩子體驗明仔開口前那「安靜三秒」：全班一起屏住呼吸數三秒，再唸出「發出去！」，感受戲劇張力。最後兩句由老師問、全班齊答。</p>
   </template>
 </section>
 
@@ -491,14 +510,14 @@
   </div>
   <div class="read-lines">
     <div class="r-row anim"><span class="r-who">安仔</span><p class="r-say">你可以偷走一碗湯，可是你偷不走三十年。</p></div>
-    <div class="r-row anim"><span class="r-who">明仔</span><p class="r-say"><span class="r-emo">（低頭）</span>……對不起，安仔。我不該公開你的秘方，更不該亂說話貶低你們。</p></div>
-    <div class="r-row anim"><span class="r-who">安仔</span><p class="r-say">如果你願意從今天開始自己養一鍋，三十年後，你們家也會有一罐！</p></div>
-    <div class="r-row anim"><span class="r-who">明仔</span><p class="r-say"><span class="r-emo">（掰手指苦笑）</span>三十年……那我豈不是要養到四十歲？</p></div>
-    <div class="r-row anim"><span class="r-who">B 班同學</span><p class="r-say"><span class="r-emo">（舉起手機）</span>我已經把原圖刪掉，還在群組發了澄清和道歉啟事！</p></div>
+    <div class="r-row anim"><span class="r-who">明仔</span><p class="r-say"><span class="r-emo">（低頭）</span>……對不起，安仔。方子是我發出去的，菜也是我叫人拿走的……全是我不好。</p></div>
+    <div class="r-row anim"><span class="r-who">安仔</span><p class="r-say">要是你願意從今天起自己起一鍋，三十年後，你們家也會有一鍋誰也偷不走的老滷！</p></div>
+    <div class="r-row anim"><span class="r-who">明仔</span><p class="r-say"><span class="r-emo">（掰手指笑出來）</span>三十年……那我豈不是要養到四十歲？</p></div>
+    <div class="r-row anim"><span class="r-who">B 班同學</span><p class="r-say"><span class="r-emo">（舉起手機）</span>我剛才已經把原圖刪了，還在年級大群裡把事情講清楚，向你們正式道歉了！</p></div>
   </div>
   <template class="notes">
     <p class="n-h">怎麼帶</p>
-    <p>這是全劇最動人的一段。帶孩子讀出「你可以偷走一碗湯，可是你偷不走三十年」的穩定力量，以及明仔「養到四十歲」破涕為笑的幽默感。</p>
+    <p>帶孩子讀出「你可以偷走一碗湯，可是你偷不走三十年」的穩定語氣，還有明仔「養到四十歲」破涕為笑的那一下。</p>
   </template>
 </section>
 
@@ -507,7 +526,7 @@
   <div class="split-text">
     <p class="s-kicker anim">全劇圍讀</p>
     <h2 class="s-title anim">從第一場<br>唸到第八場</h2>
-    <p class="split-line dim anim">一人輪一段，聽見整齣戲的樣子。</p>
+    <p class="split-line dim anim">一人輪一段，把整齣戲唸活。</p>
     <a class="lnk anim" href="script.html#sc1" target="_blank" rel="noopener">▶&nbsp; 打開完整劇本《我們家的味道》</a>
   </div>
   <div class="split-art anim">
@@ -515,14 +534,14 @@
   </div>
   <template class="notes">
     <p class="n-h">怎麼帶</p>
-    <p>點金色按鈕直接開《我們家的味道》全八場網頁（頂部有場1至場8快速跳轉鈕）。按座位順序輪流派人讀，還沒定角色，誰讀哪段都可以，讓 20 個孩子都過足戲癮。</p>
+    <p>點金色按鈕直接開《我們家的味道》全八場網頁，頂部有場1至場8快速跳轉鈕。按座位順序輪流派人讀，還沒定角色，誰讀哪段都可以，讓 20 個孩子都過足戲癮。</p>
   </template>
 </section>
 
 <!-- ══════════ 15 快問快答 1（1 分） ══════════ -->
 <section class="slide s-quiz" data-timer="60">
   <div class="anim">
-    <h2 class="quiz-q">外婆家裡那口母鍋的老滷，一共養了多少年？</h2>
+    <h2 class="quiz-q">外婆家裡那口老鍋的滷湯，一共養了多少年？</h2>
     <div class="quiz-qbar"><i></i></div>
   </div>
   <div class="quiz-grid">
@@ -531,7 +550,7 @@
     <button class="quiz-opt k-yellow anim" data-ok="1"><span class="shp">●</span><span>三十年</span></button>
     <button class="quiz-opt k-green anim" data-ok="0"><span class="shp">■</span><span>三百年</span></button>
   </div>
-  <p class="quiz-fb anim" data-ok="對！太姥姥煮了十年，外婆接著煮了二十年——整整三十年。" data-no="再想想——明仔掰著手指算自己要養到四十歲呢！"></p>
+  <p class="quiz-fb anim" data-ok="對！太姥姥煮了十年，外婆接著煮了二十年，足足三十年。" data-no="再算算看，明仔掰著手指說自己要養到四十歲呢！"></p>
   <template class="notes">
     <p class="n-h">怎麼帶</p>
     <p>零設備口頭搶答或舉手選顏色形狀，再點選項揭曉答案。</p>
@@ -550,28 +569,28 @@
     <button class="quiz-opt k-yellow anim" data-ok="0"><span class="shp">●</span><span>薯片和餅乾</span></button>
     <button class="quiz-opt k-green anim" data-ok="0"><span class="shp">■</span><span>什麼都不煮，直接認輸</span></button>
   </div>
-  <p class="quiz-fb anim" data-ok="對！最家常的白豆腐和白雞蛋，配上三十年老滷，穩穩贏下比賽。" data-no="想想大會基礎食材台上剩下的兩樣白色家常食材是什麼？"></p>
+  <p class="quiz-fb anim" data-ok="對！最家常的白豆腐和白雞蛋，配上三十年老滷，照樣贏下比賽。" data-no="想想大會基礎食材台上剩下的兩樣白色家常食材是什麼？"></p>
   <template class="notes">
     <p class="n-h">怎麼帶</p>
-    <p>順便問一句：「為什麼明仔有好肉卻輸了，安仔只有白豆腐白雞蛋卻贏了？」讓孩子自己說出「因為有三十年的老滷／家的傳承」。</p>
+    <p>順便問一句：「為什麼明仔有好肉卻輸了，安仔只有白豆腐和白雞蛋卻贏了？」讓孩子自己說出答案。</p>
   </template>
 </section>
 
 <!-- ══════════ 17 寫下你想演的角色（4 分） ══════════ -->
 <section class="slide s-split" data-timer="240">
   <div class="split-text">
-    <p class="s-kicker anim">角色意向</p>
+    <p class="s-kicker anim">選角心願卡</p>
     <h2 class="s-title anim">你想演誰？</h2>
     <p class="split-line anim">第一志願：<b class="hi">＿＿＿＿＿＿</b></p>
-    <p class="split-line anim">第二志願：<b class="pl">＿＿＿＿＿＿</b></p>
-    <p class="split-line dim anim">每一個角色，都會在戲裡長大。</p>
+    <p class="split-line anim">第二志願：<b class="tl">＿＿＿＿＿＿</b></p>
+    <p class="split-line dim anim">二十個角色，個個有台詞、個個要上台。</p>
   </div>
   <div class="split-art anim">
     <img class="art" src="assets/art/L4-p17.webp?v=1" alt="" loading="eager" decoding="async" data-art="L4-p17">
   </div>
   <template class="notes">
     <p class="n-h">怎麼收意向</p>
-    <p>發小紙條（或請兩位協助老師幫忙登記），每人寫下自己的名字＋最想演的第一志願、第二志願。告訴孩子今天先收齊大家的願望，老師回去配對後再正式公布，不管演哪一個位置，全班 20 個人都是這齣戲的主角。</p>
+    <p>發小紙條（或請兩位協助老師幫忙登記），每人寫下自己的名字、第一志願和第二志願。告訴孩子今天先收齊大家的心願，老師回去配對後再正式公布。</p>
   </template>
 </section>
 
@@ -584,7 +603,7 @@
   </div>
   <template class="notes">
     <p class="n-h">收課</p>
-    <p>安靜深呼吸一次收課。預告下一節我們玩「情緒光譜」，把每個角色的聲音練得全禮堂最後一排都聽得清清楚楚！</p>
+    <p>安靜深呼吸一次收課。預告下一節我們玩「情緒光譜」，把每個角色的聲音練得禮堂最後一排都聽得清清楚楚！</p>
   </template>
 </section>
 
